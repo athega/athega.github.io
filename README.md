@@ -12,9 +12,13 @@ bundle install
 
 ```
 
-### Varje gång
+### Om du vill
 ```
 bundle update
+```
+
+### Lokal server
+```
 bundle exec jekyll serve
 ```
 Nu kan du titta på sajten lokalt på http://localhost:4000.
