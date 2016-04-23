@@ -2,20 +2,8 @@
 # For more see: http://jekyllrb.com/docs/permalinks/
 permalink: /:categories/:year/:month/:day/:title 
 
-exclude: [".rvmrc", ".ruby-version", "README.md", "Rakefile", "changelog.md"]
-highlighter: pygments
-
-# Themes are encouraged to use these universal variables 
-# so be sure to set them if your theme uses them.
-#
-title : Athega
-tagline: Du har redan sett vad vi gjort
-author :
-  name : Athega
-  email : info@athega.se
-  github : athega
-  twitter : athega
-  feedburner : na
+exclude: [".gitignore", ".ruby-version", "README.md", "Gemfile", "Gemfile.lock"]
+highlighter: rouge
 
 # The production_url is only used when full-domain names are needed
 # such as sitemap.txt 
