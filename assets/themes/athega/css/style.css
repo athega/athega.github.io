@@ -9,7 +9,7 @@ dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
+figure, figcaption, footer, header,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 	margin: 0;
@@ -20,7 +20,7 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
+footer, header, menu, nav, section {
 	display: block;
 }
 ol, ul {
@@ -45,7 +45,7 @@ table {
 	box-sizing: border-box;
 }
 html, body {
-	font: 400  20px/1.5em 'Lato', sans-serif;
+	font: 400 17px/1.35em 'Lato', sans-serif;
 	color: #383737;
 }
 #svg-icons-stock {
@@ -81,7 +81,7 @@ h2 {
 	font-size: 2.25rem;
 }
 p {
-	font: 400  20px/1.5em 'Lato', sans-serif;
+	font: 400 1rem/1.35em 'Lato', sans-serif;
 	color: #383737;
 }
 p.description {
@@ -245,7 +245,7 @@ article .info::before,
 	display: inline-block;
 	line-height: 65px;
 	padding: 0 0.3em;
-	font-size: 1.05rem;
+	font-size: 1.2rem;
 	color: white;
 }
 #main-menu .have-submenu:hover .submenu {
@@ -322,6 +322,7 @@ article .info::before,
 	display: block;
 	font-size: 2rem;
 	font-weight: 700;
+	line-height: 1.3em;
 }
 
 
@@ -389,7 +390,7 @@ article .info::before,
 	height: 40px;
 }
 .articles h3 {
-	font-size: 1.05rem;
+	font-size: 1.2rem;
 	font-weight: 400;
 }
 .featured-blog article h3 {
@@ -566,7 +567,7 @@ article .info h3 {
 	overflow: hidden;
 	padding: 15px 30px;
 	line-height: 1.6em;
-	font-size: 0.95rem;
+	font-size: 1rem;
 	color: white;
 
 	opacity: 0;
@@ -584,7 +585,7 @@ article .info h3 {
 	padding: 0 30px;
 	margin: 0;
 	line-height: 60px;
-	font-size: 1.05rem;
+	font-size: 1rem;
 	color: white;
 }
 .revealing .hidden-info .read-more::after {
@@ -594,14 +595,14 @@ article .info h3 {
 
 /*----- FOOTER -----*/
 #site-footer {
-	min-height: 350px;
+	min-height: 250px;
 	margin-top: 90px;
 	padding: 30px 0;
 	background-color: #ff6803;
 	overflow: hidden;
 }
 #site-footer p {
-	font-size: 1.25rem;
+	font-size: 1.2rem;
 	color: white;
 }
 #site-footer .social-links li {
