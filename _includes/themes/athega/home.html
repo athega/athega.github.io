@@ -10,49 +10,7 @@
 	<link href='//fonts.googleapis.com/css?family=Lato:400,700,900' rel='stylesheet' type='text/css'>
 </head>
 <body>
-<header id="site-header">
-	<div class="container">
-		<div class="logo-wrap">
-			<a class="main-logo" href="#">
-				<img src="/assets/themes/athega/img/logo.png"/>
-			</a>
-		</div>
-		<a id="main-menu-button" href="#">
-			<svg>
-				<use xlink:href="#triple-bars" />
-			</svg>
-		</a>
-		<nav id="main-menu">
-			<ul>
-				<li class="have-submenu">
-					<a href="#">Tjänster</a>
-					<ul class="submenu">
-						<li><a href="#">Submenu Item</a></li>
-						<li><a href="#">A bit longer submenu Item</a></li>
-						<li><a href="#">Another submenu item</a></li>
-						<li><a href="#">The 4th item</a></li>
-					</ul>
-				</li>
-				<li>
-					<a href="#">Om oss</a>
-				</li>
-				<li>
-					<a href="#">Case</a>
-				</li>
-				<li>
-					<a href="#">Jobba här</a>
-				</li>
-				<li>
-					<a href="#">Blogg</a>
-				</li>
-				<li>
-					<a href="#">Kontakt</a>
-				</li>
-			</ul>
-		</nav>
-	</div>
-</header>
-
+{% include themes/athega/components/header.html %}
 
 <section class="intro">
 	<div class="video-container">
@@ -74,7 +32,20 @@
 		<div class="owl-wrapper">
 			<div class="slider-controls"></div>
 			<div class="owl-carousel articles">
-				<article class="blog-item item-1">
+				{% for post in site.posts limit 5 %}
+				<article class="blog-item item-{{ forloop.index }}">
+					<a href="{{ post.url }}">
+						<div class="meta">
+							<img src="/assets/themes/athega/img/user-image.png" alt="user-image" class="tuser-image">
+							<p class="username">{{ post.category | default: 'Athegabloggen' }}</p>
+							<p class="date">{{ post.date | date: "%Y-%m-%d" }}</p>
+						</div>
+						<h3>{{ post.title }}</h3>
+					</a>
+					<p>Med ett spann på en genomgång av hur virtuella truckar på Volvo fungerar. Med ett spann på en genomgång av hur virtuella truckar på Volvo…</p>
+				</article>
+				{% endfor %}
+				<article class="blog-item item-3">
 					<div class="meta">
 						<img src="/assets/themes/athega/img/user-image.png" alt="user-image" class="tuser-image">
 						<p class="username">Athegabloggen</p>
@@ -82,24 +53,6 @@
 					</div>
 					<h3><a href="#">QCon London 2016 - Take aways</a></h3>
 					<p>Med ett spann på en genomgång av hur virtuella truckar på Volvo fungerar. Med ett spann på en genomgång av hur virtuella truckar på Volvo…</p>
-				</article>
-				<article class="blog-item item-2">
-					<div class="meta">
-						<img src="/assets/themes/athega/img/user-image.png" alt="user-image" class="tuser-image">
-						<p class="username">Athegabloggen</p>
-						<p class="date">2016-03-14</p>
-					</div>
-					<h3><a href="#">JavaScript och isomorfism</a></h3>
-					<p>Efterfrågan kring erfarenhet av node.js och isomorfiska tillämpningar har fullkommligt exploderat. Efterfrågan kring erfarenhet av node.js och isomorfiska tillämpningar…</p>
-				</article>
-				<article class="blog-item item-3">
-					<div class="meta">
-						<img src="/assets/themes/athega/img/user-image.png" alt="user-image" class="tuser-image">
-						<p class="username">Athegabloggen</p>
-						<p class="date">2016-03-14</p>
-					</div>
-					<h3><a href="#">Öppna kartor</a></h3>
-					<p>Lantmäteriet har vid årsskiftet släppt vissa av fria som öppen data sina kartor. Lantmäteriet har vid årsskiftet släppt vissa av fria som öppen data sina kartor…</p>
 				</article>
 				<article class="blog-item item-4">
 					<div class="meta">
@@ -213,53 +166,7 @@
 	</div>
 </section>
 
-
-<footer id="site-footer">
-	<div class="container">
-		<div class="part-3">
-			<p>Athega AB</p>
-			<p>Hantverkargatan 21</p>
-			<p>112 21 Stockholm</p>
-		</div>
-		<div class="part-3">
-			<p>08-545 133 30</p>
-			<p>reception@athega.se</p>
-			<p>jobb@athega.se</p>
-		</div>
-		<div class="part-3">
-			<ul class="social-links">
-				<li>
-					<a href="#" class="linkedin">
-						<svg>
-							<use xlink:href="#social-linkedin" />
-						</svg>
-					</a>
-				</li>
-				<li>
-					<a href="#" class="instagram">
-						<svg>
-							<use xlink:href="#social-instagram" />
-						</svg>
-					</a>
-				</li>
-				<li>
-					<a href="#" class="facebook">
-						<svg>
-							<use xlink:href="#social-facebook" />
-						</svg>
-					</a>
-				</li>
-			</ul>
-		</div>
-		<div class="legal">
-			<p class="copyright">© 2016 All rights reserved</p>
-			<a href="#">Användaravtal</a>
-			<a href="#">Cookies </a>
-			<a href="#">Privacy Policy</a>
-		</div>
-	</div>
-</footer>
-{% include themes/athega/icons.svg %}
+{% include themes/athega/components/footer.html %}
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.12.3/jquery.js"></script>
 <script src="/assets/themes/athega/js/utils.js"></script>
 <script src="/assets/themes/athega/js/script.js"></script>
