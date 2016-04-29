@@ -2,6 +2,8 @@
 layout: post
 title: Ett testinlägg
 date: 2016-04-29
+description: Bacon ipsum dolor amet cupim shank sirloin short loin flank pastrami, bresaola alcatra ham hock. Filet mignon cupim
+             turkey, cow biltong meatball alcatra pork belly tri-tip kielbasa venison ground round.
 category: Athegabloggen
 ---
 
