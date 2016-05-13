@@ -608,6 +608,8 @@ article.post h1 {
 }
 article.post h2 {
 	text-align: left;
+	font-size: 1.75rem;
+	font-weight: 500;
 }
 article.post h3 {
 	text-align: left;
@@ -627,6 +629,9 @@ article.post blockquote {
 }
 article.post blockquote p {
 	font-style: italic;
+}
+article.post img {
+	max-width: 100%;
 }
 
 /*----- FOOTER -----*/
