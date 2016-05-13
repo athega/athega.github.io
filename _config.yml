@@ -14,3 +14,6 @@ highlighter: rouge
 # Finally if you are pushing to a GitHub project page, include the project name at the end.
 #
 production_url : http://athega.github.io
+
+lsi: true
+permalink: /blogg/:year/:month/:day/:title.html

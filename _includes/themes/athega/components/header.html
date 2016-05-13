@@ -30,8 +30,17 @@
 				<li>
 					<a href="#">Jobba här</a>
 				</li>
-				<li>
-					<a href="#">Blogg</a>
+				<li class="have-submenu">
+					<a href="/blogg/">Blogg</a>
+					<ul class="submenu">
+						{%for post in site.posts %}
+						  {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
+						  {% capture nyear %}{{ post.next.date | date: '%Y' }}{% endcapture %}
+							{% if year != nyear %}
+						    <li><a href="/blogg/{{ year }}/">{{ year }}</a></li>
+							{% endif %}
+						{% endfor %}
+					</ul>
 				</li>
 				<li>
 					<a href="#">Kontakt</a>
