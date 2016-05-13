@@ -599,7 +599,7 @@ article.post {
 article.post p {
 	margin-bottom: 0.8rem;
 }
-article.post h1 {
+article.post h1, .index h1 {
 	text-align: center;
 	text-transform: uppercase;
 	margin: 3.4em 0 0.4em;
@@ -632,6 +632,28 @@ article.post blockquote p {
 }
 article.post img {
 	max-width: 100%;
+}
+
+/*----- INDEX -----*/
+.index {
+	max-width: 940px;
+}
+.index li {
+	background-image: url(/assets/themes/athega/img/user-image.png);
+	background-size: 1.75rem;
+	background-repeat: no-repeat;
+	background-position: 0 0.3rem;
+	padding-left: 3.5rem;
+}
+.index h2 {
+	font-size: 1.75rem;
+	font-weight: 500;
+	text-align: left;
+	margin-top: 2rem;
+}
+.index .meta {
+	color: #9f9d9d;
+	font-size: 0.8rem;
 }
 
 /*----- FOOTER -----*/
