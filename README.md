@@ -8,6 +8,7 @@ The Athega GitHub Place
 \curl -sSL https://get.rvm.io | bash -s stable
 git clone git@github.com:athega/athega.github.io.git
 cd athega.github.io
+gem install bundle
 bundle install
 
 ```
