@@ -16,7 +16,7 @@ tags:
 ### _Johan, klassisk fråga, hur känns det?_
 – Det känns förstås riktigt bra för mig och alla i teamet. Jag har varit med och byggt en stor del av URs webbplats och haft tid att optimera den parallellt med att den utvecklats. Nu när sajten uppmärksammas i media är det kul för alla inblandade.
 
-![Johan Beronius](http://athega.se/images/employees/johan/wide.jpg)
+![Johan Beronius](/assets/images/johan_wide.jpg)
 _Athegas Johan Beronius är expert på optimering av webbplatser och framhåller att det inte bara är prestanda som är viktigt – även tillgängligheten behöver optimeras._
 
 ### _Arvid, grattis till priset, hur ser den närmaste framtiden ut för ur.se?_
