@@ -23,3 +23,13 @@ bundle update
 bundle exec jekyll serve
 ```
 Nu kan du titta på sajten lokalt på http://localhost:4000.
+
+
+### Diverse kommandon
+
+Hämta
+git pull https://github.com/athega/athega.github.io.git
+
+Pusha
+git commit <filnamn>
+git push https://github.com/athega/athega.github.io.git
