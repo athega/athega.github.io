@@ -30,6 +30,8 @@ Nu kan du titta på sajten lokalt på http://localhost:4000.
 #### Hämta
 git pull https://github.com/athega/athega.github.io.git
 
-#### Pusha
+#### Commit
 git commit <filnamn>
+
+#### Push
 git push https://github.com/athega/athega.github.io.git
