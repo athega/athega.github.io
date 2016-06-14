@@ -122,6 +122,19 @@ $(window).on('resize', function(){
 $(window).on('scroll', function(){
 	GLOBAL.toggleMenu('close');
 	GLOBAL.squizeHeader();
+
+	// Pause video if not shown
+	if (!GLOBAL.introPlayer) return false;
+
+	var hT = $('.m-video').height(),
+		wS = $(this).scrollTop();
+
+	if (wS > hT) {
+		GLOBAL.introPlayer.pauseVideo();
+	}
+	else {
+		GLOBAL.introPlayer.playVideo();
+	}
 });
 
 /* Execute all scripts after document load */
@@ -153,3 +166,27 @@ $(document).ready(function(){
 		}
 	});
 });
+
+function onYouTubePlayerAPIReady() {
+	GLOBAL.introPlayer = new YT.Player('intro-video', {
+		playerVars: {
+			'autoplay': 1,
+			'controls': 0,
+			'autohide': 1,
+			'wmode': 'opaque',
+			'showinfo': 0,
+			'loop': 1,
+			'mute': 1,
+			'playlist': 'R23sZk8CAXE'
+		},
+		videoId: 'R23sZk8CAXE',
+		events: {
+			'onReady': onPlayerReady
+		}
+	});
+
+}
+
+function onPlayerReady(event) {
+	event.target.mute();
+}
