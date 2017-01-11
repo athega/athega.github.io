@@ -1,0 +1,69 @@
+.featured-blog {
+
+}
+.owl-wrapper {
+    position: relative;
+}
+.slider-controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    font-size: 0;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.owl-prev, .owl-next {
+    position: relative;
+    width: 50px;
+    height: 80px;
+    background-image: url('../img/slider-arrows.png');
+    background-repeat: none;
+    cursor: pointer;
+}
+.owl-prev:hover {
+    -webkit-transform: translateX(-5px);
+    -ms-transform: translateX(-5px);
+    -o-transform: translateX(-5px);
+    transform: translateX(-5px);
+}
+.owl-next:hover {
+    -webkit-transform: translateX(5px);
+    -ms-transform: translateX(5px);
+    -o-transform: translateX(5px);
+    transform: translateX(5px);
+}
+.owl-prev {
+    float: left;
+    margin-left: -100px;
+}
+.owl-next {
+    float: right;
+    margin-right: -100px;
+    background-position: 100% 0;
+}
+
+.articles {
+    overflow: hidden;
+}
+.articles .meta {
+    height: 52px;
+}
+.articles .meta > * {
+    display: inline-block !important;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+.articles .meta img {
+    height: auto;
+    width: 45px !important;
+    height: 40px;
+}
+.articles h3 {
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+.featured-blog article h3 {
+    font-weight: 700;
+}

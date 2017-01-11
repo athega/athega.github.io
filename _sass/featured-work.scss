@@ -1,0 +1,98 @@
+.featured-video {
+    position: relative;
+    height: 280px;
+    overflow: hidden;
+}
+.featured-video a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.featured-video .background {
+    height: 220px;
+    -webkit-transition: 0.3s ease;
+    -o-transition: 0.3s ease;
+    transition: 0.3s ease;
+}
+.featured-video a:hover .info::before,
+.featured-video a:focus .info::before {
+    -webkit-transform: translateY(-30px) rotate(180deg);
+    -ms-transform: translateY(-30px) rotate(180deg);
+    -o-transform: translateY(-30px) rotate(180deg);
+    transform: translateY(-30px) rotate(180deg);
+}
+.featured-video a:hover .background,
+.featured-video a:focus .background {
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    transform: scale(1.1);
+}
+article .info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    line-height: 60px;
+    vertical-align: middle;
+    background-color: #ff6803;
+}
+article .info::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 15px;
+    top: -20px;
+    height: 40px;
+    width: 60px;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-right: 40px solid #ff6803;
+}
+article .info h3 {
+    padding: 0 1em;
+    margin: 0;
+    line-height: 60px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    color: white;
+}
+.centered-button {
+    text-align: center;
+}
+.more-videos {
+    display: inline-block;
+    margin: 3em 0;
+    padding: 0.5em 1em;
+    font-size: 1.2rem;
+}
+.more-videos:hover,
+.more-videos:focus {
+    -webkit-transform: translateX(4px);
+    -ms-transform: translateX(4px);
+    -o-transform: translateX(4px);
+    transform: translateX(4px);
+}
+.more-videos::after,
+.revealing .hidden-info .read-more::after,
+.revealing .hidden-info .read-more::after  {
+    content: "";
+    display: inline-block;
+    vertical-align: baseline;
+    width: 11px;
+    height: 1em;
+    margin-bottom: -5px;
+    margin-left: 5px;
+    background: url('../img/read-more-arrow.png') center center no-repeat;
+}
+.more-videos:hover::after,
+.more-videos:focus::after,
+.revealing .hidden-info .read-more:hover::after,
+.revealing .hidden-info .read-more:focus::after {
+    opacity: 0.8;
+    -webkit-transform: translateX(4px);
+    -ms-transform: translateX(4px);
+    -o-transform: translateX(4px);
+    transform: translateX(4px);
+}

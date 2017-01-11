@@ -1,0 +1,61 @@
+#site-header {
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    height: 90px;
+    width: 100%;
+    background-color: rgba(255,104,3, 0.8);
+}
+#site-header:hover {
+    background-color: rgba(255,104,3, 1);
+}
+#site-header .container {
+    height: 100%;
+}
+.logo-wrap {
+    position: relative;
+    z-index: 30;
+    float: left;
+    width: 240px;
+    height: 100%;
+}
+.main-logo {
+    display: block;
+    height: 100%;
+    line-height: 90px;
+
+    -webkit-transition: 0.15s ease;
+    -o-transition: 0.15s ease;
+    transition: 0.15s ease;
+}
+.main-logo:hover,
+.main-logo:focus {
+    -webkit-transform: scale(1.03) rotate(-3deg);
+    -ms-transform: scale(1.03) rotate(-3deg);
+    -o-transform: scale(1.03) rotate(-3deg);
+    transform: scale(1.03) rotate(-3deg);
+}
+.main-logo img {
+    width: 100%;
+    height: auto;
+    vertical-align: middle;
+}
+#site-header.small {
+    height: 50px;
+    background-color: rgba(255,104,3, 1);
+    box-shadow: 0 0 10px rgba(0,0,0, 0.12);
+}
+#site-header.small .logo-wrap {
+    width: 120px;
+}
+#site-header.small .main-logo {
+    line-height: 50px;
+}
+#site-header.small #main-menu > ul {
+    padding-top: 0;
+}
+#site-header.small #main-menu a {
+    line-height: 50px;
+    font-size: 0.85rem;
+}

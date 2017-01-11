@@ -1,0 +1,73 @@
+article.post {
+    max-width: 940px;
+}
+article.post p {
+    margin-bottom: 0.8rem;
+}
+article.post h1, .index h1 {
+    text-align: center;
+    text-transform: uppercase;
+    margin: 3.4em 0 0.4em;
+    line-height: 1.2em;
+    font-size: 2.25rem;
+}
+article.post h2 {
+    text-align: left;
+    font-size: 1.75rem;
+    font-weight: 500;
+}
+article.post h3 {
+    text-align: left;
+    line-height: 1em;
+    font-size: 1.5rem;
+    margin: 1em 0 .4em;
+}
+article.post h4, article.post h5 {
+    text-align: left;
+    line-height: 1em;
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 1.8em 0 0.2em;
+}
+article.post h5 {
+    font-size: .9rem;
+    margin: 1em 0 .2em;
+}
+article.post .meta {
+    text-align: center;
+}
+article.post .tuser-image {
+    float: left;
+    margin-right: 0.3rem;
+}
+article.post blockquote {
+    border-left: 1px solid #ddd;
+    padding: 0.1em 1rem 0 1rem
+}
+article.post blockquote p {
+    font-style: italic;
+}
+article.post img {
+    max-width: 100%;
+}
+article.post img.right {
+    float: right;
+    max-width: 40%;
+    margin: 0 0 .8rem .8rem;
+}
+article.post ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 0.8rem;
+}
+article.post li {
+    padding-left: 1.5em;
+    text-indent: -.7em;
+}
+article.post li:before {
+    content: '√ ';
+    font-size: .75rem;
+    color: #ff6803;
+    margin-right: .5em;
+}

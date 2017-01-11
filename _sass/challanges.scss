@@ -1,0 +1,71 @@
+.challenges article {
+    position: relative;
+    height: 375px;
+}
+.challenges .background {
+    height: 315px;
+}
+.revealing article {
+    overflow: hidden;
+}
+.revealing .hidden-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #ff6803;
+
+    -webkit-transition: 0.2s ease;
+    -o-transition: 0.2s ease;
+    transition: 0.2s ease;
+
+    -webkit-transform: translateX(-120%) scale(1.2);
+    -ms-transform: translateX(-120%) scale(1.2);
+    -o-transform: translateX(-120%) scale(1.2);
+    transform: translateX(-120%) scale(1.2);
+}
+.revealing article:hover .hidden-info,
+.revealing article.hovering .hidden-info {
+    -webkit-transform: translateX(0) scale(1);
+    -ms-transform: translateX(0) scale(1);
+    -o-transform: translateX(0) scale(1);
+    transform: translateX(0) scale(1);
+}
+.revealing article:hover .hidden-info p,
+.revealing article.hovering .hidden-info p {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+    transform: translateX(0);
+}
+.revealing .hidden-info p {
+    max-height: 315px;
+    overflow: hidden;
+    padding: 15px 30px;
+    line-height: 1.6em;
+    font-size: 1rem;
+    color: white;
+
+    opacity: 0;
+    transition: 0.4s ease 0.2s;
+    -webkit-transform: translateX(-30px);
+    -ms-transform: translateX(-30px);
+    -o-transform: translateX(-30px);
+    transform: translateX(-30px);
+}
+.revealing .hidden-info .read-more {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0 30px;
+    margin: 0;
+    line-height: 60px;
+    font-size: 1rem;
+    color: white;
+}
+.revealing .hidden-info .read-more::after {
+    background: url('../img/read-more-arrow-white.png') center center no-repeat;
+}

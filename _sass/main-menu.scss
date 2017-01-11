@@ -1,0 +1,85 @@
+#main-menu-button {
+    display: none;
+}
+#main-menu {
+    position: relative;
+    float: right;
+}
+#main-menu > ul {
+    padding-top: 25px;
+}
+#main-menu > ul > li {
+    display: inline-block;
+    position: relative;
+    margin: 0 0.3em;
+}
+#main-menu > ul > li > a::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background-color: transparent;
+
+    -webkit-transition: 0.3s ease;
+    -o-transition: 0.3s ease;
+    transition: 0.3s ease;
+}
+#main-menu > ul > li > a:hover::after,
+#main-menu > ul > li > a:focus::after {
+    background-color: white;
+}
+#main-menu a {
+    position: relative;
+    display: inline-block;
+    line-height: 65px;
+    padding: 0 0.3em;
+    font-size: 1.2rem;
+    color: white;
+}
+#main-menu .have-submenu:hover .submenu {
+    opacity: 1;
+    pointer-events: auto;
+    -webkit-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+    transform: translateX(0);
+}
+#main-menu .submenu {
+    position: absolute;
+    z-index: 8;
+    top: 100%;
+    width: 300px;
+    background-color: white;
+    box-shadow: 0 10px 30px rgba(0,0,0, 0.15);
+    opacity: 0;
+    pointer-events: none;
+    -webkit-transform: translateX(-20%);
+    -ms-transform: translateX(-20%);
+    -o-transform: translateX(-20%);
+    transform: translateX(-20%);
+}
+#main-menu .submenu li {
+    display: block;
+    margin: 0;
+}
+#main-menu .submenu li a {
+    display: block;
+    padding: 0 10px;
+    line-height: 3em;
+    vertical-align: middle;
+    font-size: 0.85rem;
+    color: #ff6803;
+    opacity: 0.75;
+    border-bottom: 1px solid #eaeaea;
+}
+#main-menu .submenu li:last-of-type a {
+    border-bottom: none;
+}
+#main-menu .submenu li a:hover,
+#main-menu .submenu li a:focus {
+    opacity: 1;
+    background-color: #eaeaea;
+}
