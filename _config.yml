@@ -1,12 +1,12 @@
 # This is the default format.
 # For more see: http://jekyllrb.com/docs/permalinks/
-permalink: /:categories/:year/:month/:day/:title 
+permalink: /:categories/:year/:month/:day/:title
 
 exclude: [".gitignore", ".ruby-version", "README.md", "Gemfile", "Gemfile.lock"]
 highlighter: rouge
 
 # The production_url is only used when full-domain names are needed
-# such as sitemap.txt 
+# such as sitemap.txt
 # Most places will/should use BASE_PATH to make the urls
 #
 # If you have set a CNAME (pages.github.com) set your custom domain here.
@@ -17,3 +17,6 @@ production_url : http://athega.github.io
 
 lsi: true
 permalink: /blogg/:year/:month/:day/:title.html
+
+sass:
+    style: compressed

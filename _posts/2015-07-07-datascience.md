@@ -13,24 +13,24 @@ tags: nyhetsbrev
 ### Generella lösningar kräver både domän- och data-science expertis
 
 Metoder och verktyg som används inom Data-science begränsas inte till specifika områden. Tekniken och
-algoritmerna är de samma oavsett om det är finansiellt data, besöksstatistik eller CRM-data på försäljning. 
+algoritmerna är de samma oavsett om det är finansiellt data, besöksstatistik eller CRM-data på försäljning.
 
 Dock kan det vara svårt är se möjligheterna utan att vara områdesöverskridande expert inom programmering,
-statistik, matematik och bransch/domän-expert. 
+statistik, matematik och bransch/domän-expert.
 
 Det går att gruppera expertisen i två delar
 
-- Vi är experter på programmering, statistik och matematik. 
+- Vi är experter på programmering, statistik och matematik.
 - Våra kunder är domänexperter på sitt data.
 
 ### Rollen data-scientist
 
 En Data-scientist är en utbildad matematiker som är mycket kunnig i statistiska modeller och dataanalys.
 Självklart ska en data-scientist programmatiskt kunna modulera artificiella neuronnät och kluster samt veta
-vilka implementationer som ger bästa lösning. 
+vilka implementationer som ger bästa lösning.
 
 > På Athega är en Data-Scientist en senior utvecklare med högre akademisk examen i matematik och statistik.
- 
+
 #### Vad levererar en data-scientist?
 
 De lösningar som en data-scientist kan hjälpa er ta fram jobbar typiskt med stora datamängder(big data) och
@@ -44,7 +44,7 @@ två olika sätt.
 
 Ni får systemet modulerat, testat och byggt med er expertis på det data som ska behandlas. Detta inkluderar
 produktionssättning och förvaltningsetablerat på er IT-avdelning. Ni är inblandade som kravställare under
-hela arbetet. 
+hela arbetet.
 
 #### Exempel på användningsområden för finansiella institutioner
 Försöker nedan beskriva olika tillämpningar som är mer eller mindre vedertagna.
@@ -59,7 +59,7 @@ uppföranden rankas en mycket högre risk att vara ett bedrägeri än de som upp
 exempel kan det vara en ovanligt stor pengatransaktion.  Det är alltså det avvikande beteendet som ger
 underlag för närmare utredning. Den närmare utredningen sker ofta manuellt.
 
-<img src="/assets/images/blog/fullsizerender.jpg" alt="Data science" class="right">
+<img src="/assets/img/blog/fullsizerender.jpg" alt="Data science" class="right">
 
 För denna typ av lösningar finns en mängd verktyg tillgängliga. Alla har olika egenskaper och lämpar sig för
 olika problem och kravställningar. Bayesian (efter Thomas Bayes) neurala nätverk används bland annat för att
@@ -74,7 +74,7 @@ en färdig programvara, som finns på marknaden, rätt val. Då hjälper våra d
 
 Det är både svårt och tidskrävande att avgöra om ursprungsdata från en stor mängd system är rätt. Aggregerade
 rapporter ska gå till myndigheter och andra kontrollinstanser. Tidsrymden mellan att data skapas i grundsystem
-till att data ska exponeras på aggregerad nivå krymper hela tiden i och med ökade krav från myndigheter. 
+till att data ska exponeras på aggregerad nivå krymper hela tiden i och med ökade krav från myndigheter.
 
 Traditionellt finns larmsystem på specifika delar i processen, leveranser som uteblir eller körningar som
 misslyckas. Denna övervakning kan vara byggd på hypoteser och specifika problem-fall där fel rapporterats
@@ -85,7 +85,7 @@ sker om filen går att validera osv.
 
 Att använda data science och algoritmer för kvalitetsmonitorering av denna typ av data är ett spännande område
 där helt andra och mer avancerad monitorering går att göra. Målet är att tidigt i data-leveransprocessen fånga
-avvikande och ovanliga värden för att sedan snabbt indikera för kvalitetsansvarig var det finns potentiella problem. 
+avvikande och ovanliga värden för att sedan snabbt indikera för kvalitetsansvarig var det finns potentiella problem.
 
 Det går till exempel att låta ett neuron-nät “cruncha” data från transaktionsflöden, bokföringsrörelser,
 trades, manuella inmatningar, antal och typ av systemändringar från IT, rapporter av incidenter. Kort och gott
@@ -97,14 +97,14 @@ mönsterletande algoritmen/neuro-nätverket och den seniora ekonomen med sin erf
 och gör det möjligt att kontrollera och verifiera siffrorna snabbare.
 
 När verksamhetsdata inkluderas, till exempel change requests och IT-incidenter, går det att empiriskt skapa
-argument för att driva IT-förändringar/förbättringar på lägre prioriterade system. 
+argument för att driva IT-förändringar/förbättringar på lägre prioriterade system.
 
 <div style="border: 0px solid #bdbdbd;
             border-radius: 15px 50px 30px 5px;
             background: #F0F0F0;
-            padding: 20px; 
+            padding: 20px;
             width: 50%;
-            margin: 0 0 25px; 
+            margin: 0 0 25px;
             font-size: 16px;
             color: Black; font-style: Italic;
             overflow: hidden;">
