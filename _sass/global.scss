@@ -1,8 +1,6 @@
-*, *::before, *::after {
-    box-sizing: border-box;
-}
-html, body {
-    font: 400 17px/1.35em 'Lato', sans-serif;
+html {
+    font-size: 17px;
+    line-height: 1.35em;
     color: #383737;
 }
 #svg-icons-stock {
@@ -38,7 +36,6 @@ h2 {
     font-size: 2.25rem;
 }
 p {
-    font: 400 1rem/1.35em 'Lato', sans-serif;
     color: #383737;
 }
 p.description {
