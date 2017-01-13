@@ -3,7 +3,6 @@
 {% comment %} Concatenation and basic whitespace minification of JavaScript files {% endcomment %}{% capture js %}
 
 {% include js/jquery-3.1.1.min.js %}
-{% include js/utils.js %}
 {% include js/script.js %}
 {% include js/owl.carousel.min.js %}
 
