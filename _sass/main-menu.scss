@@ -24,7 +24,6 @@
     background-color: transparent;
 
     -webkit-transition: 0.3s ease;
-    -o-transition: 0.3s ease;
     transition: 0.3s ease;
 }
 #main-menu > ul > li > a:hover::after,
@@ -43,8 +42,6 @@
     opacity: 1;
     pointer-events: auto;
     -webkit-transform: translateX(0);
-    -ms-transform: translateX(0);
-    -o-transform: translateX(0);
     transform: translateX(0);
 }
 #main-menu .submenu {
@@ -57,8 +54,6 @@
     opacity: 0;
     pointer-events: none;
     -webkit-transform: translateX(-20%);
-    -ms-transform: translateX(-20%);
-    -o-transform: translateX(-20%);
     transform: translateX(-20%);
 }
 #main-menu .submenu li {

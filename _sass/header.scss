@@ -26,14 +26,11 @@
     line-height: 90px;
 
     -webkit-transition: 0.15s ease;
-    -o-transition: 0.15s ease;
     transition: 0.15s ease;
 }
 .main-logo:hover,
 .main-logo:focus {
     -webkit-transform: scale(1.03) rotate(-3deg);
-    -ms-transform: scale(1.03) rotate(-3deg);
-    -o-transform: scale(1.03) rotate(-3deg);
     transform: scale(1.03) rotate(-3deg);
 }
 .main-logo img {

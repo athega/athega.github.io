@@ -105,21 +105,16 @@
         pointer-events: none;
 
         -webkit-transition: 0.4s ease;
-        -o-transition: 0.4s ease;
         transition: 0.4s ease;
 
         opacity: 0;
         -webkit-transform: translateX(10%);
-        -ms-transform: translateX(10%);
-        -o-transform: translateX(10%);
         transform: translateX(10%);
     }
     #main-menu.visible {
         pointer-events: auto;
         opacity: 1;
         -webkit-transform: translateX(0);
-        -ms-transform: translateX(0);
-        -o-transform: translateX(0);
         transform: translateX(0);
     }
     #main-menu .submenu {
@@ -154,8 +149,6 @@
         border-bottom: 1px solid rgba(255,255,255, 0.4);
         opacity: 1;
         -webkit-transform: translateX(0);
-        -ms-transform: translateX(0);
-        -o-transform: translateX(0);
         transform: translateX(0);
     }
     #main-menu .submenu li {
@@ -184,10 +177,9 @@
         color: white;
 
         opacity: 0;
+        -webkit-transition: 0.4s ease 0.2s;
         transition: 0.4s ease 0.2s;
         -webkit-transform: translateX(-30px);
-        -ms-transform: translateX(-30px);
-        -o-transform: translateX(-30px);
         transform: translateX(-30px);
     }
 }

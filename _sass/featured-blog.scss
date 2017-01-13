@@ -10,8 +10,6 @@
     width: 100%;
     font-size: 0;
     -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    -o-transform: translateY(-50%);
     transform: translateY(-50%);
 }
 .owl-prev, .owl-next {
@@ -24,14 +22,10 @@
 }
 .owl-prev:hover {
     -webkit-transform: translateX(-5px);
-    -ms-transform: translateX(-5px);
-    -o-transform: translateX(-5px);
     transform: translateX(-5px);
 }
 .owl-next:hover {
     -webkit-transform: translateX(5px);
-    -ms-transform: translateX(5px);
-    -o-transform: translateX(5px);
     transform: translateX(5px);
 }
 .owl-prev {

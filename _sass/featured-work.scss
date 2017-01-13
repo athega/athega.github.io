@@ -11,21 +11,16 @@
 .featured-video .background {
     height: 220px;
     -webkit-transition: 0.3s ease;
-    -o-transition: 0.3s ease;
     transition: 0.3s ease;
 }
 .featured-video a:hover .info::before,
 .featured-video a:focus .info::before {
     -webkit-transform: translateY(-30px) rotate(180deg);
-    -ms-transform: translateY(-30px) rotate(180deg);
-    -o-transform: translateY(-30px) rotate(180deg);
     transform: translateY(-30px) rotate(180deg);
 }
 .featured-video a:hover .background,
 .featured-video a:focus .background {
     -webkit-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    -o-transform: scale(1.1);
     transform: scale(1.1);
 }
 article .info {
@@ -70,8 +65,6 @@ article .info h3 {
 .more-videos:hover,
 .more-videos:focus {
     -webkit-transform: translateX(4px);
-    -ms-transform: translateX(4px);
-    -o-transform: translateX(4px);
     transform: translateX(4px);
 }
 .more-videos::after,
@@ -92,7 +85,5 @@ article .info h3 {
 .revealing .hidden-info .read-more:focus::after {
     opacity: 0.8;
     -webkit-transform: translateX(4px);
-    -ms-transform: translateX(4px);
-    -o-transform: translateX(4px);
     transform: translateX(4px);
 }
