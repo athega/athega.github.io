@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Ett testinlägg
 date: 2016-04-29
 description: Bacon ipsum dolor amet cupim shank sirloin short loin flank pastrami, bresaola alcatra ham hock. Filet mignon cupim

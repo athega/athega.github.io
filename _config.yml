@@ -20,3 +20,21 @@ permalink: /blogg/:year/:month/:day/:title.html
 
 sass:
     style: compressed
+
+defaults:
+  -
+    scope:
+      path: "assets"
+    values:
+      layout:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  -
+    scope:
+      path: "" # an empty string here means all files in the project
+    values:
+      layout: "default"

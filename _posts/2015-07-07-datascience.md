@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Data Science och artificiella neuron-nät
 date: 2015-07-07
 description: Data-science, algoritmer, AI, neuronnät och tillämpningar en data scientist kan hjälpa till med.

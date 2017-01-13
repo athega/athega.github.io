@@ -1,5 +1,4 @@
 ---
-layout: post
 title: UR vann Sveriges största tävling i webbprestanda
 date: 2016-04-07
 description: ur.se (numera urskola.se) laddar klart på 610 millisekunder. Det räckte för att vinna Sveriges största tävling i webbprestanda.
