@@ -30,7 +30,7 @@ article .info {
     width: 100%;
     line-height: 60px;
     vertical-align: middle;
-    background-color: #ff6803;
+    background-color: #ff6600;
 }
 article .info::before {
     content: "";
@@ -42,7 +42,7 @@ article .info::before {
     width: 60px;
     border-top: 20px solid transparent;
     border-bottom: 20px solid transparent;
-    border-right: 40px solid #ff6803;
+    border-right: 40px solid #ff6600;
 }
 article .info h3 {
     padding: 0 1em;
