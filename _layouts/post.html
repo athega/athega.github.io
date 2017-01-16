@@ -1,18 +1,4 @@
 ---
 layout: default
 ---
-{% assign months = "januari|februari|mars|april|maj|juni|juli|augusti|september|oktober|november|december" | split: "|" %}
-{% assign m = page.date | date: "%-m" | minus: 1 %}
-{% assign day = page.date | date: "%d" %}
-{% assign month = months[m] %}
-{% assign year = page.date | date: "%Y" %}
-
-<article class="post">
-    <div class="container">
-        <h1>{{ page.title }}</h1>
-        <p class="meta">{{ day }} {{ month }} {{ year }}</p>
-
-        <img src="/assets/img/user-image.png" alt="user-image" class="tuser-image">
-        {{ content }}
-    </div>
-</article>
+{% include blogg/post.html %}

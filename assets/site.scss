@@ -1,24 +1,17 @@
 ---
 ---
 
-@import
-    "normalize",
-    "global";
-
+{% include normalize.scss %}
+{% include layout.scss %}
 {% include header.scss %}
-
-@import
-    "main-menu",
-    "intro",
-    "featured-blog",
-    "featured-work",
-    "consult",
-    "challanges",
-    "article";
-
+{% include header/main-menu.scss %}
+{% include home/intro.scss %}
+{% include home/featured-blog.scss %}
+{% include home/featured-work.scss %}
+{% include home/consult.scss %}
+{% include home/challanges.scss %}
 {% include blogg/index.scss %}
+{% include blogg/post.scss %}
 {% include footer.scss %}
 
-@import
-    "adaptive",
-    "owl.carousel";
+@import "adaptive", "owl.carousel";
