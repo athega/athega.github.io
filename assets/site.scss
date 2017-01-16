@@ -3,16 +3,22 @@
 
 @import
     "normalize",
-    "global",
-    "header",
+    "global";
+
+{% include header.scss %}
+
+@import
     "main-menu",
     "intro",
     "featured-blog",
     "featured-work",
     "consult",
     "challanges",
-    "article",
-    "index",
-    "footer",
+    "article";
+
+{% include blogg/index.scss %}
+{% include footer.scss %}
+
+@import
     "adaptive",
     "owl.carousel";
