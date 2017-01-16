@@ -13,5 +13,5 @@
 {% include blogg/index.scss %}
 {% include blogg/post.scss %}
 {% include footer.scss %}
-
-@import "adaptive", "owl.carousel";
+{% include adaptive.scss %}
+{% include lib/owl.carousel.scss %}
