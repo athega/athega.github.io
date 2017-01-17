@@ -1,33 +1,36 @@
-body > header {
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    box-sizing: border-box;
-    width: 100%;
-    background-color: #ff6600;
-    padding: 0.5em 5%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
+body {
+    margin-top: 5rem;
 
-    > a.logo {
-        display: inline-block;
+    > header {
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: #ff6600;
+        padding: 0.5rem 5%;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
 
-        > img {
+        > a.logo {
             display: block;
-            width: auto;
-            height: 66px;
-            -webkit-transition: -webkit-transform 0.15s ease, height 0.15s ease;
-            transition: transform 0.15s ease, height 0.15s ease;
 
-            &:hover,
-            &:focus {
-                -webkit-transform: scale(1.03) rotate(-3deg);
-                transform: scale(1.03) rotate(-3deg);
+            > img {
+                display: block;
+                width: auto;
+                height: 4rem;
+                -webkit-transition: -webkit-transform 0.15s ease, height 0.15s ease;
+                transition: transform 0.15s ease, height 0.15s ease;
+
+                &:hover,
+                &:focus {
+                    -webkit-transform: scale(1.03) rotate(-3deg);
+                    transform: scale(1.03) rotate(-3deg);
+                }
             }
         }
-    }
 
-    &.small > a.logo > img {
-        height: 33px;
+        &.small > a.logo > img {
+            height: 2rem;
+        }
     }
 }
