@@ -5,6 +5,7 @@
 {% include lib/jquery-3.1.1.min.js %}
 {% include header.js %}
 {% include header/main-menu.js %}
+{% include home/intro.js %}
 {% include home/featured-blog.js %}
 {% include lib/owl.carousel.min.js %}
 
