@@ -11,10 +11,10 @@ body {
         padding: 0.5rem 5%;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
 
-        > a.logo {
+        > a:first-of-type {
             display: block;
 
-            > img {
+            > svg {
                 display: block;
                 width: auto;
                 height: 4rem;
@@ -29,7 +29,7 @@ body {
             }
         }
 
-        &.small > a.logo > img {
+        &.small > a:first-of-type > svg {
             height: 2rem;
         }
     }
