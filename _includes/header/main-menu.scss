@@ -38,7 +38,6 @@
 #main-menu a {
     position: relative;
     display: inline-block;
-    line-height: 65px;
     padding: 0 0.3em;
     font-size: 1.2rem;
     color: white;
@@ -68,7 +67,7 @@
 #main-menu .submenu li a {
     display: block;
     padding: 0 10px;
-    line-height: 3em;
+    line-height: 3;
     vertical-align: middle;
     font-size: 0.85rem;
     color: #ff6600;

@@ -54,9 +54,6 @@
 
 @media (max-width: 959px) {
 
-    body {
-        overflow-x: hidden;
-    }
     h2 {
         margin: 2em 0 0.8em;
     }
@@ -121,7 +118,6 @@
         display: block;
         width: 100%;
         padding: 0 30px;
-        line-height: 40px;
     }
     #main-menu > ul > li > a::after {
         display: none;
@@ -146,7 +142,7 @@
     #main-menu .submenu li a {
         display: block;
         padding: 0 30px;
-        line-height: 2em;
+        line-height: 2;
         font-size: 0.8rem;
         color: white;
         opacity: 0.75;
@@ -159,7 +155,7 @@
     }
     .revealing .hidden-info p {
         padding: 30px;
-        line-height: 1.6em;
+        line-height: 1.6;
         font-size: 0.95rem;
         color: white;
 
@@ -197,7 +193,7 @@
     }
     .heading-wrap h1 {
         position: relative;
-        line-height: 1.1em;
+        line-height: 1.1;
         font-size: 2.4rem;
         margin-left: 1em;
         margin-right: 1em;

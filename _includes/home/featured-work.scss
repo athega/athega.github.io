@@ -28,7 +28,6 @@ article .info {
     bottom: 0;
     left: 0;
     width: 100%;
-    line-height: 60px;
     vertical-align: middle;
     background-color: #ff6600;
 }
@@ -47,7 +46,6 @@ article .info::before {
 article .info h3 {
     padding: 0 1em;
     margin: 0;
-    line-height: 60px;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
