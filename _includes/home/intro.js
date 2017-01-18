@@ -80,7 +80,7 @@ $(function() {
         maxDist;
 
     function update() {
-        var currentScrollTop = document.documentElement.scrollTop;
+        var currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
         if (currentScrollTop != prevScrollTop && currentScrollTop < bottom || prevScrollTop === undefined) {
             var scrollRatio = Math.min(1, currentScrollTop / (canvas.offsetHeight || height));
 
