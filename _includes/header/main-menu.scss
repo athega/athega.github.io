@@ -1,45 +1,47 @@
-#main-menu-button {
-    float: right;
-    height: 100%;
-
-    @media (min-width: 960px) {
-        display: none;
-    }
-
-    > svg {
-        width: auto;
-        height: 100%;
-        fill: white;
-    }
-}
-
-#main-menu {
-    float: right;
-    height: 100%;
-
-    > ul {
-        margin: 0;
-        padding: 0;
+body > header {
+    > a[href="#menu"] {
+        float: right;
         height: 100%;
 
-        &::before {
-            content: "";
-            display: inline-block;
-            height: 100%;
-            vertical-align: bottom;
+        @media (min-width: 960px) {
+            display: none;
         }
 
-        > li {
-            display: inline-block;
-            vertical-align: bottom;
-            margin: 0 0.3em;
+        > svg {
+            width: auto;
+            height: 100%;
+            fill: white;
+        }
+    }
+
+    > nav#menu {
+        float: right;
+        height: 100%;
+
+        > ul {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+
+            &::before {
+                content: "";
+                display: inline-block;
+                height: 100%;
+                vertical-align: bottom;
+            }
+
+            > li {
+                display: inline-block;
+                vertical-align: bottom;
+                margin: 0 0.3em;
+            }
         }
     }
 }
 
 // TODO: Clean up rest of this file
 
-#main-menu > ul > li > a::after {
+nav#menu > ul > li > a::after {
     content: "";
     display: block;
     position: absolute;
@@ -52,24 +54,24 @@
     -webkit-transition: 0.3s ease;
     transition: 0.3s ease;
 }
-#main-menu > ul > li > a:hover::after,
-#main-menu > ul > li > a:focus::after {
+nav#menu > ul > li > a:hover::after,
+nav#menu > ul > li > a:focus::after {
     background-color: white;
 }
-#main-menu a {
+nav#menu a {
     position: relative;
     display: inline-block;
     padding: 0 0.3em;
     font-size: 1.2rem;
     color: white;
 }
-#main-menu .have-submenu:hover .submenu {
+nav#menu .have-submenu:hover .submenu {
     opacity: 1;
     pointer-events: auto;
     -webkit-transform: translateX(0);
     transform: translateX(0);
 }
-#main-menu .submenu {
+nav#menu .submenu {
     position: absolute;
     z-index: 8;
     top: 100%;
@@ -81,11 +83,11 @@
     -webkit-transform: translateX(-20%);
     transform: translateX(-20%);
 }
-#main-menu .submenu li {
+nav#menu .submenu li {
     display: block;
     margin: 0;
 }
-#main-menu .submenu li a {
+nav#menu .submenu li a {
     display: block;
     padding: 0 10px;
     line-height: 3;
@@ -95,18 +97,18 @@
     opacity: 0.75;
     border-bottom: 1px solid #eaeaea;
 }
-#main-menu .submenu li:last-of-type a {
+nav#menu .submenu li:last-of-type a {
     border-bottom: none;
 }
-#main-menu .submenu li a:hover,
-#main-menu .submenu li a:focus {
+nav#menu .submenu li a:hover,
+nav#menu .submenu li a:focus {
     opacity: 1;
     background-color: #eaeaea;
 }
 
 @media (max-width: 959px) {
 
-    #main-menu {
+    nav#menu {
         display: block;
         position: absolute;
         z-index: 0;
@@ -128,34 +130,34 @@
         -webkit-transform: translateX(10%);
         transform: translateX(10%);
     }
-    #main-menu.visible {
+    nav#menu.visible {
         pointer-events: auto;
         opacity: 1;
         -webkit-transform: translateX(0);
         transform: translateX(0);
     }
-    #main-menu .submenu {
+    nav#menu .submenu {
         pointer-events: none;
     }
-    #main-menu.visible .submenu {
+    nav#menu.visible .submenu {
         pointer-events: auto;
     }
-    #main-menu > ul {
+    nav#menu > ul {
         padding-top: 0;
     }
-    #main-menu > ul > li {
+    nav#menu > ul > li {
         display: block;
         margin: 5px 0;
     }
-    #main-menu > ul > li > a {
+    nav#menu > ul > li > a {
         display: block;
         width: 100%;
         padding: 0 30px;
     }
-    #main-menu > ul > li > a::after {
+    nav#menu > ul > li > a::after {
         display: none;
     }
-    #main-menu .submenu {
+    nav#menu .submenu {
         position: relative;
         top: auto;
         width: 100%;
@@ -167,12 +169,12 @@
         -webkit-transform: translateX(0);
         transform: translateX(0);
     }
-    #main-menu .submenu li {
+    nav#menu .submenu li {
         display: block;
         margin: 3px 0;
         border-bottom: none;
     }
-    #main-menu .submenu li a {
+    nav#menu .submenu li a {
         display: block;
         padding: 0 30px;
         line-height: 2;
@@ -181,8 +183,8 @@
         opacity: 0.75;
         border-bottom: none;
     }
-    #main-menu .submenu li a:hover,
-    #main-menu .submenu li a:focus {
+    nav#menu .submenu li a:hover,
+    nav#menu .submenu li a:focus {
         opacity: 1;
         background-color: transparent;
     }

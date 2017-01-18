@@ -3,9 +3,6 @@ html {
     line-height: 1.35;
     color: #383737;
 }
-section {
-    position: relative;
-}
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -27,7 +24,7 @@ h1, h2 {
     font-weight: 900;
 }
 h2 {
-    margin: 2.4em 0 0.4em;
+    margin: 0.5rem 0;
     line-height: 1.2;
     font-size: 2.25rem;
 }

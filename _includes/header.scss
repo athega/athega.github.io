@@ -1,6 +1,4 @@
 body {
-    margin-top: 5rem;
-
     > header {
         position: fixed;
         z-index: 1;
@@ -20,15 +18,19 @@ body {
                 display: block;
                 width: auto;
                 height: 100%;
-                -webkit-transition: -webkit-transform 0.15s ease, height 0.15s ease;
-                transition: transform 0.15s ease, height 0.15s ease;
+                -webkit-transition: -webkit-transform 0.15s ease;
+                transition: transform 0.15s ease;
 
                 &:hover,
                 &:focus {
-                    -webkit-transform: scale(1.03) rotate(-3deg);
-                    transform: scale(1.03) rotate(-3deg);
+                    -webkit-transform: scale(1.03);
+                    transform: scale(1.03);
                 }
             }
+        }
+
+        + :not(.intro) {
+            margin-top: 5rem;
         }
     }
 }
