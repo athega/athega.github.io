@@ -25,17 +25,6 @@
     .heading-wrap h1 {
         text-align: center;
     }
-    .owl-prev, .owl-next {
-        width: 25px;
-        height: 40px;
-        background-size: 200%;
-    }
-    .owl-prev {
-        margin-left: -30px;
-    }
-    .owl-next {
-        margin-right: -30px;
-    }
 }
 
 @media (max-width: 1023px) {
@@ -89,10 +78,6 @@
     }
     .articles .meta > * {
         font-size: 0.85rem;
-    }
-
-    .featured-blog .owl-item {
-        margin-right: 0 !important;
     }
 
     .consult-wrap {

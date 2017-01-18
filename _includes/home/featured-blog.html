@@ -1,51 +1,51 @@
 <section class="featured-blog">
-	<div class="container">
-		<h2>BLOGG OCH NYHETER</h2>
-		<p class="description">Vi har experterna till mediabranschen. Aftonbladet, Expressen, SvD, TV4, UR, Ericsson och SEB är några kunder vi samarbetar med.</p>
-		<div class="owl-wrapper">
-			<div class="slider-controls"></div>
-			<div class="owl-carousel articles">
-				{% for post in site.posts limit 5 %}
-				<article class="blog-item item-{{ forloop.index }}">
-					<a href="{{ post.url }}">
-						<div class="meta">
-							<img src="/assets/img/user-image.png" alt="user-image" class="tuser-image">
-							<p class="username">{{ post.category | default: 'Athegabloggen' }}</p>
-							<p class="date">{{ post.date | date: "%Y-%m-%d" }}</p>
-						</div>
-						<h3>{{ post.title }}</h3>
-					</a>
-					<p>{{ post.description }} <a href="{{ post.url }}">»</a></p>
-				</article>
-				{% endfor %}
-				<article class="blog-item item-3">
-					<div class="meta">
-						<img src="/assets/img/user-image.png" alt="user-image" class="tuser-image">
-						<p class="username">Athegabloggen</p>
-						<p class="date">2016-03-14</p>
-					</div>
-					<h3><a href="#">QCon London 2016 - Take aways</a></h3>
-					<p>Med ett spann på en genomgång av hur virtuella truckar på Volvo fungerar. Med ett spann på en genomgång av hur virtuella truckar på Volvo…</p>
-				</article>
-				<article class="blog-item item-4">
-					<div class="meta">
-						<img src="/assets/img/user-image.png" alt="user-image" class="tuser-image">
-						<p class="username">Athegabloggen</p>
-						<p class="date">2016-03-14</p>
-					</div>
-					<h3><a href="#">JavaScript och isomorfism</a></h3>
-					<p>Efterfrågan kring erfarenhet av node.js och isomorfiska tillämpningar har fullkommligt exploderat. Efterfrågan kring erfarenhet av node.js och isomorfiska tillämpningar…</p>
-				</article>
-				<article class="blog-item item-5">
-					<div class="meta">
-						<img src="/assets/img/user-image.png" alt="user-image" class="tuser-image">
-						<p class="username">Athegabloggen</p>
-						<p class="date">2016-03-14</p>
-					</div>
-					<h3><a href="#">Öppna kartor</a></h3>
-					<p>Lantmäteriet har vid årsskiftet släppt vissa av fria som öppen data sina kartor. Lantmäteriet har vid årsskiftet släppt vissa av fria som öppen data sina kartor…</p>
-				</article>
-			</div>
-		</div>
-	</div>
+    <div class="container">
+        <h2>BLOGG OCH NYHETER</h2>
+        <p class="description">Vi har experterna till mediabranschen. Aftonbladet, Expressen, SvD, TV4, UR, Ericsson och SEB är några kunder vi samarbetar med.</p>
+        <div>
+            <div class="slider-controls"></div>
+            <div class="articles">
+                {% for post in site.posts limit 5 %}
+                <article class="blog-item item-{{ forloop.index }}">
+                    <a href="{{ post.url }}">
+                        <div class="meta">
+                            <img src="/assets/img/user-image.png" alt="user-image" class="tuser-image">
+                            <p class="username">{{ post.category | default: 'Athegabloggen' }}</p>
+                            <p class="date">{{ post.date | date: "%Y-%m-%d" }}</p>
+                        </div>
+                        <h3>{{ post.title }}</h3>
+                    </a>
+                    <p>{{ post.description }} <a href="{{ post.url }}">»</a></p>
+                </article>
+                {% endfor %}
+                <article class="blog-item item-3">
+                    <div class="meta">
+                        <img src="/assets/img/user-image.png" alt="user-image" class="tuser-image">
+                        <p class="username">Athegabloggen</p>
+                        <p class="date">2016-03-14</p>
+                    </div>
+                    <h3><a href="#">QCon London 2016 - Take aways</a></h3>
+                    <p>Med ett spann på en genomgång av hur virtuella truckar på Volvo fungerar. Med ett spann på en genomgång av hur virtuella truckar på Volvo…</p>
+                </article>
+                <article class="blog-item item-4">
+                    <div class="meta">
+                        <img src="/assets/img/user-image.png" alt="user-image" class="tuser-image">
+                        <p class="username">Athegabloggen</p>
+                        <p class="date">2016-03-14</p>
+                    </div>
+                    <h3><a href="#">JavaScript och isomorfism</a></h3>
+                    <p>Efterfrågan kring erfarenhet av node.js och isomorfiska tillämpningar har fullkommligt exploderat. Efterfrågan kring erfarenhet av node.js och isomorfiska tillämpningar…</p>
+                </article>
+                <article class="blog-item item-5">
+                    <div class="meta">
+                        <img src="/assets/img/user-image.png" alt="user-image" class="tuser-image">
+                        <p class="username">Athegabloggen</p>
+                        <p class="date">2016-03-14</p>
+                    </div>
+                    <h3><a href="#">Öppna kartor</a></h3>
+                    <p>Lantmäteriet har vid årsskiftet släppt vissa av fria som öppen data sina kartor. Lantmäteriet har vid årsskiftet släppt vissa av fria som öppen data sina kartor…</p>
+                </article>
+            </div>
+        </div>
+    </div>
 </section>

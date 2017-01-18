@@ -1,43 +1,6 @@
 .featured-blog {
 
 }
-.owl-wrapper {
-    position: relative;
-}
-.slider-controls {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    font-size: 0;
-    -webkit-transform: translateY(-50%);
-    transform: translateY(-50%);
-}
-.owl-prev, .owl-next {
-    position: relative;
-    width: 50px;
-    height: 80px;
-    background-image: url('/assets/img/slider-arrows.png');
-    background-repeat: none;
-    cursor: pointer;
-}
-.owl-prev:hover {
-    -webkit-transform: translateX(-5px);
-    transform: translateX(-5px);
-}
-.owl-next:hover {
-    -webkit-transform: translateX(5px);
-    transform: translateX(5px);
-}
-.owl-prev {
-    float: left;
-    margin-left: -100px;
-}
-.owl-next {
-    float: right;
-    margin-right: -100px;
-    background-position: 100% 0;
-}
-
 .articles {
     overflow: hidden;
 }
