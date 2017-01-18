@@ -7,8 +7,18 @@ $(function() {
 
     $intro.prepend(canvas);
 
-    var width = canvas.width = canvas.offsetWidth / 2,
-        height = canvas.height = canvas.offsetHeight / 2,
+    var $header = $('body > header'),
+        canvas2 = document.createElement('canvas'),
+        ctx2 = canvas2.getContext('2d');
+
+    $header.prepend(canvas2);
+    canvas2.width = canvas2.offsetWidth / 2;
+    canvas2.height = canvas2.offsetHeight / 2;
+
+
+
+    var width = canvas.width = canvas.offsetWidth / 2 || 320,
+        height = canvas.height = canvas.offsetHeight / 2 || 240,
         tx = Math.floor(width/32),
         ty = Math.floor(height/32),
         tw = width / tx,
@@ -63,7 +73,7 @@ $(function() {
     }
 
 
-    var bottom = $(canvas).offset().top + $(canvas).height(),
+    var bottom = (canvas.offsetHeight || height) - canvas2.offsetHeight,
         prevScrollTop = undefined,
         center,
         centerDist,
@@ -71,9 +81,8 @@ $(function() {
 
     function update() {
         var currentScrollTop = document.documentElement.scrollTop;
-        if (currentScrollTop != prevScrollTop && currentScrollTop < bottom) {
-
-            var scrollRatio = Math.min(1, currentScrollTop / canvas.offsetHeight);
+        if (currentScrollTop != prevScrollTop && currentScrollTop < bottom || prevScrollTop === undefined) {
+            var scrollRatio = Math.min(1, currentScrollTop / (canvas.offsetHeight || height));
 
             center = {x: width/3*2 - scrollRatio * width/3, y: height/3 + scrollRatio * height * 2/3},
             centerDist = {x: Math.max(center.x, width - center.x), y: Math.max(center.y, height - center.y)},
@@ -86,6 +95,7 @@ $(function() {
             draw();
             ctx.restore();
 
+            ctx2.drawImage(canvas, 0, Math.min(height * scrollRatio, height - canvas2.height), width, canvas2.height, 0, 0, canvas2.width, canvas2.height);
 
             prevScrollTop = currentScrollTop;
         }
