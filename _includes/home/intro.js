@@ -7,10 +7,10 @@ $(function() {
 
     $intro.prepend(canvas);
 
-    var width = 320,
-        height = 240,
-        tx = 10,
-        ty = 8,
+    var width = canvas.width = canvas.offsetWidth / 2,
+        height = canvas.height = canvas.offsetHeight / 2,
+        tx = Math.floor(width/32),
+        ty = Math.floor(height/32),
         tw = width / tx,
         th = height / ty,
         points = [],
@@ -27,10 +27,6 @@ $(function() {
             {r: 255, g: 226, b: 127},
         ],
         gradient = [];
-
-    canvas.width = width;
-    canvas.height = height;
-
 
     for (var i = 0; i + 1 < colorStops.length; i++) {
         var c1 = colorStops[i],
@@ -80,7 +76,7 @@ $(function() {
             var scrollRatio = Math.min(1, currentScrollTop / canvas.offsetHeight);
 
             center = {x: width/3*2 - scrollRatio * width/3, y: height/3 + scrollRatio * height * 2/3},
-            centerDist = {x: Math.max(center.x, width - center.x), y: Math.max(center.y, width - center.y)},
+            centerDist = {x: Math.max(center.x, width - center.x), y: Math.max(center.y, height - center.y)},
             maxDist = Math.sqrt(centerDist.x * centerDist.x + centerDist.y * centerDist.y);
 
             ctx.save();
@@ -127,7 +123,7 @@ $(function() {
             dx = cx - center.x,
             dy = cy - center.y,
             dist = Math.sqrt(dx * dx + dy * dy),
-            c = gradient[Math.floor(gradient.length * dist / maxDist)];
+            c = gradient[Math.min(Math.floor(gradient.length * dist / maxDist), gradient.length - 1)];
 
         ctx.strokeStyle = ctx.fillStyle = 'rgb(' + [c.r, c.g, c.b].join(',') + ')';
         ctx.lineWidth = 1;
