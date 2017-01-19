@@ -16,9 +16,8 @@ $(function() {
     canvas2.height = canvas2.offsetHeight / 2;
 
 
-
-    var width = canvas.width = canvas.offsetWidth / 2 || 320,
-        height = canvas.height = canvas.offsetHeight / 2 || 240,
+    var width = canvas.width = Math.floor(canvas.offsetWidth / 2) || 320,
+        height = canvas.height = Math.floor(canvas.offsetHeight / 2) || 240,
         tx = Math.floor(width/32),
         ty = Math.floor(height/32),
         tw = width / tx,
