@@ -72,7 +72,7 @@ $(function() {
     }
 
 
-    var bottom = (canvas.offsetHeight || height) - canvas2.offsetHeight,
+    var bottom = $intro.offset().top + (canvas.offsetHeight || height) - canvas2.offsetHeight,
         prevScrollTop = undefined,
         center,
         centerDist,
@@ -95,6 +95,8 @@ $(function() {
             ctx.restore();
 
             ctx2.drawImage(canvas, 0, Math.min(height * scrollRatio, height - canvas2.height), width, canvas2.height, 0, 0, canvas2.width, canvas2.height);
+
+            $intro.css('background-position', 'calc(50% - ' + (320 * scrollRatio) + 'px) ' + (currentScrollTop / 2) + 'px');
 
             prevScrollTop = currentScrollTop;
         }

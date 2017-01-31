@@ -2,6 +2,8 @@ body > section.intro {
     position: relative;
     color: white;
     background-color: #fc3;
+    background-image: url(/assets/img/riddarfjarden.jpg);
+    background-size: cover;
     text-align: center;
 
     > canvas {
@@ -10,6 +12,7 @@ body > section.intro {
         left: 0;
         width: 100%;
         height: 100%;
+        opacity: 0.6;
     }
 
     > div {
