@@ -72,7 +72,8 @@ $(function() {
     }
 
 
-    var bottom = $intro.offset().top + (canvas.offsetHeight || height) - canvas2.offsetHeight,
+    var top = $intro.length ? $intro.offset().top : 0,
+        bottom = top + (canvas.offsetHeight || height) - canvas2.offsetHeight,
         prevScrollTop = undefined,
         center,
         centerDist,
