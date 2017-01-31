@@ -77,14 +77,23 @@ $(function() {
         prevScrollTop = undefined,
         center,
         centerDist,
-        maxDist;
+        maxDist,
+        mouseMoved = false,
+        mouseXOffset = 0,
+        mouseYOffset = 0;
+
+    $intro.on('mousemove', function(event) {
+        mouseMoved = true;
+        mouseXOffset = (event.pageX - (canvas.offsetWidth / 2) ) / (canvas.offsetWidth / 2);
+        mouseYOffset = (event.pageY - top - (canvas.offsetHeight / 2) ) / (canvas.offsetHeight / 2);
+     });
 
     function update() {
         var currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        if (currentScrollTop != prevScrollTop && currentScrollTop < bottom || prevScrollTop === undefined) {
+        if (currentScrollTop != prevScrollTop && currentScrollTop < bottom || mouseMoved || prevScrollTop === undefined) {
             var scrollRatio = Math.min(1, currentScrollTop / (canvas.offsetHeight || height));
 
-            center = {x: width/3*2 - scrollRatio * width/3, y: height/3 + scrollRatio * height * 2/3},
+            center = {x: width/3*2 - scrollRatio * width/3 + mouseXOffset * width / 8, y: height/3 + scrollRatio * height * 2/3  + mouseYOffset * height / 5},
             centerDist = {x: Math.max(center.x, width - center.x), y: Math.max(center.y, height - center.y)},
             maxDist = Math.sqrt(centerDist.x * centerDist.x + centerDist.y * centerDist.y);
 
@@ -97,9 +106,10 @@ $(function() {
 
             ctx2.drawImage(canvas, 0, Math.min(height * scrollRatio, height - canvas2.height), width, canvas2.height, 0, 0, canvas2.width, canvas2.height);
 
-            $intro.css('background-position', 'calc(50% - ' + (320 * scrollRatio) + 'px) ' + (currentScrollTop / 2) + 'px');
+            $intro.css('background-position', 'calc(50% - ' + (160 * scrollRatio + mouseXOffset * 16) + 'px) calc(50% + ' + (currentScrollTop / 2 - mouseYOffset * 12) + 'px)');
 
             prevScrollTop = currentScrollTop;
+            mouseMoved = false;
         }
 
         requestAnimationFrame(update);

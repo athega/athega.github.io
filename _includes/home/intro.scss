@@ -3,7 +3,8 @@ body > section.intro {
     color: white;
     background-color: #fc3;
     background-image: url(/assets/img/riddarfjarden.jpg);
-    background-size: cover;
+    background-size: auto calc(100% + 24px);
+    background-position: center;
     text-align: center;
 
     > canvas {
