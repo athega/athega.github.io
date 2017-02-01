@@ -60,9 +60,9 @@ $(function() {
             }
         }
 
-        for (var y = 0; y < ty + 1; y++) {
+        for (var y = 0; y <= ty; y++) {
             points[y] = [];
-            for (var x = 0; x < tx + 1; x++) {
+            for (var x = 0; x <= tx; x++) {
                 var p = {
                     x: x * tw,
                     y: y * th
@@ -115,7 +115,7 @@ $(function() {
             x = gamma;
         }
 
-        deviceXOffset = Math.max(-1, Math.min(1, x / 32));
+        deviceXOffset = Math.max(-1, Math.min(1, x / 24));
         deviceYOffset = Math.max(-1, Math.min(1, y / 24));
     });
 
@@ -131,7 +131,7 @@ $(function() {
         if ((pageScrolled || deviceMoved) && currentScrollTop < bottom || prevScrollTop === undefined) {
             var scrollRatio = Math.min(1, currentScrollTop / (canvas.offsetHeight || height));
 
-            center = {x: width/3*2 - scrollRatio * width/3 + deviceXOffset * width / 8, y: height/3 + scrollRatio * height * 2/3  + deviceYOffset * height / 5},
+            center = {x: width/3*2 - scrollRatio * width/3 + deviceXOffset * width / 6, y: height/3 + scrollRatio * height * 2/3  + deviceYOffset * height / 4},
             centerDist = {x: Math.max(center.x, width - center.x), y: Math.max(center.y, height - center.y)},
             maxDist = Math.sqrt(centerDist.x * centerDist.x + centerDist.y * centerDist.y);
 
@@ -159,11 +159,10 @@ $(function() {
     function draw() {
         for (var y = 0; y < ty; y++) {
             for (var x = 0; x < tx; x++) {
-
-                var p1 = points[y][x],
-                    p2 = points[y][x+1],
-                    p3 = points[y+1][x+1],
-                    p4 = points[y+1][x];
+                var p1 = gravitate(points[y][x]),
+                    p2 = gravitate(points[y][x+1]),
+                    p3 = gravitate(points[y+1][x+1]),
+                    p4 = gravitate(points[y+1][x]);
 
                 if (!(x % 2) != !(y % 2)) {
                     poly(p1, p2, p3);
@@ -176,8 +175,26 @@ $(function() {
         }
     }
 
-    function poly(p1, p2, p3) {
+    function gravitate(p) {
+        var x = p.x,
+            y = p.y,
+            dx = center.x - x,
+            dy = center.y - y,
+            dist = Math.sqrt(dx * dx + dy * dy),
+            ratio = 0.3 * (1 - dist / maxDist);
 
+        if (x > 0 && x < width) {
+            x += dx * ratio;
+        }
+
+        if (y > 0 && y < height) {
+            y += dy * ratio;
+        }
+
+        return {x: x, y: y};
+    }
+
+    function poly(p1, p2, p3) {
         var cx = (p1.x + p2.x + p3.x) / 3,
             cy = (p1.y + p2.y + p3.y) / 3,
             dx = cx - center.x,
