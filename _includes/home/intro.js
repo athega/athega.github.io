@@ -15,8 +15,8 @@ $(function() {
         deviceMoved = false,
         deviceXOffset = 0,
         deviceYOffset = 0,
-        startGamma,
-        startBeta;
+        startGamma = undefined,
+        startBeta = undefined;
 
     $intro.prepend(canvas);
     $header.prepend(canvas2);
@@ -96,8 +96,8 @@ $(function() {
             beta = event.originalEvent.beta,
             gamma = event.originalEvent.gamma;
 
-        if (!startGamma) startGamma = gamma;
-        if (!startBeta) startBeta = beta;
+        if (startGamma === undefined) startGamma = gamma;
+        if (startBeta === undefined) startBeta = beta;
 
         gamma -= startGamma;
         beta -= startBeta;
@@ -115,8 +115,8 @@ $(function() {
             x = gamma;
         }
 
-        deviceXOffset = Math.min(1, x / 32);
-        deviceYOffset = Math.min(1, y / 24);
+        deviceXOffset = Math.max(-1, Math.min(1, x / 32));
+        deviceYOffset = Math.max(-1, Math.min(1, y / 24));
     });
 
     $(window).on('orientationchange', function(event) {
@@ -125,8 +125,10 @@ $(function() {
     });
 
     function update() {
-        var currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        if ((currentScrollTop != prevScrollTop || deviceMoved) && currentScrollTop < bottom || prevScrollTop === undefined) {
+        var currentScrollTop = window.pageYOffset || document.documentElement.scrollTop,
+            pageScrolled = currentScrollTop != prevScrollTop;
+
+        if ((pageScrolled || deviceMoved) && currentScrollTop < bottom || prevScrollTop === undefined) {
             var scrollRatio = Math.min(1, currentScrollTop / (canvas.offsetHeight || height));
 
             center = {x: width/3*2 - scrollRatio * width/3 + deviceXOffset * width / 8, y: height/3 + scrollRatio * height * 2/3  + deviceYOffset * height / 5},
