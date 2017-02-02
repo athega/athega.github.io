@@ -15,8 +15,7 @@ $(function() {
         deviceMoved = false,
         deviceXOffset = 0,
         deviceYOffset = 0,
-        startGamma = undefined,
-        startBeta = undefined;
+        startOrientation = undefined;
 
     $intro.prepend(canvas);
     $header.prepend(canvas2);
@@ -92,35 +91,62 @@ $(function() {
      });
 
     $(window).on('deviceorientation', function(event) {
-        var x, y,
-            beta = event.originalEvent.beta,
-            gamma = event.originalEvent.gamma;
-
-        if (startGamma === undefined) startGamma = gamma;
-        if (startBeta === undefined) startBeta = beta;
-
-        gamma -= startGamma;
-        beta -= startBeta;
+        var orientation = {
+                alpha: event.originalEvent.alpha * Math.PI / 180,
+                beta:  event.originalEvent.beta  * Math.PI / 180,
+                gamma: event.originalEvent.gamma * Math.PI / 180
+            };
 
         deviceMoved = true;
 
-        if (window.orientation == 90) {
-            y = -gamma;
-            x = beta;
-        } else if (window.orientation == -90) {
-            y = gamma;
-            x = -beta;
-        } else {
-            y = beta;
-            x = gamma;
+        if (startOrientation === undefined) {
+            startOrientation = orientation;
         }
 
-        deviceXOffset = Math.max(-1, Math.min(1, x / 24));
-        deviceYOffset = Math.max(-1, Math.min(1, y / 24));
+        var normal = {x: 0, y: 0, z: 1};
+        normal = rotateX(normal, orientation.beta);
+        normal = rotateY(normal, orientation.gamma);
+        normal = rotateY(normal, -startOrientation.gamma);
+        normal = rotateX(normal, -startOrientation.beta);
+        normal = rotateZ(normal, -startOrientation.alpha);
+
+        if (window.orientation == 90) {
+            normal = {x: normal.y, y: -normal.x, z: normal.z};
+        } else if (window.orientation == -90) {
+            normal = {x: -normal.y, y: normal.x, z: normal.z};
+        }
+
+        deviceXOffset = Math.max(-1, Math.min(1, -normal.x * 2));
+        deviceYOffset = Math.max(-1, Math.min(1, -normal.y * 2));
     });
 
+    function rotateX(p3, angle) {
+        var p2 = rotate({a: p3.y, b: p3.z}, angle);
+        return {x: p3.x, y: p2.a, z: p2.b};
+    }
+
+    function rotateY(p3, angle) {
+        var p2 = rotate({a: p3.x, b: p3.z}, angle);
+        return {x: p2.a, y: p3.y, z: p2.b};
+    }
+
+    function rotateZ(p3, angle) {
+        var p2 = rotate({a: p3.x, b: p3.y}, angle);
+        return {x: p2.a, y: p2.b, z: p3.z};
+    }
+
+    function rotate(p, angle) {
+        var sin = Math.sin(angle),
+            cos = Math.cos(angle);
+
+        return {
+            a: p.a * cos - p.b * sin,
+            b: p.b * cos + p.a * sin
+        };
+    }
+
     $(window).on('orientationchange', function(event) {
-        startGamma = startBeta = undefined;
+        startOrientation = undefined;
         init();
     });
 
