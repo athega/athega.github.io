@@ -1,26 +1,3 @@
 .featured-blog {
 
 }
-.articles {
-    overflow: hidden;
-}
-.articles .meta {
-    height: 52px;
-}
-.articles .meta > * {
-    display: inline-block !important;
-    vertical-align: middle;
-    margin-right: 5px;
-}
-.articles .meta img {
-    height: auto;
-    width: 45px !important;
-    height: 40px;
-}
-.articles h3 {
-    font-size: 1.2rem;
-    font-weight: 400;
-}
-.featured-blog article h3 {
-    font-weight: 700;
-}
