@@ -1,6 +1,9 @@
-body > header {
-    > a[href="#menu"] {
-        float: right;
+nav#main-menu {
+    position: relative;
+    float: right;
+    height: 100%;
+
+    > a {
         height: 100%;
 
         @media (min-width: 960px) {
@@ -13,13 +16,23 @@ body > header {
         }
     }
 
-    > nav#menu {
-        float: right;
-        height: 100%;
+    > ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
 
+        > li {
+            > a {
+                display: inline-block;
+                padding: 0 0.3em;
+                font-size: 1.2rem;
+                color: inherit;
+            }
+        }
+    }
+
+    @media (min-width: 960px) {
         > ul {
-            margin: 0;
-            padding: 0;
             height: 100%;
 
             &::before {
@@ -36,167 +49,20 @@ body > header {
             }
         }
     }
-}
 
-// TODO: Clean up rest of this file
+    @media (max-width: 959px) {
+        &:not(:target) > ul {
+            display: none;
+        }
 
-nav#menu > ul > li > a::after {
-    content: "";
-    display: block;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 2px;
-    width: 100%;
-    background-color: transparent;
+        > ul {
+            position: absolute;
+            right: 0;
+            background-color: #f60;
+            padding: 0.5em;
 
-    -webkit-transition: 0.3s ease;
-    transition: 0.3s ease;
-}
-nav#menu > ul > li > a:hover::after,
-nav#menu > ul > li > a:focus::after {
-    background-color: white;
-}
-nav#menu a {
-    position: relative;
-    display: inline-block;
-    padding: 0 0.3em;
-    font-size: 1.2rem;
-    color: white;
-}
-nav#menu .have-submenu:hover .submenu {
-    opacity: 1;
-    pointer-events: auto;
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
-}
-nav#menu .submenu {
-    position: absolute;
-    z-index: 8;
-    top: 100%;
-    width: 300px;
-    background-color: white;
-    box-shadow: 0 10px 30px rgba(0,0,0, 0.15);
-    opacity: 0;
-    pointer-events: none;
-    -webkit-transform: translateX(-20%);
-    transform: translateX(-20%);
-}
-nav#menu .submenu li {
-    display: block;
-    margin: 0;
-}
-nav#menu .submenu li a {
-    display: block;
-    padding: 0 10px;
-    line-height: 3;
-    vertical-align: middle;
-    font-size: 0.85rem;
-    color: #ff6600;
-    opacity: 0.75;
-    border-bottom: 1px solid #eaeaea;
-}
-nav#menu .submenu li:last-of-type a {
-    border-bottom: none;
-}
-nav#menu .submenu li a:hover,
-nav#menu .submenu li a:focus {
-    opacity: 1;
-    background-color: #eaeaea;
-}
-
-@media (max-width: 959px) {
-
-    nav#menu {
-        display: block;
-        position: absolute;
-        z-index: 0;
-        top: 0;
-        right: 0;
-        padding-top: 90px;
-        width: 320px;
-        max-width: 100%;
-        max-height: 100vh;
-        overflow-y: auto;
-        text-align: right;
-        background-color: rgba(255,104,3, 1);
-        pointer-events: none;
-
-        -webkit-transition: 0.4s ease;
-        transition: 0.4s ease;
-
-        opacity: 0;
-        -webkit-transform: translateX(10%);
-        transform: translateX(10%);
-    }
-    nav#menu.visible {
-        pointer-events: auto;
-        opacity: 1;
-        -webkit-transform: translateX(0);
-        transform: translateX(0);
-    }
-    nav#menu .submenu {
-        pointer-events: none;
-    }
-    nav#menu.visible .submenu {
-        pointer-events: auto;
-    }
-    nav#menu > ul {
-        padding-top: 0;
-    }
-    nav#menu > ul > li {
-        display: block;
-        margin: 5px 0;
-    }
-    nav#menu > ul > li > a {
-        display: block;
-        width: 100%;
-        padding: 0 30px;
-    }
-    nav#menu > ul > li > a::after {
-        display: none;
-    }
-    nav#menu .submenu {
-        position: relative;
-        top: auto;
-        width: 100%;
-        background: transparent;
-        box-shadow: none;
-        border-top: 1px solid rgba(255,255,255, 0.4);
-        border-bottom: 1px solid rgba(255,255,255, 0.4);
-        opacity: 1;
-        -webkit-transform: translateX(0);
-        transform: translateX(0);
-    }
-    nav#menu .submenu li {
-        display: block;
-        margin: 3px 0;
-        border-bottom: none;
-    }
-    nav#menu .submenu li a {
-        display: block;
-        padding: 0 30px;
-        line-height: 2;
-        font-size: 0.8rem;
-        color: white;
-        opacity: 0.75;
-        border-bottom: none;
-    }
-    nav#menu .submenu li a:hover,
-    nav#menu .submenu li a:focus {
-        opacity: 1;
-        background-color: transparent;
-    }
-    .revealing .hidden-info p {
-        padding: 30px;
-        line-height: 1.6;
-        font-size: 0.95rem;
-        color: white;
-
-        opacity: 0;
-        -webkit-transition: 0.4s ease 0.2s;
-        transition: 0.4s ease 0.2s;
-        -webkit-transform: translateX(-30px);
-        transform: translateX(-30px);
+            > li {
+            }
+        }
     }
 }
