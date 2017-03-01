@@ -1,9 +1,10 @@
 ---
-title: Kreativ programmering
+title: "Kreativ programmering"
 date: 2017-02-16
-description: Kreativ programmering av "vertex shader art" med GLSL
+tags:
+  - creative-coding webgl shader art glsl
+last_updated_by: johan
 ---
-
 <figure style="margin:0">
     <a href="https://www.vertexshaderart.com/">
         <img src="https://athega.se/system/uploads/2017/02/vertexshaderart.jpg" alt="VertexShaderArt.com">
@@ -11,7 +12,7 @@ description: Kreativ programmering av "vertex shader art" med GLSL
 </figure>
 
 På fredagseftermiddagar efter vårat sedvanliga månadsmöte brukar vi köra en session med någon form av internutbildning.
-Nu i februari gjorde vi det i som en programmeringsutmaning som gick ut på att lite snabbt skapa något fint med bara kod.
+Nu i februari gjorde vi det som en programmeringsutmaning som gick ut på att lite snabbt skapa något fint med bara kod.
 
 <figure style="float:right;clear:right;margin:1em;">
     <a href="https://slides.com/johanberonius/shader-art/fullscreen">

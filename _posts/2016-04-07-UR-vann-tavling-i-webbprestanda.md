@@ -1,21 +1,21 @@
 ---
-title: UR vann Sveriges största tävling i webbprestanda
+title: "UR vann Sveriges största tävling i webbprestanda"
 date: 2016-04-07
-description: ur.se (numera urskola.se) laddar klart på 610 millisekunder. Det räckte för att vinna Sveriges största tävling i webbprestanda.
-category: Nyhetsbrev
+description: "ur.se (numera urskola.se) laddar klart på 610 millisekunder. Det räckte för att vinna Sveriges största tävling i webbprestanda."
 tags:
   - nyhetsbrev
   - webbprestanda
+last_updated_by: peter
+image_url: https://athega.se/system/uploads/2016/04/urskola.jpg
 ---
-
-## ur.se (numera urskola.se) laddar klart på 610 millisekunder. Det räckte för att vinna Sveriges största tävling i webbprestanda.
+##ur.se (numera urskola.se) laddar klart på 610 millisekunder. Det räckte för att vinna Sveriges största tävling i webbprestanda.
 
 > Internetworld har sedan 1997 utsett de främsta svenska webbplatserna i 17 kategorier. Testföretaget Apica mätte upp- och svarstiderna på alla nominerade sajter på Topp100-listan. Vi ringde upp Athega-konsulten Johan Beronius och URs projektledare Arvid Krantz.
 
 ### _Johan, klassisk fråga, hur känns det?_
 – Det känns förstås riktigt bra för mig och alla i teamet. Jag har varit med och byggt en stor del av URs webbplats och haft tid att optimera den parallellt med att den utvecklats. Nu när sajten uppmärksammas i media är det kul för alla inblandade.
 
-![Johan Beronius](/assets/img/blog/johan_wide.jpg)
+![Johan Beronius](https://athega.se/images/employees/johan/wide.jpg)
 _Athegas Johan Beronius är expert på optimering av webbplatser och framhåller att det inte bara är prestanda som är viktigt – även tillgängligheten behöver optimeras._
 
 ### _Arvid, grattis till priset, hur ser den närmaste framtiden ut för ur.se?_
