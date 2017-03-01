@@ -2,10 +2,8 @@
     <div class="container">
         <h2>BLOGG OCH NYHETER</h2>
         <p>Vi har experterna till mediabranschen. Aftonbladet, Expressen, SvD, TV4, UR, Ericsson och SEB är några kunder vi samarbetar med.</p>
-        {% for post in site.posts limit 5 %}
+        {% for post in site.posts limit: 5 %}
             <a href="{{ post.url }}">
-                <img src="/assets/img/user-image.png" alt="">
-                <span>{{ post.category | default: 'Athegabloggen' }}</span>
                 <time datetime="{{ post.date | date: "%Y-%m-%d"  }}">{{ post.date | date: "%Y-%m-%d" }}</time>
                 <h3>{{ post.title }}</h3>
                 <p>{{ post.description }}</p>

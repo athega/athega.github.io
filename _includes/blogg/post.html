@@ -4,12 +4,10 @@
 {% assign month = months[m] %}
 {% assign year = page.date | date: "%Y" %}
 
-<article class="post">
+<article class="blogg-post">
     <div class="container">
         <h1>{{ page.title }}</h1>
-        <p class="meta">{{ day }} {{ month }} {{ year }}</p>
-
-        <img src="/assets/img/user-image.png" alt="user-image" class="tuser-image">
+        <time datetime="{{ page.date | date: "%Y-%m-%d"  }}">{{ day }} {{ month }} {{ year }}</time>
         {{ content }}
     </div>
 </article>
