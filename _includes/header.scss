@@ -24,7 +24,6 @@ body {
         &::after {
             content: "";
             background-image: linear-gradient(120deg, rgba(255, 102, 0, 1), rgba(255, 102, 0, 1) calc(20% + 160px), rgba(255, 102, 0, 0.3) calc(28% + 160px), rgba(255, 102, 0, 0.1) );
-
         }
 
         > a:first-of-type {

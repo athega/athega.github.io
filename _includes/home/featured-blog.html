@@ -1,13 +1,11 @@
-<section class="featured-blog">
-    <div class="container">
-        <h2>BLOGG OCH NYHETER</h2>
-        <p>Vi har experterna till mediabranschen. Aftonbladet, Expressen, SvD, TV4, UR, Ericsson och SEB är några kunder vi samarbetar med.</p>
-        {% for post in site.posts limit: 5 %}
-            <a href="{{ post.url }}">
-                <time datetime="{{ post.date | date: "%Y-%m-%d"  }}">{{ post.date | date: "%Y-%m-%d" }}</time>
-                <h3>{{ post.title }}</h3>
-                <p>{{ post.description }}</p>
-            </a>
-        {% endfor %}
-    </div>
+<section class="featured-blog content">
+    <h2>BLOGG OCH NYHETER</h2>
+    <p>Vi har experterna till mediabranschen. Aftonbladet, Expressen, SvD, TV4, UR, Ericsson och SEB är några kunder vi samarbetar med.</p>
+    {% for post in site.posts limit: 5 %}
+        <a href="{{ post.url }}">
+            <time datetime="{{ post.date | date: "%Y-%m-%d"  }}">{{ post.date | date: "%Y-%m-%d" }}</time>
+            <h3>{{ post.title }}</h3>
+            <p>{{ post.description }}</p>
+        </a>
+    {% endfor %}
 </section>
