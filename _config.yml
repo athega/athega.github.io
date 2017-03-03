@@ -9,7 +9,10 @@ lsi: true
 permalink: /blogg/:year/:month/:day/:title
 
 sass:
-    style: compressed
+  style: compressed
+
+compress_html:
+  clippings: all
 
 defaults:
   -
