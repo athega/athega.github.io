@@ -1,7 +1,7 @@
 $(function() {
     'use strict';
 
-    var $intro = $('section.intro'),
+    var $intro = $('.home-intro'),
         canvas = document.createElement('canvas'),
         ctx = canvas.getContext('2d'),
         $header = $('body > header'),

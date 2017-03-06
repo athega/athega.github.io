@@ -1,6 +1,6 @@
 $(function() {
     'use strict';
 
-    var $featuredBlog = $('.featured-blog');
+    var $featuredBlog = $('.home-featured-blog');
 
 });
