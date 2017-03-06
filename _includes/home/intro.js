@@ -209,11 +209,11 @@ $(function() {
             dist = Math.sqrt(dx * dx + dy * dy),
             ratio = 0.3 * (1 - dist / maxDist);
 
-        if (x > 0 && x < width) {
+        if (x > 0 && Math.round(x) < width) {
             x += dx * ratio;
         }
 
-        if (y > 0 && y < height) {
+        if (y > 0 && Math.round(y) < height) {
             y += dy * ratio;
         }
 
