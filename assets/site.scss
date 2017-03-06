@@ -3,6 +3,7 @@
 
 {% include normalize.scss %}
 {% include layout.scss %}
+{% include lib/rouge-github.scss %}
 {% include header.scss %}
 {% include header/main-menu.scss %}
 {% include home/intro.scss %}
