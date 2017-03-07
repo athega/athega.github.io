@@ -1,3 +1,107 @@
 .home-featured-blog {
+    > h2 {
+        margin-bottom: 0.5rem
+    }
 
+    > p {
+        margin-top: 0;
+        margin-bottom: 1.5em;
+    }
+
+    > ul {
+        list-style: none;
+        padding: 0;
+        text-align: center;
+
+        > li {
+            display: inline-block;
+            vertical-align: top;
+            width: 100%;
+            text-align: initial;
+            margin-bottom: 1.5em;
+
+            @media (min-width: 24em) {
+                width: 48%;
+
+                &:not(:nth-of-type(2n)) {
+                    margin-right: 4%;
+                }
+            }
+
+            @media (min-width: 48em) {
+                width: 22%;
+
+                &:not(:nth-of-type(4n)) {
+                    margin-right: 4%;
+                }
+            }
+
+            > a {
+                display: block;
+                color: inherit;
+                position: relative;
+                $max-height: 20em;
+                max-height: $max-height;
+                overflow: hidden;
+
+                > figure {
+                    position: relative;
+                    margin: 0;
+                    padding-bottom: 56.25%;
+
+                    > img {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        background-color: rgba(255,106,0,0.5);
+                        opacity: 0;
+                        transition: opacity 0.3s;
+                    }
+                }
+
+                > h3 {
+                    margin-top: 0.5rem;
+                    margin-bottom: 0.3rem;
+                }
+
+                > p {
+                    margin: 0;
+
+                    &::after {
+                        $fade-height: 2.5em;
+
+                        content: "";
+                        position: absolute;
+                        top: $max-height - $fade-height;
+                        left: 0;
+                        background-image: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1));
+                        width: 100%;
+                        height: $fade-height;
+                    }
+                }
+
+                &:hover,
+                &:focus {
+                    text-decoration: none;
+                    outline: 0;
+
+                    > figure::after {
+                        opacity: 1;
+                    }
+
+                    > h3 {
+                        text-decoration: underline;
+                    }
+                }
+             }
+        }
+    }
 }

@@ -4,16 +4,21 @@
         Vi har experterna till mediabranschen. Aftonbladet, Expressen, SvD, TV4, UR, Ericsson och SEB är några kunder vi samarbetar med.
     </p>
     <ul>
-        {% for post in site.posts limit: 5 %}
-            <li>
-                <a href="{{ post.url }}">
-                    <time datetime="{{ post.date | date: "%Y-%m-%d"  }}">{{ post.date | date: "%Y-%m-%d" }}</time>
-                    <h3>{{ post.title }}</h3>
-                    {% if post.description %}
+        {% assign limit = 4 %}
+        {% for post in site.posts %}
+            {% if post.description %}
+            {% if post.image_url %}
+                <li>
+                    <a href="{{ post.url }}">
+                        <figure><img src="{{ post.image_url }}"></figure>
+                        <h3>{{ post.title }}</h3>
                         <p>{{ post.description }}</p>
-                    {% endif %}
-                </a>
-            </li>
+                    </a>
+                </li>
+                {% assign limit = limit | minus: 1 %}
+                {% if limit == 0 %}{% break %}{% endif %}
+            {% endif %}
+            {% endif %}
         {% endfor %}
     </ul>
 </section>
