@@ -19,7 +19,7 @@
         }
     }
 
-    @media (max-width: 959px) {
+    @media (max-width: 847px) {
         &:target > a:first-of-type,
         &:not(:target) > a:last-of-type,
         &:not(:target) > ul {
@@ -44,7 +44,7 @@
         }
     }
 
-    @media (min-width: 960px) {
+    @media (min-width: 848px) {
         > a {
             display: none;
         }
