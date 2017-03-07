@@ -1,9 +1,15 @@
 ---
 title: "Kreativ programmering"
 date: 2017-02-16
+description: "På fredagseftermiddagar efter vårat sedvanliga månadsmöte brukar vi köra en session med någon form av internutbildning. Nu i februari gjorde vi det som en programmeringsutmaning som gick ut på att lite snabbt skapa något fint med bara kod."
 tags:
-  - creative-coding webgl shader art glsl
+  - nyhetsbrev
+  - creative coding
+  - webgl
+  - shader art
+  - glsl
 last_updated_by: johan
+image_url: https://athega.se/system/uploads/2017/02/athega-creative-coding.jpg
 ---
 <figure style="margin:0">
     <a href="https://www.vertexshaderart.com/">

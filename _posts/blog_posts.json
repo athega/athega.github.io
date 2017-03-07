@@ -2579,20 +2579,24 @@
       "$date": 1487254445000
     },
     "day": 16,
-    "image_url": "",
+    "image_url": "https://athega.se/system/uploads/2017/02/athega-creative-coding.jpg",
     "last_updated_by": "johan",
     "month": 2,
     "published_at": {
       "$date": 1487199600000
     },
     "slug": "2017/02/16/Kreativ-programmering",
-    "summary": "",
+    "summary": "På fredagseftermiddagar efter vårat sedvanliga månadsmöte brukar vi köra en session med någon form av internutbildning. Nu i februari gjorde vi det som en programmeringsutmaning som gick ut på att lite snabbt skapa något fint med bara kod.",
     "tags_array": [
-      "creative-coding webgl shader art glsl"
+      "nyhetsbrev",
+      "creative coding",
+      "webgl",
+      "shader art",
+      "glsl"
     ],
     "title": "Kreativ programmering",
     "updated_at": {
-      "$date": 1487262022000
+      "$date": 1488895997000
     },
     "year": 2017
   }

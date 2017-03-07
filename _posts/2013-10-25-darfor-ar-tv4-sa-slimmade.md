@@ -3,7 +3,7 @@ title: "Därför är TV4 så slimmade"
 date: 2013-10-25
 description: "TV4 har ett slimmat team för digitala medier samtidigt som kraven är höga."
 last_updated_by: mats
-image_url: http://athega.se/system/uploads/2013/10/per-1.png
+image_url: https://athega.se/system/uploads/2013/10/per-1.png
 ---
 > TV4 har ett slimmat team för digitala medier samtidigt som kraven är höga. Teknikchef Per Åström kan förklara hur de löser den ekvationen.
 ------------

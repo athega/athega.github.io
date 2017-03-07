@@ -3,7 +3,7 @@ title: "Athega Code Base 2012"
 date: 2012-12-01
 description: "Höstkonferensen kallas Athega Codebase. Vi brukar bege oss ut i ytterskärgården till Söderarm där vi huserar, leker med senaste tekniken och har en väldigt trevlig helg."
 last_updated_by: mats
-image_url: http://athega.se/system/uploads/2013/10/sodera.png
+image_url: https://athega.se/system/uploads/2013/10/sodera.png
 ---
 ![Snöstorm](http://assets.athega.se/blogg/2012/12/acb2012-snow.jpg)
 

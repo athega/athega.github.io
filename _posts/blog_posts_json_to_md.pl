@@ -16,7 +16,9 @@ foreach my $post (@$posts) {
     my @tags = ();
     @tags = @{$post->{tags_array}} if ref $post->{tags_array} eq 'ARRAY';
 
-    $post->{content} =~ s((https?://(www\.)?athega\.se)?/system/uploads/)(https://athega.se/system/uploads/)g;
+    foreach my $field ('content', 'image_url') {
+        $post->{$field} =~ s((https?://(www\.)?athega\.se)?/system/uploads/)(https://athega.se/system/uploads/)g;
+    }
 
     open MD, '>', $file or die $!;
     print MD "---\n";

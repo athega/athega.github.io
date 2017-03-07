@@ -5,7 +5,7 @@ description: "Målet är att bli en av världens bästa play-siter."
 tags:
   - nyhetsbrev
 last_updated_by: mats
-image_url: http://athega.se/system/uploads/2013/10/johan-beronius_small.jpg
+image_url: https://athega.se/system/uploads/2013/10/johan-beronius_small.jpg
 ---
 <p style="padding: 1em; background-color:#FAFAFA; border:1px solid rgba(0, 0, 0, 0.2); color:#999999; font-size:16px; text-shadow:0 0 1px white; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; margin-bottom:30px;">Nya UR Play släpptes 30 januari och fick snabbt beröm. Målet är att bli en av världens bästa play-siter. Vi ringde upp två som var med på resan.</p>
 

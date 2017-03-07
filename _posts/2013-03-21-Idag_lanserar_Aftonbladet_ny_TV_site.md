@@ -5,7 +5,7 @@ description: "Med en ny site för bara video blir upplevelsen bättre för anvä
 tags:
   - nyhetsbrev
 last_updated_by: mats
-image_url: http://athega.se/system/uploads/2013/10/peterb_small.png
+image_url: https://athega.se/system/uploads/2013/10/peterb_small.png
 ---
 Med en ny site för bara video blir upplevelsen bättre för användarna. Dessutom ökar annonsintäkterna. Peter Björklund kan berätta mer.
 ------------
