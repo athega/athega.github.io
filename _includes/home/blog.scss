@@ -11,13 +11,11 @@
     > ul {
         list-style: none;
         padding: 0;
-        text-align: center;
 
         > li {
             display: inline-block;
             vertical-align: top;
             width: 100%;
-            text-align: initial;
             margin-bottom: 1.5em;
 
             @media (min-width: 24em) {
@@ -61,7 +59,7 @@
                         position: absolute;
                         width: 100%;
                         height: 100%;
-                        background-color: rgba(255,106,0,0.5);
+                        background-image: linear-gradient(to right, rgba(255, 102, 0, 0.5), rgba(255, 204, 24, 0.5));
                         opacity: 0;
                         transition: opacity 0.3s;
                     }

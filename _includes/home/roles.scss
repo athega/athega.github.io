@@ -1,2 +1,82 @@
 .home-roles {
+    > h2 {
+        margin-bottom: 0.5rem
+    }
+
+    > p {
+        margin-top: 0;
+        margin-bottom: 1.5em;
+    }
+
+    > ul {
+        list-style: none;
+        padding: 0;
+        text-align: center;
+
+        > li {
+            display: inline-block;
+            vertical-align: top;
+            width: 100%;
+            text-align: initial;
+            margin-bottom: 1.5em;
+
+            @media (min-width: 42em) {
+                width: 48%;
+
+                &:not(:nth-of-type(2n)) {
+                    margin-right: 4%;
+                }
+            }
+
+            > figure {
+                position: relative;
+                margin: 0;
+                padding-bottom: 58%;
+
+                @media (min-width: 32em) {
+                    padding-bottom: 36%;
+                }
+
+                @media (min-width: 42em) {
+                    padding-bottom: 60%;
+                }
+
+                @media (min-width: 56em) {
+                    padding-bottom: 42%;
+                }
+
+                > img {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+
+                > figcaption {
+                    > h3 {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        margin: 0.5rem;
+                        color: white;
+                        text-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
+                    }
+
+                    > p {
+                        position: absolute;
+                        bottom: 0;
+                        right: 0;
+                        margin: 0.5rem;
+                        max-width: calc(60% + 6em);
+                        max-height: 70%;
+                        overflow: hidden;
+                        padding: 0.2rem 0.6rem;
+                        color: white;
+                        text-shadow: 0 0 3px rgba(0, 0, 0, 0.6);
+                        background-image: linear-gradient(to right, rgba(255, 102, 0, 0.6), rgba(255, 204, 24, 0.6));
+                    }
+                }
+            }
+        }
+    }
 }
