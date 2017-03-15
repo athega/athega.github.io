@@ -1,6 +1,7 @@
 ---
+# Concatenation and basic whitespace minification of JavaScript files
 ---
-{% comment %} Concatenation and basic whitespace minification of JavaScript files {% endcomment %}{% capture js %}
+{% capture js %}
 
 {% include lib/jquery-3.1.1.min.js %}
 {% include header.js %}
