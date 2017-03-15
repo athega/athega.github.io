@@ -28,8 +28,10 @@
                 }
             }
 
-            > figure {
+            > a {
+                display: block;
                 position: relative;
+                overflow: hidden;
                 margin: 0;
                 padding-bottom: 58%;
 
@@ -50,30 +52,44 @@
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
+                    filter: blur(2px);
+                    transition: filter 0.3s;
                 }
 
-                > figcaption {
-                    > h3 {
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        margin: 0.5rem;
-                        color: white;
-                        text-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
+                > h3 {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    margin: 0.5rem;
+                    color: white;
+                    text-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
+                }
+
+                > p {
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                    margin: 0.5rem;
+                    max-width: calc(60% + 6em);
+                    max-height: 70%;
+                    overflow: hidden;
+                    padding: 0.2rem 0.6rem;
+                    color: white;
+                    text-shadow: 0 0 3px rgba(0, 0, 0, 0.6);
+                    background-image: linear-gradient(to right, rgba(255, 102, 0, 0.6), rgba(255, 204, 24, 0.6));
+                }
+
+                &:hover,
+                &:focus {
+                    text-decoration: none;
+                    outline: 0;
+
+                    > img {
+                        filter: blur(0px);
                     }
 
-                    > p {
-                        position: absolute;
-                        bottom: 0;
-                        right: 0;
-                        margin: 0.5rem;
-                        max-width: calc(60% + 6em);
-                        max-height: 70%;
-                        overflow: hidden;
-                        padding: 0.2rem 0.6rem;
-                        color: white;
-                        text-shadow: 0 0 3px rgba(0, 0, 0, 0.6);
-                        background-image: linear-gradient(to right, rgba(255, 102, 0, 0.6), rgba(255, 204, 24, 0.6));
+                    > h3 {
+                        text-decoration: underline;
                     }
                 }
             }

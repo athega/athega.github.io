@@ -7,65 +7,14 @@
         fokusområden.
     </p>
     <ul>
-        <li>
-            <figure>
-                <img src="/assets/img/roles1.jpg">
-                <figcaption>
-                    <h3>Fullstackutvecklare</h3>
-                    <p>
-                        Goda kunskaper i Javascript. Bred kunskap inom Javaplattformen och praktisk erfarenhet av ett
-                        urval av olika tekniker inom webbutveckling, både front- och backend.
-                    </p>
-                </figcaption>
-            </figure>
-        </li>
-        <li>
-            <figure>
-                <img src="/assets/img/roles2.jpg">
-                <figcaption>
-                    <h3>Frontend</h3>
-                    <p>
-                        En djup förståelse för webbutveckling och webbstandardarder,
-                        tillgänglighetsanpassning, browserkompatibilitet samt tekniker och koncept för webben.
-                    </p>
-                </figcaption>
-            </figure>
-        </li>
-        <li>
-            <figure>
-                <img src="/assets/img/roles3.jpg">
-                <figcaption>
-                    <h3>Datascientist</h3>
-                    <p>
-                        En datascientist främsta ansvar kan vara att ta fram underlag för att maximera ett företags vinst.
-                        Det är viktigt att underlaget är anpassat att kommunicera till olika målgrupper inom företaget.
-                    </p>
-                </figcaption>
-            </figure>
-        </li>
-        <li>
-            <figure>
-                <img src="/assets/img/roles4.jpg">
-                <figcaption>
-                    <h3>Apputvecklare</h3>
-                    <p>
-                        Dang non leo. Phasellus sempizzle, nulla eu boofron congue, dawg erizzle break yo neck, yall quizzle,
-                        vel elementum gizzle leo vizzle my shizz. Vivamus vestibulizzle shizzle my nizzle crocodizzle felizzle.
-                    </p>
-                </figcaption>
-            </figure>
-        </li>
-        <li>
-            <figure>
-                <img src="/assets/img/roles5.jpg">
-                <figcaption>
-                    <h3>Agilcoach och projektledare</h3>
-                    <p>
-                        Morbi shit. Bow wow wow potenti. I saw beyonces tizzles and my pizzle went crizzle nisl. Etizzle elit ante,
-                        ullamcorpizzle pot, ullamcorper ut, dope crunk, leo. Ass egizzle you son of a bizzle. Sure felis.
-                    </p>
-                </figcaption>
-            </figure>
-        </li>
+        {% for role in site.data.roles %}
+            <li>
+                <a href="#" title="Läs mer om: {{ role.title }}">
+                    <img src="{{ role.image_url }}">
+                    <h3>{{ role.title }}</h3>
+                    <p>{{ role.description }}</p>
+                </a>
+            </li>
+        {% endfor %}
     </ul>
 </section>
