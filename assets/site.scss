@@ -1,17 +1,17 @@
 ---
 ---
 
-{% include normalize.scss %}
-{% include layout.scss %}
-{% include lib/rouge-github.scss %}
-{% include header.scss %}
-{% include header/main-menu.scss %}
-{% include home/intro.scss %}
-{% include home/blog.scss %}
-{% include home/roles.scss %}
-{% include home/consult.scss %}
-{% include home/challanges.scss %}
-{% include blog/archive.scss %}
-{% include blog/index.scss %}
-{% include blog/post.scss %}
-{% include footer.scss %}
+@import "normalize";
+@import "layout";
+@import "lib/rouge-github";
+@import "header";
+@import "header/main-menu";
+@import "home/intro";
+@import "home/blog";
+@import "home/roles";
+@import "home/consult";
+@import "home/challanges";
+@import "blog/archive";
+@import "blog/index";
+@import "blog/post";
+@import "footer";

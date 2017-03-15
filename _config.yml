@@ -9,6 +9,7 @@ lsi: true
 permalink: /blogg/:year/:month/:day/:title
 
 sass:
+  sass_dir: _includes
   style: compressed
 
 compress_html:
