@@ -5,6 +5,7 @@ $(function() {
         canvas = document.createElement('canvas'),
         ctx = canvas.getContext('2d'),
         scale = 4,
+        top = 0,
         x, y, px, py, animationFrameId;
 
     canvas.width = $code.outerWidth() / scale;
@@ -43,6 +44,7 @@ $(function() {
         ctx.stroke();
         px = x, py = y;
         $code.css('mask-image', 'url(' + canvas.toDataURL() + ')');
+        $code.get(0).style.setProperty('--background-top', (top += 0.3) + '%');
     }
 
 });
