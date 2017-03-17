@@ -2599,5 +2599,31 @@
       "$date": 1488895997000
     },
     "year": 2017
+  },
+  {
+    "_id": {
+      "$oid": "58ca9244355c312c0b000003"
+    },
+    "content": "Månaden mars internutbildning handlade om det progressiva JavaScriptramverket\r\n[vue.js](https://vuejs.org/). Vue är ett ramverk som kan användas till att bygga\r\nanvändargränssnitt i webbläsaren. Det är ett alternativ till andra populära\r\nramverk som [React](https://facebook.github.io/react/) eller\r\n[Angular](https://angularjs.org/).\r\n\r\nDet speciella med Vue är att det har en väldigt kort komma igång-tröskel\r\n(om du redan har koll på JavaScript, CSS och HTML). Dessutom är det snabbt\r\noch litet i sin kärna. Med endast 18kb hämtat via en `<script>`-tagg är du\r\nigång.\r\n\r\nSe på detta exempelvis:\r\n\r\n<script async src=\"//jsfiddle.net/lizell/8tyt7fa3/embed/js,html,result/\"></script>\r\n\r\n\r\nPå några få rader har vi en reaktiv sida som hanterar inmatning från och\r\ninteraktion med användaren.\r\n\r\nDet tar ungefär en eftermiddag att komma igång att göra en riktig app.\r\nVi avslutade därför dagen med att göra en single-page-app som sökte i Athegas\r\nmedarbetar-API och presenterade resultatet i ett någorlunda snyggt format.\r\n\r\nNedan finner du presentationen från dagen.\r\n\r\n/ [Chrille](/chrille)\r\n\r\n<iframe src=\"https://docs.google.com/presentation/d/1men2oJs9M6NjVdWnZrqZSFriw0Zu228X_Ih9fS6dors/embed?start=false&loop=false&delayms=3000\" frameborder=\"0\" width=\"480\" height=\"299\" allowfullscreen=\"true\" mozallowfullscreen=\"true\" webkitallowfullscreen=\"true\"></iframe>\r\n\r\n**PS.**\r\n\r\n*Vue.js* uttallas precis som engelskans *view*.\r\n\r\n**DS.**",
+    "created_at": {
+      "$date": 1489670724000
+    },
+    "day": 16,
+    "image_url": "https://vuejs.org/images/logo.png",
+    "last_updated_by": "chrille",
+    "month": 3,
+    "published_at": {
+      "$date": 1489618800000
+    },
+    "slug": "2017/03/16/lar-dig-uttala-vuejs",
+    "summary": "Vue har en väldigt kort komma igång-tröskel\r\n(om du redan har koll på JavaScript, CSS och HTML). Dessutom är det snabbt\r\noch litet i sin kärna.",
+    "tags_array": [
+      "vuejs javascript nyhetsbrev"
+    ],
+    "title": "Lär dig uttala vue.js (och hur det fungerar)",
+    "updated_at": {
+      "$date": 1489671092000
+    },
+    "year": 2017
   }
 ]
