@@ -8,6 +8,8 @@ lsi: true
 
 permalink: /blogg/:year/:month/:day/:title
 
+data_dir: _includes
+
 sass:
   sass_dir: _includes
   style: compressed
