@@ -5,17 +5,17 @@ body > footer {
     background-color: #ff6600;
     text-align: center;
 
-    > :nth-child(-n+3) {
+    > * {
         @media (min-width: 44em) {
             display: inline-block;
             width: 30%;
             max-width: 16em;
             text-align: initial;
+            vertical-align: middle;
 
-            &:not(:nth-child(n+3)) {
+            &:not(:last-child) {
                 margin-right: 5%;
             }
-
         }
 
         > p {
@@ -52,28 +52,6 @@ body > footer {
                     height: 100%;
                     fill: white;
                 }
-            }
-        }
-    }
-
-    > :last-child {
-        margin-top: 70px;
-
-        > * {
-            display: inline-block;
-            margin: 0 30px;
-            line-height: 2;
-            font-size: 1rem;
-        }
-
-        > a {
-            color: inherit;
-            font-weight: bold;
-            opacity: 0.75;
-
-            &:hover,
-            &:focus {
-                opacity: 1;
             }
         }
     }
