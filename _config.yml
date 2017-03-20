@@ -29,6 +29,16 @@ defaults:
       layout: "post"
   -
     scope:
-      path: "" # an empty string here means all files in the project
+      path: "blogg"
     values:
       layout: "default"
+  -
+    scope:
+      path: "index.html"
+    values:
+      layout: "default"
+  -
+    scope:
+      path: "" # an empty string here means all files in the project
+    values:
+      layout: "page"
