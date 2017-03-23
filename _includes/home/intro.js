@@ -7,7 +7,7 @@ $(function() {
         $header = $('body > header'),
         canvas2 = document.createElement('canvas'),
         ctx2 = canvas2.getContext('2d'),
-        width, height, top, bottom, tx, ty, points, offsets, gradient,
+        width, height, top, bottom, tx, ty, points, gradient,
         prevScrollTop = undefined,
         center,
         centerDist,
@@ -15,14 +15,10 @@ $(function() {
         deviceMoved = false,
         deviceXOffset = 0,
         deviceYOffset = 0,
-        startOrientation = undefined,
-        animationFrameId,
-        background = new Image(),
-        backgroundOffset = {x: 0, y: 0};
+        startOrientation = undefined;
 
     $intro.prepend(canvas);
     $header.prepend(canvas2);
-    background.src = '/assets/img/riddarfjarden.jpg';
 
     function init() {
         width = canvas.width = Math.floor(canvas.offsetWidth / 2) || 320;
@@ -34,7 +30,6 @@ $(function() {
         tx = Math.floor(width/32);
         ty = Math.floor(height/32);
         points = [];
-        offsets = [];
         gradient = [];
 
         var tw = width / tx,
@@ -66,7 +61,6 @@ $(function() {
 
         for (var y = 0; y <= ty; y++) {
             points[y] = [];
-            offsets[y] = [];
             for (var x = 0; x <= tx; x++) {
                 var p = {
                     x: x * tw,
@@ -84,18 +78,11 @@ $(function() {
                 }
 
                 points[y][x] = p;
-                offsets[y][x] = [
-                    {x: Math.random() * 10 - 5, y: Math.random() * 10 - 5},
-                    {x: Math.random() * 10 - 5, y: Math.random() * 10 - 5}
-                ];
             }
         }
-
-        cancelAnimationFrame(animationFrameId);
-        animationFrameId = requestAnimationFrame(update);
     }
 
-    $(background).on('load', init);
+    init();
 
     $intro.on('mousemove', function(event) {
         deviceMoved = true;
@@ -176,24 +163,24 @@ $(function() {
 
             ctx.save();
             ctx.translate(0, height * 0.8 * scrollRatio);
-            var scale = 1 - 0.7 * scrollRatio;
-            ctx.scale(1, scale);
-
-            backgroundOffset.x = 160 * scrollRatio + deviceXOffset * 16;
-            backgroundOffset.y = deviceYOffset * 12;
-            backgroundOffset.scale = scale;
+            ctx.scale(1, 1 - 0.7 * scrollRatio);
 
             draw();
             ctx.restore();
 
             ctx2.drawImage(canvas, 0, Math.min(height * scrollRatio, height - canvas2.height), width, canvas2.height, 0, 0, canvas2.width, canvas2.height);
 
+            $intro.css('background-position', 'calc(50% - ' + (160 * scrollRatio + deviceXOffset * 16) + 'px) calc(50% + ' + (currentScrollTop / 2 - deviceYOffset * 12) + 'px)');
+
             prevScrollTop = currentScrollTop;
             deviceMoved = false;
         }
 
-        animationFrameId = requestAnimationFrame(update);
+        requestAnimationFrame(update);
     }
+
+    requestAnimationFrame(update);
+
 
     function draw() {
         for (var y = 0; y < ty; y++) {
@@ -201,16 +188,14 @@ $(function() {
                 var p1 = gravitate(points[y][x]),
                     p2 = gravitate(points[y][x+1]),
                     p3 = gravitate(points[y+1][x+1]),
-                    p4 = gravitate(points[y+1][x]),
-                    o1 = offsets[y][x][0],
-                    o2 = offsets[y][x][1];
+                    p4 = gravitate(points[y+1][x]);
 
                 if (!(x % 2) != !(y % 2)) {
-                    poly(p1, p2, p3, o1);
-                    poly(p1, p3, p4, o2);
+                    poly(p1, p2, p3);
+                    poly(p1, p3, p4);
                 } else {
-                    poly(p2, p3, p4, o1);
-                    poly(p2, p4, p1, o2);
+                    poly(p2, p3, p4);
+                    poly(p2, p4, p1);
                 }
             }
         }
@@ -235,50 +220,23 @@ $(function() {
         return {x: x, y: y};
     }
 
-    function poly(p1, p2, p3, o) {
+    function poly(p1, p2, p3) {
         var cx = (p1.x + p2.x + p3.x) / 3,
             cy = (p1.y + p2.y + p3.y) / 3,
             dx = cx - center.x,
             dy = cy - center.y,
             dist = Math.sqrt(dx * dx + dy * dy),
-            c = gradient[Math.min(Math.floor(gradient.length * dist / maxDist), gradient.length - 1)],
-            ext = 0.05;
-
-        p1.x += ext * (p1.x - cx);
-        p1.y += ext * (p1.y - cy);
-        p2.x += ext * (p2.x - cx);
-        p2.y += ext * (p2.y - cy);
-        p3.x += ext * (p3.x - cx);
-        p3.y += ext * (p3.y - cy);
-
-        var x1 = Math.min(p1.x, p2.x, p3.x),
-            y1 = Math.min(p1.y, p2.y, p3.y),
-            x2 = Math.max(p1.x, p2.x, p3.x),
-            y2 = Math.max(p1.y, p2.y, p3.y),
-            w = x2 - x1,
-            h = y2 - y1;
-
-        ctx.save();
+            c = gradient[Math.min(Math.floor(gradient.length * dist / maxDist), gradient.length - 1)];
 
         ctx.strokeStyle = ctx.fillStyle = 'rgb(' + [c.r, c.g, c.b].join(',') + ')';
+        ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.moveTo(p1.x, p1.y);
         ctx.lineTo(p2.x, p2.y);
         ctx.lineTo(p3.x, p3.y);
         ctx.closePath();
         ctx.fill();
-        ctx.clip();
-
-        var bh = background.height - 24,
-            bw = bh * width / height,
-            sx = background.width / 2 + bw * (x1 / width - 0.5) + o.x + backgroundOffset.x,
-            sy = background.height / 2 + bh * (y1 / height * backgroundOffset.scale - backgroundOffset.scale / 2) + o.y + backgroundOffset.y,
-            sw = bw * w / width,
-            sh = bh * h / height * backgroundOffset.scale;
-
-        ctx.globalAlpha = 0.3;
-        ctx.drawImage(background, sx, sy, sw, sh, x1, y1, w, h);
-        ctx.restore();
+        ctx.stroke();
     }
 
 });
