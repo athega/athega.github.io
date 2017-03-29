@@ -207,14 +207,14 @@ $(function() {
             dx = center.x - x,
             dy = center.y - y,
             dist = Math.sqrt(dx * dx + dy * dy),
-            ratio = 0.3 * (1 - dist / maxDist);
+            ratio = 40 * (1 - dist / maxDist);
 
         if (x > 0 && Math.round(x) < width) {
-            x += dx * ratio;
+            x -= dx / dist * ratio;
         }
 
         if (y > 0 && Math.round(y) < height) {
-            y += dy * ratio;
+            y -= dy / dist * ratio;
         }
 
         return {x: x, y: y};
