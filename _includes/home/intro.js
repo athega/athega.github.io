@@ -13,12 +13,19 @@ $(function() {
         centerDist,
         maxDist,
         deviceMoved = false,
+        pointerActive = false,
         deviceXOffset = 0,
         deviceYOffset = 0,
-        startOrientation = undefined;
+        startOrientation = undefined,
+        animationFrameId,
+        revealAngle = 0,
+        revealRatio = 0,
+        background = new Image(),
+        backgroundPosition = 0;
 
     $intro.prepend(canvas);
     $header.prepend(canvas2);
+    background.src = '/assets/img/intro-code.jpg';
 
     function init() {
         width = canvas.width = Math.floor(canvas.offsetWidth / 2) || 320;
@@ -35,16 +42,17 @@ $(function() {
         var tw = width / tx,
             th = height / ty,
             colorStops = [
-                {r: 201, g:  40, b:  0},
-                {r: 216, g:  60, b:  0},
-                {r: 231, g:  80, b:  0},
-                {r: 246, g:  99, b:  0},
-                {r: 255, g: 148, b:  0},
-                {r: 255, g: 175, b:  1},
-                {r: 255, g: 201, b:  7},
-                {r: 255, g: 207, b: 45},
-                {r: 255, g: 222, b: 90},
-                {r: 255, g: 226, b: 127},
+                {r: 201, g:  40, b:  0, a: 1},
+                {r: 216, g:  60, b:  0, a: 1},
+                {r: 231, g:  80, b:  0, a: 1},
+                {r: 246, g:  99, b:  0, a: 1},
+                {r: 255, g: 148, b:  0, a: 1},
+                {r: 255, g: 175, b:  1, a: 1},
+                {r: 255, g: 201, b:  7, a: 1},
+                {r: 255, g: 207, b: 45, a: 1},
+                {r: 255, g: 222, b: 90, a: 1},
+                {r: 255, g: 226, b: 127, a: 1},
+                {r: 255, g: 226, b: 127, a: 0},
             ];
 
         for (var i = 0; i + 1 < colorStops.length; i++) {
@@ -54,7 +62,8 @@ $(function() {
                 gradient.unshift({
                     r: Math.floor(c1.r + (c2.r - c1.r) * j / 12),
                     g: Math.floor(c1.g + (c2.g - c1.g) * j / 12),
-                    b: Math.floor(c1.b + (c2.b - c1.b) * j / 12)
+                    b: Math.floor(c1.b + (c2.b - c1.b) * j / 12),
+                    a:            c1.a + (c2.a - c1.a) * j / 12
                 });
             }
         }
@@ -80,14 +89,26 @@ $(function() {
                 points[y][x] = p;
             }
         }
+
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = requestAnimationFrame(update);
     }
 
-    init();
+    $(background).on('load', init);
 
     $intro.on('mousemove', function(event) {
         deviceMoved = true;
         deviceXOffset = (event.pageX - (canvas.offsetWidth / 2) ) / (canvas.offsetWidth / 2);
         deviceYOffset = (event.pageY - top - (canvas.offsetHeight / 2) ) / (canvas.offsetHeight / 2);
+     });
+
+    $intro.on('mousedown touchstart', function(event) {
+        deviceMoved = true;
+        pointerActive = true;
+     });
+
+    $intro.on('mouseup touchend', function(event) {
+        pointerActive = false;
      });
 
     $(window).on('deviceorientation', function(event) {
@@ -161,6 +182,30 @@ $(function() {
             centerDist = {x: Math.max(center.x, width - center.x), y: Math.max(center.y, height - center.y)},
             maxDist = Math.sqrt(centerDist.x * centerDist.x + centerDist.y * centerDist.y);
 
+            backgroundPosition = (backgroundPosition - 2) % background.height;
+            var backgroundLeft = Math.max(width / 2 - background.width / 2, 0);
+            if (background.width < width) {
+                ctx.fillStyle = 'white';
+                ctx.fillRect(0, 0, width, height);
+            }
+            ctx.drawImage(background, backgroundLeft, backgroundPosition);
+            if (height - backgroundPosition > background.height) {
+                ctx.drawImage(background, backgroundLeft, backgroundPosition + background.height);
+            }
+
+            if (pointerActive) {
+                if (revealAngle < Math.PI) {
+                    revealAngle += 0.1;
+                }
+            } else {
+                if (revealAngle > 0) {
+                    revealAngle -= 0.1;
+                } else {
+                    deviceMoved = false;
+                }
+            }
+            revealRatio = (1 - Math.cos(revealAngle)) / 2;
+
             ctx.save();
             ctx.translate(0, height * 0.8 * scrollRatio);
             ctx.scale(1, 1 - 0.7 * scrollRatio);
@@ -173,14 +218,10 @@ $(function() {
             $intro.css('background-position', 'calc(50% - ' + (160 * scrollRatio + deviceXOffset * 16) + 'px) calc(50% + ' + (currentScrollTop / 2 - deviceYOffset * 12) + 'px)');
 
             prevScrollTop = currentScrollTop;
-            deviceMoved = false;
         }
 
-        requestAnimationFrame(update);
+        animationFrameId = requestAnimationFrame(update);
     }
-
-    requestAnimationFrame(update);
-
 
     function draw() {
         for (var y = 0; y < ty; y++) {
@@ -207,7 +248,7 @@ $(function() {
             dx = center.x - x,
             dy = center.y - y,
             dist = Math.sqrt(dx * dx + dy * dy),
-            ratio = 40 * (1 - dist / maxDist);
+            ratio = (20 + 180 * revealRatio) * Math.pow(1 - dist / maxDist, 1.6);
 
         if (x > 0 && Math.round(x) < width) {
             x -= dx / dist * ratio;
@@ -226,17 +267,27 @@ $(function() {
             dx = cx - center.x,
             dy = cy - center.y,
             dist = Math.sqrt(dx * dx + dy * dy),
-            c = gradient[Math.min(Math.floor(gradient.length * dist / maxDist), gradient.length - 1)];
+            gradentStart = 12,
+            gradentOffset = revealRatio * 12 * 24,
+            gradientIndex = gradentStart - gradentOffset + (gradient.length - gradentStart + gradentOffset) * dist / maxDist,
+            c = gradient[Math.max(Math.min(Math.floor(gradientIndex), gradient.length - 1), 0)];
 
-        ctx.strokeStyle = ctx.fillStyle = 'rgb(' + [c.r, c.g, c.b].join(',') + ')';
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        ctx.moveTo(p1.x, p1.y);
-        ctx.lineTo(p2.x, p2.y);
-        ctx.lineTo(p3.x, p3.y);
-        ctx.closePath();
-        ctx.fill();
-        ctx.stroke();
+        if (gradientIndex > 0) {
+            ctx.strokeStyle = ctx.fillStyle = 'rgba(' + [c.r, c.g, c.b, c.a].join(',') + ')';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(p1.x, p1.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.lineTo(p3.x, p3.y);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+        }
+
+//        ctx.fillStyle = 'rgb(0,0,255)';
+//        ctx.fillRect(p1.x-1, p1.y-1, 2, 2);
+//        ctx.fillRect(p2.x-1, p2.y-1, 2, 2);
+//        ctx.fillRect(p3.x-1, p3.y-1, 2, 2);
     }
 
 });
