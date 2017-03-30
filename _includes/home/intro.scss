@@ -26,56 +26,9 @@
         margin: 3rem 1rem;
         margin-top: 26vh;
 
-        > code {
-            display: none;
-            position: absolute;
-            font-family: inherit;
-            font-weight: bold;
-            padding: 0.3em  1em  0.3em  2.6em;
-            margin: -0.3em -1em -0.3em -2.6em;
-            border-radius: 0.3em;
-            mask-size: cover;
-            -webkit-mask-size: cover;
-            cursor: pointer;
-
-            &::before {
-                content: "";
-                display: block;
-                position: absolute;
-                z-index: -1;
-                opacity: 0.5;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-image: url(/assets/img/intro-code.jpg);
-                background-size: cover;
-                background-position: 0 var(--background-top, 0);
-            }
-
-            > kbd {
-                position: absolute;
-                color: #009;
-                font-weight: normal;
-                margin-top: 0.1em;
-
-                &:first-child {
-                    transform: translateX(-100%);
-                }
-
-                > span {
-                    color: purple;
-                }
-            }
-        }
-
-        > h1,
-        > code {
+        > h1  {
             line-height: 1.1;
             font-size: 3.25rem;
-        }
-
-        > h1 {
             margin: 0;
         }
 
