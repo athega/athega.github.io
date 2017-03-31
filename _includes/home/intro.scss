@@ -6,7 +6,8 @@
     background-image: url(/assets/img/riddarfjarden.jpg);
     background-size: auto calc(100% + 24px);
     background-position: center;
-    cursor: grab;
+    cursor: -webkit-grab;
+    cursor:         grab;
     text-align: center;
     -webkit-user-select: none;
        -moz-user-select: none;
