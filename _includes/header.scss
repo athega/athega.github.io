@@ -10,6 +10,7 @@ body {
         background-color: #f60;
         padding: 0.5rem 0;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
+        text-shadow: 0 0 3px rgba(0,0,0,0.3);
 
         &::after,
         > canvas {
