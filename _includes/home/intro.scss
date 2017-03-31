@@ -2,6 +2,7 @@
     position: relative;
     overflow: hidden;
     color: white;
+    text-shadow: 0 0 5px rgba(0,0,0,0.5);
     background-color: #fc3;
     background-image: url(/assets/img/riddarfjarden.jpg);
     background-size: auto calc(100% + 24px);
@@ -28,7 +29,6 @@
         display: inline-block;
         max-width: 32rem;
         text-align: initial;
-        text-shadow: 0 0 5px rgba(0,0,0,0.5);
         margin: 3rem 1rem;
         margin-top: 26vh;
 

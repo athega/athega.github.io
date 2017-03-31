@@ -179,8 +179,11 @@ $(function() {
         if ((pageScrolled || deviceMoved) && currentScrollTop < bottom || prevScrollTop === undefined) {
             var scrollRatio = Math.min(1, currentScrollTop / (canvas.offsetHeight || height));
 
-            center = {x: width/3*2 - scrollRatio * width/3 + deviceXOffset * width / 6, y: height/3 + scrollRatio * height * 2/3  + deviceYOffset * height / 4},
-            centerDist = {x: Math.max(center.x, width - center.x), y: Math.max(center.y, height - center.y)},
+            center = {
+                x: width/3*2 - scrollRatio * width/3      + deviceXOffset * width / 6,
+                y: height/3  + scrollRatio * height * 2/3 + deviceYOffset * height / 4
+            };
+            centerDist = {x: Math.max(center.x, width - center.x), y: Math.max(center.y, height - center.y)};
             maxDist = Math.sqrt(centerDist.x * centerDist.x + centerDist.y * centerDist.y);
 
             backgroundPosition = (backgroundPosition - 2) % background.height;

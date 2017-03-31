@@ -1,18 +1,19 @@
 ---
 title: Fullstackutvecklare
+intro-image: /assets/img/fullstack.jpg
+tagline: Fullstackutvecklare
+sub-tagline: Fullstack betyder kunskap om hela "stacken" men vad innebär det?
 ---
 
 Fullstackutvecklare
-===================
-
-Fullstack betyder kunskap om hela "stacken" men vad innebär det?
+-------------------
 
 En fullstackutvecklare kan jobba med alla ingående delar av lösningen..
 Fullstackutvecklaren kan ta sig an alla olika slag av utveckling i lösningen om det skulle behövas och prioriteras.
 Däremot är det inte en expert på precis alla delar. Utan expertis och fokus just nu kanske är på några delar av lösningen.
 Att utvärdera och sätta sig in nya saker är viktigt.
 
-Specifikt på Athega innebär det:
+### Specifikt på Athega innebär det:
 
 - En god överblick och förståelse av hela IT-landskapet, en allmänbildning.
 - En längre erfarenhet av systemutveckling inom webb.
