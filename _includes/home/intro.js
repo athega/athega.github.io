@@ -7,7 +7,7 @@ $(function() {
         $header = $('body > header'),
         canvas2 = document.createElement('canvas'),
         ctx2 = canvas2.getContext('2d'),
-        width, height, top, bottom, tx, ty, points, gradient,
+        width, height, vmin, top, bottom, tx, ty, points, gradient,
         prevScrollTop = undefined,
         center,
         centerDist,
@@ -30,6 +30,7 @@ $(function() {
     function init() {
         width = canvas.width = Math.floor(canvas.offsetWidth / 2) || 320;
         height = canvas.height = Math.floor(canvas.offsetHeight / 2) || 240;
+        vmin = Math.min(width, height);
         top = $intro.length ? $intro.offset().top : 0;
         bottom = top + (canvas.offsetHeight || height) - canvas2.offsetHeight;
         canvas2.width = Math.floor(canvas2.offsetWidth / 2);
@@ -248,7 +249,7 @@ $(function() {
             dx = center.x - x,
             dy = center.y - y,
             dist = Math.sqrt(dx * dx + dy * dy),
-            ratio = (20 + 180 * revealRatio) * Math.pow(1 - dist / maxDist, 1.6);
+            ratio = (20 + 0.4 * vmin * revealRatio) * Math.pow(1 - dist / maxDist, 1.6);
 
         if (x > 0 && Math.round(x) < width) {
             x -= dx / dist * ratio;
@@ -268,7 +269,7 @@ $(function() {
             dy = cy - center.y,
             dist = Math.sqrt(dx * dx + dy * dy),
             gradentStart = 12,
-            gradentOffset = revealRatio * 12 * 24,
+            gradentOffset = revealRatio * 0.6 * vmin,
             gradientIndex = gradentStart - gradentOffset + (gradient.length - gradentStart + gradentOffset) * dist / maxDist,
             c = gradient[Math.max(Math.min(Math.floor(gradientIndex), gradient.length - 1), 0)];
 
