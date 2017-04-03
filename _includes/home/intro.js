@@ -205,7 +205,7 @@ $(function() {
             centerDist = {x: Math.max(center.x, width - center.x), y: Math.max(center.y, height - center.y)};
             maxDist = Math.sqrt(centerDist.x * centerDist.x + centerDist.y * centerDist.y);
 
-            backgroundPosition = (backgroundPosition - 2) % background.height;
+            backgroundPosition = (backgroundPosition - 1) % background.height;
             var backgroundLeft = Math.max(width / 2 - background.width / 2, 0);
             if (background.width < width) {
                 ctx.fillStyle = location.hash == '#dark' ? 'black' : 'white';
