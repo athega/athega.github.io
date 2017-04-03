@@ -16,6 +16,8 @@ $(function() {
         pointerActive = false,
         deviceXOffset = 0,
         deviceYOffset = 0,
+        pointerX = 0,
+        pointerY = 0,
         startOrientation = undefined,
         animationFrameId,
         revealAngle = 0,
@@ -25,7 +27,7 @@ $(function() {
 
     $intro.prepend(canvas);
     $header.prepend(canvas2);
-    background.src = '/assets/img/intro-code.jpg';
+    background.src = '/assets/img/intro-code'+ (location.hash == '#dark' ? '-dark' : '') +'.jpg';
 
     function init() {
         width = canvas.width = Math.floor(canvas.offsetWidth / 2) || 320;
@@ -97,20 +99,35 @@ $(function() {
 
     $(background).on('load', init);
 
-    $intro.on('mousemove', function(event) {
-        deviceMoved = true;
-        deviceXOffset = (event.pageX - (canvas.offsetWidth / 2) ) / (canvas.offsetWidth / 2);
-        deviceYOffset = (event.pageY - top - (canvas.offsetHeight / 2) ) / (canvas.offsetHeight / 2);
-     });
-
-    $intro.on('mousedown touchstart', function(event) {
-        deviceMoved = true;
-        pointerActive = true;
-     });
-
-    $intro.on('mouseup touchend', function(event) {
-        pointerActive = false;
-     });
+    if ('ontouchstart' in window) {
+        $intro.on({
+            'touchstart touchmove': function(event) {
+                deviceMoved = true;
+                pointerActive = true;
+                var offset = $intro.get(0).getBoundingClientRect();
+                pointerX = (event.originalEvent.targetTouches[0].clientX - offset.left) * 2 / canvas.offsetWidth - 1,
+                pointerY = (event.originalEvent.targetTouches[0].clientY - offset.top) * 2 / canvas.offsetHeight - 1;
+            },
+            'touchend': function(event) {
+                pointerActive = false;
+            },
+        });
+    } else {
+        $intro.on({
+            'mousedown': function(event) {
+                deviceMoved = true;
+                pointerActive = true;
+            },
+            'mousemove': function(event) {
+                deviceMoved = true;
+                pointerX = deviceXOffset = (event.pageX) * 2 / canvas.offsetWidth - 1;
+                pointerY = deviceYOffset = (event.pageY - top) * 2 / canvas.offsetHeight - 1;
+            },
+            'mouseup': function(event) {
+                pointerActive = false;
+            },
+        });
+    }
 
     $(window).on('deviceorientation', function(event) {
         var orientation = {
@@ -183,13 +200,15 @@ $(function() {
                 x: width/3*2 - scrollRatio * width/3      + deviceXOffset * width / 6,
                 y: height/3  + scrollRatio * height * 2/3 + deviceYOffset * height / 4
             };
+            center.x = center.x * (1 - revealRatio) + (width + pointerX * width) / 2 * revealRatio;
+            center.y = center.y * (1 - revealRatio) + (height + pointerY * height) / 2 * revealRatio;
             centerDist = {x: Math.max(center.x, width - center.x), y: Math.max(center.y, height - center.y)};
             maxDist = Math.sqrt(centerDist.x * centerDist.x + centerDist.y * centerDist.y);
 
             backgroundPosition = (backgroundPosition - 2) % background.height;
             var backgroundLeft = Math.max(width / 2 - background.width / 2, 0);
             if (background.width < width) {
-                ctx.fillStyle = 'white';
+                ctx.fillStyle = location.hash == '#dark' ? 'black' : 'white';
                 ctx.fillRect(0, 0, width, height);
             }
             ctx.drawImage(background, backgroundLeft, backgroundPosition);
@@ -252,7 +271,7 @@ $(function() {
             dx = center.x - x,
             dy = center.y - y,
             dist = Math.sqrt(dx * dx + dy * dy),
-            ratio = (20 + 0.4 * vmin * revealRatio) * Math.pow(1 - dist / maxDist, 1.6);
+            ratio = (20 + 0.3 * vmin * revealRatio) * Math.pow(1 - dist / maxDist, 1.6);
 
         if (x > 0 && Math.round(x) < width) {
             x -= dx / dist * ratio;
@@ -272,7 +291,7 @@ $(function() {
             dy = cy - center.y,
             dist = Math.sqrt(dx * dx + dy * dy),
             gradentStart = 12,
-            gradentOffset = revealRatio * 0.6 * vmin,
+            gradentOffset = revealRatio * 0.4 * vmin,
             gradientIndex = gradentStart - gradentOffset + (gradient.length - gradentStart + gradentOffset) * dist / maxDist,
             c = gradient[Math.max(Math.min(Math.floor(gradientIndex), gradient.length - 1), 0)];
 
