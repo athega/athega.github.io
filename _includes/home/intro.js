@@ -3,6 +3,7 @@ $(function() {
 
     var $intro = $('.home-intro'),
         canvas = document.createElement('canvas'),
+        $canvas = $(canvas),
         ctx = canvas.getContext('2d'),
         $header = $('body > header'),
         canvas2 = document.createElement('canvas'),
@@ -22,12 +23,10 @@ $(function() {
         animationFrameId,
         revealAngle = 0,
         revealRatio = 0,
-        background = new Image(),
         backgroundPosition = 0;
 
     $intro.prepend(canvas);
     $header.prepend(canvas2);
-    background.src = '/assets/img/intro-code'+ (location.hash == '#dark' ? '-dark' : '') +'.jpg';
 
     function init() {
         width = canvas.width = Math.floor(canvas.offsetWidth / 2) || 320;
@@ -97,7 +96,7 @@ $(function() {
         animationFrameId = requestAnimationFrame(update);
     }
 
-    $(background).on('load', init);
+    init();
 
     if ('ontouchstart' in window) {
         $intro.on({
@@ -196,6 +195,16 @@ $(function() {
         if ((pageScrolled || deviceMoved) && currentScrollTop < bottom || prevScrollTop === undefined) {
             var scrollRatio = Math.min(1, currentScrollTop / (canvas.offsetHeight || height));
 
+            revealAngle = Math.min(Math.PI, Math.max(0, revealAngle += pointerActive ? 0.1 : -0.1));
+            revealRatio = (1 - Math.cos(revealAngle)) / 2;
+
+            if (revealRatio > 0) {
+                $canvas.css('background-position', (canvas.offsetWidth < 960 ? 'left' : 'center') + ' ' + (backgroundPosition -= 2) + 'px');
+                ctx.clearRect(0, 0, width, height);
+            } else {
+                deviceMoved = false;
+            }
+
             center = {
                 x: width/3*2 - scrollRatio * width/3      + deviceXOffset * width / 6,
                 y: height/3  + scrollRatio * height * 2/3 + deviceYOffset * height / 4
@@ -204,30 +213,6 @@ $(function() {
             center.y = center.y * (1 - revealRatio) + (height + pointerY * height) / 2 * revealRatio;
             centerDist = {x: Math.max(center.x, width - center.x), y: Math.max(center.y, height - center.y)};
             maxDist = Math.sqrt(centerDist.x * centerDist.x + centerDist.y * centerDist.y);
-
-            backgroundPosition = (backgroundPosition - 1) % background.height;
-            var backgroundLeft = Math.max(width / 2 - background.width / 2, 0);
-            if (background.width < width) {
-                ctx.fillStyle = location.hash == '#dark' ? 'black' : 'white';
-                ctx.fillRect(0, 0, width, height);
-            }
-            ctx.drawImage(background, backgroundLeft, backgroundPosition);
-            if (height - backgroundPosition > background.height) {
-                ctx.drawImage(background, backgroundLeft, backgroundPosition + background.height);
-            }
-
-            if (pointerActive) {
-                if (revealAngle < Math.PI) {
-                    revealAngle += 0.1;
-                }
-            } else {
-                if (revealAngle > 0) {
-                    revealAngle -= 0.1;
-                } else {
-                    deviceMoved = false;
-                }
-            }
-            revealRatio = (1 - Math.cos(revealAngle)) / 2;
 
             ctx.save();
             ctx.translate(0, height * 0.8 * scrollRatio);
