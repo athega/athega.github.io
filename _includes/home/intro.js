@@ -289,7 +289,7 @@ $(function() {
             ctx.lineTo(p3.x, p3.y);
             ctx.closePath();
             ctx.fill();
-            ctx.stroke();
+            if (c.a == 1) ctx.stroke();
         }
 
 //        ctx.fillStyle = 'rgb(0,0,255)';
