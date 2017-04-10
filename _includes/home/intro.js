@@ -276,7 +276,7 @@ $(function() {
             dy = cy - center.y,
             dist = Math.sqrt(dx * dx + dy * dy),
             gradentStart = 12,
-            gradentOffset = revealRatio * 0.4 * vmin,
+            gradentOffset = revealRatio * 112 * vmin / maxDist,
             gradientIndex = gradentStart - gradentOffset + (gradient.length - gradentStart + gradentOffset) * dist / maxDist,
             c = gradient[Math.max(Math.min(Math.floor(gradientIndex), gradient.length - 1), 0)];
 
