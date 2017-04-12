@@ -7,6 +7,7 @@
 {% include header.js %}
 {% include header/main-menu.js %}
 {% include home/intro.js %}
+{% include home/intro-bg.js %}
 {% include home/blog.js %}
 
 {% endcapture %}{% assign lines = js | split: "

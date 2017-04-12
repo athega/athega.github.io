@@ -214,6 +214,9 @@ $(function() {
             centerDist = {x: Math.max(center.x, width - center.x), y: Math.max(center.y, height - center.y)};
             maxDist = Math.sqrt(centerDist.x * centerDist.x + centerDist.y * centerDist.y);
 
+            $intro.data('center', center);
+            $intro.data('revealRatio', revealRatio);
+
             ctx.save();
             ctx.translate(0, height * 0.8 * scrollRatio);
             ctx.scale(1, 1 - 0.7 * scrollRatio);
@@ -223,7 +226,7 @@ $(function() {
 
             ctx2.drawImage(canvas, 0, Math.min(height * scrollRatio, height - canvas2.height), width, canvas2.height, 0, 0, canvas2.width, canvas2.height);
 
-            $intro.css('background-position', 'calc(50% - ' + (160 * scrollRatio + deviceXOffset * 16) + 'px) calc(50% + ' + (currentScrollTop / 2 - deviceYOffset * 12) + 'px)');
+            $intro.data('backgroundPosition', {x: 160 * scrollRatio + deviceXOffset * 16, y: currentScrollTop / 2 - deviceYOffset * 12});
 
             prevScrollTop = currentScrollTop;
         }
