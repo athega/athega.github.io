@@ -210,7 +210,7 @@ $(function() {
     }
 
     function draw() {
-        var center = $intro.data('center'),
+        var center = $intro.data('center') || {x: 0, y: 0},
             clipCenter = {
                 x: mapRange(center.x, 0, foregroundCanvas.width, -1, 1),
                 y: mapRange(center.y, 0, foregroundCanvas.height, 1, -1) / aspect,
@@ -226,11 +226,11 @@ $(function() {
         var viewCenterLoc = gl.getUniformLocation(shaderProgram, "viewCenter");
         gl.uniform2f(viewCenterLoc, viewCenter.x, viewCenter.y);
 
-        var backgroundPosition = $intro.data('backgroundPosition');
+        var backgroundPosition = $intro.data('backgroundPosition') || {x: 0, y: 0};
         var backgroundPositionLoc = gl.getUniformLocation(shaderProgram, "backgroundPosition");
         gl.uniform2f(backgroundPositionLoc, backgroundPosition.x / image.width, -backgroundPosition.y / image.height);
 
-        var revealRatio = $intro.data('revealRatio');
+        var revealRatio = $intro.data('revealRatio') || 0;
         var revealRatioLoc = gl.getUniformLocation(shaderProgram, "revealRatio");
         gl.uniform1f(revealRatioLoc, revealRatio);
 
