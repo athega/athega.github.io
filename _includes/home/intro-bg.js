@@ -48,10 +48,10 @@ $(function() {
             uniform float revealRatio;
             varying vec2 v_texCoord;
             void main(void) {
-                float maxDist = length(view);
+                float maxDist = length(view) * 10.0;
                 float dist = length(viewCenter - gl_FragCoord.xy);
                 float ratio = revealRatio * pow(1.0 - dist / maxDist, 6.0);
-                float vmin = min(view.x, view.y);
+                float vmin = min(view.x, view.y) * 10.0;
                 gl_FragColor = texture2D(u_image, v_texCoord + ((textureCenter - v_texCoord) * ratio) + backgroundPosition);
                 gl_FragColor.rgb = 1.0 - gl_FragColor.rgb;
                 gl_FragColor.rgb *= smoothstep(revealRatio * vmin * 0.5, revealRatio * vmin * 0.6, dist) * revealRatio + (1.0 - revealRatio);
@@ -95,7 +95,7 @@ $(function() {
         gl.enableVertexAttribArray(coords);
 
         var viewAttrib = gl.getUniformLocation(shaderProgram, "view");
-        gl.uniform2f(viewAttrib, width, height);
+        gl.uniform2f(viewAttrib, width / 10, height / 10);
     }
 
     function createTexture(image) {
