@@ -7,28 +7,12 @@ $(function() {
 
     $intro.prepend(canvas);
 
-
     var width = canvas.width = canvas.offsetWidth,
         height = canvas.height = canvas.offsetHeight,
-        aspect = width / height,
-        bottom = -1,
-        top = 1,
-        left = -1,
-        right = 1,
         gl = canvas.getContext("webgl"),
         shaderProgram,
-        cols = Math.floor(width / 40),
-        rows = Math.floor(height / 40),
-        vertices = [],
-        vertexCount = rows * cols * 6;
-
-    if (aspect > 1) {
-        bottom /= aspect;
-        top /= aspect;
-    } else {
-        left *= aspect;
-        right *= aspect;
-    }
+        vertexCount,
+        textureBounds;
 
     gl.viewport(0, 0, width, height);
 
@@ -45,41 +29,12 @@ $(function() {
     function createShaders() {
         var vertexShader = getShader(gl.VERTEX_SHADER, `
             attribute vec4 coords;
-
             attribute vec2 a_texCoord;
             varying vec2 v_texCoord;
 
-            uniform vec4 bounds;
-            uniform float aspect;
-            uniform vec2 clipCenter;
-            uniform float revealRatio;
-
             void main(void) {
-
                 gl_Position = coords;
-
-                float maxDist = length(vec2(1.0, 1.0) + abs(clipCenter));
-                vec2 d = clipCenter - coords.xy;
-                float dist = length(d);
-                float ratio = 0.2 * revealRatio * pow(1.0 - dist / maxDist, 1.6);
-
-                if (dist > 0.0 && gl_Position.x > bounds.s && gl_Position.x < bounds.t) {
-                    gl_Position.x -= d.x / dist * ratio;
-                }
-
-                if (dist > 0.0 && gl_Position.y > bounds.p && gl_Position.y < bounds.q) {
-                    gl_Position.y -= d.y / dist * ratio;
-                }
-
-                if (aspect > 1.0) {
-                    gl_Position.y *= aspect;
-                } else {
-                    gl_Position.x /= aspect;
-                }
-
                 v_texCoord = a_texCoord;
-
-                gl_PointSize = 4.0;
             }
         `);
 
@@ -88,16 +43,18 @@ $(function() {
             uniform sampler2D u_image;
             uniform vec2 view;
             uniform vec2 viewCenter;
+            uniform vec2 textureCenter;
             uniform vec2 backgroundPosition;
-            uniform float revealRatio2;
+            uniform float revealRatio;
             varying vec2 v_texCoord;
             void main(void) {
-                vec2 d = viewCenter - gl_FragCoord.xy;
-                float dist = length(d);
+                float maxDist = length(view);
+                float dist = length(viewCenter - gl_FragCoord.xy);
+                float ratio = revealRatio * pow(1.0 - dist / maxDist, 6.0);
                 float vmin = min(view.x, view.y);
-                gl_FragColor = texture2D(u_image, v_texCoord + backgroundPosition);
+                gl_FragColor = texture2D(u_image, v_texCoord + ((textureCenter - v_texCoord) * ratio) + backgroundPosition);
                 gl_FragColor.rgb = 1.0 - gl_FragColor.rgb;
-                gl_FragColor.rgb *= smoothstep(revealRatio2 * vmin * 0.5, revealRatio2 * vmin * 0.6, dist) * revealRatio2 + (1.0 - revealRatio2);
+                gl_FragColor.rgb *= smoothstep(revealRatio * vmin * 0.5, revealRatio * vmin * 0.6, dist) * revealRatio + (1.0 - revealRatio);
                 gl_FragColor.rgb = 1.0 - gl_FragColor.rgb;
             }
         `);
@@ -122,21 +79,12 @@ $(function() {
     }
 
     function createVertices() {
-        for (var y = 0; y < rows; y++) {
-            var down1 = y / rows,
-                down2 = (y+1) / rows;
-            for (var x = 0; x < cols; x++) {
-                var across1 = x / cols,
-                    across2 = (x+1) / cols,
-                    x1 = left + (right - left) * across1,
-                    x2 = left + (right - left) * across2,
-                    y1 = bottom + (top - bottom) * down1,
-                    y2 = bottom + (top - bottom) * down2;
+        var vertices = [
+            -1, -1,  1, -1,   1, 1,
+            -1, -1,  1,  1,  -1, 1
+        ];
 
-                vertices.push(x1, y1,  x2, y1,  x2, y2);
-                vertices.push(x1, y1,  x2, y2,  x1, y2);
-            }
-        }
+        vertexCount = vertices.length / 2;
 
         var buffer = gl.createBuffer();
         gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
@@ -148,48 +96,36 @@ $(function() {
 
         var viewAttrib = gl.getUniformLocation(shaderProgram, "view");
         gl.uniform2f(viewAttrib, width, height);
-
-        var aspectAttrib = gl.getUniformLocation(shaderProgram, "aspect");
-        gl.uniform1f(aspectAttrib, aspect);
-
-        var bounds = gl.getUniformLocation(shaderProgram, "bounds");
-        gl.uniform4f(bounds, left, right, bottom, top);
     }
 
     function createTexture(image) {
-
-
-        var texCoords = [],
-            overscan = 24,
+        var overscan = 24,
+            aspect = width / height,
             imageAspect = image.width / (image.height - overscan),
-            top = 1 - (overscan / 2 / image.height),
-            bottom = 0 + (overscan / 2 / image.height),
+            top = 0 + (overscan / 2 / image.height),
+            bottom = 1 - (overscan / 2 / image.height),
             left = 0,
             right = 1;
 
         if (aspect > imageAspect) {
-            top = imageAspect / aspect;
-            top += bottom = (1 - top) / 2;
+            bottom = imageAspect / aspect;
+            bottom += top = (1 - bottom) / 2;
         } else {
             right = aspect / imageAspect;
             right += left = (1 - right) / 2;
         }
 
-        for (var y = 0; y < rows; y++) {
-            var down1 = y / rows,
-                down2 = (y+1) / rows;
-            for (var x = 0; x < cols; x++) {
-                var across1 = x / cols,
-                    across2 = (x+1) / cols,
-                    x1 = left + (right - left) * across1,
-                    x2 = left + (right - left) * across2,
-                    y1 = top + (bottom - top) * down1,
-                    y2 = top + (bottom - top) * down2;
+        var texCoords = [
+            left, bottom,  right, bottom,  right, top,
+            left, bottom,  right, top,     left, top
+        ];
 
-                texCoords.push(x1, y1,  x2, y1,  x2, y2);
-                texCoords.push(x1, y1,  x2, y2,  x1, y2);
-            }
-        }
+        textureBounds = {
+            left: left,
+            top: top,
+            right: right,
+            bottom: bottom,
+        };
 
         var texCoordBuffer = gl.createBuffer();
         gl.bindBuffer(gl.ARRAY_BUFFER, texCoordBuffer);
@@ -211,17 +147,17 @@ $(function() {
 
     function draw() {
         var center = $intro.data('center') || {x: 0, y: 0},
-            clipCenter = {
-                x: mapRange(center.x, 0, foregroundCanvas.width, -1, 1),
-                y: mapRange(center.y, 0, foregroundCanvas.height, 1, -1) / aspect,
+            textureCenter = {
+                x: mapRange(center.x, 0, foregroundCanvas.width, textureBounds.left, textureBounds.right),
+                y: mapRange(center.y, 0, foregroundCanvas.height, textureBounds.top, textureBounds.bottom),
             },
             viewCenter = {
                 x: mapRange(center.x, 0, foregroundCanvas.width, 0, canvas.width),
                 y: mapRange(center.y, 0, foregroundCanvas.height, canvas.height, 0),
             };
 
-        var clipCenterLoc = gl.getUniformLocation(shaderProgram, "clipCenter");
-        gl.uniform2f(clipCenterLoc, clipCenter.x, clipCenter.y);
+        var textureCenterLoc = gl.getUniformLocation(shaderProgram, "textureCenter");
+        gl.uniform2f(textureCenterLoc, textureCenter.x, textureCenter.y);
 
         var viewCenterLoc = gl.getUniformLocation(shaderProgram, "viewCenter");
         gl.uniform2f(viewCenterLoc, viewCenter.x, viewCenter.y);
@@ -233,9 +169,6 @@ $(function() {
         var revealRatio = $intro.data('revealRatio') || 0;
         var revealRatioLoc = gl.getUniformLocation(shaderProgram, "revealRatio");
         gl.uniform1f(revealRatioLoc, revealRatio);
-
-        var revealRatio2Loc = gl.getUniformLocation(shaderProgram, "revealRatio2");
-        gl.uniform1f(revealRatio2Loc, revealRatio);
 
         gl.drawArrays(gl.TRIANGLES, 0, vertexCount);
 
