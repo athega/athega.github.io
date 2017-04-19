@@ -99,13 +99,26 @@ $(function() {
     init();
 
     if ('ontouchstart' in window) {
+        var touchStartY;
         $intro.on({
+            'touchstart': function(event) {
+                var touch = event.originalEvent.targetTouches[0];
+                touchStartY = touch.clientY;
+            },
             'touchstart touchmove': function(event) {
                 deviceMoved = true;
                 pointerActive = true;
-                var offset = $intro.get(0).getBoundingClientRect();
-                pointerX = (event.originalEvent.targetTouches[0].clientX - offset.left) * 2 / canvas.offsetWidth - 1,
-                pointerY = (event.originalEvent.targetTouches[0].clientY - offset.top) * 2 / canvas.offsetHeight - 1;
+                var offset = $intro.get(0).getBoundingClientRect(),
+                    touch = event.originalEvent.targetTouches[0];
+                pointerX = (touch.clientX - offset.left) * 2 / canvas.offsetWidth - 1,
+                pointerY = (touch.clientY - offset.top) * 2 / canvas.offsetHeight - 1;
+
+                var currentTouchY = touch.clientY,
+                    currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+                if (currentTouchY > touchStartY && currentScrollTop <= 0) {
+                    event.preventDefault();
+                }
             },
             'touchend': function(event) {
                 pointerActive = false;
