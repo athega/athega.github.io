@@ -135,7 +135,7 @@ $(function() {
                 pointerX = deviceXOffset = (event.pageX) * 2 / canvas.offsetWidth - 1;
                 pointerY = deviceYOffset = (event.pageY - top) * 2 / canvas.offsetHeight - 1;
             },
-            'mouseup': function(event) {
+            'mouseup mouseleave': function(event) {
                 pointerActive = false;
             },
         });
@@ -240,6 +240,8 @@ $(function() {
             ctx2.drawImage(canvas, 0, Math.min(height * scrollRatio, height - canvas2.height), width, canvas2.height, 0, 0, canvas2.width, canvas2.height);
 
             $intro.data('backgroundPosition', {x: 160 * scrollRatio + deviceXOffset * 16, y: currentScrollTop / 2 - deviceYOffset * 12});
+
+            $intro.triggerHandler('updateBackground');
 
             prevScrollTop = currentScrollTop;
         }

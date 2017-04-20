@@ -27,6 +27,7 @@ $(function() {
     image.onload = function() {
         createTexture(image);
         draw();
+        $intro.on('updateBackground', draw);
     };
 
     function createShaders() {
@@ -174,8 +175,6 @@ $(function() {
         gl.uniform1f(revealRatioLoc, revealRatio);
 
         gl.drawArrays(gl.TRIANGLES, 0, vertexCount);
-
-        requestAnimationFrame(draw);
     }
 
     function mapRange(value, minSrc, maxSrc, minDst, maxDst) {
