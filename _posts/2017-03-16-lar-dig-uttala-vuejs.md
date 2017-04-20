@@ -5,7 +5,9 @@ description: "Vue har en väldigt kort komma igång-tröskel
 (om du redan har koll på JavaScript, CSS och HTML). Dessutom är det snabbt
 och litet i sin kärna."
 tags:
-  - vuejs javascript nyhetsbrev
+  - nyhetsbrev
+  - vuejs
+  - javascript
 last_updated_by: chrille
 image_url: https://vuejs.org/images/logo.png
 ---

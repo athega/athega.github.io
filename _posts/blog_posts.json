@@ -2618,12 +2618,41 @@
     "slug": "2017/03/16/lar-dig-uttala-vuejs",
     "summary": "Vue har en väldigt kort komma igång-tröskel\r\n(om du redan har koll på JavaScript, CSS och HTML). Dessutom är det snabbt\r\noch litet i sin kärna.",
     "tags_array": [
-      "vuejs javascript nyhetsbrev"
+      "nyhetsbrev",
+      "vuejs",
+      "javascript"
     ],
     "title": "Lär dig uttala vue.js (och hur det fungerar)",
     "updated_at": {
-      "$date": 1489671092000
+      "$date": 1489747313000
     },
     "year": 2017
+  },
+  {
+    "_id": {
+      "$oid": "58f7aa56355c315638000002"
+    },
+    "tags_array": [
+      "internutbildning",
+      "go"
+    ],
+    "slug": "2017/04/10/internutbildning-om-go",
+    "title": "Internutbildning om Go",
+    "content": "Ämnet för månadens internutbildning var [Go](https://golang.org/), det språk jag har\r\nfokuserat mest på under de senaste åren.\r\n\r\nJag tänkte att jag skulle inleda med en introduktion av språket, då flera av mina kollegor\r\ninte har använt Go tidigare. Passande nog så har [Marcus Olsson](https://marcus.se.net/),\r\nmin vän och medarrangör av meetup-gruppen [Go-Stockholm](https://www.meetup.com/Go-Stockholm/)\r\nnyligen påbörjat lite material för att introducera språket.\r\n\r\nVi började således med att gå igenom en av dessa presentationer:\r\n[Go Fundamentals - Language Syntax](https://talks.godoc.org/github.com/marcusolsson/go-workshop/2-basics/presentation.slide#1)\r\n\r\nEfter att ha gått igenom grunderna i språket så gick vi vidare med att gemensamt\r\nläsa igenom artikeln [Visualizing Concurrency in Go](https://divan.github.io/posts/go_concurrency_visualize/)\r\n\r\n/ [Peter](/peter)\r\n\r\n![Gopher](https://athega.se/system/uploads/2017/04/gopher-brown-beard.png)\r\n",
+    "published_at": {
+      "$date": 1491775200000
+    },
+    "last_updated_by": "peter",
+    "summary": null,
+    "image_url": null,
+    "year": 2017,
+    "month": 4,
+    "day": 10,
+    "updated_at": {
+      "$date": 1492626006000
+    },
+    "created_at": {
+      "$date": 1492626006000
+    }
   }
 ]
