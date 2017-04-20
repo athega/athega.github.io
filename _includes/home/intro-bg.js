@@ -1,8 +1,11 @@
 $(function() {
     'use strict';
 
-    var $intro = $('.home-intro'),
-        foregroundCanvas = $intro.find('> canvas').get(0),
+    var $intro = $('.home-intro');
+
+    if (!$intro.length) return;
+
+    var foregroundCanvas = $intro.find('> canvas').get(0),
         canvas = document.createElement('canvas');
 
     $intro.prepend(canvas);
