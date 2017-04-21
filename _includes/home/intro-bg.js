@@ -6,29 +6,38 @@ $(function() {
     if (!$intro.length) return;
 
     var foregroundCanvas = $intro.find('> canvas').get(0),
-        canvas = document.createElement('canvas');
-
-    $intro.prepend(canvas);
-
-    var width = canvas.width = canvas.offsetWidth,
-        height = canvas.height = canvas.offsetHeight,
-        gl = canvas.getContext("webgl"),
+        canvas = document.createElement('canvas'),
+        gl = canvas.getContext('webgl'),
+        image = new Image(),
+        width,
+        height,
         shaderProgram,
         vertexCount,
         textureBounds;
 
-    gl.viewport(0, 0, width, height);
+    $intro.prepend(canvas);
 
+    function init() {
+        width = canvas.width = canvas.offsetWidth;
+        height = canvas.height = canvas.offsetHeight;
+        gl.viewport(0, 0, width, height);
+    }
+
+    init();
     createShaders();
     createVertices();
 
-    var image = new Image();
     image.src = "/assets/img/riddarfjarden.jpg";
     image.onload = function() {
         createTexture(image);
         draw();
         $intro.on('updateBackground', draw);
     };
+
+    $(window).on('resize orientationchange', function(event) {
+        init();
+        gl.bufferSubData(gl.ARRAY_BUFFER, 0, new Float32Array(getTextureCoords()));
+    });
 
     function createShaders() {
         var vertexShader = getShader(gl.VERTEX_SHADER, `
@@ -97,12 +106,9 @@ $(function() {
         var coords = gl.getAttribLocation(shaderProgram, "coords");
         gl.vertexAttribPointer(coords, 2, gl.FLOAT, false, 0, 0);
         gl.enableVertexAttribArray(coords);
-
-        var viewAttrib = gl.getUniformLocation(shaderProgram, "view");
-        gl.uniform2f(viewAttrib, width / 10, height / 10);
     }
 
-    function createTexture(image) {
+    function getTextureCoords() {
         var overscan = 24,
             aspect = width / height,
             imageAspect = image.width / (image.height - overscan),
@@ -131,14 +137,17 @@ $(function() {
             bottom: bottom,
         };
 
+        return texCoords;
+    }
+
+    function createTexture() {
         var texCoordBuffer = gl.createBuffer();
         gl.bindBuffer(gl.ARRAY_BUFFER, texCoordBuffer);
-        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(texCoords), gl.STATIC_DRAW);
+        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(getTextureCoords()), gl.STATIC_DRAW);
 
         var texCoordLocation = gl.getAttribLocation(shaderProgram, "a_texCoord");
         gl.enableVertexAttribArray(texCoordLocation);
         gl.vertexAttribPointer(texCoordLocation, 2, gl.FLOAT, false, 0, 0);
-
 
         var texture = gl.createTexture();
         gl.bindTexture(gl.TEXTURE_2D, texture);
@@ -165,6 +174,9 @@ $(function() {
 
         var viewCenterLoc = gl.getUniformLocation(shaderProgram, "viewCenter");
         gl.uniform2f(viewCenterLoc, viewCenter.x, viewCenter.y);
+
+        var viewAttrib = gl.getUniformLocation(shaderProgram, "view");
+        gl.uniform2f(viewAttrib, width / 10, height / 10);
 
         var backgroundPosition = $intro.data('backgroundPosition') || {x: 0, y: 0};
         var backgroundPositionLoc = gl.getUniformLocation(shaderProgram, "backgroundPosition");
