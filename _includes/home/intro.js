@@ -28,6 +28,8 @@ $(function() {
     $intro.prepend(canvas);
     $header.prepend(canvas2);
 
+    init();
+
     function init() {
         width = canvas.width = Math.floor(canvas.offsetWidth / 2) || 320;
         height = canvas.height = Math.floor(canvas.offsetHeight / 2) || 240;
@@ -95,8 +97,6 @@ $(function() {
         cancelAnimationFrame(animationFrameId);
         animationFrameId = requestAnimationFrame(update);
     }
-
-    init();
 
     if ('ontouchstart' in window) {
         var touchStartY;
@@ -196,8 +196,10 @@ $(function() {
         };
     }
 
-    $(window).on('orientationchange', function(event) {
+    $(window).on('resize orientationchange', function(event) {
         startOrientation = undefined;
+        deviceMoved = true;
+        $canvas.css('background-position', '');
         init();
     });
 
@@ -205,7 +207,7 @@ $(function() {
         var currentScrollTop = window.pageYOffset || document.documentElement.scrollTop,
             pageScrolled = currentScrollTop != prevScrollTop;
 
-        if ((pageScrolled || deviceMoved) && currentScrollTop < bottom || prevScrollTop === undefined) {
+        if ((pageScrolled || deviceMoved) && currentScrollTop < bottom) {
             var scrollRatio = Math.min(1, currentScrollTop / (canvas.offsetHeight || height));
 
             revealAngle = Math.min(Math.PI, Math.max(0, revealAngle += pointerActive ? 0.1 : -0.1));
@@ -246,6 +248,7 @@ $(function() {
             prevScrollTop = currentScrollTop;
         }
 
+        cancelAnimationFrame(animationFrameId);
         animationFrameId = requestAnimationFrame(update);
     }
 
