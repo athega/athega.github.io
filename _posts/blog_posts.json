@@ -2654,5 +2654,34 @@
     "created_at": {
       "$date": 1492626006000
     }
+  },
+  {
+    "_id": {
+      "$oid": "59243582355c314f88000014"
+    },
+    "content": "Månadens internutbildning handlade om [React Native](https://facebook.github.io/react-native/docs/getting-started.html) utifrån ett iOS perspektiv.\r\n\r\n![](https://athega.se/system/uploads/2017/05/reactnativeiphone.jpg)\r\n\r\nReact Native är Facebooks lösning för att skriva mobilappar med JavaScript för både iPhone och Android. React Native släpptes som öppen källkod 2015 och är en utbyggnad av [React](https://facebook.github.io/react/) för webutveckling, som i sin tur  presenterades 2013. React Native är som React, men använder inbyggda komponenter istället för webbkomponenter som byggstenar. Så för utveckling gentemot iPhone är en del problem och lösningar desamma som vid utveckling med Apples egna språk och tekniker i Xcode.\r\n\r\nVi bekantade oss med utvecklingsmiljön och följde sedan en av de [tutorials](https://facebook.github.io/react-native/releases/0.23/docs/tutorial.html) som finns på React Natives hemsida. En del ändringar behövdes för att få den att köra med senaste versionen av Xcode, React Native, iOS och Android. \r\n\r\nPå vägen gick vi igenom hur Apples Xcode ställs in för de förändringar som kommit med de senaste iOS versionerna: *[App Transport Security](https://forums.developer.apple.com/thread/6767)* och *[Code Signing](https://developer.apple.com/support/code-signing/)*.\r\n\r\n/ [Andreas](/andreas)",
+    "created_at": {
+      "$date": 1495545218000
+    },
+    "day": 23,
+    "image_url": "",
+    "last_updated_by": "andreas",
+    "month": 5,
+    "published_at": {
+      "$date": 1495490400000
+    },
+    "slug": "2017/05/23/react-native-from-an-ios-perspective",
+    "summary": "",
+    "tags_array": [
+      "internutbildning",
+      "react-native",
+      "ios",
+      "security"
+    ],
+    "title": "React Native och iOS-säkerhet",
+    "updated_at": {
+      "$date": 1495550413000
+    },
+    "year": 2017
   }
 ]
