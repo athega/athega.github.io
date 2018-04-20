@@ -18,7 +18,7 @@
             }
 
             @media (min-width: 48em) {
-                width: 22%;
+                width: 29%;
 
                 &:not(:nth-of-type(4n)) {
                     margin-right: 4%;
@@ -44,16 +44,6 @@
                         height: 100%;
                         object-fit: cover;
                     }
-
-                    &::after {
-                        content: "";
-                        position: absolute;
-                        width: 100%;
-                        height: 100%;
-                        background-image: linear-gradient(to right, rgba(255, 102, 0, 0.5), rgba(255, 204, 24, 0.5));
-                        opacity: 0;
-                        transition: opacity 0.3s;
-                    }
                 }
 
                 > h3 {
@@ -63,32 +53,6 @@
 
                 > p {
                     margin: 0;
-
-                    &::after {
-                        $fade-height: 2.5em;
-
-                        content: "";
-                        position: absolute;
-                        top: $max-height - $fade-height;
-                        left: 0;
-                        background-image: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1));
-                        width: 100%;
-                        height: $fade-height;
-                    }
-                }
-
-                &:hover,
-                &:focus {
-                    text-decoration: none;
-                    outline: 0;
-
-                    > figure::after {
-                        opacity: 1;
-                    }
-
-                    > h3 {
-                        text-decoration: underline;
-                    }
                 }
              }
         }

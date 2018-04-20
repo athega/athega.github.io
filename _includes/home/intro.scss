@@ -1,9 +1,14 @@
 .home-intro {
-    position: relative;
+//    position: relative;
+//    background-image: url(https://ak6.picdn.net/shutterstock/videos/17381566/thumb/1.jpg);
+    background-image: url(http://hellodave.co/wp-content/uploads/2015/09/StarWars_FUI_concepts_Bridge_03.jpg);
+    background-size: 1171px;
+    background-blend-mode: darken;
+    background-color: orangered;
     overflow: hidden;
     color: white;
-    text-shadow: 0 0 5px rgba(0,0,0,0.5);
-    background-color: #fc3;
+    text-shadow: 0 0 50px rgba(0,0,0,1);
+//    background-color: #fc3;
     cursor: -webkit-grab;
     cursor:         grab;
     text-align: center;
@@ -35,7 +40,7 @@
         max-width: 32rem;
         text-align: initial;
         margin: 3rem 1rem;
-        margin-top: 26vh;
+        margin-top: 13vh;
 
         > h1  {
             line-height: 1.1;

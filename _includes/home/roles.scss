@@ -23,51 +23,22 @@
                 display: block;
                 position: relative;
                 overflow: hidden;
+                color: black;
                 margin: 0;
-                padding-bottom: 58%;
+                .role-body {
+                    border-right: #f60 2px solid;
+                    img {
+                        float: left;
+                        width: 115px;
+                        height: 115px;
+                        margin-right: 0.5rem;
+                    }
 
-                @media (min-width: 32em) {
-                    padding-bottom: 36%;
-                }
-
-                @media (min-width: 42em) {
-                    padding-bottom: 60%;
-                }
-
-                @media (min-width: 56em) {
-                    padding-bottom: 42%;
-                }
-
-                > img {
-                    position: absolute;
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    filter: blur(2px);
-                    transition: filter 0.3s;
-                }
-
-                > h3 {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    margin: 0.5rem;
-                    color: white;
-                    text-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
-                }
-
-                > p {
-                    position: absolute;
-                    bottom: 0;
-                    right: 0;
-                    margin: 0.5rem;
-                    max-width: calc(60% + 6em);
-                    max-height: 70%;
-                    overflow: hidden;
-                    padding: 0.2rem 0.6rem;
-                    color: white;
-                    text-shadow: 0 0 3px rgba(0, 0, 0, 0.6);
-                    background-image: linear-gradient(to right, rgba(255, 102, 0, 0.6), rgba(255, 204, 24, 0.6));
+                    p {
+                        margin-top: 0;
+                        padding-top: 0;
+                        padding-right: 0.5rem;
+                    }
                 }
 
                 &:hover,

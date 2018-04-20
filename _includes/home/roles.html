@@ -10,9 +10,12 @@
         {% for role in site.data.home.roles %}
             <li>
                 <a href="{{ role.href }}" title="Läs mer om: {{ role.title }}">
-                    <img src="{{ role.image_url }}">
                     <h3>{{ role.title }}</h3>
-                    <p>{{ role.description }}</p>
+                    <div class="role-body">
+                        <img src="{{ role.image_url }}">
+                        <p>{{ role.description }}</p>
+                        <br clear="both">
+                    </div>
                 </a>
             </li>
         {% endfor %}
