@@ -10,7 +10,7 @@ git clone git@github.com:athega/athega.github.io.git
 cd athega.github.io
 gem install bundle
 bundle install
-
+ 
 ```
 
 ### Om du vill
@@ -35,3 +35,7 @@ git commit <filnamn>
 
 #### Push
 git push https://github.com/athega/athega.github.io.git
+
+
+#### Add blog post
+
