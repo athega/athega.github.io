@@ -20,8 +20,11 @@
             @media (min-width: 48em) {
                 width: 29%;
 
-                &:not(:nth-of-type(4n)) {
-                    margin-right: 4%;
+                &:not(:nth-of-type(2n)) {
+                    margin-right: 0;
+                }
+                &:not(:nth-of-type(3n)) {
+                    margin-right: 6.5%;
                 }
             }
 
