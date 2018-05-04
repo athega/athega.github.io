@@ -29,8 +29,8 @@
                     border-right: #f60 2px solid;
                     img {
                         float: left;
-                        width: 115px;
-                        height: 115px;
+                        width: 95px;
+                        height: 95px;
                         margin-right: 0.5rem;
                     }
 
@@ -39,6 +39,11 @@
                         padding-top: 0;
                         padding-right: 0.5rem;
                     }
+                }
+
+                > h3 {
+                    margin-top: 0.5rem;
+                    margin-bottom: 0.3rem;
                 }
 
                 &:hover,
