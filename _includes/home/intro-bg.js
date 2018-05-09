@@ -61,10 +61,10 @@ $(function() {
             uniform float revealRatio;
             varying vec2 v_texCoord;
             void main(void) {
-                float maxDist = length(view) * 10.0;
-                float dist = length(viewCenter - gl_FragCoord.xy);
+                float maxDist = length(view);
+                float dist = length(viewCenter - gl_FragCoord.xy / 10.0);
                 float ratio = revealRatio * pow(1.0 - dist / maxDist, 6.0);
-                float vmin = min(view.x, view.y) * 10.0;
+                float vmin = min(view.x, view.y);
                 gl_FragColor = texture2D(u_image, v_texCoord + ((textureCenter - v_texCoord) * ratio) + backgroundPosition);
                 gl_FragColor.rgb = 1.0 - gl_FragColor.rgb;
                 gl_FragColor.rgb *= smoothstep(revealRatio * vmin * 0.5, revealRatio * vmin * 0.6, dist) * revealRatio + (1.0 - revealRatio);
@@ -172,8 +172,9 @@ $(function() {
         var textureCenterLoc = gl.getUniformLocation(shaderProgram, "textureCenter");
         gl.uniform2f(textureCenterLoc, textureCenter.x, textureCenter.y);
 
+        // Divide to work around limited mediump float precision.
         var viewCenterLoc = gl.getUniformLocation(shaderProgram, "viewCenter");
-        gl.uniform2f(viewCenterLoc, viewCenter.x, viewCenter.y);
+        gl.uniform2f(viewCenterLoc, viewCenter.x / 10, viewCenter.y / 10);
 
         var viewAttrib = gl.getUniformLocation(shaderProgram, "view");
         gl.uniform2f(viewAttrib, width / 10, height / 10);
