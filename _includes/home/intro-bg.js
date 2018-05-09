@@ -27,7 +27,7 @@ $(function() {
     createShaders();
     createVertices();
 
-    image.src = "https://ak6.picdn.net/shutterstock/videos/17381566/thumb/1.jpg";
+    image.src = "/assets/img/intro-dash-bg.jpg";
     image.onload = function() {
         createTexture(image);
         draw();

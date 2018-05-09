@@ -1,11 +1,9 @@
 .home-intro {
-//    position: relative;
-    background-image: url(/assets/img/intro-dash-bg.jpg);
-    background-size: cover;
+    position: relative;
     overflow: hidden;
     color: white;
-    text-shadow: 0 0 50px rgba(0,0,0,1);
-//    background-color: #fc3;
+    text-shadow: 0 0 8px rgba(0, 0, 0, .6);
+    background-color: #204500;
     cursor: -webkit-grab;
     cursor:         grab;
     text-align: center;
@@ -22,7 +20,7 @@
         height: 100%;
 
         &:last-of-type {
-            mix-blend-mode: multiply;
+            mix-blend-mode: difference;
             background-color: black;
             background-image: url(/assets/img/intro-code.png);
             background-size: 960px auto;
