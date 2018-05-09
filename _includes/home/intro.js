@@ -6,8 +6,8 @@ $(function() {
         $canvas = $(canvas),
         ctx = canvas.getContext('2d'),
         $header = $('body > header'),
-        canvas2 = document.createElement('canvas'),
-        ctx2 = canvas2.getContext('2d'),
+        // canvas2 = document.createElement('canvas'),
+        // ctx2 = canvas2.getContext('2d'),
         width, height, vmin, top, bottom, tx, ty, points, gradient,
         prevScrollTop = undefined,
         center,
@@ -26,7 +26,7 @@ $(function() {
         backgroundPosition = 0;
 
     $intro.prepend(canvas);
-    $header.prepend(canvas2);
+    // $header.prepend(canvas2);
 
     init();
 
@@ -35,9 +35,10 @@ $(function() {
         height = canvas.height = Math.floor(canvas.offsetHeight / 2) || 240;
         vmin = Math.min(width, height);
         top = $intro.length ? $intro.offset().top : 0;
-        bottom = top + (canvas.offsetHeight || height) - canvas2.offsetHeight;
-        canvas2.width = Math.floor(canvas2.offsetWidth / 2);
-        canvas2.height = Math.floor(canvas2.offsetHeight / 2);
+        bottom = top + (canvas.offsetHeight || height) - $header.height();
+        // bottom = top + (canvas.offsetHeight || height) - canvas2.offsetHeight;
+        // canvas2.width = Math.floor(canvas2.offsetWidth / 2);
+        // canvas2.height = Math.floor(canvas2.offsetHeight / 2);
         tx = Math.floor(width/32);
         ty = Math.floor(height/32);
         points = [];
@@ -240,7 +241,7 @@ $(function() {
             draw();
             ctx.restore();
 
-            ctx2.drawImage(canvas, 0, Math.min(height * scrollRatio, height - canvas2.height), width, canvas2.height, 0, 0, canvas2.width, canvas2.height);
+            // ctx2.drawImage(canvas, 0, Math.min(height * scrollRatio, height - canvas2.height), width, canvas2.height, 0, 0, canvas2.width, canvas2.height);
 
             $intro.data('backgroundPosition', {x: 160 * scrollRatio + deviceXOffset * 16, y: currentScrollTop / 2 - deviceYOffset * 12});
 
