@@ -2683,5 +2683,87 @@
       "$date": 1495550413000
     },
     "year": 2017
+  },
+  {
+    "_id": {
+      "$oid": "5a2a9ec1355c317aeb000012"
+    },
+    "content": "Årets hack day (eller Code Base som vi kallar det) gick mer eller mindre traditionsenligt av stapeln ute på Söderarm, sista utposten i Stockholms skärgård.\r\n\r\nVi åkte någon månad tidigare än normalt, så vädret var helt fantastiskt. Klart och med fri sikt till jordens krökning. Detta utnyttjade vi till fullo då vi satt i öns högsta torn (bortsett från fyren då) med fönster i alla riktningar.\r\n\r\n![Söderarm](https://athega.se/system/uploads/2017/12/soderarm.jpg)\r\n\r\nÅrets projekt handlade bland annat om ljudbearbetning av låtar från Spotify direkt i webbläsaren. [Micke](/micke) gjorde med detta ett spel där du skulle matcha takten i låten så bra som möjligt.\r\n\r\n[Torbjörn](/tobbe) och [Andreas](/andreas) jobbade med ett avancerat bevattningssystem i Arduino.\r\n\r\n[Krister](/krister) tränade sin monsterdator att känna igen personer från ett stort bildbibliotek. När hans kamera fick syn på ett ansikte visade datorn fler bilder av samma person, i realtid.\r\n\r\n[Mats](/mats) fick till en något enklare variant av samma sak, fast på en Rasberry Pi.\r\n\r\n[Christian](/chrille) byggde en [Quiz](https://github.com/athega/athega-quiz) i React som styrdes av en Tessel med RFID-läsare.\r\n\r\nI år hade vi med oss ett [filmteam](http://www.fishtank.nu/) som spelade in en film om våra Code Base-tillställningar:\r\n\r\n<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/4AxhrhygTVg\" frameborder=\"0\" gesture=\"media\" allow=\"encrypted-media\" allowfullscreen></iframe>",
+    "created_at": {
+      "$date": 1512742593000
+    },
+    "day": 8,
+    "image_url": "https://athega.se/system/uploads/2017/12/acb-thumb.jpg",
+    "last_updated_by": "chrille",
+    "month": 12,
+    "published_at": {
+      "$date": 1512687600000
+    },
+    "slug": "2017/12/08/acb2017",
+    "summary": "Årets hack day (eller Code Base som vi kallar det) gick mer eller mindre traditionsenligt av stapeln ute på Söderarm, sista utposten i Stockholms skärgård.",
+    "tags_array": [
+      "acb",
+      "nyhetsbrev",
+      "blogg",
+      "söderarm"
+    ],
+    "title": "Athega Code Base 2017",
+    "updated_at": {
+      "$date": 1512743350000
+    },
+    "year": 2017
+  },
+  {
+    "_id": {
+      "$oid": "5a901889355c3178aa000002"
+    },
+    "content": "I torsdags höll vi den första i en serie meetups runt machine learning. Vi kallade kvällen för tillämpad.ai då vi vill fokusera på verkliga tillämpningar.\r\n\r\n![Krister pratar AI](https://athega.se/system/uploads/2018/02/meetup.jpg)\r\n\r\nBra uppslutning och väldigt trevliga diskussioner. Programmet var inspirerande och presentatörer var Niklas Lohmann, Leif Jonsson samt Krister Söderström enligt programpunkterna nedan.\r\n\r\n- Flatpack Communities with AI to Empower you (Niklas Lohmann CEO/co-Founder Haaartland)\r\n- Fast, parallell and Correct Latent Dirichlet Allocation for Interpretable Machine Learning (Leif Jonsson-PhD Student, Architect of Ericsson DU Radio ML Toolkit)\r\n- Deep dreaming with Convolutional Neural Networks The Basics (Krister Söderström, Athega DS RnD)\r\n- Deep Neural Networks Applied (Krister Söderström, Athega DS RnD)\r\n\r\nHör av er till oss om nästa meetup i ämnet machine learning! Ni är mer än välkomna att föreslå presentatörer och ämnen!\r\n\r\n<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/ZPFjySOBo28?rel=0\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen></iframe>",
+    "created_at": {
+      "$date": 1519392905000
+    },
+    "day": 23,
+    "image_url": "https://athega.se/system/uploads/2018/02/meetup.jpg",
+    "last_updated_by": "chrille",
+    "month": 2,
+    "published_at": {
+      "$date": 1519340400000
+    },
+    "slug": "2018/02/23/tillampad-ai",
+    "summary": "I torsdags höll vi den första i en serie meetups runt machine learning. Vi kallade kvällen för tillämpad.ai då vi vill fokusera på verkliga tillämpningar.",
+    "tags_array": [
+      "nyhetsbrev",
+      "blogg",
+      "ai",
+      "ml"
+    ],
+    "title": "Tillämpad.ai februari 2018",
+    "updated_at": {
+      "$date": 1524228823000
+    },
+    "year": 2018
+  },
+  {
+    "_id": {
+      "$oid": "5ad9f3a3355c3111fa000003"
+    },
+    "content": "I torsdags var det åter igen dags för meetup Tillämpad.ai\r\n\r\nSom vanligt var fokus verkliga tillämpningar inom machine learning och AI. Denna gång provade vi ett nytt format med färre presentatörer och mer tid för QnA under presentationerna. Det fungerade väldigt bra!  Även om det var bästa tänkbara väder dök många upp! Presentatörer var Krister Söderström och Michael Mrazek enligt programpunkterna nedan.\r\n\r\n![Krister pratar AI](https://athega.se/system/uploads/2018/04/ai-meetup-2.jpg) ![Michael pratar AI](https://athega.se/system/uploads/2018/04/ai-meetup2.jpg)\r\n\r\n- Auto Encoders and their applications (Krister Söderström Athega AB)\r\n- Topic Modelling with LDA in practice. (Michael Mrazek Haaartland)\r\n\r\nTack alla som kom!",
+    "created_at": {
+      "$date": 1524233123000
+    },
+    "day": 20,
+    "image_url": "",
+    "last_updated_by": "peter",
+    "month": 4,
+    "published_at": {
+      "$date": 1524175200000
+    },
+    "slug": "2018/04/20/Tillampad-ai-april-2018",
+    "summary": "",
+    "tags_array": [],
+    "title": "Tillämpad.ai april 2018",
+    "updated_at": {
+      "$date": 1524235443000
+    },
+    "year": 2018
   }
 ]

@@ -1,4 +1,16 @@
 #!/usr/bin/perl
+#
+# Export blog posts from current site database:
+# localhost:$ ssh deploy@athega.se
+# deploy@athega:$ cd /var/www/vhosts/assets.athega.se/data/athega_se
+# deploy@athega:$ ./export_database_to_ndjson_and_json.sh
+# deploy@athega:$ exit
+#
+# Fetch and convert blog posts to markdown files:
+# localhost:$ cd _posts
+# localhost:$ curl -O https://assets.athega.se/data/athega_se/blog_posts.json
+# localhost:$ ./blog_posts_json_to_md.pl blog_posts.json
+
 use strict;
 use JSON;
 
