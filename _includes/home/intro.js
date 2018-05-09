@@ -231,6 +231,7 @@ $(function() {
 
             $intro.data('center', center);
             $intro.data('revealRatio', revealRatio);
+            $intro.data('scrollRatio', scrollRatio);
 
             ctx.save();
             ctx.translate(0, height * 0.8 * scrollRatio);

@@ -59,10 +59,13 @@ $(function() {
             uniform vec2 textureCenter;
             uniform vec2 backgroundPosition;
             uniform float revealRatio;
+            uniform float scrollRatio;
             varying vec2 v_texCoord;
             void main(void) {
                 float maxDist = length(view);
-                float dist = length(viewCenter - gl_FragCoord.xy / 10.0);
+                vec2 fragCoord = gl_FragCoord.xy / 10.0;
+                fragCoord.y /= 1.0 - 0.8 * scrollRatio;
+                float dist = length(viewCenter - fragCoord);
                 float ratio = revealRatio * pow(1.0 - dist / maxDist, 6.0);
                 float vmin = min(view.x, view.y);
                 gl_FragColor = texture2D(u_image, v_texCoord + ((textureCenter - v_texCoord) * ratio) + backgroundPosition);
@@ -186,6 +189,10 @@ $(function() {
         var revealRatio = $intro.data('revealRatio') || 0;
         var revealRatioLoc = gl.getUniformLocation(shaderProgram, "revealRatio");
         gl.uniform1f(revealRatioLoc, revealRatio);
+
+        var scrollRatio = $intro.data('scrollRatio') || 0;
+        var scrollRatioLoc = gl.getUniformLocation(shaderProgram, "scrollRatio");
+        gl.uniform1f(scrollRatioLoc, scrollRatio);
 
         gl.drawArrays(gl.TRIANGLES, 0, vertexCount);
     }
