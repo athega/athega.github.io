@@ -67,7 +67,7 @@ $(function() {
                 float vmin = min(view.x, view.y);
                 gl_FragColor = texture2D(u_image, v_texCoord + ((textureCenter - v_texCoord) * ratio) + backgroundPosition);
                 gl_FragColor.rgb = 1.0 - gl_FragColor.rgb;
-                gl_FragColor.rgb *= smoothstep(revealRatio * vmin * 0.5, revealRatio * vmin * 0.6, dist) * revealRatio + (1.0 - revealRatio);
+                gl_FragColor.rgb *= smoothstep(revealRatio * vmin * 0.42, revealRatio * vmin * 0.52, dist) * revealRatio + (1.0 - revealRatio);
                 gl_FragColor.rgb = 1.0 - gl_FragColor.rgb;
             }
         `);
