@@ -2,7 +2,7 @@
     position: relative;
     overflow: hidden;
     color: white;
-    text-shadow: 0 0 5px rgba(0,0,0,0.5);
+    text-shadow: 0 0 8px rgba(0, 0, 0, .6);
     background-color: #fc3;
     cursor: -webkit-grab;
     cursor:         grab;
@@ -20,7 +20,7 @@
         height: 100%;
 
         &:last-of-type {
-            mix-blend-mode: multiply;
+            mix-blend-mode: difference;
             background-color: black;
             background-image: url(/assets/img/intro-code.png);
             background-size: 960px auto;
@@ -35,7 +35,7 @@
         max-width: 32rem;
         text-align: initial;
         margin: 3rem 1rem;
-        margin-top: 26vh;
+        margin-top: 13vh;
 
         > h1  {
             line-height: 1.1;
