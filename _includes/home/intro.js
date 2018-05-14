@@ -215,8 +215,7 @@ $(function() {
             revealRatio = (1 - Math.cos(revealAngle)) / 2;
 
             if (revealRatio > 0) {
-                $canvas.css('background-position', (canvas.offsetWidth < 960 ? 'left' : 'center') + ' ' + (backgroundPosition -= 2) + 'px');
-                ctx.clearRect(0, 0, width, height);
+                $intro.css('background-position', (canvas.offsetWidth < 960 ? 'left' : 'center') + ' ' + (backgroundPosition -= 2) + 'px');
             } else {
                 deviceMoved = false;
             }
@@ -238,7 +237,10 @@ $(function() {
             ctx.translate(0, height * 0.8 * scrollRatio);
             ctx.scale(1, 1 - 0.7 * scrollRatio);
 
-            draw();
+            ctx.clearRect(0, 0, width, height);
+            if (revealRatio > 0) {
+                draw();
+            }
             ctx.restore();
 
             // ctx2.drawImage(canvas, 0, Math.min(height * scrollRatio, height - canvas2.height), width, canvas2.height, 0, 0, canvas2.width, canvas2.height);
@@ -304,7 +306,7 @@ $(function() {
             c = gradient[Math.max(Math.min(Math.floor(gradientIndex), gradient.length - 1), 0)];
 
         if (gradientIndex > 0) {
-            ctx.strokeStyle = ctx.fillStyle = 'rgba(' + [c.r, c.g, c.b, c.a].join(',') + ')';
+            ctx.strokeStyle = ctx.fillStyle = 'rgba(' + [c.r, c.g, c.b, 0.3 * c.a * revealRatio * (1 - dist / maxDist)].join(',') + ')';
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(p1.x, p1.y);
@@ -312,7 +314,8 @@ $(function() {
             ctx.lineTo(p3.x, p3.y);
             ctx.closePath();
             ctx.fill();
-            if (c.a == 1) ctx.stroke();
+            // if (c.a == 1)
+            ctx.stroke();
         }
 
 //        ctx.fillStyle = 'rgb(0,0,255)';
