@@ -7,7 +7,7 @@ $(function() {
 
     var foregroundCanvas = $intro.find('> canvas').get(0),
         canvas = document.createElement('canvas'),
-        gl = canvas.getContext('webgl'),
+        gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl'),
         image = new Image(),
         width,
         height,
