@@ -17,7 +17,7 @@ image_url: /assets/blog/2018-meetup-nov.jpg
 
 ### Mapping the cell with video games and machine learning
 
-_Devin PU.Sullivan, Ph.D. Post Doctoral Research Fellow at SciLifeLab.se_
+_Devin P. Sullivan, Ph.D. Post Doctoral Research Fellow at SciLifeLab.se_
 
 Devin berättade om arbetet som ledde till publikationen:
 [“Deep learning is combined with massive-scale citizen science to improve large-scale image classification”](https://rdcu.be/4ReL),
