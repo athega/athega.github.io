@@ -1,5 +1,4 @@
 .header-main-menu {
-    float: right;
     height: 100%;
     text-align: right;
 
@@ -16,6 +15,10 @@
                 font-size: 1.2rem;
                 color: inherit;
                 font-weight: 400;
+            }
+            > a:hover {
+                text-decoration: none;
+                text-shadow: none;
             }
         }
     }
@@ -37,10 +40,16 @@
         }
 
         > ul {
+            opacity: .95;
             background-color: #f60;
             padding: 0.5em;
 
             > li {
+                > a {
+                    width: 100%;
+                    font-size: 2rem;
+                    line-height: 3rem;
+                }
             }
         }
     }
@@ -51,7 +60,7 @@
         }
 
         > ul {
-            height: 100%;
+            height: 90%;
 
             &::before {
                 content: "";
