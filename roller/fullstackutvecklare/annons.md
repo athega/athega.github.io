@@ -65,4 +65,3 @@ Din ansökan
 -----------
 Du är varmt välkommen med din ansökan till oss! Tjänsten söker du genom att skicka ditt CV och ett personligt brev
 till <a href="mailto:rekrytering@athega.se">rekrytering@athega.se</a>. Ange referens: "Fullstackutvecklare".
-<a href="mailto:mari.puke@athega.se">mari.puke@athega.se</a>, 070-915 60 04.

@@ -1,9 +1,11 @@
 ---
 title: Frontendutvecklare
+intro-image: /assets/img/frontend-backend.jpg
+tagline: Frontendutvecklare
+sub-tagline: Systemutveckling av webbgränssnitt
 ---
 
-Frontendutvecklare
-===================
+# {{ page.title }}
 
 Det är systemutveckling av det som ligger närmast och som formar gränssnittet mot användarna.
 En djup förståelse för de tekniker som realiserar ett interaktivt gränssnitt.
