@@ -1,6 +1,12 @@
 ---
 title: "Tillämpad.ai april 2018"
 date: 2018-04-20
+description: "I torsdags höll vi den andra i en serie meetups runt machine learning. Denna gång provade vi ett nytt format med färre presentatörer och mer tid för QnA under presentationerna."
+tags:
+  - blogg
+  - ai
+  - ml
+image_url: https://athega.se/system/uploads/2018/04/ai-meetup2.jpg
 last_updated_by: peter
 ---
 I torsdags var det åter igen dags för meetup Tillämpad.ai

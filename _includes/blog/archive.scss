@@ -1,2 +1,32 @@
 .blog-archive {
+  > ul.featured {
+    list-style: none;
+    padding: 0;
+
+    > li {
+      clear: left;
+      width: 100%;
+      margin-bottom: 1.5em;
+
+      > a {
+        color: inherit;
+      }
+
+      > a:hover {
+        color: #f60;
+        text-decoration: none;
+      }
+    }
+
+    figure {
+      margin: 0 1em 1em 0;
+    }
+
+    @media (min-width: 848px) {
+      figure {
+        float: left;
+        width: 30%;
+      }
+    }
+  }
 }
