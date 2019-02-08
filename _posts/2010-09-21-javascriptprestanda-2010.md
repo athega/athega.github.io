@@ -10,15 +10,15 @@ Testet jag körde är samma <a href="https://johanberonius.github.io/sudokusolve
 
 Internet Explorer står för den överlägset största förbättringen och är verkligen med i matchen nu. Opera har gjort ett rejält ryck och kapat sin tid till en bråkdel. Firefox har förbättrat sin tid lite men har ändå helt plötsligt hamnat efter de andra. Chrome och Safari har putsat mer marginellt på sina redan låga tider.
 
-<a href="https://johanberonius.github.io/sudokusolver/#CzCJYmBdUXEZADK9UgmAjgFszJIhc" target="_blank"><img class="aligncenter size-full wp-image-755" alt="Tid för att lösa ett Sudoku med JavaScript i olika webbläsare" src="https://athega.se/system/uploads/2010/09/jsgraph2010.png" width="680" height="463" /></a>
+<a href="https://johanberonius.github.io/sudokusolver/#CzCJYmBdUXEZADK9UgmAjgFszJIhc" target="_blank"><img class="aligncenter size-full wp-image-755" alt="Tid för att lösa ett Sudoku med JavaScript i olika webbläsare" src="/assets/legacy/uploads/2010/09/jsgraph2010.png" width="680" height="463" /></a>
 
 <em>Uppdatering:</em> Grafen ovan är kompletterad med värden för senaste betan av Firefox 4, beta 6, där man kan se att hastigheten tagit ett litet steg tillbaka. Däremot verkar det vara bra saker på gång eftersom den senaste "nightly", beta 7 pre, visar att de klippt över hälften på tiden och hamnar på par med Chrome.
 
-<a href="https://johanberonius.github.io/sudokusolver/#CzCJYmBdUXEZADK9UgmAjgFszJIhc" target="_blank"><img class="aligncenter size-full wp-image-755" alt="Tid för att lösa ett Sudoku med JavaScript i olika webbläsare på OSX" src="https://athega.se/system/uploads/2010/09/jsgraph-osx.png" width="600" height="463" /></a>
+<a href="https://johanberonius.github.io/sudokusolver/#CzCJYmBdUXEZADK9UgmAjgFszJIhc" target="_blank"><img class="aligncenter size-full wp-image-755" alt="Tid för att lösa ett Sudoku med JavaScript i olika webbläsare på OSX" src="/assets/legacy/uploads/2010/09/jsgraph-osx.png" width="600" height="463" /></a>
 
 På Mac OSX ser det ut så här. Där skiljer ingenting mellan Firefox 3.6 och Firefox 4.0 beta 6. Men "nightly" beta 7 pre knappar in på sina fortfarande snabbare konkurrenter. Framförallt Chrome 6 imponerar stort med bara en halv sekund.
 
-<a href="https://johanberonius.github.io/sudokusolver/#CzCJYmBdUXEZADK9UgmAjgFszJIhc" target="_blank"><img class="aligncenter size-full wp-image-755" alt="Tid för att lösa ett Sudoku med JavaScript i olika webbläsare på olika mobiltelefoner" src="https://athega.se/system/uploads/2010/09/jsgraph-mobile.png" width="500" height="463" /></a>
+<a href="https://johanberonius.github.io/sudokusolver/#CzCJYmBdUXEZADK9UgmAjgFszJIhc" target="_blank"><img class="aligncenter size-full wp-image-755" alt="Tid för att lösa ett Sudoku med JavaScript i olika webbläsare på olika mobiltelefoner" src="/assets/legacy/uploads/2010/09/jsgraph-mobile.png" width="500" height="463" /></a>
 
 På mobiltelefoner går det förstås inte lika snabbt. Här blir det inte heller så mycket en jämförelse mellan olika webbläsare utan mellan olika mobilplattformar och dess hårdvara. Det kan ändå ge en liten uppfattning vad man har för javascriptprestanda att tillgå när man utvecklar webbapplikationer för en mobil jämfört med en fullstor webbläsare.
 Om du klickar på grafen och kör detta test på din mobil, skriv gärna resultatet som en tweet.

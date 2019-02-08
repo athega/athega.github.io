@@ -3,7 +3,7 @@ title: "UR delar med sig med hjälp av WOA-teknik"
 date: 2009-12-03
 last_updated_by: peter
 ---
-<img class="size-full wp-image-527 alignleft" title="ur" src="https://athega.se/system/uploads/2009/12/ur2.jpg" alt="ur" width="142" height="142" />
+<img class="size-full wp-image-527 alignleft" title="ur" src="/assets/legacy/uploads/2009/12/ur2.jpg" alt="ur" width="142" height="142" />
 
 Användandet av Web Oriented Architecture (WOA) med hjälp av lättviktiga APIer (gränssnitt) gör det möjligt att kombinera och samköra information från olika leverantörer och därigenom skapa nya tjänster och applikationer. Tekniken innebär nya affärsmöjligheter för företag som vågar tänka annorlunda, men ställer samtidigt nya krav på öppenhet av strategisk information.
 

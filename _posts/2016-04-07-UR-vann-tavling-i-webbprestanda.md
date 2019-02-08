@@ -6,7 +6,7 @@ tags:
   - nyhetsbrev
   - webbprestanda
 last_updated_by: peter
-image_url: https://athega.se/system/uploads/2016/04/urskola.jpg
+image_url: /assets/legacy/uploads/2016/04/urskola.jpg
 ---
 ##ur.se (numera urskola.se) laddar klart på 610 millisekunder. Det räckte för att vinna Sveriges största tävling i webbprestanda.
 

@@ -3,7 +3,7 @@ title: "Ruby on Rails under Nginx med Phusion Passenger"
 date: 2009-04-16
 last_updated_by: peter
 ---
-<a href="http://wiki.nginx.org/"><img class="size-full wp-image-135" title="nginx-logo" src="https://athega.se/system/uploads/2009/04/nginx-logo.png" alt="Nginx" width="350" height="90" /></a>
+<a href="http://wiki.nginx.org/"><img class="size-full wp-image-135" title="nginx-logo" src="/assets/legacy/uploads/2009/04/nginx-logo.png" alt="Nginx" width="350" height="90" /></a>
 
 Sedan några timmar så kan man köra <a href="http://www.modrails.com/">Phusion Passenger</a> under <a href="http://wiki.nginx.org/Main">Nginx!</a>
 
@@ -30,6 +30,6 @@ I den nya versionen har Phusion-grabbarna förutom att man nu kan använda sig a
 <h2>Nginx</h2>
 Nginx driver ett flertal stora webbplatser, såsom <a class="external text" title="http://www.wordpress.com" rel="nofollow" href="http://www.wordpress.com/">WordPress</a>, <a class="external text" title="http://www.hulu.com" rel="nofollow" href="http://www.hulu.com/">Hulu</a>, <a class="external text" title="http://www.github.com/" rel="nofollow" href="http://www.github.com/">Github</a>, och <a class="external text" title="http://www.ohloh.net/" rel="nofollow" href="http://www.ohloh.net/">Ohloh</a>. Den serverar mer än två miljoner webbplatser och är därmed den näst populäraste webbservern under Linux.
 
-<img class="alignnone size-full wp-image-137" title="Fördelning mellan olika webbservrar" src="https://athega.se/system/uploads/2009/04/web_servers_pie_chart.png" alt="Fördelning mellan olika webbservrar" width="300" height="150" />
+<img class="alignnone size-full wp-image-137" title="Fördelning mellan olika webbservrar" src="/assets/legacy/uploads/2009/04/web_servers_pie_chart.png" alt="Fördelning mellan olika webbservrar" width="300" height="150" />
 
 // [Peter](/peter)

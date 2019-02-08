@@ -3,7 +3,7 @@ title: "Mountain.rb - Dag 1"
 date: 2010-10-19
 last_updated_by: peter
 ---
-<a href="https://athega.se/system/uploads/2010/10/flatirons.jpg"><img class="alignnone size-full wp-image-886" title="Flat Irons" src="https://athega.se/system/uploads/2010/10/flatirons.jpg" alt="Flat Irons Boulder" width="750" height="374" /></a>
+<a href="/assets/legacy/uploads/2010/10/flatirons.jpg"><img class="alignnone size-full wp-image-886" title="Flat Irons" src="/assets/legacy/uploads/2010/10/flatirons.jpg" alt="Flat Irons Boulder" width="750" height="374" /></a>
 Athegas Peter Hellberg (<a href="http://twitter.com/peterhellberg"><span style="color: #888888;">@peterhellberg</span></a>) och Andrew Crookston (<a href="http://twitter.com/acrookston"><span style="color: #888888;">@acrookston</span></a>) har precis spenderat några dagar i Boulder, Colorado, USA (<a title="Google Maps karta" href="http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=Boulder,+CO,+usa&sll=59.297891,18.044232&sspn=0.01238,0.035019&ie=UTF8&hq=&hnear=Boulder,+Colorado&ll=40.014994,-105.335884&spn=0.148562,0.410957&t=h&z=12">karta</a>) för att medverka på konferensen <a href="http://mountainrb.com">Mountain.rb</a> – <em>"A ruby pioneers conference" .</em>
 
 

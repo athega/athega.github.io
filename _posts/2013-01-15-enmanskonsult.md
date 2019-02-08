@@ -23,7 +23,7 @@ Kontakta oss om du är nyfiken. torbjorn @ athega.se
 
 -----------------------------------------------------------------
 
->![Peter](https://athega.se/system/uploads/2013/10/hoger_peter.png)
+>![Peter](/assets/legacy/uploads/2013/10/hoger_peter.png)
 > 
 > Peter berättar om Athega
 >------------ 

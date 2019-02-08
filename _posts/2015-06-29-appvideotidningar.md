@@ -5,7 +5,7 @@ description: "Läs om hur hybridtänket tar apparna till nya höjder."
 tags:
   - nyhetsbrev
 last_updated_by: peter
-image_url: https://athega.se/system/uploads/2015/06/larsdbw.jpg
+image_url: /assets/legacy/uploads/2015/06/larsdbw.jpg
 ---
 ### Läs om hur hybridtänket tar apparna till nya höjder.
 
@@ -14,7 +14,7 @@ image_url: https://athega.se/system/uploads/2015/06/larsdbw.jpg
 ##### Kan man kalla nya Fotbollskanalen en appvideotidning?
 – Varför inte? Innehållet i appen byts ut hela tiden, och mycket av innehållet är videosnuttar. När redaktörerna skriver i sitt cms-system så kommer det dom ser på sin skärm se likadant ut i appen inom en timme. Allt ändras dessutom på alla plattformar samtidigt, iOS, Android och webb. Skulle vi göra en native app med samma funktionalitet skulle det ta flera timmar att få ut det i Google Play eller i en Android-app och en vecka i en iOS-app som ska upp på App Store. Så den är snabb som en tidning på webben, fast gjord som en app.
 
-![Lars Dahlöf](https://athega.se/system/uploads/2015/06/larsd.jpg)
+![Lars Dahlöf](/assets/legacy/uploads/2015/06/larsd.jpg)
 
 Athega-konsulten Lars Dahllöf är Symbian-veteran från Sony Ericsson, men nu är det apputveckling som gäller: det är roligast.
 

@@ -5,7 +5,7 @@ description: "I huvudet på en datascientist. Möt matematikern som vaskar guld 
 tags:
   - nyhetsbrev
 last_updated_by: peter
-image_url: https://athega.se/system/uploads/2015/04/mark_small.jpg
+image_url: /assets/legacy/uploads/2015/04/mark_small.jpg
 ---
 ### I huvudet på en datascientist. Möt matematikern som vaskar guld i databaser.
 

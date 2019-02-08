@@ -5,7 +5,7 @@ last_updated_by: peter
 ---
 Ett vanligt upplägg för en lastad sajt med någorlunda statiskt innehåll ser ut enligt nedan:
 
-<img class="size-full wp-image-151" title="Internet-Cache-Front" src="https://athega.se/system/uploads/2009/04/img_8759.jpg" alt="Upplägg, lastad sajt" width="640" height="440" />
+<img class="size-full wp-image-151" title="Internet-Cache-Front" src="/assets/legacy/uploads/2009/04/img_8759.jpg" alt="Upplägg, lastad sajt" width="640" height="440" />
 
 I korthet innebär det att den största delen av trafiken hanteras av enkla webbcachear som leverar sidor till slutanvändarna. Med ett visst intervall efterfrågar cachearna frontarna efter nytt innehåll. Frontarna kan exempelvis köra en eller flera Tomcat-instanser som genererar innehållet. På detta sätt kan även riktigt stora siter klara sig på ett tiotal maskiner.
 

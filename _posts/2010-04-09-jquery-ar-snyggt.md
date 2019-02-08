@@ -7,7 +7,7 @@ Större delen av gårdagen ägnades åt en workshop (tack <a href="http://twitte
 
 Min idé var att göra ett lajvflöde av <a href="http://www.flickr.com/">Flickr</a>-bilder och <a href="http://www.twitter.com/">Twitter</a>-postningar baserat på ett givet sökord eller tag.
 
-<a href="https://athega.se/system/uploads/2010/04/athaga.png"><img class="aligncenter size-full wp-image-624" title="athaga" src="https://athega.se/system/uploads/2010/04/athaga.png" alt="" width="532" height="279" /></a>
+<a href="/assets/legacy/uploads/2010/04/athaga.png"><img class="aligncenter size-full wp-image-624" title="athaga" src="/assets/legacy/uploads/2010/04/athaga.png" alt="" width="532" height="279" /></a>
 
 <h2>JSONP</h2>
 Både Flickr och Twitter har rika APIer i <a href="http://www.json.org/">JSON</a>-format som gör det lätt att åstadkomma det jag vill. Då dessa av naturliga skäl inte ligger på samma domän som min labb, kan jag inte göra ett vanligt <a href="http://en.wikipedia.org/wiki/XMLHttpRequest">XHR</a>-anrop eftersom webbläsaren av säkerhetsskäl kastar ett same domain-policy-fel. Räddningen stavas <a href="http://en.wikipedia.org/wiki/JSON#JSONP">JSONP</a>, som helt enkelt wrappar hela JSON-svaret i ett metodanrop. Detta går vi inte in närmare på denna gång, utan konstaterar istället glatt att jQuery har stöd för detta och löser detta under ytan.

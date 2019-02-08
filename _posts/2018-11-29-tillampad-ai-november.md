@@ -21,7 +21,7 @@ _Devin P. Sullivan, Ph.D. Post Doctoral Research Fellow at SciLifeLab.se_
 
 Devin berättade om arbetet som ledde till publikationen:
 [“Deep learning is combined with massive-scale citizen science to improve large-scale image classification”](https://rdcu.be/4ReL),
-samt om [Protein Atlas](shttps://www.proteinatlas.org/).
+samt om [Protein Atlas](https://www.proteinatlas.org/).
 
 Vi fick se spännande bilder på celler och höra om intressanta utmaningar som uppstår när
 vetenskap och forskning möter spelare på internet i Eve Online.

@@ -7,7 +7,7 @@ last_updated_by: chrille
 ---
 ## Tre dagar på Queen Elizabeth II Conference Center
 
-![Athegakillar och Big Ben](https://athega.se/system/uploads/2016/03/bigben.jpg)
+![Athegakillar och Big Ben](/assets/legacy/uploads/2016/03/bigben.jpg)
 
 Med ett spann på en genomgång av hur virtuella truckar på Volvo fungerar till vad som är nytt i Spring 5 via en redogörelse för hur man kombinerar att vara långdistanslöpare och blind(!) och hur blockchain-kedjan för Bitcoins fungerar, kan jag lugnt konstatera att [QCon](https://qconlondon.com/) är en bred konferens med något för alla.
 
@@ -27,13 +27,13 @@ Sist i artikeln kan man hitta en lista på de föreläsningar jag hann med för 
 
 » [Mob programming](http://mobprogramming.org/) är take away nummer tre.
 
-![Retro på GitHub](https://athega.se/system/uploads/2016/03/mobprogretro_169.jpg)
+![Retro på GitHub](/assets/legacy/uploads/2016/03/mobprogretro_169.jpg)
 
 Litet roligt att de avslutar varje programmeringssession med en retro, som de checkar in i master.
 
 **Monoliter ersätts av mikrotjänser (microservices)** över hela världen. Om man ska hitta ett genomgående tema under dessa dagar kan man konstatera att det var väldigt många företag som ville berätta om hur de framgångsrikt bytt ut sin monolitiska arkitektur mot mikrotjänster. BBC berättade om sin playtjänst iPlayer och det var ganska spännande att lära sig att de konstant delade upp det som sänds i delar om 80MB som sparas i S3 (Amazon). Tack vare en finurlig S3-tjänst kan man sedan supersnabbt skapa nya filer av dessa delar. På så sätt kan man sätta ihop hela program, videoklipp, sända live, osv. BBC har förmodligen ett bra avtal med Amazon eftersom de skyfflar ut ca **21 TB/dag** till S3.
 
-![BBC iPlayer filhantering](https://athega.se/system/uploads/2016/03/bbc_80mb.jpg)
+![BBC iPlayer filhantering](/assets/legacy/uploads/2016/03/bbc_80mb.jpg)
 
 Netflix, kungen av mikrotjänster, slog ett slag för sitt **Failure driven development**. Det handlar om att konstant och medvetet kasta in fel i sin arkitektur på olika ställen, utan att konsumenten drabbas. De har ett helt batteri med verktyg och strategier att göra detta. Detta känner jag att jag behöver bli bättre på, det är litet av ett annat tänk, som öppnar upp sig och möjliggörs av en mikroservicearkitektur.
 

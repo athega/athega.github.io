@@ -5,7 +5,7 @@ description: "Vi ringde upp och frågade vad teamet tyckte om spelet getKanban"
 tags:
   - nyhetsbrev
 last_updated_by: mats
-image_url: https://athega.se/system/uploads/2013/10/berit-scharfbw.png
+image_url: /assets/legacy/uploads/2013/10/berit-scharfbw.png
 ---
 Spelet fick högt betyg.
 ------------

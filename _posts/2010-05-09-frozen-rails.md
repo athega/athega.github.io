@@ -30,7 +30,7 @@ Jag har sedan jag bloggade om MongoDB <a href="http://athega.se/2009/07/06/mongo
 	<li>Servern har en <a href="http://www.mongodb.org/display/DOCS/Server-side+Code+Execution#Server-sideCodeExecution-Storingfunctionsserverside">JavaScript parser</a></li>
 </ul>
 <h2>Mobile Web Apps with Rails 3 (Yehuda Katz, <a href="http://twitter.com/wycats">@wycats</a>)</h2>
-<img class="alignnone size-full wp-image-661" title="Yehuda Katz på Frozen Rails" src="https://athega.se/system/uploads/2010/05/Screen-shot-2010-05-09-at-23.34.43-.png" alt="Yehuda Katz på Frozen Rails" width="750" height="493" />
+<img class="alignnone size-full wp-image-661" title="Yehuda Katz på Frozen Rails" src="/assets/legacy/uploads/2010/05/Screen-shot-2010-05-09-at-23.34.43-.png" alt="Yehuda Katz på Frozen Rails" width="750" height="493" />
 
 Även om jag sett föreläsningen tidigare (Efter <a href="http://phillyemergingtech.com/">Philly ETE, Emerging Technologies for the Enterprise</a>) så var det bra att få se den live så att säga.
 
@@ -51,7 +51,7 @@ Projekt:
 </ul>
 <h2>Cucumbered (Joseph Wilk, <a href="http://twitter.com/josephwilk">@josephwilk</a>)</h2>
 <p style="text-align: right;">
-<img class="size-full" title="Frozen Rails Cucumbered" src="https://athega.se/system/uploads/2010/05/frozen_rails_cucumbered.jpg" alt="Frozen Rails Cucumbered" width="750" height="258" /><br />
+<img class="size-full" title="Frozen Rails Cucumbered" src="/assets/legacy/uploads/2010/05/frozen_rails_cucumbered.jpg" alt="Frozen Rails Cucumbered" width="750" height="258" /><br />
 <small>(Foto: <a href="http://twitter.com/chrisco">Chris Comella</a>)</small>
 </p>
 Den bästa föreläsningen på hela konferensen stod <a href="http://blog.josephwilk.net/">Joseph Wilk</a> för, ämnet var <a href="http://cukes.info/">Cucumber</a> och mer specifikt hur man ser till att testerna går så fort som möjligt. (Cucumber 0.7 är för övrigt så galet snabb att det inte ens är roligt nu när de bytt från <a href="http://treetop.rubyforge.org/">TreeTop</a> till <a href="http://www.complang.org/ragel/">Ragel</a>)
@@ -91,4 +91,4 @@ Några av punkterna:
 <h2>Perfectionism (Jarkko Laine, <a href="http://twitter.com/jarkko">@jarkko</a>)</h2>
 Priset för den nervösaste killen på hela konferensen måste ha gått till Jarkko. Förutom detta var det en grym sista föreläsning om hur vi perfektionister ofta har problem med att skeppa något innan det är helt <strong>perfekt</strong>. (vilket det kanske aldrig blir) Han rekomenderade även boken <a href="http://www.cluetrain.com/book/index.html">The Cluetrain Manifesto</a> (hela bokens text)
 
-<a href="https://athega.se/system/uploads/2010/05/perfection.png"><img class="alignnone size-full wp-image-656" title="SHIP!" src="https://athega.se/system/uploads/2010/05/perfection.png" alt="Perfection, Minimally Viable Product, Markets are conversations, Ship!" width="750" height="690" /></a>
+<a href="/assets/legacy/uploads/2010/05/perfection.png"><img class="alignnone size-full wp-image-656" title="SHIP!" src="/assets/legacy/uploads/2010/05/perfection.png" alt="Perfection, Minimally Viable Product, Markets are conversations, Ship!" width="750" height="690" /></a>

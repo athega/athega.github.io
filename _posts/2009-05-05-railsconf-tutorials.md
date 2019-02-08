@@ -3,7 +3,7 @@ title: "RailsConf: Tutorials"
 date: 2009-05-05
 last_updated_by: peter
 ---
-<img src="https://athega.se/system/uploads/2009/05/ruby_dinette.jpg" alt="ruby_dinette" title="ruby_dinette" width="750" height="280" class="alignnone size-full wp-image-172" />
+<img src="/assets/legacy/uploads/2009/05/ruby_dinette.jpg" alt="ruby_dinette" title="ruby_dinette" width="750" height="280" class="alignnone size-full wp-image-172" />
 
 <h2 id="jruby_on_rails_nick_sieger_sun_microsystems">JRuby on Rails - Nick Sieger (<a href="http://sun.com">SUN Microsystems</a>)</h2>
 
@@ -62,6 +62,6 @@ huvudutvecklaren av <a href="http://rack.rubyforge.org/">Rack</a> sätter sig br
   <li><a href="http://blogs.sun.com/arungupta/entry/rails_conf_2009_day_1">http://blogs.sun.com/arungupta/entry/rails_conf_2009_day_1</a></li>
 </ul>
 
-<img src="https://athega.se/system/uploads/2009/05/gae_hackathon.png" alt="gae_hackathon" title="gae_hackathon" width="750" height="818" class="alignnone size-full wp-image-176" />
+<img src="/assets/legacy/uploads/2009/05/gae_hackathon.png" alt="gae_hackathon" title="gae_hackathon" width="750" height="818" class="alignnone size-full wp-image-176" />
 
 // [Peter](/peter)

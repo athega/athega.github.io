@@ -102,7 +102,7 @@ Jag hade verkligen sett fram emot <a href="http://twitter.com/jimweirich">Jim We
 <h3 id="artificial_stupidity_adding_smarts_to_yer_kode_with_a_little_machine_learning">Artificial stupidity, adding smarts to yer kode with a little machine learning</h3>
 Konferensens tyngsta föreläsning (med råge) stod <a href="http://twitter.com/daksis">Randall Thomas</a> från <a href="http://www.engineyard.com/">Engine Yard</a> för.
 
-<img class="alignnone size-full wp-image-730" title="The future is about information, not data" src="https://athega.se/system/uploads/2010/05/the_future_is_about_information.jpg" alt="" width="750" height="376" />
+<img class="alignnone size-full wp-image-730" title="The future is about information, not data" src="/assets/legacy/uploads/2010/05/the_future_is_about_information.jpg" alt="" width="750" height="376" />
 
 Ämnet var datautvinning genom att använda statistikspråket <a href="http://www.r-project.org/">R</a> och <a href="http://rubyforge.org/projects/rsruby/">RSRuby</a>. Den enligt mig intressantaste delen av föreläsningen bestod i användningen av en <a href="http://en.wikipedia.org/wiki/Support_vector_machine">support vector machine</a> (KSVM i R) för att gruppera data och sedan använda detta för rekomendationer.
 

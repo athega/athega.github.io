@@ -9,7 +9,7 @@ image_url: http://athega.se/images/employees/chrille/wide.jpg
 ---
 Pingdom har publicerat en artikel om aftonbladet.se där Athegas Christian Lizell beskriver vad det krävs för att hålla Sveriges största webbsajt rullande. 
 
-![Christian Lizell](https://athega.se/system/uploads/2013/10/chrille.jpg)
+![Christian Lizell](/assets/legacy/uploads/2013/10/chrille.jpg)
 
 Lite siffror
 

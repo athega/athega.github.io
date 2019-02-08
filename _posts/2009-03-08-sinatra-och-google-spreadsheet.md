@@ -5,7 +5,7 @@ last_updated_by: peter
 ---
 Efter att ha sett scriptet <a href="http://github.com/timhaines/iphone-dev-tweeters-/blob/edf4ea86f3f6c9b425d2fe7cb22ba394560ed378/follow_iphone_devs.rb">follow_iphone_devs.rb</a> fick jag idén att kombinera <a href="http://www.sinatrarb.com/">Sinatra</a> och <a href="http://github.com/gimite/google-spreadsheet-ruby/tree/master">google-spreadsheet-ruby</a> som ett exempel på vad man kan göra i Ruby om man inte har behov av ett större ramverk som <a href="http://rubyonrails.org/">Ruby on Rails</a>.
 
-<a href="http://www.sinatrarb.com/"><img class="size-full wp-image-73 alignnone" src="https://athega.se/system/uploads/2009/03/sinatra.png" alt="Sinatra" width="315" height="73" /></a>
+<a href="http://www.sinatrarb.com/"><img class="size-full wp-image-73 alignnone" src="/assets/legacy/uploads/2009/03/sinatra.png" alt="Sinatra" width="315" height="73" /></a>
 
 Sinatra är ett DSL för att snabbt och enkelt skapa webbapplikationer i Ruby:
 
@@ -151,11 +151,11 @@ Om allt går som det ska så ska vi nu ha en server på <a href="http://localhos
 
 Från ett kalkylblad på Google Spreadsheet:
 
-<img src="https://athega.se/system/uploads/2009/03/data-for-the-sinatra-google-spreadsheet.png" alt="Data från Google Spreadsheet" title="Kalkylbladet som innehåller datat" width="640" height="416" class="size-full wp-image-90" />
+<img src="/assets/legacy/uploads/2009/03/data-for-the-sinatra-google-spreadsheet.png" alt="Data från Google Spreadsheet" title="Kalkylbladet som innehåller datat" width="640" height="416" class="size-full wp-image-90" />
 
 Till en sida serverad med Sinatra:
 
-<img src="https://athega.se/system/uploads/2009/03/sinatra-and-google-spreadsheet.png" alt="Post om Ruby" title="Post om Ruby" width="464" height="227" class="size-full wp-image-86" />
+<img src="/assets/legacy/uploads/2009/03/sinatra-and-google-spreadsheet.png" alt="Post om Ruby" title="Post om Ruby" width="464" height="227" class="size-full wp-image-86" />
 
 Att man kan åstadkomma så mycket med under 100 rader Rubykod är rätt imponerande, speciellt om man tänker på att vi då även räknar in kommentarer och mallar.
 

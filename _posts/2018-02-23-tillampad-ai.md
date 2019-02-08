@@ -8,11 +8,11 @@ tags:
   - ai
   - ml
 last_updated_by: chrille
-image_url: https://athega.se/system/uploads/2018/02/meetup.jpg
+image_url: /assets/legacy/uploads/2018/02/meetup.jpg
 ---
 I torsdags höll vi den första i en serie meetups runt machine learning. Vi kallade kvällen för tillämpad.ai då vi vill fokusera på verkliga tillämpningar.
 
-![Krister pratar AI](https://athega.se/system/uploads/2018/02/meetup.jpg)
+![Krister pratar AI](/assets/legacy/uploads/2018/02/meetup.jpg)
 
 Bra uppslutning och väldigt trevliga diskussioner. Programmet var inspirerande och presentatörer var Niklas Lohmann, Leif Jonsson samt Krister Söderström enligt programpunkterna nedan.
 

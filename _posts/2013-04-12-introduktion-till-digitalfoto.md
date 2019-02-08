@@ -11,4 +11,4 @@ med enkla medel får bättre slutresultat.
 
 [Presentationen på Speaker Deck](https://speakerdeck.com/peterhellberg/introduction-to-digital-photography)
 [![Introduction to Digital
-Photography](https://athega.se/system/uploads/2013/04/introduction-to-digital-photography.png)](https://speakerdeck.com/peterhellberg/introduction-to-digital-photography)
+Photography](/assets/legacy/uploads/2013/04/introduction-to-digital-photography.png)](https://speakerdeck.com/peterhellberg/introduction-to-digital-photography)

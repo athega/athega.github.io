@@ -3,7 +3,7 @@ title: "Därför är TV4 så slimmade"
 date: 2013-10-25
 description: "TV4 har ett slimmat team för digitala medier samtidigt som kraven är höga."
 last_updated_by: mats
-image_url: https://athega.se/system/uploads/2013/10/per-1.png
+image_url: /assets/legacy/uploads/2013/10/per-1.png
 ---
 > TV4 har ett slimmat team för digitala medier samtidigt som kraven är höga. Teknikchef Per Åström kan förklara hur de löser den ekvationen.
 ------------
@@ -21,7 +21,7 @@ Nya idéer måste fram snabbt och då ställs det krav på den underliggande tek
 
 – 2009 tog vi beslut att utveckla nya tekniska plattformar. Vi byggde bland annat API:er, dvs standardiserade gränssnitt till alla grunddata. Tänk dig att du har utvecklat en applikation för att visa omröstningar i mobilen. Vill du sen göra samma sak på en dator, gps-skärm i bilen eller på en Xbox så slipper du starta från noll. Med API:er går utvecklingen mycket snabbare.
 
-![Per Åström](https://athega.se/system/uploads/2013/10/pera.jpg)
+![Per Åström](/assets/legacy/uploads/2013/10/pera.jpg)
 
 Per Åströms utvecklingsteam har lagt ut driften av all IT och hyr funktioner och tjänster på nätet.
 

@@ -5,7 +5,7 @@ last_updated_by: tobbe
 ---
 > Efterfrågan kring erfarenhet av node.js och isomorfiska tillämpningar har fullkomligt exploderat den senaste tiden.
 
-<img src="https://athega.se/system/uploads/2016/02/js_cropped-1.jpg" alt="JavaScript">
+<img src="/assets/legacy/uploads/2016/02/js_cropped-1.jpg" alt="JavaScript">
 
 Vi kommer därför att satsa på just detta under våra internutbildningssessioner under våren. Vi kör, som vanligt, en fredagseftermiddag (14:00 - ca 16:30) varje månad fram till sommaren.
 

@@ -29,7 +29,7 @@ foreach my $post (@$posts) {
     @tags = @{$post->{tags_array}} if ref $post->{tags_array} eq 'ARRAY';
 
     foreach my $field ('content', 'image_url') {
-        $post->{$field} =~ s((https?://(www\.)?athega\.se)?/system/uploads/)(https://athega.se/system/uploads/)g;
+        $post->{$field} =~ s((https?://(www\.)?athega\.se)?/system/uploads/)(/assets/legacy/uploads/)g;
     }
 
     open MD, '>', $file or die $!;

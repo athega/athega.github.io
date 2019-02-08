@@ -10,7 +10,7 @@ last_updated_by: andreas
 ---
 Månadens internutbildning handlade om [React Native](https://facebook.github.io/react-native/docs/getting-started.html) utifrån ett iOS perspektiv.
 
-![](https://athega.se/system/uploads/2017/05/reactnativeiphone.jpg)
+![](/assets/legacy/uploads/2017/05/reactnativeiphone.jpg)
 
 React Native är Facebooks lösning för att skriva mobilappar med JavaScript för både iPhone och Android. React Native släpptes som öppen källkod 2015 och är en utbyggnad av [React](https://facebook.github.io/react/) för webutveckling, som i sin tur  presenterades 2013. React Native är som React, men använder inbyggda komponenter istället för webbkomponenter som byggstenar. Så för utveckling gentemot iPhone är en del problem och lösningar desamma som vid utveckling med Apples egna språk och tekniker i Xcode.
 

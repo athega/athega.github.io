@@ -5,7 +5,7 @@ last_updated_by: peter
 ---
 Under våren har jag jobbat med att trimma en webbapplikation som levererar nätupplagan av en av Sveriges större tidningar. CMS-verktyget som används är <a href="http://www.escenic.com">Escenic</a> i version 4.x och det kommer med en rad egna JSP-tagar. En av dom ska man dock akta sig för – <code><section:ancestorView></code>. Den är faktiskt inte så svår att leva utan heller. I den här artikeln visar jag hur.
 
-<img class="size-full wp-image-256 " title="Responstid" src="https://athega.se/system/uploads/2009/07/response_time.jpg" alt="Responstid före och efter jag bytt ut <section:ancerstorView>" width="615" height="276" />
+<img class="size-full wp-image-256 " title="Responstid" src="/assets/legacy/uploads/2009/07/response_time.jpg" alt="Responstid före och efter jag bytt ut <section:ancerstorView>" width="615" height="276" />
 
 <h2>Vad är ancestorView?</h2>
 <code>ancestorView</code> används för att skapa en hierarkisk vy av sektioner utgående från den sektion du anger. Inget speciellt avancerat eller konstigt. Det borde inte heller vara jobbigt för systemet att skapa vyn, tyvärr sker något under ytan som ställer till det. Berätta gärna vad i kommentarerna. ;)

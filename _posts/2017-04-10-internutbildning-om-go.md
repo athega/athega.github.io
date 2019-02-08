@@ -22,5 +22,5 @@ läsa igenom artikeln [Visualizing Concurrency in Go](https://divan.github.io/po
 
 / [Peter](/peter)
 
-![Gopher](https://athega.se/system/uploads/2017/04/gopher-brown-beard.png)
+![Gopher](/assets/legacy/uploads/2017/04/gopher-brown-beard.png)
 

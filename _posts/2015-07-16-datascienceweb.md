@@ -5,11 +5,11 @@ description: "Vad ska vi tänka på när vi testar våra hypoteser och vill få 
 tags:
   - nyhetsbrev
 last_updated_by: peter
-image_url: https://athega.se/system/uploads/2015/07/ab.png
+image_url: /assets/legacy/uploads/2015/07/ab.png
 ---
 #### Att testa en hypotes
 <div style=" float: right; margin: 0 0 10px 10px; ">
-<img src="https://athega.se/system/uploads/2015/07/ab.png"/>
+<img src="/assets/legacy/uploads/2015/07/ab.png"/>
 </div> 
 Hypotesprövning innebär att vi först bestämmer oss för vad vi vill testa. Parametern kan vara antal besökare på en sida och hypotesen att en av två versioner av sidan attraherar besökaren mera. Dock vet vi inte vilken version. Tänk en försäljningssida där besökaren ska klicka på en köp-knapp. Hur ska den knappen och texten se ut för att generera mest försäljning? Vi kan testa två versioner av sidan och mäta försäljningen. Allmänt kallas detta A/B testning. Vi testar två olika fall för att se vilket som genererar högst värde av den parameter vi anser är viktig. Fördelningen eller antal procent som aktiveras kallas konverteringsgrad.
 
@@ -47,7 +47,7 @@ En Data-scientist är en utbildad matematiker som är mycket kunnig i statistisk
 <div style="margin: 0 0 10px 10px; ">
 Läs mer om Mark som vaskar guld i databaser<br>
 <a href="/blogg/2015/04/14/datascientist">
-<img src="https://athega.se/system/uploads/2015/04/mark_small.jpg"/>
+<img src="/assets/legacy/uploads/2015/04/mark_small.jpg"/>
 </a>
 </div>
 

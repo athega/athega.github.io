@@ -5,7 +5,7 @@ tags:
   - codebase 2016 athegas hackday
 last_updated_by: johan
 ---
-<img src="https://athega.se/system/uploads/2016/11/friiberghs.jpg" alt="Friiberghs Herrgård">
+<img src="/assets/legacy/uploads/2016/11/friiberghs.jpg" alt="Friiberghs Herrgård">
 
 Traditionsenligt arrangerade vi vår Codebase på hösten, men två saker var lite annorlunda i år. Det första var att vi inte badade i bräckt vatten i Östersjön utan vi besökte Friiberghs Herrgård i Mälaren (Grodhavet). Kontrasten är stor mellan Ålandshav och Ekoln men båda miljöerna lämpar sig för kreativt arbete i annorlunda miljö. Ett tydligt avbräck från vardagen.
 Den andra skillnaden var att det flesta jobbade med ett gemensamt projekt som påbörjats tidigare i samband med våra gemensamma athegafredagar. Syftet är att renovera och förnya de kreativa lösningar vi använder på vår jullunch. Funktioner från inbjudan, genomförande av lunchen till uppföljning.
@@ -16,7 +16,7 @@ Mikael jobbade med presentation av livestatistik. Han konsumerar
 Server-Sent Events  (https://www.html5rocks.com/en/tutorials/eventsource/basics/) och med hjälp av dessa renderar han bubbelgrafer med D3.js (https://d3js.org/). 
 I takt med att händelser av en viss typ anländer till webbklienten så växer eller krymper de olika bubblorna.
 
-<img src="https://athega.se/system/uploads/2016/11/neopixel_codebase.jpg" alt="Neopixel Codebase 2016" style="float: left; margin: 0 1.5em 1.5em 0;">
+<img src="/assets/legacy/uploads/2016/11/neopixel_codebase.jpg" alt="Neopixel Codebase 2016" style="float: left; margin: 0 1.5em 1.5em 0;">
 
 Torbjörn och Mats bygger bygger ljuseffekter till en fysisk inloggningsportal som ska användas när gästerna ankommer till lunchen. De använder Led-lampor från Neopixel som de styr med hjälp av en Tessel och tar fram lämpliga effekter som kan triggas av ankomsthändelser som fotografering av deltagaren. Tessel är en hårdavuutvecklingsplatform (IoT) som kan programmeras med Javascript och Node API:er. Händelser konsumeras via Server-Sent Events. 
 

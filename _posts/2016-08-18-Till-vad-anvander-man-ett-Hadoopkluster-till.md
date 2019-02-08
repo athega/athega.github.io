@@ -6,7 +6,7 @@ last_updated_by: peter
 ##Ett försök att identifiera typiska användningsfall för ett Hadoopkluster
 Här är en liten översikt över Hadoop för att diskutera den övertro och förvirring som finns kring dess användning. Jag hoppas det ger er en intressant läsning och överblick.
 
-![Datorskärm](https://athega.se/system/uploads/2016/08/dator_arbetsplats.jpg)
+![Datorskärm](/assets/legacy/uploads/2016/08/dator_arbetsplats.jpg)
 
 Hadoop är ett högpresterande datorkluster som fungerar som en enhet. Det betyder att dina befintliga datorer effektivt kan arbeta tillsammans som en logisk enhet.
 

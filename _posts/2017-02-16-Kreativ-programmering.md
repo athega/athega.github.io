@@ -9,11 +9,11 @@ tags:
   - shader art
   - glsl
 last_updated_by: johan
-image_url: https://athega.se/system/uploads/2017/02/athega-creative-coding.jpg
+image_url: /assets/legacy/uploads/2017/02/athega-creative-coding.jpg
 ---
 <figure style="margin:0">
     <a href="https://www.vertexshaderart.com/">
-        <img src="https://athega.se/system/uploads/2017/02/vertexshaderart.jpg" alt="VertexShaderArt.com">
+        <img src="/assets/legacy/uploads/2017/02/vertexshaderart.jpg" alt="VertexShaderArt.com">
     </a>
 </figure>
 
@@ -22,7 +22,7 @@ Nu i februari gjorde vi det som en programmeringsutmaning som gick ut på att li
 
 <figure style="float:right;clear:right;margin:1em;">
     <a href="https://slides.com/johanberonius/shader-art/fullscreen">
-        <img src="https://athega.se/system/uploads/2017/02/athega-creative-coding.jpg" alt="Creative Coding - Intro presentation">
+        <img src="/assets/legacy/uploads/2017/02/athega-creative-coding.jpg" alt="Creative Coding - Intro presentation">
         <figcaption>Presentation av WebGL, GLSL och<br>VertexShaderArt</figcaption>
     </a>
 </figure>
@@ -34,7 +34,7 @@ Poängen är helt enkelt att göra något fint och antagligen totalt onödigt, m
 
 <figure style="float:right;clear:right;margin:1em;">
     <a href="https://www.vertexshaderart.com/art/mAZixq6fNzd7qSpQs">
-        <img src="https://athega.se/system/uploads/2017/02/technoball.jpg" alt="technoball">
+        <img src="/assets/legacy/uploads/2017/02/technoball.jpg" alt="technoball">
         <figcaption>VertexShaderArt: technoball</figcaption>
     </a>
 </figure>
@@ -48,7 +48,7 @@ Därmed behöver man inte sätta upp någon utvecklingsmiljö eller installera a
 
 <figure style="float:right;clear:right;margin:1em;">
     <a href="https://www.vertexshaderart.com/art/Ghsjg9yjpwFdatBgX">
-        <img src="https://athega.se/system/uploads/2017/02/flowerworm.jpg" alt="flowerworm">
+        <img src="/assets/legacy/uploads/2017/02/flowerworm.jpg" alt="flowerworm">
         <figcaption>VertexShaderArt: flowerworm</figcaption>
     </a>
 </figure>
