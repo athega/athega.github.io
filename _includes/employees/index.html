@@ -1,0 +1,13 @@
+<ul class="employees">
+    {% for employee in site.employees %}
+    <li>
+        <a href="{{ employee.url }}" title="Läs mer om: {{ employee.name }}">
+            {% if employee.thumb %}
+            <figure><img src="{{ employee.thumb }}"></figure>
+            {% endif %}
+            <h3>{{ employee.title }}</h3>
+            <p>{{ employee.description }}</p>
+        </a>
+    </li>
+    {% endfor %}
+</ul>

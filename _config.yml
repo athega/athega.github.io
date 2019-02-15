@@ -2,13 +2,17 @@ exclude: [".gitignore", ".ruby-version", "README.md", "Gemfile", "Gemfile.lock"]
 
 highlighter: rouge
 
-production_url : https://athega.github.io
+production_url : https://athega.se
 
 lsi: true
 
 permalink: /blogg/:year/:month/:day/:title
 
 data_dir: _includes
+
+collections:
+  employees:
+    output: true
 
 sass:
   sass_dir: _includes
