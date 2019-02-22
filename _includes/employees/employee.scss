@@ -1,0 +1,40 @@
+.employee-index {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+
+  > li {
+    width: 33%;
+
+    @media (min-width: 48em) {
+      width: 10%;
+    }
+  }
+}
+.employee-index::after {
+  content: "";
+  flex: auto;
+}
+
+.employee-profile {
+  @media (max-width: 847px) {
+    .portrait {
+      max-width: 105vw;
+      margin-left: -6%;
+    }
+  }
+
+  h1 {
+    margin-bottom: 0;
+  }
+
+  .title {
+    color: #aaa;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.67em;
+  }
+}

@@ -2,6 +2,8 @@
 title: Om oss
 ---
 
+{% include employees/index.html %}
+
 # {{ page.title }}
 
 <a href="https://1997.athega.se" title="Athegas maskot för drygt 20 år sedan">
