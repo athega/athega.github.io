@@ -1,17 +1,14 @@
 ---
 permalink: /mats
 name: Mats Ygfors
-title: IT management
+title: Management Consultant and solution architect
 image: /assets/img/employees/mats.jpg
 thumb: /assets/img/employees/mats-thumb.jpg
 ---
 {% include employees/profile.html %}
 
-Skapar möjligheter att arbeta på nya och effektiva sätt tillsammans med
-mina uppdagsgivare. Använder gärna Kanban-metoden och modeller som real
-options för att fokusera på helhet och flöde. Gillar modeller för beslutsstöd.
+Angriper problem faktabaserat och pragmatiskt. Hittar rotorsaker och föreslår innovativa lösningar. Använder ofta snabb prototypning för att validera hypoteser och arbeta faktabaserat. 
 
-Jag ler extra brett när jag får programmera i Perl eller stå och prata om
-förändring/förbättringsarbete och Kanban metoden.
+Mats arbetar ofta inom bank och finanas och just nu med AML/KYC och Compliance-frågor.
 
-[Bloggar ibland här...](http://mats.athega.se/)
+Har arbetar många år med Riskmodeller, ML/AI, processförändringar, Utbildningar, AML, Finansiell rapportering, Regelverksprojekt, process- och IT-krav, Arkitektur, Krediter, Fintech, Regtech, Financial Fraud prevention, Open Banking, IFRS9, FINREP, COREP, AML3, AML4, 4AMLD, Anacredit, MiFID mm.
