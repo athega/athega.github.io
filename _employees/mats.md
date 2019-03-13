@@ -1,7 +1,7 @@
 ---
 permalink: /mats
 name: Mats Ygfors
-title: Management Consultant and solution architect
+title: Managementkonsult och lösningsarkitekt
 image: /assets/img/employees/mats.jpg
 thumb: /assets/img/employees/mats-thumb.jpg
 ---
