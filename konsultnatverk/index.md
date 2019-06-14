@@ -21,7 +21,7 @@ bara förmedlar uppdrag och pressar priser.
 - **Försäljningsstöd.** Förutom uppdrag erbjuder vi stöd i prisdiskussioner och intervju.
 - **Väckarklocka.** Vi försöker hitta något till dig att göra i god tid innan ditt uppdrag går ut.
 - **Ramavtalsupphandling.** Tillsammans har vi bättre chanser.
-- **Gemensamt varumärke.** Använd vårt varumärke jämte ditt egeet. Vi satsar mycket på
+- **Gemensamt varumärke.** Använd vårt varumärke jämte ditt eget. Vi satsar mycket på
  marknadsföring av varumärket, “Athega”.
 - **Kompetensutveckling.** Våra internutbildningar och konferenser blir tillgängliga för dig
  och du kan även själv bidra med innehåll och idéer.
