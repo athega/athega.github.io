@@ -21,4 +21,4 @@ Specifikt på Athega innebär det:
 - Arbetat med app- eller webblösningar i någon form
 - Gillar automatisering
 
-Just nu söker vi ingen aktivt i rollen som Datasceintist men vi tar alltid emot spontanansökningar.
+Just nu söker vi ingen aktivt i rollen som Datascientist men vi tar alltid emot spontanansökningar.
