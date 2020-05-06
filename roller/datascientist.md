@@ -5,20 +5,35 @@ title: Datascientist
 Datascientist
 ===================
 
-En datascientist främsta ansvar kan vara att ta fram underlag.
-Att visa på ett mönster och slutsats som inte är uppenbar.
-Det är viktigt att underlaget är anpassas till olika målgrupper.
-En målgrupp kan finnas bakom en funktion i en applikation.
-Underlaget styr då applikationens beteende för att anpassa upplevelsen till olika målgrupper.
+En datascientist arbetar med data och behöver därför kunskap om matematik, systemutveckling och gärna förståelse om verksamheten som datat kommer ifrån. Ofta är slutprodukten nya insikter, automatisering, bekräftande av hypotes eller beslutsunderlag för datadrivna organisationer.
 
-För att lyckas med det måste den som utövar rollen behärska statistiska modeller och andra matematiska metoder för att verifiera och framställa tillförlitliga resultat.
-Förutom det kräver rollen kunskap inom systemutveckling eller andra statistiska verktyg.
+
+Arbetsuppgifter kan vara:
+
+- Analys
+	- Hitta mönster och samband (ofta första steget mot kravställning)
+-  Automatisering
+	- Skapa modeller för klassificering, detektering av avvikelser, besultsstöd
+- Modellering
+	- Skapa virtuella modeller som efterliknar verkligheten för simulering och test.
+- Optimering
+	- Hitta eller approximera optimala lösningar
+- Simulering
+	- Exempelvis stokastiska modellering och Monte Carlo analys. 
+- Test
+	- Statistiska tester (ex. A/B), utvärdera prestanda på modeller / automatiseringar
+- Visualisering
+	- Att tydligt kunna kommunicera resultat till olika målgrupper 
+
+
+På athega arbetar vi både med klassisk maskininlärning och dom senaste teknikerna (deep learning). 2016 startade vi ett AI-labb som aktivt utvärderar praktiska tillämpningar från den senaste forskningen och löpande lyfter in dom mest lovande teknikerna i verktygslådan.
 
 Specifikt på Athega innebär det:
 
 - Behärska statistiska modeller och andra matematiska metoder
 - God kunskap inom systemutveckling
-- Arbetat med app- eller webblösningar i någon form
-- Gillar automatisering
-
-Just nu söker vi ingen aktivt i rollen som Datascientist men vi tar alltid emot spontanansökningar.
+- Goda kunskaper inom kommunikation och visualisering
+- Erfarenhet av ramverk och applikationer som exempelvis
+  	     - Matlab/octave, R, Matematiska, Maple
+  	     - Scikit-learn, pytorch, tensorflow
+  	     - RNN, CNN, DQN, MCTS
