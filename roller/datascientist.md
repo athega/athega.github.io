@@ -34,6 +34,7 @@ Specifikt på Athega innebär det:
 - God kunskap inom systemutveckling
 - Goda kunskaper inom kommunikation och visualisering
 - Erfarenhet av ramverk och applikationer som exempelvis
-  	     - Matlab/octave, R, Matematiska, Maple
-  	     - Scikit-learn, pytorch, tensorflow
-  	     - RNN, CNN, DQN, MCTS
+	- Matlab/octave, R, Matematiska, Mapl
+	- Scikit-learn, pytorch, tensorflow
+  	- RNN, CNN, DQN, MCTS
+	
