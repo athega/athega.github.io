@@ -8,9 +8,9 @@ The Athega GitHub Place
 \curl -sSL https://get.rvm.io | bash -s stable
 git clone git@github.com:athega/athega.github.io.git
 cd athega.github.io
-gem install bundle
+gem install bundler
 bundle install
- 
+
 ```
 
 ### Om du vill
@@ -38,15 +38,15 @@ git push https://github.com/athega/athega.github.io.git
 
 
 #### Add blog post
-1.	Ladda upp bilderna man vill ha i posten. 
+1.	Ladda upp bilderna man vill ha i posten.
 a.	Dom ska laddas upp under /athega.github.io/assets/img/blog/
 2.	Skapa en ny fil under posts med yyyy-mm-dd-namn-namn.md (Viktigt med md på slutet)
 3.	Lägg till huvud med
-a.	--- 
+a.	---
 b.	title: "Titel"
 c.	date: 2015-04-14
 d.	description: "description."
-e.	tags:   
+e.	tags:
 		- nyhetsbrev
 f.	last_updated_by: namn
 g.	image_url: /system/uploads/liten.jpg
