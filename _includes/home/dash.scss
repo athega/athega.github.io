@@ -1,0 +1,44 @@
+.home-dash {
+    color: white;
+    background-color: #204500;
+    background-image: url(/assets/img/intro-dash-bg.jpg);
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: hard-light;
+    text-align: center;
+
+    > div {
+        display: inline-block;
+        max-width: 24rem;
+        text-align: initial;
+        text-shadow: 0 0 3px rgba(0,0,0,0.3);
+        margin: 3rem 5%;
+
+        > h2 {
+            margin: 0;
+        }
+
+        > a {
+            color: inherit;
+            display: block;
+
+            &:hover,
+            &:focus {
+                text-decoration: none;
+                outline: 0;
+
+                > p > span {
+                    text-decoration: underline;
+                }
+            }
+
+            > h2 {
+                margin: 0;
+            }
+
+            > p {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
