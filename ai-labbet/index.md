@@ -2,12 +2,12 @@
 title: AI Labbet
 intro-image: /assets/img/ai-labbet.jpg
 tagline: AI Labbet
-sub-tagline: Vi följer utvecklingen inom artificiell intelligens och maskininlärning
+sub-tagline: Utveckling inom artificiell intelligens och maskininlärning
 ---
 
 # {{ page.title }}
 
-Vårt initiativ startades 2016 för att följa framstegen inom artificiell intelligens och maskininlärning. Stora framsteg gjordes även inom dataanalys och signalbehandling. Vi såg också att många nya tekniker började tillämpas och ansåg därför att läget var rätt att satsa på dessa nya ideer. Vi driver också en sedan 2018 en meetup för de som praktiserar data science och med AI/ML.
+Vårt initiativ startades 2016 tillämpa framstegen inom artificiell intelligens och maskininlärning. Stora framsteg gjordes även inom dataanalys och signalbehandling. Vi såg också att många nya tekniker började tillämpas och ansåg därför att läget var rätt att satsa på dessa nya ideer. Vi driver också en sedan 2018 en meetup för de som praktiserar data science och med AI/ML.
 
 ## Syfte
 * Att komplettera vårt kunnande inom signalbehandling, klassisk maskininlärning och statistiska modeller med den senaste forskning och utvärdera praktiska tillämpningar.
