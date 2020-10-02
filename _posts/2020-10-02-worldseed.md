@@ -7,7 +7,7 @@ tags:
   - blogg
   - worldseed
 last_updated_by: chrille
-image_url: assets/blog/2020-worldseed.jpg
+image_url: /assets/blog/2020-worldseed.jpg
 ---
 
 <img src="/assets/blog/2020-worldseed.jpg" alt="World Seed" style="width:100%">
