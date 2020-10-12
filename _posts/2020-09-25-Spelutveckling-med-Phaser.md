@@ -26,7 +26,7 @@ Denna gång utmanade vi oss själva att snabbt bygga ihop enkla spel som går at
 ### Phaser
 Phaser är ett ramverk som gör det snabbt att komma igång att skapa ett spel. Har man bara koll på grunderna inom webbutveckling, framför allt JavaScript, är det enkelt att börja med.
 Phaser fungerar i alla moderna webbläsare, både mobil och desktop, men även i de något äldre då den ser till att grafiken körs på WebGL alternativt Canvas och ljudet på Web Audio alternativt HTML Audio beroende på vad som stöds.
-Det finns ett stort API att gräva i med funktioner för sprites, animationer, partiklar, fysik med mera. Det gör att koden man skriver för att styra ramverket blir ganska deklarativ och därmed inte nödvädigtvis allt för avancerad.
+Det finns ett stort API att gräva i med funktioner för sprites, animationer, partiklar, fysik med mera. Det gör att koden man skriver för att styra ramverket blir ganska deklarativ och därmed inte nödvändigtvis allt för avancerad.
 
 <figure style="float: right; clear: right; margin: 1em 0 1em 1em; max-width: 336px;">
     <a href="/phaser-games/hover-craft-racer/">
