@@ -1,7 +1,7 @@
 ---
 title: "Vi går på bio"
 date: 2020-10-23
-description: "Vi går på bio"
+description: "Vi besöker biografen Victoria på Södermalm i en egen biosalong"
 tags:
   - nyhetsbrev
   - blogg
@@ -14,7 +14,7 @@ image_url: /assets/blog/2020-athega-Victoria.jpg
 
 **Vi går på bio**
 
-Den lilla härliga biografen Victoria på Södermalm har ett tillfälligt erbjudande att hyra en biosalong för ett mycket överkomligt pris. Jag tog cykeln dit från Kungsholmen med sadelväskan tyngd av kyld dryck och en avklarad beställning av hamburgare med leverans direkt till bion. 
+Den härliga biografen Victoria på Södermalm har ett tillfälligt erbjudande att hyra en biosalong för ett mycket överkomligt pris. Jag tog cykeln dit från Kungsholmen med sadelväskan tyngd av kyld dryck och en avklarad beställning av hamburgare med leverans direkt till bion. 
 
 Där mötte jag upp kollegor, som hade med sig en cocktail av teknik, som man kan prova i en biografprojektor. Målet var att spela lite och sedan titta på en film. 
 
