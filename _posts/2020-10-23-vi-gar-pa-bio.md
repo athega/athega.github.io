@@ -1,5 +1,5 @@
 ---
-title: "Vi går på bio
+title: "Vi går på bio"
 date: 2020-10-23
 description: "Vi går på bio"
 tags:
@@ -10,7 +10,7 @@ last_updated_by: Torbjörn
 image_url: /assets/blog/2020-athega-Victoria.jpg
 ---
 
-<img src="/assets/blog/2020-athega-Victoria.jpg" alt="World Seed" style="width:100%">
+<img src="/assets/blog/2020-athega-Victoria.jpg" alt="Bio på Victoria" style="width:100%">
 
 **Vi går på bio**
 
