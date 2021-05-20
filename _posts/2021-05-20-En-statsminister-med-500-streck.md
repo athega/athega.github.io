@@ -13,7 +13,7 @@ image_url: /assets/blog/2021-Stefan_still_50_streck.jpg
 **En statsminister med 500 streck**
 
 <figure style="float: right; clear: right; margin: 1em 0 1em 1em; max-width: 256px;">
-<img src="/assets/blog/2021-Stefan_still_50_streck.jpg" alt="Stefan bara 50 streck">
+<img src="/assets/blog/2019-stefan_500_streck.jpg" alt="Stefan 500 streck">
 </figure>
 
 Innan påsken höll jag en presentation om Reinforcement Learning (RL) på Luleå Science park. Kanske inte helt oväntat så föll jag ner i många djupa hål på Wikipedia under arbetet med att sammanställa materialet och kanske helt väntat så rymdes inte ens bråkdel i presentationen. 
