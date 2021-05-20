@@ -7,7 +7,7 @@ tags:
   - blogg
  
 last_updated_by: Torbjörn
-image_url: /assets/blog/2021-Stefan_still_50_streck
+image_url: /assets/blog/2021-Stefan_still_50_streck.jpg
 ---
 
 **En statsminister med 500 streck**
@@ -20,24 +20,24 @@ De flesta andra tekniker som fått genomslag är en slags mappning mellan två d
 
 Det är inte alltid lätt att förstå vilka praktiska tillämpningar ny teknik har. Teknik som kan generera fotorealistiska ansikten har använts för att ersätta Geometric Brownian Motion (GBM)  vid värdering av optioner, anonymisera datasamlingar till att argumentera och förbättra träningsdata. Men i slutändan är de just en mappning mellan två domäner, data in, svar ut – och ibland vice versa.
 
-image_url: /assets/blog/2021-cyclegan_horse2zebra.gif
+<img src="/assets/blog/2021-cyclegan_horse2zebra.gif" alt="CycleGAN" style="width:100%">
 
 <small>CycleGAN, en klassiker, som ersatts med nyare och bättre algoritmer under åren.</small>
 
 Så om vi vill mappa exempelvis partisymboler till partiledare så krävs ett par exempel och några minuters träning.
 
-image_url: /assets/blog/2021-face_to_logo.gif
+<img src="/assets/blog/2021-face_to_logo.gif" alt="FaceToSymbol" style="width:100%">
 
 <small>Träning av modell för att koppla partisymbol till partiledare och vice versa</small>
 
 Om vi önskar översätta partiledare till partisymbol kan det vara lämpligt att flera ansikten mappar till samma symbol så även tidigare partiledare leder till samma partisymbol.
 
-image_url: /assets/blog/2021-v_ledare.png
+<img src="/assets/blog/2021-v_ledare.png" alt="V-ledare" style="width:100%">
 
 Det här är helt enkelt en mappning eller översättning mellan två domäner. En teknik som fått utstå negativ press under namnet ‘deep fakes’. Men samtidigt en arkitektur som är väldigt användbar för att översätta en typ av data till en annan. Det behöver inte alltid vara bilder – kan t.ex. vara text in, bild ut eller bild in, text ut. 
 Som med alla system behöver man dock planera för vad som händer som systemet oväntat ser ny data.
 
-image_url: /assets/blog/2021-v_sd_fi_mix.png
+<img src="/assets/blog/2021-v_sd_fi_mix.png" alt="Mix" style="width:100%"> 
 
 Det är väldigt frestande att nu gå vidare och titta på pix2pix, en översättningsteknik som krävde att man på förhand skapade datapar, till CycleGAN som i sin tur automatiskt gör detta, till contrastive-unpaired-translation (CUT), som gör samma sak fast snabbare och bättre. Men det kräver nog bättre sin rätt och plats i eget blogginlägg i framtiden.
 
@@ -49,7 +49,7 @@ Tänk att vi vill måla en statsminister med så få streck som möjligt. Varje 
 
 Algoritmen nedan ritar ett streck i taget. Den kan välja tjocklek på pensel, färg och mellan vilka två punkter strecket ritas. För att efterlikna målning av en riktig tavla så tillåts även att färgen som används är delvis genomskinlig. 
 
-image_url: /assets/blog/2021-stefan_crop_slow.mp4.gif
+<img src="/assets/blog/2021-stefan_crop_slow.mp4.gif" alt="Stefan Crop" style="width:100%"> 
 
 Lite som schack alltså, det gäller inte bara att ta motspelarens pjäser när möjligheten finns, utan att spela långsiktigt och strategiskt om målet är att vinna.
 
@@ -61,10 +61,4 @@ I den här serien av artiklar tänker jag visa hur RL kan appliceras som optimer
 
 Tack så länge!
 krister.soderstrom@
-image_url: /assets/blog/2021-athega_streck_logo.gif
-
-
-
-
-
-
+<img src="/assets/blog/2021-athega_streck_logo.gif" alt="Athega-streck-logo" style="width:100%"> 
