@@ -12,7 +12,7 @@ image_url: /assets/blog/2021-Stefan_still_50_streck.jpg
 
 **En statsminister med 500 streck**
 
-<figure style="float: right; clear: right; margin: 1em 0 1em 1em; max-width: 336px;">
+<figure style="float: right; clear: right; margin: 1em 0 1em 1em; max-width: 219px;">
 <img src="/assets/blog/2021-Stefan_still_50_streck.jpg" alt="Stefan bara 50 streck">
 </figure>
 
@@ -49,11 +49,11 @@ RL är en teknik som används när flera beslut ska tas i följd och vi är intr
 
 Tänk att vi vill måla en statsminister med så få streck som möjligt. Varje streck vi ritar måste bidra så mycket som möjligt till slutprodukten samtidigt som det också hjälper efterföljande streck att bidra till målet. Problemet är inte längre – ‘vilket streck är bäst att rita just nu’ utan snarare, ‘vilket streck ska ritas nu för att få ett så bra porträtt som möjligt i slutändan’. Här är ett exempel på vår nuvarande statsminister som skapas av 500 streck. 
 
-Algoritmen nedan ritar ett streck i taget. Den kan välja tjocklek på pensel, färg och mellan vilka två punkter strecket ritas. För att efterlikna målning av en riktig tavla så tillåts även att färgen som används är delvis genomskinlig. 
-
 <figure style="float: right; clear: right; margin: 1em 0 1em 1em; max-width: 336px;">
 <img src="/assets/blog/2021-stefan_nocrop_slow.mp4.gif" alt="Stefan"> 
 </figure>
+
+Algoritmen nedan ritar ett streck i taget. Den kan välja tjocklek på pensel, färg och mellan vilka två punkter strecket ritas. För att efterlikna målning av en riktig tavla så tillåts även att färgen som används är delvis genomskinlig. 
 
 Lite som schack alltså, det gäller inte bara att ta motspelarens pjäser när möjligheten finns, utan att spela långsiktigt och strategiskt om målet är att vinna.
 
