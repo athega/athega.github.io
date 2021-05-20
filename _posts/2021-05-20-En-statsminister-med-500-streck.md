@@ -10,7 +10,7 @@ last_updated_by: Torbjörn
 image_url: /assets/blog/2019-stefan_500_streck.jpg
 ---
 
-**En statsminister med 500 streck**
+**Reinforcement Learning ett nytt verktyg för optimering och styrning**
 
 <figure style="float: right; clear: right; margin: 1em 0 1em 1em; max-width: 256px;">
 <img src="/assets/blog/2019-stefan_500_streck.jpg" alt="Stefan 500 streck">
