@@ -7,7 +7,7 @@ tags:
   - blogg
  
 last_updated_by: Torbjörn
-image_url: /assets/blog/2021-Stefan_still_50_streck.jpg
+image_url: /assets/blog/2019-stefan_500_streck.jpg
 ---
 
 **En statsminister med 500 streck**
