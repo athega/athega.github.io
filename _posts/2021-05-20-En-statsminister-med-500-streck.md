@@ -65,6 +65,7 @@ I den här serien av artiklar tänker jag visa hur Reinforcement Learning kan ap
 
 Tack så länge!
 
-krister.soderstrom@
+Krister Söderström
+
 <img src="/assets/blog/2021-athega_streck_logo.gif" alt="Athega-streck-logo"> 
 
