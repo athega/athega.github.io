@@ -43,7 +43,7 @@ Som med alla system behöver man dock planera för vad som händer som systemet 
 
 Det är väldigt frestande att nu gå vidare och titta på pix2pix, en översättningsteknik som krävde att man på förhand skapade datapar, till CycleGAN som i sin tur automatiskt gör detta, till contrastive-unpaired-translation (CUT), som gör samma sak fast snabbare och bättre. Men det kräver nog bättre sin rätt och plats i eget blogginlägg i framtiden.
 
-Så vad är då den stora skillnaden? – Vad är det som gör Reinforcement Learning (RL) till nästa stora AI-revolution?
+Så vad är då den stora skillnaden? – Vad är det som gör Reinforcement Learning till nästa stora AI-revolution?
 
 RL är en teknik som används när flera beslut ska tas i följd och vi är intresserade av att ta de bästa besluten för att långsiktigt nå ett slags optimalt utfall.
 
@@ -57,11 +57,11 @@ Algoritmen (bilden till höger) ritar ett streck i taget. Den kan välja tjockle
 
 Lite som schack alltså, det gäller inte bara att ta motspelarens pjäser när möjligheten finns, utan att spela långsiktigt och strategiskt om målet är att vinna.
 
-RL, i sin moderna tappning har funnits många år. Redan 2013 publicerade DeepMind att de lyckats spela ett atari-spel med Deep Q Networks (DQN, en typ av RL). Sedan dess har tekniken haft många upp- och nedgångar, en höjdpunkt var när världsmästaren i GO slogs av en dator för första gången 2016 men det har svängt mellan skyhöga förväntningar och förtvivlan flera gånger sedan dess. Idag är RL en relativt mogen teknik vilket upplevs, inte bara av stabilare algoritmer som är lättare att tämja, utan också det faktum att många traditionella system redan har börjat bytas ut. Vem vill inte delegera vissa beslut till en strateg som överträffar en världsmästare?
+Reinforcement Learning, i sin moderna tappning har funnits många år. Redan 2013 publicerade DeepMind att de lyckats spela ett atari-spel med Deep Q Networks, en typ av Reinforcement Learning. Sedan dess har tekniken haft många upp- och nedgångar, en höjdpunkt var när världsmästaren i GO slogs av en dator för första gången 2016 men det har svängt mellan skyhöga förväntningar och förtvivlan flera gånger sedan dess. Idag är RL en relativt mogen teknik vilket upplevs, inte bara av stabilare algoritmer som är lättare att tämja, utan också det faktum att många traditionella system redan har börjat bytas ut. Vem vill inte delegera vissa beslut till en strateg som överträffar en världsmästare?
 
 De flesta processer i verkliga livet är just beslutskedjor och orsakssamband, vilka är mycket svåra att optimera med traditionella verktyg. Beslutkedjor – ja det låter både lite stelt och överdrivet formellt. Vad det handlar om är förlopp där det finns fördröjningar, beroenden och flera beslut ska fattas i en följd. Fortfarande formellt men bästa analogen jag kommer på är att  det kallas verkliga livet och för att inte klanta till det krävs ofta erfarenhet. RL är en teknik för att ta dessa beslut för att uppnå ett visst mål och ett bra utfall. 
 
-I den här serien av artiklar tänker jag visa hur RL kan appliceras som optimering på kombinatoriska problem, reglersystem och för att ta fram optimerad affärslogik.
+I den här serien av artiklar tänker jag visa hur Reinforcement Learning kan appliceras som optimering på kombinatoriska problem, reglersystem och för att ta fram optimerad affärslogik.
 
 Tack så länge!
 
