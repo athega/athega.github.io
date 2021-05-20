@@ -50,7 +50,7 @@ Tänk att vi vill måla en statsminister med så få streck som möjligt. Varje 
 
 Algoritmen nedan ritar ett streck i taget. Den kan välja tjocklek på pensel, färg och mellan vilka två punkter strecket ritas. För att efterlikna målning av en riktig tavla så tillåts även att färgen som används är delvis genomskinlig. 
 
-<img src="/assets/blog/2021-stefan_nocrop_slow.mp4.gif" alt="Stefan" style="width:75%"> 
+<img src="/assets/blog/2021-stefan_nocrop_slow.mp4.gif" alt="Stefan" style="width:50%"> 
 
 Lite som schack alltså, det gäller inte bara att ta motspelarens pjäser när möjligheten finns, utan att spela långsiktigt och strategiskt om målet är att vinna.
 
@@ -63,4 +63,4 @@ I den här serien av artiklar tänker jag visa hur RL kan appliceras som optimer
 Tack så länge!
 
 krister.soderstrom@
-<img src="/assets/blog/2021-athega_streck_logo.gif" alt="Athega-streck-logo" style="width:50%"> 
+<img src="/assets/blog/2021-athega_streck_logo.gif" alt="Athega-streck-logo" style="width:25%"> 
