@@ -12,7 +12,7 @@ image_url: /assets/blog/2021-Stefan_still_50_streck.jpg
 
 **En statsminister med 500 streck**
 
-<figure style="float: right; clear: right; margin: 1em 0 1em 1em; max-width: 219px;">
+<figure style="float: right; clear: right; margin: 1em 0 1em 1em; max-width: 256px;">
 <img src="/assets/blog/2021-Stefan_still_50_streck.jpg" alt="Stefan bara 50 streck">
 </figure>
 
@@ -45,11 +45,11 @@ Det är väldigt frestande att nu gå vidare och titta på pix2pix, en översät
 
 Så vad är då den stora skillnaden? – Vad är det som gör Reinforcement Learning till nästa stora AI-revolution?
 
-RL är en teknik som används när flera beslut ska tas i följd och vi är intresserade av att ta de bästa besluten för att långsiktigt nå ett slags optimalt utfall.
+Reinforcement Learning är en teknik som används när flera beslut ska tas i följd och vi är intresserade av att ta de bästa besluten för att långsiktigt nå ett slags optimalt utfall.
 
 Tänk att vi vill måla en statsminister med så få streck som möjligt. Varje streck vi ritar måste bidra så mycket som möjligt till slutprodukten samtidigt som det också hjälper efterföljande streck att bidra till målet. Problemet är inte längre – ‘vilket streck är bäst att rita just nu’ utan snarare, ‘vilket streck ska ritas nu för att få ett så bra porträtt som möjligt i slutändan’. Här är ett exempel på vår nuvarande statsminister som skapas av 500 streck. 
 
-<figure style="float: right; clear: right; margin: 1em 0 1em 1em; max-width: 336px;">
+<figure style="float: right; clear: right; margin: 1em 0 1em 1em; max-width: 256px;">
 <img src="/assets/blog/2021-stefan_nocrop_slow.mp4.gif" alt="Stefan"> 
 </figure>
 
