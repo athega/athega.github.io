@@ -53,7 +53,7 @@ Tänk att vi vill måla en statsminister med så få streck som möjligt. Varje 
 <img src="/assets/blog/2021-stefan_nocrop_slow.mp4.gif" alt="Stefan"> 
 </figure>
 
-Algoritmen nedan ritar ett streck i taget. Den kan välja tjocklek på pensel, färg och mellan vilka två punkter strecket ritas. För att efterlikna målning av en riktig tavla så tillåts även att färgen som används är delvis genomskinlig. 
+Algoritmen (bilden till höger) ritar ett streck i taget. Den kan välja tjocklek på pensel, färg och mellan vilka två punkter strecket ritas. För att efterlikna målning av en riktig tavla så tillåts även att färgen som används är delvis genomskinlig. 
 
 Lite som schack alltså, det gäller inte bara att ta motspelarens pjäser när möjligheten finns, utan att spela långsiktigt och strategiskt om målet är att vinna.
 
