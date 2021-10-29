@@ -30,3 +30,5 @@ Vårt initiativ startades 2016 för att tillämpa framstegen inom artificiell in
 * I vissa fall så kan man använda ett avancerat AI för att snabbt se om ett problem är lösbart och om så, analysera lösningen för komma till en lösning baserad på klassisk maskininlärning.
 * AI är inte en magisk lösning på alla problem. Det ska ses som ett fantastiskt effektiv verktyg för vissa specifika problem eller som ett komplement till klassisk maskininlärning.
 * En kombination av maskininlärning, statistiska metoder och AI löser ofta problemet bättre tillsammans än vad dom individuella teknikerna gör för sig.
+
+Vill ni skriva upp er på inbjudningslistan till vårt MeetUp eller kontakta oss om ett intressant problem och samarbete, kontakta Torbjörn Nilsson – torbjorn.nilsson@athega.se 
