@@ -16,8 +16,6 @@ bara förmedlar uppdrag och pressar priser.
 
 ## Vi erbjuder
 
-- **Tillfällig kontorsplats** på vårt fina kontor på Kungsholmen. Du kan också nyttja
- kontoret för kundmöten, seminarier/workshops eller utbildning.
 - **Försäljningsstöd.** Förutom uppdrag erbjuder vi stöd i prisdiskussioner och intervju.
 - **Väckarklocka.** Vi försöker hitta något till dig att göra i god tid innan ditt uppdrag går ut.
 - **Ramavtalsupphandling.** Tillsammans har vi bättre chanser.
