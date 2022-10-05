@@ -85,4 +85,3 @@ eller iOS-utveckling. Ofta fortsätter vi som kan umgås långt in på kvällen.
 #### Övriga aktiviteter
 De fredagar då det inte är internutbildning kan det hända att vi ändå träffas. Ibland
 planerat med middag kanske i form av kräftskiva när det är säsong, andra gånger spontant.
-Vår samlingspunkt är alltid kontoret på Hantverkargatan.
