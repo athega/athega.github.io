@@ -1,7 +1,7 @@
 ---
 title: "Generativa AI-modeller för att konvertera röster"
-date: 2021-06-01
-description: "Generativa AI-modeller för att konvertera röster"
+date: 2023-06-01
+description: "Sommar-experiment, med en egentränad modell som konverterar röster"
 tags:
   - nyhetsbrev
   - blogg
