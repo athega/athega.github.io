@@ -18,12 +18,15 @@ genuina intresse av det som på 1990 talet kallades Internet-teknik.
 
 Affärsidén var att erbjuda avancerade webblösningar till skillnad från “plain html-sidor” som många webbyråer erbjöd.
 Inledningsvis utvecklade vi CGI-script i programmeringsspråket Perl. Scripten blev till större applikationer,
-gränssnitten mer avancerade och språket byttes så småningom till Java och kompletterades senare med Ruby. Idag är
-det fokus på Go och NodeJS.
+gränssnitten mer avancerade och språket byttes så småningom till Java och kompletterades senare med Ruby.
 
-Det har alltid varit viktigt för oss att ligga i framkant av den tekniska utvecklingen. Vi har överlevt både höga
-och låga konjukturer och vi tror det beror på att vi är engagerade systemutvecklare med lång erfarenhet som alltid
+Det har alltid varit viktigt för oss att ligga i framkant av den tekniska utvecklingen. Att vi klarat detta under alla år tror vi
+beror på att vi är engagerade systemutvecklare med lång erfarenhet som alltid
 inspireras av våra kunders affärsmöjligheter.
+
+## Athega idag
+Vårt engagemang för att göra den senaste tekniken tillgänglig tidigt för våra kundern har lagt grunden för alla de långa kundrelationer vi fortfarande idag har. Största delen inom digial media men även inom tillverknings-industri och finanssektorn.  Athegas AI/ML-initiativ är ett tjänsteområde vi initierade 2016 och som hela tiden växer. Det ligger helt i linje med vår nyfikenhet på ny teknik och hur den ska användas på bästa sätt.
+
 
 ## Företagsfakta
 
