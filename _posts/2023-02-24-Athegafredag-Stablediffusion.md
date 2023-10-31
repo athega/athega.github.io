@@ -7,7 +7,7 @@ tags:
 last_updated_by: mats
 image_url: /assets/blog/StableDiffusion.png
 ---
-En Athega-fredag med tema AI stable diffusion (GAN) ,controlnet, med hela gänget på Hotel Kung Carl hashtag
+En Athega-fredag med tema AI stable diffusion (GAN), controlnet, med hela gänget på Hotel Kung Carl.
 
 ![Atehga](/assets/blog/StableDiffusion.png)
 
