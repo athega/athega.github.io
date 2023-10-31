@@ -4,7 +4,6 @@ date: 2022-04-03
 description: "Inför tredje säsongen av Varan-TV återupptar vi diskussionerna om Internet med Varanteatern"
 tags:
   - nyhetsbrev
-  - blogg
 last_updated_by: Christian
 image_url: /assets/blog/2022-varantv.jpg
 ---
