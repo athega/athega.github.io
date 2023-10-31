@@ -25,7 +25,7 @@ beror på att vi är engagerade systemutvecklare med lång erfarenhet som alltid
 inspireras av våra kunders affärsmöjligheter.
 
 ## Athega idag
-Vårt engagemang för att göra den senaste tekniken tillgänglig för våra kundern har lagt grunden för de långa kundrelationer vi haft och fortfarande har. Största delen inom digial media men även inom tillverknings-industri och finanssektorn.  Athegas AI/ML-initiativ är ett tjänsteområde vi initierade 2016 och som hela tiden växer. Det ligger helt i linje med vår nyfikenhet på ny teknik och hur den ska användas på bästa sätt.
+Vårt engagemang för att göra den senaste tekniken tillgänglig för våra kundern har lagt grunden för de långa kundrelationer vi haft och fortfarande har. Största delen inom digial media men även inom tillverknings-industri och finanssektorn.  Athegas **[AI/ML-initiativ](https://athega.se/ai-labbet/)** är ett tjänsteområde vi initierade 2016 och som hela tiden växer. Det ligger helt i linje med vår nyfikenhet på ny teknik och hur den ska användas på bästa sätt.
 
 
 ## Företagsfakta
