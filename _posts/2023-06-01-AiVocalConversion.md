@@ -28,7 +28,7 @@ Går att jämföra det med ett filter som "filtrerar" vilken röst som helst til
 rösten som kommer ut, helt skapas av modellen. Inget av inkommade ljud skickas vidare.
 
 Det var ett spännande projekt och låten vi skapade (projektlåten "Entropy") finns på alla streaming-tjänster. Grimes gick senare ut och gjorde en egen modell som hon ville att alla skulle använda. Vi använder ändå den modell vi själva satte upp. Här är ett litet smakprov på hur vår sång lät och hur modellen omvandlade ljudet till en kvinnlig röst. (Ligger reverb på det konverterade spåret)
-<video width="400" height="340" controls>
+<video controls>
   <source src="/assets/blog/AI.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
