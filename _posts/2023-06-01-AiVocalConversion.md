@@ -7,7 +7,7 @@ tags:
   - blogg
  
 last_updated_by: Mats
-image_url: /assets/blog/Entropy-GrimesAI-Zymb.png
+image_url: /assets/blog/Entropy-GrimesAI-Zymbsmall.png
 ---
 
 **Vi gör ett roligt sommar-experiment, med en egentränad modell som konverterar röster**
@@ -15,6 +15,8 @@ image_url: /assets/blog/Entropy-GrimesAI-Zymb.png
 Vi på Athega gillar att laborera och testa nya tekniker. I april skrev artisten Grimes på instagram att hon uppmuntrade folk att använda
 AI-lsningar för att återskapa hennes röst och släppa låtar med GrimesAI som ett samarbete. Vi hakade direkt på eftersom vi älskar musik
 och ny teknik! Vi satte igång rätt omgående.
+
+<img src="/assets/blog/Entropy-GrimesAI-Zymbsmall.png"/>
 
 Det började med att vi fick tillgång till flera Grimes DAW-projekt där hennes röst fanns i ett antal tagningar. Tyvärr var flera av låtarna Stem-bouncade med effekter så en stor del av träningsdatat gick inte att använda.
 
