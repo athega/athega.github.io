@@ -10,7 +10,7 @@ last_updated_by: Mats
 image_url: /assets/blog/Entropy-GrimesAI-Zymbsmall.png
 ---
 
-**Vi gör ett roligt sommar-experiment, med en egentränad modell som konverterar röster**
+**Vi gör ett roligt sommar-experiment, tränar en modell med sång som konverterar röster**
 
 Vi på Athega gillar att laborera och testa nya tekniker. I april skrev artisten Grimes på instagram att hon uppmuntrade folk att använda
 AI-lösningar för att återskapa hennes röst och släppa låtar med GrimesAI som ett samarbete. Vi hakade direkt på eftersom vi älskar musik
@@ -27,7 +27,7 @@ Tekniken går ut på att modellen tränas på så sätt att den efteråt kan åt
 Går att jämföra det med ett filter som "filtrerar" vilken röst som helst till att låta som den röst som används för att träna modellen. Med skillnaden att 
 rösten som kommer ut, helt skapas av modellen. Inget av inkommade ljud skickas vidare.
 
-Det var ett spännande projekt och låten vi skapade (projektlåten "Entropy") finns på alla streaming-tjänster. Grimes gick senare ut och gjorde en egen modell som hon ville att alla skulle använda. Vi använder ändå den lösning vi själva satte upp. Här är ett litet smakprov på hur vår sång lät och hur modellen omvandlade ljudet till en kvinnlig röst. (Ligger reverb på det konverterade spåret). Det finns stort utrymme för förbättringar. Speciellt under hur träningsdata förbereds.
+Det var ett spännande projekt och låten vi skapade (projektlåten "Entropy") finns på alla streaming-tjänster. Grimes gick senare ut och tränade en egen modell som hon ville att alla skulle använda. Vi använder ändå den lösning vi själva satte upp. Här är ett litet smakprov på hur vår sång lät och hur modellen omvandlade ljudet till en kvinnlig röst. (Ligger reverb på det konverterade spåret). Det finns stort utrymme för förbättringar. Speciellt under hur träningsdata förbereds, kvaliteten på träningsdatat är nyckeln för ett bra resultat. Vi såg även att vissa artifakter som skapas kan filtreras bort med konventionella metoder. Ska bli spännande att utforska hifi-ljud generering djupare. Metas arbete inom området är högst intressant.
 <video controls>
   <source src="/assets/blog/AI.mp4" type="video/mp4">
   Your browser does not support the video tag.
