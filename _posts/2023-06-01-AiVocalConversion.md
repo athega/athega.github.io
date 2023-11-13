@@ -20,7 +20,7 @@ och ny teknik! Vi satte igång rätt omgående.
 
 Det började med att vi fick tillgång till flera Grimes DAW-projekt där hennes röst fanns i ett antal tagningar. Tyvärr var flera av låtarna Stem-bouncade med effekter så en stor del av träningsdatat gick inte att använda.
 
-Vi tränade modell som skulle hitta hennes features för att senare kunna återskapa klang och röst. 
+Vi tränade en av modellerna i ett färdigt ramver som skulle hitta hennes features för att senare kunna återskapa klang och röst. 
 Eftersom träningsdatan inte var inte omfattande blev resultatet inte bra direkt med efter några försök och justeringar av träningsdatat lyckades konvertera våra inspelade sång-spår till hennes röst med bra kvalitet.
 
 Tekniken går ut på att modellen tränas på så sätt att den efteråt kan återskapa features baserat på ingående pitch och inkommande features.
