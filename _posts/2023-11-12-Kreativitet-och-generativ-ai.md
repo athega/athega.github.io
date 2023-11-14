@@ -41,8 +41,8 @@ Sammanfattningsvis är innehållet som genereras av AI unikt i den mening att de
 
 Om vi fokuserar på musik-generering finns det vissa delar som behöver vara på plats för att använda tekniken på ett användbart och kommersiellt gångbart sätt.
 
-* Trängsdatan bör vara öppen och fri att använda eller ägas av den som tränar modellen.
-* Upphovsrätten för verket måste vara utredd (Kommer skriva mer om detta i kommande blogpost)
+* Trängsdatan bör vara öppen och fri att använda eller ägas av den som tränar modellen.(Kommer skriva mer om detta i kommande blogpost)
+* Upphovsrätten för verket måste vara utredd.
 * Tekniska kvaliteten på det genererade materialet måste vara i nivå med professionellt skapad musik.
 
 <img src="/assets/img/blog/generative.png"/>
