@@ -39,12 +39,12 @@ Sammanfattningsvis är innehållet som genereras av AI unikt i den mening att de
 <br/>
 <b>Musikgenerering</b><br/>
 Om vi fokuserar på musik-generering finns det vissa delar som behöver vara på plats för att använda tekniken på ett användbart och kommersiellt gångbart sätt.
-<li>
-<lu>Trängsdatan bör vara öppen och fri att använda eller ägas av den som tränar modellen.</lu>
-<lu>Upphovsrätten för verket måste vara utredd</lu>
-<lu>Tekniska kvaliteten på det genererade materialet måste vara i nivå med professionellt skapad musik.</lu>
-</li>
 
+* Trängsdatan bör vara öppen och fri att använda eller ägas av den som tränar modellen.
+* Upphovsrätten för verket måste vara utredd
+* Tekniska kvaliteten på det genererade materialet måste vara i nivå med professionellt skapad musik.
+
+  
 <b>Framtiden för Ljudgenerering med AI</b><br/>
 Googles och OpenAI har utfört innovativa grundforskning inom området och nyligen släppte Meta sin AudioCraft-modell-arkitektur open source vilket borgar för att många kommer börja experimentera och utveckla lösningar där generativ AI är grundkomponenten. Fortfarande finns det frågetecken till träningsdata och vilket träningsdata de som vill bygga produkter på lösningen ska använda. Dock har Meta jobbat på att få upp kvaliteten på det skapade materialet till en acceptabel teknisk nivå vilket är väldigt spännande.
 Framtiden för ljudgenerering med AI ser ljus ut. Med fortsatt snabb fart på forskning och utveckling inom området kan vi förvänta oss ännu mer avancerade och mångsidiga verktyg som förändrar hur vi skapar och upplever ljud och musik. Det står klart att generativ AI kommer att fortsätta att vara en kraftfull källa till innovation och kreativitet inom ljudvärlden.
