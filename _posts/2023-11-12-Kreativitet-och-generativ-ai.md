@@ -28,6 +28,7 @@ Kombinationen av dessa AI-modeller gör att hela användarupplevelsen blir på e
 <img src="/assets/img/blog/generative.png"/>
 
 **Träningsdata**
+> Kan det vara unikt? Är det inte bara en kopia?
 
 Man kan fråga sig hur unikt det som skapas egentligen är? Kan ett AI vara kreativt och skapa något unikt?  Frågan är både intressant och komplex. Innehållet som genereras av dessa AI-modeller är "unikt" i den meningen att det inte är en kopia av något som redan finns. Men det är viktigt att förstå att detta "nya" innehåll är influerat av de data som modellen har tränats på. Här är några nyckelpunkter att tänka på:
 
@@ -47,7 +48,7 @@ Om vi fokuserar på musik-generering finns det vissa delar som behöver vara på
   
 **Framtiden för Ljudgenerering med AI**
 
-Googles och OpenAI har utfört innovativa grundforskning inom området och nyligen släppte Meta sin AudioCraft-modell-arkitektur open source vilket borgar för att många kommer börja experimentera och utveckla lösningar där generativ AI är grundkomponenten. Fortfarande finns det frågetecken till träningsdata och vilket träningsdata de som vill bygga produkter på lösningen ska använda. Dock har Meta jobbat på att få upp kvaliteten på det skapade materialet till en acceptabel teknisk nivå vilket är väldigt spännande.
+Google, Meta och OpenAI har utfört innovativa grundforskning inom området och nyligen släppte Meta sin AudioCraft-modell-arkitektur open source vilket borgar för att många kommer börja experimentera och utveckla lösningar där generativ AI är grundkomponenten. Fortfarande finns det frågetecken till träningsdata och vilket träningsdata de som vill bygga produkter på lösningen ska använda. Dock har Meta jobbat på att få upp kvaliteten på det skapade materialet till en acceptabel teknisk nivå vilket är väldigt spännande.
 Framtiden för ljudgenerering med AI ser ljus ut. Med fortsatt snabb fart på forskning och utveckling inom området kan vi förvänta oss ännu mer avancerade och mångsidiga verktyg som förändrar hur vi skapar och upplever ljud och musik. Det står klart att generativ AI kommer att fortsätta att vara en kraftfull källa till innovation och kreativitet inom ljudvärlden.
 
 <br/>
