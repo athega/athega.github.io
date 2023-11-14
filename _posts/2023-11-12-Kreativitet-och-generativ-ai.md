@@ -19,8 +19,9 @@ Till skillnad från traditionell AI som ofta är utformad för att analysera och
 
 Ofta används dessa generativa modeller ihop med lämpliga gränssnitt för oss människor. Ni som testat chatgtp förstår hur duktiga de kan vara på språk. 
 
+**Användbarhet**
 Föreställ dig att du kombinerar en språkförståelsemodell, kanske en enkel variant av en stor språkmodell (LLM) liknande OpenAI:s GPT-3, med andra specialiserade AI-modeller, till exempel de som skapar bilder eller musik. Det är lite som att sätta ihop ett team av superhjältar, där varje medlem har sin egen unika förmåga.
-Språkförståelsemodellen fungerar som teamets hjärna. Den förstår och tolkar instruktioner eller frågor på ett nästan mänskligt sätt. Du kan till exempel fråga den att beskriva en scen från en fantasyvärld eller att komma med idéer för en ny låt.
+Språkförståelsemodellen fungerar som teamets hjärna. Den förstår och tolkar instruktioner eller frågor på ett nästan mänskligt sätt. Du kan till exempel fråga den att beskriva en scen från en fantasyvärld eller att komma med idéer för en ny låt.<br/><br/>
 Därefter tar de andra modellerna, som är experter på bild- eller musikskapande, över. Baserat på den beskrivning eller idé som språkmodellen ger, börjar de arbeta. Om det handlar om en bild, kan en modell som DALL-E eller MidJourney börja skapa en visuell representation av den beskrivna scenen. Om det gäller musik, kan en modell som OpenAI’s Jukebox eller Metas AudioCraft börja komponera och skapa musik eller ljud som matchar stämningen eller stilen i din beskrivning.
 Kombinationen av dessa AI-modeller gör att hela användarupplevelsen blir på en hög nivå. Du får inte bara en dator som förstår vad du säger, utan också en som kan skapa nya, fascinerande verk som matchar dina ord. Detta öppnar dörren för oändliga kreativa möjligheter, från att skriva en berättelse och genast kunna visualisera scenerna, till att komponera musik som perfekt fångar känslan i dina ord.
 
