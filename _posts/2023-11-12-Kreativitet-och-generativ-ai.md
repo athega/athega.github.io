@@ -15,7 +15,6 @@ published: true
 Inom utvecklingen av maskininlärning och artificiell intelligens har det historiskt handlar om klassificerare. Det som tidigare kändes som science fiction har blivit en del av vår vardag.  Vi reagerar inte så mycket över att vår telefon bara behöver se vårt ansikte för att låsa upp sig. Eller hur spam kan sorteras bort effektivt. Eller hur bilderna din telefonen finns sökbara på nyckelord direkt i telefonen.
 <br/>
 
-**Generativ AI**
 Till skillnad från traditionell AI som ofta är utformad för att analysera och kategorisera information, är generative AI som en digital konstnär eller uppfinnare. Den kan generera bilder, musik, text, och till och med videor som inte fanns tidigare.
 
 Ofta används dessa generativa modeller ihop med lämpliga gränssnitt för oss människor. Ni som testat chatgtp förstår hur duktiga de kan vara på språk. 
