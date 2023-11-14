@@ -26,8 +26,6 @@ Språkförståelsemodellen fungerar som teamets hjärna. Den förstår och tolka
 Därefter tar de andra modellerna, som är experter på bild- eller musikskapande, över. Baserat på den beskrivning eller idé som språkmodellen ger, börjar de arbeta. Om det handlar om en bild, kan en modell som DALL-E eller MidJourney börja skapa en visuell representation av den beskrivna scenen. Om det gäller musik, kan en modell som OpenAI’s Jukebox eller Metas AudioCraft börja komponera och skapa musik eller ljud som matchar stämningen eller stilen i din beskrivning.<br/><br/>
 Kombinationen av dessa AI-modeller gör att hela användarupplevelsen blir på en hög nivå. Du får inte bara en dator som förstår vad du säger, utan också en som kan skapa nya, fascinerande verk som matchar dina ord. Detta öppnar dörren för oändliga kreativa möjligheter, från att skriva en berättelse och genast kunna visualisera scenerna, till att komponera musik som perfekt fångar känslan i dina ord.
 
-<img src="/assets/img/blog/generative.png"/>
-
 **Träningsdata**
 
 Man kan fråga sig hur unikt det som skapas egentligen är? Kan ett AI vara kreativt och skapa något unikt?  Frågan är både intressant och komplex. Innehållet som genereras av dessa AI-modeller är "unikt" i den meningen att det inte är en kopia av något som redan finns. Men det är viktigt att förstå att detta "nya" innehåll är influerat av de data som modellen har tränats på. Här är några nyckelpunkter att tänka på:
@@ -45,7 +43,8 @@ Om vi fokuserar på musik-generering finns det vissa delar som behöver vara på
 * Upphovsrätten för verket måste vara utredd (Kommer skriva mer om detta i kommande blogpost)
 * Tekniska kvaliteten på det genererade materialet måste vara i nivå med professionellt skapad musik.
 
-  
+<img src="/assets/img/blog/generative.png"/>
+
 **Framtiden för Ljudgenerering med AI**
 
 Google, Meta och OpenAI har utfört innovativa grundforskning inom området och nyligen släppte Meta sin AudioCraft-modell-arkitektur open source vilket borgar för att många kommer börja experimentera och utveckla lösningar där generativ AI är grundkomponenten. Fortfarande finns det frågetecken till träningsdata och vilket träningsdata de som vill bygga produkter på lösningen ska använda. Dock har Meta jobbat på att få upp kvaliteten på det skapade materialet till en acceptabel teknisk nivå vilket är väldigt spännande.
