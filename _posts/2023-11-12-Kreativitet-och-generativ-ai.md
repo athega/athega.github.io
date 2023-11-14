@@ -56,7 +56,7 @@ Framtiden för ljudgenerering med AI ser ljus ut. Med fortsatt snabb fart på fo
 **AI genererat trum-beat**
 
 
-Satt och lekte med en av de stora modellerna och promptade den att göra ett episkt beat, eurovision-likt, med tydlig modern vibe.<br/>
+Jag har testat att generera olika specifika stems. Här är ett exempel på en trum-stem.<br/> 
 
 <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1664524026&color=%23492429&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/mats-ygfors" title="Mats" target="_blank" style="color: #cccccc; text-decoration: none;">Mats</a> · <a href="https://soundcloud.com/mats-ygfors/beat-ai-generated" title="Beat AI generated" target="_blank" style="color: #cccccc; text-decoration: none;">Beat AI generated</a></div>
 
