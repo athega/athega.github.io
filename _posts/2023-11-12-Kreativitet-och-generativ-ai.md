@@ -24,6 +24,8 @@ Språkförståelsemodellen fungerar som teamets hjärna. Den förstår och tolka
 Därefter tar de andra modellerna, som är experter på bild- eller musikskapande, över. Baserat på den beskrivning eller idé som språkmodellen ger, börjar de arbeta. Om det handlar om en bild, kan en modell som DALL-E eller MidJourney börja skapa en visuell representation av den beskrivna scenen. Om det gäller musik, kan en modell som OpenAI’s Jukebox eller Metas AudioCraft börja komponera och skapa musik eller ljud som matchar stämningen eller stilen i din beskrivning.
 Kombinationen av dessa AI-modeller gör att hela användarupplevelsen blir på en hög nivå. Du får inte bara en dator som förstår vad du säger, utan också en som kan skapa nya, fascinerande verk som matchar dina ord. Detta öppnar dörren för oändliga kreativa möjligheter, från att skriva en berättelse och genast kunna visualisera scenerna, till att komponera musik som perfekt fångar känslan i dina ord.
 
+<img src="/assets/img/blog/generative.png"/>
+
 <b>Träningsdata</b>
 Man kan fråga sig hur unikt det som skapas egentligen är? Kan ett AI vara kreativt och skapa något unikt?  Frågan är både intressant och komplex. Innehållet som genereras av dessa AI-modeller är "unikt" i den meningen att det inte är en kopia av något som redan finns. Men det är viktigt att förstå att detta "nya" innehåll är influerat av de data som modellen har tränats på. Här är några nyckelpunkter att tänka på:
 
