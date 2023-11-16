@@ -21,7 +21,7 @@ Ofta används dessa generativa modeller ihop med lämpliga gränssnitt för oss 
 
 **Användbarhet**
 
-<img align="right" src="/assets/img/blog/music.png" width="360"/> Föreställ dig att du kombinerar en språkförståelsemodell, kanske en enkel variant av en stor språkmodell (LLM) liknande OpenAI:s GPT-3, med andra specialiserade AI-modeller, till exempel de som skapar bilder eller musik. Det är lite som att sätta ihop ett team av superhjältar, där varje medlem har sin egen unika förmåga.
+<img align="right" src="/assets/img/blog/music.png" width="360" style=”float: right; padding: 3px 3px 3px 3px;”/> Föreställ dig att du kombinerar en språkförståelsemodell, kanske en enkel variant av en stor språkmodell (LLM) liknande OpenAI:s GPT-3, med andra specialiserade AI-modeller, till exempel de som skapar bilder eller musik. Det är lite som att sätta ihop ett team av superhjältar, där varje medlem har sin egen unika förmåga.
 Språkförståelsemodellen fungerar som teamets hjärna. Den förstår och tolkar instruktioner eller frågor på ett nästan mänskligt sätt. Du kan till exempel fråga den att beskriva en scen från en fantasyvärld eller att komma med idéer för en ny låt.<br/><br/>
 Därefter tar de andra modellerna, som är experter på bild- eller musikskapande, över. Baserat på den beskrivning eller idé som språkmodellen ger, börjar de arbeta. Om det handlar om en bild, kan en modell som DALL-E eller MidJourney börja skapa en visuell representation av den beskrivna scenen. Om det gäller musik, kan en modell som OpenAI’s Jukebox eller Metas AudioCraft börja komponera och skapa musik eller ljud som matchar stämningen eller stilen i din beskrivning.<br/><br/>
 Kombinationen av dessa AI-modeller gör att hela användarupplevelsen blir på en hög nivå. Du får inte bara en dator som förstår vad du säger, utan också en som kan skapa nya, fascinerande verk som matchar dina ord. Detta öppnar dörren för oändliga kreativa möjligheter, från att skriva en berättelse och genast kunna visualisera scenerna, till att komponera musik som perfekt fångar känslan i dina ord.
@@ -45,16 +45,14 @@ Om vi fokuserar på musik-generering finns det vissa delar som behöver vara på
 * Upphovsrätten för verket måste vara utredd.
 * Tekniska kvaliteten på det genererade materialet måste vara i nivå med professionellt skapad musik.
 
-<img src="/assets/img/blog/generative.png"/>
+<img src="/assets/img/blog/generative.png" />
 <br/>
 
 **Framtiden för Ljudgenerering med AI**
 
-Google, Meta och OpenAI har utfört innovativa grundforskning inom området och nyligen släppte Meta sin AudioCraft-modell-arkitektur open source vilket borgar för att många kommer börja experimentera och utveckla lösningar där generativ AI är grundkomponenten. Fortfarande finns det frågetecken till träningsdata och vilket träningsdata de som vill bygga produkter på lösningen ska använda. Dock har Meta jobbat på att få upp kvaliteten på det skapade materialet till en acceptabel teknisk nivå vilket är väldigt spännande.
-Framtiden för ljudgenerering med AI ser ljus ut. Med fortsatt snabb fart på forskning och utveckling inom området kan vi förvänta oss ännu mer avancerade och mångsidiga verktyg som förändrar hur vi skapar och upplever ljud och musik. Det står klart att generativ AI kommer att fortsätta att vara en kraftfull källa till innovation och kreativitet inom ljudvärlden.
+Google, Meta och OpenAI har utfört innovativ grundforskning inom området och nyligen släppte Meta sin AudioCraft-modell-arkitektur open source vilket borgar för att många kommer börja experimentera och utveckla lösningar där generativ AI är grundkomponenten. Fortfarande finns det frågetecken till träningsdata och vilket träningsdata de som vill bygga produkter på lösningen ska använda. Dock har Meta jobbat på att få upp kvaliteten på det skapade materialet till en acceptabel teknisk nivå vilket är väldigt spännande. Framtiden för ljudgenerering med AI ser ljus ut. Med fortsatt snabb fart på forskning och utveckling inom området kan vi förvänta oss ännu mer avancerade och mångsidiga verktyg som förändrar hur vi skapar och upplever ljud och musik. Det står klart att generativ AI kommer att fortsätta att vara en kraftfull källa till innovation och kreativitet inom ljudvärlden.
 
 **AI genererat trum-beat**
-
 
 Jag har testat att generera olika specifika stems. Här är ett exempel på en trum-stem.<br/> 
 
