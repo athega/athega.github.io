@@ -29,7 +29,7 @@ Kombinationen av dessa AI-modeller gör att hela användarupplevelsen blir på e
 
 **Träningsdata**
 
-Man kan fråga sig hur unikt det som skapas egentligen är? Kan ett AI vara kreativt och skapa något unikt?  Frågan är både intressant och komplex. Innehållet som genereras av dessa AI-modeller är "unikt" i den meningen att det inte är en kopia av något som redan finns. Men det är viktigt att förstå att detta "nya" innehåll är influerat av de data som modellen har tränats på. Här är några nyckelpunkter att tänka på:
+Innehållet som genereras av dessa AI-modeller är "unikt" i den meningen att det inte är en kopia av något som redan finns. Men det är viktigt att förstå att detta "nya" innehåll är influerat av de data som modellen har tränats på. Här är några nyckelpunkter att tänka på:
 
 * Baserat på Träningsdata: Generative AI-modeller lär sig skapa innehåll genom att analysera och förstå mönster i de data de tränas på. Ett AI som tränas på bilder av hundar att generera nya bilder av hundar som ser realistiska ut, dessa kommer att baseras på de egenskaper och drag som den har lärt sig från träningsbilderna. Ofta är datat dessa modeller tränas på upphovsrättskyddat.
 * Kombination av Egenskaper: Generative AI är skicklig på att kombinera subtila egenskaper i träningsdatat på nya och ofta oväntade sätt. Detta kan leda till originella verk,  även om de är sammansatta av egenskaper som modellen har lärt sig från befintliga data. 
