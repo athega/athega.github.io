@@ -49,8 +49,6 @@ Vill ni skriva upp er på inbjudningslistan till vårt MeetUp eller kontakta oss
                         <p>{{ post.description }}</p>
                         <p>{{ post.tags[0] }}</p>
                         <p>{{ post.tags[1] }}</p>
-
-
                     </a>
                 </li>
                 {% assign limit = limit | minus: 1 %}
