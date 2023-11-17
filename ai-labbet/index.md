@@ -42,18 +42,19 @@ Vill ni skriva upp er på inbjudningslistan till vårt MeetUp eller kontakta oss
         {% for post in site.posts %}
             {% if post.description %}
             {% if post.image_url %}
-            {% if post.tags.containsValue('ai') %}
                 <li>
                     <a href="{{ post.url }}" title="Läs mer om: {{ post.title }}">
                         <figure><img src="{{ post.image_url }}"></figure>
                         <h3>{{ post.title }}</h3>
                         <p>{{ post.description }}</p>
-                        <p>{{ post.tags }}</p>
+                        <p>{{ post.tags[0] }}</p>
+                        <p>{{ post.tags[1] }}</p>
+
+
                     </a>
                 </li>
                 {% assign limit = limit | minus: 1 %}
                 {% if limit == 0 %}{% break %}{% endif %}
-            {% endif %}
             {% endif %}
             {% endif %}
         {% endfor %}
