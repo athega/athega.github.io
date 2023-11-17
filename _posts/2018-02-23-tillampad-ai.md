@@ -3,9 +3,9 @@ title: "Tillämpad.ai februari 2018"
 date: 2018-02-23
 description: "I torsdags höll vi den första i en serie meetups runt machine learning. Vi kallade kvällen för tillämpad.ai då vi vill fokusera på verkliga tillämpningar."
 tags:
+  - ai
   - nyhetsbrev
   - blogg
-  - ai
   - ml
 last_updated_by: chrille
 image_url: /assets/legacy/uploads/2018/02/meetup.jpg
