@@ -42,6 +42,7 @@ Vill ni skriva upp er på inbjudningslistan till vårt MeetUp eller kontakta oss
         {% for post in site.posts %}
             {% if post.description %}
             {% if post.image_url %}
+            {% if post.tags.containsKeyu('ai') %}
                 <li>
                     <a href="{{ post.url }}" title="Läs mer om: {{ post.title }}">
                         <figure><img src="{{ post.image_url }}"></figure>
@@ -52,6 +53,7 @@ Vill ni skriva upp er på inbjudningslistan till vårt MeetUp eller kontakta oss
                 </li>
                 {% assign limit = limit | minus: 1 %}
                 {% if limit == 0 %}{% break %}{% endif %}
+            {% endif %}
             {% endif %}
             {% endif %}
         {% endfor %}
