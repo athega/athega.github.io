@@ -3,8 +3,8 @@ title: "Tillämpad.ai november 2018"
 date: 2020-10-24
 description: "En torsdag 2018 höll vi den tredje i en serie meetups runt machine learning. Vi kallade kvällen för tillämpad.ai då vi ville fokusera på verkliga tillämpningar."
 tags:
-  - blogg
   - ai
+  - blogg
   - ml
 last_updated_by: chrille
 image_url: /assets/blog/2018-meetup-nov.jpg
