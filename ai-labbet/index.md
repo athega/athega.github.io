@@ -39,7 +39,7 @@ Vill ni skriva upp er på inbjudningslistan till vårt MeetUp eller kontakta oss
     </p>
     <ul>
         {% assign limit = 6 %}
-        {% for post in site.posts.tags.ai %}
+        {% for post in site.posts %}
             {% if post.description %}
             {% if post.image_url %}
                 <li>
@@ -47,6 +47,7 @@ Vill ni skriva upp er på inbjudningslistan till vårt MeetUp eller kontakta oss
                         <figure><img src="{{ post.image_url }}"></figure>
                         <h3>{{ post.title }}</h3>
                         <p>{{ post.description }}</p>
+                        <p>{{ post.tags }}</p>
                     </a>
                 </li>
                 {% assign limit = limit | minus: 1 %}
