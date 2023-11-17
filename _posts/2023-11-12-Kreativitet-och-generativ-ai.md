@@ -3,6 +3,7 @@ title: "Kreativ AI?"
 date: 2023-11-12
 description: "Generativ AI förändrar hur vi interagerar med och skapar digitalt innehåll"
 tags:
+  - ai
   - nyhetsbrev
   - blogg
 last_updated_by: Mats
