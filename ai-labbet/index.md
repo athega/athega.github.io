@@ -32,3 +32,27 @@ Vårt initiativ startades 2016 för att tillämpa framstegen inom artificiell in
 * En kombination av maskininlärning, statistiska metoder och AI löser ofta problemet bättre tillsammans än vad dom individuella teknikerna gör för sig.
 
 Vill ni skriva upp er på inbjudningslistan till vårt MeetUp eller kontakta oss om ett intressant problem och samarbete, kontakta Torbjörn Nilsson – torbjorn.nilsson@athega.se 
+
+<section class="home-blog content">
+    <h2>Från bloggen</h2>
+    <p>
+    </p>
+    <ul>
+        {% assign limit = 6 %}
+        {% for post in site.posts %}
+            {% if post.description %}
+            {% if post.image_url %}
+                <li>
+                    <a href="{{ post.url }}" title="Läs mer om: {{ post.title }}">
+                        <figure><img src="{{ post.image_url }}"></figure>
+                        <h3>{{ post.title }}</h3>
+                        <p>{{ post.description }}</p>
+                    </a>
+                </li>
+                {% assign limit = limit | minus: 1 %}
+                {% if limit == 0 %}{% break %}{% endif %}
+            {% endif %}
+            {% endif %}
+        {% endfor %}
+    </ul>
+</section>
