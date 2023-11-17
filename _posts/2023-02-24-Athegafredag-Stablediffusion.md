@@ -4,6 +4,7 @@ date: 2023-09-29
 description: "Athega-fredag med ämnet Stable diffusion"
 tags:
   - blogg
+  - ai
 last_updated_by: mats
 image_url: /assets/blog/StableDiffusion.png
 ---
