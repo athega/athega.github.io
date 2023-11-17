@@ -39,7 +39,7 @@ Vill ni skriva upp er på inbjudningslistan till vårt MeetUp eller kontakta oss
     </p>
     <ul>
         {% assign limit = 6 %}
-        {% for post in site.posts %}
+        {% for post in site.posts.tags.ai %}
             {% if post.description %}
             {% if post.image_url %}
                 <li>
