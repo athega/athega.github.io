@@ -42,7 +42,7 @@ Vill ni skriva upp er på inbjudningslistan till vårt MeetUp eller kontakta oss
         {% for post in site.posts %}
             {% if post.description %}
             {% if post.image_url %}
-            {% if post.tags.containsKey('ai') %}
+            {% if post.tags.containsValue('ai') %}
                 <li>
                     <a href="{{ post.url }}" title="Läs mer om: {{ post.title }}">
                         <figure><img src="{{ post.image_url }}"></figure>
