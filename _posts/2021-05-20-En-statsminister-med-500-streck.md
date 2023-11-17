@@ -3,6 +3,7 @@ title: "En statsminister med 500 streck"
 date: 2021-05-20
 description: "Reinforcement Learning ett nytt verktyg för optimering och styrning"
 tags:
+  - ai
   - nyhetsbrev
   - blogg
  
