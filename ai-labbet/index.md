@@ -1,35 +1,50 @@
 ---
-title: AI Labbet
+title: AI & Maskininlärning
 intro-image: /assets/img/ai-labbet.jpg
-tagline: AI Labbet
+tagline: AI & Maskininlärning
 sub-tagline: Utveckling inom artificiell intelligens och maskininlärning
 ---
 
 # {{ page.title }}
 
-Vårt initiativ startades 2016 för att tillämpa framstegen inom artificiell intelligens och maskininlärning. Stora framsteg gjordes även inom dataanalys och signalbehandling. Vi såg också att många nya tekniker började tillämpas och ansåg därför att läget var rätt att satsa på dessa nya ideer. Vi driver också en sedan 2018 en meetup för de som praktiserar data science och med AI/ML.
+Avdelningen är kärnan i vår strävan att utnyttja och utveckla de senaste framstegen inom artificiell intelligens och maskininlärning. Vårt fokus är att integrera klassisk maskininlärning och statistiska modeller med den allra senaste forskningen för att hitta praktiska lösningar på verkliga problem. Vår vision är att kontinuerligt förbättra och optimera våra kunders verksamheter genom att tillämpa de mest avancerade AI- och ML-teknikerna. Vi är en partner i den snabba teknologiska utvecklingen och bidrar till våra kunders framgång genom innovativa lösningar.
 
-## Syfte
-* Att komplettera vårt kunnande inom signalbehandling, klassisk maskininlärning och statistiska modeller med den senaste forskning och utvärdera praktiska tillämpningar.
-* Många år senare har vi en verktygslåda med lösningar på många praktiska problem och håller ögonen på många lovande tekniker som fortfarande inte är klara för praktiskt användande.
-* Vi har också samarbetat med företag inom många olika områden för att utvärdera dessa verktyg i riktiga praktiska tillämpningar.
-* Larm/bevakning, fordonsindustrin, logistiksektorn, gruvindustrin och även corona-spårning har dragit nytta av våra verktyg.
+
+Vi har en stark grund i dataanalys och signalbehandling. Sedan 2016 har vi fått en gedigen erfarenhet att praktiskt använda AI-lösningar på en stor variation av utmaningar och problem våra kunder haft. Erfarenheten och verktygslådan av lösningar har växt genom åren, och vi är alltid uppmärksamma på nya, lovande tekniker som ännu inte är redo för kommersiellt bruk.  Vi har framgångsrikt samarbetat med företag inom en mängd olika sektorer, inklusive larm/bevakning, fordonsindustrin, logistik, gruvdrift, och hälsorelaterad dataanalys.
+
+## Slutsatser från dessa projekt
+* Maskininlärning och AI är domänagnostiska och kan tillämpas tvärvetenskapligt.
+* Nya AI-metoder kan lösa tidigare olösliga problem eller förbättra befintliga lösningar avsevärt.
+* AI kan snabbt utvärdera lösbarheten av ett problem, vilket kan leda till effektivare klassiska maskininlärningslösningar.
+* AI och maskininlärning är inte universella lösningar men är extremt kraftfulla när de används rätt och i kombination med varandra.
+
+
+> Vi erbjuder inte bara lösningar; vi öppnar dörrar till nya möjligheter och okänta potentialer.
 
 ## Vårt erbjudande idag
-* Kan skapa skräddarsydda modeller för igenkänning, klassificering och räkna objekt i ljud/bild och videodata.
-* Optimering och styrsystem baserade på Reinforcement learning. 
-* Simulering och analys av processer (Discrete Event Simulation)
-* Tidsserieanalys (forecasting) 
-* Avancerad visualisering av data
-* För känslig data kan vi utföra beräkningar på egen hårdvara istället för i “molnet”.
-* God kännedom om vilka tekniker lämpar sig för vilka problem.
+* Intelligenta Analyssystem:
+    * Avancerade AI-modeller för djupgående insikter och beslutsstöd.
+    * Realtidsdataanalys för snabbare och mer effektiva beslut.
+* Automatiserad Processoptimering:
+    * Användning av AI för att effektivisera och automatisera komplexa industriprocesser.
+    * Förbättrad resurshantering och produktivitet genom smarta AI-algoritmer.
+* Prediktiv Underhållsteknik:
+    * AI-drivna system för att förutse underhållsbehov och förhindra driftstopp.
+    * Livscykelhantering av utrustning och system med hjälp av avancerad AI.
+* Anpassade Kundupplevelser:
+    * Användning av AI för att skapa skräddarsydda kundupplevelser och personaliserade tjänster.
+    * Förbättrad kundnöjdhet genom AI-baserad analys av kundbeteende.
+* Kreativa AI-Lösningar:
+    * Utveckling av AI-driven innehållsgenerering för media och underhållningsbranschen, musik, bild, text, ljuddesign.
+    * Användning av AI för att skapa innovativa designlösningar inom arkitektur och produktdesign.
+* Hållbarhet och Miljöskydd:
+    * AI-baserade lösningar för att förbättra hållbarheten och minska miljöpåverkan.
+    * Effektivisering av energianvändning och minskning av avfall genom AI-optimering.
+* Säkerhetslösningar:
+    * AI-drivna säkerhetssystem för både fysisk och digital säkerhet.
+    * Förbättrad övervakning och reaktionstid genom AI-integration.
 
-## Slutsatser från dessa projekt:
-* Maskininlärning/AI är domänagnostiskt – ett problem i en domän är matematiskt ekvivalent med problem i andra domäner och kan därför dra nytta av samma typ av lösning.
-* Nya AI metoder kan lösa problem som tidigare varit olösliga (AlphaGo) eller som tidigare lösts men så dåligt att det inte varit värt att använda (2000-talets tal-till-text).
-* I vissa fall så kan man använda ett avancerat AI för att snabbt se om ett problem är lösbart och om så, analysera lösningen för komma till en lösning baserad på klassisk maskininlärning.
-* AI är inte en magisk lösning på alla problem. Det ska ses som ett fantastiskt effektiv verktyg för vissa specifika problem eller som ett komplement till klassisk maskininlärning.
-* En kombination av maskininlärning, statistiska metoder och AI löser ofta problemet bättre tillsammans än vad dom individuella teknikerna gör för sig.
+> Athega driver även en sedan 2018 en meetup för de som praktiserar data science och med AI/ML.
 
 Vill ni skriva upp er på inbjudningslistan till vårt MeetUp eller kontakta oss om ett intressant problem och samarbete, kontakta Torbjörn Nilsson – torbjorn.nilsson@athega.se 
 
