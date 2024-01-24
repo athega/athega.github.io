@@ -35,6 +35,6 @@ Som DevOps-konsult är det viktigt att ha kunskap och erfarenhet inom ett brett 
 
 
 
-På athega kan man arbeta inom devops-området utan att vara expert på alla områden ovan men en generell förståelse är viktig. 
+Även om en bred generell förståelse för alla områden ovan är viktigt kan en djupare experties vara fokuserad på specifika områden. 
 
 	
