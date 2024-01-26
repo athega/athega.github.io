@@ -28,7 +28,6 @@
 
 - title: Devopsutvecklare
   description:
-  En DevOps-konsult spelar en kritisk roll i att balansera behoven mellan mjukvaruutveckling och 
-  produktionsdrift. Målet är att förbättra och effektivisera utvecklings- och driftsprocesser
+    En devops-konsult spelar en kritisk roll i att balansera behoven mellan mjukvaruutveckling och produktionsdrift. 
   image_url: /assets/img/wookie.jpg
   href: /roller/devops
