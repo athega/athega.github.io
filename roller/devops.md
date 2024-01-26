@@ -2,7 +2,7 @@
 title: Dev-ops
 ---
 
-DevOps-konsult
+DevOps-utvecklare
 ===================
 
 En DevOps-konsult spelar en kritisk roll i att balansera behoven mellan mjukvaruutveckling och produktionsdrift. Målet är att förbättra och effektivisera utvecklings- och driftsprocesser. Detta kräver inte bara en robust teknisk bakgrund utan också förmågan att samarbeta effektivt över olika team och teknikområden.
