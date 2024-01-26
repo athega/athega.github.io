@@ -1,4 +1,4 @@
-- title: Fullstackutvecklare
+ops- title: Fullstackutvecklare
   description:
     Goda kunskaper i Javascript. Bred kunskap inom Javaplattformen och praktisk erfarenhet
     av ett urval av olika tekniker inom webbutveckling, både front- och backend.
@@ -26,10 +26,8 @@
   image_url: /assets/img/luke.jpg
   href: /roller/apputvecklare
 
-- title: Agilcoach och projektledare
+- title: Devops-utvecklare
   description:
-    Erfarenhet av projekt som syftar till att utveckla mjukvara. Det innefattar processen som börjar
-    i ett behov, som leder vidare till att ta fram ett system, som slutar i förvaltning och
-    vidareutveckling.
+En DevOps-konsult spelar en kritisk roll i att balansera behoven mellan mjukvaruutveckling och produktionsdrift. Målet är att förbättra och effektivisera utvecklings- och driftsprocesser
   image_url: /assets/img/wookie.jpg
-  href: /roller/projektledare
+  href: /roller/devops
