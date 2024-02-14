@@ -1,3 +1,18 @@
+---
+title: "AI and AML"
+date: 2024-02-14
+description: "How to get started with ai-models within KYC and AML area"
+tags:
+  - ai
+  - nyhetsbrev
+  - blogg
+last_updated_by: Mats
+image_url: /assets/img/blog/generative.png
+published: true
+---
+
+**AI and AML**
+
 To work with a risk-based approach in KYC, AML, and Transaction Monitoring, continuous screening and risk assessments are performed. These are based on predefined levels of risk tolerance, which are reflected in various ways across different IT systems.
 
 The result is a risk-based approach where a large number of cases can be handled automatically, but there are also cases that require more in-depth, and possibly manual, handling.
