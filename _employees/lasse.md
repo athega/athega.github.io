@@ -8,4 +8,8 @@ published: false
 ---
 {% include employees/profile.html %}
 
-TODO
+Min erfarenhet spänner över utvecklingsmiljöer, stora digitala 
+tjänsteleverantörer och tillverkningsindustri med höga säkerhetskrav. 
+DevOps, SRE och säkerhet har varit mina huvudsakliga teknikområden. 
+Har även tio års erfarenhet av att bygga och leda mjukvaruutvecklingsteam 
+och skapa en god kultur och kontinuerligt förbättra teamens processer.
