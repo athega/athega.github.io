@@ -1,0 +1,49 @@
+:root {
+  --sans-font: 'Inter', sans-serif;
+  --bg: #fff;
+  --text: #363636;
+  --text-light: #363636;
+  --border: #eee;
+  --accent: #f60;
+  --accent-bg: #eee;
+  --accent-hover: #DDD;
+  --accent-text: #0FF;
+  --code: #000;
+  --preformatted: #444;
+  --marked: #ffdd33;
+  --disabled: #efefef;
+}
+
+aside {
+  background-color: transparent;
+  border: 0;
+}
+
+article {
+  border: 0;
+}
+
+body {
+  grid-template-columns: 1fr min(56rem, 90%) 1fr;
+}
+
+body > header {
+  background-color: var(--bg);
+  border-bottom: 0;
+  padding: 0;
+}
+
+body > footer {
+  border-top: 0;
+}
+
+img, video {
+  opacity: 1;
+}
+
+a.button {
+  border: 1px solid var(--accent-hover);
+  background-color: var(--border);
+  color: var(--text);
+}
+
