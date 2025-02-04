@@ -1,0 +1,12 @@
+[
+  {
+    "url": "https://go.dev/",
+    "name": "Go Programming Language",
+    "desc": "Build simple, secure, scalable systems with Go."
+  },
+  {
+    "url": "https://ziglang.org/",
+    "name": "Zig Programming Language ⚡",
+    "desc": "Zig is a general-purpose programming language and toolchain for maintaining robust, optimal and reusable software."
+  }
+]
