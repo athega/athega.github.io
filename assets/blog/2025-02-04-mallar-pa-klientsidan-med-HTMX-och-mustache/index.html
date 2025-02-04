@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Data</title>
+    <link rel="stylesheet" href="css/pico.fluid.classless.zinc.min.css">
+    <script src="js/htmx.min.js"></script>
+    <script src="js/htmx/client-side-templates.js"></script>
+    <script src="js/mustache.min.js"></script>
+  </head>
+  <body>
+    <main mustache-array-template="data"
+          hx-ext="client-side-templates"
+          hx-get="data.json"
+          hx-target="#rows"
+          hx-trigger="load">
+      <article>
+        <div style="overflow: auto;">
+          <table class="striped">
+            <tbody id="rows">
+            </tbody>
+          </table>
+        </div>
+      </article>
+      <script type="text/template" id="data">
+        {{#data}}
+          {{#name}}
+            <tr>
+              <th>
+                <a href="{{url}}">{{name}}</a>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <em>{{desc}}</em>
+              </td>
+            </tr>
+          {{/name}}
+        {{/data}}
+      </script>
+    </main>
+  </body>
+</html>
