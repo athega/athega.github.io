@@ -8,20 +8,9 @@
 
   > li {
     width: 33.3%;
-
-    @media (min-width: 32em) {
-      width: 25%;
-    }
-
-    @media (min-width: 44em) {
-      width: 20%;
-    }
-
-    @media (min-width: 53em) {
-      width: 16.6%;
-    }
   }
 }
+
 .employee-index::after {
   content: "";
   flex: auto;

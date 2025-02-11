@@ -2,11 +2,17 @@
   time {
     text-transform: uppercase;
     font-size: 0.9em;
-    opacity: 0.7;
     line-height: 2em;
+    color: #888;
   }
 
   .full {
     width: 100%;
+  }
+
+  img.aligncenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
 }

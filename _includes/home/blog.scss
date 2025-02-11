@@ -11,19 +11,15 @@
             width: 100%;
             margin-bottom: 1.5em;
 
-            @media (min-width: 24em) {
-                width: 48%;
-            }
-
             @media (min-width: 48em) {
-                width: 29%;
+                width: 48%;
             }
 
             > a {
                 display: block;
                 color: inherit;
                 position: relative;
-                $max-height: 20rem;
+                $max-height: 50rem;
                 max-height: $max-height;
                 overflow: hidden;
 
