@@ -2,12 +2,13 @@
 title: Om oss
 ---
 
-{% include employees/index.html %}
-
 # {{ page.title }}
 
+{% include employees/index.html %}
+
+
 <a href="https://1997.athega.se" title="Athegas maskot för drygt 20 år sedan">
-  <img src="/assets/img/athegamannen.jpg" class="float_right" alt="Athegamannen">
+  <img src="/assets/img/athegamannen.jpg" style="width: 200px;" class="float_right" alt="Athegamannen">
 </a>
 
 ## Med ålderns rätt
@@ -38,5 +39,5 @@ jobbar aktivt i bolaget.
  - Torbjörn Nilsson ordinarie ledamot, VD
  - Mats Ygfors ordinarie ledamot
 
-Organisationsnummer: 556547-6693  
+Organisationsnummer: 556547-6693
 Momsreg.nr/VAT-nr: SE556547669301

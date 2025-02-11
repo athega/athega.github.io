@@ -1,4 +1,9 @@
 .blog-archive {
+  strong {
+    font-size: 2em;
+    margin-right: 0.5em;
+  }
+
   > ul.featured {
     list-style: none;
     padding: 0;
@@ -13,8 +18,12 @@
       }
 
       > a:hover {
-        color: #f60;
         text-decoration: none;
+
+        h3 {
+          color: #000;
+          text-decoration: underline;
+        }
       }
     }
 

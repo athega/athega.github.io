@@ -12,7 +12,6 @@
                 <p>{{ post.description }}</p>
             </a>
         </li>
-
         {% endfor %}
     </ul>
 
@@ -24,7 +23,9 @@
         {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
         {% capture next_year %}{{ post.next.date | date: '%Y' }}{% endcapture %}
         {% if year != next_year %}
-          <h3><a href="/blogg/{{ year }}/">{{ year }}</a></h3>
+          <strong>
+            <a href="/blogg/{{ year }}/">{{ year }}</a>
+          </strong>
         {% endif %}
     {% endfor %}
 </section>

@@ -1,15 +1,12 @@
 html {
-    line-height: 1.35;
-    color: #363636;
+    color: $gray;
+    line-height: 1.5;
+    font-family: system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, Helvetica, Arial, "Helvetica Neue", sans-serif;
+    text-rendering: optimizeLegibility;
 
     > body > main {
-
-        p {
-            font-size: 1.1rem;
-        }
-
         > .content {
-            max-width: 760px;
+            max-width: 850px;
             margin: 0 auto;
             padding: 0 5%;
             overflow: hidden;
@@ -28,8 +25,6 @@ html {
                 height: auto;
             }
         }
-
-
     }
 }
 
@@ -54,9 +49,8 @@ blockquote {
 }
 
 code, pre {
-    font-family: Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal, Consolas, Liberation Mono, DejaVu Sans Mono, Courier New, monospace;
-    color: #333;
-    font-size: 12px;
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    color: #222;
 }
 
 pre {

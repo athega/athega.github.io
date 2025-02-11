@@ -1,0 +1,18 @@
+$white: #FFFFFF;
+$gray: #363636;
+$black: #222;
+$orange: #FF6600;
+
+html {
+  scrollbar-color: $orange transparent;
+}
+
+header ::selection, footer ::selection {
+    color: $black;
+    background: $white;
+}
+
+section ::selection, main article ::selection {
+    color: $white;
+    background: $orange;
+}

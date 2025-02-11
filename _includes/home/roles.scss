@@ -11,14 +11,6 @@
             text-align: initial;
             margin-bottom: 1.5em;
 
-            @media (min-width: 42em) {
-                width: 48%;
-
-                &:not(:nth-of-type(2n)) {
-                    margin-right: 4%;
-                }
-            }
-
             > a {
                 display: block;
                 position: relative;
@@ -27,10 +19,8 @@
                 margin: 0;
 
                 > .role-body {
-                    border-right: #f60 2px solid;
-
                     > img {
-                        float: left;
+                        float: right;
                         width: 95px;
                         height: 95px;
                         margin-right: 0.5rem;
