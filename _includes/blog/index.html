@@ -1,16 +1,16 @@
 <section class="blog-index content">
-    <h1>{{ page.title }}</h1>
-    <ul>
-        {% for post in site.posts %}
-            {% capture post_year %}{{ post.date | date: '%Y' }}{% endcapture %}
-            {% if post_year == page.year %}
-            <li>
-                <a href="{{ post.url }}">
-                    <time datetime="{{ post.date | date: "%Y-%m-%d" }}">{{ post.date | date: "%Y-%m-%d" }}</time>
-                    {{ post.title }}
-                </a>
-            </li>
-            {% endif %}
-        {% endfor %}
-    </ul>
+  <h1>{{ page.title }}</h1>
+  <ul>
+  {% for post in site.posts %}
+    {% capture post_year %}{{ post.date | date: '%Y' }}{% endcapture %}
+    {% if post_year == page.year %}
+    <li>
+      <a href="{{ post.url }}" title="Läs mer om: {{ post.title }}">
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.description }}</p>
+      </a>
+    </li>
+    {% endif %}
+  {% endfor %}
+  </ul>
 </section>
