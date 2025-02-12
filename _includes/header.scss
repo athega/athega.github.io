@@ -10,9 +10,10 @@ body {
         padding: 0.5rem 0;
         border-bottom: 3px solid darken($orange, 5);
         background-color: $orange;
+        padding-left: 1rem;
 
         > div {
-            max-width: 850px;
+            max-width: 1024px;
             height: 100%;
             margin: 0 auto;
 
@@ -20,7 +21,6 @@ body {
                 float: left;
                 height: 100%;
                 max-width: 66%;
-                padding-left: 1rem;
 
                 > img {
                     display: block;

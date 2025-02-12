@@ -17,11 +17,17 @@
 }
 
 .employee-profile {
+  margin-bottom: 1em;
+
   @media (max-width: 847px) {
     .portrait {
       max-width: 105vw;
       margin-left: -6%;
     }
+  }
+
+  .portrait {
+    width: 100%;
   }
 
   h1 {

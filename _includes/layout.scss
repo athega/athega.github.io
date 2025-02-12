@@ -13,7 +13,7 @@ html {
         padding-bottom: 3em;
 
         > .content {
-            max-width: 850px;
+            max-width: 1024px;
             margin: 0 auto;
             padding: 0 5%;
             overflow: hidden;
@@ -82,22 +82,38 @@ blockquote {
 }
 
 code, pre {
-    font-family: "Source Code Pro", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
-    color: #222;
+    font-family: "Office Code Pro D", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    font-weight: 400;
+    color: #000;
 }
 
 pre {
-    padding: 0.2em 0.3em;
+    padding: 0.6em 0.8em;
     background-color: darken(#f8f8f8, 50%);
     border-radius: 4px;
     border: 1px solid darken(#e5e5e5, 10%);
     overflow-x: auto;
+    line-height: 1.1;
 }
 
 hr {
   clear: both;
   color: #FEFEFE;
 }
+
+h1 {
+  font-size: 2.6em;
+}
+
+h2 {
+  font-size: 1.9em;
+}
+
+h3 {
+  font-size: 1.6em;
+  margin-bottom: 0.1em;
+}
+
 
 .float_right {
     float: right;
