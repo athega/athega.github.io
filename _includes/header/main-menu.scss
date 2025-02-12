@@ -23,7 +23,7 @@
         }
     }
 
-    @media (max-width: 847px) {
+    @media (max-width: 848px) {
         &:target > a:first-of-type,
         &:not(:target) > a:last-of-type,
         &:not(:target) > ul {
@@ -35,7 +35,8 @@
 
             > img {
                 width: auto;
-                height: 120%;
+                height: 100%;
+                margin-top: 0.3em;
             }
         }
 
