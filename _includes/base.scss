@@ -5,6 +5,7 @@ $orange: #FF6600;
 
 html {
   scrollbar-color: $orange transparent;
+  background: $orange;
 }
 
 header ::selection, footer ::selection {
