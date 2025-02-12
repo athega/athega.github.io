@@ -26,9 +26,9 @@ body > footer {
         }
 
         > p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin: 0;
-            margin-bottom: 0.5em;
+            margin-bottom: 1em;
         }
     }
 
@@ -40,6 +40,7 @@ body > footer {
         > li {
             display: inline-block;
             text-align: center;
+            font-size: 1.3em;
 
             &:not(:last-of-type) {
                 margin-right: 1em;
@@ -55,12 +56,6 @@ body > footer {
 
             > a {
                 display: inline-block;
-                opacity: 0.85;
-
-                &:hover,
-                &:focus {
-                    opacity: 1;
-                }
 
                 > svg {
                     display: block;
