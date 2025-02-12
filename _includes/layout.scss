@@ -2,8 +2,11 @@ html {
     background: $orange;
     color: $gray;
     line-height: 1.5;
+    text-rendering: auto;
     font-family: system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, Helvetica, Arial, "Helvetica Neue", sans-serif;
-    text-rendering: optimizeLegibility;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
 
     > body > main {
         background: $white;
