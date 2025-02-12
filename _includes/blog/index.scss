@@ -1,4 +1,9 @@
 .blog-index {
+  strong {
+    font-size: 2em;
+    margin-right: 0.5em;
+  }
+
   > ul {
     list-style: none;
     padding: 0;
