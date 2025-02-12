@@ -36,8 +36,8 @@ Sedan skriver vi en enkel HTML-fil där vi laddar in följande bibliotek:
     - <https://github.com/bigskysoftware/htmx-extensions/tree/main/src/client-side-templates>
  - <https://mustache.github.io/>
 
-```mustache
 {% raw %}
+```mustache
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
   <head>
@@ -82,8 +82,8 @@ Sedan skriver vi en enkel HTML-fil där vi laddar in följande bibliotek:
     </main>
   </body>
 </html>
-{% endraw %}
 ```
+{% endraw %}
 
 ## Resultat
 
