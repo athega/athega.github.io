@@ -13,4 +13,22 @@
     {% endif %}
   {% endfor %}
   </ul>
+
+  <hr>
+
+  <h2>Bloggarkivet</h2>
+
+  {% for post in site.posts %}
+    {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
+    {% capture next_year %}{{ post.next.date | date: '%Y' }}{% endcapture %}
+    {% if year != next_year %}
+      <strong>
+        {% if year == page.year %}
+          {{ year }}
+        {% else %}
+          <a href="/blogg/{{ year }}/">{{ year }}</a>
+        {% endif %}
+      </strong>
+    {% endif %}
+  {% endfor %}
 </section>
