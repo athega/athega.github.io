@@ -3,18 +3,25 @@
 
 @import "base";
 @import "normalize";
-@import "layout";
+
 @import "lib/rouge-github";
+
+@import "layout";
 @import "header";
 @import "header/main-menu";
+
 @import "home/intro";
 @import "home/blog";
 @import "home/roles";
 @import "home/dash";
 @import "home/challanges";
+
 @import "blog/archive";
 @import "blog/index";
 @import "blog/post";
+
 @import "page/intro";
+
 @import "employees/employee";
+
 @import "footer";

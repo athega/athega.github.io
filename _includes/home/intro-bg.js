@@ -7,7 +7,7 @@ $(function() {
 
     var foregroundCanvas = $intro.find('> canvas').get(0),
         canvas = document.createElement('canvas'),
-        gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl'),
+        gl = canvas.getContext('webgl'),
         image = new Image(),
         width,
         height,
@@ -34,7 +34,7 @@ $(function() {
         $intro.on('updateBackground', draw);
     };
 
-    $(window).on('resize orientationchange', function(event) {
+    $(window).on('resize orientationchange', function() {
         init();
         gl.bufferSubData(gl.ARRAY_BUFFER, 0, new Float32Array(getTextureCoords()));
     });
@@ -69,9 +69,7 @@ $(function() {
                 float ratio = revealRatio * pow(1.0 - dist / maxDist, 6.0);
                 float vmin = min(view.x, view.y);
                 gl_FragColor = texture2D(u_image, v_texCoord + ((textureCenter - v_texCoord) * ratio) + backgroundPosition);
-                // gl_FragColor.rgb = 1.0 - gl_FragColor.rgb;
                 gl_FragColor.rgba *= smoothstep(revealRatio * vmin * 0.40, revealRatio * vmin * 0.60, dist) * revealRatio + (1.0 - revealRatio);
-                // gl_FragColor.rgb = 1.0 - gl_FragColor.rgb;
             }
         `);
 
@@ -200,5 +198,4 @@ $(function() {
     function mapRange(value, minSrc, maxSrc, minDst, maxDst) {
         return (value - minSrc) / (maxSrc - minSrc) * (maxDst - minDst) + minDst;
     }
-
 });
