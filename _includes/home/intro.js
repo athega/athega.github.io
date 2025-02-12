@@ -6,8 +6,6 @@ $(function() {
         $canvas = $(canvas),
         ctx = canvas.getContext('2d'),
         $header = $('body > header'),
-        // canvas2 = document.createElement('canvas'),
-        // ctx2 = canvas2.getContext('2d'),
         width, height, vmin, top, bottom, tx, ty, points, gradient,
         prevScrollTop = undefined,
         center,
@@ -26,7 +24,6 @@ $(function() {
         backgroundPosition = 0;
 
     $intro.prepend(canvas);
-    // $header.prepend(canvas2);
 
     init();
 
@@ -36,9 +33,6 @@ $(function() {
         vmin = Math.min(width, height);
         top = $intro.length ? $intro.offset().top : 0;
         bottom = top + (canvas.offsetHeight || height) - $header.height();
-        // bottom = top + (canvas.offsetHeight || height) - canvas2.offsetHeight;
-        // canvas2.width = Math.floor(canvas2.offsetWidth / 2);
-        // canvas2.height = Math.floor(canvas2.offsetHeight / 2);
         tx = Math.floor(width/32);
         ty = Math.floor(height/32);
         points = [];
@@ -121,13 +115,13 @@ $(function() {
                     event.preventDefault();
                 }
             },
-            'touchend': function(event) {
+            'touchend': function() {
                 pointerActive = false;
             },
         });
     } else {
         $intro.on({
-            'mousedown': function(event) {
+            'mousedown': function() {
                 deviceMoved = true;
                 pointerActive = true;
             },
@@ -136,7 +130,7 @@ $(function() {
                 pointerX = deviceXOffset = (event.pageX) * 2 / canvas.offsetWidth - 1;
                 pointerY = deviceYOffset = (event.pageY - top) * 2 / canvas.offsetHeight - 1;
             },
-            'mouseup mouseleave': function(event) {
+            'mouseup mouseleave': function() {
                 pointerActive = false;
             },
         });
@@ -162,9 +156,9 @@ $(function() {
         normal = rotateX(normal, -startOrientation.beta);
         normal = rotateZ(normal, -startOrientation.alpha);
 
-        if (window.orientation == 90) {
+        if (window.screen.orientation == "portrait-primary") {
             normal = {x: normal.y, y: -normal.x, z: normal.z};
-        } else if (window.orientation == -90) {
+        } else if (window.screen.orientation == "portrait-secondary") {
             normal = {x: -normal.y, y: normal.x, z: normal.z};
         }
 
@@ -197,7 +191,7 @@ $(function() {
         };
     }
 
-    $(window).on('resize orientationchange', function(event) {
+    $(window).on('resize orientationchange', function() {
         startOrientation = undefined;
         deviceMoved = true;
         $canvas.css('background-position', '');
@@ -205,7 +199,7 @@ $(function() {
     });
 
     function update() {
-        var currentScrollTop = window.pageYOffset || document.documentElement.scrollTop,
+        var currentScrollTop = window.scrollY || document.documentElement.scrollTop,
             pageScrolled = currentScrollTop != prevScrollTop;
 
         if ((pageScrolled || deviceMoved) && currentScrollTop < bottom) {
@@ -242,8 +236,6 @@ $(function() {
                 draw();
             }
             ctx.restore();
-
-            // ctx2.drawImage(canvas, 0, Math.min(height * scrollRatio, height - canvas2.height), width, canvas2.height, 0, 0, canvas2.width, canvas2.height);
 
             $intro.data('backgroundPosition', {x: 160 * scrollRatio + deviceXOffset * 16, y: currentScrollTop / 2 - deviceYOffset * 12});
 
@@ -314,14 +306,7 @@ $(function() {
             ctx.lineTo(p3.x, p3.y);
             ctx.closePath();
             ctx.fill();
-            // if (c.a == 1)
             ctx.stroke();
         }
-
-//        ctx.fillStyle = 'rgb(0,0,255)';
-//        ctx.fillRect(p1.x-1, p1.y-1, 2, 2);
-//        ctx.fillRect(p2.x-1, p2.y-1, 2, 2);
-//        ctx.fillRect(p3.x-1, p3.y-1, 2, 2);
     }
-
 });
