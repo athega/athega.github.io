@@ -16,8 +16,3 @@ Specifikt på Athega innebär det:
  - Erfarenhet av att nyttja sensorer i lösningen
  - Design patterns
  - Release av minst en app
-
-Just nu söker vi flera som kan fylla rollen. Läs mer om våra detaljerade krav i våra annonser:
-
- - [iOS-utvecklare](annons-ios)
- - [Androidutvecklare](annons-android)
