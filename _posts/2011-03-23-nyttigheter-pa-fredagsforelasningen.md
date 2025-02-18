@@ -3,6 +3,7 @@ title: "Nyttigheter på fredagsföreläsningen"
 date: 2011-03-23
 last_updated_by: tobbe
 ---
+
 [Krister Söderström](/krister), som jobbar som utvecklare på Athega, kommer att föreläsa om vektorkvantisering och klustring.
 
 Första delen av föreläsningen är en enkel genomgång om vad en vektor är samt vad kvantisering och klustring innebär. Syftet är att ge en grundläggande förståelse inför den andra delen av föreläsningen.

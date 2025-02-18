@@ -1,6 +1,7 @@
 ---
 title: "Internutbildning om Go"
 date: 2017-04-10
+description: "Ämnet för månadens internutbildning var Go, det språk jag har fokuserat mest på under de senaste åren."
 tags:
   - internutbildning
   - go

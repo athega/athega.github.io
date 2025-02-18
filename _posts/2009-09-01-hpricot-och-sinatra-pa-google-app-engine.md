@@ -4,20 +4,23 @@ date: 2009-09-01
 last_updated_by: peter
 ---
 <a title="Hpricot" href="http://github.com/whymirror/hpricot/tree/master">Hpricot</a> är en HTML parser som är skriven i Ruby. Jag gillar den eftersom den är snabb och extremt enkel att jobba med. Den är perfekt om man vill extrahera innehåll från en webbsida som inte tillhandahåller ett färdigt api. Det finns <a href="http://www.google.se/search?q=hpricot+tutorial&amp;ie=utf-8&amp;oe=utf-8&amp;aq=t&amp;rls=com.ubuntu:en-US:official&amp;client=firefox-a">många</a> <a href="http://soledadpenades.com/2007/06/15/extracting-data-with-hpricot/">bra</a> <a title="Installera Hpricot för Jruby" href="http://stackoverflow.com/questions/726412/installing-hpricot-for-jruby">tutorials</a> på nätet.
-<h2>Ett enkelt exempel</h2>
+
+## Ett enkelt exempel
+
 För att till exempel hitta alla nyheter på Athegas första sida kan man göra så här.
 
     require 'rubygems'
     require 'open-uri'
     require 'hpricot'
-    
+
     # Läs in Athegas första sida
     doc = Hpricot(open("http://athega.se"))
     # Xpath uttryck för att hitta nyheterna
     result = doc/"//*[@id='helplist']/li/a"
 
 
-<h2>Hpricot på Google App Engine</h2>
+## Hpricot på Google App Engine
+
 Jag ville använda Hpricot tillsammans med <a href="http://jruby.org/">Jruby</a> och <a href="http://www.sinatrarb.com/">Sinatra</a> (som Peter har <a href="http://athega.se/2009/03/08/sinatra-och-google-spreadsheet/">skrivit</a> mer om) på <a href="http://code.google.com/appengine/">Google App Engine</a>. Jag följde den här <a href="http://blog.bigcurl.de/2009/04/running-sinatra-apps-on-google.html">guiden</a> för att komma igång med min Sinatra applikation på App Engine  och det gick smärtfritt. Tyvärr så small det direkt när jag försökte använda mig av Hpricot. Ett AccessControlException kastades.
 
     javax.servlet.ServletContext log: Application Error
@@ -53,4 +56,4 @@ Sedan transformerade jag resultatet till JSON och la upp applikationen här <a h
 
 Om någon vill titta närmare på <a href="http://github.com/ragulin/hpricot-and-sinatra-on-google-app-engine/tree/master">koden</a> ligger den på Github men tänk på se till så att ni har tillstånd av rättighetsinnehavaren innan ni plockar data från webben.
 
-// [Mikael](/mikael)
+/ [Mikael](/mikael)

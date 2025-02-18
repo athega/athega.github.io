@@ -16,7 +16,8 @@ Sinatra är ett DSL för att snabbt och enkelt skapa webbapplikationer i Ruby:
       'Hello world!'
     end
 
-<h2>Komma igång</h2>
+## Komma igång
+
 Först av allt behöver vi <a href="http://www.ruby-lang.org/en/">Ruby</a> och <a href="http://www.rubygems.org/">RubyGems</a>. Eftersom jag använder OS X så är de redan installerade. (Men se till att du har en uppdaterad version av RubyGems)
 
 Om du inte redan har lagt till <a href="http://github.com">GitHub</a> i listan över dina gem sources:
@@ -29,7 +30,7 @@ Nu är vi redo att installera de gems vi kommer att använda:
 
 Nu är vi redo att börja skriva vårt script:
 
-<h2>sinatra-and-google-spreadsheet.rb</h2>
+## sinatra-and-google-spreadsheet.rb
 
 Först tar vi och laddar in de gems vi kommer använda (Sinatra kommer att ladda in <a href="http://haml.hamptoncatlin.com/">Haml</a> åt oss):
 
@@ -52,18 +53,18 @@ Metoderna för att hämta datat från Google Spreadsheet:
       # Retrieve and return the posts
       session["posts"] ||= retrieve_posts
     end
-    
+
     def retrieve_posts
       # Empty posts hash
       posts = {}
-    
+
       # Log in to Google Spreadsheet
       session = GoogleSpreadsheet.login('xxxxxxxx', 'xxxxxxxx')
-    
-      # First worksheet of 
+
+      # First worksheet of
       #  http://spreadsheets.google.com/ccc?key=peGTxx6h1WT0ihw9-QETbQg
       ws = session.spreadsheet_by_key("peGTxx6h1WT0ihw9-QETbQg").worksheets[0]
-    
+
       # Iterate over all the rows in the spreadsheet
       for i in 1...ws.num_rows
         # Store the data Identify data using the slug
@@ -74,7 +75,7 @@ Metoderna för att hämta datat från Google Spreadsheet:
           :author   => ws[i+1,4],
         }
       end
-    
+
       # Return the retrieved posts
       posts
     end
@@ -86,7 +87,7 @@ Startsida listar helt enkelt alla poster:
     get '/' do
       # Get all the posts
       @posts = get_posts
-      
+
       # Render the index template
       haml :index
     end
@@ -96,7 +97,7 @@ Respektive post har en "slug" som används i urlen:
     get '/:slug' do
       # Get the post
       @post = get_posts[params[:slug]]
-      
+
       # Render the post template
       haml :post
     end
@@ -104,17 +105,17 @@ Respektive post har en "slug" som används i urlen:
 Nu definierar vi de <a href="http://haml.hamptoncatlin.com/">Haml</a>-mallar vi använder på sidorna:
 
     __END__
-    
+
     @@ layout
     %html
       %head
         %title Sinatra and Google Spreadsheet
       %body
         = yield
-    
+
     @@ index
     %h1.title All posts
-    
+
     - @posts.each do |slug, post|
       %ul
         %li
@@ -123,7 +124,7 @@ Nu definierar vi de <a href="http://haml.hamptoncatlin.com/">Haml</a>-mallar vi 
     @@ post
     %h1.title
       = @post[:title]
-    
+
     %div
       Published
       %span.date
@@ -131,15 +132,15 @@ Nu definierar vi de <a href="http://haml.hamptoncatlin.com/">Haml</a>-mallar vi 
       by
       %span.author
         = @post[:author]
-    
+
     %p.content
       = @post[:content]
-    
+
     %a{:href => '/'} << Back
 
-<h2>Starta scriptet</h2>
+## Starta scriptet
 
-    $ ruby sinatra-and-google-spreadsheet.rb 
+    $ ruby sinatra-and-google-spreadsheet.rb
     == Sinatra/0.9.1 has taken the stage on 4567 for development with backup from Thin
     >> Thin web server (v1.0.0 codename That´s What She Said)
     >> Maximum connections set to 1024
@@ -147,7 +148,7 @@ Nu definierar vi de <a href="http://haml.hamptoncatlin.com/">Haml</a>-mallar vi 
 
 Om allt går som det ska så ska vi nu ha en server på <a href="http://localhost:4567/">http://localhost:4567/</a>.
 
-<h2>Resultat</h2>
+## Resultat
 
 Från ett kalkylblad på Google Spreadsheet:
 
@@ -159,4 +160,4 @@ Till en sida serverad med Sinatra:
 
 Att man kan åstadkomma så mycket med under 100 rader Rubykod är rätt imponerande, speciellt om man tänker på att vi då även räknar in kommentarer och mallar.
 
-// [Peter](/peter)
+/ [Peter](/peter)

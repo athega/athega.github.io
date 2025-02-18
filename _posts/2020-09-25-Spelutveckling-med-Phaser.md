@@ -24,6 +24,7 @@ Denna gång utmanade vi oss själva att snabbt bygga ihop enkla spel som går at
 </figure>
 
 ### Phaser
+
 Phaser är ett ramverk som gör det snabbt att komma igång att skapa ett spel. Har man bara koll på grunderna inom webbutveckling, framför allt JavaScript, är det enkelt att börja med.
 Phaser fungerar i alla moderna webbläsare, både mobil och desktop, men även i de något äldre då den ser till att grafiken körs på WebGL alternativt Canvas och ljudet på Web Audio alternativt HTML Audio beroende på vad som stöds.
 Det finns ett stort API att gräva i med funktioner för sprites, animationer, partiklar, fysik med mera. Det gör att koden man skriver för att styra ramverket blir ganska deklarativ och därmed inte nödvändigtvis allt för avancerad.
@@ -37,6 +38,7 @@ Det finns ett stort API att gräva i med funktioner för sprites, animationer, p
 </figure>
 
 ### Utmaningen
+
 Vi delade in oss i lag om två-och-två. Det var som sagt ingen tung JavaScript-programmering det handlade om, men en fördel om någon i laget är bekväm med det ändå.
 Annars ligger tonvikten på inspiration och kreativitet, att komma på vad man vill skapa är grundförutsättningen.
 Eftersom en annan förutsättning var att det skulle gå fort, några timmmar på en eftermiddag bara, ville vi undvika att fastna på något. Därför utgick vi från en tutorial om 10 steg som man kunde bygga vidare på.
@@ -51,6 +53,7 @@ Ett förslag var att tänka på enkla, klassiska spel som t.ex. Pong, Asteroids 
 </figure>
 
 ### Tävlingen
+
 Efter att momentet med att skapa spelen var avklarat var tanken att alla skulle få en chans att slå high-score på de andras spel, men någon fullständig turnering hanns tvärr inte med.
 Däremot delades det ut guldstjärnor för prestationer som att färdigställa ett spelbart spel, lägga till egen grafik och musik samt bonuspoäng till favoriter.
 
@@ -64,4 +67,4 @@ Vi hade kul både med att koda och att spela. Några av spelen det resulterade i
     <small>Spring med höger/vänster-piltangent och hoppa med uppåtpil.</small>
 </figure>
 
-**_/Johan._**
+/ [Johan](/johan)

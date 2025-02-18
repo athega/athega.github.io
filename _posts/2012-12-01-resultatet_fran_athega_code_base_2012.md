@@ -30,12 +30,12 @@ Ett fungerande exempel kan finnas [här](http://hem.lizell.se/content/dash/).
 ## Enkelt API för populära bilder på 500px
 
 Jag hittade nyligen tjänsten [ScraperWiki](https://scraperwiki.com/)
-som låter dig bygga enkla scrapers i Ruby, Python och PHP. 
+som låter dig bygga enkla scrapers i Ruby, Python och PHP.
 
-Mitt lilla [hack](https://scraperwiki.com/scrapers/500px/) 
-består i att skrapa några sidor med populära 
-bilder från [500px](http://500px.com/), informationen sparar jag 
-ner i ScraperWikis datastore vilket gör att jag kan använda mig 
+Mitt lilla [hack](https://scraperwiki.com/scrapers/500px/)
+består i att skrapa några sidor med populära
+bilder från [500px](http://500px.com/), informationen sparar jag
+ner i ScraperWikis datastore vilket gör att jag kan använda mig
 av deras generella [data API](https://scraperwiki.com/docs/api#sqlite)
 
 ![iPad med 500px hacket](http://assets.athega.se/blogg/2012/12/ipad-mini-with-500px-hack.jpg)
@@ -52,7 +52,7 @@ Alla människor har adresser som deras liv kretsar kring, t.ex. arbete eller sko
 
 Teknikerna som användes var JavaScript, [node.js](http://nodejs.org/), [OpenStreetMap](http://www.openstreetmap.org/), SLs Reseplanerare.
 
-/ [Alex](/alex)
+/ Alex
 
 
 ## Ansiktsigenkänning med WebRTC, Websockets och OpenCV (Micke)

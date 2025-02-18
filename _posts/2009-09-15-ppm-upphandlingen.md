@@ -10,4 +10,4 @@ Det är framför allt kompetens inom Perl som Athega kommer att leverera till PP
 
 Vi hoppas att det tar ordentlig fart nu i höst, så ska vi köra så det ryker!
 
-// [Fredrik](/fredrik)
+/ [Fredrik](/fredrik)

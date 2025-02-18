@@ -17,12 +17,10 @@ Everyone wants to do a good job. Everyone wants to feel that they are able to do
 
 If I would map an overburden team on a modified "mental state in terms of challenge level and skill level chart" (Mihály Csíkszentmihályi) it would be on the left side of the chart. The axis and terms in below example is modified from the original to match what I believe is the teams collective mental state.
 
-![chart](http://i39.tinypic.com/noetsh.jpg)
-
 The collective feeling of capability would be low and this is regardless of individual knowledge, competence, understanding of goals and experienced challenge.
 
 What we want is the _whole_ team to feel that they are capable. We would like to move the mental state towards controlled, engaged, relaxed and ultimately flow.
 
 One step for this to happen is to begin balancing demand against capability.
 
-// Mats Ygfors
+/ [Mats Ygfors](/mats)

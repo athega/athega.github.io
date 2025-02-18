@@ -6,14 +6,14 @@ last_updated_by: peter
 ![Boulder Theatre - Rocky Mountain Ruby Conference](http://assets.athega.se/blogg/2012/09/boulder_theatre_rmr.jpg)
 
 Förra veckan fylldes [Boulder Theater](http://www.bouldertheater.com/)
-ännu en gång av Rubyister från ett flertal delstater och länder, 
-det var dags för årets upplaga av konferensen 
+ännu en gång av Rubyister från ett flertal delstater och länder,
+det var dags för årets upplaga av konferensen
 [Rocky Mountain Ruby](http://rockymtnruby.com/).
 
 ## Onsdag 19/9
 
-Kvällen innan konferensen kom igång på riktigt höll 
-[Quick Left](http://quickleft.com/) en [Arduino](http://arduino.cc/)-hackfest. 
+Kvällen innan konferensen kom igång på riktigt höll
+[Quick Left](http://quickleft.com/) en [Arduino](http://arduino.cc/)-hackfest.
 (Hårdvaran sponsrades av [SparkFun](http://www.sparkfun.com/))
 
 ![Quick Left - Arduino](http://assets.athega.se/blogg/2012/09/quickleft_arduino.jpg)
@@ -28,7 +28,7 @@ några minuter av [\#devmed](https://twitter.com/i/#!/search/realtime/%23devmed)
 > What is the future cost of doing nothing now?
 
 Den första presentationen hölls av [Sandi Metz](https://twitter.com/sandimetz)
-och hon satte ribban riktigt högt för de andra talarna :) 
+och hon satte ribban riktigt högt för de andra talarna :)
 
 Hon beskrev hur man kan göra för att strukturera sin kod så att man
 kapslar in de tråkigaste delarna av en kodbas.
@@ -88,16 +88,16 @@ Han visade även sitt bibliotek [Gimme](https://github.com/searls/gimme).
 [Roy Tomeij](https://twitter.com/roy) höll mycket bra dragning om hur
 man kan strukturera sin HTML och CSS på ett modulärt sätt, en lösning
 som hade vissa likheter med SMACSS som
-[Jonathan Snooks](https://twitter.com/snookca) pratade om på förra 
+[Jonathan Snooks](https://twitter.com/snookca) pratade om på förra
 [Geek Meet Stockholm](http://robertnyman.com/geekmeet/).
 
 [Video](http://www.youtube.com/watch?v=TqPzxrCIJTs) och [Slides](http://roytomeij.com/slides/rockymountainruby2012/)
 
 ### Lightning talks
 
-[Colin Thomas-Arnold](https://twitter.com/colinta) visade 
-[RubyMotion](http://www.rubymotion.com/) samt biblioteken 
-[BubbleWrap](https://github.com/rubymotion/bubblewrap), 
+[Colin Thomas-Arnold](https://twitter.com/colinta) visade
+[RubyMotion](http://www.rubymotion.com/) samt biblioteken
+[BubbleWrap](https://github.com/rubymotion/bubblewrap),
 [SugarCube](https://github.com/rubymotion/sugarcube) och
 [Teacup](https://github.com/rubymotion/teacup).
 
@@ -109,7 +109,7 @@ som hade vissa likheter med SMACSS som
 
 [José Valim](https://twitter.com/josevalim) förklarade på ett enkelt
 sätt hur samtidighet (concurrency) fungerar. Han rekomenderade även sitt
-språk [Elixir](http://elixir-lang.org/), Ruby-biblioteken 
+språk [Elixir](http://elixir-lang.org/), Ruby-biblioteken
 [Celluloid](http://celluloid.io/)
 och [DCell](https://github.com/celluloid/dcell) samt boken
 [Seven languages in seven weeks](http://pragprog.com/book/btlang/seven-languages-in-seven-weeks).
@@ -120,10 +120,10 @@ och [DCell](https://github.com/celluloid/dcell) samt boken
 
 > Pre-auth BOSH
 
-[Derrick Ko](https://twitter.com/derrickko) berättade om hur 
-[Kicksend](http://kicksend.com/) använder sig av 
-[ejabberd](http://www.ejabberd.im/), 
-[RubyBOSH](https://github.com/skyfallsin/ruby_bosh) och 
+[Derrick Ko](https://twitter.com/derrickko) berättade om hur
+[Kicksend](http://kicksend.com/) använder sig av
+[ejabberd](http://www.ejabberd.im/),
+[RubyBOSH](https://github.com/skyfallsin/ruby_bosh) och
 [Strophe.js](http://strophe.im/strophejs/) för att öka prestandan på sin
 tjänst. (både riktig och upplevd)
 
@@ -162,14 +162,14 @@ föreläsning.
 ## Lördag 22/9
 
 Jag och [Paul](https://twitter.com/p_elliott) tänkte hitta något bra
-café att äta frukost på, men så visade det sig att 
-[Matt](https://twitter.com/mattyoho) redan var på väg till 
+café att äta frukost på, men så visade det sig att
+[Matt](https://twitter.com/mattyoho) redan var på väg till
 [The Kitchen](http://thekitchencommunity.com/the-kitchen-boulder/)
 för att möta upp några fler som fortfarande var kvar i Boulder.
 Vi var självklart inte sena med att haka på :)
 
-Under frukosten bestämde vi oss för att det skulle vara kul att 
-se mer av de klippiga bergen. [Brian](https://twitter.com/brianlong) 
+Under frukosten bestämde vi oss för att det skulle vara kul att
+se mer av de klippiga bergen. [Brian](https://twitter.com/brianlong)
 var snäll och ställde upp som både chaufför och guide.
 
 _(Boulder -> Nederland -> Peak 2 Peak -> Brainard Lake -> Ward -> Boulder)_

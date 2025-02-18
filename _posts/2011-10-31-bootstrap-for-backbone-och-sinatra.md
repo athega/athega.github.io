@@ -8,7 +8,8 @@ last_updated_by: peter
 Min tanke med mitt projekt på [Athega Code Base 2011](/code-base-2011) var att skapa en startpunkt för framtida projekt skrivna med ramverket [Backbone.js](http://documentcloud.github.com/backbone/), där testramverk och grundläggande filstruktur redan är uppsatt.
 
 CoffeeScript används både i implementation och specs för Backbone.js.
-Ruby används i Sinatra-appen. Jag experimenterade med att använda [Evergreen](https://github.com/jnicklas/evergreen), men valde till slut att enbart förlita mig på Jasmine för att testa de genererade JavaScripten. På Rubysidan valde jag att använda MiniTest/Spec.
+Ruby används i Sinatra-appen. Jag experimenterade med att använda [Evergreen](https://github.com/jnicklas/evergreen),
+men valde till slut att enbart förlita mig på Jasmine för att testa de genererade JavaScripten. På Rubysidan valde jag att använda MiniTest/Spec.
 
 Jag använder mig av Guard (samt guard-sass och guard-coffeescript)
 för att kompilera Sass och CoffeeScript till CSS och JavaScript.

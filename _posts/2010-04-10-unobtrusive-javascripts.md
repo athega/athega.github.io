@@ -11,19 +11,19 @@ I mitt scenario jobbar jag med ett projekt som kallas "Acme". Jag utgår därfö
 
 <pre lang="javascript">
 var acme = function() {
-	
+
 	// Initierare
 	var init = function() {
 		// Initiera eventuella kontroller etc.
 		// Anropa eventuella andra privata funktioner
 		somePrivateFunction();
-	}, 
-	
+	},
+
 	// Denna funktionen blir "privat" eftersom den inte returneras
 	somePrivateFunction = function() {
-		
+
 	}
-	
+
 	return {
 		init: init
 	};
@@ -33,23 +33,25 @@ $(function() {
 	acme.init();
 });
 </pre>
+
 När denna scriptfil körs på sidan kommer automatiskt init anropas efter dom:en har laddats. Då kan man där i manipulera dom:en eller kanske binda något event osv.
 
 Säg sedan att mitt projekt innehåller ett forum som behöver specifik javascriptlogik som bara gäller för forumet. Jag skapar därför en <b>"acme.forum.js"</b> som skulle kunna se ut såhär;
+
 <pre lang="javascript">
 acme.forum = function() {
 	var someVariable,
-	
+
 	// Initierare, bind knapphändelser m.m
 	init = function() {
 		$("#someButton").click(validateEmail);
 	},
-	
+
 	// Validerar e-postadress
 	validateEmail = function(event) {
 		// Logik för validering
 	}
-	
+
 	return {
 		init: init
 	};
@@ -60,10 +62,10 @@ $(function() {
 });
 </pre>
 
-Här bygger jag vidare på "acme" variabeln som vi tidigare skapat (eller "namespacet" om ni nu så vill). Enligt detta tänk fortsätter jag med alla delar av projektet. 
+Här bygger jag vidare på "acme" variabeln som vi tidigare skapat (eller "namespacet" om ni nu så vill). Enligt detta tänk fortsätter jag med alla delar av projektet.
 
 När koden sedan skall ut i produktion brukar jag se till att minifiera och kombinera alla mina javascript (även tredjepartsbibliotek t.ex jQuery) till en enda fil vid namn <b>"acme.min.js"</b>. Detta gör jag för att få ner antalet requests så mycket som går och även få ner storleken på dem. Jag har haft nöjet att jobba ihop med <a href="http://twitter.com/robertnyman">Robert Nyman</a> som har en bra bloggpost om vilka minifierare som finns att tillgå i <a href="http://robertnyman.com/2010/01/19/tools-for-concatenating-and-minifying-css-and-javascript-files-in-different-development-environments/">denna posten</a>.
 
 I mitt fall har jag använt <a href="http://yuicompressor.codeplex.com/Wikipage">YUI Compressor for .NET</a> som ett "post build-event" som även sköter minifiering av din CSS. Ett tips är att endast inkludera den minifierade CSS:en när det inte är debugg-kompilerat så blir det oerhört mycket enklare i utvecklingsprocessen.
 
-// Markus
+/ Markus

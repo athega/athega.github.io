@@ -23,23 +23,23 @@ last_updated_by: peter
 <p>Unobtrusive JavaScript kommer att implementeras genom att använda HTML 5 attribut:</p>
 
     ## Rails 2.x
-    <%= link_to_remote "Delete", :url => @comment, :method => :delete %> 
-    <a href="#" onclick="new Ajax.Request('/comments/1', {asynchronous:true, 
+    <%= link_to_remote "Delete", :url => @comment, :method => :delete %>
+    <a href="#" onclick="new Ajax.Request('/comments/1', {asynchronous:true,
     evalScripts:true, method:'delete'}); return false;">Destroy</a>
-    
+
     ## Rails 3.x
-    <%= link_to "Delete", @comment, :remote => true, :method = :delete %> 
+    <%= link_to "Delete", @comment, :remote => true, :method = :delete %>
     <a href="/comments/1" data-remote="true" data-method="delete">Destroy</a>
 
 <p>Och sen appliceras metoderna med JavaScript:</p>
 
-    $(document.body).observe("click", function(event) { 
-      var element = event.findElement("a['data-remote']"); 
-      if (element) { 
-        var method = element.readAttribute("data-method") || "get"; 
-        new Ajax.Request(element.readAttribute("href"), { method: method }); 
-        event.stop(); 
-      } 
+    $(document.body).observe("click", function(event) {
+      var element = event.findElement("a['data-remote']");
+      if (element) {
+        var method = element.readAttribute("data-method") || "get";
+        new Ajax.Request(element.readAttribute("href"), { method: method });
+        event.stop();
+      }
     });
 
 <p>Han visade på hur viktigt hög produktivitet faktiskt är, hur motivation snabbt minskar vid svåra problem.</p>
@@ -193,4 +193,4 @@ last_updated_by: peter
 
 <p>Tags är en riktigt trevlig liten feature.</p>
 
-// [Peter](/peter)
+/ [Peter](/peter)

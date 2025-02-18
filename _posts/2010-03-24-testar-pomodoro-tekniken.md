@@ -11,7 +11,6 @@ Pomodoros syfte är att försöka hjälpa dig att få så mycket som möjligt ut
 
 <a href="/assets/legacy/uploads/2010/03/teatime.png"><img src="/assets/legacy/uploads/2010/03/teatime-300x265.png" alt="" title="TeaTime" width="300" height="265" class="alignright size-medium wp-image-580" /></a>
 
-
 Som tidtagarur la jag in en widget i min dashboard som hette <a href="http://www.apple.com/downloads/dashboard/food/teatimer.html">"Tea Timer"</a> som håller reda på min tid. Skall inte gå in på det mycket djupare då jag ännu inte kan titulera mig expert i ämnet men känner du samma som mig att man ibland kan bli stressad av att tiden bara flyger iväg, så kanske detta är något för dig.
 
-// Markus
+/ Markus

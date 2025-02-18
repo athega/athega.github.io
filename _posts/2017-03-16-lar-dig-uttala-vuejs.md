@@ -22,10 +22,9 @@ Det speciella med Vue är att det har en väldigt kort komma igång-tröskel
 och litet i sin kärna. Med endast 18kb hämtat via en `<script>`-tagg är du
 igång.
 
-Se på detta exempelvis:
+## Se på detta exempelvis:
 
-<script async src="//jsfiddle.net/lizell/8tyt7fa3/embed/js,html,result/"></script>
-
+<script async src="//jsfiddle.net/8tyt7fa3/embed/"></script>
 
 På några få rader har vi en reaktiv sida som hanterar inmatning från och
 interaktion med användaren.

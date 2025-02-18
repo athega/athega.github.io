@@ -1,6 +1,7 @@
 ---
 title: "Bland lyktstolpar och grafdatabaser i London"
 date: 2016-03-26
+description: "Efter en grym konferens så är det dags att samla tankarna."
 last_updated_by: alex
 ---
 Efter en grym konferens så är det dags att samla tankarna.

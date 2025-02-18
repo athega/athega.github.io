@@ -1,6 +1,6 @@
 ---
 title: "Stable diffusion"
-date: 2023-09-29
+date: 2023-03-17
 description: "Athega-fredag med ämnet Stable diffusion"
 tags:
   - blogg

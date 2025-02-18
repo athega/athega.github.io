@@ -21,7 +21,7 @@ last_updated_by: peter
 
 <p>Object#extend är dock ett stort problem för att kunna cache:a metodanropen.</p>
 
-<p>Det är viktigt att förstå hur extend fungerar så att man inte tömmer 
+<p>Det är viktigt att förstå hur extend fungerar så att man inte tömmer
 metodanropscachen i onödan.</p>
 
 <h3 id="konstanter">Konstanter</h3>
@@ -30,7 +30,7 @@ metodanropscachen i onödan.</p>
 
 <h3 id="options_argument">Options Argument</h3>
 
-<p>En option hash strider mot DRY. 
+<p>En option hash strider mot DRY.
 Det är mycket snabbare att använda diskreta argument.</p>
 
 <h3 id="objrun_rescue_nil">obj.run rescue nil</h3>
@@ -73,9 +73,9 @@ Använder inte Kernel#require, alltså går det inte att köra autoload från ge
 
 <p>Jay Phillips (<a href="http://jicksta.com/">Codemecca LLC</a>) visade hur man kan programmera Ruby för att styra <a href="http://www.asterisk.org/">Asterisk</a> genom att använda sig av <a href="http://adhearsion.com/">Adhearsion</a>.</p>
 
-<p>Tyvärr fungerade det inte att använda Ahearsions Sandbox på konferensens wlan, 
+<p>Tyvärr fungerade det inte att använda Ahearsions Sandbox på konferensens wlan,
 så jag får ta och testa det lite senare.</p>
 
 <p>Verkar intressant att kunna styra sin applikation genom att ringa till den :)</p>
 
-// [Peter](/peter)
+/ [Peter](/peter)

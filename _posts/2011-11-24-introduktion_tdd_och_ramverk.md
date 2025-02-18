@@ -3,9 +3,6 @@ title: "Introduktion TDD och ramverk"
 date: 2011-11-24
 last_updated_by: chrille
 ---
-Fredagsmys på Athega
---------------------
-
 [Christian Lizell](/chrille), som är utvecklare på Athega, kommer att föreläsa om [TDD](http://www.agiledata.org/essays/tdd.html) (Test Driven Development).
 
 Föreläsning är en pragmatisk introduktion till att utveckla testdrivet och vad det innebär. Vi kommer även titta på några ramverk och verktyg, såsom [JUnit](http://www.junit.org/), [Hamcrest](http://code.google.com/p/hamcrest/wiki/Tutorial) och [Mockito](http://code.google.com/p/mockito/).
