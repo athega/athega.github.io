@@ -18,20 +18,6 @@ html {
             padding: 0 5%;
             overflow: hidden;
 
-            @media (max-width: 1150px) {
-              font-size: 26px;
-            }
-
-            @media (max-width: 850px) {
-              font-size: 27px;
-              padding: 0 3%;
-            }
-
-            @media (max-width: 800px) {
-              font-size: 28px;
-              padding: 0 2%;
-            }
-
             > h1 {
               line-height: 1.1;
             }
@@ -46,9 +32,44 @@ html {
                 margin-bottom: 0.5rem;
             }
 
+            > h3 {
+                line-height: 1.3;
+            }
+
             > p {
                 margin-top: 0;
                 margin-bottom: 1.5em;
+            }
+
+            @media (max-width: 1150px) {
+              font-size: 26px;
+            }
+
+            @media (max-width: 850px) {
+              font-size: 27px;
+              padding: 0 3%;
+            }
+
+            @media (max-width: 800px) {
+              font-size: calc(0.88889dvw + 20px);
+              padding: 0 2%;
+
+              h1 {
+                font-size: calc(0.88889dvw + 52px);
+                line-height: 1;
+              }
+
+              h2 {
+                font-size: calc(0.88889dvw + 45px);
+                line-height: 1.1;
+                margin-bottom: 1rem;
+              }
+
+              h3 {
+                font-size: calc(0.88889dvw + 36px);
+                line-height: 1.1;
+                margin-bottom: 2rem;
+              }
             }
 
             img {
