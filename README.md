@@ -30,7 +30,7 @@ git pull --rebase
 
 ### Starta en lokal server
 ```console
-bundle exec jekyll serve
+bundle exec jekyll serve -l -H 0.0.0.0
 ```
 
 > [!TIP]
