@@ -1,12 +1,20 @@
 .home-dash {
     color: white;
     background-color: $black;
+    background-image:url(/assets/img/intro-dash-bg.jpg);
+    background-size:cover;
+    background-position:center;
     text-align: center;
 
     > div {
         display: inline-block;
         text-align: initial;
         margin: 3rem 5%;
+        color: $white;
+        background-color: rgba(0,0,0,0.6);
+        padding: 1em;
+        border-radius: 1em;
+        text-shadow: 1px 2px 2px rgb(0, 0, 0);
 
         > h2 {
             margin: 0;
