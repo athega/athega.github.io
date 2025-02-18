@@ -1,7 +1,7 @@
 ---
 title: "Låt inte Tomcat jobba i onödan"
 date: 2009-04-24
-last_updated_by: peter
+last_updated_by: chrille
 ---
 Ett vanligt upplägg för en lastad sajt med någorlunda statiskt innehåll ser ut enligt nedan:
 
@@ -20,6 +20,7 @@ Dock är det kanske inte att föredra i ett litet större projekt med hundratals
 Mitt nästa spår var att automatiskt försöka inkludera ovanstående direktiv för varje genererad sida. Från och med JSP 2.0 (som inte direkt kom ut igår) går det att få till ganska enkelt med något som kallas för implicit includes.
 
 Börja med att lägga till ett jsp-config-direktiv i din web.xml:
+
     <!-- Disable the use of sessions -->
     <jsp-config>
       <jsp-property-group>
@@ -38,4 +39,4 @@ Notera att filen som inkluderas är av typen .jspf, ett JSP-fragment. Detta är 
 
 Testa! Tomcat kommer att kasta fel i loggarna så fort du försöker skapa en session, men om du har det som jag är det precis så du vill ha det!
 
-// [Chrille](/chrille)
+/ [Chrille](/chrille)

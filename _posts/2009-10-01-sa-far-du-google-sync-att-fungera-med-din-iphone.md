@@ -9,12 +9,14 @@ Visst, man kan hävda att Googles iPhone-anpassade Safari-applikationer är bra 
 
 <strong>Viktigt att tänka på innan du börjar är att Google endast tillåter ett konto av detta slag (jag har exempelvis lagt till min privata gmail via vanlig IMAP).</strong>
 
-<h3>Aktivera Google Sync för Google Apps</h3>
+### Aktivera Google Sync för Google Apps
+
 För att synkroniseringen ska fungera fullt ut behöver du eller din Google Apps-administratör aktivera Google Sync. Detta görs genom att kryssa för "Aktivera Google Sync" under "Inställningar för mobilen" när du befinner dig på Tjänstinställningar för Google Apps som administratör.
 
 <img class="aligncenter size-full wp-image-465" title="Inställningar för mobilen" src="/assets/legacy/uploads/2009/10/Inställningar-för-mobilen.jpg" alt="Inställningar för mobilen" width="161" height="190" />
 
-<h3>Välj kalendrar</h3>
+### Välj kalendrar
+
 Om du inte aktivt väljer vilka kalendrar du vill synkronisera, kommer du bara få din standardkalender. Detta kanske räcker för en del, men jag har flera olika kalendrar som jag vill få synkroniserade. Att få detta att fungera var inte helt problemfritt. Google kommer säkert förbättra detta, men när detta skrivs behöver du göra enligt nedan.
 
 <img class="size-medium wp-image-466" title="Svenska stöds inte" src="/assets/legacy/uploads/2009/10/IMG_0384-200x300.PNG" alt="Svenska stöds inte" width="200" height="300" />
@@ -29,7 +31,8 @@ Nästa steg är att välja din iPhone och sedan vilka kalendrar du vill synkroni
 
 <img class="size-medium wp-image-470" title="Välj kalendrar" src="/assets/legacy/uploads/2009/10/IMG_0387-200x300.jpg" alt="Välj kalendrar" width="200" height="300" />
 
-<h3>Sätt upp ett Exchange-konto</h3>
+### Sätt upp ett Exchange-konto
+
 Detta gör du genom att välja Inställningar -> E-post, kontakter, kalendrar -> Lägg till konto... De inställningar du behöver hittar du <a title="Set Up Your iPhone" href="http://google.com/support/mobile/bin/answer.py?hl=en&answer=138740">här</a>.
 
 <img class="aligncenter size-medium wp-image-461" title="Sätt upp ett Exchange-konto" src="/assets/legacy/uploads/2009/10/exchange-200x300.jpg" alt="Sätt upp ett Exchange-konto" width="200" height="300" />
@@ -40,11 +43,13 @@ Om du har befintliga kalendrar får du välja om du vill ersätta dem. I mitt fa
 
 Så var det klart, alltid samma data i din iPhone som på Google Apps och med Push!
 
-<h3>Fördjupning</h3>
+### Fördjupning
+
 Mer information hittar du hos Google:
+
 <ul>
  <li><a href="http://google.com/support/mobile/bin/answer.py?hl=en&answer=139635">Om begränsningar</a></li>
  <li><a href="http://google.com/support/mobile/bin/topic.py?hl=en&topic=14252">Översikt</a></li>
 </ul>
 
-// [Chrille](/chrille)
+/ [Chrille](/chrille)

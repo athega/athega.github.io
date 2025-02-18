@@ -28,8 +28,9 @@ Vi är väldigt glada över spelets varma mottagande. Några citat från recensi
 > “This game is AMAZING if you like any of its tags just get it.”
 
 
-Athega har nu ingått ett aktivt samarbete och delägarskap i Ape Egg. Samarbetet innebär att spelet kommer vidareutvecklas med nytt innehåll och förbättrad
-spelupplevelse. Målet är också att spelet ska få fler användare. 
+Athega har nu ingått ett aktivt samarbete och delägarskap i Ape Egg.
+Samarbetet innebär att spelet kommer vidareutvecklas med nytt innehåll och förbättrad
+spelupplevelse. Målet är också att spelet ska få fler användare.
 
 Det är strategiskt viktigt för Athega att utöka sitt utbud med ett tungt kunnande inom
 spelutveckling. Detta kompletterar Athegas nuvarande erbjudande och kompetens inom digital

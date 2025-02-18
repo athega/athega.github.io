@@ -40,7 +40,7 @@ Något jag hela tiden har förespråkat i mitt privatliv likväl arbetsliv så �
 <a title="Athega, My desk by Peter Hellberg, on Flickr" href="http://www.flickr.com/photos/peterhellberg/2848071666/"><img src="http://farm4.static.flickr.com/3134/2848071666_2d30a2c484.jpg" alt="Athega, My desk" width="500" height="375" /></a>
 
 #### Vidare läsning
- 
+
  - [Unclutterer](http://unclutterer.com/)
 
 ### Diska
@@ -104,4 +104,4 @@ hörlurar på sig, då noterar folk att man inte hör vad de säger)
  - [Flow: Get into the Zone at Work](http://www.thatvoodooyoudo.com/best-practice/flow/)
  - [7 Tips for programming in The Zone](http://www.computus.org/journal/?p=982)
 
-// [[Peter]]
+/ [[Peter]]

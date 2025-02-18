@@ -7,9 +7,11 @@ tags:
 last_updated_by: mats
 image_url: /assets/legacy/uploads/2013/10/peterb_small.png
 ---
-Med en ny site för bara video blir upplevelsen bättre för användarna. Dessutom ökar annonsintäkterna. Peter Björklund kan berätta mer.
-------------
+
+> Med en ny site för bara video blir upplevelsen bättre för användarna. Dessutom ökar annonsintäkterna. Peter Björklund kan berätta mer.
+
 ### Peter, du jobbar som konsult hos oss och har varit med under projektet, varför gör Aftonbladet en egen TV-site?
+
 – På vanliga aftonbladet.se ligger alla filmer och klipp huller om buller med artiklar, reportage, foton och reklam. Det är tuff konkurrens om uppmärksamheten. Och eftersom Aftonbladet gör egna TV-program vill man gärna att publiken ska hitta dem. Den enda vettiga lösningen är att skapa en egen site byggd ungefär som en play-site med den skillnaden att den också pushar för de egenproducerade programmen. Layouten är ren, snygg och lättnavigerad. Och allt är enkelt sökbart.
 <div class="float_right" style="max-width:342px; margin-left: 10px;">
 <img alt="Peter Björklund" src="http://i3.createsend1.com/ei/j/E4/B9B/A5B/080812/peter.png"/>
@@ -32,4 +34,4 @@ Med en ny site för bara video blir upplevelsen bättre för användarna. Dessut
 
 – Vi rev bort all gammal teknik och började från noll. Förstudien gjordes i maj förra året, sen valdes leverantörer och i september började vi skriva kod. Det har gått undan hela tiden. Nu vid premiären finns det drygt 3 200 GB lagrat fördelat på över 3 500 filmer och antalet ökar med 10-20 stycken per dag.
 
-[tv.aftonbladet.se/](http://tv.aftonbladet.se/)
+[tv.aftonbladet.se/](https://tv.aftonbladet.se/)

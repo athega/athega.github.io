@@ -6,7 +6,7 @@ tags:
   - ai
   - nyhetsbrev
   - blogg
- 
+
 last_updated_by: Torbjörn
 image_url: /assets/blog/2019-stefan_500_streck.jpg
 ---
@@ -17,7 +17,7 @@ image_url: /assets/blog/2019-stefan_500_streck.jpg
 <img src="/assets/blog/2019-stefan_500_streck.jpg" alt="Stefan 500 streck">
 </figure>
 
-Innan påsken höll jag en presentation om Reinforcement Learning (RL) på Luleå Science park. Kanske inte helt oväntat så föll jag ner i många djupa hål på Wikipedia under arbetet med att sammanställa materialet och kanske helt väntat så rymdes inte ens bråkdel i presentationen. 
+Innan påsken höll jag en presentation om Reinforcement Learning (RL) på Luleå Science park. Kanske inte helt oväntat så föll jag ner i många djupa hål på Wikipedia under arbetet med att sammanställa materialet och kanske helt väntat så rymdes inte ens bråkdel i presentationen.
 
 Jag kommer därför i en serie bloggartiklar presentera några av de mest relevanta delarna av presentationen. I den här första delen tänkte jag börja med att beskriva vad som gör RL unik bland alla de otroliga framsteg som gjorts inom AI-teknik de senaste 10 åren. Samtidigt som jag ogenerat tar mig generösa friheter att generalisera och hoppa över detaljer för att åstadkomma ett lättläst bloggformat.
 
@@ -37,10 +37,10 @@ Om vi önskar översätta partiledare till partisymbol kan det vara lämpligt at
 
 <img src="/assets/blog/2021-v_ledare.png" alt="V-ledare" style="width:100%">
 
-Det här är helt enkelt en mappning eller översättning mellan två domäner. En teknik som fått utstå negativ press under namnet ‘deep fakes’. Men samtidigt en arkitektur som är väldigt användbar för att översätta en typ av data till en annan. Det behöver inte alltid vara bilder – kan t.ex. vara text in, bild ut eller bild in, text ut. 
+Det här är helt enkelt en mappning eller översättning mellan två domäner. En teknik som fått utstå negativ press under namnet ‘deep fakes’. Men samtidigt en arkitektur som är väldigt användbar för att översätta en typ av data till en annan. Det behöver inte alltid vara bilder – kan t.ex. vara text in, bild ut eller bild in, text ut.
 Som med alla system behöver man dock planera för vad som händer som systemet oväntat ser ny data.
 
-<img src="/assets/blog/2021-v_sd_fi_mix.png" alt="Mix" style="width:100%"> 
+<img src="/assets/blog/2021-v_sd_fi_mix.png" alt="Mix" style="width:100%">
 
 Det är väldigt frestande att nu gå vidare och titta på pix2pix, en översättningsteknik som krävde att man på förhand skapade datapar, till CycleGAN som i sin tur automatiskt gör detta, till contrastive-unpaired-translation (CUT), som gör samma sak fast snabbare och bättre. Men det kräver nog bättre sin rätt och plats i eget blogginlägg i framtiden.
 
@@ -48,25 +48,25 @@ Så vad är då den stora skillnaden? – Vad är det som gör Reinforcement Lea
 
 Reinforcement Learning är en teknik som används när flera beslut ska tas i följd och vi är intresserade av att ta de bästa besluten för att långsiktigt nå ett slags optimalt utfall.
 
-Tänk att vi vill måla en statsminister med så få streck som möjligt. Varje streck vi ritar måste bidra så mycket som möjligt till slutprodukten samtidigt som det också hjälper efterföljande streck att bidra till målet. Problemet är inte längre – ‘vilket streck är bäst att rita just nu’ utan snarare, ‘vilket streck ska ritas nu för att få ett så bra porträtt som möjligt i slutändan’. Här är ett exempel på vår nuvarande statsminister som skapas av 500 streck. 
+Tänk att vi vill måla en statsminister med så få streck som möjligt. Varje streck vi ritar måste bidra så mycket som möjligt till slutprodukten samtidigt som det också hjälper efterföljande streck att bidra till målet. Problemet är inte längre – ‘vilket streck är bäst att rita just nu’ utan snarare, ‘vilket streck ska ritas nu för att få ett så bra porträtt som möjligt i slutändan’. Här är ett exempel på vår nuvarande statsminister som skapas av 500 streck.
 
 <figure style="float: right; clear: right; margin: 1em 0 1em 1em; max-width: 256px;">
-<img src="/assets/blog/2021-stefan_nocrop_slow.mp4.gif" alt="Stefan"> 
+<img src="/assets/blog/2021-stefan_nocrop_slow.mp4.gif" alt="Stefan">
 </figure>
 
-Algoritmen (bilden till höger) ritar ett streck i taget. Den kan välja tjocklek på pensel, färg och mellan vilka två punkter strecket ritas. För att efterlikna målning av en riktig tavla så tillåts även att färgen som används är delvis genomskinlig. 
+Algoritmen (bilden till höger) ritar ett streck i taget. Den kan välja tjocklek på pensel, färg och mellan vilka två punkter strecket ritas. För att efterlikna målning av en riktig tavla så tillåts även att färgen som används är delvis genomskinlig.
 
 Lite som schack alltså, det gäller inte bara att ta motspelarens pjäser när möjligheten finns, utan att spela långsiktigt och strategiskt om målet är att vinna.
 
 Reinforcement Learning, i sin moderna tappning har funnits många år. Redan 2013 publicerade DeepMind att de lyckats spela ett atari-spel med Deep Q Networks, en typ av Reinforcement Learning. Sedan dess har tekniken haft många upp- och nedgångar, en höjdpunkt var när världsmästaren i GO slogs av en dator för första gången 2016 men det har svängt mellan skyhöga förväntningar och förtvivlan flera gånger sedan dess. Idag är RL en relativt mogen teknik vilket upplevs, inte bara av stabilare algoritmer som är lättare att tämja, utan också det faktum att många traditionella system redan har börjat bytas ut. Vem vill inte delegera vissa beslut till en strateg som överträffar en världsmästare?
 
-De flesta processer i verkliga livet är just beslutskedjor och orsakssamband, vilka är mycket svåra att optimera med traditionella verktyg. Beslutkedjor – ja det låter både lite stelt och överdrivet formellt. Vad det handlar om är förlopp där det finns fördröjningar, beroenden och flera beslut ska fattas i en följd. Fortfarande formellt men bästa analogen jag kommer på är att  det kallas verkliga livet och för att inte klanta till det krävs ofta erfarenhet. RL är en teknik för att ta dessa beslut för att uppnå ett visst mål och ett bra utfall. 
+De flesta processer i verkliga livet är just beslutskedjor och orsakssamband, vilka är mycket svåra att optimera med traditionella verktyg. Beslutkedjor – ja det låter både lite stelt och överdrivet formellt. Vad det handlar om är förlopp där det finns fördröjningar, beroenden och flera beslut ska fattas i en följd. Fortfarande formellt men bästa analogen jag kommer på är att  det kallas verkliga livet och för att inte klanta till det krävs ofta erfarenhet. RL är en teknik för att ta dessa beslut för att uppnå ett visst mål och ett bra utfall.
 
 I den här serien av artiklar tänker jag visa hur Reinforcement Learning kan appliceras som optimering på kombinatoriska problem, reglersystem och för att ta fram optimerad affärslogik.
 
 Tack så länge!
 
-Krister Söderström
+/ [Krister Söderström](/krister)
 
-<img src="/assets/blog/2021-athega_streck_logo.gif" alt="Athega-streck-logo"> 
+<img src="/assets/blog/2021-athega_streck_logo.gif" alt="Athega-streck-logo">
 

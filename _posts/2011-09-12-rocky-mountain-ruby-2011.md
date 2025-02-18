@@ -6,7 +6,7 @@ last_updated_by: peter
 ![Boulder Theatre](/images/blogg/rocky-mountain-ruby-2011/boulder_theatre.jpg)
 
 För lite mer än en vecka sedan kom jag hem från Colorado och konferensen
-[Rocky Mountain Ruby](http://rockymtnruby.com/), förra året hette den 
+[Rocky Mountain Ruby](http://rockymtnruby.com/), förra året hette den
 [Mountain.rb](http://mountainrb.com/) men det var tydligen många som misstog den för [MountainWest
 RubyConf](http://mtnwestrubyconf.org/) så arrangörerna valde helt sonika att byta
 namn på konferensen. Precis som förra året hölls den på [Boulder Theater](http://www.bouldertheater.com/).
@@ -81,7 +81,7 @@ så kombinerade Nick representationen av datat och länkarna i JSON.
 Självklart hade han skrivit ett bibliotek för att göra detta på ett
 smidigt sätt. [Roar!](http://rubygems.org/gems/roar) eller
 RESTful, resource-oriented architectures in Ruby. Han rekomenderade även böckerna
-[REST in Practice](http://restinpractice.com/) och 
+[REST in Practice](http://restinpractice.com/) och
 [RESTful Web Services
 Cookbook](http://www.restful-webservices-cookbook.org/).
 
@@ -129,7 +129,7 @@ Formatet för Ignite är väldigt enkelt:
 
 [Konstantin Haase](http://rkh.im/) pratade om hur man kan vrida och
 vända på [Rack](http://rack.rubyforge.org/) för att få streaming
-(HTTP server push) att fungera. Alternativen som presenterades var 
+(HTTP server push) att fungera. Alternativen som presenterades var
 [Server-Sent Events](http://dev.w3.org/html5/eventsource/) (envägs,
 enkelt, klienten går att implementera i JavaScript) och
 [WebSockets](http://websocket.org/) (tvåvägs, men stöds sällan).
@@ -165,4 +165,4 @@ Resten av helgen gick åt att flyga hem till Stockholm :)
 
 **Uppdatering:** Nu ligger några av de filmade presentationerna uppe på [Confreaks](http://confreaks.net/events/rockymtnruby2011)
 
-// [Peter](/peter)
+/ [Peter](/peter)

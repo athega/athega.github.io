@@ -1,6 +1,7 @@
 ---
 title: "QCon London 2016 – Take aways"
 date: 2016-03-10
+description: "I denna artikel ska jag så kort jag kan redogöra för hur de här tre dagarna påverkat min omedelbara framtid. Eller mindre pretantiöst, vad jag ska prova härnäst och titta litet närmare på."
 tags:
   - konferens
 last_updated_by: chrille

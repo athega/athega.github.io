@@ -9,4 +9,4 @@ Vi fick bland annat lära oss Escenic "best practices" och hur man på bästa s�
 
 Det var tre givande dagar och vi kom tillbaka till Stockholm med mycket ny kunskap som förhoppningsvis även våra kunder kommer dra stor nytta av.
 
-// [Mikael](/mikael)
+/ [Mikael](/mikael)

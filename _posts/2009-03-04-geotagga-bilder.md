@@ -1,11 +1,14 @@
 ---
 title: "Geotagga bilder"
 date: 2009-03-04
+tags:
+  - blogg
 last_updated_by: peter
 ---
 <p style="text-align: left;">Att <a href="http://sv.wikipedia.org/wiki/Geotaggning" target="_blank">geotagga </a>bilder är att lagra koordinaterna för den geografiska positionen där bilden fotograferades i själva bildfilen. Det skapar många nya möjligheter för att t.ex. söka fram bilder och presentera dem på en karta. Tyvärr är det fortfarande inte många riktiga kameror (och då menar jag inte mobiltelefoner) som har inbyggd GPS vilket krävs för detta. Däremot är vanliga GPS-navigatorer väldigt vanliga nu för tiden, vissa av dem kan kontinuerligt lagra positionen till en spårfil.</p>
 
 Jag tänkte därför presentera en liten guide hur man kan kombinera denna information i efterhand så att man får geotaggade bilder när man laddar över dem till datorn.
+
 <ul>
 	<li>Ladda över spårfilen/filerna i <a href="http://www.topografix.com/GPX/" target="_blank">GPX-format</a> från navigatorn till datorn. Du behöver vara så noga med att du hittar spåret från det exakta fototillfället. Om du t.ex. har en fil från varje dag på en resa, ta med allihopa.<img class="size-full wp-image-48 aligncenter" title="GPX fil från GPS navigator " src="/assets/legacy/uploads/2009/03/oregon.jpg" alt="GPX fil från GPS navigator " width="277" height="284" /></li>
 	<li>Ladda över bilderna som JPG-filer från kameran till datorn. En viktig sak man inte får glömma innan man börjar fotografera är att ställa klockan rätt i kameran. Detta är avgörande för att kunna hitta positionen för det exakta tillfället för varje bild. Glöm inte eventuella inställningar för sommar/vintertid och tidszon. Om du märker tiden är fel för bilder du redan tagit bör du korrigera detta innan du fortsätter. <a href="http://www.sno.phy.queensu.ca/~phil/exiftool/" target="_blank">ExifTool</a> kan justera tiden, t.ex. framåt eller bakåt en timme om man har glömt ställa om för sommar/vintertid. Ett annat verktyg som klarar detta och möjligtvis är lite enklare är <a href="http://www.sentex.net/~mwandel/jhead/" target="_blank">jhead</a>.<img class="size-full wp-image-49 aligncenter" title="JPG-filer från en digitalkamera" src="/assets/legacy/uploads/2009/03/digicam-pics.jpg" alt="JPG-filer från en digitalkamera" width="281" height="251" /></li>
@@ -22,4 +25,4 @@ Jag tänkte därför presentera en liten guide hur man kan kombinera denna infor
 	<li>Klart!</li>
 </ul>
 
-// Johan
+/ [Johan](/johan)

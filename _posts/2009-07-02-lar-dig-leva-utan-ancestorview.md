@@ -7,10 +7,12 @@ Under våren har jag jobbat med att trimma en webbapplikation som levererar nät
 
 <img class="size-full wp-image-256 " title="Responstid" src="/assets/legacy/uploads/2009/07/response_time.jpg" alt="Responstid före och efter jag bytt ut <section:ancerstorView>" width="615" height="276" />
 
-<h2>Vad är ancestorView?</h2>
+## Vad är ancestorView?
+
 <code>ancestorView</code> används för att skapa en hierarkisk vy av sektioner utgående från den sektion du anger. Inget speciellt avancerat eller konstigt. Det borde inte heller vara jobbigt för systemet att skapa vyn, tyvärr sker något under ytan som ställer till det. Berätta gärna vad i kommentarerna. ;)
 
-<h2>Hur det kan se ut (före)</h2>
+## Hur det kan se ut (före)
+
 Ett vanligt sätt att använda sig av <code>ancestorView</code> är för att exempelvis bygga en sökväg till en navigering:
 
     <section:ancestorView id="sectionView" section="${article.homeSection}" includeRoot="true"/>
@@ -30,7 +32,8 @@ Ett vanligt sätt att använda sig av <code>ancestorView</code> är för att exe
       </view:iterate>
     </menu:use>
 
-<h2>Skapa en lättviktig ersättning till <code>ancestorView</code></h2>
+## Skapa en lättviktig ersättning till <code>ancestorView</code>
+
 En enkel väg till ett liv utan <code>ancestorView</code>-taggar är att skapa en mycket enkel custom tag. Nedanstående implementation har inte stöd för precis allt du kan göra med Escenics variant, men den gör jobbet för de flesta användningsfallen. Jag döpte den till <code>ancestors.tag</code> och la den i <code>/WEB-INF/lib/tags/section</code>.
 
     <%@tag body-content="empty"%>
@@ -52,7 +55,7 @@ En enkel väg till ett liv utan <code>ancestorView</code>-taggar är att skapa e
 
 Det enda som egentligen sker här är att jag bygger upp en lista med föräldrasektioner i omvänd ordning genom att anropa Escenics API. Detta går av någon anledning massor med gånger snabbare.
 
-<h2>Hur det kan se ut utan <code>ancestorView</code> (efter)</h2>
+## Hur det kan se ut utan <code>ancestorView</code> (efter)
 
     <%@ taglib prefix="sec" tagdir="/WEB-INF/tags/section" %>
     <sec:ancestors id="sectionView" section="${article.homeSection}"/>
@@ -72,7 +75,7 @@ Det enda som egentligen sker här är att jag bygger upp en lista med föräldra
 
 Eftersom jag inte längre arbetar med en vy av sektioner, kan jag iterera över listan med föräldrasektioner med en vanlig <code>c:foreach</code> med fördelar som <code>varStatus</code>, mm.
 
-<h2>Slutsats</h2>
+## Slutsats
 Om du använder Escenic i någon 4.x-version och om du får några träffar när du söker på ancestorView i din kodbas, finns all anledning att se över ett byte!
 
-// [Chrille](/chrille)
+/ [Chrille](/chrille)

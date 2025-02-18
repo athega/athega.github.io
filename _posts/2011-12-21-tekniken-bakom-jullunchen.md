@@ -3,6 +3,7 @@ title: "Tekniken bakom Jullunchen"
 date: 2011-12-21
 last_updated_by: peter
 ---
+
 <p style="padding: 1em; background-color:#FAFAFA; border:1px solid rgba(0, 0, 0, 0.2); color:#777; text-shadow:0 0 1px white; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px;">
 <strong>OBS!</strong> Ovanligt mycket tekniksnack i denna
 bloggpost, sådant som vi tycker är extra roligt :)
@@ -40,40 +41,40 @@ Koden för bildspelet ligger i filen
 #### Ett exempel på hur trevligt CoffeeScript är att jobba med:
 
     class window.PresentationLoop
-    
+
       constructor: (ms) ->
         @delay     = ms
         @iteration = 0
-    
+
         window.loop = @
         window.loop.run()
-    
+
       tweets: ->
         tweets.fetch()
         setTimeout 'tweets.fetch()', @delay/2
         setTimeout 'window.loop.check_ins()', @delay
-    
+
       check_ins: ->
         check_ins.fetch()
         setTimeout 'window.loop.images()', @delay
-    
+
       images: ->
         images.fetch()
         setTimeout 'images.fetch()', @delay/2
         setTimeout 'window.loop.ads()', @delay
-    
+
       ads: ->
         ads.fetch()
         setTimeout 'window.loop.iterate()', @delay
-    
+
       iterate: ->
         @iteration += 1
         console.log('iteration: ' + @iteration)
         setTimeout 'window.loop.tweets()', 0
-    
+
       run: ->
         setTimeout (=> @tweets()), 0
-    
+
 
 ## [jullunch_daemon](https://github.com/athega/jullunch_daemon)
 
@@ -91,7 +92,7 @@ köra bakgrundsprocessen (schemaläggning, loggning, etc.).
 
 ## [tomtelizer](https://github.com/athega/tomtelizer)
 
-Nativ iOS applikation för att ta bilder och lokalisera ansikten 
+Nativ iOS applikation för att ta bilder och lokalisera ansikten
 ([CIFaceFeature](http://developer.apple.com/library/mac/#documentation/CoreImage/Reference/CIFaceFeature/Reference/Reference.html) och
  [CIDetector](http://developer.apple.com/library/ios/#documentation/CoreImage/Reference/CIDetector_Ref/Reference/Reference.html)).
 

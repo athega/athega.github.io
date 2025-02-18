@@ -63,4 +63,4 @@ Det är kreativiteten som är det viktiga!
 Kolla gärna in presentationen och några av de skapelser detta resulterade i som finns länkade här bredvid.
 Och varför inte testa själv?
 
-**_/Johan._**
+/ [Johan](/johan)

@@ -45,4 +45,4 @@ last_updated_by: peter
 
 <p>Han visade också hur han använder en iPhone som fjärrkontroll till sitt hus.</p>
 
-// [Peter](/peter)
+/ [Peter](/peter)

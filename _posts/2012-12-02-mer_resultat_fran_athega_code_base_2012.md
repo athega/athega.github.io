@@ -7,15 +7,16 @@ last_updated_by: tobbe
 
 In some situations it is good to show that you have been diligent and working hard; Athega Codebase 2012 is no exception. You know the other guys have such great ideas and the scenery around us at Söderarm is amazing, its hard to do any real work at all.
 
-So I figured lets show how to create value on our machines [whilst we are dreaming and looking out the windows] by investigating the ideas behind Bitcoin and the like. 
+So I figured lets show how to create value on our machines [whilst we are dreaming and looking out the windows] by investigating the ideas behind Bitcoin and the like.
 
 Well, as you shall see, things did not go quite to plan!
 
 Bitcoin and Bitgold are new experimental digital currencies, see bitcoin.com, and proof of work is essential to their inner workings.
 
-Here, value is based on work done in the computer solving very difficult problems. 
+Here, value is based on work done in the computer solving very difficult problems.
 
-Simply, solving difficult problems requires a lot of work. So a solved difficult problem has value, in exactly the same way mined silver has intrinsic value. And silver can be used to make coins! So by analogy one can make coins of the value in solving difficult problems; well in theory at least. 
+Simply, solving difficult problems requires a lot of work. So a solved difficult problem has value, in exactly the same way mined silver has intrinsic value. And silver can be used to make coins! So by analogy one can make coins of the value in solving difficult problems; well in theory at least.
+
 But Bitcoin is just one current example of a working digital currency.
 
 Cool, and worth looking into, could this be true, and could I build a model of this process? And what is a proof of work function?
@@ -42,16 +43,17 @@ I told you I was looking out the window.
 
 And here is my proof of work
 
-<img src="http://lh3.googleusercontent.com/BvHuqxYlNtNNMZj_q5bfRSerjvH-14JwEWYjaYTZebtYsyE_0oslN_y5MCzj2MGqlCJ9RHnhhVD5yx67WJaqIwx_ZY8uR0bhWlPDoDGQ60xSFXh6aSi4"/>
+<img src="https://i.imgur.com/JmRfi3o.jpeg" />
 
 And this time I did manage to produce something with enough value to give away.
 
 For free, its true, but its a start :)
 
-Hurray, success at last. 
+Hurray, success at last.
 
 I had managed to understand how producing digital value works, and maybe learnt something of value along the way!
 
-For more information about bitcoin-mining see [www.bitcoin.com](http://www.bitcoin.com), and know you understand the principles, create value on your machine, and sell what you produce! For real money.
+> For more information about bitcoin-mining see [www.bitcoin.com](http://www.bitcoin.com), and know you understand the principles,
+> create value on your machine, and sell what you produce! For real money.
 
-[Mark](mark)
+[Mark](/mark)
