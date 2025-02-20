@@ -1,37 +1,41 @@
 body {
-    > header {
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4em;
-        color: $white;
-        padding: 0.5rem 0;
-        border-bottom: 3px solid darken($orange, 5);
-        background-color: $orange;
+  > header {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--header-height);
+    color: var(--color-white);
+    border-bottom: 3px solid var(--color-orange-dark);
+    background-color: var(--color-orange);
+    padding: 0.2rem 0;
 
-        > div {
-            max-width: 1024px;
-            height: 100%;
-            margin: 0 auto;
+    > div {
+      max-width: var(--max-width);
+      height: 100%;
+      margin: 0 auto;
 
-            > a:first-of-type {
-                padding-left: 1rem;
-                float: left;
-                height: 100%;
-                max-width: 66%;
-
-                > img {
-                    display: block;
-                    height: 95%;
-                    margin-right: 2.1rem;
-                }
-            }
+      > a:first-of-type {
+        @media (max-width: 1150px) {
+          padding-left: 1rem;
         }
 
-        + * {
-            margin-top: 4.5rem;
+        float: left;
+        height: 100%;
+        max-width: 66%;
+
+        > img {
+          display: block;
+          height: 95%;
+          margin-top: 0.2rem;
+          margin-right: 2.1rem;
         }
+      }
     }
+
+    + * {
+      margin-top: var(--header-height);
+    }
+  }
 }

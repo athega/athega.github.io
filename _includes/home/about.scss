@@ -1,0 +1,10 @@
+.home-about{
+  blockquote {
+    font-size: var(--font-size-4);
+    font-weight: 300;
+
+    @media (max-width: 848px) {
+      font-size: var(--font-size-3);
+    }
+  }
+}

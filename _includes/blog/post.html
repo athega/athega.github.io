@@ -5,8 +5,8 @@
 {% assign year = page.date | date: "%Y" %}
 
 <article class="blog-post content">
-    <h1>{{ page.title }}</h1>
-    {{ content }}
-    <hr>
-    <time datetime="{{ page.date | date: "%Y-%m-%d"  }}">{{ day }} {{ month }} {{ year }}</time>
+  <h1>{{ page.title }}</h1>
+  {{ content }}
+  <hr>
+  <time datetime="{{ page.date | date: "%Y-%m-%d"  }}">{{ day }} {{ month }} {{ year }}</time>
 </article>

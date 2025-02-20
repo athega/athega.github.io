@@ -1,69 +1,59 @@
 body > footer {
-    padding: 2em 5%;
-    color: white;
-    border-top: 3px solid darken($orange, 5);
-    background-color: $orange;
-    text-align: center;
+  padding-bottom: 3rem;
+  color: white;
+  border-top: 3px solid var(--color-orange-dark);
+  background-color: var(--color-orange);
+  text-align: center;
 
-    a,
-    a:visited,
-    a:hover,
-    a:focus {
-        color: inherit;
+  a, a:visited, a:hover, a:focus {
+    color: inherit;
+  }
+
+  > * {
+    @media (min-width: 44em) {
+      display: inline-block;
+      text-align: initial;
+      vertical-align: middle;
     }
+  }
 
-    > * {
-        @media (min-width: 44em) {
-            display: inline-block;
-            width: 30%;
-            max-width: 16em;
-            text-align: initial;
-            vertical-align: middle;
+  > ul {
+    max-width: var(--max-width);
+    width: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 
-            &:not(:last-child) {
-                margin-right: 5%;
-            }
+    > li {
+      .social {
+        float: right;
+
+        @media (max-width: 848px) {
+          float: none;
         }
 
-        > p {
-            font-size: 1.3rem;
-            margin: 0;
-            margin-bottom: 1em;
+        a {
+          margin: 0 1rem;
         }
-    }
+      }
 
-    > ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
+      h5 {
+        margin-bottom: 0;
+      }
 
-        > li {
-            display: inline-block;
-            text-align: center;
-            font-size: 1.5em;
+      > div a {
+        display: inline-block;
+        text-align: center;
 
-            &:not(:last-of-type) {
-                margin-right: 2em;
-            }
+        > svg {
+          display: block;
 
-            @media (min-width: 44em) {
-                width: 30%;
-
-                &:not(:last-of-type) {
-                    margin-right: 30%;
-                }
-            }
-
-            > a {
-                display: inline-block;
-
-                > svg {
-                    display: block;
-                    width: 3em;
-                    height: 3em;
-                    fill: $white;
-                }
-            }
+          width: 3rem;
+          height: 3rem;
+          fill: var(--color-white);
+          margin-top: 2rem;
         }
+      }
     }
+  }
 }

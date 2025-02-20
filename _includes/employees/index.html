@@ -1,9 +1,9 @@
 <ul class="employee-index">
-    {% for employee in site.employees %}
-    <li>
-        <a href="{{ employee.url }}" title="Läs mer om: {{ employee.name }}">
-            <img src="{{ employee.thumb }}" alt="{{ employee.name }}">
-        </a>
-    </li>
-    {% endfor %}
+  {% for employee in site.employees %}
+  <li>
+    <a href="{{ employee.url }}" title="Läs mer om: {{ employee.name }}">
+      <img src="{{ employee.thumb }}" alt="{{ employee.name }}">
+    </a>
+  </li>
+  {% endfor %}
 </ul>
