@@ -1,23 +1,21 @@
 <section class="home-blog content">
-    <h2>Från bloggen</h2>
-    <p>
-    </p>
-    <ul>
-        {% assign limit = 6 %}
-        {% for post in site.posts %}
-            {% if post.description %}
-            {% if post.image_url %}
-                <li>
-                    <a href="{{ post.url }}" title="Läs mer om: {{ post.title }}">
-                        <figure><img src="{{ post.image_url }}"></figure>
-                        <h3>{{ post.title }}</h3>
-                        <p>{{ post.description }}</p>
-                    </a>
-                </li>
-                {% assign limit = limit | minus: 1 %}
-                {% if limit == 0 %}{% break %}{% endif %}
-            {% endif %}
-            {% endif %}
-        {% endfor %}
-    </ul>
+  <h2>Från bloggen</h2>
+  <ul>
+  {% assign limit = 6 -%}
+  {% for post in site.posts %}
+    {%- if post.description -%}
+    {%- if post.image_url -%}
+    <li>
+      <a href="{{ post.url }}" title="Läs mer om: {{ post.title }}">
+        <figure><img src="{{ post.image_url }}"></figure>
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.description }}</p>
+      </a>
+    </li>
+    {%- assign limit = limit | minus: 1 -%}
+    {%- if limit == 0 %}{% break %}{% endif -%}
+    {%- endif -%}
+    {% endif %}
+  {% endfor %}
+  </ul>
 </section>

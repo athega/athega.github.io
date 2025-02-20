@@ -1,31 +1,31 @@
 <section class="blog-archive content">
-    <h1>{{ page.title }}</h1>
-
-    <ul class="featured">
-        {% for post in site.posts limit: 3 %}
-        <li>
-            <a href="{{ post.url }}" title="Läs mer om: {{ post.title }}">
-                {% if post.image_url %}
-                  <figure><img src="{{ post.image_url }}"></figure>
-                {% endif %}
-                <h3>{{ post.title }}</h3>
-                <p>{{ post.description }}</p>
-            </a>
-        </li>
-        {% endfor %}
-    </ul>
-
-    <hr>
-
-    <h2>Bloggarkivet</h2>
-
-    {% for post in site.posts %}
-        {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
-        {% capture next_year %}{{ post.next.date | date: '%Y' }}{% endcapture %}
-        {% if year != next_year %}
-          <strong>
-            <a href="/blogg/{{ year }}/">{{ year }}</a>
-          </strong>
+  <h1>{{ page.title }}</h1>
+  <ul class="featured">
+  {% for post in site.posts limit: 3 %}
+    <li>
+      <a href="{{ post.url }}" title="Läs mer om: {{ post.title }}">
+        {% if post.image_url %}
+        <figure><img src="{{ post.image_url }}"></figure>
         {% endif %}
-    {% endfor %}
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.description }}</p>
+      </a>
+    </li>
+  {% endfor %}
+  </ul>
+  <hr>
+  <h2>Bloggarkivet</h2>
+  {%- for post in site.posts -%}
+    {%- capture year %}{{- post.date | date: '%Y' -}}{% endcapture - %}
+    {%- capture next_year %}{{- post.next.date | date: '%Y' -}}{% endcapture - %}
+    {%- if year != next_year %}
+    <strong>
+      {% if year == page.year -%}
+        {{ year }}
+      {%- else -%}
+        <a href="/blogg/{{ year }}/">{{ year }}</a>
+      {%- endif %}
+    </strong>
+    {%- endif -%}
+  {%- endfor %}
 </section>
