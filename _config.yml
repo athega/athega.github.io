@@ -4,8 +4,6 @@ highlighter: rouge
 
 production_url : https://athega.se
 
-lsi: true
-
 permalink: /blogg/:year/:month/:day/:title
 
 data_dir: _includes
@@ -18,21 +16,19 @@ sass:
   sass_dir: _includes
   style: compressed
 
-compress_html:
-  clippings: all
-
 defaults:
-  -
-    scope:
-      path: "assets"
-    values:
-      layout:
   -
     scope:
       path: ""
       type: "posts"
     values:
       layout: "post"
+  -
+    scope:
+      path: ""
+      type: "employees"
+    values:
+      layout: "page"
   -
     scope:
       path: "blogg"
@@ -43,8 +39,3 @@ defaults:
       path: "index.html"
     values:
       layout: "default"
-  -
-    scope:
-      path: "" # an empty string here means all files in the project
-    values:
-      layout: "page"
