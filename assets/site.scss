@@ -3,16 +3,16 @@
 
 :root {
   --max-width: 900px;
-  --scale-ratio: 1.200;
+  --scale-ratio: 1.250;
   --header-height: 3.2rem;
   --font-family-sans: "Inter",system-ui,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,Helvetica,Arial,"Helvetica Neue",sans-serif;
   --font-family-mono: "Office Code Pro D","Source Code Pro",ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
-  --font-size-0: clamp(12px, 0.9rem, 16px);
+  --font-size-0: clamp(12px, calc(var(--font-size-1) * 0.9), 16px);
   --font-size-1: clamp(14px, 1rem, 18px);
-  --font-size-2: clamp(18px, calc(var(--font-size-1) * var(--scale-ratio)), 20px);
-  --font-size-3: clamp(24px, calc(var(--font-size-2) * var(--scale-ratio)), 28px);
-  --font-size-4: clamp(32px, calc(var(--font-size-3) * var(--scale-ratio)), 36px);
-  --font-size-5: clamp(42px, calc(var(--font-size-4) * var(--scale-ratio)), 48px);
+  --font-size-2: clamp(18px, calc(var(--font-size-1) * var(--scale-ratio)), 22px);
+  --font-size-3: clamp(23px, calc(var(--font-size-2) * var(--scale-ratio)), 29px);
+  --font-size-4: clamp(27px, calc(var(--font-size-3) * var(--scale-ratio)), 38px);
+  --font-size-5: clamp(33px, calc(var(--font-size-4) * var(--scale-ratio)), 51px);
   --font-weight-h: 700;
   --font-weight-m: 500;
   --font-weight-p: 400;
