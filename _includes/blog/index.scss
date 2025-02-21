@@ -1,7 +1,8 @@
 .blog-index {
-  strong {
-    font-size: 2em;
-    margin-right: 0.5em;
+  strong, strong a {
+    font-size: var(--font-size-4);
+    display: inline-block;
+    width: 5ch;
   }
 
   > ul {
@@ -11,21 +12,28 @@
     > li {
       clear: left;
       width: 100%;
-      // margin-bottom: 1.5em;
 
       > a {
         color: inherit;
+
+        p {
+          margin-top: 0.3rem;
+          margin-bottom: 2rem;
+        }
       }
 
       > a:hover {
         text-decoration: none;
 
-        h3 {
+        h2 {
           color: #000;
           text-decoration: underline;
           padding: 0;
-
         }
+      }
+
+      h2 {
+        margin-bottom: 0rem;
       }
     }
   }

@@ -1,53 +1,62 @@
 .home-roles {
-    > ul {
-        list-style: none;
-        padding: 0;
-        text-align: center;
+  > ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
 
-        > li {
-            display: inline-block;
-            vertical-align: top;
-            width: 100%;
-            text-align: initial;
-            margin-bottom: 1.5em;
-
-            > a {
-                display: block;
-                position: relative;
-                overflow: hidden;
-                color: inherit;
-                margin: 0;
-
-                > .role-body {
-                    > img {
-                        float: right;
-                        width: 95px;
-                        height: 95px;
-                        margin-right: 0.5rem;
-                    }
-
-                    > p {
-                        margin-top: 0;
-                        padding-top: 0;
-                        padding-right: 0.5rem;
-                    }
-                }
-
-                > h3 {
-                    margin-top: 0.5rem;
-                    margin-bottom: 0.3rem;
-                }
-
-                &:hover,
-                &:focus {
-                    text-decoration: none;
-                    outline: 0;
-
-                    > h3 {
-                        text-decoration: underline;
-                    }
-                }
-            }
-        }
+    @media (min-width: 848px) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 0 3rem;
     }
+
+    > li {
+      display: inline-block;
+      vertical-align: top;
+      width: 100%;
+      text-align: initial;
+      margin-bottom: 1.5em;
+
+      > a {
+        display: block;
+        position: relative;
+        overflow: hidden;
+        color: inherit;
+        margin: 0;
+
+        > .role-body {
+          max-width: calc(var(--max-width) / 1.5);
+
+          > img {
+            float: right;
+            width: 7rem;
+            height: 7rem;
+            margin-bottom: 2rem;
+          }
+
+          > p {
+            margin-top: 0;
+            padding-top: 0;
+            padding-right: 0.5rem;
+          }
+        }
+
+        > h3 {
+          margin-top: 0.5rem;
+          margin-bottom: 0.3rem;
+        }
+
+        &:hover,
+        &:focus {
+          text-decoration: none;
+          outline: 0;
+
+          > h3 {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
 }

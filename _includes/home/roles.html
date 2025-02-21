@@ -1,22 +1,22 @@
 <section class="home-roles content">
-    <h2>Våra kompetensroller i fokus</h2>
-    <p>
-        Nedan hittar du de roller vi fokuserar vårt erbjudande på i dagsläget.
-        Det innebär att vi rekryterar och vidareutbildar och inspirerar oss främst inom dessa områden.
-        Vårt mål, kan man säga, är att vi ska erbjuda den bästa kompetensen och erfarenheten inom våra
-        fokusområden.
-    </p>
-    <ul>
-        {% for role in site.data.home.roles %}
-            <li>
-                <a href="{{ role.href }}" title="Läs mer om: {{ role.title }}">
-                    <h3>{{ role.title }}</h3>
-                    <div class="role-body">
-                        <img src="{{ role.image_url }}">
-                        <p>{{ role.description }}</p>
-                    </div>
-                </a>
-            </li>
-        {% endfor %}
-    </ul>
+  <h2>Våra kompetensroller i fokus</h2>
+  <p>
+    Nedan hittar du de roller vi fokuserar vårt erbjudande på i dagsläget.
+    Det innebär att vi rekryterar och vidareutbildar och inspirerar oss främst inom dessa områden.
+    Vårt mål, kan man säga, är att vi ska erbjuda den bästa kompetensen och erfarenheten inom våra
+    fokusområden.
+  </p>
+  <ul>
+    {% for role in site.data.home.roles %}
+    <li>
+      <a href="{{ role.href }}" title="Läs mer om: {{ role.title }}">
+        <div class="role-body">
+          <img src="{{ role.image_url }}">
+          <h3>{{ role.title }}</h3>
+          <p>{{ role.description }}</p>
+        </div>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
 </section>
