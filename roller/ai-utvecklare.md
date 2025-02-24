@@ -5,11 +5,7 @@ title: AI-utvecklare
 AI-utvecklare
 ===================
 
-Du är utvecklare med specialistområde och intresse inom AI-lösningar. Utöver dina vanliga kompetenser som systemutvecklare har du erfarenhet och kompetens att använda modeller 
-och lösningar som bygger på machine learning, gärna reinforcement learning. Du har god förståelse och erfarenhet av allt från integration av befintliga lösningar till att 
-med machine learning lösa problem från grunden. 
+Som AI-utvecklare har du en gedigen bakgrund inom traditionell systemutveckling praktisk erfarenhet att använda AI-lösningar. Din förmåga att integrera befintliga AI-tjänster, utveckla skräddarsydda modeller eller bygga hybridlösningar gör att du effektivt använder den nya tekniken på ett pragmatiskt sätt. 
 
-Du har koll på att välja rätt verktyg för det problem du ställs inför. Oavsett om det innebär helt nya modeller, finjustering eller integration.  Python, Pandas, R och i vissa fall c++ är några tekniker som används.
-
-Vissa uppdrag kräver djup kompetens av modellutveckling, träning, C++ medan andra lösningar kan använda befintliga tjänster som integreras mot. Med kompetens att välja rätt verktyg kan begränsningar i befintliga tjänster hanteras med finjustering. Python, Pandas, R och i vissa fall c++ är några tekniker som används.
+Ditt arbete präglas med andra ord av din förmåga att välja rätt verktyg och metod – vare sig det handlar om att finjustera befintliga modeller eller att bygga en lösning från grunden. Du följer teknikutvecklingen inom AI och tvekar inte att använda senaste tekniken när det är lämpligt. 
 
