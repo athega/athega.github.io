@@ -74,6 +74,10 @@ p, li, a {
   font-size: var(--font-size-1);
 }
 
+p {
+  margin: 0.3rem 0 0.7rem 0;
+}
+
 h1, h2, h3, h4, h5 {
   font-weight: var(--font-weight-h);
   line-height: var(--line-height-h);
