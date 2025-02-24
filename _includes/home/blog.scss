@@ -39,20 +39,20 @@
           }
         }
 
-        > h2 {
-          margin-top: 0.5rem;
+        > h3 {
+          margin-top: 1rem;
           margin-bottom: 0.3rem;
         }
 
         > p {
           margin: 0;
-          padding-bottom: 1rem;
+          padding-bottom: 0.5rem;
 
           float: left;
 
           @media (max-width: 848px) {
             float: none;
-            padding-bottom: 2rem;
+            padding-bottom: 1rem;
           }
 
           &::after {
@@ -73,7 +73,7 @@
           text-decoration: none;
           outline: 0;
 
-          > h2 {
+          > h3 {
             text-decoration: underline;
           }
         }
