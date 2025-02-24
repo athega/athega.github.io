@@ -1,43 +1,33 @@
 .home-blog {
   > ul {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
     list-style: none;
     padding: 0;
 
-    > li {
-      width: 100%;
-      margin-bottom: 1.5em;
+    @media (min-width: 848px) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+      gap: 1.5rem 2.9rem;
+    }
 
+    > li {
       @media (max-width: 800px) {
         padding-top: 0.5em;
       }
 
-      @media (min-width: 48em) {
-        width: 48%;
+      > figure {
+        margin: 0;
+        width: 100%;
+        aspect-ratio: 16/9;
+        overflow: hidden;
+        > img {
+          object-fit: cover;
+        }
       }
 
       > a {
         display: block;
         color: inherit;
-        position: relative;
-        $max-height: 50rem;
-        max-height: $max-height;
-        overflow: hidden;
-
-        > figure {
-          position: relative;
-          margin: 0;
-          padding-bottom: 56.25%;
-          > img {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-          }
-        }
 
         > h3 {
           margin-top: 1rem;
@@ -48,23 +38,8 @@
           margin: 0;
           padding-bottom: 0.5rem;
 
-          float: left;
-
           @media (max-width: 848px) {
-            float: none;
             padding-bottom: 1rem;
-          }
-
-          &::after {
-            $fade-height: 2.5rem;
-
-            content: "";
-            position: absolute;
-            top: $max-height - $fade-height;
-            left: 0;
-            background-image: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1));
-            width: 100%;
-            height: $fade-height;
           }
         }
 
