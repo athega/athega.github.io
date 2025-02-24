@@ -6,11 +6,15 @@
     {%- if post.description -%}
     {%- if post.image_url -%}
     <li>
+      <figure>
+        <a href="{{ post.url }}" title="Läs mer om: {{ post.title }}">
+          <img src="{{ post.image_url }}">
+        </a>
+      </figure>
       <a href="{{ post.url }}" title="Läs mer om: {{ post.title }}">
-        <figure><img src="{{ post.image_url }}"></figure>
         <h3>{{ post.title }}</h3>
-        <p>{{ post.description }}</p>
       </a>
+      <p>{{ post.description }}</p>
     </li>
     {%- assign limit = limit | minus: 1 -%}
     {%- if limit == 0 %}{% break %}{% endif -%}
