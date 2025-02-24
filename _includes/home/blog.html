@@ -1,5 +1,5 @@
 <section class="home-blog content">
-  <h3>Från bloggen</h3>
+  <h2>Från bloggen</h2>
   <ul>
   {% assign limit = 6 -%}
   {% for post in site.posts %}
@@ -8,7 +8,7 @@
     <li>
       <a href="{{ post.url }}" title="Läs mer om: {{ post.title }}">
         <figure><img src="{{ post.image_url }}"></figure>
-        <h2>{{ post.title }}</h2>
+        <h3>{{ post.title }}</h3>
         <p>{{ post.description }}</p>
       </a>
     </li>
