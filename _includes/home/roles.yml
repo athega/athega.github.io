@@ -12,13 +12,6 @@
   image_url: /assets/img/han-solo.jpg
   href: /roller/frontendutvecklare
 
-- title: Datascientist
-  description:
-    Djup kunskap inom matematik, statistisk analys och machine learning-tekniker.  Tar även 
-    fram underlag för beslutstöd som är anpassat för kommunikation till olika målgrupper inom företaget.
-  image_url: /assets/img/yoda.jpg
-  href: /roller/datascientist
-  
 - title: AI-utvecklare
   description:
     Specialistområde och intresse inom AI-lösningar utöver dina vanliga kompetenser som systemutvecklare.
