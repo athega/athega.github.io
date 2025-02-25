@@ -1,6 +1,5 @@
 ---
 title: Fullstackutvecklare
-intro-image: /assets/img/fullstack.jpg
 tagline: Fullstackutvecklare
 sub-tagline: Fullstack betyder kunskap om hela "stacken" men vad innebär det?
 ---

@@ -1,6 +1,5 @@
 ---
 title: Frontendutvecklare
-intro-image: /assets/img/frontend-backend.jpg
 tagline: Frontendutvecklare
 sub-tagline: Systemutveckling av webbgränssnitt
 ---
