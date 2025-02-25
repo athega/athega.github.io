@@ -2,31 +2,31 @@
   description:
     Goda kunskaper i Javascript. Bred kunskap inom Javaplattformen och praktisk erfarenhet
     av ett urval av olika tekniker inom webbutveckling, både front- och backend.
-  image_url: /assets/img/jyn-erso.jpg
+  image_url: /assets/img/roles/jyn-erso.png
   href: /roller/fullstackutvecklare
 
 - title: Frontendutvecklare
   description:
     En djup förståelse för webbutveckling och webbstandardarder, tillgänglighetsanpassning,
     browserkompatibilitet samt tekniker och koncept för webben.
-  image_url: /assets/img/han-solo.jpg
+  image_url: /assets/img/roles/han-solo.png
   href: /roller/frontendutvecklare
 
 - title: AI-utvecklare
   description:
     Specialistområde och intresse inom AI-lösningar utöver dina vanliga kompetenser som systemutvecklare.
-  image_url: /assets/img/yoda.jpg
+  image_url: /assets/img/roles/yoda.png
   href: /roller/ai-utvecklare
 
 - title: Apputvecklare
   description:
     En apputvecklare utvecklar en anpassad app för Android, iOS eller andra plattformar. Det kan
     också vara en plattformsoberoende mobil-app som fungerar på alla enheter.
-  image_url: /assets/img/luke.jpg
+  image_url: /assets/img/roles/luke.png
   href: /roller/apputvecklare
 
 - title: DevOps-utvecklare
   description:
     En DevOps-utvecklare spelar en kritisk roll i att balansera behoven mellan mjukvaruutveckling och produktionsdrift. 
-  image_url: /assets/img/wookie.jpg
+  image_url: /assets/img/roles/wookie.png
   href: /roller/devops
