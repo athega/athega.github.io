@@ -2,6 +2,7 @@
   position: relative;
   overflow: hidden;
   color: white;
+  margin-top: calc(var(--header-height) + 0.4rem);
   margin-bottom: 1.5rem;
   text-shadow: 0 0 8px rgba(0, 0, 0, .6);
   background-color: #151515;
@@ -29,19 +30,18 @@
   > div {
     position: relative;
     display: inline-block;
-    max-width: calc(var(--max-width) / 1.4);
+    max-width: var(--max-width);
     text-align: initial;
-    margin: 1.2rem 1rem;
-    margin-top: 8vh;
+    margin: var(--intro-vertical-margin) 1rem;
 
     > h1  {
-      font-size: var(--font-size-5);
+      font-size: var(--font-size-6);
       margin-top: 0;
     }
 
     > p {
       font-size: var(--font-size-2);
-      margin-top: 0;
+      margin: 0;
     }
   }
 }
