@@ -19,6 +19,9 @@
 ```console
 git clone git@github.com:athega/athega.github.io.git
 cd athega.github.io
+```
+
+```sh { name=bundle-install }
 bundle install
 ```
 
@@ -29,7 +32,8 @@ git pull --rebase
 ```
 
 ### Starta en lokal server
-```console
+
+```sh { name=jekyll-serve interactive=true }
 bundle exec jekyll serve -l -H 0.0.0.0
 ```
 
@@ -40,7 +44,7 @@ bundle exec jekyll serve -l -H 0.0.0.0
 
 #### Hämta eventuella ändringar i repot från GitHub
 
-```console
+```sh { name=git-pull-rebase }
 git pull --rebase
 ```
 
@@ -61,7 +65,7 @@ git push
 
 #### Uppdatera Ruby-beroenden
 
-```console
+```sh { name=bundle-update }
 bundle update
 ```
 
