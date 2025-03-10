@@ -1,0 +1,12 @@
+.{
+    .name = .wasi_reactor_i_zig_och_go,
+    .version = "0.0.0",
+    .fingerprint = 0xb16a61c24cce5c2,
+    .minimum_zig_version = "0.14.0",
+    .dependencies = .{},
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "src",
+    },
+}
