@@ -63,7 +63,7 @@
     }
 
     > ul {
-      height: 90%;
+      height: var(--desktop-header-main-menu-ul-height);
 
       &::before {
         content: "";

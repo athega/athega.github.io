@@ -27,7 +27,7 @@ body {
 
         > img {
           display: block;
-          height: 80%;
+          height: var(--header-logo-height);
           margin-top: 0.5rem;
           margin-right: 2.1rem;
         }
