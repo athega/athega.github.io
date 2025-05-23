@@ -242,10 +242,12 @@ För att ta det hela ett litet steg vidare så testade jag hur smidigt
 det vore att använda sig av den Markdown som ligger till grund för denna bloggpost.
 
 Jag tog och kopierade posten till [`post.md`](/assets/blog/2025-05-23-markdown-med-typst/post.md)
-och ta bort den "frontmatter" som används för [Jekyll](https://jekyllrb.com/)
-_(men som inte hanteras bra av `cmarker`)_
+och raderade den "frontmatter" som används för [Jekyll](https://jekyllrb.com/)
+_(men som inte hanteras speciellt bra av `cmarker`)_
 
-Jag lade även till några `---` för att trigga sidbrytningar, samt `<!--raw-typst #colbreak() -->`
+Fick lägga till några `---` för att trigga sidbrytningar,
+`<!--raw-typst #colbreak() -->` för att bryta kolumner,
+samt uppdatera länkar till filer.
 
 ```console
 typst compile \
