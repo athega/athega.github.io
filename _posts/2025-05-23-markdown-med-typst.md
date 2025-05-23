@@ -154,7 +154,7 @@ Vi behöver naturligtvis även skriva lite Markdown.
 
 > **Notera**
 >
-> I kommentarer med formatet`<!--raw-typst -->` kan man skriva Typst
+> I kommentarer med formatet `<!--raw-typst -->` kan man skriva Typst
 > för att styra hur man vill att dokumentet ska formateras.
 > Men man behöver inte använda dessa om man enbart vill skriva Markdown.
 
@@ -235,6 +235,28 @@ För att generera följande SVG använder jag `typst compile document.typ docume
 >
 > Om du istället vill generera [`document.pdf`](/assets/blog/2025-05-23-markdown-med-typst/document.pdf)
 > så behöver du bara `typst compile document.typ`
+
+## PDF baserad på denna bloggpost
+
+För att ta det hela ett litet steg vidare så testade jag hur smidigt
+det vore att använda sig av den Markdown som ligger till grund för denna bloggpost.
+
+Jag tog och kopierade posten till [`post.md`](/assets/blog/2025-05-23-markdown-med-typst/post.md)
+och ta bort den "frontmatter" som används för [Jekyll](https://jekyllrb.com/)
+_(men som inte hanteras bra av `cmarker`)_
+
+Jag lade även till några `---` för att trigga sidbrytningar, samt `<!--raw-typst #colbreak() -->`
+
+```console
+typst compile \
+    --input FILE='post.md' \
+    --input PAGE='paper: "a4", columns: 2, margin: (x: 1cm, y: 2cm)' \
+    --input TEXT='font: "Inter", size: 8pt' \
+    --input CODE='font: "Office Code Pro D", weight: "regular", size: 1.1em' \
+    document.typ post.pdf
+```
+
+Detta resulterade i [`post.pdf`](/assets/blog/2025-05-23-markdown-med-typst/post.pdf)
 
 / [Peter](/peter)
 
