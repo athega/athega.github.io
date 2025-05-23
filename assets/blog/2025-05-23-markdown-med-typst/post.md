@@ -217,8 +217,6 @@ Eller ladda en SVG från fil och rita ut den:
 ![Ewok](ewok.svg)
 ```
 
----
-
 ## document.svg
 
 För att generera följande SVG använder jag `typst compile document.typ document.svg` vilket resulterar i:
