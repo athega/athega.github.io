@@ -1,5 +1,5 @@
 ---
-title: Industri
+title: AI för industriella tillämpningar
 layout: default
 ---
 
