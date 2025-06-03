@@ -2,7 +2,9 @@ exclude: [".gitignore", ".ruby-version", "README.md", "Gemfile", "Gemfile.lock"]
 
 highlighter: rouge
 
-production_url : https://athega.se
+production_url: https://athega.se
+
+url: https://athega.se
 
 permalink: /blogg/:year/:month/:day/:title
 
