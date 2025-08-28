@@ -10,9 +10,11 @@ last_updated_by: peter
 image_url: /assets/blog/2025-08-28-maste-alla-AI-kora-i-molnet/ai-visualisering.webp
 ---
 
+> {{page.description}}
+
 ![AI visualisering]({{page.image_url}})
 
-> {{page.description}}
+*Visualiseringar av optimering av kombinatoriska problem med hjälp av Reinforcement learning*
 
 ## Fördelar
 
