@@ -1,5 +1,5 @@
 ---
-title: "Måste alla AI köra i molnet?"
+title: "Måste verkligen all AI köras i molnet?"
 date: 2025-08-28
 description: "Med en edge-node kan vi flytta beräkningskraft ut ur molnet."
 tags:
@@ -7,7 +7,7 @@ tags:
   - ai
   - markdown
 last_updated_by: peter
-image_url: /assets/blog/2025-08-28-maste-alla-AI-kora-i-molnet/ai-visualisering.webp
+image_url: /assets/blog/2025-08-28-maste-verkligen-all-AI-koras-i-molnet/ai-visualisering.webp
 ---
 
 > {{page.description}}
