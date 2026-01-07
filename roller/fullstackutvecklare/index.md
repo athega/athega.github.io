@@ -7,18 +7,19 @@ sub-tagline: Fullstack betyder kunskap om hela "stacken" men vad innebär det?
 Fullstackutvecklare
 -------------------
 
-En fullstackutvecklare kan jobba med alla ingående delar av lösningen..
-Fullstackutvecklaren kan ta sig an alla olika slag av utveckling i lösningen om det skulle behövas och prioriteras.
-Däremot är det inte en expert på precis alla delar. Utan expertis och fokus just nu kanske är på några delar av lösningen.
-Att utvärdera och sätta sig in nya saker är viktigt.
+En fullstackutvecklare på Athega är en senior systemutvecklare med djup kompetens i sina kärntekniker, och samtidigt tillräcklig bredd för att förstå och bidra i hela lösningen.
+Rollen handlar inte om att vara expert på allt, utan om att kunna ta ansvar för leverans i komplexa miljöer, se helheten och samarbeta effektivt med andra specialister.
+Våra fullstackutvecklare arbetar nära kund och team, ofta i uppdrag där beprövade tekniker, stabil arkitektur och produktionserfarenhet är avgörande. Att snabbt kunna sätta sig in i befintliga system, fatta välgrundade tekniska beslut och leverera värde är centralt. Att kontinuerligt utvärdera och ta till sig nya tekniker är viktigt – men alltid med fokus på nytta, hållbarhet och verklig användning, snarare än trender.
+
 
 ### Specifikt på Athega innebär det:
 
-- En god överblick och förståelse av hela IT-landskapet, en allmänbildning.
-- En längre erfarenhet av systemutveckling inom webb.
-- Att vara engagerad och bidra i frågor kring teknikval och arkitektur samt att inspirera och lära andra.
-- Slutligen att vara skarp på och drivande av de senaste teknikerna och idéerna inom webbutveckling.
+- En god helhetsförståelse för IT-landskapet och hur olika delar samverkar
+- Flera års erfarenhet av systemutveckling inom webb, med tydlig tyngd i några kärntekniker
+- Förmåga att bidra i teknikval och arkitektur, baserat på erfarenhet från verkliga leveranser
+- Ett konsultmässigt förhållningssätt: ansvarstagande, kommunikativ och lösningsorienterad
+- Viljan att dela kunskap, stötta kollegor och bidra till gemensam teknisk riktning
 
-Just nu söker vi flera som kan fylla rollen.
+Just nu söker vi seniora utvecklare som kan ta denna roll och snabbt bli produktiva i våra kunduppdrag.
 
 [Läs mer om våra detaljerade krav i vår annons.](annons)
