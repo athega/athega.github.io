@@ -21,5 +21,3 @@ Våra fullstackutvecklare arbetar nära kund och team, ofta i uppdrag där bepr�
 - Viljan att dela kunskap, stötta kollegor och bidra till gemensam teknisk riktning
 
 Just nu söker vi seniora utvecklare som kan ta denna roll.
-
-[Läs mer om våra detaljerade krav i vår annons.](annons)
