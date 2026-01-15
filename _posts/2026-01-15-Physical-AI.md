@@ -1,7 +1,7 @@
 ---
 title: "Fysisk AI (Physical AI)"
 date: 2026-01-15
-description: "Ett nytt begrepp har dykt upp – Fysisk AI"
+description: "Ett nytt begrepp har dykt upp, Physical AI – Direkt översatt till Fysisk AI"
 tags:
   - blogg
   - AI
@@ -10,8 +10,6 @@ last_updated_by: Tobbe
 image_url: /assets/img/blog/mic-array-track-robot.gif
 assets_path: /assets/img/blog/mic-array-track-robot.gif
 ---
-
-# Fysisk AI (Physical AI)
 
 ![Local Image](/assets/img/blog/mic-array-track-robot.gif)
 
