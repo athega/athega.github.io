@@ -1,7 +1,7 @@
 ---
 title: "Fysisk AI (Physical AI)"
 date: 2026-01-15
-description: "Ett nytt begrepp har dykt upp, Physical AI – Direkt översatt till Fysisk AI"
+description: "Ett nytt begrepp har dykt upp, Physical AI. Direkt översatt till Fysisk AI"
 tags:
   - blogg
   - AI
@@ -13,7 +13,7 @@ assets_path: /assets/img/blog/mic-array-track-robot.gif
 
 ![Local Image](/assets/img/blog/mic-array-track-robot.gif)
 
-Ett nytt begrepp har dykt upp på engelska, "Physical AI". Översättningen till svenska “Fysisk AI” missuppfattas av LLM’er och sökmotorer att handla om AI för vetenskapen “fysik” och inte förkroppsligandet att tolka den verkliga världen. Alltså en AI som uppfattar, beslutar och agerar i den verkliga världen – i realtid, under verkliga förhållanden.
+Ett nytt begrepp har dykt upp på engelska, "Physical AI". Översättningen till svenska “Fysisk AI” missuppfattas av LLM’er och sökmotorer att handla om AI för vetenskapen fysik och inte förkroppsligandet att tolka den verkliga världen. Alltså en AI som uppfattar, beslutar och agerar i den verkliga världen – i realtid, under verkliga förhållanden.
 
 ## Tillämpningar för industri
 
