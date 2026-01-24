@@ -6,7 +6,7 @@
 
 ### Förutsättningar
 
-Du behöver ha [Node.js](https://nodejs.org/) installerat (version 22 eller senare).
+Du behöver ha [Node.js](https://nodejs.org/) installerat (version 24).
 Vi rekommenderar att använda [nvm](https://github.com/nvm-sh/nvm) (Node Version Manager) för att hantera Node.js-versioner.
 
 #### Installera nvm (om du inte har det)

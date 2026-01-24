@@ -17,7 +17,10 @@
   <hr>
   {%- for post in collections.posts -%}
   {%- capture post_year %}{{- post.date | date: '%Y' -}}{% endcapture -%}
+  {%- assign next_year = "" -%}
+  {%- if post.data.next -%}
   {%- capture next_year %}{{- post.data.next.date | date: '%Y' -}}{% endcapture -%}
+  {%- endif -%}
   {%- if post_year != next_year %}
   <strong>
     {% if post_year == year -%}

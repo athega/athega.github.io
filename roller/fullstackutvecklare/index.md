@@ -1,7 +1,7 @@
 ---
 title: Fullstackutvecklare
 tagline: Fullstackutvecklare
-sub-tagline: Fullstack betyder kunskap om hela "stacken" men vad innebär det?
+sub_tagline: Fullstack betyder kunskap om hela "stacken" men vad innebär det?
 ---
 
 Fullstackutvecklare

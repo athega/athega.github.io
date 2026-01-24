@@ -1,7 +1,7 @@
 ---
 title: Frontendutvecklare
 tagline: Frontendutvecklare
-sub-tagline: Systemutveckling av webbgränssnitt
+sub_tagline: Systemutveckling av webbgränssnitt
 ---
 
 # {{ title }}

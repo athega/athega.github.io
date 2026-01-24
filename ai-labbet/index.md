@@ -1,8 +1,8 @@
 ---
 title: AI & Maskininlärning
-intro-image: /assets/img/ai-labbet.jpg
+intro_image: /assets/img/ai-labbet.jpg
 tagline: AI & Maskininlärning
-sub-tagline: Utveckling inom artificiell intelligens och maskininlärning
+sub_tagline: Utveckling inom artificiell intelligens och maskininlärning
 ---
 
 # {{ title }}
