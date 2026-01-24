@@ -2,12 +2,13 @@
   "name": "athega-website",
   "type": "module",
   "engines": {
-    "node": ">=22.0.0"
+    "node": ">=24.0.0"
   },
   "scripts": {
     "sass": "sass --load-path=_includes assets/site.scss:_site/assets/site.css --style=compressed",
+    "sass:watch": "sass --load-path=_includes assets/site.scss:_site/assets/site.css --style=compressed --watch",
     "build": "npm run sass && npx @11ty/eleventy",
-    "start": "npm run sass && npx @11ty/eleventy --serve"
+    "start": "npx @11ty/eleventy --serve & npm run sass:watch"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
