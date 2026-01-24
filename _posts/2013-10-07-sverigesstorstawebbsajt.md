@@ -5,7 +5,7 @@ description: "Pingdom har publicerat en artikel om aftonbladet.se"
 tags:
   - nyhetsbrev
 last_updated_by: mats
-image_url: http://athega.se/images/employees/chrille/wide.jpg
+image_url: /assets/img/employees/chrille.jpg
 ---
 Pingdom har publicerat en artikel om aftonbladet.se där Athegas Christian Lizell beskriver vad det krävs för att hålla Sveriges största webbsajt rullande.
 

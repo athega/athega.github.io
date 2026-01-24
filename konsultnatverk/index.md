@@ -2,7 +2,7 @@
 title: Är du skicklig systemutvecklare och ensam?
 ---
 
-# {{ page.title }}
+# {{ title }}
 
 _Gillar du konsultrollen och är egen företagare?_
 <br>

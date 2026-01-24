@@ -5,7 +5,7 @@ tagline: AI & Maskininlärning
 sub-tagline: Utveckling inom artificiell intelligens och maskininlärning
 ---
 
-# {{ page.title }}
+# {{ title }}
 
 Avdelningen är kärnan i vår strävan att utnyttja och utveckla de senaste framstegen inom artificiell intelligens och maskininlärning. Vårt fokus är att integrera klassisk maskininlärning och statistiska modeller med den allra senaste forskningen för att hitta praktiska lösningar på verkliga problem. Vår vision är att kontinuerligt förbättra och optimera våra kunders verksamheter genom att tillämpa de mest avancerade AI- och ML-teknikerna. Vi är en partner i den snabba teknologiska utvecklingen och bidrar till våra kunders framgång genom innovativa lösningar.
 
@@ -54,16 +54,16 @@ Vill ni skriva upp er på inbjudningslistan till vårt MeetUp eller kontakta oss
     </p>
     <ul>
         {% assign limit = 6 %}
-        {% for post in site.posts %}
-            {% if post.description %}
-            {% if post.image_url %}
-            {% if post.tags[0]=='ai' %}
+        {% for post in collections.posts %}
+            {% if post.data.description %}
+            {% if post.data.image_url %}
+            {% if post.data.tags[0]=='ai' %}
               <li>
-                    <a href="{{ post.url }}" title="Läs mer om: {{ post.title }}">
-                        <figure><img src="{{ post.image_url }}"></figure>
-                        <h3>{{ post.title }}</h3>
-                        <p>{{ post.description }}</p>
-                       
+                    <a href="{{ post.url }}" title="Läs mer om: {{ post.data.title }}">
+                        <figure><img src="{{ post.data.image_url }}"></figure>
+                        <h3>{{ post.data.title }}</h3>
+                        <p>{{ post.data.description }}</p>
+
                     </a>
                 </li>
                 {% assign limit = limit | minus: 1 %}

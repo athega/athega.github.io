@@ -5,7 +5,7 @@ description: "Det går att undvika fällorna när du bygger beslutstödssystem."
 tags:
   - nyhetsbrev
 last_updated_by: mats
-image_url: http://athega.se/images/employees/mark/medium.jpg
+image_url: /assets/img/employees/mark.jpg
 ---
 
 > Ledningen måste kunna lita på sina nyckeltal. Hur ska de annars kunna ta rätt beslut?
@@ -17,7 +17,7 @@ Det går att undvika fällorna när du bygger beslutstödssystem. Vi satte oss n
 
 – Systemen används av ledningen på stora företag för att kunna ta rätt beslut. Systemen samlar data och presenterar ekonomiska nyckeltal för organisationens olika delar. Det kan t ex handla om att månad för månad jämföra kostnader mot budget för alla dotterbolag. Ett bra ledningssystem ger företaget en konkurrensfördel. Cheferna kan se möjligheter och agera snabbt eftersom de kan visualisera sin verksamhet mer exakt än sina konkurrenter. Det är som ordspråket säger: If you can´t measure it, you can´t manage it.
 
-![Mark Ingram](http://athega.se/images/employees/mark/wide.jpg)
+![Mark Ingram](/assets/img/employees/mark.jpg)
 Athegakonsulten Mark Ingram har byggt managementsystem åt storkoncerner sedan 2004 och vet var fallgroparna finns.
 
 ## Vilken är den största utmaningen när man bygger ett ledningssystem?

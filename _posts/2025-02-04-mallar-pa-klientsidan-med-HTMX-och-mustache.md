@@ -8,7 +8,7 @@ last_updated_by: peter
 image_url: /assets/blog/2025-02-04-mallar-pa-klientsidan-med-HTMX-och-mustache/2025-mallar-pa-klientsidan.png
 ---
 
-![{{page.description}}]({{page.image_url}})
+![{{description}}]({{image_url}})
 
 Jag befinner mig sällan på framsidan av webben, men har haft rätt bra erfarenheter av
 [HTMX](https://htmx.org/) som ett sätt för mig _(som helst utvecklar för baksidan)_ att faktiskt

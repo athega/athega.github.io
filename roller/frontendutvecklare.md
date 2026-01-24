@@ -4,7 +4,7 @@ tagline: Frontendutvecklare
 sub-tagline: Systemutveckling av webbgränssnitt
 ---
 
-# {{ page.title }}
+# {{ title }}
 
 Det är systemutveckling av det som ligger närmast och som formar gränssnittet mot användarna.
 En djup förståelse för de tekniker som realiserar ett interaktivt gränssnitt.

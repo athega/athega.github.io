@@ -10,7 +10,7 @@ last_updated_by: peter
 image_url: /assets/blog/2025-05-23-markdown-med-typst/2025-markdown-med-typst.png
 ---
 
-![Teckning av tryckpress med rubriken Markdown med Typst]({{page.image_url}})
+![Teckning av tryckpress med rubriken Markdown med Typst]({{image_url}})
 
 ## Typst
 

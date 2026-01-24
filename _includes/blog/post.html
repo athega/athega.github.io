@@ -1,12 +1,6 @@
-{% assign months = "januari|februari|mars|april|maj|juni|juli|augusti|september|oktober|november|december" | split: "|" %}
-{% assign m = page.date | date: "%-m" | minus: 1 %}
-{% assign day = page.date | date: "%d" %}
-{% assign month = months[m] %}
-{% assign year = page.date | date: "%Y" %}
-
 <article class="blog-post content">
-  <h1>{{ page.title }}</h1>
+  <h1>{{ title }}</h1>
   {{ content }}
   <hr>
-  <time datetime="{{ page.date | date: "%Y-%m-%d"  }}">{{ day }} {{ month }} {{ year }}</time>
+  <time datetime="{{ date | date: "%Y-%m-%d" }}">{{ date | swedishDate }}</time>
 </article>

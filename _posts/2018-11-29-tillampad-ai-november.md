@@ -9,9 +9,9 @@ tags:
 last_updated_by: chrille
 image_url: /assets/blog/2018-meetup-nov.jpg
 ---
-{{ page.description }}
+{{ description }}
 
-<img src="{{ page.image_url }}" alt="{{ page.title }}" class="full">
+<img src="{{ image_url }}" alt="{{ title }}" class="full">
 
 ## Presentationer
 
