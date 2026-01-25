@@ -1,6 +1,7 @@
 ---
 layout: employee
-permalink: /krister
+permalink: /krister/
+
 name: Krister Söderström
 title: Systemutvecklare (Data scientist, AI)
 image: /assets/img/employees/krister.jpg

@@ -1,6 +1,7 @@
 ---
 layout: employee
-permalink: /johan
+permalink: /johan/
+
 name: Johan Beronius
 title: Systemutvecklare (Perl, Java, Javascript)
 image: /assets/img/employees/johan.jpg

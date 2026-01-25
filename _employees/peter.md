@@ -1,6 +1,7 @@
 ---
 layout: employee
-permalink: /peter
+permalink: /peter/
+
 name: Peter Hellberg
 title: Systemutvecklare (Go)
 image: /assets/img/employees/peter.jpg

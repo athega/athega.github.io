@@ -1,6 +1,7 @@
 ---
 layout: employee
-permalink: /mikael
+permalink: /mikael/
+
 name: Mikael Forsberg
 title: Systemutvecklare (Java, Javascript)
 image: /assets/img/employees/mikael.jpg

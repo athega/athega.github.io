@@ -1,6 +1,7 @@
 ---
 layout: employee
-permalink: /ulrik
+permalink: /ulrik/
+
 name:  Ulrik Stenbacka
 title: Business Area Manager - Industrial AI
 image: /assets/img/employees/ulrik.jpg

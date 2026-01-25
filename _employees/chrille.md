@@ -1,6 +1,7 @@
 ---
 layout: employee
-permalink: /chrille
+permalink: /chrille/
+
 name: Christian Lizell
 title: Fullstackutvecklare (JavaScript, Java)
 image: /assets/img/employees/chrille.jpg

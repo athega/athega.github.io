@@ -1,6 +1,7 @@
 ---
 layout: employee
-permalink: /mats
+permalink: /mats/
+
 name: Mats Ygfors
 title: Managementkonsult och lösningsarkitekt
 image: /assets/img/employees/mats.jpg

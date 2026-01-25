@@ -1,6 +1,7 @@
 ---
 layout: employee
-permalink: /tobbe
+permalink: /tobbe/
+
 name: Torbjörn Nilsson
 title: VD
 image: /assets/img/employees/tobbe.jpg

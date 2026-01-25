@@ -1,6 +1,7 @@
 ---
 layout: employee
-permalink: /mark
+permalink: /mark/
+
 name: Mark Ingram
 title: IT Management
 image: /assets/img/employees/mark.jpg
