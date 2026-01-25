@@ -1,4 +1,4 @@
 {
   "layout": "post",
-  "permalink": "/blogg/{{ page.date | date: '%Y/%m/%d' }}/{{ page.fileSlug }}"
+  "permalink": "/blogg/{{ page.date | date: '%Y/%m/%d' }}/{{ page.fileSlug }}/"
 }
