@@ -1,28 +1,32 @@
 <section class="blog-archive content">
-  <h1>{{ page.title }}</h1>
+  <h1>{{ title }}</h1>
   <ul class="featured">
-    {% for post in site.posts limit: 3 %}
+    {% assign featured_posts = collections.posts | slice: 0, 3 %}
+    {% for post in featured_posts %}
     <li>
-      <a href="{{ post.url }}" title="Läs mer om: {{ post.title }}">
-        {% if post.image_url %}
-        <figure><img src="{{ post.image_url }}"></figure>
+      <a href="{{ post.url | removeHtmlExtension }}" title="Läs mer om: {{ post.data.title }}">
+        {% if post.data.image_url %}
+        <figure><img src="{{ post.data.image_url }}"></figure>
         {% endif %}
-        <h2>{{ post.title }}</h2>
-        <p>{{ post.description }}</p>
+        <h2>{{ post.data.title }}</h2>
+        <p>{{ post.data.description }}</p>
       </a>
     </li>
     {% endfor %}
   </ul>
   <hr>
-  {%- for post in site.posts -%}
-  {%- capture year %}{{- post.date | date: '%Y' -}}{% endcapture - %}
-  {%- capture next_year %}{{- post.next.date | date: '%Y' -}}{% endcapture - %}
-  {%- if year != next_year %}
+  {%- for post in collections.posts -%}
+  {%- capture post_year %}{{- post.date | date: '%Y' -}}{% endcapture -%}
+  {%- assign next_year = "" -%}
+  {%- if post.data.next -%}
+  {%- capture next_year %}{{- post.data.next.date | date: '%Y' -}}{% endcapture -%}
+  {%- endif -%}
+  {%- if post_year != next_year %}
   <strong>
-    {% if year == page.year -%}
-    {{ year }}
+    {% if post_year == year -%}
+    {{ post_year }}
     {%- else -%}
-    <a href="/blogg/{{ year }}/">{{ year }}</a>
+    <a href="/blogg/{{ post_year }}/">{{ post_year }}</a>
     {%- endif %}
   </strong>
   {%- endif -%}

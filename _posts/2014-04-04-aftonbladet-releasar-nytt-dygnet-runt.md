@@ -5,7 +5,7 @@ description: "Aftonbladet är ohotad etta igen. Vår konsult Christian Lizell ve
 tags:
   - nyhetsbrev
 last_updated_by: chrille
-image_url: http://athega.se/images/employees/chrille/medium.jpg
+image_url: /assets/img/employees/chrille.jpg
 ---
 > "Vi releasar nytt dygnet runt. Som att bypass-operera ett nyhetsankare under sändning."
 

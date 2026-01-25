@@ -1,92 +1,178 @@
 # athega.github.io
 
-> The Athega GitHub Place
+> Athegas webbplats byggd med [Eleventy](https://www.11ty.dev/)
 
-## Uppdatera sajten
+## Kom igång
 
-### Utvecklingsberoenden
+### Förutsättningar
 
-#### Ruby Version Manager (RVM)
+Du behöver ha [Node.js](https://nodejs.org/) installerat (version 24).
+Vi rekommenderar att använda [nvm](https://github.com/nvm-sh/nvm) (Node Version Manager) för att hantera Node.js-versioner.
 
+#### Installera nvm (om du inte har det)
+
+**Mac/Linux:**
 ```console
-\curl -sSL https://get.rvm.io | bash -s stable
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 ```
 
-> [!TIP]
-> Verifiera att din installation av RVM fungerar mha `rvm --version`
+Starta om terminalen efter installation.
 
-### Första gången behöver du klona repot och köra `bundle install`
+**Windows:**
+Använd [nvm-windows](https://github.com/coreybutler/nvm-windows/releases) istället.
+
+#### Verifiera att nvm fungerar
+
+```console
+nvm --version
+```
+
+### Klona repot (första gången)
+
 ```console
 git clone git@github.com:athega/athega.github.io.git
 cd athega.github.io
 ```
 
-```sh { name=bundle-install }
-bundle install
+### Installera rätt Node.js-version och beroenden
+
+```console
+nvm install
+nvm use
+npm install
 ```
 
-### Följande gånger räcker det med att hämta eventuella ändringar
+Kommandot `nvm install` läser `.nvmrc`-filen och installerar rätt version automatiskt.
+
+### Starta lokal utvecklingsserver
+
+```console
+npm start
+```
+
+Nu kan du öppna sajten på **http://localhost:8080/**
+
+Servern uppdaterar automatiskt när du sparar ändringar i filerna.
+
+### Bygga sajten för produktion
+
+```console
+npm run build
+```
+
+Den färdiga sajten hamnar i mappen `_site/`.
+
+## Vanliga uppgifter
+
+### Hämta ändringar från GitHub
 
 ```console
 git pull --rebase
 ```
 
-### Starta en lokal server
+### Lägga till en bloggpost
 
-```sh { name=jekyll-serve interactive=true }
-bundle exec jekyll serve -l -H 0.0.0.0 -P 4500
+1. **Skapa en ny fil** under `_posts/` med namnet `yyyy-mm-dd-namn.md`
+
+   Exempel: `_posts/2024-03-15-min-nya-post.md`
+
+2. **Lägg till metadata** i toppen av filen:
+   ```yaml
+   ---
+   title: "Titel på inlägget"
+   date: 2024-03-15
+   description: "Kort beskrivning som visas i listningar"
+   tags:
+     - blogg
+   last_updated_by: dittnamn
+   image_url: /assets/blog/din-bild.png
+   ---
+   ```
+
+3. **Skriv innehållet** i [Markdown](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
+
+4. **Ladda upp bilder** till `assets/blog/` (helst i en egen mapp för posten)
+
+5. **Förhandsgranska** på http://localhost:8080/
+
+6. **Committa och pusha:**
+   ```console
+   git add _posts/2024-03-15-min-nya-post.md
+   git commit -m "Lägg till blogginlägg: Titel"
+   git push
+   ```
+
+### Redigera en medarbetarsida
+
+Medarbetarfilerna ligger i `_employees/`. Varje fil innehåller:
+
+```yaml
+---
+layout: employee
+permalink: /namn
+name: Förnamn Efternamn
+title: Roll/Titel
+image: /assets/img/employees/namn.jpg
+thumb: /assets/img/employees/namn-thumb.jpg
+---
+
+Beskrivning av personen i Markdown...
 ```
 
-> [!TIP]
-> Nu kan du titta på sajten lokalt på <http://localhost:4000/>
-
-### Diverse kommandon
-
-#### Hämta eventuella ändringar i repot från GitHub
-
-```sh { name=git-pull-rebase }
-git pull --rebase
-```
-
-#### Lägg till en commit
-
-Efter att du gjort din ändring så kan du;
+### Git-kommandon
 
 ```console
+# Visa status
+git status
+
+# Lägg till filer
 git add <filnamn>
-git commit -m "Meddelande som beskriver ändringen"
-```
 
-#### Pusha dina ändringar till GitHub
+# Committa
+git commit -m "Beskrivning av ändringen"
 
-```console
+# Pusha till GitHub
 git push
 ```
 
-#### Uppdatera Ruby-beroenden
+## Projektstruktur
 
-```sh { name=bundle-update }
-bundle update
+```
+.
+├── _data/            # Datafiler (site.json, etc.)
+├── _employees/       # Medarbetarsidor
+├── _includes/        # Återanvändbara komponenter
+├── _layouts/         # Sidmallar (default, page, post, employee)
+├── _posts/           # Blogginlägg
+├── _site/            # Genererad sajt (ignoreras av Git)
+├── assets/           # Bilder, CSS, JavaScript
+├── eleventy.config.js # Eleventy-konfiguration
+└── package.json      # Node.js-beroenden
 ```
 
-### Att lägga till en bloggpost
+## Felsökning
 
-1. Ladda upp bilderna man vill ha med i posten.
-    - Dom ska laddas upp under `assets/blog/`
-2. Skapa en ny fil under `_posts` med `yyyy-mm-dd-namn.md` _(Viktigt med `.md` på slutet)_
-3. Lägg till metadata om posten likt följande i toppen av filen.
-    ```yaml
-    ---
-    title: "Titel"
-    date: 2015-04-14
-    description: "Kort beskrivning av bloggposten"
-    tags:
-        - blogg
-    last_updated_by: namn
-    image_url: /assets/blog/bilden.png
-    ---
-    ```
-4. Skriv sedan bloggposten i [Markdown](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
-5. Förhandsgranska din ändring på <http://localhost:4000/>
-6. Committa den nya filen och pusha till `master` (Eller skapa en **PR** först)
-    - När GitHub har behandlat ändringen _(via [Jekyll](https://jekyllrb.com/), vilket kan ta en stund)_ så uppdateras <https://athega.se/>
+### "nvm: command not found"
+Starta om terminalen efter installation av nvm, eller kör:
+```console
+source ~/.bashrc   # eller ~/.zshrc på Mac
+```
+
+### "npm: command not found"
+Installera Node.js via nvm:
+```console
+nvm install
+```
+
+### Ändringar syns inte
+1. Kontrollera att utvecklingsservern körs (`npm start`)
+2. Hårdladda sidan i webbläsaren (Cmd+Shift+R på Mac, Ctrl+Shift+R på Windows)
+3. Kolla terminalen efter felmeddelanden
+
+### Bilder visas inte
+- Kontrollera att sökvägen börjar med `/` (t.ex. `/assets/img/bild.jpg`)
+- Kontrollera att filen finns i rätt mapp
+
+### Markdown-länkar fungerar inte
+Se till att det finns en tom rad efter HTML-element (som `<h3>` eller `<img>`).
+Annars tolkas inte efterföljande Markdown korrekt.

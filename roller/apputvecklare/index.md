@@ -2,7 +2,7 @@
 title: Apputvecklare
 ---
 
-# {{ page.title }}
+# {{ title }}
 
 En apputvecklare på Athega utvecklar en anpassad mobilapp för Android och iOS.
 Det kan vara en plattformsoberoende mobilapp som fungerar på alla enheter eller

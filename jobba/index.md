@@ -2,7 +2,7 @@
 title: Arbeta hos oss
 ---
 
-# {{ page.title }}
+# {{ title }}
 
 ![Peters skrivbord](./athega-desk.jpg)
 

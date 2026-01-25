@@ -2,19 +2,19 @@
   <h2>Från bloggen</h2>
   <ul>
   {% assign limit = 6 -%}
-  {% for post in site.posts %}
-    {%- if post.description -%}
-    {%- if post.image_url -%}
+  {% for post in collections.posts %}
+    {%- if post.data.description -%}
+    {%- if post.data.image_url -%}
     <li>
       <figure>
-        <a href="{{ post.url }}" title="Läs mer om: {{ post.title }}">
-          <img src="{{ post.image_url }}">
+        <a href="{{ post.url | removeHtmlExtension }}" title="Läs mer om: {{ post.data.title }}">
+          <img src="{{ post.data.image_url }}">
         </a>
       </figure>
-      <a href="{{ post.url }}" title="Läs mer om: {{ post.title }}">
-        <h3>{{ post.title }}</h3>
+      <a href="{{ post.url | removeHtmlExtension }}" title="Läs mer om: {{ post.data.title }}">
+        <h3>{{ post.data.title }}</h3>
       </a>
-      <p>{{ post.description }}</p>
+      <p>{{ post.data.description }}</p>
     </li>
     {%- assign limit = limit | minus: 1 -%}
     {%- if limit == 0 %}{% break %}{% endif -%}

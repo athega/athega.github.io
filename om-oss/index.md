@@ -2,9 +2,9 @@
 title: Om oss
 ---
 
-# {{ page.title }}
+# {{ title }}
 
-{% include employees/index.html %}
+{% include "employees/index.html" %}
 
 ## Med ålderns rätt
 

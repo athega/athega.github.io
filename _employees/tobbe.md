@@ -1,11 +1,12 @@
 ---
+layout: employee
 permalink: /tobbe
 name: Torbjörn Nilsson
 title: VD
 image: /assets/img/employees/tobbe.jpg
 thumb: /assets/img/employees/tobbe-thumb.jpg
 ---
-{% include employees/profile.html %}
+{% include "employees/profile.html" %}
 
 Jag är främst projektledare med mångårig erfarenhet av att driva
 utvecklingsprojekt, kravfångst och systemdesign. Bra erfarenhet av

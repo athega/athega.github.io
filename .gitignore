@@ -1,4 +1,12 @@
-.idea
-.DS_Store
+# Build output
 _site/
-.jekyll-metadata
+
+# Node.js
+node_modules/
+
+# Eleventy cache
+.cache/
+
+# OS/IDE
+.DS_Store
+.idea/

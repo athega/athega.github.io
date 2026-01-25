@@ -11,9 +11,9 @@ last_updated_by: peter
 image_url: /assets/blog/2025-03-10-wasi-reactor-i-zig-och-go/2025-wasi-reactor.png
 ---
 
-![Abstrakt representation av en mekanisk dator med kugghjul i bakgrunden]({{page.image_url}})
+![Abstrakt representation av en mekanisk dator med kugghjul i bakgrunden]({{image_url}})
 
-> {{page.description}}
+> {{description}}
 
 ## Bakgrund
 

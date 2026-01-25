@@ -1,5 +1,21 @@
----
----
+@use "lib/prism" as *;
+@use "layout" as *;
+@use "header" as *;
+@use "header/main-menu" as *;
+@use "home/intro" as *;
+@use "home/about" as *;
+@use "home/blog" as *;
+@use "home/roles" as *;
+@use "home/dash" as *;
+@use "home/searching" as *;
+@use "blog/archive" as *;
+@use "blog/index" as *;
+@use "blog/post" as *;
+@use "page/intro" as *;
+@use "employees/employee" as *;
+@use "footer" as *;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Source+Code+Pro:wght@500&display=swap');
 
 :root {
   --max-width: 900px;
@@ -29,22 +45,3 @@
   --color-orange-dark: #F56200;
   --color-white: #FFFFFF;
 }
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Source+Code+Pro:wght@500&display=swap');
-
-@import "lib/rouge-github";
-@import "layout";
-@import "header";
-@import "header/main-menu";
-@import "home/intro";
-@import "home/about";
-@import "home/blog";
-@import "home/roles";
-@import "home/dash";
-@import "home/searching";
-@import "blog/archive";
-@import "blog/index";
-@import "blog/post";
-@import "page/intro";
-@import "employees/employee";
-@import "footer";

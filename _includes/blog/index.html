@@ -1,28 +1,31 @@
 <section class="blog-index content">
-  <h1>{{ page.title }}</h1>
+  <h1>{{ title }}</h1>
   <ul>
-    {%- for post in site.posts %}
+    {%- for post in collections.posts %}
     {%- capture post_year %}{{ post.date | date: '%Y' }}{% endcapture %}
-    {%- if post_year == page.year %}
+    {%- if post_year == year %}
     <li>
-      <a href="{{ post.url }}" title="Läs mer om: {{ post.title }}">
-        <h2>{{ post.title }}</h2>
-        <p>{{ post.description }}</p>
+      <a href="{{ post.url | removeHtmlExtension }}" title="Läs mer om: {{ post.data.title }}">
+        <h2>{{ post.data.title }}</h2>
+        <p>{{ post.data.description }}</p>
       </a>
     </li>
     {%- endif %}
     {%- endfor %}
   </ul>
   <hr>
-  {%- for post in site.posts -%}
-  {%- capture year %}{{- post.date | date: '%Y' -}}{% endcapture - %}
-  {%- capture next_year %}{{- post.next.date | date: '%Y' -}}{% endcapture - %}
-  {%- if year != next_year %}
+  {%- for post in collections.posts -%}
+  {%- capture post_year %}{{- post.date | date: '%Y' -}}{% endcapture -%}
+  {%- assign next_year = "" -%}
+  {%- if post.data.next -%}
+  {%- capture next_year %}{{- post.data.next.date | date: '%Y' -}}{% endcapture -%}
+  {%- endif -%}
+  {%- if post_year != next_year %}
   <strong>
-    {% if year == page.year -%}
-    {{ year }}
+    {% if post_year == year -%}
+    {{ post_year }}
     {%- else -%}
-    <a href="/blogg/{{ year }}/">{{ year }}</a>
+    <a href="/blogg/{{ post_year }}/">{{ post_year }}</a>
     {%- endif %}
   </strong>
   {%- endif -%}

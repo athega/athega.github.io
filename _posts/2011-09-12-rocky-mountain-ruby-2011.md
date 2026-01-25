@@ -3,7 +3,6 @@ title: "Rocky Mountain Ruby 2011"
 date: 2011-09-12
 last_updated_by: peter
 ---
-![Boulder Theatre](/images/blogg/rocky-mountain-ruby-2011/boulder_theatre.jpg)
 
 För lite mer än en vecka sedan kom jag hem från Colorado och konferensen
 [Rocky Mountain Ruby](http://rockymtnruby.com/), förra året hette den
