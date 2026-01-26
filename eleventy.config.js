@@ -1,6 +1,13 @@
 import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 
 export default function(eleventyConfig) {
+  // Drafts: exkludera helt vid build, visa vid serve/watch
+  eleventyConfig.addPreprocessor("drafts", "*", (data) => {
+    if (data.draft && process.env.ELEVENTY_RUN_MODE === "build") {
+      return false;
+    }
+  });
+
   // Syntax highlighting för kodblock
   eleventyConfig.addPlugin(syntaxHighlight);
 

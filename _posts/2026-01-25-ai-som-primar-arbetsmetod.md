@@ -1,6 +1,7 @@
 ---
 title: "AI som primär arbetsmetod"
 date: 2026-01-25
+draft: true
 description: "Hur Ossy-teamet på SVT Nyheter bygger hela arbetssättet runt AI, med principer, flöde och kvalitet som system."
 tags:
   - blogg
