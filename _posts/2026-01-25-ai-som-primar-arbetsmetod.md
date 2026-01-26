@@ -12,7 +12,7 @@ assets_path: /assets/blog/2026-01-25-ai-som-primar-arbetsmetod
 ---
 
 Innan vi pratar arbetssätt…
-Vi är ett litet team på SVT som bygger chatboten [Ossy](https://www.svt.se/sport/artikel/fraga-ossy-om-vinter-os) – och ramverket med samma namn som gör det möjligt att snabbt skapa nya expertbotar. Det speciella är inte bara vad vi bygger, utan hur: vi jobbar inte på ett traditionellt sätt med stora specialistroller och långa ledtider, utan med AI som primär metod genom hela kedjan.
+Vi ingår i ett litet team på SVT som bygger chatboten [Ossy](https://www.svt.se/sport/artikel/fraga-ossy-om-vinter-os) – och ramverket med samma namn som gör det möjligt att snabbt skapa nya expertbotar. Det speciella är inte bara vad vi bygger, utan hur: vi jobbar inte på ett traditionellt sätt med stora specialistroller och långa ledtider, utan med AI som primär metod genom hela kedjan.
 
 ![AI som primär arbetsmetod]({{ image_url }})
 
