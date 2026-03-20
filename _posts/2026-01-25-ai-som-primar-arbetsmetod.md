@@ -1,8 +1,8 @@
 ---
 title: "AI som primär arbetsmetod"
 date: 2026-01-25
-draft: true
-description: "Hur Ossy-teamet på SVT Nyheter bygger hela arbetssättet runt AI, med principer, flöde och kvalitet som system."
+draft: false
+description: "Ett praktiskt arbetssätt där AI är förstahandsmetoden – med principer, flöde och kvalitet som ett system."
 tags:
   - blogg
   - AI
@@ -13,11 +13,11 @@ assets_path: /assets/blog/2026-01-25-ai-som-primar-arbetsmetod
 ---
 
 Innan vi pratar arbetssätt…
-Vi ingår i ett litet team på SVT som bygger chatboten [Ossy](https://www.svt.se/sport/artikel/fraga-ossy-om-vinter-os) – och ramverket med samma namn som gör det möjligt att snabbt skapa nya expertbotar. Det speciella är inte bara vad vi bygger, utan hur: vi jobbar inte på ett traditionellt sätt med stora specialistroller och långa ledtider, utan med AI som primär metod genom hela kedjan.
+Det här är en beskrivning av hur ett litet produktteam kan jobba när AI inte är ett “tillägg”, utan **förstahandsmetoden** genom hela kedjan. Poängen är inte vad man bygger (det kan vara en intern assistent, en kundnära bot, ett verktyg för analys eller en ny feature), utan **hur man bygger** när produktionstakt, utforskning och kvalitet drivs av ett AI-stött flöde.
 
 ![AI som primär arbetsmetod]({{ image_url }})
 
-Det finns team som “använder AI ibland” och team som har byggt hela arbetssättet runt AI. I Ossy-teamet på SVT Nyheter tillhör vi den andra kategorin: **AI är inte en perifer assistent – den är vårt primära sätt att bygga, testa, designa och verifiera.** Människorna i teamet fokuserar på riktning, kvalitet, risk och omdöme.
+Det finns team som “använder AI ibland” och team som har byggt hela arbetssättet runt AI. Vi tillhör den andra kategorin: **AI är inte en perifer assistent – den är vårt primära sätt att bygga, testa, designa och verifiera.** Människorna i teamet fokuserar på riktning, kvalitet, risk och omdöme.
 
 Tre principer styr allt:
 
@@ -31,7 +31,7 @@ Tre principer styr allt:
 
 ## Arbetssättet i korthet
 
-Vi är bara **tre utvecklare + en redaktionell person**. Vi har inga dedikerade UX:are, testare, AD eller DevOps-resurser. Vår modell är enkel:
+Vi är ett litet team (typiskt **2–4 personer**) och har sällan lyxen av dedikerade UX:are, testare, designers eller DevOps-resurser per initiativ. Vår modell är enkel:
 
 - **Vi äger riktning, ansvar och omdöme**
 - **AI står för produktionstakten och bredden**: kod, test, text, designunderlag, alternativ, jämförelser, refaktoreringar
@@ -60,7 +60,7 @@ Det här skiljer sig från traditionell utveckling där man ofta “håller fast
 
 ## Kvalitet som system
 
-Vi jobbar inte med idén att “människan ska dubbelkolla allt AI gör”. Vi jobbar med idén att **kvalitet byggs som ett system**. Eftersom Ossy är en chatbot går det sällan att testa “exakt rätt text”. I stället använder vi:
+Vi jobbar inte med idén att “människan ska dubbelkolla allt AI gör”. Vi jobbar med idén att **kvalitet byggs som ett system**. I generativa system går det sällan att testa “exakt rätt text”. I stället använder vi:
 
 - **Enhetstester**
 - **Integrationstester**
@@ -76,14 +76,14 @@ Vi har flera skyddslager för att skydda boten och människorna som använder de
 
 ## Drift, ansvar och ramverk
 
-När man inte har ett stort stödmaskineri behöver man ett tydligt ägarskap. Teamet äger drift och incidenter, och vi har övervakning i SVTs moln (t.ex. dashboards i Grafana), separata kostnads-/användningsdashboards för modellleverantörer och notifieringar när nivåer passeras.
+När man inte har ett stort stödmaskineri behöver man ett tydligt ägarskap. Teamet äger drift och incidenter, och vi har övervakning i vår plattform (t.ex. dashboards i Grafana), separata kostnads-/användningsdashboards för modellleverantörer och notifieringar när nivåer passeras.
 
 Och: om en modell förändras, blir sämre eller får nya begränsningar — **då byter vi**. Vi har redan gjort flera byten under projektet.
 
 En central del i arbetssättet är att vi byggt ett ramverk för att snabbt skapa kunniga “expertbotar”. Varje bot får:
 
 - en **persona** (röst, ton, ansvar, gränser)
-- ett antal **verktyg** (t.ex. SVTs tablå/arkiv, artiklar, FAQ, livesport-resultat)
+- ett antal **verktyg** (t.ex. interna dokument, domänspecifika datakällor, API:er, produktlogik och policyer)
 - **tester och säkerhetsfilter**
 
 (Detaljerna i botarnas funktion är inte poängen här — poängen är att ramverket gör det billigt att skapa och iterera.)
@@ -104,6 +104,8 @@ Och en varning:
 
 ## Slutsats
 
-AI kommer inte ta våra jobb. Den kommer göra att vi kan göra **mycket mer**, **snabbare** och ofta **bättre** – om vi bygger arbetssättet för det.
+AI kommer inte ta våra jobb ännu. Den kommer göra att vi kan göra **mycket mer**, **snabbare** och ofta **bättre** – om vi bygger arbetssättet för det.
+
+*Den här texten är baserad på en [artikel publicerad på Medium](https://medium.com/the-svt-tech-blog/ai-as-the-primary-way-of-working-c2397a256726), där Christian delar insikter från sitt kunduppdrag – hur teamet byggt sitt arbetssätt runt AI som förstahandsmetod, med fokus på snabba iterationer, inbyggd kvalitet och aktivt ansvarstagande.*
 
 / [Chrille](/chrille)
