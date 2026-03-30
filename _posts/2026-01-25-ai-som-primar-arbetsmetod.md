@@ -8,7 +8,7 @@ tags:
   - AI
   - arbetssatt
 last_updated_by: chrille
-image_url: /assets/blog/2026-01-25-ai-som-primar-arbetsmetod/ossy-ai-arbetssatt.png
+image_url: /assets/blog/2026-01-25-ai-som-primar-arbetsmetod/ossy-ai-arbetssatt.jpg
 assets_path: /assets/blog/2026-01-25-ai-som-primar-arbetsmetod
 ---
 
@@ -68,7 +68,7 @@ Vi jobbar inte med idén att “människan ska dubbelkolla allt AI gör”. Vi j
 
 Vi accepterar också att en liten del av bedömningstesterna ibland kan fallera utan att det betyder att allt är trasigt – verkligheten för generativa system ser annorlunda ut.
 
-![Kvalitet som system]({{ assets_path }}/kvalitet-som-system.png)
+![Kvalitet som system]({{ assets_path }}/kvalitet-som-system.webp)
 
 Vi har flera skyddslager för att skydda boten och människorna som använder den. Det är en kombination av säkerhetsfilter, beteenderegelverk och tester.
 
@@ -88,7 +88,7 @@ En central del i arbetssättet är att vi byggt ett ramverk för att snabbt skap
 
 (Detaljerna i botarnas funktion är inte poängen här — poängen är att ramverket gör det billigt att skapa och iterera.)
 
-![Ramverk för expertbotar]({{ assets_path }}/ramverk.png)
+![Ramverk för expertbotar]({{ assets_path }}/ramverk.webp)
 
 ## Vad andra team kan ta med sig
 
