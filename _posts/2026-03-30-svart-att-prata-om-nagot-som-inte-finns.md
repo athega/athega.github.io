@@ -61,3 +61,5 @@ Men när något annat gör det bättre, säkrare och snabbare, varför skulle ma
 *Varför skulle du göra det manuellt?*
 
 / [Chrille](/chrille/)
+
+*Den här artikeln finns även på engelska: [From Whiteboards to Working Systems — in Days](https://medium.com/the-svt-tech-blog/from-whiteboards-to-working-systems-in-days-61dbcddea035)*
