@@ -12,12 +12,12 @@ layout: default
     </div>
   </section>
 
-  <section class="section soft-section" id="omfattning">
+  <section class="section" id="omfattning">
     <div class="shell">
       {% include "components/section-heading.html", heading: scope, variant: "default" %}
-      <div class="focus-grid">
+      <div class="focus-grid numbered-card-grid">
         {% for focus in scope.items %}
-          {% include "components/focus-card.html", focus: focus, number: forloop.index %}
+          {% include "components/focus-card.html", focus: focus, number: nil %}
         {% endfor %}
       </div>
     </div>

@@ -1,7 +1,5 @@
 /* Secondary-page content */
 .facts-section, .soft-section { background: var(--soft); }
-#omfattning { background: var(--paper); }
-#omfattning .focus-grid article { background: var(--neutral); }
 .facts-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--line); }
 .facts-grid > div { padding: 50px; background: var(--soft); }
 .facts-grid span { font-size: var(--text-stat); font-weight: 200; letter-spacing: -.05em; }
