@@ -176,3 +176,20 @@ nvm install
 ### Markdown-länkar fungerar inte
 Se till att det finns en tom rad efter HTML-element (som `<h3>` eller `<img>`).
 Annars tolkas inte efterföljande Markdown korrekt.
+
+## Redigera startsidan
+
+`index.html` innehåller sidans titel och beskrivning och inkluderar
+`_includes/home.html`. Där bestäms sektionernas ordning och gemensamma layout.
+Text och länkar redigeras i följande filer under `_includes/home/`:
+
+- `intro.html` – huvudrubrik och ingress.
+- `about.html` – Athega i korthet.
+- `services.html` – de fyra tjänsterutorna.
+- `blog.html` – de tre senaste inläggen, automatiskt hämtade från bloggen.
+- `consult.html` – erfarenhet och konsultkontakt.
+- `searching.html` – jobba med oss.
+
+Behåll CSS-klasserna och layoutomslagen när du ändrar text. Utseendet styrs av
+`_includes/styles/`, som importeras från `assets/site.scss`.
+Kör `npm run build` efter ändringar, eller `npm start` för lokal förhandsvisning.
