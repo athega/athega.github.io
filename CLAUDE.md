@@ -97,11 +97,6 @@ npm start       # Lokal server; använd den port som skrivs ut
 npm run build   # Sass och Eleventy till _site/
 ```
 
-Ändra beroenden och låsfil när uppgiften kräver det, inte som sidoeffekt av en
-innehållsändring. Läs projektets installerade versioner och officiell dokumentation
-när du behöver verifiera versionsberoende API:er; utgå inte från antaganden om den
-senaste versionen.
-
 Verifiera det ändringen kan påverka: bygge, berörda sidor, personal, datum, bilder,
 interna länkar och relevanta skärmstorlekar. Ett lyckat bygge bevisar inte ensamt
 att en layout är oförändrad. Lägg inte till tester som bara speglar implementationen.
@@ -109,6 +104,20 @@ att en layout är oförändrad. Lägg inte till tester som bara speglar implemen
 Eleventy använder repots rot som input. README.md, CLAUDE.md och AGENTS.md är
 undantagna i konfigurationen. Nya dokumentationsfiler eller exempelsidor behöver
 också placeras eller undantas så att de inte oavsiktligt blir publicerade sidor.
+
+## Verifiera versionsberoende information
+
+Vid ändringar av beroenden, konfiguration eller biblioteksanrop:
+
+- Kontrollera projektets versioner i package.json, package-lock.json
+  och .nvmrc.
+- Verifiera osäker syntax och API-användning mot officiell dokumentation
+  för den version projektet använder.
+- Använd tillgänglig dokumentationssökning, exempelvis Context7 eller
+  webbsökning. Inget särskilt sökverktyg är ett krav.
+- Uppdatera inte beroenden som sidoeffekt av innehålls- eller layoutarbete.
+
+Rena text- och innehållsändringar kräver normalt ingen extern sökning.
 
 ## Git och publicering
 
