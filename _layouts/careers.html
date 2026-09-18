@@ -1,0 +1,60 @@
+---
+layout: default
+---
+
+<main>
+  {% include "components/page-hero.html", hero: hero, variant: "default" %}
+
+  <section class="section focus-section work-intro">
+    <div class="shell">
+      <div class="section-heading">
+        <div class="focus-intro work-intro-copy">
+          {% for paragraph in intro.paragraphs %}
+            <p>{{ paragraph | escape }}</p>
+          {% endfor %}
+        </div>
+        {% include "components/text-link.html", link: intro.link, variant: "light" %}
+      </div>
+    </div>
+  </section>
+
+  <section class="section work-values">
+    <div class="shell">
+      <div class="section-heading work-values-heading">
+        <h2>{{ values.heading | escape }}</h2>
+      </div>
+      <div class="service-grid work-values-list">
+        {% for value in values.items %}
+          {% include "components/value-card.html", value: value %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="section soft-section work-community">
+    <div class="shell">
+      <div class="section-heading work-community-heading">
+        <h2>{{ community.heading | escape }}</h2>
+        <p class="heading-note">{{ community.intro | escape }}</p>
+      </div>
+      <div class="case-grid">
+        {% for item in community.items %}
+          {% include "components/focus-card.html", focus: item, number: nil %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell work-profile">
+      <h2>{{ profile.heading | escape }}</h2>
+      <div class="large-prose">
+        {% include "components/feature-list.html", features: profile.features %}
+      </div>
+      {% include "components/text-link.html", link: profile.link, variant: "light" %}
+    </div>
+  </section>
+
+  {% include "components/callout.html", callout: network, variant: "light" %}
+  {% include "components/callout.html", callout: contact, variant: "dark" %}
+</main>

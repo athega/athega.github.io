@@ -1,0 +1,27 @@
+---
+layout: default
+---
+
+<main>
+  {% include "components/page-hero.html", hero: hero, variant: "technical-review" %}
+
+  <section class="section">
+    <div class="shell">
+      {% include "components/section-heading.html", heading: audiences, variant: "stacked" %}
+      {% include "components/audience-grid.html", items: audiences.items %}
+    </div>
+  </section>
+
+  <section class="section soft-section" id="omfattning">
+    <div class="shell">
+      {% include "components/section-heading.html", heading: scope, variant: "default" %}
+      <div class="focus-grid">
+        {% for focus in scope.items %}
+          {% include "components/focus-card.html", focus: focus, number: forloop.index %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  {% include "components/callout.html", callout: result, variant: "dark" %}
+</main>

@@ -1,0 +1,9 @@
+<article{% if variant == 'dark' %} class="inverse"{% endif %}>
+  <p class="eyebrow">{{ audience.eyebrow | escape }}</p>
+  <h3>{{ audience.heading | escape }}</h3>
+  {% if audience.body %}<p>{{ audience.body | escape }}</p>{% endif %}
+  {% include "components/feature-list.html", features: audience.features %}
+  {% if audience.link %}
+    {% include "components/text-link.html", link: audience.link, variant: variant %}
+  {% endif %}
+</article>

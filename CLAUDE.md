@@ -22,8 +22,11 @@ uppdatera dokumentationen när du inför eller ändrar ett gemensamt mönster.
 - Huvudnavigation: `_data/navigation.json`, gemensam för dator och mobil.
 - Personal: `_employees/*.md`; standardlayout finns i `_employees/_employees.json`.
 - Bloggposter: `_posts/*.md`; standardlayout och URL-mönster i `_posts/_posts.json`.
-- Andra innehållssidor: respektive `index.md`. De innehåller fortfarande vissa
-  HTML-omslag som behövs för layouten.
+- Tjänste- och företagssidor: texter och listor i YAML-fälten i respektive
+  `index.md` under `teknikgranskning/`, `systemutveckling/`, `ai-labbet/`,
+  `ai-labbet/industri/`, `jobba/`, `konsultnatverk/` och `om-oss/`.
+  Fältet `layout` väljer sidmallen i `_layouts/`; mappningen finns i README.
+- Övriga innehållssidor: respektive Markdown-fil och dess valda layout.
 - Sidstruktur: `_layouts/`, `_includes/layout.html` och `_includes/home.html`.
 - Återanvändbara komponenter: `_includes/components/`, `_includes/employees/`
   och `_includes/blog/`.
@@ -51,11 +54,16 @@ uppdatera dokumentationen när du inför eller ändrar ett gemensamt mönster.
 
 ## Innehållskonventioner
 
-- JSON-fält för kort och navigation innehåller vanlig text. Escapa textvärden i
-  HTML-mallar med `escape`, särskilt i attribut. Renderad Markdown i `content`
-  är avsiktlig HTML och ska inte escapas som vanlig text.
-- Länkar till e-post ska visa mottagaradressen i den synliga texten. Callout-
-  komponenten och huvudmenyn gör detta automatiskt från fältet `email`.
+- JSON- och YAML-fält för kort, sidtexter och navigation innehåller vanlig text.
+  Escapa textvärden i HTML-mallar med `escape`, särskilt i attribut. Renderad
+  Markdown i `content` är avsiktlig HTML och ska inte escapas som vanlig text.
+- Tjänste- och företagssidornas innehåll redigeras i YAML-fälten, utan HTML eller
+  Liquid. Lägg till och ta bort listobjekt för kort, arbetssteg och faktarutor;
+  sidmallarna väljer CSS-klasser, numrering och komponentvarianter. Dessa mallar
+  använder inte brödtext efter front matter. Blogg- och personalsidor använder
+  däremot fortsatt vanlig Markdown för brödtexten.
+- Länkar till e-post ska visa mottagaradressen i den synliga texten. Komponenten
+  `text-link.html` (även i callouts) och huvudmenyn gör detta från fältet `email`.
 - Personalens namn, roll, porträtt och bildtext renderas av medarbetarmallen.
   Skriv metadata och presentation i personens Markdown-fil, utan profil-include.
   Listan på Om oss byggs från `collections.employees` i filnamnsordning.

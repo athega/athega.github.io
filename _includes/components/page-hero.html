@@ -1,0 +1,19 @@
+<section class="page-hero{% if variant == 'ai' %} ai-hero{% elsif variant == 'industry' %} industry-hero{% elsif variant == 'technical-review' %} dd-hero{% endif %}">
+  <div class="shell">
+    <p class="eyebrow">{{ hero.eyebrow | escape }}</p>
+    <h1>{{ hero.heading | escape }}{% if hero.emphasis %} <span>{{ hero.emphasis | escape }}</span>{% endif %}</h1>
+    <p class="page-lead">{{ hero.lead | escape }}</p>
+    {% if hero.summary %}
+      {% if variant == 'ai' %}
+        <div class="hero-summary"><p>{{ hero.summary | escape }}</p></div>
+      {% else %}
+        <p class="hero-summary">{{ hero.summary | escape }}</p>
+      {% endif %}
+    {% endif %}
+    {% if hero.link %}
+      {% if variant == 'technical-review' %}<div class="hero-actions">{% endif %}
+      {% include "components/text-link.html", link: hero.link, variant: "light" %}
+      {% if variant == 'technical-review' %}</div>{% endif %}
+    {% endif %}
+  </div>
+</section>

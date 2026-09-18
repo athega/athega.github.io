@@ -1,0 +1,31 @@
+---
+layout: default
+---
+
+<main>
+  {% include "components/page-hero.html", hero: hero, variant: "default" %}
+
+  <section class="section">
+    <div class="shell">
+      {% include "components/section-heading.html", heading: approach, variant: "stacked" %}
+      <div class="focus-grid numbered-card-grid">
+        {% for item in approach.items %}
+          {% include "components/focus-card.html", focus: item, number: nil %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      {% include "components/section-heading.html", heading: process, variant: "default" %}
+      <div class="step-grid">
+        {% for item in process.items %}
+          {% include "components/focus-card.html", focus: item, number: forloop.index %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  {% include "components/callout.html", callout: contact, variant: "dark" %}
+</main>

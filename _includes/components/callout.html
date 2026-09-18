@@ -1,10 +1,41 @@
 <section class="section {% if variant == 'dark' %}dark-section unified-callout{% else %}join-section{% endif %}">
+  {% if callout.quote %}
+  <div class="shell">
+    <div class="join-grid">
+  {% else %}
   <div class="shell join-grid">
+  {% endif %}
     <p class="eyebrow">{{ callout.eyebrow | escape }}</p>
     <h2>{{ callout.heading | escape }}</h2>
     <div>
-      <p>{{ callout.body | escape }}</p>
-      <a class="text-link{% if variant == 'dark' %} light{% endif %}" href="{% if callout.link.email %}mailto:{{ callout.link.email | escape }}{% else %}{{ callout.link.href | escape }}{% endif %}">{{ callout.link.label | escape }}{% if callout.link.email %} – {{ callout.link.email | escape }}{% endif %} <span>↗</span></a>
+      {% if callout.paragraphs %}
+        {% for paragraph in callout.paragraphs %}
+          <p>{{ paragraph | escape }}</p>
+        {% endfor %}
+      {% else %}
+        <p>{{ callout.body | escape }}</p>
+      {% endif %}
+      {% if callout.links %}
+        <div class="callout-links">
+          {% for link in callout.links %}
+            {% include "components/text-link.html", link: link, variant: variant %}
+          {% endfor %}
+        </div>
+      {% else %}
+        {% include "components/text-link.html", link: callout.link, variant: variant %}
+      {% endif %}
     </div>
   </div>
+  {% if callout.quote %}
+    <figure class="network-quote">
+      <img src="{{ callout.quote.image | escape }}" alt="{{ callout.quote.alt | escape }}">
+      <blockquote>
+        <p class="eyebrow">{{ callout.quote.eyebrow | escape }}</p>
+        {% for paragraph in callout.quote.paragraphs %}
+          <p>{{ paragraph | escape }}</p>
+        {% endfor %}
+      </blockquote>
+    </figure>
+  </div>
+  {% endif %}
 </section>
