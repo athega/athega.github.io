@@ -152,8 +152,9 @@ git push
 ├── _data/            # Datafiler (site.json, etc.)
 ├── _employees/       # Medarbetarsidor
 ├── _includes/        # Återanvändbara komponenter
-├── _layouts/         # Grundmallar och mallar för tjänste- och företagssidor
+├── _layouts/         # Grundmallar och sidomslag
 ├── _posts/           # Blogginlägg
+├── sidor/            # Enkla Markdown-sidor utan krav på front matter
 ├── _site/            # Genererad sajt (ignoreras av Git)
 ├── assets/           # Bilder, CSS, JavaScript
 ├── eleventy.config.js # Eleventy-konfiguration
@@ -200,7 +201,8 @@ databas eller extra tjänst. JSON-filerna används vid bygget, inte via klientko
 | Huvudmenyn på dator och mobil | `_data/navigation.json` |
 | Personal och presentationer | `_employees/*.md` |
 | Bloggposter | `_posts/*.md` |
-| Tjänste- och företagssidor: texter, kort och kontakt | YAML-fälten i sidans `index.md`, se tabellen nedan |
+| Tjänste- och företagssidor: texter, kort och kontakt | Markdown i sidans `index.md` |
+| Nya enkla textsidor utan front matter | `sidor/*.md` |
 | Övriga sidtexter | Respektive Markdown-fil |
 | Gemensamma tjänstekort och kontaktsektioner | `_includes/components/` |
 | Startsidessektionernas ordning och omslag | `_includes/home.html` |
@@ -229,96 +231,131 @@ listan. Lägg inte till en separat HTML-kopia för varje nytt kort.
 
 ### Redigera tjänste- och företagssidor
 
-De här sidorna har innehållet samlat i YAML-fälten mellan `---` i sin Markdown-fil.
-Ingen HTML eller Liquid behövs där. Sidmallarna sätter ihop komponenterna och
-bestämmer sektionsordning, CSS-klasser och varianter.
+Innehållet på Systemutveckling, AI-labbet, AI för industri, Jobba med oss,
+Konsultnätverket, Om oss och Teknikgranskning skrivs i respektive `index.md`.
+Front matter längst upp innehåller bara metadata: `layout`, `title`, `description`
+och vid behov `permalink`. Det behöver inte ändras för att redigera sidans innehåll.
 
-| Innehållsfil | Sidmall i `_layouts/` | Innehållsgrupper utöver `hero` |
-| --- | --- | --- |
-| `teknikgranskning/index.md` | `technical-review.html` | `audiences`, `scope`, `result` |
-| `systemutveckling/index.md` | `development.html` | `approach`, `process`, `contact` |
-| `ai-labbet/index.md` | `ai.html` | `audiences`, `process`, `contact` |
-| `ai-labbet/industri/index.md` | `industry.html` | `process`, `cases` |
-| `jobba/index.md` | `careers.html` | `intro`, `values`, `community`, `profile`, `network`, `contact` |
-| `konsultnatverk/index.md` | `network.html` | `benefits`, `contact` |
-| `om-oss/index.md` | `about.html` | `history`, `facts`, `team`, `careers`, `company` |
+Rubriker, texter, listor och länkar skrivs i vanlig Markdown mellan korta
+sektionsanrop. Mallarna i `_includes/sections/` sköter HTML och CSS-klasser.
+Exempel från upplägget på Systemutveckling:
 
-Gemensamma fält fungerar på samma sätt mellan sidorna:
+```markdown
+{% section "focus", "stacked" %}
 
-- `hero` innehåller överrubrik (`eyebrow`), huvudrubrik (`heading`), markerad text
-  (`emphasis`) och ingress (`lead`), samt valfria `summary` och `link`.
-- En sektion kan ha `eyebrow`, `heading` och introduktionen `intro`.
-- `items` innehåller kort eller arbetssteg med `heading` och `body`.
-  Målgruppskorten i `audiences.items` har även `eyebrow`, `features` och ibland `link`.
-- `features` är en lista med punkter; `paragraphs` är en lista med textstycken.
-- Kontaktsektioner har `body` eller `paragraphs`, samt `link` eller listan `links`.
-  På Jobba med oss har `network.quote` citatets `image`, `alt`, `eyebrow` och `paragraphs`.
-- På Om oss är `facts` en lista med `value` och `label`. `team` innehåller rubriker;
-  personerna hämtas fortfarande automatiskt från `_employees/`.
-  `company` har `heading`, `name`, raderna i `details` och stycket `board`.
+Så arbetar vi
 
-Ändra en text i dess befintliga fält. Lägg till, ta bort eller flytta ett helt
-listobjekt för att ändra kort, steg eller punkter. Ordningen följer listan;
-nummer och växlingen mellan ljusa och mörka målgruppskort sköts av mallarna.
-Behåll `layout` vid vanliga innehållsändringar. Dessa sidmallar läser YAML-fälten,
-inte brödtext under det avslutande `---`. Personal och bloggposter använder
-fortfarande vanlig Markdown för brödtexten.
+## Nära verksamheten. Djupt i tekniken.
 
-Skriv vanlig text utan HTML eller HTML-entiteter. `>-` låter en text delas över
-flera rader i filen men visas som ett stycke. Behåll indrag med mellanslag.
-Använd `>-` eller citattecken om en text innehåller kolon följt av mellanslag;
-sätt citattecken runt fristående faktavärden som ska vara text, exempelvis `"1997"`.
+Här skriver du sektionens introduktion.
 
-#### Exempel: teknikgranskningen
+### Kommer in snabbt
 
-Allt innehåll finns i YAML-fälten mellan `---` i `teknikgranskning/index.md`.
-Sidmallen `_layouts/technical-review.html` sköter HTML, sektionsordning och design:
+Här skriver du texten i första kortet. Du kan använda **fetstil**,
+[länkar](/om-oss/) och flera stycken.
 
-- `hero` – överrubrik, huvudrubrik, markerad text, ingress och kontaktlänk.
-- `audiences` – introduktion och målgruppskort i `items`, med punktlistan `features`.
-- `scope` – sektionsrubrik och granskningsområden i `items`.
-- `result` – avslutande rubrik, stycken i `paragraphs` och kontaktlänk.
+### Tar ansvar för helheten
+
+Här skriver du texten i nästa kort.
+
+{% endsection %}
+```
+
+För att lägga till ett kort: skriv en ny `###`-rubrik och texten under den.
+För att ta bort ett kort: ta bort dess rubrik och tillhörande text.
+Ordningen i filen styr ordningen på sidan. Inga YAML-listor eller HTML-taggar behövs.
+
+Sektionernas anrop är presentation. Behåll dem vid textändringar och kopiera ett
+befintligt block om du behöver fler sektioner av samma typ. `layout: sections`
+renderar Markdown inne i blocken; allt innehåll på sådana sidor ska ligga inom
+`section`/`endsection`. En vanlig textsida behöver inga block, se nästa avsnitt.
+
+| Sektion | Så skriver du innehållet |
+| --- | --- |
+| `hero` | Överrubrik, sedan `#`-rubrik och ingress. `*Markerad text*` i huvudrubriken blir orange. Eventuell sammanfattning och kontaktlänk följer efter ingressen. |
+| `focus`, `steps`, `cases`, `values`, `community` | Eventuell överrubrik, `##`-rubrik och introduktion. Varje `###`-rubrik börjar ett kort. Endast `steps` får automatiska nummer. |
+| `audiences` | Sektionsintroduktion följd av `---` före varje målgruppskort. Kortet innehåller överrubrik, `###`-rubrik, valfri brödtext, vanlig punktlista och eventuell länk. |
+| `callout` | Överrubrik, `##`-rubrik, stycken och kontaktlänkar. Varianten `network` avslutas med en Markdown-bild och ett `>`-citat; citatets första stycke är överrubrik. |
+| `work-intro` | Vanliga stycken och en avslutande kontaktlänk. |
+| `profile`, `benefits` | `##`-rubrik, brödtext och/eller punktlista samt en avslutande länk. |
+| `history` | Överrubrik följd av vanliga stycken. |
+| `facts` | Varje `###`-rubrik är ett faktavärde, med beskrivningen under. |
+| `team` | Överrubrik, `##`-rubrik, introduktion och det befintliga team-include-anropet. Personer hämtas automatiskt från `_employees/`. |
+| `company` | `##`-rubrik och vanlig Markdown. Ett bakstreck (`\`) före radslut ger en radbrytning i bolagsuppgifterna. |
+
+Skriv en kontaktlänk på en egen rad och skilj den från andra stycken med en tom
+rad. Avslutande länkar i kontaktsektioner får automatiskt pil och rätt utseende.
+Vanliga länkar inne i brödtext påverkas inte. E-postadressen ska stå synligt:
+
+```markdown
+[Kontakta oss – reception@athega.se](mailto:reception@athega.se)
+```
+
+### Skapa en enkel sida utan front matter
+
+Skapa exempelvis `sidor/min-sida.md` och skriv direkt:
+
+```markdown
+# Min sida
+
+Här skriver jag vanlig text med **fetstil** och [en länk](/om-oss/).
+
+## En underrubrik
+
+- En punkt
+- En till
+```
+
+Det räcker. `sidor/sidor.json` väljer sidmallen automatiskt och sidan får adressen
+`/sidor/min-sida/`. Inga sektionsanrop, HTML-taggar eller metadata krävs.
+Länka till sidan från relevant innehåll eller från navigationen när den ska vara
+lätt att hitta. Sajten lägger inte automatiskt varje ny sida i huvudmenyn.
+
+Om du vill ha en egen webbläsartitel, metabeskrivning eller annan adress kan du
+valfritt lägga detta överst. Utan dessa används sajtens standardmetadata:
+
+```yaml
+---
+title: Min sida
+description: En kort beskrivning av sidan.
+permalink: /min-sida/
+---
+```
+
+För en sida på annan plats i repot, lägg också till `layout: page` i metadata,
+eller kopiera en befintlig sidstruktur. Personal och bloggposter behåller sina
+vanliga metadatafält och sin Markdown-brödtext.
 
 ### Återanvänd och utveckla komponenter
 
-- `components/service-card.html` tar objektet `service` med fälten ovan.
-- `components/page-hero.html` tar `hero` med fälten ovan och `variant` som är
-  `default`, `ai`, `industry` eller `technical-review`. Varianten väljs i sidmallen
-  och bevarar respektive sidhuvuds klasser och omslag.
-- `components/section-heading.html` tar `heading` med valfria `eyebrow`, `heading`
-  och `intro`, samt `variant` som är `default` eller `stacked`.
-- `components/feature-list.html` tar listan `features` och visar punkterna med bockar.
-- `components/audience-grid.html` tar listan `items` och växlar kortens variant.
-- `components/audience-card.html` tar `audience` med `eyebrow`, `heading` och
-  listan `features`, valfria `body` och `link`, samt `variant` som är `dark` eller `light`.
-- `components/focus-card.html` tar `focus` med `heading` och `body`. Ange `number`
-  med kortets ordningsnummer, eller `nil` för kort utan nummer. Nummer under tio
-  får en inledande nolla. Kortet används i både fokus-, steg- och exempelrutnät.
-- `components/value-card.html` tar `value` med `heading` och `body` för värderingskorten.
-- `components/callout.html` tar `callout` med `eyebrow`, `heading` och
-  antingen `body` för ett stycke eller `paragraphs` för flera. Använd ett av
-  textfälten; `paragraphs` har företräde. Ange `link` för en länk eller `links`
-  för flera länkar i ett gemensamt omslag. Ett valfritt `quote` visar citatet efter
-  kontakttexten. `variant` är `dark` eller `light`.
-- `components/text-link.html` tar `link` med antingen `href` och `label`, eller
-  `email` och valfri `label`, samt `variant` som är `dark` eller `light` för
-  sektionens bakgrund. Skriv e-postadressen i `email`, inte i `label`:
-  mottagaradressen visas automatiskt. Utan `label` visas bara adressen.
-  `email_separator` kan ange text mellan etikett och adress; standard är `" – "`.
-  Det valfria `subject` anges som vanlig text och URL-kodas av mallen.
-  Callout-komponenten använder samma länkkomponent och länkfält.
-- Huvudmenyn använder `navigation.links` (`label`, `href`) och
-  `navigation.contact` (`label`, `email`). Samma data används på dator och mobil.
+- `_layouts/sections.html` ger de sammansatta sidorna ett gemensamt sidomslag.
+- `_includes/sections/` innehåller HTML-mallarna för Markdown-sektionerna.
+  Mallarnas `heading`, `body`, `intro` och liknande är redan renderad Markdown.
+- `scripts/markdown-sections.mjs` registrerar ett [parat Eleventy-anrop](https://www.11ty.dev/docs/shortcodes/#paired-shortcodes).
+  Det använder projektets befintliga Markdown- och Liquid-motorer, utan nya paket.
+  Rubriknivåer och Markdown-block styr kortindelningen; rubrikernas ordalydelse
+  används aldrig som nycklar. Okända sektionstyper/varianter ger fel med filnamn.
+- `layout: sections` använder Liquid som yttre renderingssteg, eftersom varje
+  sektion redan renderar sitt Markdown-innehåll. Det undviker dubbelrendering av
+  HTML. Bloggposter, personal och vanliga textsidor använder fortsatt Eleventys
+  vanliga Markdown-flöde.
+- Befintliga startsideskomponenter under `_includes/components/` och navigationen
+  använder fortfarande sina dataobjekt. De är inte innehållsmodellen för nya
+  Markdown-sidor. Flytta inte tillbaka löptext till front matter eller JSON.
 
-Använd en befintlig komponent när dess HTML-struktur passar. Utöka den om behovet
-är gemensamt; skapa en ny när strukturen faktiskt skiljer sig. Ange komponentens
-indata uttryckligen vid include-anropet och dokumentera nya fält här. Allt går
-att ändra; målet är att vidareutveckla samma struktur i stället för parallella
-speciallösningar. Undvik att skapa ett generellt sidbyggarsystem för enstaka behov.
+Varianter väljs i sektionsanropen: `hero` har `default`, `ai`, `industry` och
+`technical-review`; `focus` har `default` och `stacked`; `steps` har `default`,
+`stacked` och `soft`; `cases` har `default` och `facts`; `callout` har `default`,
+`light`, `dark` och `network`. Övriga använder `default`. Ett valfritt tredje
+argument anger ankaret, till exempel `{% section "focus", "default", "omfattning" %}`.
+
+Återanvänd befintliga sektioner. Håll eventuella nya varianter konkreta och knutna
+till ett verkligt layoutbehov. För ändringar i Markdown-tolkningen finns relevanta
+kontroller med `node --test scripts/markdown-sections.test.mjs`. Kontrollera även
+bygget och att berörda sidor behåller rätt HTML-struktur och utseende.
 
 Äldre bloggposter och enstaka andra innehållsfiler kan fortfarande innehålla HTML,
-till exempel för bilder och inbäddningar. Bedöm den utifrån det specifika innehållet
-och kontrollera den genererade sidan om den ändras.
+till exempel för bilder och inbäddningar. Bedöm den utifrån det specifika innehållet.
 
 ### Ändra designen
 

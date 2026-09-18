@@ -22,16 +22,20 @@ uppdatera dokumentationen när du inför eller ändrar ett gemensamt mönster.
 - Huvudnavigation: `_data/navigation.json`, gemensam för dator och mobil.
 - Personal: `_employees/*.md`; standardlayout finns i `_employees/_employees.json`.
 - Bloggposter: `_posts/*.md`; standardlayout och URL-mönster i `_posts/_posts.json`.
-- Tjänste- och företagssidor: texter och listor i YAML-fälten i respektive
+- Tjänste- och företagssidor: vanligt Markdown-innehåll i respektive
   `index.md` under `teknikgranskning/`, `systemutveckling/`, `ai-labbet/`,
   `ai-labbet/industri/`, `jobba/`, `konsultnatverk/` och `om-oss/`.
-  Fältet `layout` väljer sidmallen i `_layouts/`; mappningen finns i README.
+  Korta `{% section %}`-anrop väljer presentation; gemensamma mallar
+  finns i `_includes/sections/` och sidomslaget i `_layouts/sections.html`.
+- Nya enkla sidor utan front matter: `sidor/*.md`; `sidor/sidor.json` väljer
+  standardlayouten. Filen `sidor/exempel.md` får adressen `/sidor/exempel/`.
 - Övriga innehållssidor: respektive Markdown-fil och dess valda layout.
 - Sidstruktur: `_layouts/`, `_includes/layout.html` och `_includes/home.html`.
 - Återanvändbara komponenter: `_includes/components/`, `_includes/employees/`
-  och `_includes/blog/`.
+  och `_includes/blog/`; Markdown-sektioner i `_includes/sections/`.
 - Aktiv CSS: `_includes/styles/`, importerad från `assets/site.scss`.
 - Byggkonfiguration: `eleventy.config.js`, `package.json`, `scripts/dev.mjs`.
+- Markdown-sektionernas tolkning: `scripts/markdown-sections.mjs`.
 
 ## Arbetsgång
 
@@ -54,16 +58,23 @@ uppdatera dokumentationen när du inför eller ändrar ett gemensamt mönster.
 
 ## Innehållskonventioner
 
-- JSON- och YAML-fält för kort, sidtexter och navigation innehåller vanlig text.
-  Escapa textvärden i HTML-mallar med `escape`, särskilt i attribut. Renderad
-  Markdown i `content` är avsiktlig HTML och ska inte escapas som vanlig text.
-- Tjänste- och företagssidornas innehåll redigeras i YAML-fälten, utan HTML eller
-  Liquid. Lägg till och ta bort listobjekt för kort, arbetssteg och faktarutor;
-  sidmallarna väljer CSS-klasser, numrering och komponentvarianter. Dessa mallar
-  använder inte brödtext efter front matter. Blogg- och personalsidor använder
-  däremot fortsatt vanlig Markdown för brödtexten.
+- Front matter ska vara metadata: titel, beskrivning, layout, permalänk och
+  artikel-/personmetadata. Flytta inte löptext, sektionsrubriker, listor eller
+  sidans kontaktlänkar till YAML eller JSON för att slippa HTML i Markdown.
+- Skriv innehåll i Markdown: rubriker, stycken, listor, länkar, bilder och citat.
+  På tjänste- och företagssidor ligger texten mellan `{% section ... %}` och
+  `{% endsection %}`. Ett nytt `###`-avsnitt skapar ett kort i en kortgrupp.
+  Målgruppskort avgränsas med `---`. Kopiera befintliga sektionsanrop och behåll
+  deras variant vid textändringar. Lägg inte CSS-klasser eller HTML i innehållet.
+- `layout: sections` renderar Markdown inne i sektionsanropen, exakt en gång;
+  lägg allt sidinnehåll inom dessa anrop. Vanliga textsidor använder `layout: page`
+  eller ärver den i `sidor/`, och behöver inga sektionsanrop alls.
+- Navigation och startsidans befintliga strukturerade data ligger fortsatt i
+  `_data/`. Escapa sådana textvärden med `escape`. Renderad Markdown i `content`
+  och sektionsmallarnas HTML-fält ska däremot inte escapas en gång till.
 - Länkar till e-post ska visa mottagaradressen i den synliga texten. Komponenten
   `text-link.html` (även i callouts) och huvudmenyn gör detta från fältet `email`.
+  I Markdown skrivs adressen i länktexten: `[Kontakta oss – reception@athega.se](mailto:reception@athega.se)`.
 - Personalens namn, roll, porträtt och bildtext renderas av medarbetarmallen.
   Skriv metadata och presentation i personens Markdown-fil, utan profil-include.
   Listan på Om oss byggs från `collections.employees` i filnamnsordning.

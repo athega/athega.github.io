@@ -1,8 +1,0 @@
-<div class="audience-grid">
-  {% for audience in items %}
-    {% assign parity = forloop.index | modulo: 2 %}
-    {% assign audience_variant = "light" %}
-    {% if parity == 0 %}{% assign audience_variant = "dark" %}{% endif %}
-    {% include "components/audience-card.html", audience: audience, variant: audience_variant %}
-  {% endfor %}
-</div>

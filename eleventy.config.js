@@ -1,6 +1,8 @@
 import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
+import markdownSections from "./scripts/markdown-sections.mjs";
 
 export default function(eleventyConfig) {
+  eleventyConfig.addPlugin(markdownSections);
   // Drafts: exkludera helt vid build, visa vid serve/watch
   eleventyConfig.addPreprocessor("drafts", "*", (data) => {
     if (data.draft && process.env.ELEVENTY_RUN_MODE === "build") {
