@@ -1,0 +1,6 @@
+<p class="eyebrow focus-label">{{ home.content.services.heading | escape }}</p>
+<div class="service-grid home-service-grid">
+  {% for service in home.content.services.items %}
+    {% include "components/service-card.html", service: service %}
+  {% endfor %}
+</div>

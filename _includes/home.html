@@ -1,7 +1,14 @@
-{% include "home/intro.html" -%}
-{% include "home/about.html" -%}
-{% include "home/blog.html" -%}
-{% include "home/consult.html" -%}
-{% include "home/roles.html" -%}
-{% include "home/ai-lab.html" -%}
-{% include "home/searching.html" -%}
+<main>
+  {% include "home/intro.html" %}
+
+  <section class="section focus-section" id="tjanster">
+    <div class="shell">
+      {% include "home/about.html" %}
+      {% include "home/services.html" %}
+      {% include "home/blog.html" %}
+    </div>
+  </section>
+
+  {% include "home/consult.html" %}
+  {% include "home/searching.html" %}
+</main>

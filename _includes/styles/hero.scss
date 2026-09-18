@@ -1,0 +1,13 @@
+/* Page introductions */
+.page-hero { padding: 92px 0 44px; background: var(--paper); }
+.page-hero.compact { padding: 72px 0 36px; }
+.page-hero .eyebrow { margin-bottom: var(--hero-flow-gap); }
+.page-hero h1 { max-width: 1050px; margin-bottom: var(--hero-flow-gap); font-size: var(--text-page); font-weight: 300; line-height: var(--leading-title); letter-spacing: -.012em; }
+.page-hero h1 span { color: var(--orange); }
+.page-lead { max-width: 800px; margin: 0 0 44px; padding-left: 24px; border-left: 4px solid var(--orange); color: var(--muted); font-size: var(--text-lead); line-height: 1.4; text-wrap: pretty; }
+.home-page-hero .page-lead { max-width: none; }
+.hero-summary { max-width: 820px; margin: 0 0 32px; color: var(--muted); font-size: var(--text-lg); line-height: var(--leading-copy); text-wrap: pretty; }
+.hero-summary p { margin-bottom: 18px; }
+.hero-summary p:last-child { margin-bottom: 0; }
+.page-hero .page-lead:last-child { margin-bottom: 0; }
+.page-hero + .section { padding-top: 40px; }

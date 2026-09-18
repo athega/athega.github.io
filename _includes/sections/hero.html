@@ -1,0 +1,15 @@
+<section class="page-hero{% if variant == 'ai' %} ai-hero{% elsif variant == 'industry' %} industry-hero{% elsif variant == 'technical-review' %} dd-hero{% endif %}">
+  <div class="shell">
+    {{ eyebrow }}
+    {{ heading }}
+    {{ lead }}
+    {% if summary != empty %}
+      {% if variant == 'ai' %}<div class="hero-summary">{{ summary }}</div>{% else %}{{ summary }}{% endif %}
+    {% endif %}
+    {% if links.size > 0 %}
+      {% if variant == 'technical-review' %}<div class="hero-actions">{% endif %}
+      {% for link in links %}{{ link }}{% endfor %}
+      {% if variant == 'technical-review' %}</div>{% endif %}
+    {% endif %}
+  </div>
+</section>

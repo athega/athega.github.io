@@ -1,6 +1,11 @@
 ---
 layout: default
 ---
-<section class="content">
-{{ content }}
-</section>
+<main>
+  <article class="article-shell">
+    <div class="article-body">
+      {% include "employees/profile.html" %}
+      {{ content }}
+    </div>
+  </article>
+</main>
