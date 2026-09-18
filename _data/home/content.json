@@ -1,0 +1,58 @@
+{
+  "intro": {
+    "heading": "Vi är experter på den senaste mjukvarutekniken",
+    "emphasis": "och erbjuder den till våra kunder.",
+    "lead": "Nyfikna på att utforska nytt, med erfarenhet av vad som håller."
+  },
+  "about": {
+    "eyebrow": "Athega i korthet",
+    "body": "Sedan 1997 har vi legat nära den senaste tekniska utvecklingen, alltid med långsiktighet och verklig nytta som krav. Vi kombinerar beprövad systemutveckling med nya arbetssätt där AI används som förstahandsmetod när det ger bättre kvalitet och snabbare utveckling."
+  },
+  "services": {
+    "heading": "Våra fokusområden",
+    "items": [
+      {
+        "title": "Systemutveckling",
+        "description": "Seniora utvecklingskonsulter som hjälper er att utveckla, modernisera och förvalta system oavsett teknik, plattform eller var i livscykeln ni befinner er.",
+        "href": "/systemutveckling/"
+      },
+      {
+        "title": "AI & maskininlärning",
+        "description": "Vi tar AI från idé till fungerande lösning, med erfarenhet av allt från analys och automation till generativa modeller.",
+        "href": "/ai-labbet/"
+      },
+      {
+        "title": "AI för industri",
+        "description": "Hårdvara, mjukvara och stöd i en helhet för produktionsnära AI, optimering, kvalitet och prediktivt underhåll.",
+        "href": "/ai-labbet/industri/"
+      },
+      {
+        "title": "Teknikgranskning",
+        "description": "En djup teknisk genomlysning som ger köpare, investerare och bolag ett tydligt beslutsunderlag.",
+        "href": "/teknikgranskning/"
+      }
+    ]
+  },
+  "blog": {
+    "heading": "Senast från bloggen",
+    "linkLabel": "Se alla blogginlägg"
+  },
+  "consult": {
+    "eyebrow": "Erfarenhet på riktigt",
+    "heading": "Det är ofta våra lösningar du möter, inte vårt namn.",
+    "body": "Vi har arbetat med digitala medier, tillverkning, finans och samhällstjänster sedan webben var ung. Våra konsulter går in där tekniken är viktig och kraven är höga.",
+    "link": {
+      "label": "Behöver du en konsult?",
+      "email": "reception@athega.se"
+    }
+  },
+  "careers": {
+    "eyebrow": "Jobba med oss",
+    "heading": "Skicklig systemutvecklare och nyfiken på nästa steg?",
+    "body": "Hos oss får du stort inflytande, erfarna kollegor och utrymme att utvecklas.",
+    "link": {
+      "label": "Lär känna Athega",
+      "href": "/jobba/"
+    }
+  }
+}

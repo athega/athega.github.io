@@ -1,7 +1,7 @@
 <div class="home-latest">
   <div class="home-latest-heading">
-    <p class="eyebrow">Senast från bloggen</p>
-    <a class="text-link" href="/blogg/">Se alla blogginlägg <span>↗</span></a>
+    <p class="eyebrow">{{ home.content.blog.heading | escape }}</p>
+    <a class="text-link" href="/blogg/">{{ home.content.blog.linkLabel | escape }} <span>↗</span></a>
   </div>
   <div class="home-latest-grid">
     {% for post in collections.posts limit:3 %}

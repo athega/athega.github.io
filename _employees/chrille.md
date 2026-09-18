@@ -1,5 +1,4 @@
 ---
-layout: employee
 permalink: /chrille/
 
 name: Christian Lizell
@@ -7,7 +6,6 @@ title: Fullstackutvecklare (JavaScript, Java)
 image: /assets/img/employees/chrille.jpg
 thumb: /assets/img/employees/chrille-thumb.jpg
 ---
-{% include "employees/profile.html" %}
 
 Jag är en programmeringsgeek som älskar att dela med mig av allt
 från vackra bash-one-liners till sköna Javascriptsgrepp.

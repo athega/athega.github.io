@@ -1,0 +1,10 @@
+<section class="section {% if variant == 'dark' %}dark-section unified-callout{% else %}join-section{% endif %}">
+  <div class="shell join-grid">
+    <p class="eyebrow">{{ callout.eyebrow | escape }}</p>
+    <h2>{{ callout.heading | escape }}</h2>
+    <div>
+      <p>{{ callout.body | escape }}</p>
+      <a class="text-link{% if variant == 'dark' %} light{% endif %}" href="{% if callout.link.email %}mailto:{{ callout.link.email | escape }}{% else %}{{ callout.link.href | escape }}{% endif %}">{{ callout.link.label | escape }}{% if callout.link.email %} – {{ callout.link.email | escape }}{% endif %} <span>↗</span></a>
+    </div>
+  </div>
+</section>

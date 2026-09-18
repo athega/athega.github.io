@@ -1,40 +1,6 @@
-<p class="eyebrow focus-label">Våra fokusområden</p>
+<p class="eyebrow focus-label">{{ home.content.services.heading | escape }}</p>
 <div class="service-grid home-service-grid">
-  <a class="service-card" href="/systemutveckling/">
-    <div>
-      <h3>Systemutveckling</h3>
-      <p>
-        Seniora utvecklingskonsulter som hjälper er att utveckla, modernisera och förvalta system
-        oavsett teknik, plattform eller var i livscykeln ni befinner er.
-      </p>
-    </div>
-    <span class="card-arrow">↗</span>
-  </a>
-  <a class="service-card" href="/ai-labbet/">
-    <div>
-      <h3>AI &amp; maskininlärning</h3>
-      <p>
-        Vi tar AI från idé till fungerande lösning, med erfarenhet av allt från analys och
-        automation till generativa modeller.
-      </p>
-    </div>
-    <span class="card-arrow">↗</span>
-  </a>
-  <a class="service-card" href="/ai-labbet/industri/">
-    <div>
-      <h3>AI för industri</h3>
-      <p>
-        Hårdvara, mjukvara och stöd i en helhet för produktionsnära AI, optimering, kvalitet och
-        prediktivt underhåll.
-      </p>
-    </div>
-    <span class="card-arrow">↗</span>
-  </a>
-  <a class="service-card" href="/teknikgranskning/">
-    <div>
-      <h3>Teknikgranskning</h3>
-      <p>En djup teknisk genomlysning som ger köpare, investerare och bolag ett tydligt beslutsunderlag.</p>
-    </div>
-    <span class="card-arrow">↗</span>
-  </a>
+  {% for service in home.content.services.items %}
+    {% include "components/service-card.html", service: service %}
+  {% endfor %}
 </div>
