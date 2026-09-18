@@ -1,6 +1,20 @@
 ---
-title: Du har redan sett vad vi gjort
-tagline: Vi älskar tekniken bakom det du ser
-sub_tagline: Utan att du vet om det har du säkert sett något vi utvecklat
+title: Teknik som gör verklig skillnad
+description: Athega kombinerar beprövad systemutveckling med modern AI och teknikgranskning.
 ---
-{% include "home.html" %}
+<main>
+  <section class="page-hero home-page-hero"><div class="shell"><h1>Vi är experter på den senaste mjukvarutekniken <span>och erbjuder den till våra kunder.</span></h1><p class="page-lead">Nyfikna på att utforska nytt, med erfarenhet av vad som håller.</p></div></section>
+  <section class="section focus-section" id="tjanster"><div class="shell">
+    <div class="section-heading"><p class="eyebrow">Athega i korthet</p><p class="focus-intro">Sedan 1997 har vi legat nära den senaste tekniska utvecklingen, alltid med långsiktighet och verklig nytta som krav. Vi kombinerar beprövad systemutveckling med nya arbetssätt där AI används som förstahandsmetod när det ger bättre kvalitet och snabbare utveckling.</p></div>
+    <p class="eyebrow focus-label">Våra fokusområden</p>
+    <div class="service-grid home-service-grid">
+      <a class="service-card" href="/systemutveckling/"><div><h3>Systemutveckling</h3><p>Seniora utvecklingskonsulter som hjälper er att utveckla, modernisera och förvalta system oavsett teknik, plattform eller var i livscykeln ni befinner er.</p></div><span class="card-arrow">↗</span></a>
+      <a class="service-card" href="/ai-labbet/"><div><h3>AI &amp; maskininlärning</h3><p>Vi tar AI från idé till fungerande lösning, med erfarenhet av allt från analys och automation till generativa modeller.</p></div><span class="card-arrow">↗</span></a>
+      <a class="service-card" href="/ai-labbet/industri/"><div><h3>AI för industri</h3><p>Hårdvara, mjukvara och stöd i en helhet för produktionsnära AI, optimering, kvalitet och prediktivt underhåll.</p></div><span class="card-arrow">↗</span></a>
+      <a class="service-card" href="/teknikgranskning/"><div><h3>Teknikgranskning</h3><p>En djup teknisk genomlysning som ger köpare, investerare och bolag ett tydligt beslutsunderlag.</p></div><span class="card-arrow">↗</span></a>
+    </div>
+    <div class="home-latest"><div class="home-latest-heading"><p class="eyebrow">Senast från bloggen</p><a class="text-link" href="/blogg/">Se alla blogginlägg <span>↗</span></a></div><div class="home-latest-grid">{% for post in collections.posts limit:3 %}<a class="home-latest-card" href="{{ post.url }}">{% if post.data.image_url %}<img src="{{ post.data.image_url }}" alt="">{% endif %}<div><h2>{{ post.data.title }}</h2><p>{{ post.data.description }}</p></div></a>{% endfor %}</div></div>
+  </div></section>
+  <section class="section dark-section unified-callout"><div class="shell join-grid"><p class="eyebrow">Erfarenhet på riktigt</p><h2>Det är ofta våra lösningar du möter, inte vårt namn.</h2><div><p>Vi har arbetat med digitala medier, tillverkning, finans och samhällstjänster sedan webben var ung. Våra konsulter går in där tekniken är viktig och kraven är höga.</p><a class="text-link light" href="mailto:reception@athega.se">Behöver du en konsult? – reception@athega.se <span>↗</span></a></div></div></section>
+  <section class="section join-section"><div class="shell join-grid"><p class="eyebrow">Jobba med oss</p><h2>Skicklig systemutvecklare och nyfiken på nästa steg?</h2><div><p>Hos oss får du stort inflytande, erfarna kollegor och utrymme att utvecklas.</p><a class="text-link" href="/jobba/">Lär känna Athega <span>↗</span></a></div></div></section>
+</main>

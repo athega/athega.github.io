@@ -1,87 +1,228 @@
 ---
-title: Arbeta hos oss
+layout: default
+title: Jobba med oss
+description: Läs om konsultrollen, teknikintresset, gemenskapen och vardagen på Athega.
 ---
 
-# {{ title }}
+<main>
+<section class="page-hero">
+<div class="shell">
+<p class="eyebrow">
+Jobba med oss
+</p>
 
-![Peters skrivbord](./athega-desk.jpg)
+# Stor frihet. <span>Vassa kollegor.</span>
 
-Vi söker dig som har stor entusiasm för systemutveckling och finner glädje i att ställas
-inför olika utmaningar och att leverera nytta till våra kunder. Våra kunder finns inom
-många olika branscher och uppgifterna kan variera, men kunderna förväntar sig alltid
-bästa resultat med konsulter från Athega.
+<p class="page-lead">
+Konsult med ett erfaret lag bakom dig.
+</p>
+</div>
+</section>
+<section class="section focus-section work-intro">
+<div class="shell">
+<div class="section-heading">
+<div class="focus-intro work-intro-copy">
 
-## Enkelt
-Vi är ett effektivt företag där din åsikt är viktig och beslutsvägarna är korta. Hos
-oss har du möjlighet att ta del av en mycket förmånlig lönemodell. Athega har flexibla
-arbetstider, men hos kunder rättar vi oss efter deras arbetstider. Våra kunder förväntar
-sig att vi är sociala, flexibla och att vi snabbt anpassar oss till deras olika arbetsplatser
-och system.
+Vi söker skickliga systemutvecklare som vill ha inflytande över sitt arbete och fortsätta vara nyfikna. Som konsult på Athega arbetar du i kvalificerade uppdrag hos kunder i olika branscher, med variation, ansvar och stöd från erfarna kollegor.
 
-## Utveckling
-Vi lägger stort värde i personlig utveckling och ger dig möjlighet att växa i din roll,
-stärka din kompetens och hänga med i den ständiga teknikutvecklingen genom att delta i
-utbildningar, seminarier och konferenser, både externa och interna.
+Vi som arbetar på Athega värdesätter enkelhet, möjligheten att utvecklas och att faktiskt ha roligt på jobbet. Det märks i korta beslutsvägar, ett generöst kunskapsutbyte och en gemenskap där vi hjälper varandra att lyckas, både i kunduppdragen och som kollegor.
 
-## Ha kul
-Vi gillar att ha kul och vi träffas ofta för att skapa en “vi”-känsla och en möjlighet
-att dra nytta av varandras erfarenhet och kompetens. Detta gör vi minst varje månad.
-Vi träffas även regelbundet för gemensamma aktiviteter för att umgås och ha kul.
+</div>
+<a class="text-link" href="mailto:reception@athega.se">
+Säg hej till oss – reception@athega.se
+<span>
+↗
+</span>
+</a>
+</div>
+</div>
+</section>
+<section class="section work-values">
+<div class="shell">
+<div class="section-heading work-values-heading">
 
-## Tänk nytt
-Då uppdragen är av olika karaktär är det bra om du har en bred kunskap inom systemutveckling,
-är intresserad och hungrig på nya tekniker och väljer dessa efter vilket problem eller
-vilken uppgift du skall lösa.
+## Det här är viktigt för oss.
 
-Låter detta intressant? Känner du igen dig i beskrivningen? Skicka ett mail till
-[rekrytering@athega.se](mailto:rekrytering@athega.se) så bokar vi en fika och berättar mer!
+</div>
+<div class="service-grid work-values-list">
+<article class="service-card work-value-row">
+<div>
 
----
+### Enkelhet
 
-## Kort om Athega
+Korta beslutsvägar, tydligt ansvar och frihet under ansvar. Din åsikt spelar roll och du får utrymme att påverka både ditt uppdrag och Athega.
 
-  Här hittar du information om våra uppdrag, våra kunder och hur det fungerar på Athega.
-Om nedan punkter stämmer in på dig, finns det en stor chans att också du passar in på Athega
+</div>
+</article>
+<article class="service-card work-value-row">
+<div>
 
-- trivs med att arbeta som konsult
-- brinner för systemutveckling
-- arbetar med back-end, mobilutveckling eller front-end
-- tycker det sociala på arbetsplatsen är viktigt
-- gillar att arbeta i teknikens framkant
-- vill ständigt utvecklas både tekniskt och personligt
-- har arbetat med utveckling större delen av ditt vuxna liv
+### Utvecklingsmöjligheter
 
-### Aktiviteter
+Utbildningar, seminarier, konferenser och egna labb hjälper dig att växa i din roll och hålla jämna steg med teknikutvecklingen.
 
-#### Sommarkonferens
-[![Engsholmsslott](./sommarkonferens1.png)](http://www.engsholm.se)
+</div>
+</article>
+<article class="service-card work-value-row">
+<div>
 
-Sommarkonferensen brukar vi tillbringa på Engsholms slott. Bilden är från ett år då vi labbade
-med AR-drones. Mycket programmering och spännande tävlingsmoment.
- 
-![Drone challenge](./sommarkonferens2.png)
+### Ha kul
 
-Vi höll som vanligt till i strandateljén.
+Vi träffas ofta för att lära av varandra, bygga gemenskap och ha roligt även utanför de dagliga kunduppdragen.
 
-#### Höstkonferens
-[![Söderarm](./soderarm.png)](/blogg/2012/12/01/resultatet_fran_athega_code_base_2012)
+</div>
+</article>
+<article class="service-card work-value-row">
+<div>
 
-Höstkonferensen kallas Athega Codebase. Vi brukar bege oss ut i ytterskärgården till
-Söderarm där vi huserar, leker med den senaste tekniken och har en väldigt trevlig helg.
+### Tänka nytt
 
-[Rapport från Athega Codebase 2013](/blogg/2013/11/22/acb2013)
+Vi är nyfikna på nya tekniker och arbetssätt, men väljer alltid lösning utifrån problemet, kundnyttan och vad som håller över tid.
 
-#### Övriga konferenser
-Vi är även självklart med på det konferenser som berör oss i vårt arbete. Nordic JS, JFokus,
-Leankanban med flera är vi frekventa besökare på. 
+</div>
+</article>
+</div>
+</div>
+</section>
+<section class="section soft-section work-community">
+<div class="shell">
+<div class="section-heading work-community-heading">
 
-#### Internutbildningar
-En gång i månaden har vi möte tillsammans då vi diskuterar arbetsrelaterade frågor.
-Vi brukar även hålla internutbildningar där vi själva håller i presentationer och labbar.
-Ämnena är väldigt spridda och alla välkomnas att hålla en session. Det kan handla om allt
-från data-kluster och AI, digitalfotografering, Kanban-metoden, Java, Javascript, säkerhet
-eller iOS-utveckling. Ofta fortsätter vi som kan umgås långt in på kvällen.
+## Vi utvecklas tillsammans.
 
-#### Övriga aktiviteter
-De fredagar då det inte är internutbildning kan det hända att vi ändå träffas. Ibland
-planerat med middag kanske i form av kräftskiva när det är säsong, andra gånger spontant.
+<p class="heading-note">
+Nyfikenheten förenar oss, men gemenskapen gör att kunskapen sprids.
+</p>
+</div>
+<div class="case-grid">
+<article>
+
+### Kunskap varje månad
+
+På våra gemensamma träffar diskuterar vi arbetet, håller presentationer och labbar med allt från AI och säkerhet till arkitektur och utvecklingsmetoder.
+
+</article>
+<article>
+
+### Codebase och sommarkonferens
+
+Våra egna konferenser ger oss tid att fördjupa oss i teknik, bygga tillsammans och umgås utanför kunduppdragen.
+
+</article>
+<article>
+
+### Ut i teknikvärlden
+
+Vi deltar regelbundet i externa konferenser och seminarier som är relevanta för våra uppdrag och den utveckling vi vill driva.
+
+</article>
+</div>
+</div>
+</section>
+<section class="section">
+<div class="shell work-profile">
+
+## Du kommer att trivas här om...
+
+<div class="large-prose">
+<ul class="feature-list">
+<li>
+<span>
+✓
+</span>
+Du trivs i konsultrollen och tycker om att skapa verklig nytta hos kunder
+</li>
+<li>
+<span>
+✓
+</span>
+Du har gedigen erfarenhet av systemutveckling inom backend, frontend eller mobil
+</li>
+<li>
+<span>
+✓
+</span>
+Du gillar att arbeta nära teknikens framkant utan att välja nytt för nyhetens skull
+</li>
+<li>
+<span>
+✓
+</span>
+Du tycker att kollegor, kunskapsdelning och det sociala är en viktig del av arbetet
+</li>
+<li>
+<span>
+✓
+</span>
+Du vill fortsätta utvecklas både tekniskt och personligt
+</li>
+</ul>
+</div>
+<a class="text-link" href="mailto:reception@athega.se">
+Säg hej till oss – reception@athega.se
+<span>
+↗
+</span>
+</a>
+</div>
+</section>
+<section class="section join-section">
+<div class="shell">
+<div class="join-grid">
+<p class="eyebrow">
+Konsultnätverket
+</p>
+
+## Egen, inte ensam.
+
+<div>
+
+Driver du eget men saknar kollegor och ett sammanhang? I Athegas konsultnätverk behåller du friheten i ditt eget bolag och får stöd i försäljning, ramavtal, kompetensutveckling och nya uppdrag.
+
+<a class="text-link" href="/konsultnatverk/">
+Läs om konsultnätverket
+<span>
+↗
+</span>
+</a>
+</div>
+</div>
+<figure class="network-quote">
+<img src="/assets/legacy/uploads/2013/10/hoger_peter.png" alt="Peter, konsult i Athegas konsultnätverk">
+<blockquote>
+<p class="eyebrow">
+Peter berättar om Athega
+</p>
+
+”Athega är ett lite ovanligt konsultföretag i IT-branschen. Jag har varit min egen sen 2007 och vill inte bli anställd. Däremot jobbar jag gärna via ett konsultföretag för att det är kul att ha jobbkompisar och vara en del av ett gäng.
+
+De flesta andra konsultföretag vill bara ha fast anställda. Enda alternativet som återstår då är förmedlingsföretagen och det har jag provat med mindre lyckat resultat.
+
+På Athega kommer man snabbt in i gänget även som egen företagare och stämningen är bra, precis som uppdragen.”
+
+</blockquote>
+</figure>
+</div>
+</section>
+<section class="section dark-section unified-callout">
+<div class="shell join-grid">
+<p class="eyebrow">
+Nästa steg
+</p>
+
+## Berätta vad du är bra på och vad du vill göra mer av.
+
+<div>
+
+Skicka några rader om dig själv och vad du vill arbeta med, så hör vi av oss.
+
+<a class="text-link light" href="mailto:reception@athega.se">
+reception@athega.se
+<span>
+↗
+</span>
+</a>
+</div>
+</div>
+</section>
+</main>

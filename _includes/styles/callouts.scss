@@ -1,0 +1,13 @@
+/* Shared callout layout */
+.join-section { background: var(--neutral); }
+.section.unified-callout, .section.join-section { padding-block: 76px; }
+.join-grid { display: grid; grid-template-columns: 180px minmax(0,1fr); grid-template-areas: "label heading" ". copy"; align-items: start; gap: 22px 50px; }
+.join-grid > .eyebrow { grid-area: label; margin: 0; }
+.join-grid h2 { grid-area: heading; max-width: 820px; margin-bottom: 0; font-size: var(--text-lead); font-weight: 300; line-height: var(--leading-title); letter-spacing: -.015em; }
+.join-grid > div { grid-area: copy; max-width: 820px; }
+.join-grid > div p { color: var(--muted); font-size: var(--text-lg); line-height: var(--leading-copy); }
+.dark-section, .unified-callout { background: var(--ink); color: #fff; }
+.unified-callout .eyebrow { color: var(--orange); }
+.unified-callout .join-grid > div p { color: #d7d9da; }
+.unified-callout .join-grid > div p:last-of-type { margin-bottom: 24px; }
+.callout-links { display: flex; flex-wrap: wrap; gap: 18px 28px; }

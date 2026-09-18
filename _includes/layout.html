@@ -1,33 +1,23 @@
 <!DOCTYPE html>
 <html lang="sv">
   <head>
-    <meta charset="UTF-8"/>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title>Athega - {{ title }}</title>
-    {%- if title %}
-    <meta property="og:title" content="Athega - {{ title }}">
-    {%- endif %}
-    {%- if description %}
-    <meta property="og:description" content="{{ description }}">
-    {%- endif %}
-    {%- if page.url %}
-    <meta property="og:url" content="{{ site.url }}{{ page.url | removeHtmlExtension }}">
-    {%- endif %}
-    {%- if image_url %}
-    <meta property="og:image" content="{{ site.url }}{{ image_url }}">
-    {%- endif %}
-    <link rel="apple-touch-icon" sizes="192x192" type="image/png"     href="/assets/img/icon.png">
-    <link rel="icon"             sizes="192x192" type="image/png"     href="/assets/img/icon.png">
-    <link rel="icon"                             type="image/x-icon"  href="/favicon.ico">
-    <link rel="icon"                             type="image/svg+xml" href="/assets/img/icon.svg">
-    <link rel="stylesheet" href="/assets/site.css" type="text/css">
+    <title>{% if title %}{{ title }} — Athega{% else %}Athega — Teknik som gör verklig skillnad{% endif %}</title>
+    <meta name="description" content="{{ description | default: 'Athega hjälper svenska företag att bygga, förstå och förbättra digitala produkter med modern mjukvaruteknik och AI.' }}">
+    <meta property="og:title" content="{% if title %}{{ title }} — Athega{% else %}Athega — Teknik som gör verklig skillnad{% endif %}">
+    <meta property="og:description" content="{{ description | default: 'Athega hjälper svenska företag att bygga, förstå och förbättra digitala produkter med modern mjukvaruteknik och AI.' }}">
+    {% if page.url %}<meta property="og:url" content="{{ site.url }}{{ page.url | removeHtmlExtension }}">{% endif %}
+    {% if image_url %}<meta property="og:image" content="{{ site.url }}{{ image_url }}">{% endif %}
+    <link rel="apple-touch-icon" sizes="192x192" type="image/png" href="/assets/img/icon.png">
+    <link rel="icon" sizes="192x192" type="image/png" href="/assets/img/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="/assets/img/icon.svg">
+    <link rel="stylesheet" href="/assets/site.css">
   </head>
   <body>
-{% include "header.html" %}
-    <main>
-{{ content }}
-    </main>
-{% include "footer.html" %}
-    <script src="/assets/site.js"></script>
+    {% include "header.html" %}
+    {{ content }}
+    {% include "footer.html" %}
   </body>
 </html>

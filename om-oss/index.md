@@ -1,51 +1,118 @@
 ---
+layout: default
 title: Om oss
+description: Möt människorna på Athega och läs om vårt teknikintresse, vår historia och hur bolaget arbetar i dag.
 ---
 
-# {{ title }}
+<main>
+<section class="page-hero">
+<div class="shell">
+<p class="eyebrow">
+Om Athega
+</p>
 
-{% include "employees/index.html" %}
+# Teknikintresse som <span>aldrig har gått över.</span>
 
-## Med ålderns rätt
+<p class="page-lead">
+I snart tre decennier har vi hjälpt svenska företag med avancerad mjukvaruutveckling.
+</p>
+</div>
+</section>
+<section class="section about-history">
+<div class="shell">
+<p class="eyebrow">
+Nyfikna från början
+</p>
+<div class="large-prose about-intro-copy">
 
-<a href="https://1997.athega.se" title="Athegas maskot för drygt 20 år sedan">
-  <img src="/assets/img/athegamannen.jpg" style="width: 200px;" class="float_right" alt="Athegamannen">
+Athega grundades 1996 under namnet III Information Integration Innovation HB och blev Athega AB den 1 november 1997. Drivkraften var ett genuint intresse för det som då kallades internetteknik.
+
+Vi började med avancerade webblösningar i CGI och Perl. När lösningarna växte blev gränssnitten mer avancerade och tekniken utvecklades vidare genom Java, Ruby och det som kom efter. Nyfikenheten är densamma, men långsiktighet och verklig kundnytta är alltid kravet.
+
+I dag arbetar vi främst inom digitala medier, tillverkning och finans. Våra långa kundrelationer bygger på engagerade, erfarna systemutvecklare som förstår både tekniken och kundens affär. Sedan 2016 är AI och maskininlärning en växande del av vårt erbjudande.
+
+</div>
+</div>
+</section>
+<section class="section facts-section about-facts">
+<div class="shell facts-grid">
+<div>
+<span>
+1997
+</span>
+
+Athega AB bildas
+
+</div>
+<div>
+<span>
+2016
+</span>
+
+Vår AI-satsning börjar
+
+</div>
+<div>
+<span>
+100%
+</span>
+
+Teknikintresse
+
+</div>
+</div>
+</section>
+<section class="section team-section">
+<div class="shell">
+<div class="section-heading split-heading">
+<div>
+<p class="eyebrow">
+Människorna på Athega
+</p>
+
+## Erfarenhet bakom varje leverans.
+
+</div>
+<p class="heading-note">
+Athega ägs och drivs av människor som arbetar aktivt i bolaget.
+</p>
+</div>
+{% include "employees/team.html" %}
+</div>
+</section>
+<section class="section join-section">
+<div class="shell join-grid">
+<p class="eyebrow">
+Nästa kollega
+</p>
+
+## Vill du jobba med oss?
+
+<div>
+
+Vi söker erfarna systemutvecklare som vill fortsätta vara nyfikna och göra verklig skillnad hos våra kunder.
+
+<a class="text-link" href="/jobba/">
+Läs om att jobba på Athega
+<span>
+↗
+</span>
 </a>
+</div>
+</div>
+</section>
+<section class="section">
+<div class="shell prose-grid">
 
-Athega grundades redan 1996. Först bedrevs verksamheten under namnet III Information Integration Innovation HB,
-för att sedan ombildas till aktiebolag 1 november 1997 under namnet Athega AB.
+## Bolagsinformation.
 
-Upprinnelsen till bolaget var vårt genuina intresse av det som på 1990 talet kallades Internet-teknik.
+<div class="large-prose">
 
-Affärsidén var att erbjuda avancerade webblösningar till skillnad från “plain html-sidor” som många webbyråer erbjöd.
-Inledningsvis utvecklade vi CGI-script i programmeringsspråket Perl. Scripten blev till större applikationer,
-gränssnitten mer avancerade och språket byttes så småningom till Java och kompletterades senare med Ruby.
+<strong>Athega AB</strong><br>Svenskt privat aktiebolag med verksamhet främst i Stockholm.<br>Organisationsnummer 556547-6693<br>VAT SE556547669301
 
-Det har alltid varit viktigt för oss att ligga i framkant av den tekniska utvecklingen. Att vi klarat detta under alla år tror vi
-beror på att vi är engagerade systemutvecklare med lång erfarenhet som alltid
-inspireras av våra kunders affärsmöjligheter.
+Styrelsen består av Christian Lizell, ordförande, Torbjörn Nilsson, ledamot och vd, samt Mats Ygfors, ledamot.
 
-## Athega idag
-
-Vårt engagemang för att göra den senaste tekniken tillgänglig för våra kundern har lagt grunden
-för de långa kundrelationer vi haft och fortfarande har. Största delen inom digial media men även
-inom tillverknings-industri och finanssektorn.
-
-Athegas **[AI/ML-initiativ](https://athega.se/ai-labbet/)** är ett tjänsteområde vi initierade 2016 och som hela tiden växer.
-Det ligger helt i linje med vår nyfikenhet på ny teknik och hur den ska användas på bästa sätt.
-
-## Företagsfakta
-
-Athega är ett svenskt, privat aktiebolag med verksamhet främst i Stockholm.
-
-**Organisationsnummer** `556547-6693`
-
-**Momsreg/VAT-nr** `SE556547669301`
-
-Athega ägs och drivs av personer som jobbar aktivt i bolaget.
-
-### Styrelse
- - Christian Lizell ordförande
- - Torbjörn Nilsson ordinarie ledamot, VD
- - Mats Ygfors ordinarie ledamot
-
+</div>
+</div>
+</section>
+</main>

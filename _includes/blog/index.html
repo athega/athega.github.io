@@ -1,33 +1,25 @@
-<section class="blog-index content">
-  <h1>{{ title }}</h1>
-  <ul>
-    {%- for post in collections.posts %}
-    {%- capture post_year %}{{ post.date | date: '%Y' }}{% endcapture %}
-    {%- if post_year == year %}
-    <li>
-      <a href="{{ post.url | removeHtmlExtension }}" title="Läs mer om: {{ post.data.title }}">
-        <h2>{{ post.data.title }}</h2>
-        <p>{{ post.data.description }}</p>
+<main>
+  <section class="page-hero compact">
+    <div class="shell">
+      <p class="eyebrow">Bloggarkiv</p>
+      <h1>{{ year }}<span>.</span></h1>
+    </div>
+  </section>
+  <section class="section">
+    <div class="shell archive-list">
+      {% for post in collections.posts %}
+        {% assign post_year = post.date | date: '%Y' %}
+        {% if post_year == year %}
+      <a href="{{ post.url }}" class="archive-item">
+        <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: '%Y-%m-%d' }}</time>
+        <div>
+          <h2>{{ post.data.title }}</h2>
+          <p>{{ post.data.description }}</p>
+        </div>
+        <span>↗</span>
       </a>
-    </li>
-    {%- endif %}
-    {%- endfor %}
-  </ul>
-  <hr>
-  {%- for post in collections.posts -%}
-  {%- capture post_year %}{{- post.date | date: '%Y' -}}{% endcapture -%}
-  {%- assign next_year = "" -%}
-  {%- if post.data.next -%}
-  {%- capture next_year %}{{- post.data.next.date | date: '%Y' -}}{% endcapture -%}
-  {%- endif -%}
-  {%- if post_year != next_year %}
-  <strong>
-    {% if post_year == year -%}
-    {{ post_year }}
-    {%- else -%}
-    <a href="/blogg/{{ post_year }}/">{{ post_year }}</a>
-    {%- endif %}
-  </strong>
-  {%- endif -%}
-  {%- endfor %}
-</section>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+</main>
