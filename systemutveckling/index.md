@@ -54,7 +54,7 @@ Vi använder moderna AI-stödda arbetssätt när de ger högre kvalitet och kort
 
 {% endsection %}
 
-{% section "steps" %}
+{% section "steps", "soft" %}
 
 Från behov till förvaltning
 
