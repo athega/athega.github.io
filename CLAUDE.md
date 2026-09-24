@@ -81,7 +81,9 @@ uppdatera dokumentationen när du inför eller ändrar ett gemensamt mönster.
 - Behåll befintliga permalänkar när namn, rubriker eller filnamn ändras. Vid
   borttagning av innehåll, undersök även länkar till den gamla adressen.
 - Bloggens front matter nås direkt i sidmallen (`title`, `description`, `image_url`).
-  I en collection används `post.data.title`, `post.data.description` och `post.url`.
+  I en collection används `post.data.title`, `post.data.excerpt` (egen `description`, annars
+  första stycket; skapas av `scripts/post-defaults.mjs`) och `post.url`. Artikelns ingress
+  använder bara den egna `description`.
 - Kontrollera artikelns egen ingress innan du ändrar gemensam ingresstilldelning.
   Äldre artiklar kan innehålla `description` i brödtexten; en artikel kan använda
   `hide_excerpt_in_article` för att dölja mallens ingress.

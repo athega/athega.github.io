@@ -1,5 +1,5 @@
 {% assign featured = collections.posts | first %}
-<main class="blog-archive">
+<main id="main" class="blog-archive section-page">
   <section class="page-hero blog-hero">
     <div class="shell">
       <p class="eyebrow">Tankar från Athega</p>
@@ -18,7 +18,7 @@
         <div class="news-feature-copy">
           <p class="eyebrow">Senaste artikeln · <time datetime="{{ featured.date | date: '%Y-%m-%d' }}">{{ featured.date | swedishDate }}</time></p>
           <h2>{{ featured.data.title }}</h2>
-          <p>{{ featured.data.description }}</p>
+          <p>{{ featured.data.excerpt }}</p>
           <span class="text-link">Läs artikeln <b>↗</b></span>
         </div>
       </a>
@@ -36,8 +36,8 @@
           <div class="news-card-copy">
             <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | swedishDate }}</time>
             <h2>{{ post.data.title }}</h2>
-            <p>{{ post.data.description }}</p>
-            <span aria-hidden="true">↗</span>
+            <p>{{ post.data.excerpt }}</p>
+            <span class="card-arrow card-arrow-sm" aria-hidden="true">↗</span>
           </div>
         </a>
         {% endfor %}

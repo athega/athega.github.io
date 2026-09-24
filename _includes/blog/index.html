@@ -1,4 +1,4 @@
-<main>
+<main id="main" class="section-page">
   <section class="page-hero compact">
     <div class="shell">
       <p class="eyebrow">Bloggarkiv</p>
@@ -14,9 +14,9 @@
         <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: '%Y-%m-%d' }}</time>
         <div>
           <h2>{{ post.data.title }}</h2>
-          <p>{{ post.data.description }}</p>
+          <p>{{ post.data.excerpt }}</p>
         </div>
-        <span>↗</span>
+        <span class="card-arrow" aria-hidden="true">↗</span>
       </a>
         {% endif %}
       {% endfor %}

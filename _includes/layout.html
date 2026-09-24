@@ -4,11 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>{% if title %}{{ title }} — Athega{% else %}Athega — Teknik som gör verklig skillnad{% endif %}</title>
-    <meta name="description" content="{{ description | default: 'Athega hjälper svenska företag att bygga, förstå och förbättra digitala produkter med modern mjukvaruteknik och AI.' }}">
+    <meta name="description" content="{{ description | default: excerpt | default: 'Athega hjälper svenska företag att bygga, förstå och förbättra digitala produkter med modern mjukvaruteknik och AI.' }}">
     <meta property="og:title" content="{% if title %}{{ title }} — Athega{% else %}Athega — Teknik som gör verklig skillnad{% endif %}">
-    <meta property="og:description" content="{{ description | default: 'Athega hjälper svenska företag att bygga, förstå och förbättra digitala produkter med modern mjukvaruteknik och AI.' }}">
-    {% if page.url %}<meta property="og:url" content="{{ site.url }}{{ page.url | removeHtmlExtension }}">{% endif %}
-    {% if image_url %}<meta property="og:image" content="{{ site.url }}{{ image_url }}">{% endif %}
+    <meta property="og:description" content="{{ description | default: excerpt | default: 'Athega hjälper svenska företag att bygga, förstå och förbättra digitala produkter med modern mjukvaruteknik och AI.' }}">
+    {% if page.url %}
+    <link rel="canonical" href="{{ site.url }}{{ page.url | removeHtmlExtension }}">
+    <meta property="og:url" content="{{ site.url }}{{ page.url | removeHtmlExtension }}">
+    {% endif %}
+    <meta property="og:type" content="{% if layout == 'post' %}article{% else %}website{% endif %}">
+    <meta property="og:site_name" content="Athega">
+    <meta property="og:locale" content="sv_SE">
+    <meta property="og:image" content="{% if image_url contains '://' %}{{ image_url }}{% else %}{{ site.url }}{{ image_url | default: site.image }}{% endif %}">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="alternate" type="application/atom+xml" title="Athega – Blogg" href="/blogg/feed.xml">
     <link rel="apple-touch-icon" sizes="192x192" type="image/png" href="/assets/img/icon.png">
     <link rel="icon" sizes="192x192" type="image/png" href="/assets/img/icon.png">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -16,6 +24,7 @@
     <link rel="stylesheet" href="/assets/site.css">
   </head>
   <body>
+    <a class="skip-link" href="#main">Hoppa till innehållet</a>
     {% include "header.html" %}
     {{ content }}
     {% include "footer.html" %}

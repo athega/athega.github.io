@@ -62,6 +62,22 @@ npm run build
 
 Den färdiga sajten hamnar i mappen `_site/`.
 
+### Kontrollera länkar och bilder
+
+```console
+npm run check
+```
+
+Kontrollen körs efter bygget (även i GitHub Actions) och misslyckas om en intern
+länk eller bild leder ingenstans, en bild saknar `alt`-text eller en sida inte har
+exakt en `<h1>`. Undantag för äldre innehåll som inte går att rätta finns i
+`scripts/check-site.mjs`. Bildernas `width`, `height` och `loading="lazy"` läggs
+till automatiskt vid bygget av `scripts/image-attributes.mjs`; skriv dem inte för
+hand i innehållet. `sitemap.xml`, `robots.txt` och bloggflödet `/blogg/feed.xml`
+genereras från `sitemap.xml.liquid`, `robots.txt.liquid` och `blogg/feed.xml.liquid`.
+Standardbilden vid delning (`og:image`) för sidor utan egen bild anges i
+`_data/site.json`.
+
 ## Vanliga uppgifter
 
 ### Hämta ändringar från GitHub
@@ -76,18 +92,30 @@ git pull --rebase
 
    Exempel: `_posts/2024-03-15-min-nya-post.md`
 
-2. **Lägg till metadata** i toppen av filen:
+2. **Skriv en rubrik** på första raden. Det är hela metadatan som krävs:
+   ```markdown
+   # Titel på inlägget
+
+   Första stycket blir ingressen i listor och vid delning.
+   ```
+   Datumet kommer från filnamnet, adressen och layouten sätts automatiskt.
+   Utan rubrik används filnamnet som titel, och bilden i listan är valfri.
+
+   Vill du styra mer kan du i stället lägga metadata överst i filen. Allt utom
+   `title` är valfritt, och en egen `description` går före det automatiska utdraget:
    ```yaml
    ---
    title: "Titel på inlägget"
-   date: 2024-03-15
    description: "Kort beskrivning som visas i listningar"
+   image_url: /assets/blog/din-bild.png
    tags:
      - blogg
    last_updated_by: dittnamn
-   image_url: /assets/blog/din-bild.png
+   draft: true   # döljer inlägget i produktion
    ---
    ```
+   Har du både en `# rubrik` och `title` i metadatan används `title`, och rubriken
+   i texten visas då som en vanlig rubrik. Ta bort den för att undvika dubbletter.
 
 3. **Skriv innehållet** i [Markdown](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
 
@@ -361,10 +389,11 @@ till exempel för bilder och inbäddningar. Bedöm den utifrån det specifika in
 
 Bloggartiklar använder en egen skala i `_includes/styles/article.scss`, baserad
 på den tidigare publicerade bloggens faktor 1,2 och dess storleksgränser.
-Vid normal textstorlek blir brödtext, ingress, citat och kod 16 px, h3 cirka
-23 px, h2 cirka 28 px och h1 cirka 33 px. H1 och h2 har vikt 300,
-h3–h6 har vikt 400 och kod 500. Brödtexten ärver sajtens gemensamma vikt 300.
-Radavståndet är 1,5 i text och kod, och 1,15 i rubriker.
+Brödtext, ingress och citat följer sajtens brödtextstorlek `--text-lg` (18 px)
+och radavstånd `--leading-copy`, så att bloggen och övriga sidor är enhetliga.
+Då blir h3 cirka 26 px, h2 cirka 31 px och h1 cirka 37 px. Kodblock är 16 px.
+H1 och h2 har vikt 300, h3–h6 har vikt 400 och kod 500. Brödtexten ärver
+sajtens gemensamma vikt 300. Radavståndet är 1,5 i kodblock och 1,15 i rubriker.
 Den nya sidans typsnitt, omslag och komponentutseende behålls. Justera artikelns
 variabler i stället för de globala rubrikstorlekarna eller artikelns Markdown.
 
@@ -374,7 +403,16 @@ CSS-klasserna och HTML-omslagen är kopplade till varandra. Följ befintliga
 komponenter och CSS-variabler när du ändrar eller utökar designen. Importordningen
 i `assets/site.scss` är avsiktlig; responsiva regler kommer sist.
 
-Sidor med `layout: sections` får klassen `section-page`. Deras gemensamma
+Använd variablerna i `_includes/styles/base.scss` i stället för egna pixelvärden:
+avståndsskalan `--space-1..7`, `--grid-gap`, `--card-padding`, hörnradierna
+`--radius-sm`, `--radius` och `--radius-lg`, samt `--line-strong` och
+`--on-dark-muted`. Cirkelpilen på kort är `.card-arrow` (`.card-arrow-sm` för
+den mindre varianten) och kortrubriker delar en gemensam regel i `controls.scss`.
+På sidor med `layout: sections` tar sektioner med egen bakgrund (`soft-section`,
+`join-section`, `unified-callout`, `dark-section`) och sektionerna som gränsar
+till dem hela `--section-flow-gap`; övriga sektioner tar halva.
+
+Sidor med `layout: sections`, startsidan och bloggens arkivsidor får klassen `section-page`. Deras gemensamma
 vertikala rytm finns i `_includes/styles/section-spacing.scss` och styrs av
 `--section-flow-gap`: 64 px på större skärmar och 40 px på mobil. Samma mått
 används ovanför sidans första etikett, mellan

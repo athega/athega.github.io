@@ -1,8 +1,12 @@
 import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 import markdownSections from "./scripts/markdown-sections.mjs";
+import imageAttributes from "./scripts/image-attributes.mjs";
+import postDefaults from "./scripts/post-defaults.mjs";
 
 export default function(eleventyConfig) {
   eleventyConfig.addPlugin(markdownSections);
+  eleventyConfig.addPlugin(imageAttributes);
+  eleventyConfig.addPlugin(postDefaults);
   // Drafts: exkludera helt vid build, visa vid serve/watch
   eleventyConfig.addPreprocessor("drafts", "*", (data) => {
     if (data.draft && process.env.ELEVENTY_RUN_MODE === "build") {
@@ -33,6 +37,17 @@ export default function(eleventyConfig) {
       post.data.previous = posts[i - 1];
     });
     return posts;
+  });
+
+  // Sidor som ska med i sitemap.xml: allt utom 404 och årsarkiv utan inlägg
+  eleventyConfig.addCollection("sitemapPages", function(collection) {
+    const postYears = new Set(collection.getFilteredByGlob("_posts/*.md")
+      .map((post) => String(post.date.getUTCFullYear())));
+    return collection.getAll().filter((item) => {
+      if (!item.url || item.url === "/404.html" || item.data.sitemap === false) return false;
+      if (item.data.year && !postYears.has(String(item.data.year))) return false;
+      return true;
+    });
   });
 
   // Employees collection (sorterad alfabetiskt efter filnamn)

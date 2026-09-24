@@ -8,6 +8,6 @@
 .join-grid > div p { color: var(--muted); font-size: var(--text-lg); line-height: var(--leading-copy); }
 .dark-section, .unified-callout { background: var(--ink); color: #fff; }
 .unified-callout .eyebrow { color: var(--orange); }
-.unified-callout .join-grid > div p { color: #d7d9da; }
+.unified-callout .join-grid > div p { color: var(--on-dark-muted); }
 .unified-callout .join-grid > div p:last-of-type { margin-bottom: 24px; }
 .callout-links { display: flex; flex-wrap: wrap; gap: 18px 28px; }

@@ -14,13 +14,11 @@
 .stacked-prose .large-prose { max-width: 820px; margin-top: 28px; }
 .about-intro-copy { max-width: 820px; }
 .about-intro-copy p:last-child { margin-bottom: 0; }
-.section.about-history { padding-bottom: 24px; }
-.section.about-facts { padding-block: 24px; background: var(--paper); }
-.about-facts .facts-grid { gap: 18px; background: transparent; }
-.about-facts .facts-grid > div { padding: 28px 30px; background: var(--neutral); border-radius: 14px; }
+.facts-section.about-facts { background: var(--paper); }
+.about-facts .facts-grid { gap: var(--grid-gap); background: transparent; }
+.about-facts .facts-grid > div { padding: var(--card-padding); background: var(--neutral); border-radius: var(--radius); }
 .about-facts .facts-grid span { font-size: var(--text-section); font-weight: 300; letter-spacing: -.03em; }
-.section.team-section { padding-top: 32px; }
-.team-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 30px 18px; }
+.team-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-4) var(--grid-gap); }
 .team-card { margin: 0; }
-.team-card img { width: 100%; aspect-ratio: 420 / 236; object-fit: cover; border-radius: 14px; }
+.team-card img { width: 100%; aspect-ratio: 420 / 236; object-fit: cover; border-radius: var(--radius); }
 .team-card figcaption { margin-top: 10px; font-size: var(--text-lg); }

@@ -27,5 +27,11 @@
 .section-page .section-heading > :last-child,
 .section-page .large-prose > :last-child { margin-bottom: 0; }
 
+/* Sections with their own background have no neighbour that supplies the other half of the gap, so they and the sections touching them take the full gap. */
+$band: ":is(.soft-section, .join-section, .unified-callout, .dark-section, .facts-section:not(.about-facts))";
+.section-page > section.section#{$band} { padding-block: var(--section-flow-gap); }
+.section-page > :is(.page-hero, section.section):has(+ section.section#{$band}) { padding-bottom: var(--section-flow-gap); }
+.section-page > section.section#{$band} + section.section { padding-top: var(--section-flow-gap); }
+
 /* These cards have no number above their heading. */
 .section-page .numbered-card-grid h3 { margin-top: 0; }

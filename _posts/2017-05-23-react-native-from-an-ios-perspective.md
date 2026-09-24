@@ -19,4 +19,4 @@ Vi bekantade oss med utvecklingsmiljön och följde sedan en av de [tutorials](h
 
 På vägen gick vi igenom hur Apples Xcode ställs in för de förändringar som kommit med de senaste iOS versionerna: *[App Transport Security](https://forums.developer.apple.com/thread/6767)* och *[Code Signing](https://developer.apple.com/support/code-signing/)*.
 
-/ [Andreas](/andreas)
+/ Andreas
