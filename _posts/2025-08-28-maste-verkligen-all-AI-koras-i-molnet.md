@@ -8,9 +8,8 @@ tags:
   - markdown
 last_updated_by: peter
 image_url: /assets/blog/2025-08-28-maste-verkligen-all-AI-koras-i-molnet/ai-visualisering.webp
+hide_excerpt_in_article: true
 ---
-
-> {{description}}
 
 ![AI visualisering]({{image_url}})
 

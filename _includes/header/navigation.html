@@ -1,0 +1,4 @@
+{% for link in navigation.links %}
+<a href="{{ link.href | escape }}">{{ link.label | escape }}</a>
+{% endfor %}
+<a class="nav-cta" href="mailto:{{ navigation.contact.email | escape }}">{{ navigation.contact.label | escape }} – {{ navigation.contact.email | escape }}</a>

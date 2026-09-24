@@ -1,6 +1,15 @@
-<article class="blog-post content">
-  <h1>{{ title }}</h1>
-  {{ content }}
-  <hr>
-  <time datetime="{{ date | date: "%Y-%m-%d" }}">{{ date | swedishDate }}</time>
-</article>
+<main id="main">
+  <article class="article-shell">
+    <a class="back-link" href="/blogg/">← Till bloggarkivet</a>
+    <header>
+      <p class="eyebrow">Från bloggen · <time datetime="{{ date | date: '%Y-%m-%d' }}">{{ date | date: '%Y-%m-%d' }}</time></p>
+      <h1>{{ title }}</h1>
+      {% unless hide_excerpt_in_article %}
+        {% if description %}
+      <p class="article-lead">{{ description }}</p>
+        {% endif %}
+      {% endunless %}
+    </header>
+    <div class="article-body">{{ content }}</div>
+  </article>
+</main>

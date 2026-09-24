@@ -43,7 +43,7 @@ I told you I was looking out the window.
 
 And here is my proof of work
 
-<img src="https://i.imgur.com/JmRfi3o.jpeg" />
+<img src="https://i.imgur.com/JmRfi3o.jpeg" alt="Resultat från Athega Code Base 2012" />
 
 And this time I did manage to produce something with enough value to give away.
 

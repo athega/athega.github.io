@@ -8,6 +8,7 @@
     "sass": "sass --load-path=_includes assets/site.scss:_site/assets/site.css --style=compressed",
     "sass:watch": "sass --load-path=_includes assets/site.scss:_site/assets/site.css --style=compressed --watch",
     "build": "npm run sass && npx @11ty/eleventy",
+    "check": "node scripts/check-site.mjs",
     "start": "node scripts/dev.mjs"
   },
   "devDependencies": {

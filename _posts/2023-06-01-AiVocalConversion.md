@@ -17,7 +17,7 @@ Vi på Athega gillar att laborera och testa nya tekniker. I april skrev artisten
 AI-lösningar för att återskapa hennes röst och släppa låtar med GrimesAI som ett samarbete. Vi hakade direkt på eftersom vi älskar musik
 och ny teknik! Vi satte igång rätt omgående.
 
-<img src="/assets/blog/Entropy-GrimesAI-Zymbsmall.png"/>
+<img src="/assets/blog/Entropy-GrimesAI-Zymbsmall.png" alt="Abstrakt, färgstark bild av en kvist i motljus"/>
 
 Det började med att vi fick tillgång till flera Grimes DAW-projekt där hennes röst fanns i ett antal tagningar. Tyvärr var flera av låtarna Stem-bouncade med effekter så en stor del av träningsdatat gick inte att använda.
 

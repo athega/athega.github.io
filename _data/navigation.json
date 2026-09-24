@@ -1,0 +1,32 @@
+{
+  "links": [
+    {
+      "label": "Om oss",
+      "href": "/om-oss/"
+    },
+    {
+      "label": "Systemutveckling",
+      "href": "/systemutveckling/"
+    },
+    {
+      "label": "AI & maskininlärning",
+      "href": "/ai-labbet/"
+    },
+    {
+      "label": "Teknikgranskning",
+      "href": "/teknikgranskning/"
+    },
+    {
+      "label": "Blogg",
+      "href": "/blogg/"
+    },
+    {
+      "label": "Jobba med oss",
+      "href": "/jobba/"
+    }
+  ],
+  "contact": {
+    "label": "Kontakta oss",
+    "email": "reception@athega.se"
+  }
+}
