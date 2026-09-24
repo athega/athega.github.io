@@ -33,7 +33,8 @@
   --space-5: 40px;
   --space-6: 48px;
   --space-7: 64px;
-  --grid-gap: 20px;
+  --grid-gap: 12px;
+  --content-gap: var(--space-3); // section heading/intro to the cards or text below it
   --card-padding: var(--space-4);
   --radius-sm: 12px;
   --radius: 16px;

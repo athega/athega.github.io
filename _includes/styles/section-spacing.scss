@@ -9,7 +9,7 @@
 }
 .section-page > section > .shell > :last-child { margin-bottom: 0; }
 
-.section-page .section-heading { margin-bottom: var(--section-flow-gap); }
+.section-page .section-heading { margin-bottom: var(--content-gap); }
 
 /* The container owns spacing; its children must not add their own margins. */
 .section-page > .page-hero > .shell {

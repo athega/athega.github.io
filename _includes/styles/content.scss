@@ -12,11 +12,15 @@
 .numbered-card-grid article { background: var(--paper); }
 .numbered-card-grid h3 { margin-top: 0; }
 .focus-grid article > span, .step-grid article > span { color: var(--orange); font-size: var(--text-sm); font-weight: 600; letter-spacing: .14em; }
-.focus-grid h3, .step-grid h3 { margin: var(--space-6) 0 var(--space-2); }
+.focus-grid h3, .step-grid h3 { margin: var(--heading-gap) 0 var(--space-2); }
 .focus-grid p, .step-grid p, .case-grid p { color: var(--muted); line-height: var(--leading-copy); }
+/* The card's padding, not the last paragraph's margin, sets the space under the text. */
+:is(.focus-grid, .step-grid, .case-grid) article > :last-child { margin-bottom: 0; }
 .focus-grid p { font-size: var(--text-lg); }
 .soft-section .focus-grid, .soft-section .focus-grid article { border-color: var(--line-strong); }
 .step-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: var(--grid-gap); }
+/* Six steps read better as two rows of three than as four plus two. */
+@media (min-width: 981px) { .step-grid:has(> article:nth-child(6):last-child) { grid-template-columns: repeat(3,1fr); } }
 .step-grid article { padding: var(--card-padding); background: var(--neutral); border-radius: var(--radius); }
 .case-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--grid-gap); }
 .case-grid article { padding: var(--card-padding); background: var(--paper); border-radius: var(--radius); }

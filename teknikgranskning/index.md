@@ -46,7 +46,7 @@ Investerare · Köpare · VC / PE
 
 {% endsection %}
 
-{% section "focus", "default", "omfattning" %}
+{% section "steps", "soft", "omfattning" %}
 
 Vad vi granskar
 

@@ -415,9 +415,10 @@ till dem hela `--section-flow-gap`; övriga sektioner tar halva.
 Sidor med `layout: sections`, startsidan och bloggens arkivsidor får klassen `section-page`. Deras gemensamma
 vertikala rytm finns i `_includes/styles/section-spacing.scss` och styrs av
 `--section-flow-gap`: 64 px på större skärmar och 40 px på mobil. Samma mått
-används ovanför sidans första etikett, mellan
-sektioner och från sektionsrubrik/intro till kortgrupper. Intilliggande sektioner
-bidrar med halva avståndet var. Ändra dessa gemensamma regler i stället för att
+används ovanför sidans första etikett och mellan
+sektioner. Intilliggande sektioner bidrar med halva avståndet var. Från
+sektionsrubrik/intro till kortgrupper och text används det mindre måttet
+`--content-gap` (24 px, 16 px på mobil), och mellan kort `--grid-gap` (12 px). Ändra dessa gemensamma regler i stället för att
 lägga in extra blankrader eller avstånd i Markdown. I sidintroduktionen styr
 gemensamma regler avstånden mellan omslagets direkta barn. Egna vertikala
 marginaler nollställs innan avståndet läggs på en gång. Kontaktlänkar samlas i

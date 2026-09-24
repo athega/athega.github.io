@@ -30,7 +30,7 @@
 }
 
 @media (max-width: 640px) {
-  :root { --shell: calc(100% - 40px); --text-page: 32px; --text-section: 28px; --text-card: 24px; --text-lead: 21px; --section-flow-gap: 40px; }
+  :root { --shell: calc(100% - 40px); --text-page: 32px; --text-section: 28px; --text-card: 24px; --text-lead: 21px; --section-flow-gap: 40px; --content-gap: var(--space-2); }
   .nav-wrap { min-height: 72px; }
   .brand img { width: 146px; }
   .page-hero { padding: 58px 0 30px; }
