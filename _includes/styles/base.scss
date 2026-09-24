@@ -6,6 +6,8 @@
   --neutral: #efefef;
   --soft: var(--neutral);
   --orange: #ff6600;
+  // Text on light backgrounds. Restore #ff6600 here to undo the contrast trial.
+  --orange-text: #ed702d;
   --shell: min(1216px, 92vw);
   --text-xs: 12px;
   --text-sm: 14px;

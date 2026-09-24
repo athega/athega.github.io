@@ -14,7 +14,7 @@
 .focus-label { margin-bottom: 16px; }
 .service-grid { border-top: 1px solid var(--line); }
 .service-card { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 34px; padding: 26px 0; border-bottom: 1px solid var(--line); }
-.service-card h3 { margin: 0 0 7px; font-size: var(--text-card); font-weight: 300; line-height: var(--leading-card); letter-spacing: -.025em; }
+.service-card h2, .service-card h3 { margin: 0 0 7px; font-size: var(--text-card); font-weight: 300; line-height: var(--leading-card); letter-spacing: -.025em; }
 .service-card p { max-width: 670px; margin: 0; color: var(--muted); font-size: var(--text-lg); line-height: var(--leading-copy); }
 .card-arrow { width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; font-size: var(--text-lg); transition: .2s; }
 .service-card:hover .card-arrow { background: var(--orange); border-color: var(--orange); color: #fff; }
@@ -26,9 +26,9 @@
 .home-latest-heading .eyebrow { margin: 0; }
 .home-latest-heading .text-link { font-size: var(--text-sm); }
 .home-latest-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
-.home-latest-card { min-height: 148px; display: grid; grid-template-columns: 42% 1fr; overflow: hidden; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; transition: transform .2s,border-color .2s; }
+.home-latest-card { min-height: 148px; display: grid; grid-template-columns: 42% minmax(0,1fr); overflow: hidden; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; transition: transform .2s,border-color .2s; }
 .home-latest-card:hover { transform: translateY(-3px); border-color: #b8bab5; }
 .home-latest-card img { width: 100%; height: 100%; min-height: 148px; object-fit: cover; }
 .home-latest-card > div { padding: 17px 16px; }
-.home-latest-card h2 { margin: 0 0 9px; font-size: var(--text-lg); font-weight: 400; line-height: var(--leading-card); letter-spacing: -.02em; }
+.home-latest-card h3 { overflow-wrap: break-word; hyphens: auto; margin: 0 0 9px; font-size: var(--text-lg); font-weight: 400; line-height: var(--leading-card); letter-spacing: -.02em; }
 .home-latest-card p { display: -webkit-box; overflow: hidden; margin: 0; color: var(--muted); font-size: var(--text-sm); line-height: 1.42; -webkit-box-orient: vertical; -webkit-line-clamp: 3; }
