@@ -357,11 +357,40 @@ bygget och att berörda sidor behåller rätt HTML-struktur och utseende.
 Äldre bloggposter och enstaka andra innehållsfiler kan fortfarande innehålla HTML,
 till exempel för bilder och inbäddningar. Bedöm den utifrån det specifika innehållet.
 
+### Bloggens typografi
+
+Bloggartiklar använder en egen skala i `_includes/styles/article.scss`, baserad
+på den tidigare publicerade bloggens faktor 1,2 och dess storleksgränser.
+Vid normal textstorlek blir brödtext, ingress, citat och kod 16 px, h3 cirka
+23 px, h2 cirka 28 px och h1 cirka 33 px. H1 och h2 har vikt 300,
+h3–h6 har vikt 400 och kod 500. Brödtexten ärver sajtens gemensamma vikt 300.
+Radavståndet är 1,5 i text och kod, och 1,15 i rubriker.
+Den nya sidans typsnitt, omslag och komponentutseende behålls. Justera artikelns
+variabler i stället för de globala rubrikstorlekarna eller artikelns Markdown.
+
 ### Ändra designen
 
 CSS-klasserna och HTML-omslagen är kopplade till varandra. Följ befintliga
 komponenter och CSS-variabler när du ändrar eller utökar designen. Importordningen
 i `assets/site.scss` är avsiktlig; responsiva regler kommer sist.
+
+Sidor med `layout: sections` får klassen `section-page`. Deras gemensamma
+vertikala rytm finns i `_includes/styles/section-spacing.scss` och styrs av
+`--section-flow-gap`: 64 px på större skärmar och 40 px på mobil. Samma mått
+används ovanför sidans första etikett, mellan
+sektioner och från sektionsrubrik/intro till kortgrupper. Intilliggande sektioner
+bidrar med halva avståndet var. Ändra dessa gemensamma regler i stället för att
+lägga in extra blankrader eller avstånd i Markdown. I sidintroduktionen styr
+gemensamma regler avstånden mellan omslagets direkta barn. Egna vertikala
+marginaler nollställs innan avståndet läggs på en gång. Kontaktlänkar samlas i
+`hero-actions` och får ett tätare avstånd på 16 px till föregående text.
+Orange etiketter, huvudrubrik–ingress och sektionsrubrik–intro använder samma
+`--heading-gap` (24 px) på alla sidor och skärmstorlekar. Sektionsrubriker som
+ligger ovanför sin introtext får avståndet via den gemensamma `.section-heading`-
+regeln. När en layoutbehållare äger avståndet nollställs etikettens egen marginal.
+Sektionsrubriker och brödtextomslag ska inte lämna en extra slutmarginal mot nästa
+block. Kortens inre padding och avstånd mellan nummer, rubrik och text är separata
+från avståndet mellan sidans block.
 
 Äldre filer som `_includes/layout.scss`, `_includes/header.scss` och
 `_includes/home/*.scss` hör till den tidigare designen och ingår inte i den

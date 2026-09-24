@@ -6,6 +6,5 @@
 .network-quote { max-width: 960px; display: grid; grid-template-columns: 150px 1fr; align-items: start; gap: 28px; margin: 48px auto 0; padding: 24px; background: var(--paper); border-radius: 18px; }
 .network-quote img { width: 150px; height: 150px; object-fit: cover; border-radius: 12px; }
 .network-quote blockquote { margin: 0; }
-.network-quote .eyebrow { margin-bottom: 18px; }
 .network-quote blockquote p:not(.eyebrow) { margin: 0 0 14px; font-size: var(--text-lg); line-height: var(--leading-copy); }
 .network-quote blockquote p:last-child { margin-bottom: 0; }

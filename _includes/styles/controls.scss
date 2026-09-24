@@ -1,5 +1,5 @@
 /* Shared type and controls */
-.eyebrow { margin: 0 0 20px; color: var(--orange-text); font-size: var(--text-sm); font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
+.eyebrow { margin: 0 0 var(--heading-gap); color: var(--orange-text); font-size: var(--text-sm); font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
 .button { min-height: 52px; display: inline-flex; align-items: center; justify-content: center; gap: 18px; padding: 0 21px; border: 0; border-radius: 999px; font-size: var(--text-sm); font-weight: 500; }
 .button-secondary { border: 1px solid var(--ink); }
 .text-link { display: inline-flex; align-items: center; gap: 14px; padding-bottom: 6px; border-bottom: 1px solid currentColor; font-weight: 500; }

@@ -7,9 +7,9 @@
       {% if variant == 'ai' %}<div class="hero-summary">{{ summary }}</div>{% else %}{{ summary }}{% endif %}
     {% endif %}
     {% if links.size > 0 %}
-      {% if variant == 'technical-review' %}<div class="hero-actions">{% endif %}
+      <div class="hero-actions">
       {% for link in links %}{{ link }}{% endfor %}
-      {% if variant == 'technical-review' %}</div>{% endif %}
+      </div>
     {% endif %}
   </div>
 </section>

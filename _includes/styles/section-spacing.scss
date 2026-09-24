@@ -1,0 +1,31 @@
+/* Shared vertical rhythm for Markdown section pages. */
+/* Adjacent sections each contribute half of the shared gap. */
+.section-page > section.section {
+  padding-block: calc(var(--section-flow-gap) / 2);
+}
+.section-page > .page-hero {
+  padding-top: var(--section-flow-gap);
+  padding-bottom: calc(var(--section-flow-gap) / 2);
+}
+.section-page > section > .shell > :last-child { margin-bottom: 0; }
+
+.section-page .section-heading { margin-bottom: var(--section-flow-gap); }
+
+/* The container owns spacing; its children must not add their own margins. */
+.section-page > .page-hero > .shell {
+  display: grid;
+  justify-items: start;
+  gap: 0;
+}
+.section-page > .page-hero > .shell > * { margin-block: 0; }
+.section-page > .page-hero > .shell > * + * { margin-top: var(--section-flow-gap); }
+.section-page > .page-hero > .shell > .eyebrow + h1 { margin-top: var(--heading-gap); }
+.section-page > .page-hero > .shell > h1 + .page-lead { margin-top: var(--heading-gap); }
+.section-page > .page-hero > .shell > .hero-actions { margin-top: 16px; }
+.section-page .section-heading > :first-child,
+.section-page .large-prose > :first-child { margin-top: 0; }
+.section-page .section-heading > :last-child,
+.section-page .large-prose > :last-child { margin-bottom: 0; }
+
+/* These cards have no number above their heading. */
+.section-page .numbered-card-grid h3 { margin-top: 0; }

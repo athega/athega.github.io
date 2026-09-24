@@ -1,18 +1,36 @@
-/* Blog articles */
+/* Blog articles: typography follows the published blog's 1.2 scale. */
+.article-shell {
+  --article-scale: 1.2;
+  --article-text: clamp(14px, 1rem, 18px);
+  --article-h4: clamp(18px, calc(var(--article-text) * var(--article-scale)), 22px);
+  --article-h3: clamp(23px, calc(var(--article-h4) * var(--article-scale)), 29px);
+  --article-h2: clamp(27px, calc(var(--article-h3) * var(--article-scale)), 38px);
+  --article-h1: clamp(33px, calc(var(--article-h2) * var(--article-scale)), 51px);
+  font-size: var(--article-text);
+  line-height: 1.5;
+}
+.article-shell h1, .article-body :is(h2, h3, h4, h5, h6) {
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: normal;
+}
+.article-shell h1, .article-body h2 { font-weight: 300; }
+.article-body h4 { font-size: var(--article-h4); }
+.article-body h5, .article-body h6 { font-size: var(--article-text); }
 .article-shell { width: min(820px,calc(100vw - 40px)); margin: 0 auto; padding: 75px 0 120px; }
 .back-link { display: inline-block; margin-bottom: 75px; color: var(--muted); font-size: var(--text-sm); }
 .article-shell header { margin-bottom: 55px; }
-.article-shell h1 { margin-bottom: 28px; font-size: var(--text-page); font-weight: 300; line-height: var(--leading-title); letter-spacing: -.012em; }
-.article-lead { color: var(--muted); font-size: var(--text-lead); line-height: 1.5; }
-.article-body { font-size: var(--text-lg); line-height: 1.72; }
-.article-body h2 { margin: 60px 0 20px; font-size: var(--text-section); font-weight: 300; line-height: var(--leading-title); }
-.article-body h3 { margin: 42px 0 15px; font-size: var(--text-card); font-weight: 400; line-height: var(--leading-card); }
+.article-shell h1 { margin-bottom: var(--heading-gap); font-size: var(--article-h1); }
+.article-lead { color: var(--muted); font-size: var(--article-text); line-height: 1.5; }
+.article-body { font-size: var(--article-text); line-height: 1.5; }
+.article-body h2 { margin: 60px 0 20px; font-size: var(--article-h2); }
+.article-body h3 { margin: 42px 0 15px; font-size: var(--article-h3); }
 .article-body p, .article-body ul, .article-body ol { margin-bottom: 25px; }
 .article-body img, .article-body video { width: auto; max-width: 100%; height: auto; margin: 40px auto; border-radius: 12px; }
 .article-body iframe { width: 100%; max-width: 100%; min-height: 460px; border: 0; }
-.article-body blockquote { margin: 25px 0; padding: 12px 20px; background: var(--soft); border-left: 4px solid var(--orange); font-size: var(--text-lead); }
+.article-body blockquote { margin: 25px 0; padding: 12px 20px; background: var(--soft); border-left: 4px solid var(--orange); font-size: inherit; font-style: italic; }
 .article-body blockquote > :first-child { margin-top: 0; }
 .article-body blockquote > :last-child { margin-bottom: 0; }
-.article-body pre { max-width: 100%; overflow: auto; padding: 22px; background: var(--ink); color: #f5f5f1; border-radius: 12px; font-size: var(--text-sm); }
-.article-body code { font-family: ui-monospace,SFMono-Regular,Menlo,monospace; }
+.article-body pre { max-width: 100%; overflow: auto; padding: 22px; background: var(--ink); color: #f5f5f1; border-radius: 12px; font-size: var(--article-text); line-height: 1.5; }
+.article-body code { font-family: ui-monospace,SFMono-Regular,Menlo,monospace; font-size: inherit; font-weight: 500; }
 .article-body a { color: var(--orange); text-decoration: underline; text-underline-offset: 3px; }

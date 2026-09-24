@@ -1,7 +1,7 @@
 <a class="service-card" href="{{ service.href | escape }}">
-  <div>
+  <div class="service-card-heading">
     <h2>{{ service.title | escape }}</h2>
-    <p>{{ service.description | escape }}</p>
+    <span class="card-arrow" aria-hidden="true">↗</span>
   </div>
-  <span class="card-arrow" aria-hidden="true">↗</span>
+  <p>{{ service.description | escape }}</p>
 </a>
