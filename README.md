@@ -84,7 +84,21 @@ Bygger sajten som den såg ut där den här grenen grenade av från `main` och
 jämför adresserna mot det aktuella bygget. Misslyckas om en sida som redan
 fanns saknas nu. Körs automatiskt som ett eget jobb (utan publiceringsrättigheter)
 på varje pull request mot `main`, se `.github/workflows/ci.yml`. På `main` själv,
-eller utan nätverk mot `origin`, skrivs en notis ut och kontrollen hoppas över. Bildernas `width`, `height` och `loading="lazy"` läggs
+eller utan nätverk mot `origin`, skrivs en notis ut och kontrollen hoppas över.
+
+### Omdirigera en gammal adress
+
+Lägg till `{"from": "/gammal/adress/", "to": "/ny/adress/", "title": "Sidans titel"}`
+i `_data/redirects.json`. `redirects.html` genererar en sida per rad, på den
+gamla adressen, med en direkt (0 sekunder) `<meta http-equiv="refresh">` och en
+`canonical` mot den nya adressen. Google behandlar en sådan omdirigering nästan
+lika pålitligt som en vanlig server-side 301, vilket GitHub Pages inte kan ge
+för enskilda sidor. Sidorna räknas inte med i `sitemap.xml` eller andra listor
+(`eleventyExcludeFromCollections`) och undantas redan av `npm run check`, som
+känner igen `http-equiv="refresh"`. `scripts/legacy-urls/` innehåller ett
+underlag över historiska adresser att gå igenom för fler omdirigeringar.
+
+Bildernas `width`, `height` och `loading="lazy"` läggs
 till automatiskt vid bygget av `scripts/image-attributes.mjs`; skriv dem inte för
 hand i innehållet. `sitemap.xml`, `robots.txt` och bloggflödet `/blogg/feed.xml`
 genereras från `sitemap.xml.liquid`, `robots.txt.liquid` och `blogg/feed.xml.liquid`.
