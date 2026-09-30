@@ -1,10 +1,12 @@
-// Checks the generated site in _site/: internal links and images that lead nowhere,
+// Checks the generated site in _site/: internal links and images that lead nowhere
+// (including fragments and links written as full https://athega.se/... addresses),
 // images without alt text, and pages without exactly one <h1>.
 // Run with `npm run check` after `npm run build`. Exits with 1 if anything is found.
 import fs from "node:fs";
 import path from "node:path";
 
 const root = "_site";
+const siteUrl = JSON.parse(fs.readFileSync("_data/site.json", "utf8")).url; // e.g. https://athega.se
 
 // Old blog posts link to pages from earlier versions of the site that no longer exist.
 // Only add an entry here when the link is part of historic content that can't be fixed.
@@ -26,22 +28,46 @@ const pages = [];
   }
 })(root);
 
-const exists = (url) => {
-  const target = path.join(root, decodeURI(url.split(/[?#]/)[0]));
-  if (!fs.existsSync(target)) return false;
-  return fs.statSync(target).isFile() || fs.existsSync(path.join(target, "index.html"));
+const resolve = (url) => {
+  const target = path.join(root, decodeURI(url));
+  if (fs.existsSync(target) && fs.statSync(target).isFile()) return target;
+  const indexFile = path.join(target, "index.html");
+  return fs.existsSync(indexFile) ? indexFile : null;
 };
+
+const htmlCache = new Map();
+const readHtml = (file) => {
+  if (!htmlCache.has(file)) htmlCache.set(file, fs.readFileSync(file, "utf8"));
+  return htmlCache.get(file);
+};
+const hasId = (html, id) => new RegExp(`\\sid="${id.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"`).test(html);
 
 const problems = [];
 for (const file of pages) {
-  const html = fs.readFileSync(file, "utf8");
+  const html = readHtml(file);
   if (/http-equiv="refresh"/i.test(html)) continue;
   const page = "/" + path.relative(root, file).replace(/index\.html$/, "");
   const body = html.split("<body")[1] ?? "";
 
-  for (const [, url] of body.matchAll(/(?:href|src)="(\/[^"/][^"]*)"/g)) {
-    if (!knownLegacy.some((pattern) => pattern.test(url)) && !exists(url)) {
-      problems.push(`${page}: länken ${url} leder ingenstans`);
+  for (const [, raw] of body.matchAll(/(?:href|src)="([^"]+)"/g)) {
+    if (!raw || /^(mailto:|tel:|data:|\/\/)/.test(raw)) continue;
+    let url = raw;
+    if (url.startsWith(siteUrl)) url = url.slice(siteUrl.length) || "/"; // written as a full address to our own site
+    else if (/^https?:\/\//.test(url)) continue; // another site: not ours to check
+    else if (!url.startsWith("/") && !url.startsWith("#")) continue; // relative path: not used in this codebase
+
+    const [urlPath, hash] = url.split("#");
+    let targetFile = file;
+    if (urlPath) {
+      if (knownLegacy.some((pattern) => pattern.test(urlPath))) continue;
+      targetFile = resolve(urlPath);
+      if (!targetFile) {
+        problems.push(`${page}: länken ${raw} leder ingenstans`);
+        continue;
+      }
+    }
+    if (hash && !hasId(readHtml(targetFile), hash)) {
+      problems.push(`${page}: länken ${raw} pekar på ett fragment som inte finns`);
     }
   }
   for (const [tag] of body.matchAll(/<img\b[^>]*>/g)) {

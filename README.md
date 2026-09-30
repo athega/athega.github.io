@@ -69,14 +69,27 @@ npm run check
 ```
 
 Kontrollen körs efter bygget (även i GitHub Actions) och misslyckas om en intern
-länk eller bild leder ingenstans, en bild saknar `alt`-text eller en sida inte har
-exakt en `<h1>`. Undantag för äldre innehåll som inte går att rätta finns i
-`scripts/check-site.mjs`. Bildernas `width`, `height` och `loading="lazy"` läggs
+länk eller bild leder ingenstans (även länkar skrivna som `#fragment` eller som
+en fullständig `https://athega.se/...`-adress), en bild saknar `alt`-text eller
+en sida inte har exakt en `<h1>`. Undantag för äldre innehåll som inte går att
+rätta finns i `scripts/check-site.mjs`.
+
+### Kontrollera att inga adresser försvunnit sedan main
+
+```console
+npm run check:urls
+```
+
+Bygger sajten som den såg ut där den här grenen grenade av från `main` och
+jämför adresserna mot det aktuella bygget. Misslyckas om en sida som redan
+fanns saknas nu. Körs automatiskt som ett eget jobb (utan publiceringsrättigheter)
+på varje pull request mot `main`, se `.github/workflows/ci.yml`. På `main` själv,
+eller utan nätverk mot `origin`, skrivs en notis ut och kontrollen hoppas över. Bildernas `width`, `height` och `loading="lazy"` läggs
 till automatiskt vid bygget av `scripts/image-attributes.mjs`; skriv dem inte för
 hand i innehållet. `sitemap.xml`, `robots.txt` och bloggflödet `/blogg/feed.xml`
 genereras från `sitemap.xml.liquid`, `robots.txt.liquid` och `blogg/feed.xml.liquid`.
 Standardbilden vid delning (`og:image`) för sidor utan egen bild anges i
-`_data/site.json`.
+`_data/site.json`. `npm test` kör testerna i `scripts/*.test.mjs`.
 
 ## Vanliga uppgifter
 

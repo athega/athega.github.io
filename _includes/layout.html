@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>{% if title %}{{ title }} — Athega{% else %}Athega — Teknik som gör verklig skillnad{% endif %}</title>
-    <meta name="description" content="{{ description | default: excerpt | default: 'Athega hjälper svenska företag att bygga, förstå och förbättra digitala produkter med modern mjukvaruteknik och AI.' }}">
-    <meta property="og:title" content="{% if title %}{{ title }} — Athega{% else %}Athega — Teknik som gör verklig skillnad{% endif %}">
-    <meta property="og:description" content="{{ description | default: excerpt | default: 'Athega hjälper svenska företag att bygga, förstå och förbättra digitala produkter med modern mjukvaruteknik och AI.' }}">
+    <meta name="description" content="{{ description | default: excerpt | default: 'Athega hjälper svenska företag att bygga, förstå och förbättra digitala produkter med modern mjukvaruteknik och AI.' | escape }}">
+    <meta property="og:title" content="{% if title %}{{ title | escape }} — Athega{% else %}Athega — Teknik som gör verklig skillnad{% endif %}">
+    <meta property="og:description" content="{{ description | default: excerpt | default: 'Athega hjälper svenska företag att bygga, förstå och förbättra digitala produkter med modern mjukvaruteknik och AI.' | escape }}">
     {% if page.url %}
+    {% unless no_canonical %}
     <link rel="canonical" href="{{ site.url }}{{ page.url | removeHtmlExtension }}">
+    {% endunless %}
     <meta property="og:url" content="{{ site.url }}{{ page.url | removeHtmlExtension }}">
     {% endif %}
     <meta property="og:type" content="{% if layout == 'post' %}article{% else %}website{% endif %}">

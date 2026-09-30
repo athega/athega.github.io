@@ -48,7 +48,6 @@
   .home-latest-card { min-height: 120px; grid-template-columns: 116px minmax(0,1fr); }
   .home-latest-card img { min-height: 120px; }
   .home-latest-card > div { padding: 14px 13px; }
-  .home-latest-card p { font-size: var(--text-xs); }
   .news-feature { grid-template-columns: 1fr; min-height: 0; border-radius: 14px; }
   .news-feature > img, .news-feature > .news-image-placeholder { min-height: 0; aspect-ratio: 3 / 1; }
   .news-feature-copy { padding: 20px 22px; }
