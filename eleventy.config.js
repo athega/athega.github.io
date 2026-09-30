@@ -1,23 +1,12 @@
-import fs from "node:fs";
 import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 import markdownSections from "./scripts/markdown-sections.mjs";
 import imageAttributes from "./scripts/image-attributes.mjs";
 import postDefaults from "./scripts/post-defaults.mjs";
 
-// Years with at least one blog post, from the post filenames themselves
-// (YYYY-MM-DD-slug.md). Used to tell an empty year archive (e.g. a future
-// year with nothing published yet) from one with real content.
-const postYears = new Set(
-  fs.readdirSync("_posts")
-    .filter((file) => file.endsWith(".md"))
-    .map((file) => file.slice(0, 4))
-);
-
 export default function(eleventyConfig) {
   eleventyConfig.addPlugin(markdownSections);
   eleventyConfig.addPlugin(imageAttributes);
   eleventyConfig.addPlugin(postDefaults);
-  eleventyConfig.addFilter("yearHasPosts", (year) => postYears.has(String(year)));
   // Drafts: exkludera helt vid build, visa vid serve/watch
   eleventyConfig.addPreprocessor("drafts", "*", (data) => {
     if (data.draft && process.env.ELEVENTY_RUN_MODE === "build") {
@@ -50,12 +39,10 @@ export default function(eleventyConfig) {
     return posts;
   });
 
-  // Sidor som ska med i sitemap.xml: allt utom 404 och årsarkiv utan inlägg
+  // Sidor som ska med i sitemap.xml: allt utom 404
   eleventyConfig.addCollection("sitemapPages", function(collection) {
     return collection.getAll().filter((item) => {
-      if (!item.url || item.url === "/404.html" || item.data.sitemap === false) return false;
-      if (item.data.year && !postYears.has(String(item.data.year))) return false;
-      return true;
+      return item.url && item.url !== "/404.html" && item.data.sitemap !== false;
     });
   });
 
