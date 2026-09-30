@@ -20,7 +20,11 @@ function firstParagraph(content) {
   for (const block of content.split(/\n\s*\n/)) {
     const lines = block.split("\n");
     if (lines.some((line) => /^\s*(```|~~~)/.test(line))) inFence = !inFence;
-    if (inFence || /^\s*(#|!|<|[-*+>|`]|\d+\.|\{%)/.test(block)) continue;
+    // A 4-space/tab indented block is Markdown's older code-block form (as used
+    // throughout some pre-2010 posts); skip it like a fenced block, so code
+    // such as an inline <script> example is never picked as the excerpt.
+    const isIndentedCode = lines.every((line) => line === "" || /^(\t| {4})/.test(line));
+    if (inFence || isIndentedCode || /^\s*(#|!|<|[-*+>|`]|\d+\.|\{%)/.test(block)) continue;
     const text = plainText(block);
     if (text.length < 20) continue;
     if (text.length <= EXCERPT_LENGTH) return text;
