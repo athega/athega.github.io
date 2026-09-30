@@ -1,0 +1,459 @@
+Historiska adresser för athega.se — underlag för fas 1 (URL-bevarande)
+Källa: Internetarkivets (web.archive.org) publika CDX-index, hämtat 2026-09-30.
+Detta är INTE en fullständig historik (Internetarkivet har bara det som någon gång besökts av deras robot),
+men det är den mest kompletta källa som går att nå utan inloggning till Search Console.
+595 unika sökvägar hittade totalt, varav 166 redan fungerar idag.
+
+## matches-current-post (37)
+SÄKER TRÄFF: artikeln finns kvar, adressen saknar bara /blogg/-prefixet. Klar för omdirigering.
+  /2009/03/03/valkommen-till-bloggen/  ->  /blogg/2009/03/03/valkommen-till-bloggen/
+  /2009/03/04/geotagga-bilder/  ->  /blogg/2009/03/04/geotagga-bilder/
+  /2009/03/25/athega-bidrar-till-oppen-kallkod/  ->  /blogg/2009/03/25/athega-bidrar-till-oppen-kallkod/
+  /2009/04/08/athegas-oppna-kallkod-anvands-av-valmyndigheten/  ->  /blogg/2009/04/08/athegas-oppna-kallkod-anvands-av-valmyndigheten/
+  /2009/04/16/ruby-on-rails-under-nginx-med-passenger/  ->  /blogg/2009/04/16/ruby-on-rails-under-nginx-med-passenger/
+  /2009/04/24/lat-inte-tomcat-jobba-i-onodan/  ->  /blogg/2009/04/24/lat-inte-tomcat-jobba-i-onodan/
+  /2009/05/05/railsconf-tutorials/  ->  /blogg/2009/05/05/railsconf-tutorials/
+  /2009/05/06/railsconf-tisdag/  ->  /blogg/2009/05/06/railsconf-tisdag/
+  /2009/05/07/railsconf-onsdag/  ->  /blogg/2009/05/07/railsconf-onsdag/
+  /2009/05/08/railsconf-torsdag/  ->  /blogg/2009/05/08/railsconf-torsdag/
+  /2009/06/10/google-wave/  ->  /blogg/2009/06/10/google-wave/
+  /2009/07/02/lar-dig-leva-utan-ancestorview/  ->  /blogg/2009/07/02/lar-dig-leva-utan-ancestorview/
+  /2009/07/02/potion/  ->  /blogg/2009/07/02/potion/
+  /2009/07/06/mongodb/  ->  /blogg/2009/07/06/mongodb/
+  /2009/07/08/html5-och-canvas/  ->  /blogg/2009/07/08/html5-och-canvas/
+  /2009/08/12/in-i-zonen-som-systemutvecklare/  ->  /blogg/2009/08/12/in-i-zonen-som-systemutvecklare/
+  /2009/08/28/sociala-medier-for-foretaget/  ->  /blogg/2009/08/28/sociala-medier-for-foretaget/
+  /2009/09/15/ppm-upphandlingen/  ->  /blogg/2009/09/15/ppm-upphandlingen/
+  /2009/10/06/json-och-mootools-for-web-workers/  ->  /blogg/2009/10/06/json-och-mootools-for-web-workers/
+  /2009/11/09/athega-pa-escenicutbildning-i-oslo/  ->  /blogg/2009/11/09/athega-pa-escenicutbildning-i-oslo/
+  /2009/11/10/den-produktive-programmeraren/  ->  /blogg/2009/11/10/den-produktive-programmeraren/
+  /2009/12/03/ur-delar-med-sig-med-hjalp-av-woa-teknik/  ->  /blogg/2009/12/03/ur-delar-med-sig-med-hjalp-av-woa-teknik/
+  /2009/12/04/gasell-2009/  ->  /blogg/2009/12/04/gasell-2009/
+  /2010/03/18/extensions-for-episerver/  ->  /blogg/2010/03/18/extensions-for-episerver/
+  /2010/03/24/testar-pomodoro-tekniken/  ->  /blogg/2010/03/24/testar-pomodoro-tekniken/
+  /2010/04/09/athega-sponsrar-nordic-ruby/  ->  /blogg/2010/04/09/athega-sponsrar-nordic-ruby/
+  /2010/04/09/jquery-ar-snyggt/  ->  /blogg/2010/04/09/jquery-ar-snyggt/
+  /2010/04/10/unobtrusive-javascripts/  ->  /blogg/2010/04/10/unobtrusive-javascripts/
+  /2010/05/09/frozen-rails/  ->  /blogg/2010/05/09/frozen-rails/
+  /2010/05/28/nordic-ruby/  ->  /blogg/2010/05/28/nordic-ruby/
+  /blogg/2013/01/16/enmanskonsult/  ->  /blogg/2013/01/15/enmanskonsult/
+  /blogg/2023/09/29/Athegafredag-Stablediffusion/  ->  /blogg/2023/03/17/Athegafredag-Stablediffusion/
+  /roller/datascientist/  ->  /blogg/2015/04/14/datascientist/
+  /tagg/mongodb/  ->  /blogg/2009/07/06/mongodb/
+  /tagg/potion/  ->  /blogg/2009/07/02/potion/
+  /tagg/ruby/  ->  /blogg/2010/05/21/ruby/
+  /tags/ruby/  ->  /blogg/2010/05/21/ruby/
+
+## archive-index (25)
+Gamla månads-/årsarkiv (Blogger- och "arkiv/"-stil). Förslag: omdirigera till /blogg/ eller närmaste /blogg/ÅR/.
+  /2008_05_01_archive.html
+  /2009/03/
+  /2009/04/
+  /2009/05/
+  /2009/06/
+  /2009/07/
+  /2009/08/
+  /2009/09/
+  /2009/10/
+  /2009/11/
+  /2009/12/
+  /2010/03/
+  /2010/04/
+  /2010/05/
+  /arkiv/2008/10/
+  /arkiv/2008/11/
+  /arkiv/2008/12/
+  /arkiv/2008/5/
+  /arkiv/2008/6/
+  /arkiv/2008/7/
+  /arkiv/2008/8/
+  /arkiv/2008/9/
+  /arkiv/2009/1/
+  /arkiv/2009/2/
+  /arkiv/2009/3/
+
+## unmigrated-blog-post (40)
+Blogginlägg (adressform ÅÅÅÅ/MM/DD/...) som INTE finns i det nuvarande bygget. Antingen aldrig migrerat eller medvetet borttaget. Kräver ett beslut per adress.
+  /2008/05/avstamp.html
+  /2008/05/javaone-2008-dag-1.html
+  /2008/05/javaone-2008-groovy-och-grails.html
+  /2008/05/javaone-2008-java-university.html
+  /2008/09/ie8-gr-webblsardjungeln-nnu-ttare.html
+  /2008/09/supporten-har-humor.html
+  /2008/10/15/spotify/
+  /2008/10/15/transparent-kommunikation/
+  /2008/10/31/gott-och-blandat-5/
+  /2008/11/28/fredagsrapport-vecka-48-2008/
+  /2008/11/7/fredagsrapport-vecka-45-2008/
+  /2008/12/1/cross-domain-scripting/
+  /2008/5/18/fredagsrapport-vecka-20-2008/
+  /2008/5/2/fredagsrapport-vecka-18/
+  /2008/5/9/fredagsrapport-vecka-19/
+  /2008/6/26/nginx-och-thin/
+  /2008/6/27/fredagsrapport-vecka-26-2008/
+  /2008/7/4/fredagsrapport-vecka-27-2008/
+  /2008/9/18/gott-och-blandat/
+  /2008/9/22/gott-och-blandat-2/
+  /2009/03/bromsa-aldrig-med-axeln.html
+  /2009/04/jag-skriver-i-presentationen-till-den.html
+  /2009/05/pappaledig-i-maj-och-california-games.html
+  /2009/07/snart-semester-och-en-kraftig.html
+  /2009/1/16/fredagsrapport-vecka-3-2009/
+  /2009/1/9/fredagsrapport-vecka-2-2009/
+  /2009/10/aftonbladet-igen.html
+  /2009/11/redev-2009-summering-av-konferensdag-1.html
+  /2009/11/redev-2009-summering-av-konferensdag-1_04.html
+  /2009/11/redev-2009-summering-av-konferensdag-2.html
+  /2009/2/23/hemma-i-sverige/
+  /2009/2/27/introduktion-till-jquery/
+  /2009/2/27/yahoo-query-language/
+  /2009/3/4/athegas-nya-blogg/
+  /2009/3/4/rmagick-pa-osx/
+  /2009/3/5/spent-per-day/
+  /2009/7/27/gott-och-blandat-6/
+  /2009/8/26/gott-och-blandat-7/
+  /2009/8/27/the-passionate-programmer/
+  /2010/4/9/rework/
+
+## legacy-cms-2008 (28)
+Sidor från ett ännu äldre system (adressform /nummer/sv/Titel) från runt 2008, troligen tjänste-/företagssidor. Har troligen en modern motsvarighet idag. Kräver manuell bedömning, en och en.
+  /10/sv/C/
+  /11/sv/Ruby_PHP_Perl/
+  /12/sv/Escenic/
+  /13/sv/Projektledare/
+  /14/sv/Aftonbladet/
+  /16/sv/Utbildningsradion/
+  /17/sv/Euronics/
+  /18/
+  /18/sv/Athegas_XP_metod/
+  /2/sv/Konsulter/
+  /20/sv/Skandia/
+  /21/sv/LGE_Nordic/
+  /22/
+  /22/sv/NetPublisher/
+  /23/
+  /31/
+  /31/sv/Athega_soker_Javautvecklare/
+  /42/sv/SEB/
+  /47/sv/Berghs/
+  /49/
+  /49/sv/Nyutexaminerad_eller_i_borjan_av_din_karriar/
+  /5/sv/Om_Athega/
+  /50/
+  /50/sv/Grym_Rubyutvecklare/
+  /6/sv/Kunder/
+  /7/sv/Jobba_med_oss/
+  /8/sv/Vision/
+  /9/sv/Java/
+
+## needs-decision (183)
+Okategoriserat: kan vara personsidor för tidigare anställda (t.ex. /alex/, /andreas/), kampanjsidor eller annat. Titta igenom för hand.
+  /about/
+  /agil/
+  /alex/
+  /andreas/
+  /ao/
+  /arbeta-hos-oss/
+  /athega.html
+  /author/chrille/
+  /author/fredrik/
+  /author/johan/
+  /author/peter/
+  /blogg/2022/04/03/varan-teatern-aterupptar-samarbetet/
+  /blogg/taggar/golang/
+  /blogg/taggar/kafka/
+  /blogg/taggar/konferans/
+  /blogg/taggar/konferens/
+  /blogg/taggar/nyhetsbrev/
+  /blogg/taggar/ur/
+  /blogg/taggar/webbprestanda/
+  /blue.html
+  /bottom.html
+  /cgi-bin/login.cgi
+  /cgi-bin/logout.cgi
+  /cgi-bin/report_main.cgi
+  /cgi-bin/report_navigate.cgi
+  /cgi-bin/report_view.cgi
+  /cgi-bin/surf.cgi
+  /fader.html
+  /fakta/
+  /files/canvas_mirror.html
+  /foretaget/
+  /fredagsrapporter/
+  /fredagsrapporter/fredagsrapporter/2009/1/
+  /fredrik/
+  /frontend/
+  /frukostseminarium/
+  /historia/
+  /java/
+  /kaffeknappen/apr2001/parse.cgi
+  /kategori/arbetsmiljo/
+  /kategori/cms/
+  /kategori/databaser/
+  /kategori/escenic/
+  /kategori/guider/
+  /kategori/kod/
+  /kategori/konferens/
+  /kategori/marknadsforing/
+  /kategori/okategoriserade/
+  /kategori/opensource/
+  /kategori/prestanda/
+  /kategori/produktivitet/
+  /kategori/programmeringssprak/
+  /kategori/projekt/
+  /kategori/sociala-natverk/
+  /kategori/teknik-och-prylar/
+  /kategori/utbildning/
+  /kategori/webbutveckling/
+  /kategori/webbutveckling/page/2/
+  /kim/
+  /kod/
+  /kod/archives/2008/11/
+  /kod/archives/2008/5/
+  /kod/archives/2008/6/
+  /kod/archives/2009/1/
+  /kod/archives/2009/2/
+  /konsultansvarig/
+  /kontakt/
+  /kunder/
+  /lark/
+  /lasse/
+  /login/
+  /mari/
+  /medarbetare/
+  /no.asp
+  /nyttigt/
+  /passarperfekt/
+  /petter/
+  /phaser-games/ct-breakout/
+  /phaser-games/hello-phaser.html
+  /phaser-games/hover-craft-racer/
+  /phaser-games/super-mushroom-man/
+  /rekryt/
+  /roller/apputvecklare/annons-android/
+  /roller/apputvecklare/annons-ios/
+  /servlets/preview/214/se/test/
+  /tagg/adhearsion/
+  /tagg/ancestorview/
+  /tagg/asterisk/
+  /tagg/bdd/
+  /tagg/bilder/
+  /tagg/c/
+  /tagg/canvas/
+  /tagg/cms/
+  /tagg/cpan/
+  /tagg/cucumber/
+  /tagg/databas/
+  /tagg/dokumentation/
+  /tagg/escenic/
+  /tagg/foto/
+  /tagg/git/
+  /tagg/google/
+  /tagg/gps/
+  /tagg/haml/
+  /tagg/home-automation/
+  /tagg/html5/
+  /tagg/implementation/
+  /tagg/java/
+  /tagg/javascript/
+  /tagg/jruby/
+  /tagg/json/
+  /tagg/keynote/
+  /tagg/mixin/
+  /tagg/nginx/
+  /tagg/objektorienterat/
+  /tagg/passenger/
+  /tagg/perl/
+  /tagg/phusion/
+  /tagg/positionering/
+  /tagg/prestanda/
+  /tagg/programmeringssprak/
+  /tagg/rails/
+  /tagg/railsconf/
+  /tagg/rysk/
+  /tagg/screen-capture/
+  /tagg/servlets/
+  /tagg/sinatra/
+  /tagg/sms/
+  /tagg/test/
+  /tagg/tomcat/
+  /tagg/tutorials/
+  /tagg/woa/
+  /tags/academy/
+  /tags/ajax/
+  /tags/athega/
+  /tags/blogg/
+  /tags/codeigniter/
+  /tags/couchdb/
+  /tags/cross domain/
+  /tags/css/
+  /tags/datavisualisering/
+  /tags/ejabberd/
+  /tags/fable 2/
+  /tags/förkylning/
+  /tags/gem/
+  /tags/grafer/
+  /tags/imagemagick/
+  /tags/iphone/
+  /tags/java/
+  /tags/javascript/
+  /tags/jquery/
+  /tags/json/
+  /tags/kaffe/
+  /tags/keyboard/
+  /tags/kod/
+  /tags/konfiguration/
+  /tags/lokalisering/
+  /tags/mootools/
+  /tags/newsline/
+  /tags/panda/
+  /tags/pdf/
+  /tags/planering/
+  /tags/prototyp/
+  /tags/proxy/
+  /tags/rails/
+  /tags/rake/
+  /tags/rmagick/
+  /tags/rspec/
+  /tags/script/
+  /tags/snö/
+  /tags/textmate/
+  /tags/thailand/
+  /tags/thin/
+  /tags/tidrapportering/
+  /tags/ultrasphinx/
+  /tags/validering/
+  /tags/yahoo/
+  /tags/yql/
+  /uppdrag/
+  /vestigate/produkt/1/
+  /vestigate/produkt/1/parse.cgi
+  /vi-soker-rubyutvecklare/
+  /wp-login.php
+  /xmlrpc.php
+
+## comment-noise (1)
+Enskild kommentarslänk från den gamla bloggplattformen. Förslag: ingen omdirigering, eller 410 Gone.
+  /2008/10/15/spotify/comments/60/
+
+## cms-admin-noise (38)
+Interna sidor från en gammal redigeringsplattform (NetPublisher), inte besökarinnehåll. Förslag: ignorera helt.
+  /anp/exec/NetPublisher/admi/
+  /anp/exec/NetPublisher/browse/
+  /anp/exec/NetPublisher/browse/1/
+  /anp/exec/NetPublisher/browse/10/
+  /anp/exec/NetPublisher/browse/11/
+  /anp/exec/NetPublisher/browse/13/
+  /anp/exec/NetPublisher/browse/14/
+  /anp/exec/NetPublisher/browse/15/
+  /anp/exec/NetPublisher/browse/16/
+  /anp/exec/NetPublisher/browse/17/
+  /anp/exec/NetPublisher/browse/18/
+  /anp/exec/NetPublisher/browse/19/
+  /anp/exec/NetPublisher/browse/2/
+  /anp/exec/NetPublisher/browse/21/
+  /anp/exec/NetPublisher/browse/22/
+  /anp/exec/NetPublisher/browse/23/
+  /anp/exec/NetPublisher/browse/26/
+  /anp/exec/NetPublisher/browse/28/
+  /anp/exec/NetPublisher/browse/31/
+  /anp/exec/NetPublisher/browse/37/
+  /anp/exec/NetPublisher/browse/42/
+  /anp/exec/NetPublisher/browse/43/
+  /anp/exec/NetPublisher/browse/46/
+  /anp/exec/NetPublisher/browse/47/
+  /anp/exec/NetPublisher/browse/48/
+  /anp/exec/NetPublisher/browse/5/
+  /anp/exec/NetPublisher/browse/52/
+  /anp/exec/NetPublisher/browse/57/
+  /anp/exec/NetPublisher/browse/58/
+  /anp/exec/NetPublisher/browse/62/
+  /anp/exec/NetPublisher/browse/63/
+  /anp/exec/NetPublisher/browse/64/
+  /anp/exec/NetPublisher/browse/67/
+  /anp/exec/NetPublisher/browse/68/
+  /anp/exec/NetPublisher/moveDown/
+  /appl/exec/NetPublisher/browse/
+  /appl/exec/NetPublisher/browse/1/
+  /appl/exec/NetPublisher/browse/2/
+
+## slide-export-noise (77)
+Ser ut som en exporterad presentation/bildspel (.htm-filer i en teknisk mapp), inte en vanlig sida. Kontrollera stickprov innan beslut.
+  /askuskw/abb/h10/index.htm
+  /askuskw/abb/h10/sld001.htm
+  /askuskw/abb/h10/sld002.htm
+  /askuskw/abb/h10/sld003.htm
+  /askuskw/abb/h10/sld004.htm
+  /askuskw/abb/h10/sld005.htm
+  /askuskw/abb/h10/sld006.htm
+  /askuskw/abb/h10/sld007.htm
+  /askuskw/abb/h10/sld008.htm
+  /askuskw/abb/h10/sld009.htm
+  /askuskw/abb/h10/sld010.htm
+  /askuskw/abb/h10/sld011.htm
+  /askuskw/abb/h10/sld012.htm
+  /askuskw/abb/h10/sld013.htm
+  /askuskw/abb/h10/sld014.htm
+  /askuskw/abb/h10/tsld001.htm
+  /askuskw/abb/h10/tsld002.htm
+  /askuskw/abb/h10/tsld003.htm
+  /askuskw/abb/h10/tsld005.htm
+  /askuskw/abb/h10/tsld006.htm
+  /askuskw/abb/h10/tsld007.htm
+  /askuskw/abb/h10/tsld008.htm
+  /askuskw/abb/h10/tsld009.htm
+  /askuskw/abb/h10/tsld010.htm
+  /askuskw/abb/h10/tsld011.htm
+  /askuskw/abb/h10/tsld012.htm
+  /askuskw/abb/h10/tsld013.htm
+  /askuskw/abb/h10/tsld014.htm
+  /askuskw/abb/helppage.html
+  /askuskw/abb/ledarskap/seasy/2/
+  /askuskw/abb/seabb/
+  /askuskw/abb/seabb/parse.cgi
+  /askuskw/abb/seafs/
+  /askuskw/abb/seafs/parse.cgi
+  /askuskw/abb/seapr/parse.cgi
+  /askuskw/abb/sebus/parse.cgi
+  /askuskw/abb/secap/
+  /askuskw/abb/secap/parse.cgi
+  /askuskw/abb/secre/
+  /askuskw/abb/secre/parse.cgi
+  /askuskw/abb/sectr/
+  /askuskw/abb/sectr/parse.cgi
+  /askuskw/abb/sedis/
+  /askuskw/abb/sedis/parse.cgi
+  /askuskw/abb/seeis/
+  /askuskw/abb/seeis/parse.cgi
+  /askuskw/abb/semac/
+  /askuskw/abb/semac/parse.cgi
+  /askuskw/abb/senok/
+  /askuskw/abb/senok/parse.cgi
+  /askuskw/abb/seolo/
+  /askuskw/abb/seolo/parse.cgi
+  /askuskw/abb/separ/
+  /askuskw/abb/separ/parse.cgi
+  /askuskw/abb/serop/parse.cgi
+  /askuskw/abb/sesev/
+  /askuskw/abb/sesev/parse.cgi
+  /askuskw/abb/sesup/parse.cgi
+  /askuskw/abb/seswg/parse.cgi
+  /askuskw/abb/setfo/
+  /askuskw/abb/setfo/parse.cgi
+  /askuskw/askusconcis/webbseminarium/3/parse.cgi
+  /askuskw/dial/navigatorn/parse.cgi
+  /askuskw/if/fusionstracking/dk/helppage.html
+  /askuskw/if/fusionstracking/dk/parse.cgi
+  /askuskw/if/fusionstracking/jun_2000/sv/helppage.html
+  /askuskw/if/fusionstracking/no/
+  /askuskw/if/fusionstracking/no/parse.cgi
+  /askuskw/if/fusionstracking/sv/
+  /askuskw/if/fusionstracking/sv/parse.cgi
+  /askuskw/ncc/v2000/parse.cgi
+  /askuskw/skandia/afs/v2000/
+  /askuskw/skandia/afs/v2000/parse.cgi
+  /askuskw/skandia/marknad/v2000/dk/
+  /askuskw/skandia/marknad/v2000/dk/parse.cgi
+  /askuskw/skandia/skandiabanken/v2000/
+  /askuskw/skandia/skandiabanken/v2000/parse.cgi
+
