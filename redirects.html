@@ -5,7 +5,7 @@ pagination:
   data: redirects
   size: 1
   alias: redirect
-permalink: "{{ redirect.from }}index.html"
+permalink: "{% if redirect.from contains '.html' %}{{ redirect.from }}{% else %}{{ redirect.from }}index.html{% endif %}"
 eleventyExcludeFromCollections: true
 layout: false
 ---
