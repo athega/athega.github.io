@@ -308,5 +308,10 @@
     "from": "/arkiv/2009/3/",
     "to": "/blogg/2009/",
     "title": "Blogginlägg - 2009"
+  },
+  {
+    "from": "/2009/03/08/sinatra-och-google-spreadsheet/",
+    "to": "/blogg/2009/03/08/sinatra-och-google-spreadsheet/",
+    "title": "Sinatra och Google Spreadsheet"
   }
 ]
