@@ -34,4 +34,4 @@
 .article-body blockquote > :last-child { margin-bottom: 0; }
 .article-body pre { max-width: 100%; overflow: auto; padding: 22px; background: var(--ink); color: #f5f5f1; border-radius: var(--radius-sm); font-size: var(--text-base); line-height: 1.5; }
 .article-body code { font-family: ui-monospace,SFMono-Regular,Menlo,monospace; font-size: inherit; font-weight: 500; }
-.article-body a { color: var(--orange-text); text-decoration: underline; text-underline-offset: 3px; }
+.article-body a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--orange); text-decoration-thickness: 2px; text-underline-offset: 3px; }
