@@ -5,8 +5,13 @@
 .button-secondary { border: 1px solid var(--ink); }
 .text-link { display: inline-flex; align-items: center; gap: 14px; padding-bottom: 6px; border-bottom: 1px solid var(--orange); font-weight: 500; }
 .text-link.light { color: #fff; }
-.card-arrow { width: 48px; height: 48px; display: grid; flex: none; place-items: center; border: 1px solid var(--line); border-radius: 50%; font-size: var(--text-lg); transition: border-color .2s; }
-.card-arrow-sm { width: 36px; height: 36px; }
-a:is(:hover, :focus-visible) .card-arrow { border-color: var(--muted); }
+.card-arrow { width: 36px; height: 36px; display: grid; flex: none; place-items: center; color: var(--ink); }
+.card-arrow svg { transition: transform .2s; }
+a:is(:hover, :focus-visible) .card-arrow svg { transform: translateX(4px); }
+.service-card:is(:hover, :focus-visible) h2 { text-decoration: underline; text-decoration-color: var(--orange); text-decoration-thickness: 2px; text-underline-offset: .2em; }
+@media (prefers-reduced-motion: reduce) {
+  .card-arrow svg { transition: none; }
+  a:is(:hover, :focus-visible) .card-arrow svg { transform: none; }
+}
 .service-card :is(h2, h3), .focus-grid h3, .step-grid h3, .case-grid h3, .news-card h2, .archive-item h2 { font-size: var(--text-card); font-weight: 300; line-height: var(--leading-card); letter-spacing: var(--tracking-card); }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }

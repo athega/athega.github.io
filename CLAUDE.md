@@ -106,7 +106,9 @@ Använd Sass `@use` för nya moduler.
 
 Behåll Athega-orange (`#ff6600`) i dekor och accenter. På ljusa ytor ska
 meningsbärande text vara mörk; orange text används på mörka ytor. Kortens
-pilar behåller transparent bakgrund även vid hovring; ramen blir då mörkare.
+pilar är dekorativa SVG-ikoner utan cirkel i `components/card-arrow.html`.
+Vid hovring och tangentbordsfokus markeras tjänstekortens rubriker med orange
+understrykning. Pilens rörelse stängs av vid reducerad rörelse.
 
 Äldre `_includes/*.scss`, `_includes/home/*.scss` och vissa gamla HTML-komponenter
 ligger kvar från tidigare design. De är inte automatiskt aktiva bara för att de
