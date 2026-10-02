@@ -105,10 +105,9 @@ klasser. Bevara importordningen i `assets/site.scss`; responsiva regler kommer s
 Använd Sass `@use` för nya moduler.
 
 Behåll Athega-orange (`#ff6600`) i dekor och accenter. På ljusa ytor ska
-meningsbärande text vara mörk; orange text används på mörka ytor. Kortens
-pilar är dekorativa SVG-ikoner utan cirkel i `components/card-arrow.html`.
-Vid hovring och tangentbordsfokus markeras tjänstekortens rubriker med orange
-understrykning. Pilens rörelse stängs av vid reducerad rörelse.
+meningsbärande text vara mörk; orange text används på mörka ytor. Tjänste- och
+bloggkort har inga pilikoner. Vid hovring och tangentbordsfokus markeras
+kortens rubriker med orange understrykning.
 
 Äldre `_includes/*.scss`, `_includes/home/*.scss` och vissa gamla HTML-komponenter
 ligger kvar från tidigare design. De är inte automatiskt aktiva bara för att de

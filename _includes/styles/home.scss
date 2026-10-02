@@ -11,9 +11,7 @@
 .service-card p { max-width: 670px; margin: 0; color: var(--muted); font-size: var(--text-lg); line-height: var(--leading-copy); }
 .home-service-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); border-left: 1px solid var(--line); }
 .home-service-grid .service-card { min-width: 0; grid-template-columns: minmax(0,1fr); align-content: start; gap: 12px; padding: 28px 20px; border-right: 1px solid var(--line); }
-.service-card-heading { display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: start; gap: 12px; }
 .service-card-heading h2 { margin: 0; overflow-wrap: normal; hyphens: none; }
-.home-service-grid .card-arrow { width: 36px; height: 36px; }
 .home-latest { margin: var(--section-flow-gap) 0 0; }
 .home-latest-heading { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-bottom: var(--heading-gap); }
 .home-latest-heading .eyebrow { margin: 0; }

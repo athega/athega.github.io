@@ -40,7 +40,6 @@
             <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | swedishDate }}</time>
             <h2>{{ post.data.title }}</h2>
             <p>{{ post.data.excerpt }}</p>
-            {% include "components/card-arrow.html" %}
           </div>
         </a>
         {% endfor %}

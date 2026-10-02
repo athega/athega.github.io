@@ -39,7 +39,6 @@
   .home-service-grid { grid-template-columns: 1fr; }
   .home-service-grid .service-card { padding: 22px 0; border-right: 0; }
   .service-card { grid-template-columns: 1fr; padding: 22px 0; }
-  .card-arrow { width: 36px; height: 36px; }
   .home-latest-heading { align-items: flex-start; }
   .home-latest-heading .text-link { font-size: var(--text-xs); }
   .home-latest-card { min-height: 120px; grid-template-columns: 116px minmax(0,1fr); }
