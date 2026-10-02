@@ -76,9 +76,9 @@ uppdatera dokumentationen när du inför eller ändrar ett gemensamt mönster.
   `_data/`. Escapa sådana textvärden med `escape`. Renderad Markdown i `content`
   och sektionsmallarnas HTML-fält ska däremot inte escapas en gång till.
 - Länkar till e-post ska visa mottagaradressen i den synliga texten. Komponenten
-  `text-link.html` (även i callouts) gör detta från fältet `email`. Undantaget är
-  huvudmenyns kontaktknapp, som visar en kort etikett och en dekorativ pil;
-  e-postadressen finns kvar i länkmålet och i sidfoten.
+  `text-link.html` (även i callouts) gör detta från fältet `email`.
+  Kontaktuppgifter finns i sidfoten och sidornas kontaktsektioner; huvudmenyn
+  har ingen separat kontaktknapp.
   I Markdown skrivs adressen i länktexten: `[Kontakta oss – reception@athega.se](mailto:reception@athega.se)`.
 - Personalens namn, roll, porträtt och bildtext renderas av medarbetarmallen.
   Skriv metadata och presentation i personens Markdown-fil, utan profil-include.
@@ -105,9 +105,8 @@ klasser. Bevara importordningen i `assets/site.scss`; responsiva regler kommer s
 Använd Sass `@use` för nya moduler.
 
 Behåll Athega-orange (`#ff6600`) i dekor och accenter. På ljusa ytor ska
-meningsbärande text vara mörk; orange text används på mörka ytor. Huvudmenyns
-kontaktknapp har mörk text, tunn grå ram och en dekorativ orange pil, med
-ljusgrå bakgrund vid hovring.
+meningsbärande text vara mörk; orange text används på mörka ytor. Kortens
+pilar behåller transparent bakgrund även vid hovring; ramen blir då mörkare.
 
 Äldre `_includes/*.scss`, `_includes/home/*.scss` och vissa gamla HTML-komponenter
 ligger kvar från tidigare design. De är inte automatiskt aktiva bara för att de
