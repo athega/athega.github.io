@@ -73,9 +73,6 @@ export function createSectionRenderer(md, renderTemplate) {
       const block = blocks.pop();
       const tokens = inlineTokens(block);
       tokens[0].attrSet('class', dark ? 'text-link light' : 'text-link');
-      const arrow = new tokens[0].constructor('html_inline', '', 0);
-      arrow.content = ' <span>↗</span>';
-      tokens.splice(-1, 0, arrow);
       result.unshift(inline(block));
     }
     return result;

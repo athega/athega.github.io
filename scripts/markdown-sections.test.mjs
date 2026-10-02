@@ -35,7 +35,7 @@ test('only a standalone final link becomes a contact link', async () => {
   const html = await render('Kontakt\n\n## Prata med oss\n\nSe [beskrivningen](/om-oss/) först.\n\n[Mejla – reception@athega.se](mailto:reception@athega.se?subject=Fr%C3%A5ga%20%26%20svar)', 'callout', 'dark');
   assert.match(html, /<a href="\/om-oss\/">beskrivningen<\/a>/);
   assert.match(html, /href="mailto:reception@athega.se\?subject=Fr%C3%A5ga%20%26%20svar" class="text-link light"/);
-  assert.equal((html.match(/<span>↗<\/span>/g) || []).length, 1);
+  assert.doesNotMatch(html, /↗|external-link-icon/);
 });
 
 test('nested and loose feature lists keep their Markdown content', async () => {
