@@ -10,7 +10,7 @@ async function reveal() {
   entered = [];
   clicks = [];
   try {
-    const { openGame } = await import('./game.js?v=1');
+    const { openGame } = await import('./game.js?v=3');
     openGame(() => { active = false; });
   } catch (error) {
     active = false;
