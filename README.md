@@ -481,3 +481,17 @@ eller borttagning av äldre filer och bloggdemon.
 
 Kör `npm run build` efter ändringar, eller `npm start` för lokal förhandsvisning.
 Om utvecklingsservern får en annan port än 8080 används adressen den skriver ut.
+
+
+## Hemligt rymdspel
+
+Fem snabba klick (inom 2,2 sekunder) på loggan på startsidan, eller Konamikoden
+`↑ ↑ ↓ ↓ ← → ← → B A` på valfri sida, öppnar Athega Space. En liten trigger
+laddas normalt; canvas-spelet, dess CSS och Web Audio-ljud laddas först vid aktivering.
+Inga paket, externa tjänster eller lagrade spelaruppgifter används.
+
+Startpanelen beskriver kontrollerna: pilar/WASD, mellanslag, eller mobilens
+styrspak och skjutknapp. Nästa sektor bläddrar genom sidan. Esc/Avsluta återställer
+träffade element, fokus och ursprunglig scrollposition. Ljud kan stängas av.
+Reducerad rörelse ger färre partiklar utan glöd eller explosionsringar.
+Koden finns i `assets/space-egg/`; den äldre `assets/site.js` används inte.
