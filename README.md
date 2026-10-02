@@ -284,7 +284,7 @@ databas eller extra tjänst. JSON-filerna används vid bygget, inte via klientko
 `index.html` inkluderar `_includes/home.html`, som sätter ihop sektionerna.
 Deras texter finns i `_data/home/content.json`:
 
-- `intro` – huvudrubrik (`heading`), text med ljus orange bakgrundsmarkering (`emphasis`) och ingress (`lead`).
+- `intro` – huvudrubrik (`heading`), orange text (`emphasis`) och ingress (`lead`).
 - `about` – Athega i korthet.
 - `services` – rubrik och tjänstekort i listan `items`.
 - `blog` – rubrik och länktext; de tre senaste inläggen hämtas automatiskt.
@@ -342,7 +342,7 @@ renderar Markdown inne i blocken; allt innehåll på sådana sidor ska ligga ino
 
 | Sektion | Så skriver du innehållet |
 | --- | --- |
-| `hero` | Överrubrik, sedan `#`-rubrik och ingress. `*Markerad text*` i huvudrubriken får ljus orange bakgrundsmarkering. Eventuell sammanfattning och kontaktlänk följer efter ingressen. |
+| `hero` | Överrubrik, sedan `#`-rubrik och ingress. `*Markerad text*` i huvudrubriken får Athega-orange textfärg. Eventuell sammanfattning och kontaktlänk följer efter ingressen. |
 | `focus`, `steps`, `cases`, `values`, `community` | Eventuell överrubrik, `##`-rubrik och introduktion. Varje `###`-rubrik börjar ett kort. Endast `steps` får automatiska nummer. |
 | `audiences` | Sektionsintroduktion följd av `---` före varje målgruppskort. Kortet innehåller överrubrik, `###`-rubrik, valfri brödtext, vanlig punktlista och eventuell länk. |
 | `callout` | Överrubrik, `##`-rubrik, stycken och kontaktlänkar. Varianten `network` avslutas med en Markdown-bild och ett `>`-citat; citatets första stycke är överrubrik. |

@@ -105,7 +105,9 @@ klasser. Bevara importordningen i `assets/site.scss`; responsiva regler kommer s
 Använd Sass `@use` för nya moduler.
 
 Behåll Athega-orange (`#ff6600`) i dekor och accenter. På ljusa ytor ska
-meningsbärande text vara mörk; orange text används på mörka ytor. Tjänste- och
+meningsbärande text vara mörk; orange text används på mörka ytor. Ett medvetet
+designundantag är betonad text i huvudrubriker (`.page-hero h1 span`), som
+använder Athega-orange även på vitt utan bakgrundsmarkering. Tjänste- och
 bloggkort har inga pilikoner. Vid hovring och tangentbordsfokus markeras
 kortens rubriker med orange understrykning.
 
