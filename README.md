@@ -479,5 +479,8 @@ aktuella CSS-importkedjan. Äldre JavaScript finns också kvar, men den aktuella
 layouten laddar inte `/assets/site.js`. Kontrollera referenser före återanvändning
 eller borttagning av äldre filer och bloggdemon.
 
+CSS-länken får en automatisk versionsparameter (`assetVersion`) vid varje bygge,
+så att webbläsare hämtar rätt stilmall efter en deploy på GitHub Pages.
+
 Kör `npm run build` efter ändringar, eller `npm start` för lokal förhandsvisning.
 Om utvecklingsservern får en annan port än 8080 används adressen den skriver ut.
