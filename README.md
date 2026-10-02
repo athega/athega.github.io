@@ -70,9 +70,12 @@ npm run check
 
 Kontrollen körs efter bygget (även i GitHub Actions) och misslyckas om en intern
 länk eller bild leder ingenstans (även länkar skrivna som `#fragment` eller som
-en fullständig `https://athega.se/...`-adress), en bild saknar `alt`-text eller
-en sida inte har exakt en `<h1>`. Undantag för äldre innehåll som inte går att
-rätta finns i `scripts/check-site.mjs`.
+en fullständig `https://athega.se/...`-adress). Relativa länkar och query-parametrar
+tolkas som i webbläsaren; query-strängen används inte som filsökväg. Kontrollen
+kräver också `alt` på bilder och exakt en `<h1>` på vanliga sidor.
+Omdirigeringar måste ha ett befintligt lokalt mål och matchande canonical, utan
+kedjor eller loopar. De undantas bara från H1-kravet. Undantag för äldre
+innehåll som inte går att rätta finns i `scripts/check-site.mjs`.
 
 ### Kontrollera att inga adresser försvunnit sedan main
 
@@ -91,12 +94,24 @@ eller utan nätverk mot `origin`, skrivs en notis ut och kontrollen hoppas över
 Lägg till `{"from": "/gammal/adress/", "to": "/ny/adress/", "title": "Sidans titel"}`
 i `_data/redirects.json`. `redirects.html` genererar en sida per rad, på den
 gamla adressen, med en direkt (0 sekunder) `<meta http-equiv="refresh">` och en
-`canonical` mot den nya adressen. Google behandlar en sådan omdirigering nästan
-lika pålitligt som en vanlig server-side 301, vilket GitHub Pages inte kan ge
-för enskilda sidor. Sidorna räknas inte med i `sitemap.xml` eller andra listor
-(`eleventyExcludeFromCollections`) och undantas redan av `npm run check`, som
-känner igen `http-equiv="refresh"`. `scripts/legacy-urls/` innehåller ett
-underlag över historiska adresser att gå igenom för fler omdirigeringar.
+`canonical` mot den nya adressen. Lösningen fungerar med statisk publicering
+på GitHub Pages. Sidorna räknas inte med i `sitemap.xml` eller andra listor
+(`eleventyExcludeFromCollections`). `npm run check` kontrollerar målen och
+canonical samt upptäcker kedjor och loopar. `scripts/legacy-urls/` innehåller
+ett underlag över historiska adresser att gå igenom för fler omdirigeringar.
+
+### Bloggens årsarkiv
+
+`blogg/year.html` genererar `/blogg/ÅÅÅÅ/` för varje år med publicerade artiklar.
+Årsarkiven delar layout med bloggindex, har egen metadata och canonical och
+inkluderas i sitemap. Årslänkarna finns på både bloggindex och årsarkiven.
+Grupperingen använder UTC, precis som artikeladresserna.
+
+`scripts/blog-archives.mjs` låter ett arkiv med innehåll ersätta motsvarande
+fallback i `_data/redirects.json`. De historiska månadsadresserna skickas direkt
+till årets arkiv när det finns. Tomma år behåller sin omdirigering till `/blogg/`.
+När ett nytt år får sin första artikel sker detta automatiskt; inga årsfiler
+eller manuella ändringar av redirect-listan behövs.
 
 Bildernas `width`, `height` och `loading="lazy"` läggs
 till automatiskt vid bygget av `scripts/image-attributes.mjs`; skriv dem inte för

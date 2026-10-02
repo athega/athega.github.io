@@ -22,6 +22,9 @@ uppdatera dokumentationen när du inför eller ändrar ett gemensamt mönster.
 - Huvudnavigation: `_data/navigation.json`, gemensam för dator och mobil.
 - Personal: `_employees/*.md`; standardlayout finns i `_employees/_employees.json`.
 - Bloggposter: `_posts/*.md`; standardlayout och URL-mönster i `_posts/_posts.json`.
+- Bloggens årsarkiv: `blogg/year.html`, grupperat från publicerade artiklar via
+  `scripts/blog-archives.mjs`. Årsarkiv med innehåll ersätter gamla omdirigeringar
+  automatiskt. Gemensam layout och årsnavigering finns i `_includes/blog/`.
 - Tjänste- och företagssidor: vanligt Markdown-innehåll i respektive
   `index.md` under `teknikgranskning/`, `systemutveckling/`, `ai-labbet/`,
   `ai-labbet/industri/`, `jobba/`, `konsultnatverk/` och `om-oss/`.

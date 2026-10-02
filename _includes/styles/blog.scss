@@ -24,3 +24,9 @@
 .archive-item h2 { margin: 0 0 8px; }
 .archive-item p { max-width: 750px; margin: 0; color: var(--muted); line-height: 1.5; }
 .archive-item:hover h2 { text-decoration: underline; text-decoration-color: var(--orange); text-underline-offset: .15em; }
+
+/* Year links wrap on narrow screens and work without JavaScript. */
+.blog-years { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: var(--space-5); }
+.blog-years a { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; padding: 8px 14px; border: 1px solid var(--line); border-radius: var(--radius-sm); font-size: var(--text-sm); }
+.blog-years a:hover { border-color: var(--ink); text-decoration: underline; text-decoration-color: var(--orange); text-underline-offset: .25em; }
+.blog-years a[aria-current="page"] { background: var(--ink); border-color: var(--ink); color: var(--paper); }

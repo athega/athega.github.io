@@ -1,0 +1,12 @@
+---
+pagination:
+  data: collections.blogYears
+  size: 1
+  alias: archive
+  addAllPagesToCollections: true
+permalink: "{{ archive.url }}"
+eleventyComputed:
+  title: "Blogg {{ archive.year }}"
+  description: "Athegas artiklar från {{ archive.year }} om mjukvaruutveckling, AI, data och teknik."
+---
+{% include "blog/archive.html" %}

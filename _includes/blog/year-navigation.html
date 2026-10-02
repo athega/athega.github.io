@@ -1,0 +1,6 @@
+<nav class="blog-years" aria-label="Bloggarkiv efter år">
+  <a href="/blogg/"{% if currentUrl == '/blogg/' %} aria-current="page"{% endif %}>Alla år</a>
+  {% for year in years %}
+  <a href="{{ year.url }}"{% if currentUrl == year.url %} aria-current="page"{% endif %}>{{ year.year }}</a>
+  {% endfor %}
+</nav>

@@ -1,14 +1,16 @@
-{% assign featured = collections.posts | first %}
+{% assign posts = archive.posts | default: collections.posts %}
+{% assign featured = posts | first %}
 <main id="main" class="blog-archive section-page">
   <section class="page-hero blog-hero">
     <div class="shell">
       <p class="eyebrow">Tankar från Athega</p>
-      <h1>Blogg<span>.</span></h1>
-      <p class="page-lead">Idéer, experiment, erfarenheter och sådant vi lärt oss på vägen.</p>
+      <h1>Blogg{% if archive %} {{ archive.year }}{% endif %}<span>.</span></h1>
+      <p class="page-lead">{% if archive %}Artiklar från {{ archive.year }} om mjukvaruutveckling, AI, data och teknik.{% else %}Idéer, experiment, erfarenheter och sådant vi lärt oss på vägen.{% endif %}</p>
     </div>
   </section>
   <section class="section news-section">
     <div class="shell">
+      {% include "blog/year-navigation.html", years: collections.blogYears, currentUrl: page.url %}
       <a class="news-feature" href="{{ featured.url }}">
         {% if featured.data.image_url %}
         <img src="{{ featured.data.image_url }}" alt="">
@@ -22,11 +24,12 @@
           <span class="text-link">Läs artikeln <b>↗</b></span>
         </div>
       </a>
+      {% if posts.size > 1 %}
       <div class="news-heading">
         <p class="eyebrow">Fler artiklar</p>
       </div>
       <div class="news-grid">
-        {% for post in collections.posts offset:1 %}
+        {% for post in posts offset:1 %}
         <a class="news-card" href="{{ post.url }}">
           {% if post.data.image_url %}
           <img src="{{ post.data.image_url }}" alt="" loading="lazy">
@@ -42,6 +45,7 @@
         </a>
         {% endfor %}
       </div>
+      {% endif %}
     </div>
   </section>
 </main>

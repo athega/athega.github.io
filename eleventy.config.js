@@ -2,6 +2,8 @@ import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 import markdownSections from "./scripts/markdown-sections.mjs";
 import imageAttributes from "./scripts/image-attributes.mjs";
 import postDefaults from "./scripts/post-defaults.mjs";
+import { groupPostsByYear, archiveRedirects } from "./scripts/blog-archives.mjs";
+import { readFileSync } from "node:fs";
 
 export default function(eleventyConfig) {
   eleventyConfig.addPlugin(markdownSections);
@@ -37,6 +39,16 @@ export default function(eleventyConfig) {
       post.data.previous = posts[i - 1];
     });
     return posts;
+  });
+
+  eleventyConfig.addCollection("blogYears", function(collection) {
+    return groupPostsByYear(collection.getFilteredByGlob("_posts/*.md"));
+  });
+
+  eleventyConfig.addCollection("legacyRedirects", function(collection) {
+    const archives = groupPostsByYear(collection.getFilteredByGlob("_posts/*.md"));
+    const redirects = JSON.parse(readFileSync(new URL("./_data/redirects.json", import.meta.url), "utf8"));
+    return archiveRedirects(redirects, archives);
   });
 
   // Sidor som ska med i sitemap.xml: allt utom 404

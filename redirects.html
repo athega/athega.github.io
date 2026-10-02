@@ -1,8 +1,9 @@
 ---
 # One page per row in _data/redirects.json: an old address that a real page has
-# moved from. Add rows there (from/to/title) to publish more redirects.
+# moved from. Populated year archives replace their fallback redirects.
+# Add rows in the JSON file (from/to/title) to publish more redirects.
 pagination:
-  data: redirects
+  data: collections.legacyRedirects
   size: 1
   alias: redirect
 permalink: "{% if redirect.from contains '.html' %}{{ redirect.from }}{% else %}{{ redirect.from }}index.html{% endif %}"
