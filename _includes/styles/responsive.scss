@@ -36,7 +36,7 @@
   .section { padding: 78px 0; }
   .section.unified-callout, .section.join-section { padding-block: 58px; }
   .focus-intro { font-size: var(--text-base); }
-  .home-service-grid { grid-template-columns: 1fr; }
+  .home-service-grid { grid-template-columns: 1fr; border-left: 0; }
   .home-service-grid .service-card { padding: 22px 0; border-right: 0; }
   .service-card { grid-template-columns: 1fr; padding: 22px 0; }
   .home-latest-heading { align-items: flex-start; }
