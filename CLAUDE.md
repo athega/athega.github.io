@@ -106,8 +106,8 @@ Använd Sass `@use` för nya moduler.
 
 Behåll Athega-orange (`#ff6600`) i dekor och accenter. På ljusa ytor ska
 meningsbärande text vara mörk; orange text används på mörka ytor. Huvudmenyns
-kontaktknapp har mörk bakgrund, ljus text och orange pil, med mörk text på
-orange bakgrund vid hovring.
+kontaktknapp har mörk text, tunn grå ram och en dekorativ orange pil, med
+ljusgrå bakgrund vid hovring.
 
 Äldre `_includes/*.scss`, `_includes/home/*.scss` och vissa gamla HTML-komponenter
 ligger kvar från tidigare design. De är inte automatiskt aktiva bara för att de
