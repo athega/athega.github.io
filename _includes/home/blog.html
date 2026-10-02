@@ -1,7 +1,7 @@
 <div class="home-latest">
   <div class="home-latest-heading">
     <h2 class="eyebrow">{{ home.content.blog.heading | escape }}</h2>
-    <a class="text-link" href="/blogg/">{{ home.content.blog.linkLabel | escape }} <span>↗</span></a>
+    <a class="text-link" href="/blogg/">{{ home.content.blog.linkLabel | escape }}</a>
   </div>
   <div class="home-latest-grid">
     {% for post in collections.posts limit:3 %}
