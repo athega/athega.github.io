@@ -1,5 +1,4 @@
 ---
-layout: employee
 permalink: /mats/
 
 name: Mats Ygfors
@@ -7,7 +6,6 @@ title: Managementkonsult och lösningsarkitekt
 image: /assets/img/employees/mats.jpg
 thumb: /assets/img/employees/mats-thumb.jpg
 ---
-{% include "employees/profile.html" %}
 
 Angriper problem faktabaserat och pragmatiskt. Hittar rotorsaker och föreslår innovativa lösningar. Använder ofta snabb prototypning för att validera hypoteser och arbeta faktabaserat. 
 

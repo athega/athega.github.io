@@ -1,0 +1,19 @@
+<section class="section {% if variant == 'dark' %}dark-section unified-callout{% else %}join-section{% endif %}">
+  {% if quote %}<div class="shell"><div class="join-grid">{% else %}<div class="shell join-grid">{% endif %}
+    {{ eyebrow }}
+    {{ heading }}
+    <div>
+      {{ body }}
+      {% if links.size > 1 %}<div class="callout-links">{% endif %}
+      {% for link in links %}{{ link }}{% endfor %}
+      {% if links.size > 1 %}</div>{% endif %}
+    </div>
+  </div>
+  {% if quote %}
+    <figure class="network-quote">
+      {{ quote.image }}
+      <blockquote>{{ quote.eyebrow }}{{ quote.body }}</blockquote>
+    </figure>
+  </div>
+  {% endif %}
+</section>

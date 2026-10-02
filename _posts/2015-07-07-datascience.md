@@ -41,7 +41,7 @@ Försöker nedan beskriva olika tillämpningar som är mer eller mindre vedertag
 En finansiell institution eller bank monitorerar både kunder och transaktioner för att fånga upp misstänkta bedrägerier tidigt. Att tidigt hitta kunder eller konton som uppförs sig ovanligt genom att använda ett poängsystem/risksystem ger företaget eller myndigheten möjlighet att minska den mängd data som behöver utredas manuellt. Resultatet blir ett indikations-system på potentiella problem. Poster med ovanliga uppföranden rankas en mycket högre risk att vara ett bedrägeri än de som uppför sig som förväntat. Till exempel kan det vara en ovanligt stor pengatransaktion.  Det är alltså det avvikande beteendet som ger underlag för närmare utredning. Den närmare utredningen sker ofta manuellt.
 
 <div style=" float: right; margin: 0 0 10px 10px; ">
-<img src="/assets/legacy/uploads/2015/07/fullsizerender.jpg"/>
+<img src="/assets/legacy/uploads/2015/07/fullsizerender.jpg" alt="Data science"/>
 </div>
 
 För denna typ av lösningar finns en mängd verktyg tillgängliga. Alla har olika egenskaper och lämpar sig för olika problem och kravställningar. Bayesian (efter Thomas Bayes) neurala nätverk används bland annat för att fånga kreditkorts-bedrägerier.

@@ -1,8 +1,11 @@
 $(function() {
     'use strict';
 
-    var $intro = $('.home-intro'),
-        canvas = document.createElement('canvas'),
+    var $intro = $('.home-intro');
+
+    if (!$intro.length) return;
+
+    var canvas = document.createElement('canvas'),
         $canvas = $(canvas),
         ctx = canvas.getContext('2d'),
         $header = $('body > header'),

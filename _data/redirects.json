@@ -1,0 +1,427 @@
+[
+  {
+    "from": "/2009/03/03/valkommen-till-bloggen/",
+    "to": "/blogg/2009/03/03/valkommen-till-bloggen/",
+    "title": "Välkommen till bloggen"
+  },
+  {
+    "from": "/2009/03/04/geotagga-bilder/",
+    "to": "/blogg/2009/03/04/geotagga-bilder/",
+    "title": "Geotagga bilder"
+  },
+  {
+    "from": "/2009/03/25/athega-bidrar-till-oppen-kallkod/",
+    "to": "/blogg/2009/03/25/athega-bidrar-till-oppen-kallkod/",
+    "title": "Athega bidrar till öppen källkod"
+  },
+  {
+    "from": "/2009/04/08/athegas-oppna-kallkod-anvands-av-valmyndigheten/",
+    "to": "/blogg/2009/04/08/athegas-oppna-kallkod-anvands-av-valmyndigheten/",
+    "title": "Athegas öppna källkod används av Valmyndigheten"
+  },
+  {
+    "from": "/2009/04/16/ruby-on-rails-under-nginx-med-passenger/",
+    "to": "/blogg/2009/04/16/ruby-on-rails-under-nginx-med-passenger/",
+    "title": "Ruby on Rails under Nginx med Phusion Passenger"
+  },
+  {
+    "from": "/2009/04/24/lat-inte-tomcat-jobba-i-onodan/",
+    "to": "/blogg/2009/04/24/lat-inte-tomcat-jobba-i-onodan/",
+    "title": "Låt inte Tomcat jobba i onödan"
+  },
+  {
+    "from": "/2009/05/05/railsconf-tutorials/",
+    "to": "/blogg/2009/05/05/railsconf-tutorials/",
+    "title": "RailsConf: Tutorials"
+  },
+  {
+    "from": "/2009/05/06/railsconf-tisdag/",
+    "to": "/blogg/2009/05/06/railsconf-tisdag/",
+    "title": "RailsConf: Tisdag"
+  },
+  {
+    "from": "/2009/05/07/railsconf-onsdag/",
+    "to": "/blogg/2009/05/07/railsconf-onsdag/",
+    "title": "RailsConf: Onsdag"
+  },
+  {
+    "from": "/2009/05/08/railsconf-torsdag/",
+    "to": "/blogg/2009/05/08/railsconf-torsdag/",
+    "title": "RailsConf: Torsdag"
+  },
+  {
+    "from": "/2009/06/10/google-wave/",
+    "to": "/blogg/2009/06/10/google-wave/",
+    "title": "Google Wave"
+  },
+  {
+    "from": "/2009/07/02/lar-dig-leva-utan-ancestorview/",
+    "to": "/blogg/2009/07/02/lar-dig-leva-utan-ancestorview/",
+    "title": "Lär dig leva utan ancestorView"
+  },
+  {
+    "from": "/2009/07/02/potion/",
+    "to": "/blogg/2009/07/02/potion/",
+    "title": "Potion, ett objekt- och mixin-orienterat språk"
+  },
+  {
+    "from": "/2009/07/06/mongodb/",
+    "to": "/blogg/2009/07/06/mongodb/",
+    "title": "MongoDB"
+  },
+  {
+    "from": "/2009/07/08/html5-och-canvas/",
+    "to": "/blogg/2009/07/08/html5-och-canvas/",
+    "title": "HTML5 och canvas"
+  },
+  {
+    "from": "/2009/08/12/in-i-zonen-som-systemutvecklare/",
+    "to": "/blogg/2009/08/12/in-i-zonen-som-systemutvecklare/",
+    "title": "Att ta sig in i Zonen som systemutvecklare"
+  },
+  {
+    "from": "/2009/08/28/sociala-medier-for-foretaget/",
+    "to": "/blogg/2009/08/28/sociala-medier-for-foretaget/",
+    "title": "Sociala medier för företaget"
+  },
+  {
+    "from": "/2009/09/15/ppm-upphandlingen/",
+    "to": "/blogg/2009/09/15/ppm-upphandlingen/",
+    "title": "PPM-upphandlingen"
+  },
+  {
+    "from": "/2009/10/06/json-och-mootools-for-web-workers/",
+    "to": "/blogg/2009/10/06/json-och-mootools-for-web-workers/",
+    "title": "JSON och MooTools för Web Workers"
+  },
+  {
+    "from": "/2009/11/09/athega-pa-escenicutbildning-i-oslo/",
+    "to": "/blogg/2009/11/09/athega-pa-escenicutbildning-i-oslo/",
+    "title": "Athega på Escenicutbildning i Oslo"
+  },
+  {
+    "from": "/2009/11/10/den-produktive-programmeraren/",
+    "to": "/blogg/2009/11/10/den-produktive-programmeraren/",
+    "title": "Den produktive programmeraren"
+  },
+  {
+    "from": "/2009/12/03/ur-delar-med-sig-med-hjalp-av-woa-teknik/",
+    "to": "/blogg/2009/12/03/ur-delar-med-sig-med-hjalp-av-woa-teknik/",
+    "title": "UR delar med sig med hjälp av WOA-teknik"
+  },
+  {
+    "from": "/2009/12/04/gasell-2009/",
+    "to": "/blogg/2009/12/04/gasell-2009/",
+    "title": "Gasell 2009"
+  },
+  {
+    "from": "/2010/03/18/extensions-for-episerver/",
+    "to": "/blogg/2010/03/18/extensions-for-episerver/",
+    "title": "Extensions för EPiServer"
+  },
+  {
+    "from": "/2010/03/24/testar-pomodoro-tekniken/",
+    "to": "/blogg/2010/03/24/testar-pomodoro-tekniken/",
+    "title": "Testar Pomodoro-tekniken"
+  },
+  {
+    "from": "/2010/04/09/athega-sponsrar-nordic-ruby/",
+    "to": "/blogg/2010/04/09/athega-sponsrar-nordic-ruby/",
+    "title": "Athega sponsrar Nordic Ruby"
+  },
+  {
+    "from": "/2010/04/09/jquery-ar-snyggt/",
+    "to": "/blogg/2010/04/09/jquery-ar-snyggt/",
+    "title": "jQuery är snyggt"
+  },
+  {
+    "from": "/2010/04/10/unobtrusive-javascripts/",
+    "to": "/blogg/2010/04/10/unobtrusive-javascripts/",
+    "title": "Unobtrusive JavaScripts"
+  },
+  {
+    "from": "/2010/05/09/frozen-rails/",
+    "to": "/blogg/2010/05/09/frozen-rails/",
+    "title": "Frozen Rails"
+  },
+  {
+    "from": "/2010/05/28/nordic-ruby/",
+    "to": "/blogg/2010/05/28/nordic-ruby/",
+    "title": "Nordic Ruby"
+  },
+  {
+    "from": "/blogg/2013/01/16/enmanskonsult/",
+    "to": "/blogg/2013/01/15/enmanskonsult/",
+    "title": "Är du skicklig systemutvecklare och ensam? "
+  },
+  {
+    "from": "/blogg/2023/09/29/Athegafredag-Stablediffusion/",
+    "to": "/blogg/2023/03/17/Athegafredag-Stablediffusion/",
+    "title": "Stable diffusion"
+  },
+  {
+    "from": "/roller/datascientist/",
+    "to": "/blogg/2015/04/14/datascientist/",
+    "title": "Matematikern som vaskar guld i databaser"
+  },
+  {
+    "from": "/tagg/mongodb/",
+    "to": "/blogg/2009/07/06/mongodb/",
+    "title": "MongoDB"
+  },
+  {
+    "from": "/tagg/potion/",
+    "to": "/blogg/2009/07/02/potion/",
+    "title": "Potion, ett objekt- och mixin-orienterat språk"
+  },
+  {
+    "from": "/tagg/ruby/",
+    "to": "/blogg/2010/05/21/ruby/",
+    "title": "Ruby"
+  },
+  {
+    "from": "/tags/ruby/",
+    "to": "/blogg/2010/05/21/ruby/",
+    "title": "Ruby"
+  },
+  {
+    "from": "/2008_05_01_archive.html",
+    "to": "/blogg/",
+    "title": "Blogg"
+  },
+  {
+    "from": "/2009/03/",
+    "to": "/blogg/",
+    "title": "Blogg"
+  },
+  {
+    "from": "/2009/04/",
+    "to": "/blogg/",
+    "title": "Blogg"
+  },
+  {
+    "from": "/2009/05/",
+    "to": "/blogg/",
+    "title": "Blogg"
+  },
+  {
+    "from": "/2009/06/",
+    "to": "/blogg/",
+    "title": "Blogg"
+  },
+  {
+    "from": "/2009/07/",
+    "to": "/blogg/",
+    "title": "Blogg"
+  },
+  {
+    "from": "/2009/08/",
+    "to": "/blogg/",
+    "title": "Blogg"
+  },
+  {
+    "from": "/2009/09/",
+    "to": "/blogg/",
+    "title": "Blogg"
+  },
+  {
+    "from": "/2009/10/",
+    "to": "/blogg/",
+    "title": "Blogg"
+  },
+  {
+    "from": "/2009/11/",
+    "to": "/blogg/",
+    "title": "Blogg"
+  },
+  {
+    "from": "/2009/12/",
+    "to": "/blogg/",
+    "title": "Blogg"
+  },
+  {
+    "from": "/2010/03/",
+    "to": "/blogg/",
+    "title": "Blogg"
+  },
+  {
+    "from": "/2010/04/",
+    "to": "/blogg/",
+    "title": "Blogg"
+  },
+  {
+    "from": "/2010/05/",
+    "to": "/blogg/",
+    "title": "Blogg"
+  },
+  {
+    "from": "/arkiv/2008/10/",
+    "to": "/blogg/",
+    "title": "Blogg"
+  },
+  {
+    "from": "/arkiv/2008/11/",
+    "to": "/blogg/",
+    "title": "Blogg"
+  },
+  {
+    "from": "/arkiv/2008/12/",
+    "to": "/blogg/",
+    "title": "Blogg"
+  },
+  {
+    "from": "/arkiv/2008/5/",
+    "to": "/blogg/",
+    "title": "Blogg"
+  },
+  {
+    "from": "/arkiv/2008/6/",
+    "to": "/blogg/",
+    "title": "Blogg"
+  },
+  {
+    "from": "/arkiv/2008/7/",
+    "to": "/blogg/",
+    "title": "Blogg"
+  },
+  {
+    "from": "/arkiv/2008/8/",
+    "to": "/blogg/",
+    "title": "Blogg"
+  },
+  {
+    "from": "/arkiv/2008/9/",
+    "to": "/blogg/",
+    "title": "Blogg"
+  },
+  {
+    "from": "/arkiv/2009/1/",
+    "to": "/blogg/",
+    "title": "Blogg"
+  },
+  {
+    "from": "/arkiv/2009/2/",
+    "to": "/blogg/",
+    "title": "Blogg"
+  },
+  {
+    "from": "/arkiv/2009/3/",
+    "to": "/blogg/",
+    "title": "Blogg"
+  },
+  {
+    "from": "/2009/03/08/sinatra-och-google-spreadsheet/",
+    "to": "/blogg/2009/03/08/sinatra-och-google-spreadsheet/",
+    "title": "Sinatra och Google Spreadsheet"
+  },
+  {
+    "from": "/blogg/2009/",
+    "to": "/blogg/",
+    "title": "Blogg"
+  },
+  {
+    "from": "/blogg/2010/",
+    "to": "/blogg/",
+    "title": "Blogg"
+  },
+  {
+    "from": "/blogg/2011/",
+    "to": "/blogg/",
+    "title": "Blogg"
+  },
+  {
+    "from": "/blogg/2012/",
+    "to": "/blogg/",
+    "title": "Blogg"
+  },
+  {
+    "from": "/blogg/2013/",
+    "to": "/blogg/",
+    "title": "Blogg"
+  },
+  {
+    "from": "/blogg/2014/",
+    "to": "/blogg/",
+    "title": "Blogg"
+  },
+  {
+    "from": "/blogg/2015/",
+    "to": "/blogg/",
+    "title": "Blogg"
+  },
+  {
+    "from": "/blogg/2016/",
+    "to": "/blogg/",
+    "title": "Blogg"
+  },
+  {
+    "from": "/blogg/2017/",
+    "to": "/blogg/",
+    "title": "Blogg"
+  },
+  {
+    "from": "/blogg/2018/",
+    "to": "/blogg/",
+    "title": "Blogg"
+  },
+  {
+    "from": "/blogg/2019/",
+    "to": "/blogg/",
+    "title": "Blogg"
+  },
+  {
+    "from": "/blogg/2020/",
+    "to": "/blogg/",
+    "title": "Blogg"
+  },
+  {
+    "from": "/blogg/2021/",
+    "to": "/blogg/",
+    "title": "Blogg"
+  },
+  {
+    "from": "/blogg/2022/",
+    "to": "/blogg/",
+    "title": "Blogg"
+  },
+  {
+    "from": "/blogg/2023/",
+    "to": "/blogg/",
+    "title": "Blogg"
+  },
+  {
+    "from": "/blogg/2024/",
+    "to": "/blogg/",
+    "title": "Blogg"
+  },
+  {
+    "from": "/blogg/2025/",
+    "to": "/blogg/",
+    "title": "Blogg"
+  },
+  {
+    "from": "/blogg/2026/",
+    "to": "/blogg/",
+    "title": "Blogg"
+  },
+  {
+    "from": "/blogg/2027/",
+    "to": "/blogg/",
+    "title": "Blogg"
+  },
+  {
+    "from": "/blogg/2028/",
+    "to": "/blogg/",
+    "title": "Blogg"
+  },
+  {
+    "from": "/blogg/2029/",
+    "to": "/blogg/",
+    "title": "Blogg"
+  },
+  {
+    "from": "/blogg/2030/",
+    "to": "/blogg/",
+    "title": "Blogg"
+  }
+]

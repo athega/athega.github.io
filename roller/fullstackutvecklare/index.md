@@ -5,7 +5,7 @@ sub_tagline: Fullstack betyder kunskap om hela "stacken" men vad innebär det?
 ---
 
 Fullstackutvecklare
--------------------
+===================
 
 En fullstackutvecklare på Athega är en senior systemutvecklare med djup kompetens i sina kärntekniker, och samtidigt tillräcklig bredd för att förstå och bidra i hela lösningen.
 Rollen handlar inte om att vara expert på allt, utan om att kunna ta ansvar för leverans i komplexa miljöer, se helheten och samarbeta effektivt med andra specialister.

@@ -1,51 +1,82 @@
 ---
+layout: sections
 title: Om oss
+description: >-
+  Möt människorna på Athega och läs om vårt teknikintresse, vår historia och hur bolaget arbetar i
+  dag.
 ---
 
-# {{ title }}
+{% section "hero" %}
 
-{% include "employees/index.html" %}
+Om Athega
 
-## Med ålderns rätt
+# Teknikintresse som *aldrig har gått över.*
 
-<a href="https://1997.athega.se" title="Athegas maskot för drygt 20 år sedan">
-  <img src="/assets/img/athegamannen.jpg" style="width: 200px;" class="float_right" alt="Athegamannen">
-</a>
+I snart tre decennier har vi hjälpt svenska företag med avancerad mjukvaruutveckling.
 
-Athega grundades redan 1996. Först bedrevs verksamheten under namnet III Information Integration Innovation HB,
-för att sedan ombildas till aktiebolag 1 november 1997 under namnet Athega AB.
+{% endsection %}
 
-Upprinnelsen till bolaget var vårt genuina intresse av det som på 1990 talet kallades Internet-teknik.
+{% section "history" %}
 
-Affärsidén var att erbjuda avancerade webblösningar till skillnad från “plain html-sidor” som många webbyråer erbjöd.
-Inledningsvis utvecklade vi CGI-script i programmeringsspråket Perl. Scripten blev till större applikationer,
-gränssnitten mer avancerade och språket byttes så småningom till Java och kompletterades senare med Ruby.
+Nyfikna från början
 
-Det har alltid varit viktigt för oss att ligga i framkant av den tekniska utvecklingen. Att vi klarat detta under alla år tror vi
-beror på att vi är engagerade systemutvecklare med lång erfarenhet som alltid
-inspireras av våra kunders affärsmöjligheter.
+Athega grundades 1996 under namnet III Information Integration Innovation HB och blev Athega AB den 1 november 1997. Drivkraften var ett genuint intresse för det som då kallades internetteknik.
 
-## Athega idag
+Vi började med avancerade webblösningar i CGI och Perl. När lösningarna växte blev gränssnitten mer avancerade och tekniken utvecklades vidare genom Java, Ruby och det som kom efter. Nyfikenheten är densamma, men långsiktighet och verklig kundnytta är alltid kravet.
 
-Vårt engagemang för att göra den senaste tekniken tillgänglig för våra kundern har lagt grunden
-för de långa kundrelationer vi haft och fortfarande har. Största delen inom digial media men även
-inom tillverknings-industri och finanssektorn.
+I dag arbetar vi främst inom digitala medier, tillverkning och finans. Våra långa kundrelationer bygger på engagerade, erfarna systemutvecklare som förstår både tekniken och kundens affär. Sedan 2016 är AI och maskininlärning en växande del av vårt erbjudande.
 
-Athegas **[AI/ML-initiativ](https://athega.se/ai-labbet/)** är ett tjänsteområde vi initierade 2016 och som hela tiden växer.
-Det ligger helt i linje med vår nyfikenhet på ny teknik och hur den ska användas på bästa sätt.
+{% endsection %}
 
-## Företagsfakta
+{% section "facts" %}
 
-Athega är ett svenskt, privat aktiebolag med verksamhet främst i Stockholm.
+### 1997
 
-**Organisationsnummer** `556547-6693`
+Athega AB bildas
 
-**Momsreg/VAT-nr** `SE556547669301`
+### 2016
 
-Athega ägs och drivs av personer som jobbar aktivt i bolaget.
+Vår AI-satsning börjar
 
-### Styrelse
- - Christian Lizell ordförande
- - Torbjörn Nilsson ordinarie ledamot, VD
- - Mats Ygfors ordinarie ledamot
+### 100%
 
+Teknikintresse
+
+{% endsection %}
+
+{% section "team" %}
+
+Människorna på Athega
+
+## Erfarenhet bakom varje leverans.
+
+Athega ägs och drivs av människor som arbetar aktivt i bolaget.
+
+{% include "employees/team.html" %}
+
+{% endsection %}
+
+{% section "callout", "light" %}
+
+Nästa kollega
+
+## Vill du jobba med oss?
+
+Vi söker erfarna systemutvecklare som vill fortsätta vara nyfikna och göra verklig skillnad hos våra kunder.
+
+[Läs om att jobba på Athega](/jobba/)
+
+{% endsection %}
+
+{% section "company" %}
+
+## Bolagsinformation.
+
+**Athega AB**\
+Svenskt privat aktiebolag med verksamhet främst i Stockholm.\
+Organisationsnummer 556547-6693\
+VAT SE556547669301
+
+Styrelsen består av Christian Lizell, ordförande, Torbjörn Nilsson, ledamot och vd, samt Mats Ygfors, ledamot.
+
+{% endsection %}

@@ -1,0 +1,16 @@
+<section class="section">
+  <div class="shell">
+    {% include "sections/heading.html", eyebrow: eyebrow, heading: heading, intro: intro, kind: kind, variant: "stacked" %}
+    <div class="audience-grid">
+      {% for card in cards %}
+        {% assign parity = forloop.index | modulo: 2 %}
+        <article{% if parity == 0 %} class="inverse"{% endif %}>
+          {{ card.eyebrow }}
+          {{ card.heading }}
+          {{ card.body }}
+          {% for link in card.links %}{{ link }}{% endfor %}
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>

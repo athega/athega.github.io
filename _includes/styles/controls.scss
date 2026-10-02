@@ -1,0 +1,10 @@
+/* Shared type and controls */
+.eyebrow { margin: 0 0 var(--heading-gap); color: var(--ink); font-size: var(--text-sm); font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
+.eyebrow::before { content: ""; display: inline-block; width: 14px; height: 3px; margin-right: 10px; vertical-align: .3em; background: var(--orange); }
+.button { min-height: 52px; display: inline-flex; align-items: center; justify-content: center; gap: 18px; padding: 0 21px; border: 0; border-radius: 999px; font-size: var(--text-sm); font-weight: 500; }
+.button-secondary { border: 1px solid var(--ink); }
+.text-link { display: inline-flex; align-items: center; gap: 14px; padding-bottom: 6px; border-bottom: 1px solid var(--orange); font-weight: 500; }
+.text-link.light { color: #fff; }
+.service-card:is(:hover, :focus-visible) h2 { text-decoration: underline; text-decoration-color: var(--orange); text-decoration-thickness: 2px; text-underline-offset: .2em; }
+.service-card :is(h2, h3), .focus-grid h3, .step-grid h3, .case-grid h3, .news-card h2, .archive-item h2 { font-size: var(--text-card); font-weight: 300; line-height: var(--leading-card); letter-spacing: var(--tracking-card); }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }

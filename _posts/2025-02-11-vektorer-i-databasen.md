@@ -10,8 +10,6 @@ image_url: /assets/blog/2025-02-11-vektorer-i-databasen/2025-vektorer-i-database
 
 ![Abstrakt representation av vektorer på en pappersremsa]({{image_url}})
 
-> {{description}}
-
 Ett relativt vanligt behov när man använder sig av stora språkmodeller är att man
 behöver svar som inkluderar information som modellen i fråga inte är tränad på.
 

@@ -1,0 +1,26 @@
+---
+permalink: /blogg/feed.xml
+layout: false
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="sv">
+  <title>Athega – Blogg</title>
+  <subtitle>Athegas artiklar om mjukvaruutveckling, AI, data och teknik.</subtitle>
+  <link href="{{ site.url }}/blogg/feed.xml" rel="self" type="application/atom+xml"/>
+  <link href="{{ site.url }}/blogg/" rel="alternate" type="text/html"/>
+  <id>{{ site.url }}/blogg/</id>
+  <updated>{{ collections.posts | first | map: "date" | date: "%Y-%m-%dT%H:%M:%SZ" }}</updated>
+  <author><name>Athega</name></author>
+{%- for post in collections.posts limit: 30 %}
+  <entry>
+    <title>{{ post.data.title | escape }}</title>
+    <link href="{{ site.url }}{{ post.url }}" rel="alternate" type="text/html"/>
+    <id>{{ site.url }}{{ post.url }}</id>
+    <updated>{{ post.date | date: "%Y-%m-%dT%H:%M:%SZ" }}</updated>
+    {%- if post.data.excerpt %}
+    <summary>{{ post.data.excerpt | escape }}</summary>
+    {%- endif %}
+  </entry>
+{%- endfor %}
+</feed>

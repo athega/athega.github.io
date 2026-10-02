@@ -5,7 +5,7 @@ last_updated_by: peter
 ---
 <img src="http://farm7.static.flickr.com/6118/6290716291_3871679140_m.jpg" alt="Söderarm" style="float:right; margin-left:8px;"/>
 
-Årets [Athega Code Base](/code-base-2011) är förlagd till ön Torskär i det allra ytterstra stråket av skärgård innan havet mot Åland. På ön står den gamla fyren, Söderarm, känd från väderrapporter och vindobservationer.
+Årets Athega Code Base är förlagd till ön Torskär i det allra ytterstra stråket av skärgård innan havet mot Åland. På ön står den gamla fyren, Söderarm, känd från väderrapporter och vindobservationer.
 
 Här driver Anngret Andersson en fantastisk [konferensanläggning](http://www.soderarm.com/web/start.shtml) som jag varmt kan rekommendera. Öns [historia](http://www.soderarm.com/web/historia.shtml) är intressant och vi huserar i ett hus som byggts till i fem omgångar. Med den sista kom ett kontrolltorn åt Sjöfartsverket med makalös utsikt. Detta rum har varit vår kodplats under dessa dagar.
 

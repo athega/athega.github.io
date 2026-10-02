@@ -1,0 +1,7 @@
+<section class="section facts-section about-facts">
+  <div class="shell facts-grid">
+    {% for fact in facts %}
+      <div><span>{{ fact.value }}</span>{{ fact.body }}</div>
+    {% endfor %}
+  </div>
+</section>

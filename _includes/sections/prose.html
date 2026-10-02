@@ -1,0 +1,28 @@
+{% case kind %}
+{% when 'work-intro' %}
+<section class="section focus-section work-intro">
+  <div class="shell"><div class="section-heading">
+    <div class="focus-intro work-intro-copy">{{ body }}</div>
+    {% for link in links %}{{ link }}{% endfor %}
+  </div></div>
+</section>
+{% when 'history' %}
+<section class="section about-history">
+  <div class="shell">{{ eyebrow }}<div class="large-prose about-intro-copy">{{ body }}</div></div>
+</section>
+{% when 'team' %}
+<section class="section team-section">
+  <div class="shell">
+    <div class="section-heading split-heading"><div>{{ eyebrow }}{{ heading }}</div>{{ intro }}</div>
+    {{ body }}
+  </div>
+</section>
+{% else %}
+<section class="section">
+  <div class="shell {% if kind == 'profile' %}work-profile{% elsif kind == 'benefits' %}stacked-prose{% else %}prose-grid{% endif %}">
+    {{ heading }}
+    <div class="large-prose">{{ body }}</div>
+    {% for link in links %}{{ link }}{% endfor %}
+  </div>
+</section>
+{% endcase %}

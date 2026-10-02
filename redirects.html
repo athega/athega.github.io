@@ -1,0 +1,25 @@
+---
+# One page per row in _data/redirects.json: an old address that a real page has
+# moved from. Populated year archives replace their fallback redirects.
+# Add rows in the JSON file (from/to/title) to publish more redirects.
+pagination:
+  data: collections.legacyRedirects
+  size: 1
+  alias: redirect
+permalink: "{% if redirect.from contains '.html' %}{{ redirect.from }}{% else %}{{ redirect.from }}index.html{% endif %}"
+eleventyExcludeFromCollections: true
+layout: false
+---
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ redirect.title | escape }} — Athega</title>
+<link rel="canonical" href="{{ site.url }}{{ redirect.to }}">
+<meta http-equiv="refresh" content="0; url={{ redirect.to }}">
+</head>
+<body>
+<p>Den här sidan har flyttat. Om du inte skickas vidare automatiskt, <a href="{{ redirect.to }}">fortsätt till {{ redirect.title | escape }}</a>.</p>
+</body>
+</html>

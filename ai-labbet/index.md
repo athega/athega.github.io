@@ -1,76 +1,101 @@
 ---
-title: AI & Maskininlärning
-intro_image: /assets/img/ai-labbet.jpg
-tagline: AI & Maskininlärning
-sub_tagline: Utveckling inom artificiell intelligens och maskininlärning
+layout: sections
+title: AI & maskininlärning
+description: Praktiska AI- och maskininlärningslösningar för verksamheter, digitala tjänster och industri.
 ---
 
-# {{ title }}
+{% section "hero", "ai" %}
 
-Avdelningen är kärnan i vår strävan att utnyttja och utveckla de senaste framstegen inom artificiell intelligens och maskininlärning. Vårt fokus är att integrera klassisk maskininlärning och statistiska modeller med den allra senaste forskningen för att hitta praktiska lösningar på verkliga problem. Vår vision är att kontinuerligt förbättra och optimera våra kunders verksamheter genom att tillämpa de mest avancerade AI- och ML-teknikerna. Vi är en partner i den snabba teknologiska utvecklingen och bidrar till våra kunders framgång genom innovativa lösningar.
+AI & maskininlärning
 
+# Från möjlighet till *fungerande lösning.*
 
-Vi har en stark grund i dataanalys och signalbehandling. Sedan 2016 har vi fått en gedigen erfarenhet att praktiskt använda AI-lösningar på en stor variation av utmaningar och problem våra kunder haft. Erfarenheten och verktygslådan av lösningar har växt genom åren, och vi är alltid uppmärksamma på nya, lovande tekniker som ännu inte är redo för kommersiellt bruk.  Vi har framgångsrikt samarbetat med företag inom en mängd olika sektorer, inklusive larm/bevakning, fordonsindustrin, logistik, gruvdrift, och hälsorelaterad dataanalys.
+Vi hjälper företag att använda AI där den skapar verklig nytta, i den egna verksamheten, i digitala tjänster och i industrins fysiska miljöer.
 
-## Slutsatser från dessa projekt
-* Maskininlärning och AI är domänagnostiska och kan tillämpas tvärvetenskapligt.
-* Nya AI-metoder kan lösa tidigare olösliga problem eller förbättra befintliga lösningar avsevärt.
-* AI kan snabbt utvärdera lösbarheten av ett problem, vilket kan leda till effektivare klassiska maskininlärningslösningar.
-* AI och maskininlärning är inte universella lösningar men är extremt kraftfulla när de används rätt och i kombination med varandra.
+Vi kombinerar klassisk maskininlärning, statistiska modeller och den senaste utvecklingen inom AI. Sedan 2016 har vi byggt praktiska lösningar med verksamhetens behov som utgångspunkt och långsiktig kvalitet som krav.
 
+[Prata AI med oss – reception@athega.se](mailto:reception@athega.se?subject=AI%20och%20maskininl%C3%A4rning)
 
-> Vi erbjuder inte bara lösningar; vi öppnar dörrar till nya möjligheter och okänta potentialer.
+{% endsection %}
 
-## Vårt erbjudande idag
-* Intelligenta Analyssystem:
-    * Avancerade AI-modeller för djupgående insikter och beslutsstöd.
-    * Realtidsdataanalys för snabbare och mer effektiva beslut.
-* Automatiserad Processoptimering:
-    * Användning av AI för att effektivisera och automatisera komplexa industriprocesser.
-    * Förbättrad resurshantering och produktivitet genom smarta AI-algoritmer.
-* Prediktiv Underhållsteknik:
-    * AI-drivna system för att förutse underhållsbehov och förhindra driftstopp.
-    * Livscykelhantering av utrustning och system med hjälp av avancerad AI.
-* Anpassade Kundupplevelser:
-    * Användning av AI för att skapa skräddarsydda kundupplevelser och personaliserade tjänster.
-    * Förbättrad kundnöjdhet genom AI-baserad analys av kundbeteende.
-* Kreativa AI-Lösningar:
-    * Utveckling av AI-driven innehållsgenerering för media och underhållningsbranschen, musik, bild, text, ljuddesign.
-    * Användning av AI för att skapa innovativa designlösningar inom arkitektur och produktdesign.
-* Hållbarhet och Miljöskydd:
-    * AI-baserade lösningar för att förbättra hållbarheten och minska miljöpåverkan.
-    * Effektivisering av energianvändning och minskning av avfall genom AI-optimering.
-* Säkerhetslösningar:
-    * AI-drivna säkerhetssystem för både fysisk och digital säkerhet.
-    * Förbättrad övervakning och reaktionstid genom AI-integration.
+{% section "audiences" %}
 
-> Athega driver även en sedan 2018 en meetup för de som praktiserar data science och med AI/ML.
+Fokusområden
 
-Vill ni skriva upp er på inbjudningslistan till vårt MeetUp eller kontakta oss om ett intressant problem och samarbete, kontakta Torbjörn Nilsson – torbjorn.nilsson@athega.se 
+## AI för verksamhet och industri.
 
-<section class="home-blog content">
-    <h2>Från bloggen</h2>
-    <p>
-    </p>
-    <ul>
-        {% assign limit = 6 %}
-        {% for post in collections.posts %}
-            {% if post.data.description %}
-            {% if post.data.image_url %}
-            {% if post.data.tags[0]=='ai' %}
-              <li>
-                    <a href="{{ post.url }}" title="Läs mer om: {{ post.data.title }}">
-                        <figure><img src="{{ post.data.image_url }}"></figure>
-                        <h3>{{ post.data.title }}</h3>
-                        <p>{{ post.data.description }}</p>
+Behoven ser olika ut, men målet är detsamma: en lösning som går att använda, lita på och utveckla vidare.
 
-                    </a>
-                </li>
-                {% assign limit = limit | minus: 1 %}
-                {% if limit == 0 %}{% break %}{% endif %}
-            {% endif %}
-            {% endif %}
-            {% endif %}
-        {% endfor %}
-    </ul>
-</section>
+---
+
+Företag · Organisationer · Digitala tjänster
+
+### AI i verksamheten och i era tjänster.
+
+Vi hjälper er att undersöka data, effektivisera internt arbete och utveckla AI-lösningar för medarbetare eller kunder.
+
+- Analys, beslutsstöd och automatisering
+- Generativ AI för språk, bild och andra datatyper
+- AI-först som metod i mjukvaruutvecklingen
+- Robusta, skalbara och säkra produktionslösningar
+
+[Diskutera en AI-lösning – reception@athega.se](mailto:reception@athega.se?subject=AI%20f%C3%B6r%20verksamhet%20och%20digitala%20tj%C3%A4nster)
+
+---
+
+Industri · Tillverkning · Fysiska miljöer
+
+### AI där produktionen sker.
+
+Vi utvecklar produktionsnära lösningar där data, modeller, sensorer, hårdvara och verksamhet måste fungera tillsammans.
+
+- Analys och optimering av processer
+- Prediktivt underhåll och avvikelsedetektering
+- Visuell kvalitetskontroll av produktionslinjer
+- Signalbehandling, sensorer och produktionssättning
+
+[Läs om AI för industri](/ai-labbet/industri/)
+
+{% endsection %}
+
+{% section "steps", "soft" %}
+
+Så arbetar vi
+
+## Från ett tydligt problem till en hållbar lösning.
+
+Vi väljer metod efter problemet och bygger stegvis, med kontroll över kvalitet, risk och nytta.
+
+### Förstå behovet
+
+Vi utgår från verksamheten, problemet och den data som faktiskt finns.
+
+### Pröva i liten skala
+
+Vi bygger och utvärderar en första lösning innan onödig komplexitet skapas.
+
+### Bygga för verkligheten
+
+Vi integrerar AI med befintliga system och säkrar kvalitet, kontroll och förvaltning.
+
+### Förbättra över tid
+
+Vi följer resultatet och utvecklar modeller och arbetssätt när behoven förändras.
+
+{% endsection %}
+
+{% section "callout", "dark" %}
+
+Erfarenhet på riktigt
+
+## Teknik som har prövats i verkligheten.
+
+Vi har arbetat praktiskt med AI inom bland annat larm och säkerhet, fordon, logistik, gruvdrift, tillverkning och hälsorelaterad dataanalys.
+
+Erfarenheten hjälper oss att skilja lovande teknik från lösningar som är mogna att använda i produktion.
+
+[Prata AI med oss – reception@athega.se](mailto:reception@athega.se?subject=AI%20och%20maskininl%C3%A4rning)
+
+[Fördjupa dig i AI för industri](/ai-labbet/industri/)
+
+{% endsection %}

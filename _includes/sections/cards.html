@@ -1,0 +1,16 @@
+<section class="section{% if variant == 'soft' %} soft-section{% elsif variant == 'facts' %} facts-section{% elsif kind == 'values' %} work-values{% elsif kind == 'community' %} soft-section work-community{% endif %}"{% if id != empty %} id="{{ id | escape }}"{% endif %}>
+  <div class="shell">
+    {% include "sections/heading.html", eyebrow: eyebrow, heading: heading, intro: intro, kind: kind, variant: variant %}
+    <div class="{% if kind == 'focus' %}focus-grid numbered-card-grid{% elsif kind == 'steps' %}step-grid{% elsif kind == 'values' %}service-grid work-values-list{% else %}case-grid{% endif %}">
+      {% for card in cards %}
+        <article{% if kind == 'values' %} class="service-card work-value-row"{% endif %}>
+          {% if kind == 'values' %}<div>{% endif %}
+          {% if kind == 'steps' %}<span>{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>{% endif %}
+          {{ card.heading }}
+          {{ card.body }}
+          {% if kind == 'values' %}</div>{% endif %}
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>

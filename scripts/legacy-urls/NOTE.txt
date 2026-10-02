@@ -1,0 +1,10 @@
+Underlag för fas 1 (URL-bevarande), inte kod som körs av bygget.
+
+manifest.json  – varje historisk sökväg från Internetarkivet, med kategori och,
+                 där det gick att räkna ut automatiskt, förslag på ny adress.
+summary.txt    – samma data i läsbar form, grupperad per kategori med en
+                 förklaring av vad kategorin betyder.
+
+Hämtat en gång, för hand, se chatten för hur. Datan blir daterad över tid
+eftersom Internetarkivet fortsätter indexera; kör om hämtningen (eller be
+Claude göra det) om det här underlaget känns för gammalt.
