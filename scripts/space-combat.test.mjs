@@ -27,3 +27,11 @@ test('continuous scroll reflects at both ends without losing fractional motion',
   assert.deepEqual(advanceScroll(0, 1, 0.3, 100), { position: 0.3, direction: 1 });
   assert.deepEqual(advanceScroll(10, 1, 10, 0), { position: 0, direction: 1 });
 });
+
+test('ship contacts separate overlapping hulls with stable opposite normals', async () => {
+  const { shipContact } = await import('../assets/space-egg/combat.js');
+  assert.equal(shipContact({ x: 0, y: 0 }, { x: 31, y: 0 }), null);
+  assert.deepEqual(shipContact({ x: 10, y: 0 }, { x: 0, y: 0 }), { nx: 1, ny: 0, overlap: 20 });
+  assert.equal(shipContact({ x: 0, y: 0 }, { x: 10, y: 0 }).nx, -1);
+  assert.equal(shipContact({ x: 0, y: 0 }, { x: 0, y: 0 }, -1).nx, -1);
+});

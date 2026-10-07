@@ -34,7 +34,7 @@ export function pilotName(value) {
   if (typeof value !== 'string') return '';
   return Array.from(value.replace(/[\u0000-\u001f\u007f\u202a-\u202e\u2066-\u2069]/g, '').replace(/\s+/g, ' ').trim()).slice(0, 20).join('');
 }
-const protocol = 5;
+const protocol = 7;
 
 // Star topology: the host owns scoring and relays guests' visual updates.
 export function createMultiplayer({ onMessage, onConnected, onStatus, onPlayers = () => {}, loadPeer = loadPeerLibrary }) {
@@ -147,7 +147,7 @@ export function createMultiplayer({ onMessage, onConnected, onStatus, onPlayers 
       const sender = host ? connection.peer : packet.sender;
       if (!roster.includes(sender) || sender === peer.id) return;
       onMessage(message, sender);
-      if (host && ['position', 'shot', 'impact'].includes(message.type)) broadcast({ sender, message }, sender);
+      if (host && ['position', 'shot', 'impact', 'pilot-death'].includes(message.type)) broadcast({ sender, message }, sender);
     });
     connection.on('close', () => {
       if (closed || connections.get(connection.peer) !== connection) return;

@@ -499,6 +499,9 @@ när spelaren väljer Skapa rum eller Anslut.
 - Byt uppdrag finns alltid kvar, även om alla sidans länkar är förstörda.
   Sidan scrollar långsamt ned och upp (18 px/s) och vänder vid kanterna.
   Värden kan pausa scrollen. En helt rensad sida öppnar uppdragsväljaren.
+- Länkar och små mål försvinner på en träff, textblock på två, H2-rubriker på tre
+  och huvudrubriker/bilder på fyra. Skadan syns som urtag, toning och splitter.
+  Poäng och powerups ges först när objektet är helt förstört.
 - Täta träffar inom två sekunder bygger upp till ×5 kombopoäng. Snabbare
   sidrensning ger större tidsbonus (75 per mål minus 15 per sekund, minst 0).
 - Var tredje förstört objekt släpper en powerup. Flyg nära för att plocka upp den:
@@ -509,8 +512,10 @@ när spelaren väljer Skapa rum eller Anslut.
   även dessa signaler. Skeppsträffar visar ljusblixt, träffring och skada/skydd.
   Övriga powerups gäller den egna piloten.
 - Under **Spelregler** kan värden slå på friendly fire och kollisionsskador.
-  Båda är av från början och kan ändras under spelet. Skeppet har 100 skrov;
-  skott ger 20 skada och sidobjekt 25. Kort skydd efter träff förhindrar skada
+  Båda är av från början och kan ändras under spelet. Skepp studsar även mot
+  varandra när kollisionsregeln är på; sköld skyddar mot skada men stoppar inte
+  studsen. Skeppet har 100 skrov;
+  skott ger 20 skada och kollisioner 25. Kort skydd efter träff förhindrar skada
   varje bildruta. Vid noll skrov återkommer skeppet efter 3 s med 3 s skydd.
 - Mörkt/Ljust växlar tillfälligt spelläge. Mörkt läge har stjärnor och nebulosa.
   Ljud kan stängas av. Reducerad rörelse ger stilla stjärnor, enklare toning och
@@ -518,12 +523,25 @@ när spelaren väljer Skapa rum eller Anslut.
 - Esc/Avsluta återställer sidan. Efter virtuella sidbyten laddas den aktuella
   destinationen om till den vanliga sajten, med rätt metadata och normala skript.
 
+
+### Ronder och vinnare
+
+En rond varar **120 sekunder** från start, även över sidbyten och öppna menyer.
+Flest kills vinner; lika många ger delad seger. En kill ges till skytten när
+kompisskeppets skrov når noll. Krasch mot sidan eller ett annat skepp ger ett
+dödsfall men ingen kill. Skeppets explosion syns och hörs hos alla.
+Värden samordnar kills, dödsfall och slutresultat. Vid 0:00 stannar spelet och
+visar resultatlistan. Värden kan sedan ta alla tillbaka till lobbyn för en ny rond;
+skrov, objektskador, powerups och poäng återställs. Solo har också en tvåminutersrond.
+
 ### Upp till fyra spelare med en inbjudningslänk
 
 1. Aktivera spelet och välj **Spela tillsammans**. Skriv ett valfritt pilotnamn.
 2. Välj **Skapa rum**, sedan **Kopiera inbjudningslänk**. Skicka samma länk till
    upp till tre kompisar och håll spelet öppet.
 3. Kompisarna öppnar länken, skriver sina pilotnamn och väljer **Anslut**.
+   Alla väntar i lobbyn tills värden klickar **Starta spelet**. En sen anslutning
+   till en redan startad rond följer den pågående matchen.
    Ingen svarskod behövs. Lobbyn visar besättningen, värden och lediga platser.
    Namnen visas också vid skeppen och i spelarlistan.
 4. Inbjudningslänken använder alltid startsidan. Efter anslutning följer gästen
@@ -540,7 +558,10 @@ anslutningstjänsten kontaktas förrän spelaren väljer Skapa rum eller Anslut.
 STUN (`stun.cloudflare.com:3478`) hjälper webbläsarna hitta en nätverksväg.
 WebRTC DataChannel skickar speldata mellan webbläsarna; värden vidarebefordrar
 kompisarnas positioner och skott. Ingen kamera eller mikrofon används.
-Pilotnamn hålls i minnet och delas med deltagarna; de ingår också i signaleringen.
+Det egna pilotnamnet sparas i webbläsarens localStorage och fylls i vid nästa
+spel eller inbjudan. Töm namnfältet för att glömma det sparade namnet. Om lagring
+är blockerad går det fortfarande att spela. Namnet delas med deltagarna och
+ingår också i signaleringen.
 
 Det finns ingen TURN-reläserver: vissa företagsnät och mobilnät kan därför inte
 koppla ihop sig. Vid misslyckad anslutning går det att försöka igen eller byta

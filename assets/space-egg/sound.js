@@ -57,6 +57,7 @@ export function createSound() {
       [220, 330, 440, 660].forEach((note, i) => tone(note, note * 1.01, 0.22, 'triangle', i * 0.09));
     },
     powerup() { [440, 660, 880].forEach((note, i) => tone(note, note * 1.1, 0.18, 'sine', i * 0.07)); },
+    chip() { tone(260, 90, 0.08, 'triangle'); },
     damage() { tone(160, 55, 0.18, 'sawtooth'); },
     roomEffect(kind) {
       if (kind === 'gravity') {
@@ -67,6 +68,8 @@ export function createSound() {
         tone(350, 1600, 0.35, 'sine', 0.1);
       }
     },
+    crash() { this.explode(); tone(80, 24, 0.7, 'sawtooth'); tone(160, 35, 0.5, 'triangle', 0.08); },
+    roundEnd() { [660, 550, 440, 880].forEach((note, i) => tone(note, note, 0.3, 'triangle', i * 0.16)); },
     effectEnded() { tone(440, 330, 0.18, 'sine'); tone(330, 220, 0.18, 'sine', 0.16); },
     shoot() { tone(950, 140, 0.12, 'triangle'); },
     explode() {

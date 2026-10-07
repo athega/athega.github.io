@@ -1,9 +1,11 @@
+import { targetStrength, damageEdge } from './targets.js?v=10';
+import { ROUND_SECONDS, roundWinners, clockLabel } from './round.js?v=9';
 import { createArena, cameraFor, WORLD_WIDTH, WORLD_HEIGHT } from './arena.js?v=7';
-import { POWERUPS, damageHull, expandedRect, effectSeconds, advanceScroll } from './combat.js?v=5';
+import { POWERUPS, damageHull, expandedRect, effectSeconds, advanceScroll, shipContact } from './combat.js?v=8';
 import { hitsRect } from './physics.js?v=3';
-import { createSound } from './sound.js?v=7';
+import { createSound } from './sound.js?v=10';
 import { internalDestination } from './navigation.js?v=3';
-import { createMultiplayer, MAX_PLAYERS } from './multiplayer.js?v=7';
+import { createMultiplayer, MAX_PLAYERS, pilotName } from './multiplayer.js?v=10';
 import { invitationLink, invitationPeer } from './invitation.js?v=7';
 import { hitReward, sectorReward } from './scoring.js?v=3';
 
@@ -34,11 +36,11 @@ export async function openGame(onClose, invitedPeerId = null) {
   host.style.cssText = 'position:fixed;inset:0;overflow:hidden;z-index:2147483647';
   const shadow = host.attachShadow({ mode: 'open' });
   shadow.innerHTML = `
-    <link rel="stylesheet" href="${new URL('./game.css?v=7', import.meta.url).href}">
+    <link rel="stylesheet" href="${new URL('./game.css?v=10', import.meta.url).href}">
     <div role="dialog" aria-modal="true" aria-label="Athega Space – hemligt arkadspel">
       <canvas class="world-canvas" aria-hidden="true"></canvas><div class="offscreen-pilots" aria-hidden="true"></div><div class="radar" hidden><canvas width="128" height="80" aria-label="Radar över piloterna"></canvas><span>RADAR</span></div>
       <div class="hud">
-        <div class="scoreboard"><span class="kicker">Athega / Space</span><output class="score" aria-label="Poäng">00000</output><span class="pace">×1 · 0.0 s</span><span class="connection-status" aria-live="polite">Soloflygning</span><ul class="pilot-list" aria-label="Piloter"></ul><span class="hull-status" aria-live="polite">Skrov 100</span><span class="gravity-status" role="status" hidden></span><span class="power-status" aria-live="polite">Redo</span></div>
+        <div class="scoreboard"><span class="kicker">Athega / Space</span><output class="score" aria-label="Poäng">00000</output><span class="round-clock">2:00</span><span class="kill-count">0 kills · 0 dödsfall</span><span class="pace">×1 · 0.0 s</span><span class="connection-status" aria-live="polite">Soloflygning</span><ul class="pilot-list" aria-label="Piloter"></ul><span class="hull-status" aria-live="polite">Skrov 100</span><span class="gravity-status" role="status" hidden></span><span class="power-status" aria-live="polite">Redo</span></div>
         <div class="actions"><button class="multiplayer">Spela tillsammans</button><button class="menu-toggle" hidden aria-expanded="false">Meny</button><button class="theme" aria-pressed="true" aria-label="Mörkt spelläge">Mörkt</button><button class="sound" aria-pressed="true" aria-label="Ljud på">Ljud på</button><button class="exit">Avsluta ×</button></div>
       </div>
       <div class="play-ui" hidden>
@@ -62,11 +64,12 @@ export async function openGame(onClose, invitedPeerId = null) {
         <section class="crew" hidden aria-label="Besättning"><h3>Besättning <span class="crew-count"></span></h3><ul class="crew-list" aria-live="polite"></ul></section>
         <details class="rules"><summary>Spelregler <span>Värden bestämmer</span></summary>
           <label class="rule"><input class="friendly-fire" type="checkbox"><span>Friendly fire<small>Kompisarnas skott ger skada.</small></span></label>
-          <label class="rule"><input class="collisions" type="checkbox"><span>Kollisionsskador<small>Sidans text och bilder blir hinder.</small></span></label>
+          <label class="rule"><input class="collisions" type="checkbox"><span>Kollisionsskador<small>Krockar med sidan och andra skepp ger skada.</small></span></label>
           <p>100 skrov. Nytt skepp efter 3 sekunder. G↓ och S↕ påverkar hela rummet i 8 sekunder.</p>
         </details>
         <button class="primary host-game">Skapa rum</button>
         <button class="primary join-game" hidden>Anslut till rummet</button>
+        <button class="primary start-room" hidden>Starta spelet</button>
         <div class="invitation" hidden>
           <input class="outgoing-link" readonly aria-label="Din inbjudningslänk">
           <button class="primary copy-link">Kopiera inbjudningslänk</button>
@@ -78,6 +81,13 @@ export async function openGame(onClose, invitedPeerId = null) {
         </details>
         <p class="lobby-status" role="status"></p>
         <div class="lobby-actions"><button class="lobby-close">Till spelet</button><button class="disconnect" hidden>Lämna rummet</button></div>
+      </div></div>
+      <div class="results" hidden><div class="panel">
+        <span class="kicker">120 sekunder / rondresultat</span><h2 class="result-title">Ronden är klar</h2>
+        <ol class="result-list"></ol>
+        <button class="primary rematch">Till lobbyn för ny rond</button>
+        <p class="result-wait" hidden>Väntar på värden för nästa rond.</p>
+        <button class="result-exit">Avsluta spelet</button>
       </div></div>
       <div class="missions" hidden><div class="panel">
         <span class="kicker">Nästa destination</span><h2>Välj ett nytt uppdrag</h2>
@@ -104,6 +114,16 @@ export async function openGame(onClose, invitedPeerId = null) {
     const node = find(selector);
     if (node.textContent !== text) node.textContent = text;
   }
+  const nameInput = find('.pilot-name');
+  const nameStorageKey = 'athega-space-pilot-name';
+  try { nameInput.value = pilotName(localStorage.getItem(nameStorageKey)); } catch { /* Storage may be disabled. */ }
+  listen(nameInput, 'input', () => {
+    try {
+      const name = pilotName(nameInput.value);
+      if (name) localStorage.setItem(nameStorageKey, name);
+      else localStorage.removeItem(nameStorageKey);
+    } catch { /* The game also works without persistent storage. */ }
+  });
   const canvas = find('.world-canvas');
   const radar = find('.radar canvas');
   const radarContext = radar.getContext('2d');
@@ -121,6 +141,8 @@ export async function openGame(onClose, invitedPeerId = null) {
   let mobileMenu = arenaDocument.querySelector('.mobile-menu');
   let menuWasOpen = mobileMenu?.open;
   const destroyed = new Map();
+  const targetHealth = new Map();
+  const damageStyles = new Map();
   const keys = new Set();
   const shots = [];
   let shotSequence = 0;
@@ -135,6 +157,16 @@ export async function openGame(onClose, invitedPeerId = null) {
   const powers = { triple: 0, rapid: 0, shield: 0, turbo: 0 };
   const rules = { friendlyFire: false, collisions: false };
   let lobbyMode = invitedPeerId ? 'invited' : 'idle';
+  let roomStarted = false;
+  let roundSerial = 0;
+  let roundDeadline = 0;
+  let roundEnded = false;
+  let roundRemaining = ROUND_SECONDS;
+  let lastRoundSecond = -1;
+  let deathSequence = 0;
+  const roundStats = new Map();
+  const pendingDamage = new Map();
+  const collisionTimes = new Map();
   let hull = 100;
   let invulnerable = 3;
   let respawn = 0;
@@ -208,7 +240,12 @@ export async function openGame(onClose, invitedPeerId = null) {
       // Text ranges follow actual lines, so shots can pass through empty margins.
       const range = arenaDocument.createRange();
       range.selectNodeContents(node);
-      const rects = node.tagName === 'IMG' ? [node.getBoundingClientRect()] : [...range.getClientRects()];
+      let rects = node.tagName === 'IMG' ? [node.getBoundingClientRect()] : [...range.getClientRects()];
+      if (targetHealth.has(node)) {
+        const bounds = node.getBoundingClientRect();
+        const edge = bounds.left + bounds.width * damageEdge(targetHealth.get(node), targetStrength(node.tagName)) / 100;
+        rects = rects.map(rect => ({ left: rect.left, right: Math.min(rect.right, edge), top: rect.top, bottom: rect.bottom, width: Math.min(rect.right, edge) - rect.left, height: rect.height }));
+      }
       return rects.filter(rect => rect.width > 0 && rect.height > 0 && rect.bottom > 0 && rect.top < height)
         .map(rect => ({ node, rect }));
     });
@@ -227,6 +264,7 @@ export async function openGame(onClose, invitedPeerId = null) {
     if (closed) return;
     closed = true;
     cancelAnimationFrame(frame);
+    clearInterval(roundTimer);
     controller.abort();
     sound.close();
     themeStyle.remove();
@@ -263,6 +301,37 @@ export async function openGame(onClose, invitedPeerId = null) {
     destroyed.set(node, { value: node.style.getPropertyValue('visibility'), priority: node.style.getPropertyPriority('visibility'), hadStyle: node.hasAttribute('style') });
   }
 
+  function applyTargetDamage(node, remaining, x, y, animate = true) {
+    const maximum = targetStrength(node.tagName);
+    if (!Number.isInteger(remaining) || remaining <= 0 || remaining >= maximum) return;
+    if (!damageStyles.has(node)) {
+      damageStyles.set(node, ['clip-path', 'opacity'].map(property => [property, node.style.getPropertyValue(property), node.style.getPropertyPriority(property)]));
+    }
+    targetHealth.set(node, remaining);
+    const edge = damageEdge(remaining, maximum);
+    node.style.setProperty('clip-path', `polygon(0 0, ${edge}% 0, ${edge - 5}% 18%, ${edge + 1}% 31%, ${edge - 8}% 44%, ${edge}% 60%, ${edge - 4}% 77%, ${edge}% 100%, 0 100%)`);
+    node.style.setProperty('opacity', String(0.65 + 0.35 * remaining / maximum));
+    pendingHits.delete(node);
+    targetsDirty = true;
+    if (!animate) return;
+    labels.push({ x, y, text: `${remaining}/${maximum}`, life: 0.65 });
+    for (let i = 0; i < (reducedMotion ? 3 : 12); i++) {
+      particles.push({ x, y, vx: (Math.random() - 0.5) * 220, vy: -50 - Math.random() * 150, life: 0.45, max: 0.45, size: 2 + Math.random() * 3, color: '#ffae77' });
+    }
+    sound.chip();
+  }
+
+  function restoreTargetDamage() {
+    for (const [node, styles] of damageStyles) {
+      for (const [property, value, priority] of styles) {
+        if (value) node.style.setProperty(property, value, priority);
+        else node.style.removeProperty(property);
+      }
+    }
+    damageStyles.clear();
+    targetHealth.clear();
+  }
+
   function destroy(target, x, y, remote = null) {
     const node = target.node;
     if (destroyed.has(node)) return;
@@ -272,6 +341,12 @@ export async function openGame(onClose, invitedPeerId = null) {
       return;
     }
     pendingHits.delete(node);
+    const remaining = (targetHealth.get(node) ?? targetStrength(node.tagName)) - 1;
+    if (!remote && remaining > 0) {
+      applyTargetDamage(node, remaining, x, y);
+      network?.send({ type: 'target-damage', page: currentUrl, id: targets.indexOf(node), remaining });
+      return;
+    }
     rememberTarget(node);
     checkMissionClear = true;
     const animation = node.animate(reducedMotion ? [
@@ -343,6 +418,8 @@ export async function openGame(onClose, invitedPeerId = null) {
       }
       arenaDocument.querySelector('base')?.setAttribute('href', currentUrl);
       flightShots.clear();
+      targetHealth.clear();
+      damageStyles.clear();
       impacts.length = 0;
       destroyed.clear();
       pendingHits.clear();
@@ -373,7 +450,7 @@ export async function openGame(onClose, invitedPeerId = null) {
   }
 
   function fire(kind = 'destroy') {
-    if (respawn > 0) return;
+    if (respawn > 0 || roundEnded || (network?.connected && !roomStarted)) return;
     const dx = Math.cos(ship.angle);
     const dy = Math.sin(ship.angle);
     const salvo = ++shotSequence;
@@ -410,7 +487,7 @@ export async function openGame(onClose, invitedPeerId = null) {
     for (const effect of Object.values(roomEffects)) {
       if (effect.announced && performance.now() >= effect.until) { effect.announced = false; sound.effectEnded(); }
     }
-    if (document.hidden || loadingPage || !find('.lobby').hidden || !find('.missions').hidden) return;
+    if (roundEnded || (roundDeadline > 0 && performance.now() >= roundDeadline) || document.hidden || loadingPage || !find('.lobby').hidden || !find('.missions').hidden) return;
     gameTime += dt;
     missionElapsed += dt;
     updateScroll(dt);
@@ -494,6 +571,22 @@ export async function openGame(onClose, invitedPeerId = null) {
         ship.vx *= -0.65;
         ship.vy *= -0.65;
         invulnerable = Math.max(invulnerable, 0.8);
+      }
+    }
+    if (rules.collisions && respawn <= 0) {
+      for (const [id, other] of ghosts) {
+        if (other.hull === 0) continue;
+        const contact = shipContact(ship, { x: other.targetX, y: other.targetY }, network.playerId < id ? -1 : 1);
+        if (!contact) continue;
+        ship.x = Math.max(16, Math.min(width - 16, ship.x + contact.nx * (contact.overlap + 2)));
+        ship.y = Math.max(16, Math.min(height - 16, ship.y + contact.ny * (contact.overlap + 2)));
+        const approaching = ship.vx * contact.nx + ship.vy * contact.ny;
+        if (approaching < 80) {
+          ship.vx += contact.nx * (100 - approaching);
+          ship.vy += contact.ny * (100 - approaching);
+        }
+        if (network.isHost) routeCollision(network.playerId, id);
+        else network.send({ type: 'collision-request', page: currentUrl, other: id, round: roundSerial });
       }
     }
     updateCamera();
@@ -656,7 +749,7 @@ export async function openGame(onClose, invitedPeerId = null) {
     networkTime += dt;
     if (networkTime >= 0.05 && network?.connected) {
       networkTime = 0;
-      network.send({ type: 'position', page: currentUrl, x: ship.x / width, y: ship.y / height, angle: ship.angle, thrust, hull, shield: powers.shield > 0 || invulnerable > 0 });
+      network.send({ type: 'position', page: currentUrl, x: ship.x / width, y: ship.y / height, angle: ship.angle, thrust, hull, hit: hitFlash > 0, shield: powers.shield > 0 || invulnerable > 0 });
     }
     for (const [id, ghost] of ghosts) {
       ghost.x += (ghost.targetX - ghost.x) * Math.min(1, dt * 14);
@@ -775,6 +868,7 @@ export async function openGame(onClose, invitedPeerId = null) {
   listen(launchButton, 'click', () => {
     sound.init();
     sound.launch();
+    beginRound();
     start();
   });
   listen(find('.exit'), 'click', () => close());
@@ -852,7 +946,7 @@ export async function openGame(onClose, invitedPeerId = null) {
   const movementKeys = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'KeyW', 'KeyA', 'KeyS', 'KeyD', 'Space', 'KeyN'];
   listen(window, 'keydown', event => {
     if (event.code === 'Escape') { event.preventDefault(); close(); return; }
-    if (!find('.lobby').hidden || !find('.missions').hidden) return;
+    if (roundEnded || !find('.lobby').hidden || !find('.missions').hidden) return;
     if (!running || event.ctrlKey || event.metaKey || event.altKey) return;
     // Space still activates a focused control when navigating the HUD with Tab.
     if (event.code === 'Space' && keyboardFocus) return;
@@ -864,7 +958,8 @@ export async function openGame(onClose, invitedPeerId = null) {
   listen(shadow, 'keydown', event => {
     if (event.key !== 'Tab') return;
     keyboardFocus = true;
-    const buttons = [...shadow.querySelectorAll('button, input, select, summary')].filter(button => !button.disabled && button.checkVisibility());
+    const scope = find('.results:not([hidden])') || find('.lobby:not([hidden])') || find('.missions:not([hidden])') || shadow;
+    const buttons = [...scope.querySelectorAll('button, input, select, summary')].filter(button => !button.disabled && button.checkVisibility());
     const index = buttons.indexOf(shadow.activeElement);
     const next = event.shiftKey ? (index - 1 + buttons.length) % buttons.length : (index + 1) % buttons.length;
     event.preventDefault();
@@ -967,7 +1062,11 @@ export async function openGame(onClose, invitedPeerId = null) {
     labels.push({ x: ship.x, y: ship.y - 24, text: `−${amount} SKROV`, life: 1 });
     if (hull === 0) {
       burst(ship.x, ship.y, { left: ship.x - 15, top: ship.y - 15, width: 30, height: 30 });
-      sound.explode();
+      sound.crash();
+      deathSequence++;
+      const death = { type: 'pilot-death', page: currentUrl, round: roundSerial, sequence: deathSequence, x: ship.x / width, y: ship.y / height };
+      if (!network?.connected || network.isHost) recordDeath(death, ownPilotId());
+      network?.send(death);
       respawn = 3;
       ship.vx = ship.vy = 0;
       for (const kind of Object.keys(powers)) powers[kind] = 0;
@@ -975,11 +1074,183 @@ export async function openGame(onClose, invitedPeerId = null) {
     }
   }
 
+  function ownPilotId() { return network?.playerId || 'solo'; }
+
+  function ensurePilot(id) {
+    if (!roundStats.has(id)) roundStats.set(id, { id, name: network?.playerName(id) || pilotName(nameInput.value) || 'Pilot', kills: 0, deaths: 0 });
+    return roundStats.get(id);
+  }
+
+  function roundSnapshot() {
+    return { serial: roundSerial, remaining: roundRemaining, ended: roundEnded, players: [...roundStats.values()] };
+  }
+
+  function publishRound() {
+    if (network?.isHost) network.send({ type: 'round', data: roundSnapshot() });
+  }
+
+  function renderRound() {
+    setText('.round-clock', clockLabel(roundRemaining));
+    const me = roundStats.get(ownPilotId());
+    setText('.kill-count', `${me?.kills || 0} ${me?.kills === 1 ? 'kill' : 'kills'} · ${me?.deaths || 0} dödsfall`);
+    if (!roundEnded) return;
+    resetControls();
+    const players = [...roundStats.values()].sort((a, b) => b.kills - a.kills);
+    const winners = roundWinners(players);
+    const names = players.filter(player => winners.includes(player.id)).map(player => player.name);
+    setText('.result-title', players.length === 1 ? 'Ronden är klar' : winners.length === 1 ? `${names[0]} vinner!` : 'Delad seger!');
+    const list = find('.result-list');
+    list.replaceChildren();
+    for (const player of players) {
+      const item = document.createElement('li');
+      item.textContent = `${player.name} · ${player.kills} ${player.kills === 1 ? 'kill' : 'kills'} · ${player.deaths} dödsfall`;
+      if (winners.includes(player.id)) item.className = 'winner';
+      list.append(item);
+    }
+    find('.lobby').hidden = find('.missions').hidden = true;
+    find('.results').hidden = false;
+    const guest = network?.connected && !network.isHost;
+    find('.rematch').hidden = Boolean(guest);
+    find('.result-wait').hidden = !guest;
+  }
+
+  function resetRound() {
+    roundDeadline = 0;
+    roundEnded = false;
+    roundRemaining = ROUND_SECONDS;
+    lastRoundSecond = -1;
+    deathSequence = 0;
+    roundStats.clear();
+    pendingDamage.clear();
+    collisionTimes.clear();
+    animations.forEach(animation => animation.cancel());
+    animations.clear();
+    for (const [node, original] of destroyed) {
+      if (original.value) node.style.setProperty('visibility', original.value, original.priority);
+      else node.style.removeProperty('visibility');
+    }
+    restoreTargetDamage();
+    destroyed.clear();
+    pendingHits.clear();
+    flightShots.clear();
+    shots.length = pickups.length = particles.length = rings.length = labels.length = impacts.length = 0;
+    score = 0;
+    scoreOutput.textContent = '00000';
+    hull = 100;
+    respawn = 0;
+    invulnerable = 3;
+    hitFlash = 0;
+    combo = 1;
+    lastHitTime = -Infinity;
+    missionElapsed = gameTime = 0;
+    pageCleared = false;
+    checkMissionClear = targetsDirty = true;
+    for (const kind of Object.keys(powers)) powers[kind] = 0;
+    for (const effect of Object.values(roomEffects)) { effect.until = 0; effect.revision = 0; effect.announced = false; }
+    effectClaims.clear();
+    scrollPaused = false;
+    scrollDirection = 1;
+    scrollPosition = lastWrittenScroll = 0;
+    remoteScroll = null;
+    arenaWindow.scrollTo({ top: 0, behavior: 'instant' });
+    ship.x = width / 2 + (network?.connected ? 48 * network.playerIds.indexOf(ownPilotId()) : 0);
+    ship.y = height * 0.62;
+    ship.vx = ship.vy = 0;
+    find('.results').hidden = true;
+    resetControls();
+    renderRound();
+  }
+
+  function beginRound() {
+    roundDeadline = performance.now() + ROUND_SECONDS * 1000;
+    roundRemaining = ROUND_SECONDS;
+    roundStats.clear();
+    const players = network?.playerIds || [];
+    for (const id of players.length ? players : [ownPilotId()]) ensurePilot(id);
+    renderRound();
+  }
+
+  function receiveRound(data) {
+    if (!data || !Number.isSafeInteger(data.serial) || data.serial < roundSerial || !Number.isFinite(data.remaining)
+      || data.remaining < 0 || data.remaining > ROUND_SECONDS || !Array.isArray(data.players) || data.players.length > 100) return;
+    if (data.serial > roundSerial) { resetRound(); roundSerial = data.serial; }
+    roundRemaining = data.remaining;
+    if (data.ended === true && !roundEnded) sound.roundEnd();
+    roundEnded = data.ended === true;
+    if (roomStarted) roundDeadline = performance.now() + data.remaining * 1000;
+    roundStats.clear();
+    for (const player of data.players) {
+      if (typeof player.id !== 'string' || !Number.isSafeInteger(player.kills) || player.kills < 0 || !Number.isSafeInteger(player.deaths) || player.deaths < 0) continue;
+      roundStats.set(player.id, { id: player.id, name: pilotName(player.name) || 'Pilot', kills: player.kills, deaths: player.deaths });
+    }
+    renderRound();
+  }
+
+  function updateRound() {
+    if (closed || !roundDeadline || roundEnded) return;
+    roundRemaining = Math.max(0, (roundDeadline - performance.now()) / 1000);
+    const second = Math.ceil(roundRemaining);
+    if (roundRemaining === 0 && (!network?.connected || network.isHost)) {
+      roundEnded = true;
+      sound.roundEnd();
+      renderRound();
+      publishRound();
+    } else if (second !== lastRoundSecond) {
+      lastRoundSecond = second;
+      renderRound();
+      if (!network?.connected || network.isHost) publishRound();
+    }
+    for (const [id, damage] of pendingDamage) if (damage.expires < performance.now()) pendingDamage.delete(id);
+  }
+  const roundTimer = setInterval(updateRound, 100);
+
+  function recordDeath(message, pilot) {
+    if (roundEnded || message.round !== roundSerial || !Number.isInteger(message.sequence)) return;
+    const entry = ensurePilot(pilot);
+    if (message.sequence !== entry.deaths + 1) return;
+    entry.deaths++;
+    renderRound();
+    publishRound();
+  }
+
+  function recordKill(message, victim) {
+    const damage = pendingDamage.get(message.shotId);
+    if (!damage || damage.victim !== victim || damage.expires < performance.now()) return;
+    pendingDamage.delete(message.shotId);
+    if (roundEnded || message.round !== roundSerial || message.killed !== true || message.damage <= 0) return;
+    ensurePilot(damage.shooter).kills++;
+    renderRound();
+    publishRound();
+  }
+
+  function routeCollision(pilot, other) {
+    if (!rules.collisions || !network.playerIds.includes(other) || pilot === other) return;
+    const pair = [pilot, other].sort().join(':');
+    if (performance.now() - (collisionTimes.get(pair) ?? -Infinity) < 1000) return;
+    collisionTimes.set(pair, performance.now());
+    const packet = { type: 'collision-damage', page: currentUrl, round: roundSerial, pilots: [pilot, other] };
+    network.send(packet);
+    if (packet.pilots.includes(ownPilotId())) takeDamage(25);
+  }
+
+  listen(find('.result-exit'), 'click', () => close());
+  listen(find('.rematch'), 'click', () => {
+    if (network?.connected && !network.isHost) return;
+    if (network && !network.connected && !network.isHost) { network.close(); network = null; }
+    resetRound();
+    roundSerial++;
+    roomStarted = false;
+    showLobby();
+    broadcastState();
+    if (!network) { find('.lobby').hidden = true; find('.briefing').hidden = false; running = false; cancelAnimationFrame(frame); }
+  });
+
   function routePilotHit(target, shotId, sender) {
     const flight = flightShots.get(shotId);
     if (!rules.friendlyFire || !flight || flight.owner !== sender || flight.kind !== 'destroy'
       || flight.expires < performance.now() || target === sender || !network.playerIds.includes(target)) return;
     flightShots.delete(shotId);
+    pendingDamage.set(shotId, { shooter: sender, victim: target, expires: performance.now() + 3000 });
     const packet = { type: 'pilot-damage', page: currentUrl, target, shotId };
     network.send(packet);
     if (target === network.playerId) resolvePilotHit(packet);
@@ -988,7 +1259,8 @@ export async function openGame(onClose, invitedPeerId = null) {
   function resolvePilotHit(message) {
     const before = hull;
     takeDamage(20);
-    const impact = { type: 'impact', page: currentUrl, shotId: message.shotId, x: ship.x / width, y: ship.y / height, damage: before - hull };
+    const impact = { type: 'impact', page: currentUrl, shotId: message.shotId, x: ship.x / width, y: ship.y / height, damage: before - hull, killed: before > 0 && hull === 0, round: roundSerial };
+    if (network.isHost) recordKill(impact, network.playerId);
     showImpact(impact, network.playerId);
     network.send(impact);
   }
@@ -1059,7 +1331,7 @@ export async function openGame(onClose, invitedPeerId = null) {
 
   function broadcastState() {
     if (!network?.connected || !network.isHost) return;
-    network.send({ type: 'state', rules: { ...rules }, effects: Object.fromEntries(Object.entries(roomEffects).map(([kind, effect]) => [kind, { seconds: effectTime(kind), revision: effect.revision }])), scrollPaused, page: currentUrl, targetCount: targets.length, signature: targetSignature(), destroyed: [...destroyed.keys()].map(node => targets.indexOf(node)), score, scroll: arenaWindow.scrollY / Math.max(1, arenaDocument.documentElement.scrollHeight - height) });
+    network.send({ type: 'state', damage: [...targetHealth].filter(([node]) => !destroyed.has(node)).map(([node, remaining]) => [targets.indexOf(node), remaining]), round: roundSnapshot(), roomStarted, rules: { ...rules }, effects: Object.fromEntries(Object.entries(roomEffects).map(([kind, effect]) => [kind, { seconds: effectTime(kind), revision: effect.revision }])), scrollPaused, page: currentUrl, targetCount: targets.length, signature: targetSignature(), destroyed: [...destroyed.keys()].map(node => targets.indexOf(node)), score, scroll: arenaWindow.scrollY / Math.max(1, arenaDocument.documentElement.scrollHeight - height) });
   }
 
   function validPoint(message) {
@@ -1070,6 +1342,7 @@ export async function openGame(onClose, invitedPeerId = null) {
 
   async function receive(message, sender) {
     if (closed) return;
+    if (message.type === 'round' && !network.isHost) { receiveRound(message.data); return; }
     if (message.type === 'state' && !network.isHost) {
       const destination = internalDestination(message.page, currentUrl);
       if (!destination || !Array.isArray(message.destroyed) || message.destroyed.length > 5000
@@ -1078,6 +1351,14 @@ export async function openGame(onClose, invitedPeerId = null) {
       if (destination.href !== currentUrl) await navigateTo({ destination }, true);
       if (closed) return;
       if (message.targetCount !== targets.length || message.signature !== targetSignature()) { find('.connection-status').textContent = 'Olika sidversioner – ladda om båda sidorna.'; return; }
+      if (message.round?.serial > roundSerial) { resetRound(); roundSerial = message.round.serial; }
+      if (Array.isArray(message.damage) && message.damage.length <= 5000) {
+        for (const entry of message.damage) {
+          if (!Array.isArray(entry)) continue;
+          const [id, remaining] = entry;
+          if (Number.isInteger(id) && targets[id]) applyTargetDamage(targets[id], remaining, 0, 0, false);
+        }
+      }
       for (const id of message.destroyed) {
         if (!Number.isInteger(id) || !targets[id] || destroyed.has(targets[id])) continue;
         rememberTarget(targets[id]);
@@ -1099,16 +1380,45 @@ export async function openGame(onClose, invitedPeerId = null) {
       scoreOutput.textContent = String(score).padStart(5, '0');
       arenaWindow.scrollTo({ top: message.scroll * Math.max(0, arenaDocument.documentElement.scrollHeight - height), behavior: 'instant' });
       targetsDirty = true;
+      const wasStarted = roomStarted;
+      roomStarted = message.roomStarted === true;
+      if (message.round) receiveRound(message.round);
+      updateLobby();
+      if (roomStarted && !wasStarted && !roundEnded) {
+        find('.lobby').hidden = true;
+        sound.launch();
+        start();
+      } else if (!roomStarted) find('.lobby').hidden = false;
       return;
     }
+    if (roundEnded || (roundDeadline && performance.now() >= roundDeadline) || (network?.connected && !roomStarted)) return;
     if (message.page !== currentUrl || loadingPage) return;
+    if (message.type === 'target-damage' && !network.isHost && Number.isInteger(message.id) && targets[message.id] && !destroyed.has(targets[message.id])) {
+      const node = targets[message.id];
+      const rect = node.getBoundingClientRect();
+      applyTargetDamage(node, message.remaining, rect.left + rect.width / 2, rect.top + rect.height / 2);
+      return;
+    }
+    if (message.type === 'pilot-death' && message.round === roundSerial && Number.isFinite(message.x) && Number.isFinite(message.y)) {
+      if (network.isHost) recordDeath(message, sender);
+      const x = message.x * width, y = message.y * height;
+      burst(x, y, { left: x - 15, top: y - 15, width: 30, height: 30 });
+      sound.crash();
+      if (ghosts.has(sender)) ghosts.get(sender).hull = 0;
+      return;
+    }
+    if (message.type === 'collision-request' && network.isHost && message.round === roundSerial) { routeCollision(sender, message.other); return; }
+    if (message.type === 'collision-damage' && !network.isHost && message.round === roundSerial && Array.isArray(message.pilots)) {
+      if (message.pilots.includes(ownPilotId())) takeDamage(25);
+      return;
+    }
     if (message.type === 'pilot-hit' && network.isHost) { routePilotHit(message.target, message.shotId, sender); return; }
     if (message.type === 'pilot-damage' && !network.isHost) {
       for (let i = shots.length - 1; i >= 0; i--) if (shots[i].id === message.shotId) shots.splice(i, 1);
       if (message.target === network.playerId) resolvePilotHit(message);
       return;
     }
-    if (message.type === 'impact') { showImpact(message, sender); return; }
+    if (message.type === 'impact') { if (network.isHost) recordKill(message, sender); showImpact(message, sender); return; }
     if (message.type === 'scroll' && !network.isHost && Number.isFinite(message.scroll) && message.scroll >= 0 && message.scroll <= 1) {
       remoteScroll = message.scroll;
       scrollPaused = message.paused === true;
@@ -1142,6 +1452,9 @@ export async function openGame(onClose, invitedPeerId = null) {
 
   function makeNetwork() {
     network?.close();
+    roomStarted = false;
+    resetRound();
+    roundSerial = 1;
     for (const effect of Object.values(roomEffects)) { effect.until = 0; effect.revision = 0; effect.announced = false; }
     effectClaims.clear();
     ghosts.clear();
@@ -1153,7 +1466,7 @@ export async function openGame(onClose, invitedPeerId = null) {
           if (message.page !== currentUrl || !validPoint(message)) return;
           let ghost = ghosts.get(sender);
           if (!ghost) { ghost = { x: message.x * width, y: message.y * height }; ghosts.set(sender, ghost); }
-          Object.assign(ghost, { targetX: message.x * width, targetY: message.y * height, angle: message.angle, thrust: Boolean(message.thrust), hull: Number.isFinite(message.hull) ? message.hull : 100, shield: Boolean(message.shield) });
+          Object.assign(ghost, { targetX: message.x * width, targetY: message.y * height, angle: message.angle, thrust: Boolean(message.thrust), hull: Number.isFinite(message.hull) ? message.hull : 100, shield: Boolean(message.shield), flashUntil: message.hit ? performance.now() + 100 : 0 });
           return;
         }
         messageQueue = messageQueue.then(() => receive(message, sender)).catch(() => { hint.textContent = 'Ett spelmeddelande kunde inte läsas.'; });
@@ -1162,12 +1475,12 @@ export async function openGame(onClose, invitedPeerId = null) {
         if (!network.isHost) ship.x = Math.min(width - 24, width / 2 + 48 * network.playerIds.indexOf(network.playerId));
         lobbyMode = network.isHost ? 'hosting' : 'guest';
         updateLobby();
-        if (!network.isHost) find('.lobby').hidden = true;
+        if (!roomStarted) find('.lobby').hidden = false;
         invulnerable = 3;
-        start();
         broadcastState();
       },
       onPlayers(players) {
+        if (network.isHost && !roundEnded) for (const id of players) ensurePilot(id);
         for (const id of ghosts.keys()) if (!players.includes(id)) ghosts.delete(id);
         for (const selector of ['.pilot-list', '.crew-list']) {
           const list = find(selector);
@@ -1186,7 +1499,15 @@ export async function openGame(onClose, invitedPeerId = null) {
         if (closed) return;
         find('.lobby-status').textContent = status;
         find('.connection-status').textContent = network?.connected ? `${network.playerIds.length} / ${MAX_PLAYERS} piloter` : status;
-        if (!network?.connected) { ghosts.clear(); pendingHits.clear(); }
+        if (!network?.connected) {
+          ghosts.clear(); pendingHits.clear();
+          if (lobbyMode === 'guest') {
+            lobbyMode = 'idle';
+            roomStarted = false;
+            updateLobby();
+            if (roundEnded) renderRound();
+          }
+        }
       },
     });
     return network;
@@ -1197,12 +1518,19 @@ export async function openGame(onClose, invitedPeerId = null) {
     const connected = lobbyMode === 'hosting' || lobbyMode === 'guest';
     find('.host-game').hidden = lobbyMode !== 'idle';
     find('.join-game').hidden = !invited;
+    find('.start-room').hidden = lobbyMode !== 'hosting' || roomStarted;
+    find('.lobby-close').hidden = connected && !roomStarted;
     find('.join-manually').hidden = lobbyMode !== 'idle';
     find('.invitation').hidden = lobbyMode !== 'hosting';
     find('.disconnect').hidden = lobbyMode === 'idle';
     find('.disconnect').textContent = invited ? 'Avbryt inbjudan' : 'Lämna rummet';
     find('.pilot-name').disabled = connected;
-    find('.lobby-intro').textContent = invited ? 'Du är inbjuden. Välj namn och anslut.' : connected ? 'Rummet är öppet. Flyg tillsammans!' : 'Skapa ett rum och bjud in med en länk.';
+    let intro = 'Skapa ett rum och bjud in med en länk.';
+    if (invited) intro = 'Du är inbjuden. Välj namn och anslut.';
+    else if (connected && roomStarted) intro = 'Rummet är öppet. Flyg tillsammans!';
+    else if (lobbyMode === 'hosting') intro = 'Starta när besättningen är redo.';
+    else if (lobbyMode === 'guest') intro = 'Väntar på att värden startar spelet.';
+    find('.lobby-intro').textContent = intro;
     updateRules();
   }
   function showLobby(peerId = null) {
@@ -1214,7 +1542,8 @@ export async function openGame(onClose, invitedPeerId = null) {
       find('.lobby-status').textContent = '';
     }
     updateLobby();
-    (find('.pilot-name').disabled ? find('.lobby-close') : find('.pilot-name')).focus({ preventScroll: true });
+    const focus = find('.pilot-name').disabled ? (find('.start-room').hidden ? find('.disconnect') : find('.start-room')) : find('.pilot-name');
+    focus.focus({ preventScroll: true });
   }
   listen(find('.use-invitation'), 'click', () => {
     const id = invitationPeer(find('.incoming-link').value, currentUrl);
@@ -1223,7 +1552,21 @@ export async function openGame(onClose, invitedPeerId = null) {
   });
   listen(find('.multiplayer'), 'click', () => showLobby());
   listen(window, 'athega-space-invite', event => showLobby(event.detail));
-  listen(find('.lobby-close'), 'click', () => { find('.lobby').hidden = true; });
+  listen(find('.lobby-close'), 'click', () => {
+    if ((lobbyMode === 'hosting' || lobbyMode === 'guest') && !roomStarted) return;
+    find('.lobby').hidden = true;
+  });
+  listen(find('.start-room'), 'click', () => {
+    if (!network?.isHost || roomStarted) return;
+    roomStarted = true;
+    beginRound();
+    updateLobby();
+    find('.lobby').hidden = true;
+    sound.init();
+    sound.launch();
+    start();
+    broadcastState();
+  });
   async function connectionAction(action) {
     const attempt = ++connectionAttempt;
     const status = find('.lobby-status');

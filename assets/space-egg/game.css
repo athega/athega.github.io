@@ -103,3 +103,12 @@ input:focus-visible, summary:focus-visible { outline: 2px solid #ff8c40; outline
 @media (pointer: coarse), (max-width: 640px) {
   .radar { top: 110px; bottom: auto; right: 12px; transform: scale(.8); transform-origin: top right; }
 }
+
+.round-clock { display: block; font-size: 22px; font-variant-numeric: tabular-nums; color: #ffd18e; }
+.kill-count { display: block; font-size: 10px; margin-bottom: 4px; }
+.results { position: absolute; inset: 0; z-index: 6; display: flex; overflow-y: auto; padding: 24px; background: #07101df2; }
+.results .panel { margin: auto; }
+.result-list { padding: 0; list-style: none; font-size: 13px; }
+.result-list li { padding: 12px 0; border-bottom: 1px solid #36414c; }
+.result-list .winner { color: #ffb26f; }
+.result-exit { margin-top: 12px; }

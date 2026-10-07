@@ -31,3 +31,12 @@ export function advanceScroll(position, direction, distance, maximum) {
   }
   return { position: next, direction };
 }
+
+export function shipContact(ship, other, fallbackSide = 1) {
+  const dx = ship.x - other.x;
+  const dy = ship.y - other.y;
+  const distance = Math.hypot(dx, dy);
+  const separation = 30;
+  if (distance >= separation) return null;
+  return { nx: distance ? dx / distance : fallbackSide, ny: distance ? dy / distance : 0, overlap: separation - distance };
+}
