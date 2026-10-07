@@ -113,6 +113,7 @@ export default function(eleventyConfig) {
 
   // Ignorera dokumentationsfiler (ska inte generera sidor)
   eleventyConfig.ignores.add("README.md");
+  eleventyConfig.ignores.add("docs/space-egg/README.md");
   eleventyConfig.ignores.add("CLAUDE.md");
   eleventyConfig.ignores.add("AGENTS.md");
 
