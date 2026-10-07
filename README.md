@@ -487,7 +487,8 @@ Om utvecklingsservern får en annan port än 8080 används adressen den skriver 
 
 Fem snabba klick (inom 2,2 sekunder) på startsidans logga, eller Konamikoden
 `↑ ↑ ↓ ↓ ← → ← → B A` på valfri sida, öppnar Athega Space. Bara den lilla
-triggern laddas normalt; spel, ljud och CSS laddas vid aktivering. Inga nya npm-paket.
+triggern laddas normalt; spel, ljud och CSS laddas vid aktivering. PeerJS laddas först
+när spelaren väljer Skapa spel eller Anslut.
 
 ### Kontroller och poäng
 
@@ -507,31 +508,30 @@ triggern laddas normalt; spel, ljud och CSS laddas vid aktivering. Inga nya npm-
 - Esc/Avsluta återställer sidan. Efter virtuella sidbyten laddas den aktuella
   destinationen om till den vanliga sajten, med rätt metadata och normala skript.
 
-### Två spelare med två koder
+### Upp till fyra spelare med en inbjudningslänk
 
-Båda ska öppna samma version av sajten på samma origin (protokoll, värd och port).
-För lokal provkörning fungerar två fönster/webbläsare mot samma localhost-adress.
-En localhost-adress på din dator kan inte öppnas direkt på kompisens dator.
+1. Aktivera spelet och välj **Spela tillsammans**. Skriv ett valfritt pilotnamn.
+2. Välj **Skapa spel**, sedan **Kopiera inbjudningslänk**. Skicka samma länk till
+   upp till tre kompisar och håll spelet öppet.
+3. Kompisarna öppnar länken, skriver sina pilotnamn och väljer **Anslut**.
+   Ingen svarskod behövs. Namnen visas vid skeppen och i spelarlistan.
 
-1. Båda aktiverar spelet och väljer **Två spelare**.
-2. Värden väljer **Skapa spel**, kopierar **Inbjudningskod – skicka till kompisen** (`ATHEGA-INBJUDAN:…`) och skickar den
-   till kompisen. Kodgenereringen kan ta upp till tio sekunder.
-3. Kompisen klistrar in den under **Inkommande kod** och väljer **Svara på
-   inbjudan**. Kompisens nya **Svarskod – skicka tillbaka till värden** (`ATHEGA-SVAR:…`)
-   skickas tillbaka till värden. Skicka inte tillbaka den ursprungliga inbjudan.
-4. Värden klistrar in svaret under **Inkommande kod** och väljer **Anslut med
-   svarskoden**. Båda får status **Två piloter** när anslutningen är uppe.
-5. Ni röjer tillsammans: den andra piloten är blå, träffar och poäng delas och
-   båda följer med vid sektor-/sidbyte. Byt uppdrag fungerar även efter full rensning.
+Alla behöver samma version av sajten på samma origin (protokoll, värd och port).
+Lokalt kan flera fönster använda samma localhost-adress; den adressen fungerar
+inte på kompisens dator. För spel mellan datorer behöver sajten vara publicerad.
 
-WebRTC DataChannel skickar speldata direkt mellan webbläsarna. Koderna ersätter
-signaleringstjänsten. STUN (`stun.cloudflare.com:3478`) används bara när man
-väljer multiplayer för att hitta en nätverksväg. Ingen kamera/mikrofon används,
-inga spelaruppgifter sparas och ingen spelserver tar emot innehållet.
-Det finns ingen TURN-reläserver i prototypen: vissa företagsnät och mobilnät
-kan därför inte koppla ihop sig. Vid misslyckad anslutning kan man nollställa,
-skapa nya koder eller prova ett annat nätverk. Om en spelare lämnar fortsätter
-kompisen i sololäge.
+PeerJS 1.5.5 serveras från sajten och använder kostnadsfria PeerJS Cloud för att
+koppla ihop spelarna. Inbjudan öppnar spellobbyn, men varken PeerJS eller
+anslutningstjänsten kontaktas förrän spelaren väljer Skapa spel eller Anslut.
+STUN (`stun.cloudflare.com:3478`) hjälper webbläsarna hitta en nätverksväg.
+WebRTC DataChannel skickar speldata mellan webbläsarna; värden vidarebefordrar
+kompisarnas positioner och skott. Ingen kamera eller mikrofon används.
+Pilotnamn hålls i minnet och delas med deltagarna; de ingår också i signaleringen.
+
+Det finns ingen TURN-reläserver: vissa företagsnät och mobilnät kan därför inte
+koppla ihop sig. Vid misslyckad anslutning går det att försöka igen eller byta
+nätverk. Inbjudan gäller medan värden är ansluten. När en gäst lämnar frigörs
+platsen; om värden lämnar fortsätter övriga i sololäge.
 
 Värden avgör gemensamma träffar och poäng och synkroniserar förstörda objekt med
 stabila index plus en innehållssignatur. Skeppens visuella positioner normaliseras
@@ -540,6 +540,6 @@ Sidbyten hämtar statiskt sidinnehåll utan att starta om spelet eller WebRTC.
 Detta är en lekfull co-op-prototyp, inte ett tävlingsläge med skydd mot fusk.
 
 Koden finns i `assets/space-egg/`: `trigger.js`, `game.js`, `game.css`,
-`physics.js`, `scoring.js`, `sound.js`, `navigation.js` och `multiplayer.js`.
+`physics.js`, `scoring.js`, `sound.js`, `navigation.js`, `invitation.js` och `multiplayer.js`.
 Den äldre `assets/site.js` används inte. Vid ändring av redan publicerade
 spelmoduler behöver versionsparametrarna på deras import-/resurslänkar uppdateras.

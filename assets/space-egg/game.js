@@ -1,10 +1,11 @@
 import { hitsRect } from './physics.js?v=3';
 import { createSound } from './sound.js?v=3';
 import { internalDestination } from './navigation.js?v=3';
-import { createMultiplayer, decodeSignal } from './multiplayer.js?v=3';
+import { createMultiplayer, MAX_PLAYERS } from './multiplayer.js?v=4';
+import { invitationLink, invitationPeer } from './invitation.js?v=4';
 import { hitReward, sectorReward } from './scoring.js?v=3';
 
-export function openGame(onClose) {
+export function openGame(onClose, invitedPeerId = null) {
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const previousFocus = document.activeElement;
   const originalUrl = location.href;
@@ -12,7 +13,7 @@ export function openGame(onClose) {
   let loadingPage = false;
   let pageChanged = false;
   let network = null;
-  let ghost = null;
+  const ghosts = new Map();
   let networkTime = 0;
   let messageQueue = Promise.resolve();
   let connectionAttempt = 0;
@@ -27,12 +28,12 @@ export function openGame(onClose) {
   host.style.cssText = 'position:fixed;inset:0;z-index:2147483647';
   const shadow = host.attachShadow({ mode: 'open' });
   shadow.innerHTML = `
-    <link rel="stylesheet" href="${new URL('./game.css?v=3', import.meta.url).href}">
+    <link rel="stylesheet" href="${new URL('./game.css?v=4', import.meta.url).href}">
     <div role="dialog" aria-modal="true" aria-label="Athega Space – hemligt arkadspel">
       <canvas aria-hidden="true"></canvas>
       <div class="hud">
-        <div class="scoreboard"><span class="kicker">Athega / Space</span><output class="score" aria-label="Poäng">00000</output><span class="pace">×1 · 0.0 s</span><span class="connection-status" aria-live="polite">Soloflygning</span><span class="power-status" aria-live="polite">Sektor 01</span></div>
-        <div class="actions"><button class="multiplayer">Två spelare</button><button class="menu-toggle" hidden aria-expanded="false">Meny</button><button class="theme" aria-pressed="true" aria-label="Mörkt spelläge">Mörkt</button><button class="sound" aria-pressed="true" aria-label="Ljud på">Ljud på</button><button class="exit">Avsluta ×</button></div>
+        <div class="scoreboard"><span class="kicker">Athega / Space</span><output class="score" aria-label="Poäng">00000</output><span class="pace">×1 · 0.0 s</span><span class="connection-status" aria-live="polite">Soloflygning</span><ul class="pilot-list" aria-label="Piloter"></ul><span class="power-status" aria-live="polite">Sektor 01</span></div>
+        <div class="actions"><button class="multiplayer">Spela tillsammans</button><button class="menu-toggle" hidden aria-expanded="false">Meny</button><button class="theme" aria-pressed="true" aria-label="Mörkt spelläge">Mörkt</button><button class="sound" aria-pressed="true" aria-label="Ljud på">Ljud på</button><button class="exit">Avsluta ×</button></div>
       </div>
       <div class="play-ui" hidden>
         <p class="hint">← → / A D: rotera · ↑ / W: gas · Mellanslag: skjut · N: navigera · Esc: avsluta</p>
@@ -49,17 +50,19 @@ export function openGame(onClose) {
         <button class="primary launch">Starta motorerna</button>
       </div></div>
       <div class="lobby" hidden><div class="panel">
-        <span class="kicker">Två piloter / ett uppdrag</span><h2>Flyg tillsammans</h2>
-        <p>Värden skickar en inbjudningskod. Kompisen svarar med en svarskod. Värden klistrar in svaret.</p>
+        <span class="kicker">Upp till fyra piloter / ett uppdrag</span><h2>Flyg tillsammans</h2>
+        <p>Skapa ett spel och skicka samma länk till upp till tre kompisar. Var och en öppnar länken och väljer Anslut.</p>
+        <label>Ditt pilotnamn (valfritt)<input class="pilot-name" maxlength="20" autocomplete="off" placeholder="Till exempel Chrille"></label>
         <div class="lobby-actions"><button class="host-game">Skapa spel</button></div>
-        <p class="lobby-status" role="status">Värd? Skapa spel. Fått en kod? Klistra in den nedan och välj Svara på inbjudan.</p>
-        <label>Inkommande kod<textarea class="incoming-code" spellcheck="false" rows="3" maxlength="32000" placeholder="Klistra in inbjudan eller svar här"></textarea></label>
-        <p class="incoming-type" role="status"></p>
-        <button class="join-game">Svara på inbjudan</button>
-        <button class="accept-answer" hidden>Anslut med svarskoden</button>
-        <label><span class="code-label">Din kod att skicka</span><textarea class="outgoing-code" readonly rows="3" aria-label="Din kod att skicka"></textarea></label>
-        <button class="copy-code" disabled>Kopiera kod</button>
-        <div class="lobby-actions"><button class="disconnect">Nollställ anslutning</button><button class="lobby-close">Till spelet</button></div>
+        <div class="invitation" hidden>
+          <label>Din inbjudningslänk<input class="outgoing-link" readonly aria-label="Din inbjudningslänk"></label>
+          <button class="copy-link">Kopiera inbjudningslänk</button>
+          <p class="local-invite" hidden>Det här är en lokal testadress. Länken fungerar i en annan webbläsare på samma dator; för en kompis behöver spelet vara publicerat.</p>
+        </div>
+        <label>Har du fått en inbjudan?<input class="incoming-link" type="url" spellcheck="false" autocomplete="off" placeholder="Klistra in inbjudningslänken"></label>
+        <button class="join-game">Anslut</button>
+        <p class="lobby-status" role="status">Ingen svarskod behövs. Värden behöver ha spelet öppet.</p>
+        <div class="lobby-actions"><button class="disconnect">Koppla från / börja om</button><button class="lobby-close">Till spelet</button></div>
       </div></div>
       <div class="missions" hidden><div class="panel">
         <span class="kicker">Nästa destination</span><h2>Välj ett nytt uppdrag</h2>
@@ -87,6 +90,11 @@ export function openGame(onClose) {
   const context = canvas.getContext('2d');
   const launchButton = find('.launch');
   const scoreOutput = find('.score');
+  const colors = ['#ff6600', '#56dfff', '#ee91ff', '#b2ef5e'];
+  function playerColor(id = network?.playerId) {
+    const index = network?.playerIds.indexOf(id) ?? -1;
+    return colors[Math.max(0, index) % colors.length];
+  }
   const hint = find('.hint');
   const stick = find('.stick');
   let mobileMenu = document.querySelector('.mobile-menu');
@@ -318,7 +326,7 @@ export function openGame(onClose) {
       window.scrollTo({ top: 0, behavior: 'instant' });
       resize();
       sector++;
-      ship.x = width / 2 + (network?.connected && !network.isHost ? 48 : 0);
+      ship.x = Math.min(width - 24, width / 2 + (network?.connected ? 48 * network.playerIds.indexOf(network.playerId) : 0));
       ship.y = height * 0.62;
       ship.vx = ship.vy = 0;
       hint.textContent = 'Nytt uppdrag! Fortsätt röja tillsammans.';
@@ -445,7 +453,7 @@ export function openGame(onClose) {
       context.beginPath();
       context.moveTo(shot.x, shot.y);
       context.lineTo(x, y);
-      context.strokeStyle = shot.kind === 'navigate' || shot.remote ? '#00b7dd' : '#ff6600';
+      context.strokeStyle = shot.kind === 'navigate' ? '#00b7dd' : shot.color || playerColor();
       context.lineWidth = shot.kind === 'navigate' ? 5 : 3;
       context.shadowColor = shot.kind === 'navigate' ? '#00d4ff' : '#ff6600';
       context.shadowBlur = reducedMotion ? 0 : 10;
@@ -535,12 +543,26 @@ export function openGame(onClose) {
       networkTime = 0;
       network.send({ type: 'position', page: currentUrl, x: ship.x / width, y: ship.y / height, angle: ship.angle, thrust });
     }
-    if (ghost) {
+    for (const [id, ghost] of ghosts) {
       ghost.x += (ghost.targetX - ghost.x) * Math.min(1, dt * 14);
       ghost.y += (ghost.targetY - ghost.y) * Math.min(1, dt * 14);
-      drawShip(ghost.thrust, now, ghost, '#56dfff');
+      drawShip(ghost.thrust, now, ghost, playerColor(id));
+      drawPilotName(network.playerName(id), ghost, playerColor(id));
     }
-    drawShip(thrust, now);
+    drawShip(thrust, now, ship, playerColor());
+    if (network?.connected) drawPilotName(network.playerName(network.playerId), ship, playerColor());
+  }
+
+  function drawPilotName(name, craft, color) {
+    context.save();
+    context.font = '12px ui-monospace, monospace';
+    context.textAlign = 'center';
+    const textWidth = context.measureText(name).width;
+    context.fillStyle = '#08121de0';
+    context.fillRect(craft.x - textWidth / 2 - 5, craft.y + 20, textWidth + 10, 19);
+    context.fillStyle = color;
+    context.fillText(name, craft.x, craft.y + 33);
+    context.restore();
   }
 
   function drawShip(thrust, now, craft = ship, color = '#ff6600') {
@@ -662,7 +684,7 @@ export function openGame(onClose) {
   listen(shadow, 'keydown', event => {
     if (event.key !== 'Tab') return;
     keyboardFocus = true;
-    const buttons = [...shadow.querySelectorAll('button, textarea, select')].filter(button => button.getClientRects().length);
+    const buttons = [...shadow.querySelectorAll('button, input, select')].filter(button => button.getClientRects().length);
     const index = buttons.indexOf(shadow.activeElement);
     const next = event.shiftKey ? (index - 1 + buttons.length) % buttons.length : (index + 1) % buttons.length;
     event.preventDefault();
@@ -766,7 +788,7 @@ export function openGame(onClose) {
       && Number.isFinite(message.angle) && Math.abs(message.angle) < 1e9;
   }
 
-  async function receive(message) {
+  async function receive(message, sender) {
     if (closed) return;
     if (message.type === 'state' && !network.isHost) {
       const destination = internalDestination(message.page, currentUrl);
@@ -801,7 +823,7 @@ export function openGame(onClose) {
       destroy({ node, rect }, rect.left + rect.width / 2, rect.top + rect.height / 2, message);
     } else if (message.type === 'shot' && validPoint(message) && ['destroy', 'navigate'].includes(message.kind)) {
       for (const offset of message.triple && message.kind === 'destroy' ? [-0.17, 0, 0.17] : [0]) {
-        shots.push({ remote: true, kind: message.kind, x: message.x * width, y: message.y * height, vx: Math.cos(message.angle + offset) * 750, vy: Math.sin(message.angle + offset) * 750, life: 1.3 });
+        shots.push({ remote: true, color: playerColor(sender), kind: message.kind, x: message.x * width, y: message.y * height, vx: Math.cos(message.angle + offset) * 750, vy: Math.sin(message.angle + offset) * 750, life: 1.3 });
       }
     } else if (message.type === 'navigate' && network.isHost) {
       const destination = internalDestination(message.url, currentUrl);
@@ -812,96 +834,100 @@ export function openGame(onClose) {
   function makeNetwork() {
     network?.close();
     network = createMultiplayer({
-      onMessage(message) {
+      onMessage(message, sender) {
         if (message.type === 'position') {
           if (message.page !== currentUrl || !validPoint(message)) return;
-          if (!ghost) ghost = { x: message.x * width, y: message.y * height };
+          let ghost = ghosts.get(sender);
+          if (!ghost) { ghost = { x: message.x * width, y: message.y * height }; ghosts.set(sender, ghost); }
           Object.assign(ghost, { targetX: message.x * width, targetY: message.y * height, angle: message.angle, thrust: Boolean(message.thrust) });
           return;
         }
-        messageQueue = messageQueue.then(() => receive(message)).catch(() => { hint.textContent = 'Ett spelmeddelande kunde inte läsas.'; });
+        messageQueue = messageQueue.then(() => receive(message, sender)).catch(() => { hint.textContent = 'Ett spelmeddelande kunde inte läsas.'; });
       },
       onConnected() {
-        if (!network.isHost) ship.x = Math.min(width - 24, width / 2 + 48);
+        if (!network.isHost) ship.x = Math.min(width - 24, width / 2 + 48 * network.playerIds.indexOf(network.playerId));
         find('.lobby').hidden = true;
         start();
         broadcastState();
       },
+      onPlayers(players) {
+        for (const id of ghosts.keys()) if (!players.includes(id)) ghosts.delete(id);
+        const list = find('.pilot-list');
+        list.replaceChildren();
+        for (const id of players) {
+          const item = document.createElement('li');
+          item.style.color = playerColor(id);
+          item.textContent = network.playerName(id) + (id === network.playerId ? ' (du)' : '');
+          list.append(item);
+        }
+      },
       onStatus(status) {
         if (closed) return;
         find('.lobby-status').textContent = status;
-        find('.connection-status').textContent = network?.connected ? 'Två piloter' : status;
-        if (!network?.connected) { ghost = null; pendingHits.clear(); }
+        find('.connection-status').textContent = network?.connected ? `${network.playerIds.length} / ${MAX_PLAYERS} piloter` : status;
+        if (!network?.connected) { ghosts.clear(); pendingHits.clear(); }
       },
     });
     return network;
   }
 
-  listen(find('.multiplayer'), 'click', () => {
+  function showLobby(peerId = null) {
     resetControls();
     find('.lobby').hidden = false;
-    find('.host-game').focus({ preventScroll: true });
-  });
+    if (peerId) {
+      find('.incoming-link').value = invitationLink(peerId, currentUrl);
+      find('.lobby-status').textContent = 'Du är inbjuden! Välj Anslut för att flyga tillsammans.';
+      find('.join-game').focus({ preventScroll: true });
+    } else find('.host-game').focus({ preventScroll: true });
+  }
+  listen(find('.multiplayer'), 'click', () => showLobby());
+  listen(window, 'athega-space-invite', event => showLobby(event.detail));
   listen(find('.lobby-close'), 'click', () => { find('.lobby').hidden = true; });
   async function connectionAction(action) {
     const attempt = ++connectionAttempt;
     const status = find('.lobby-status');
-    status.textContent = 'Förbereder anslutningen…';
     find('.host-game').disabled = find('.join-game').disabled = true;
+    find('.invitation').hidden = true;
     try {
-      const code = await action();
-      if (closed || attempt !== connectionAttempt) return;
-      if (code) {
-        find('.outgoing-code').value = code;
-        find('.copy-code').disabled = false;
-        find('.code-label').textContent = network.isHost ? 'Inbjudningskod – skicka till kompisen' : 'Svarskod – skicka tillbaka till värden';
-        status.textContent = network.isHost ? 'Skicka din inbjudningskod. Kompisen ska klistra in den och klicka Svara på inbjudan. Klistra sedan in kompisens NYA svarskod här och klicka Anslut med svarskoden.' : 'Nästan klart! Kopiera din NYA svarskod nedan och skicka tillbaka den. Värden ska klistra in den och klicka Anslut med svarskoden. Vänta kvar här.';
-      } else status.textContent = 'Kopplar ihop skeppen…';
+      await action();
     } catch (error) {
       if (!closed && attempt === connectionAttempt) status.textContent = error.message || 'Anslutningen gick inte att skapa.';
+    } finally {
+      if (!closed && attempt === connectionAttempt) find('.host-game').disabled = find('.join-game').disabled = false;
     }
   }
-  listen(find('.incoming-code'), 'input', () => {
-    const value = find('.incoming-code').value;
-    const label = find('.incoming-type');
-    if (!value.trim()) { label.textContent = ''; return; }
-    try {
-      const { type } = decodeSignal(value);
-      label.textContent = type === 'offer'
-        ? 'INBJUDAN: klicka Svara på inbjudan för att skapa en NY kod att skicka tillbaka.'
-        : 'SVARSKOD: värden ska klicka Anslut med svarskoden.';
-      if (network?.isHost && type === 'offer') label.textContent = 'Det här är en inbjudan. Du är värd och behöver kompisens NYA svarskod (ATHEGA-SVAR).';
-    } catch (error) { label.textContent = error.message; }
-  });
   listen(find('.host-game'), 'click', () => connectionAction(async () => {
-    const code = await makeNetwork().offer();
-    find('.accept-answer').hidden = false;
-    find('.join-game').hidden = true;
-    return code;
+    const id = await makeNetwork().host(find('.pilot-name').value);
+    if (closed) return;
+    find('.outgoing-link').value = invitationLink(id, currentUrl);
+    find('.invitation').hidden = false;
+    find('.local-invite').hidden = !['localhost', '127.0.0.1', '[::1]'].includes(location.hostname);
+    find('.lobby-status').textContent = 'Skicka länken till kompisen och låt spelet vara öppet. Ni kopplas ihop när kompisen väljer Anslut.';
   }));
-  listen(find('.join-game'), 'click', () => connectionAction(() => makeNetwork().answer(find('.incoming-code').value)));
-  listen(find('.accept-answer'), 'click', () => connectionAction(() => network.accept(find('.incoming-code').value)));
-  listen(find('.copy-code'), 'click', async () => {
-    try { await navigator.clipboard.writeText(find('.outgoing-code').value); find('.lobby-status').textContent = 'Koden är kopierad.'; }
-    catch { find('.outgoing-code').select(); find('.lobby-status').textContent = 'Markeringen är klar. Kopiera koden manuellt.'; }
+  listen(find('.join-game'), 'click', () => {
+    const id = invitationPeer(find('.incoming-link').value, currentUrl);
+    if (!id) { find('.lobby-status').textContent = 'Klistra in en giltig inbjudningslänk från den här sajten.'; return; }
+    connectionAction(() => makeNetwork().join(id, find('.pilot-name').value));
+  });
+  listen(find('.copy-link'), 'click', async () => {
+    try { await navigator.clipboard.writeText(find('.outgoing-link').value); find('.lobby-status').textContent = 'Länken är kopierad. Skicka den till kompisen och vänta kvar här.'; }
+    catch { find('.outgoing-link').select(); find('.lobby-status').textContent = 'Markeringen är klar. Kopiera länken manuellt.'; }
   });
   listen(find('.disconnect'), 'click', () => {
     connectionAttempt++;
     network?.close();
     network = null;
-    ghost = null;
+    ghosts.clear();
     pendingHits.clear();
-    find('.incoming-code').value = find('.outgoing-code').value = '';
-    find('.incoming-type').textContent = '';
+    find('.incoming-link').value = find('.outgoing-link').value = '';
     find('.host-game').disabled = find('.join-game').disabled = false;
-    find('.accept-answer').hidden = true;
-    find('.join-game').hidden = false;
-    find('.code-label').textContent = 'Din kod att skicka';
-    find('.copy-code').disabled = true;
-    find('.lobby-status').textContent = 'Skapa ett nytt spel eller svara på en inbjudan.';
+    find('.invitation').hidden = true;
+    find('.lobby-status').textContent = 'Skapa ett nytt spel eller anslut med en inbjudningslänk.';
     find('.connection-status').textContent = 'Soloflygning';
+    find('.pilot-list').replaceChildren();
   });
   resize();
   launchButton.focus({ preventScroll: true });
   window.scrollTo({ left: initialScroll.x, top: initialScroll.y, behavior: 'instant' });
+  if (invitedPeerId) showLobby(invitedPeerId);
 }

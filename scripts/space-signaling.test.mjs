@@ -1,21 +1,28 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { encodeSignal, decodeSignal } from '../assets/space-egg/multiplayer.js';
+import { invitationLink, invitationPeer, isPeerId } from '../assets/space-egg/invitation.js';
+import { pilotName } from '../assets/space-egg/multiplayer.js';
 
-test('invitation and reply have visibly distinct prefixes and round-trip', () => {
-  for (const [type, prefix] of [['offer', 'ATHEGA-INBJUDAN:'], ['answer', 'ATHEGA-SVAR:']]) {
-    const description = { type, sdp: 'v=0\r\ns=test\r\n' };
-    const code = encodeSignal(description);
-    assert.ok(code.startsWith(prefix));
-    assert.deepEqual(decodeSignal(code, type), description);
-    assert.deepEqual(decodeSignal('  ' + code.slice(0, 30) + '\n' + code.slice(30), type), description);
+const id = 'athega-space-12345678-1234-4123-8123-123456789abc';
+const page = 'https://athega.se/systemutveckling/';
+
+test('an invitation opens the current page and carries its room in the fragment', () => {
+  const link = invitationLink(id, page + '?preview=1#kontakt');
+  assert.equal(new URL(link).pathname, '/systemutveckling/');
+  assert.equal(new URL(link).search, '?preview=1');
+  assert.equal(new URL(link).hash, '#space=' + id);
+  assert.equal(invitationPeer(link, page), id);
+});
+test('foreign origins, malformed ids and old manual codes cannot join a room', () => {
+  for (const value of ['https://evil.example/#space=' + id, page + '#space=short', 'ATHEGA-INBJUDAN:abc', 'javascript:alert(1)', '']) {
+    assert.equal(invitationPeer(value, page), null);
   }
+  assert.equal(isPeerId(id), true);
+  assert.equal(isPeerId(null), false);
 });
-test('returning the original invitation explains the missing answer step', () => {
-  assert.throws(() => decodeSignal(encodeSignal({ type: 'offer', sdp: 'v=0' }), 'answer'), /INBJUDAN.*Svara på inbjudan.*ATHEGA-SVAR/);
-});
-test('old unprefixed codes still work and invalid codes are rejected clearly', () => {
-  assert.equal(decodeSignal(btoa(JSON.stringify({ version: 1, type: 'answer', sdp: 'v=0' })), 'answer').type, 'answer');
-  assert.throws(() => decodeSignal('inte en kod'), /gick inte att läsa/);
-  assert.throws(() => decodeSignal(btoa('null')), /giltig spelkod/);
+test('pilot names stay short and readable without control characters', () => {
+  assert.equal(pilotName('  Mats   & Chrille  '), 'Mats & Chrille');
+  assert.equal(pilotName('Pilot\u202e\u0000'), 'Pilot');
+  assert.equal(pilotName({ name: 'no' }), '');
+  assert.equal(Array.from(pilotName('🚀'.repeat(30))).length, 20);
 });

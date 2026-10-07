@@ -4,14 +4,14 @@ let lastKeyTime = 0;
 let clicks = [];
 let active = false;
 
-async function reveal() {
+async function reveal(invitedPeerId = null) {
   if (active) return;
   active = true;
   entered = [];
   clicks = [];
   try {
-    const { openGame } = await import('./game.js?v=3');
-    openGame(() => { active = false; });
+    const { openGame } = await import('./game.js?v=4');
+    openGame(() => { active = false; }, invitedPeerId);
   } catch (error) {
     active = false;
     console.warn('Rymdskeppet kunde inte starta.', error);
@@ -43,3 +43,14 @@ document.querySelector('.brand')?.addEventListener('click', event => {
   clicks.push(now);
   if (clicks.length >= 5) reveal();
 });
+
+// Reading a link is cheap; the game and PeerJS are still loaded on demand.
+function invitationFromHash() {
+  const id = new URLSearchParams(location.hash.slice(1)).get('space');
+  if (!/^athega-space-[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.test(id || '')) return;
+  history.replaceState(history.state, '', location.pathname + location.search);
+  if (active) window.dispatchEvent(new CustomEvent('athega-space-invite', { detail: id }));
+  else reveal(id);
+}
+window.addEventListener('hashchange', invitationFromHash);
+invitationFromHash();
