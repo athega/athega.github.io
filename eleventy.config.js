@@ -82,6 +82,11 @@ export default function(eleventyConfig) {
 
   // Kopiera assets
   eleventyConfig.addPassthroughCopy("assets");
+  // Serve the pinned browser bundle locally; only multiplayer loads it.
+  eleventyConfig.addPassthroughCopy({
+    "node_modules/peerjs/dist/peerjs.min.js": "assets/space-egg/vendor/peerjs-1.5.5.min.js",
+    "node_modules/peerjs/LICENSE": "assets/space-egg/vendor/peerjs-LICENSE.txt",
+  });
   eleventyConfig.addPassthroughCopy("favicon.ico");
 
   // Kopiera bilder från innehållsmappar
@@ -108,6 +113,7 @@ export default function(eleventyConfig) {
 
   // Ignorera dokumentationsfiler (ska inte generera sidor)
   eleventyConfig.ignores.add("README.md");
+  eleventyConfig.ignores.add("docs/space-egg/README.md");
   eleventyConfig.ignores.add("CLAUDE.md");
   eleventyConfig.ignores.add("AGENTS.md");
 

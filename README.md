@@ -481,3 +481,7 @@ eller borttagning av äldre filer och bloggdemon.
 
 Kör `npm run build` efter ändringar, eller `npm start` för lokal förhandsvisning.
 Om utvecklingsservern får en annan port än 8080 används adressen den skriver ut.
+
+## Hemligt rymdspel
+
+Kontroller, multiplayer, arkitektur och tester finns i [spelets README](docs/space-egg/README.md).
