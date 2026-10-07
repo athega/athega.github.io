@@ -9,6 +9,8 @@ test('mines arm after a delay and never trigger on their owner', () => {
   assert.equal(mineTriggered(mine, pilots, 599), false);
   assert.equal(mineTriggered(mine, pilots.slice(0, 1), 700), false);
   assert.equal(mineTriggered(mine, pilots, 600), true);
+  assert.equal(mineTriggered(mine, [{ ...pilots[1], x: 160 }], 600), true);
+  assert.equal(mineTriggered(mine, [{ ...pilots[1], x: 161 }], 600), false);
   assert.equal(mineTriggered(mine, [pilots[0], { ...pilots[1], alive: false }], 700), false);
 });
 

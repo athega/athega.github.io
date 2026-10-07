@@ -1,4 +1,4 @@
-import { createOrdnance, ORDNANCE, blastTouches } from './ordnance.js?v=11';
+import { createOrdnance, ORDNANCE, blastTouches } from './ordnance.js?v=12';
 import { targetStrength, damageEdge } from './targets.js?v=10';
 import { ROUND_SECONDS, roundWinners, clockLabel } from './round.js?v=9';
 import { createArena, cameraFor, WORLD_WIDTH, WORLD_HEIGHT } from './arena.js?v=7';

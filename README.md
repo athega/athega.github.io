@@ -531,7 +531,7 @@ Plocka upp **MIN** eller **BOM** från förstörda objekt. **M** placerar en min
 Du kan bära tre av varje och ha högst tre av varje utplacerade samtidigt.
 
 - Minan aktiveras efter 0,6 sekunder och exploderar när ett annat levande skepp
-  kommer nära. Ägaren kan varken utlösa minan eller skadas av den.
+  kommer inom 60 pixlar. Ägaren kan varken utlösa minan eller skadas av den.
 - Bomben exploderar efter en sekund och kan skada även den som släppte den.
 - Friendly fire styr skadan på andra piloter. Sköld och respawnskydd gäller.
 - Minor ger 60 skada inom 95 pixlar och bomber 80 inom 150 pixlar.

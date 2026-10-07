@@ -6,7 +6,7 @@ const capacity = 3;
 
 export function mineTriggered(mine, pilots, now) {
   return now >= mine.armedAt && pilots.some(pilot => pilot.id !== mine.owner && pilot.alive
-    && Math.hypot(pilot.x - mine.x, pilot.y - mine.y) <= 36);
+    && Math.hypot(pilot.x - mine.x, pilot.y - mine.y) <= 60);
 }
 
 export function blastTouches(rect, blast) {
