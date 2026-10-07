@@ -17,8 +17,8 @@ export function cameraFor(viewWidth, viewHeight, ship) {
   };
 }
 
-export async function createArena(url) {
-  const response = await fetch(url);
+export async function createArena(url, { signal } = {}) {
+  const response = await fetch(url, { signal });
   if (!response.ok) throw new Error('Spelplanen kunde inte laddas.');
   const page = new DOMParser().parseFromString(await response.text(), 'text/html');
   page.querySelectorAll('script, base, meta[http-equiv="refresh"]').forEach(node => node.remove());
@@ -32,7 +32,7 @@ export async function createArena(url) {
   container.id = 'athega-space-arena';
   container.inert = true;
   container.setAttribute('aria-hidden', 'true');
-  container.style.cssText = 'position:fixed;inset:0;overflow:hidden;background:#050b14;z-index:2147483646;pointer-events:none';
+  container.style.cssText = 'visibility:hidden;position:fixed;inset:0;overflow:hidden;background:#050b14;z-index:2147483646;pointer-events:none';
   const iframe = document.createElement('iframe');
   iframe.title = 'Gemensam spelplan';
   iframe.setAttribute('sandbox', 'allow-same-origin');
@@ -46,6 +46,7 @@ export async function createArena(url) {
     await new Promise((resolve, reject) => {
       const started = performance.now();
       const poll = setInterval(() => {
+        if (signal?.aborted) { clearInterval(poll); reject(signal.reason); return; }
         const doc = iframe.contentDocument;
         // Force layout so web fonts are requested before checking their status.
         doc?.documentElement?.getBoundingClientRect();

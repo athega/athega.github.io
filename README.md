@@ -601,7 +601,61 @@ sidkollisioner räknas lokalt i den gemensamma geometrin.
 Sidbyten hämtar statiskt sidinnehåll utan att starta om spelet eller WebRTC.
 Detta är en lekfull co-op-prototyp, inte ett tävlingsläge med skydd mot fusk.
 
-Koden finns i `assets/space-egg/`: `trigger.js`, `game.js`, `game.css`,
-`arena.js`, `physics.js`, `combat.js`, `ordnance.js`, `round.js`, `targets.js`, `scoring.js`, `sound.js`, `navigation.js`, `invitation.js` och `multiplayer.js`.
+### Kodens ansvar och isolering
+
+Vanliga sidan inkluderar endast `trigger.js`. Den känner igen aktivering och
+skriver konsolhälsningen. Inga spelstilar, ljud, iframe, PeerJS eller
+signalering laddas innan aktivering. Escape kan avbryta en pågående uppstart.
+Misslyckad uppstart städar upp det som skapats och lämnar sidan användbar.
+
+| Modul | Ansvar |
+| --- | --- |
+| `trigger.js` | Aktivering, inbjudningsfragment och dynamisk import |
+| `arena.js` | Separat sandboxad iframe och gemensam spelgeometri |
+| `view.js`, `game.css` | Shadow DOM-gränssnitt och speltema |
+| `rendering.js`, `sound.js` | Ritfunktioner och syntetiserat ljud |
+| `game.js` | Spelloop, lokal pilot, sidobjekt och samordning av livscykeln |
+| `multiplayer.js` | PeerJS, anslutningar, besättning och vidarebefordran |
+| `protocol.js` | Tillåtna meddelanderiktningar och matchning av rond/sidrevision |
+| `ordnance.js` | Ammunition, minor, bomber och värdens explosionsbeslut |
+| `physics.js`, `combat.js`, `targets.js`, `round.js`, `scoring.js` | Spelregler och beräkningar |
+| `navigation.js`, `invitation.js` | Tillåtna sidlänkar och inbjudningar |
+
+Värden beslutar om sidobjekt, gemensamma effekter, ammunition och rondresultat.
+Varje klient simulerar sitt skepp och tillämpar skrov/sköld. Transporten skiljer
+piloternas anrop från värdens beslut. Varje spelmeddelande har rondnummer,
+sidrevision och URL, så gamla träffar inte påverkar en ny rond eller ett återbesök.
+En ny anslutning ogiltigförklarar köade meddelanden från föregående anslutning.
+
+Positioner får hoppas över vid köbildning. Skador, explosioner och övergångar
+får inte tappas tyst; vid för stor kö stängs anslutningen i stället. Menyer
+släpper styrningen men pausar inte den pågående matchen. Tidbonus, skydd och
+respawn räknar verklig tid. Håll värdens flik aktiv: webbläsarens begränsning av
+bakgrundsflikar kan ändå bromsa fysik och scroll. Rondklockan fortsätter gå.
+
+Den vanliga sidans DOM förstörs aldrig. Spelskalet gör den tillfälligt inert;
+städningen återställer tidigare inert-värden, fokus och scroll, tar bort iframe
+samt avslutar händelselyssnare, timers, ljud och nätverksanslutningar.
 Den äldre `assets/site.js` används inte. Vid ändring av redan publicerade
 spelmoduler behöver versionsparametrarna på deras import-/resurslänkar uppdateras.
+
+### Regressionstester
+
+`npm test` kör spelregler och transporttester med en lokal PeerJS-testdubbel,
+utan kontakt med signaleringstjänsten. `npm run build`, `npm run check` och
+`npm run check:urls` kontrollerar den statiska sajten.
+
+Två valfria browsertester ligger i `scripts/`. Installera Python-paketet
+`playwright` och Chromium i en separat testmiljö. Kör mot en redan startad server:
+
+```sh
+python scripts/space-browser-smoke.py http://localhost:8082/
+python scripts/space-browser-multiplayer.py http://localhost:8082/
+```
+
+Smoke-testet kontrollerar mobil/desktop, lazy loading, upprepad öppning/stängning
+och misslyckad CSS-laddning. Multiplayer-testet använder riktiga WebRTC-klienter
+och kräver tillgång till PeerJS Cloud. Det kontrollerar väntelobby, gamla
+rond-/sidmeddelanden, navigering, kills, vinnare och omstart. Testkrokar injiceras
+endast i webbläsarens testsvar; de ingår inte i publicerad spelkod.
+`PLAYWRIGHT_CHROMIUM_EXECUTABLE` kan ange en befintlig Chromium-installation.

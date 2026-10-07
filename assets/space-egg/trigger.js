@@ -12,12 +12,18 @@ async function reveal(invitedPeerId = null) {
   active = true;
   entered = [];
   clicks = [];
+  const controller = new AbortController();
+  const cancel = event => { if (event.key === 'Escape') controller.abort(); };
+  window.addEventListener('keydown', cancel);
   try {
-    const { openGame } = await import('./game.js?v=12');
-    await openGame(() => { active = false; }, invitedPeerId);
+    const { openGame } = await import('./game.js?v=14');
+    controller.signal.throwIfAborted();
+    await openGame(() => { active = false; }, invitedPeerId, controller.signal);
   } catch (error) {
     active = false;
-    console.warn('Rymdskeppet kunde inte starta.', error);
+    if (!controller.signal.aborted) console.warn('Rymdskeppet kunde inte starta.', error);
+  } finally {
+    window.removeEventListener('keydown', cancel);
   }
 }
 
@@ -41,6 +47,8 @@ document.querySelector('.brand')?.addEventListener('click', event => {
   // A normal logo click still takes visitors home from other pages.
   if (location.pathname !== '/' || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
   event.preventDefault();
+  // Preserve the normal homepage-logo action while counting secret clicks.
+  window.scrollTo({ top: 0, behavior: 'instant' });
   const now = performance.now();
   clicks = clicks.filter(time => now - time < 2200);
   clicks.push(now);

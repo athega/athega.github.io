@@ -1,4 +1,5 @@
-import { isPeerId } from './invitation.js?v=7';
+import { acceptsMessage, relayMessage, replaceableMessage } from './protocol.js?v=14';
+import { isPeerId } from './invitation.js?v=14';
 
 let libraryPromise;
 
@@ -34,7 +35,7 @@ export function pilotName(value) {
   if (typeof value !== 'string') return '';
   return Array.from(value.replace(/[\u0000-\u001f\u007f\u202a-\u202e\u2066-\u2069]/g, '').replace(/\s+/g, ' ').trim()).slice(0, 20).join('');
 }
-const protocol = 8;
+const protocol = 9;
 
 // Star topology: the host owns scoring and relays guests' visual updates.
 export function createMultiplayer({ onMessage, onConnected, onStatus, onPlayers = () => {}, loadPeer = loadPeerLibrary }) {
@@ -81,9 +82,15 @@ export function createMultiplayer({ onMessage, onConnected, onStatus, onPlayers 
   }
 
   function write(connection, value) {
-    if (!connection.open || connection.dataChannel?.bufferedAmount > 65536) return;
+    if (!connection.open) return;
+    const buffered = connection.dataChannel?.bufferedAmount || 0;
+    // Positions can be replaced by the next frame. Never silently lose damage,
+    // round transitions or snapshots: disconnect instead of diverging forever.
+    if (buffered > 65536 && replaceableMessage(value.message?.type)) return;
+    if (buffered > 1000000) { connection.close(); return; }
     const encoded = JSON.stringify(value);
-    if (encoded.length <= 50000) connection.send(encoded);
+    if (encoded.length > 50000) { connection.close(); return; }
+    try { connection.send(encoded); } catch { connection.close(); }
   }
 
   function broadcast(value, exceptId = null) {
@@ -115,7 +122,10 @@ export function createMultiplayer({ onMessage, onConnected, onStatus, onPlayers 
 
   function attach(connection) {
     connections.set(connection.peer, connection);
+    const openingTimer = setTimeout(() => connection.close(), 15000);
+    connection.on('close', () => clearTimeout(openingTimer));
     connection.on('open', () => {
+      clearTimeout(openingTimer);
       if (closed) { connection.close(); return; }
       if (host) {
         admitted.add(connection.peer);
@@ -145,9 +155,9 @@ export function createMultiplayer({ onMessage, onConnected, onStatus, onPlayers 
       const message = packet.message;
       if (!ready || !admitted.has(connection.peer) || !message || typeof message.type !== 'string') return;
       const sender = host ? connection.peer : packet.sender;
-      if (!roster.includes(sender) || sender === peer.id) return;
+      if (!roster.includes(sender) || sender === peer.id || !acceptsMessage(message.type, host, sender === connection.peer)) return;
       onMessage(message, sender);
-      if (host && ['position', 'shot', 'impact', 'pilot-death'].includes(message.type)) broadcast({ sender, message }, sender);
+      if (host && relayMessage(message.type)) broadcast({ sender, message }, sender);
     });
     connection.on('close', () => {
       if (closed || connections.get(connection.peer) !== connection) return;
@@ -192,11 +202,13 @@ export function createMultiplayer({ onMessage, onConnected, onStatus, onPlayers 
         if (!closed) onStatus(ready ? 'Spelet fortsätter, men nya inbjudningar är tillfälligt otillgängliga.' : 'Kontakten med inbjudningstjänsten bröts. Skapa en ny anslutning.');
       });
       peer.on('connection', connection => {
-        if (closed || !host || connection.metadata?.app !== 'athega-space') { connection.close(); return; }
+        if (closed || !host || connection.metadata?.app !== 'athega-space' || !isPeerId(connection.peer)) { connection.close(); return; }
         const incompatible = connection.metadata?.protocol !== protocol;
         if (incompatible || connections.size >= MAX_PLAYERS - 1 || connections.has(connection.peer)) {
           rejectedConnections.add(connection);
+          const rejectionTimer = setTimeout(() => { rejectedConnections.delete(connection); connection.close(); }, 2000);
           connection.on('open', () => write(connection, { control: incompatible ? 'incompatible' : 'full' }));
+          connection.on('close', () => clearTimeout(rejectionTimer));
           connection.on('close', () => rejectedConnections.delete(connection));
           connection.on('error', () => { rejectedConnections.delete(connection); connection.close(); });
           return;

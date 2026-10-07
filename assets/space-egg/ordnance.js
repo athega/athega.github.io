@@ -1,3 +1,5 @@
+import { WORLD_WIDTH, WORLD_HEIGHT } from './arena.js?v=14';
+
 export const ORDNANCE = {
   mine: { label: 'MIN', radius: 95, damage: 60, objectHits: 2 },
   bomb: { label: 'BOM', radius: 150, damage: 80, objectHits: 3 },
@@ -49,7 +51,7 @@ export function createOrdnance({ ownId, authoritative, send, onBlast, onChange, 
     publish();
   }
   function deployFor(pilot, kind, x, y) {
-    if (!Object.hasOwn(ORDNANCE, kind) || !Number.isFinite(x) || !Number.isFinite(y) || x < 0 || x > 1280 || y < 0 || y > 800 || stock(pilot)[kind] <= 0) return;
+    if (!Object.hasOwn(ORDNANCE, kind) || !Number.isFinite(x) || !Number.isFinite(y) || x < 0 || x > WORLD_WIDTH || y < 0 || y > WORLD_HEIGHT || stock(pilot)[kind] <= 0) return;
     if ([...hazards.values()].filter(hazard => hazard.owner === pilot && hazard.kind === kind).length >= capacity) return;
     stock(pilot)[kind]--;
     const hazard = { id: `${pilot}:${++sequence}`, kind, owner: pilot, x, y, detonatesAt: now() + 1000, armedAt: now() + 600 };
@@ -66,7 +68,7 @@ export function createOrdnance({ ownId, authoritative, send, onBlast, onChange, 
     for (const hazard of data.hazards) {
       if (hazard && Object.hasOwn(ORDNANCE, hazard.kind) && typeof hazard.id === 'string' && typeof hazard.owner === 'string'
         && [hazard.x, hazard.y, hazard.fuse, hazard.arm].every(Number.isFinite)
-        && hazard.x >= 0 && hazard.x <= 1280 && hazard.y >= 0 && hazard.y <= 800 && hazard.fuse >= 0 && hazard.fuse <= 1000 && hazard.arm >= 0 && hazard.arm <= 600) {
+        && hazard.x >= 0 && hazard.x <= WORLD_WIDTH && hazard.y >= 0 && hazard.y <= WORLD_HEIGHT && hazard.fuse >= 0 && hazard.fuse <= 1000 && hazard.arm >= 0 && hazard.arm <= 600) {
         hazards.set(hazard.id, { ...hazard, detonatesAt: now() + hazard.fuse, armedAt: now() + hazard.arm });
       }
     }
