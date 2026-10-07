@@ -58,7 +58,16 @@ export function createSound() {
     },
     powerup() { [440, 660, 880].forEach((note, i) => tone(note, note * 1.1, 0.18, 'sine', i * 0.07)); },
     damage() { tone(160, 55, 0.18, 'sawtooth'); },
-    gravity() { tone(420, 45, 0.7, 'sine'); },
+    roomEffect(kind) {
+      if (kind === 'gravity') {
+        tone(520, 45, 0.8, 'sine');
+        tone(180, 55, 0.6, 'triangle', 0.12);
+      } else {
+        tone(180, 1100, 0.5, 'triangle');
+        tone(350, 1600, 0.35, 'sine', 0.1);
+      }
+    },
+    effectEnded() { tone(440, 330, 0.18, 'sine'); tone(330, 220, 0.18, 'sine', 0.16); },
     shoot() { tone(950, 140, 0.12, 'triangle'); },
     explode() {
       if (!context || !enabled) return;

@@ -505,6 +505,8 @@ när spelaren väljer Skapa rum eller Anslut.
   3X/trippelskott och RF/snabbeld (12 s), SK/sköld och T/turbo (10 s),
   +/reparation (+40 skrov), G↓/gravitation och S↕/snabbscroll (8 s).
   Gravitation och snabbscroll påverkar hela rummet; snabbscroll ökar till 72 px/s.
+  Alla får olika startsignaler för effekterna och en kort slutsignal. Ljud av gäller
+  även dessa signaler. Skeppsträffar visar ljusblixt, träffring och skada/skydd.
   Övriga powerups gäller den egna piloten.
 - Under **Spelregler** kan värden slå på friendly fire och kollisionsskador.
   Båda är av från början och kan ändras under spelet. Skeppet har 100 skrov;
@@ -524,6 +526,9 @@ när spelaren väljer Skapa rum eller Anslut.
 3. Kompisarna öppnar länken, skriver sina pilotnamn och väljer **Anslut**.
    Ingen svarskod behövs. Lobbyn visar besättningen, värden och lediga platser.
    Namnen visas också vid skeppen och i spelarlistan.
+4. Inbjudningslänken använder alltid startsidan. Efter anslutning följer gästen
+   värdens aktuella sida, även om rummet skapades på exempelvis bloggarkivet.
+   Äldre länkar med en undersida normaliseras till lobbyn automatiskt.
 
 Alla behöver samma version av sajten på samma origin (protokoll, värd och port).
 Lokalt kan flera fönster använda samma localhost-adress; den adressen fungerar
@@ -543,16 +548,18 @@ nätverk. Inbjudan gäller medan värden är ansluten. När en gäst lämnar fri
 platsen; om värden lämnar fortsätter övriga i sololäge.
 
 Värden avgör gemensamma träffar och poäng och synkroniserar förstörda objekt med
-stabila index plus en innehållssignatur. Skeppens visuella positioner normaliseras
-mellan skärmstorlekar; varje spelares träffar och skada följer ännu den egna
-responsiva layouten. **Känd begränsning:** olika skärmbredder kan ge olika hinder
-på samma normaliserade position. En gemensam virtuell spelplan planeras; val av
-överblick eller följande kamera är ännu inte implementerat. Värden styr scroll,
-spelregler och gemensamma powerup-effekter.
+stabila index plus en innehållssignatur. Alla spelar i en gemensam layout på
+1280 × 800. På mindre skärmar följer kameran skeppet, medan kontrollerna behåller
+sin storlek. Radar och kantmarkörer visar kompisar utanför bilden. Den vanliga
+sidan ligger kvar orörd bakom spelvyn och återkommer när spelet avslutas.
+Värden styr scroll, regler och gemensamma powerup-effekter. Skeppsträffar skickas
+via värden, som kontrollerar skottets ägare, livslängd och friendly fire-regeln.
+Den träffade klienten tillämpar sköld/skrov och skickar träffeffekten till alla;
+sidkollisioner räknas lokalt i den gemensamma geometrin.
 Sidbyten hämtar statiskt sidinnehåll utan att starta om spelet eller WebRTC.
 Detta är en lekfull co-op-prototyp, inte ett tävlingsläge med skydd mot fusk.
 
 Koden finns i `assets/space-egg/`: `trigger.js`, `game.js`, `game.css`,
-`physics.js`, `combat.js`, `scoring.js`, `sound.js`, `navigation.js`, `invitation.js` och `multiplayer.js`.
+`arena.js`, `physics.js`, `combat.js`, `scoring.js`, `sound.js`, `navigation.js`, `invitation.js` och `multiplayer.js`.
 Den äldre `assets/site.js` används inte. Vid ändring av redan publicerade
 spelmoduler behöver versionsparametrarna på deras import-/resurslänkar uppdateras.

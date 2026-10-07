@@ -1,6 +1,6 @@
 :host { all: initial; position: fixed; inset: 0; z-index: 2147483647; color: #fff; font: 14px/1.5 ui-monospace, SFMono-Regular, Consolas, monospace; }
 * { box-sizing: border-box; }
-canvas { position: absolute; inset: 0; width: 100%; height: 100%; touch-action: none; }
+.world-canvas { position: absolute; inset: 0; width: 100%; height: 100%; touch-action: none; }
 button { font: inherit; cursor: pointer; color: inherit; border: 1px solid #5d6267; background: #151a20; border-radius: 8px; min-height: 44px; padding: 9px 13px; touch-action: manipulation; }
 button:hover { background: #29313a; border-color: #ff6600; }
 button:focus-visible { outline: 2px solid #ff8c40; outline-offset: 3px; }
@@ -94,3 +94,12 @@ input:focus-visible, summary:focus-visible { outline: 2px solid #ff8c40; outline
 .crew-list { list-style: none; margin: 0; padding: 0; font-size: 13px; overflow-wrap: anywhere; }
 .crew-list li { padding: 4px 0; }
 .crew-list li::before { content: '●'; margin-right: 10px; }
+
+.radar { position: absolute; right: 16px; bottom: 84px; width: 132px; padding: 2px; border: 1px solid #4b657a; background: #08121ded; pointer-events: none; }
+.radar canvas { display: block; width: 128px; height: 80px; }
+.radar span { display: block; font-size: 8px; text-align: center; letter-spacing: .2em; color: #aec2d3; }
+.offscreen-pilots { position: absolute; inset: 0; pointer-events: none; }
+.offscreen-pilot { position: absolute; transform: translate(-50%, -50%); background: #08121deb; border: 1px solid currentColor; padding: 4px 7px; border-radius: 6px; font-size: 10px; max-width: 120px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+@media (pointer: coarse), (max-width: 640px) {
+  .radar { top: 110px; bottom: auto; right: 12px; transform: scale(.8); transform-origin: top right; }
+}

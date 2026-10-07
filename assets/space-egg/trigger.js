@@ -10,8 +10,8 @@ async function reveal(invitedPeerId = null) {
   entered = [];
   clicks = [];
   try {
-    const { openGame } = await import('./game.js?v=5');
-    openGame(() => { active = false; }, invitedPeerId);
+    const { openGame } = await import('./game.js?v=7');
+    await openGame(() => { active = false; }, invitedPeerId);
   } catch (error) {
     active = false;
     console.warn('Rymdskeppet kunde inte starta.', error);
@@ -48,6 +48,10 @@ document.querySelector('.brand')?.addEventListener('click', event => {
 function invitationFromHash() {
   const id = new URLSearchParams(location.hash.slice(1)).get('space');
   if (!/^athega-space-[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.test(id || '')) return;
+  if (!active && location.pathname !== '/') {
+    location.replace('/' + location.hash);
+    return;
+  }
   history.replaceState(history.state, '', location.pathname + location.search);
   if (active) window.dispatchEvent(new CustomEvent('athega-space-invite', { detail: id }));
   else reveal(id);

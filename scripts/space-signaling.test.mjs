@@ -6,10 +6,10 @@ import { pilotName } from '../assets/space-egg/multiplayer.js';
 const id = 'athega-space-12345678-1234-4123-8123-123456789abc';
 const page = 'https://athega.se/systemutveckling/';
 
-test('an invitation opens the current page and carries its room in the fragment', () => {
+test('an invitation always opens the root lobby and carries its room in the fragment', () => {
   const link = invitationLink(id, page + '?preview=1#kontakt');
-  assert.equal(new URL(link).pathname, '/systemutveckling/');
-  assert.equal(new URL(link).search, '?preview=1');
+  assert.equal(new URL(link).pathname, '/');
+  assert.equal(new URL(link).search, '');
   assert.equal(new URL(link).hash, '#space=' + id);
   assert.equal(invitationPeer(link, page), id);
 });

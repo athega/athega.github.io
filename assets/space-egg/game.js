@@ -1,15 +1,20 @@
+import { createArena, cameraFor, WORLD_WIDTH, WORLD_HEIGHT } from './arena.js?v=7';
 import { POWERUPS, damageHull, expandedRect, effectSeconds, advanceScroll } from './combat.js?v=5';
 import { hitsRect } from './physics.js?v=3';
-import { createSound } from './sound.js?v=5';
+import { createSound } from './sound.js?v=7';
 import { internalDestination } from './navigation.js?v=3';
-import { createMultiplayer, MAX_PLAYERS } from './multiplayer.js?v=5';
-import { invitationLink, invitationPeer } from './invitation.js?v=4';
+import { createMultiplayer, MAX_PLAYERS } from './multiplayer.js?v=7';
+import { invitationLink, invitationPeer } from './invitation.js?v=7';
 import { hitReward, sectorReward } from './scoring.js?v=3';
 
-export function openGame(onClose, invitedPeerId = null) {
+export async function openGame(onClose, invitedPeerId = null) {
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const previousFocus = document.activeElement;
   const originalUrl = location.href;
+  const arena = await createArena(originalUrl);
+  const arenaDocument = arena.document;
+  const arenaWindow = arena.window;
+  let camera = cameraFor(innerWidth, innerHeight, { x: WORLD_WIDTH / 2, y: WORLD_HEIGHT * 0.62 });
   let currentUrl = originalUrl;
   let loadingPage = false;
   let pageChanged = false;
@@ -26,12 +31,12 @@ export function openGame(onClose, invitedPeerId = null) {
   const host = document.createElement('div');
   host.id = 'athega-space-game';
   // Keep the overlay out of document flow even while its lazy CSS is loading.
-  host.style.cssText = 'position:fixed;inset:0;z-index:2147483647';
+  host.style.cssText = 'position:fixed;inset:0;overflow:hidden;z-index:2147483647';
   const shadow = host.attachShadow({ mode: 'open' });
   shadow.innerHTML = `
-    <link rel="stylesheet" href="${new URL('./game.css?v=5', import.meta.url).href}">
+    <link rel="stylesheet" href="${new URL('./game.css?v=7', import.meta.url).href}">
     <div role="dialog" aria-modal="true" aria-label="Athega Space – hemligt arkadspel">
-      <canvas aria-hidden="true"></canvas>
+      <canvas class="world-canvas" aria-hidden="true"></canvas><div class="offscreen-pilots" aria-hidden="true"></div><div class="radar" hidden><canvas width="128" height="80" aria-label="Radar över piloterna"></canvas><span>RADAR</span></div>
       <div class="hud">
         <div class="scoreboard"><span class="kicker">Athega / Space</span><output class="score" aria-label="Poäng">00000</output><span class="pace">×1 · 0.0 s</span><span class="connection-status" aria-live="polite">Soloflygning</span><ul class="pilot-list" aria-label="Piloter"></ul><span class="hull-status" aria-live="polite">Skrov 100</span><span class="gravity-status" role="status" hidden></span><span class="power-status" aria-live="polite">Redo</span></div>
         <div class="actions"><button class="multiplayer">Spela tillsammans</button><button class="menu-toggle" hidden aria-expanded="false">Meny</button><button class="theme" aria-pressed="true" aria-label="Mörkt spelläge">Mörkt</button><button class="sound" aria-pressed="true" aria-label="Ljud på">Ljud på</button><button class="exit">Avsluta ×</button></div>
@@ -82,7 +87,6 @@ export function openGame(onClose, invitedPeerId = null) {
       </div></div>
     </div>`;
   let dark = true;
-  const previousTheme = document.body.getAttribute('data-space-dark');
   const themeStyle = document.createElement('style');
   themeStyle.textContent = `
     body[data-space-dark] { --paper: #111b26; --ink: #e5edf5; --muted: #b2c0ce; --line: #344452; --line-strong: #536b80; --neutral: #1b2a39; --on-dark-muted: #c5d3e1; background: radial-gradient(ellipse at 80% 15%, #163a5366, transparent 55%), radial-gradient(ellipse at 10% 80%, #37205255, transparent 60%), #050b14; background-attachment: fixed; color: var(--ink); }
@@ -90,9 +94,9 @@ export function openGame(onClose, invitedPeerId = null) {
     body[data-space-dark] .page-hero { background: transparent; }
     body[data-space-dark] :is(.dark-section, .unified-callout, .article-body pre) { background: #080f17; }
   `;
-  document.head.append(themeStyle);
-  document.body.toggleAttribute('data-space-dark', dark);
-  let inertStates = [...document.body.children].map(node => [node, node.inert]);
+  arenaDocument.head.append(themeStyle);
+  arenaDocument.body.toggleAttribute('data-space-dark', dark);
+  const inertStates = [...document.body.children].filter(node => node !== arena.container).map(node => [node, node.inert]);
   inertStates.forEach(([node]) => { node.inert = true; });
   document.body.append(host);
   const find = selector => shadow.querySelector(selector);
@@ -100,7 +104,10 @@ export function openGame(onClose, invitedPeerId = null) {
     const node = find(selector);
     if (node.textContent !== text) node.textContent = text;
   }
-  const canvas = find('canvas');
+  const canvas = find('.world-canvas');
+  const radar = find('.radar canvas');
+  const radarContext = radar.getContext('2d');
+  const markers = new Map();
   const context = canvas.getContext('2d');
   const launchButton = find('.launch');
   const scoreOutput = find('.score');
@@ -111,11 +118,15 @@ export function openGame(onClose, invitedPeerId = null) {
   }
   const hint = find('.hint');
   const stick = find('.stick');
-  let mobileMenu = document.querySelector('.mobile-menu');
+  let mobileMenu = arenaDocument.querySelector('.mobile-menu');
   let menuWasOpen = mobileMenu?.open;
   const destroyed = new Map();
   const keys = new Set();
   const shots = [];
+  let shotSequence = 0;
+  const flightShots = new Map();
+  const impacts = [];
+  let hitFlash = 0;
   const particles = [];
   const rings = [];
   const stars = Array.from({ length: reducedMotion ? 60 : 130 }, () => ({ x: Math.random(), y: Math.random(), depth: 0.3 + Math.random() * 0.7, phase: Math.random() * Math.PI * 2 }));
@@ -131,8 +142,8 @@ export function openGame(onClose, invitedPeerId = null) {
   const effectClaims = new Set();
   let scrollPaused = false;
   let scrollDirection = 1;
-  let scrollPosition = scrollY;
-  let lastWrittenScroll = scrollY;
+  let scrollPosition = arenaWindow.scrollY;
+  let lastWrittenScroll = arenaWindow.scrollY;
   let remoteScroll = null;
   let scrollNetworkTime = 0;
   let pageCleared = false;
@@ -144,9 +155,9 @@ export function openGame(onClose, invitedPeerId = null) {
   const labels = [];
   let lastPowerLabel = '';
   const joystick = { active: false, x: 0, y: 0 };
-  const ship = { x: innerWidth / 2, y: innerHeight * 0.62, vx: 0, vy: 0, angle: -Math.PI / 2 };
-  let width = innerWidth;
-  let height = innerHeight;
+  const ship = { x: WORLD_WIDTH / 2, y: WORLD_HEIGHT * 0.62, vx: 0, vy: 0, angle: -Math.PI / 2 };
+  const width = WORLD_WIDTH;
+  const height = WORLD_HEIGHT;
   let running = false;
   let closed = false;
   let frame;
@@ -164,7 +175,7 @@ export function openGame(onClose, invitedPeerId = null) {
   // Keep the page geometry intact: hide only hit elements, never remove DOM nodes.
   const targetSelector = 'h1, h2, h3, h4, p, li, img, a, summary';
   function collectTargets() {
-    return [...document.querySelectorAll('header.site-header, main, footer')].flatMap(root => [...root.querySelectorAll(targetSelector)])
+    return [...arenaDocument.querySelectorAll('header.site-header, main, footer')].flatMap(root => [...root.querySelectorAll(targetSelector)])
     .filter(node => !node.querySelector('h1, h2, h3, h4, p, li, img')
       && !(node.matches('a, summary') && node.closest('p, h1, h2, h3, h4, li'))
       && !node.closest('pre, code, [hidden]'));
@@ -180,15 +191,13 @@ export function openGame(onClose, invitedPeerId = null) {
   }
 
   function resize() {
-    const headerBottom = document.querySelector('.site-header')?.getBoundingClientRect().bottom ?? 0;
-    host.style.setProperty('--space-header-bottom', `${Math.max(0, headerBottom)}px`);
+    host.style.setProperty('--space-header-bottom', '0px');
     find('.menu-toggle').hidden = !mobileMenu?.checkVisibility();
-    width = innerWidth;
-    height = innerHeight;
     const scale = Math.min(devicePixelRatio || 1, 2);
     canvas.width = width * scale;
     canvas.height = height * scale;
     context.setTransform(scale, 0, 0, scale, 0, 0);
+    updateCamera();
     ship.x = Math.min(ship.x, width - 20);
     ship.y = Math.min(ship.y, height - 20);
     targetsDirty = true;
@@ -197,13 +206,13 @@ export function openGame(onClose, invitedPeerId = null) {
   function updateTargets() {
     targetRects = targets.filter(node => !isDestroyed(node) && node.checkVisibility({ visibilityProperty: true, opacityProperty: true })).flatMap(node => {
       // Text ranges follow actual lines, so shots can pass through empty margins.
-      const range = document.createRange();
+      const range = arenaDocument.createRange();
       range.selectNodeContents(node);
       const rects = node.tagName === 'IMG' ? [node.getBoundingClientRect()] : [...range.getClientRects()];
       return rects.filter(rect => rect.width > 0 && rect.height > 0 && rect.bottom > 0 && rect.top < height)
         .map(rect => ({ node, rect }));
     });
-    linkRects = [...document.querySelectorAll('header.site-header a[href], main a[href], footer a[href]')]
+    linkRects = [...arenaDocument.querySelectorAll('header.site-header a[href], main a[href], footer a[href]')]
       .filter(node => !node.hasAttribute('download') && !isDestroyed(node) && node.checkVisibility({ visibilityProperty: true, opacityProperty: true }))
       .flatMap(node => {
         const destination = internalDestination(node.href, currentUrl);
@@ -221,8 +230,7 @@ export function openGame(onClose, invitedPeerId = null) {
     controller.abort();
     sound.close();
     themeStyle.remove();
-    if (previousTheme === null) document.body.removeAttribute('data-space-dark');
-    else document.body.setAttribute('data-space-dark', previousTheme);
+    arena.close();
     animations.forEach(animation => animation.cancel());
     destroyed.forEach((original, node) => {
       if (original.value) node.style.setProperty('visibility', original.value, original.priority);
@@ -267,9 +275,9 @@ export function openGame(onClose, invitedPeerId = null) {
     rememberTarget(node);
     checkMissionClear = true;
     const animation = node.animate(reducedMotion ? [
-      { opacity: getComputedStyle(node).opacity }, { opacity: 0 },
+      { opacity: arenaWindow.getComputedStyle(node).opacity }, { opacity: 0 },
     ] : [
-      { opacity: getComputedStyle(node).opacity, transform: 'translate(0, 0) rotate(0) scale(1)', filter: 'blur(0)' },
+      { opacity: arenaWindow.getComputedStyle(node).opacity, transform: 'translate(0, 0) rotate(0) scale(1)', filter: 'blur(0)' },
       { opacity: 0.8, transform: 'translate(0, -8px) rotate(-2deg) scale(1.025)', offset: 0.2 },
       { opacity: 0, transform: `translate(${(Math.random() - 0.5) * 80}px, 35px) rotate(${(Math.random() - 0.5) * 24}deg) scale(.15)`, filter: 'blur(3px)' },
     ], { duration: reducedMotion ? 120 : 420, easing: 'cubic-bezier(.2,.7,.3,1)', fill: 'forwards' });
@@ -306,9 +314,9 @@ export function openGame(onClose, invitedPeerId = null) {
     }
     if (destination.pathname === new URL(currentUrl).pathname && destination.search === new URL(currentUrl).search) {
       let anchor;
-      try { anchor = document.getElementById(decodeURIComponent(destination.hash.slice(1))); } catch { /* Ignore invalid fragments. */ }
+      try { anchor = arenaDocument.getElementById(decodeURIComponent(destination.hash.slice(1))); } catch { /* Ignore invalid fragments. */ }
       if (anchor) anchor.scrollIntoView({ behavior: 'instant', block: 'start' });
-      else if (!destination.hash) window.scrollTo({ top: 0, behavior: 'instant' });
+      else if (!destination.hash) arenaWindow.scrollTo({ top: 0, behavior: 'instant' });
       targetsDirty = true;
       return;
     }
@@ -323,33 +331,32 @@ export function openGame(onClose, invitedPeerId = null) {
       if (closed) return;
       animations.forEach(animation => animation.cancel());
       animations.clear();
-      for (const [node] of inertStates) node.remove();
+      arenaDocument.body.replaceChildren();
       currentUrl = response.url;
       history.pushState(null, '', currentUrl);
       pageChanged = true;
       const pageNodes = [...nextDocument.body.children].filter(node => !['SCRIPT', 'STYLE'].includes(node.tagName));
-      inertStates = pageNodes.map(node => {
-        const imported = document.importNode(node, true);
-        // Page demos may contain scripts; game navigation only imports static content.
+      for (const node of pageNodes) {
+        const imported = arenaDocument.importNode(node, true);
         imported.querySelectorAll('script').forEach(script => script.remove());
-        const wasInert = imported.inert;
-        imported.inert = true;
-        document.body.insertBefore(imported, host);
-        return [imported, wasInert];
-      });
+        arenaDocument.body.append(imported);
+      }
+      arenaDocument.querySelector('base')?.setAttribute('href', currentUrl);
+      flightShots.clear();
+      impacts.length = 0;
       destroyed.clear();
       pendingHits.clear();
       shots.length = particles.length = rings.length = pickups.length = labels.length = 0;
-      mobileMenu = document.querySelector('.mobile-menu');
+      mobileMenu = arenaDocument.querySelector('.mobile-menu');
       menuWasOpen = mobileMenu?.open;
       targets = collectTargets();
-      window.scrollTo({ top: 0, behavior: 'instant' });
+      arenaWindow.scrollTo({ top: 0, behavior: 'instant' });
       resize();
       pageCleared = false;
       checkMissionClear = true;
       missionElapsed = 0;
       scrollDirection = 1;
-      scrollPosition = lastWrittenScroll = scrollY;
+      scrollPosition = lastWrittenScroll = arenaWindow.scrollY;
       remoteScroll = null;
       ship.x = Math.min(width - 24, width / 2 + (network?.connected ? 48 * network.playerIds.indexOf(network.playerId) : 0));
       ship.y = height * 0.62;
@@ -369,13 +376,17 @@ export function openGame(onClose, invitedPeerId = null) {
     if (respawn > 0) return;
     const dx = Math.cos(ship.angle);
     const dy = Math.sin(ship.angle);
+    const salvo = ++shotSequence;
+    const owner = network?.playerId || 'solo';
     const angles = kind === 'destroy' && powers.triple > 0 ? [-0.17, 0, 0.17] : [0];
-    for (const offset of angles) {
+    for (const [index, offset] of angles.entries()) {
       const angle = ship.angle + offset;
-      shots.push({ kind, x: ship.x + dx * 19, y: ship.y + dy * 19, vx: Math.cos(angle) * 750 + ship.vx, vy: Math.sin(angle) * 750 + ship.vy, life: 1.3 });
+      const id = `${owner}:${salvo}:${index}`;
+      flightShots.set(id, { owner, expires: performance.now() + 2000, kind });
+      shots.push({ id, kind, x: ship.x + dx * 19, y: ship.y + dy * 19, vx: Math.cos(angle) * 750 + ship.vx, vy: Math.sin(angle) * 750 + ship.vy, life: 1.3 });
     }
     sound.shoot();
-    network?.send({ type: 'shot', page: currentUrl, x: ship.x / width, y: ship.y / height, angle: ship.angle, kind, triple: powers.triple > 0 });
+    network?.send({ type: 'shot', id: salvo, page: currentUrl, x: ship.x / width, y: ship.y / height, angle: ship.angle, kind, triple: powers.triple > 0 });
     cooldown = kind === 'destroy' && powers.rapid > 0 ? 0.075 : 0.16;
   }
 
@@ -394,6 +405,11 @@ export function openGame(onClose, invitedPeerId = null) {
     frame = requestAnimationFrame(tick);
     const dt = Math.min((now - lastTime) / 1000 || 0, 0.035);
     lastTime = now;
+    for (const [id, flight] of flightShots) if (flight.expires < now) flightShots.delete(id);
+    if (!document.hidden) updateCamera();
+    for (const effect of Object.values(roomEffects)) {
+      if (effect.announced && performance.now() >= effect.until) { effect.announced = false; sound.effectEnded(); }
+    }
     if (document.hidden || loadingPage || !find('.lobby').hidden || !find('.missions').hidden) return;
     gameTime += dt;
     missionElapsed += dt;
@@ -403,6 +419,7 @@ export function openGame(onClose, invitedPeerId = null) {
     if (targetsDirty) updateTargets();
     for (const kind of Object.keys(powers)) powers[kind] = Math.max(0, powers[kind] - dt);
     invulnerable = Math.max(0, invulnerable - dt);
+    hitFlash = Math.max(0, hitFlash - dt);
     if (respawn > 0) {
       respawn = Math.max(0, respawn - dt);
       if (!respawn) {
@@ -417,7 +434,7 @@ export function openGame(onClose, invitedPeerId = null) {
     const gravity = effectTime('gravity');
     find('.gravity-status').hidden = gravity <= 0;
     setText('.gravity-status', `↓ GRAVITATION ${Math.ceil(gravity)}s`);
-    const powerLabel = Object.entries(powers).filter(([, time]) => time > 0).map(([kind, time]) => `${POWERUPS[kind].label} ${Math.ceil(time)}s`).join(' · ') || 'Flyg och plocka powerups';
+    const powerLabel = Object.entries(powers).filter(([, time]) => time > 0).map(([kind, time]) => `${POWERUPS[kind].label} ${Math.ceil(time)}s`).join(' · ') || 'Powerups —';
     if (powerLabel !== lastPowerLabel) {
       find('.power-status').textContent = powerLabel;
       lastPowerLabel = powerLabel;
@@ -479,6 +496,7 @@ export function openGame(onClose, invitedPeerId = null) {
         invulnerable = Math.max(invulnerable, 0.8);
       }
     }
+    updateCamera();
     cooldown -= dt;
     if (cooldown <= 0 && respawn <= 0) {
       if (keys.has('KeyN') || holdingNavigation) fire('navigate');
@@ -502,11 +520,15 @@ export function openGame(onClose, invitedPeerId = null) {
       const x = shot.x + shot.vx * dt;
       const y = shot.y + shot.vy * dt;
       const candidates = shot.kind === 'navigate' ? (shot.remote ? [] : linkRects) : targetRects;
-      if (shot.remote && shot.kind === 'destroy' && rules.friendlyFire && respawn <= 0
-        && hitsRect(shot.x, shot.y, x, y, { left: ship.x - 13, right: ship.x + 13, top: ship.y - 13, bottom: ship.y + 13 })) {
-        takeDamage(20);
-        shots.splice(i, 1);
-        continue;
+      if (!shot.remote && shot.kind === 'destroy' && rules.friendlyFire && network?.connected) {
+        const pilot = [...ghosts.entries()].find(([, craft]) => craft.hull !== 0
+          && hitsRect(shot.x, shot.y, x, y, { left: craft.targetX - 13, right: craft.targetX + 13, top: craft.targetY - 13, bottom: craft.targetY + 13 }));
+        if (pilot) {
+          if (network.isHost) routePilotHit(pilot[0], shot.id, network.playerId);
+          else network.send({ type: 'pilot-hit', page: currentUrl, target: pilot[0], shotId: shot.id });
+          shots.splice(i, 1);
+          continue;
+        }
       }
       const hit = candidates.find(target => !isDestroyed(target.node) && hitsRect(shot.x, shot.y, x, y, target.rect));
       shot.life -= dt;
@@ -534,6 +556,28 @@ export function openGame(onClose, invitedPeerId = null) {
       context.shadowBlur = 0;
       shot.x = x;
       shot.y = y;
+    }
+    for (let i = impacts.length - 1; i >= 0; i--) {
+      const impact = impacts[i];
+      impact.life -= dt;
+      if (impact.life <= 0) { impacts.splice(i, 1); continue; }
+      context.save();
+      context.translate(impact.x, impact.y);
+      context.strokeStyle = impact.blocked ? '#64e9ce' : '#ffdf8e';
+      context.globalAlpha = Math.min(1, impact.life * 3);
+      context.lineWidth = 3;
+      context.beginPath();
+      const radius = reducedMotion ? 24 : 18 + (0.45 - impact.life) * 65;
+      context.arc(0, 0, radius, 0, Math.PI * 2);
+      context.stroke();
+      for (let ray = 0; ray < 6; ray++) {
+        const angle = ray * Math.PI / 3;
+        context.beginPath();
+        context.moveTo(Math.cos(angle) * radius, Math.sin(angle) * radius);
+        context.lineTo(Math.cos(angle) * (radius + 10), Math.sin(angle) * (radius + 10));
+        context.stroke();
+      }
+      context.restore();
     }
     for (let i = particles.length - 1; i >= 0; i--) {
       const particle = particles[i];
@@ -621,8 +665,49 @@ export function openGame(onClose, invitedPeerId = null) {
       drawShip(ghost.thrust, now, ghost, playerColor(id));
       drawPilotName(network.playerName(id), ghost, playerColor(id));
     }
-    if (respawn <= 0) drawShip(thrust, now, { ...ship, shield: powers.shield > 0 || invulnerable > 0 }, playerColor());
+    if (respawn <= 0) drawShip(thrust, now, { ...ship, hitFlash, shield: powers.shield > 0 || invulnerable > 0 }, playerColor());
     if (network?.connected && respawn <= 0) drawPilotName(network.playerName(network.playerId), ship, playerColor());
+  }
+
+  function updateCamera() {
+    camera = cameraFor(innerWidth, innerHeight, ship);
+    arena.position(camera);
+    canvas.style.width = `${width * camera.scale}px`;
+    canvas.style.height = `${height * camera.scale}px`;
+    canvas.style.left = `${camera.left}px`;
+    canvas.style.top = `${camera.top}px`;
+    find('.radar').hidden = !running;
+    radarContext.clearRect(0, 0, 128, 80);
+    radarContext.strokeStyle = '#6e879b';
+    radarContext.strokeRect(camera.x / 10, camera.y / 10, camera.visibleWidth / 10, camera.visibleHeight / 10);
+    const pilots = [[network?.playerId, ship], ...ghosts.entries()];
+    for (const [id, craft] of pilots) {
+      if (craft.hull === 0) continue;
+      radarContext.fillStyle = playerColor(id);
+      radarContext.beginPath();
+      radarContext.arc(craft.x / 10, craft.y / 10, 2.5, 0, Math.PI * 2);
+      radarContext.fill();
+    }
+    for (const [id, marker] of markers) {
+      if (!ghosts.has(id)) { marker.remove(); markers.delete(id); }
+    }
+    for (const [id, ghost] of ghosts) {
+      let marker = markers.get(id);
+      if (!marker) {
+        marker = document.createElement('span');
+        marker.className = 'offscreen-pilot';
+        find('.offscreen-pilots').append(marker);
+        markers.set(id, marker);
+      }
+      const x = ghost.x * camera.scale + camera.left;
+      const y = ghost.y * camera.scale + camera.top;
+      marker.hidden = ghost.hull === 0 || (x >= 15 && x <= innerWidth - 15 && y >= 15 && y <= innerHeight - 15);
+      marker.style.left = `${Math.max(55, Math.min(innerWidth - 55, x))}px`;
+      marker.style.top = `${Math.max(55, Math.min(innerHeight - 145, y))}px`;
+      marker.style.color = playerColor(id);
+      const arrow = x < 15 ? '←' : x > innerWidth - 15 ? '→' : y < 15 ? '↑' : '↓';
+      marker.textContent = `${arrow} ${network.playerName(id)}`;
+    }
   }
 
   function drawPilotName(name, craft, color) {
@@ -640,6 +725,7 @@ export function openGame(onClose, invitedPeerId = null) {
   function drawShip(thrust, now, craft = ship, color = '#ff6600') {
     context.save();
     context.translate(craft.x, craft.y);
+    if (craft.hitFlash > 0 || craft.flashUntil > performance.now()) color = '#fff0ce';
     if (craft.shield) {
       context.beginPath();
       context.arc(0, 0, 26, 0, Math.PI * 2);
@@ -680,7 +766,7 @@ export function openGame(onClose, invitedPeerId = null) {
     if (running) return;
     find('.briefing').hidden = true;
     find('.play-ui').hidden = false;
-    if (matchMedia('(pointer: coarse)').matches || width <= 640) hint.textContent = 'ELD: förstör · NAV: träffa en länk för att resa';
+    if (matchMedia('(pointer: coarse)').matches || innerWidth <= 640) hint.textContent = 'ELD: förstör · NAV: träffa en länk för att resa';
     running = true;
     lastTime = performance.now();
     find('.exit').focus({ preventScroll: true });
@@ -712,7 +798,7 @@ export function openGame(onClose, invitedPeerId = null) {
   updateThemeButton();
   listen(find('.theme'), 'click', () => {
     dark = !dark;
-    document.body.toggleAttribute('data-space-dark', dark);
+    arenaDocument.body.toggleAttribute('data-space-dark', dark);
     updateThemeButton();
   });
   listen(find('.menu-toggle'), 'click', event => {
@@ -733,28 +819,28 @@ export function openGame(onClose, invitedPeerId = null) {
 
   function updateScroll(dt) {
     updateScrollButton();
-    const maximum = Math.max(0, document.documentElement.scrollHeight - height);
+    const maximum = Math.max(0, arenaDocument.documentElement.scrollHeight - height);
     if (network?.connected && !network.isHost) {
       if (remoteScroll !== null) {
         scrollPosition += (remoteScroll * maximum - scrollPosition) * Math.min(1, dt * 18);
-        window.scrollTo({ top: scrollPosition, behavior: 'instant' });
+        arenaWindow.scrollTo({ top: scrollPosition, behavior: 'instant' });
         targetsDirty = true;
       }
       return;
     }
-    if (Math.abs(scrollY - lastWrittenScroll) > 1) scrollPosition = scrollY;
+    if (Math.abs(arenaWindow.scrollY - lastWrittenScroll) > 1) scrollPosition = arenaWindow.scrollY;
     if (!scrollPaused) {
       const next = advanceScroll(scrollPosition, scrollDirection, dt * (effectTime('scroll') > 0 ? 72 : 18), maximum);
       scrollPosition = next.position;
       scrollDirection = next.direction;
-      window.scrollTo({ top: scrollPosition, behavior: 'instant' });
-      lastWrittenScroll = scrollY;
+      arenaWindow.scrollTo({ top: scrollPosition, behavior: 'instant' });
+      lastWrittenScroll = arenaWindow.scrollY;
       targetsDirty = true;
     }
     scrollNetworkTime += dt;
     if (scrollNetworkTime >= 0.1 && network?.connected) {
       scrollNetworkTime = 0;
-      network.send({ type: 'scroll', page: currentUrl, scroll: maximum ? scrollY / maximum : 0, paused: scrollPaused });
+      network.send({ type: 'scroll', page: currentUrl, scroll: maximum ? arenaWindow.scrollY / maximum : 0, paused: scrollPaused });
     }
   }
   listen(find('.scroll-toggle'), 'click', () => {
@@ -790,8 +876,8 @@ export function openGame(onClose, invitedPeerId = null) {
   listen(window, 'pagehide', () => close(false));
   listen(window, 'popstate', () => { close(false); location.reload(); });
   listen(window, 'resize', resize);
-  listen(window, 'scroll', () => { targetsDirty = true; }, { passive: true });
-  listen(document, 'load', () => { targetsDirty = true; }, { capture: true });
+  listen(arenaWindow, 'scroll', () => { targetsDirty = true; }, { passive: true });
+  listen(arenaDocument, 'load', () => { targetsDirty = true; }, { capture: true });
   listen(stick, 'pointerdown', event => {
     sound.init();
     joystick.active = true;
@@ -835,7 +921,7 @@ export function openGame(onClose, invitedPeerId = null) {
   });
 
   const missionLinks = new Map([['/', 'Startsidan']]);
-  for (const link of document.querySelectorAll('.nav a[href], .service-card[href]')) {
+  for (const link of arenaDocument.querySelectorAll('.nav a[href], .service-card[href]')) {
     const url = internalDestination(link.href, currentUrl);
     if (url) missionLinks.set(url.pathname, link.querySelector('h2')?.textContent.trim() || link.textContent.trim());
   }
@@ -875,6 +961,7 @@ export function openGame(onClose, invitedPeerId = null) {
     const next = damageHull(hull, amount, invulnerable > 0 || powers.shield > 0 || respawn > 0);
     if (next === hull) return;
     hull = next;
+    hitFlash = 0.25;
     invulnerable = 0.9;
     sound.damage();
     labels.push({ x: ship.x, y: ship.y - 24, text: `−${amount} SKROV`, life: 1 });
@@ -885,6 +972,39 @@ export function openGame(onClose, invitedPeerId = null) {
       ship.vx = ship.vy = 0;
       for (const kind of Object.keys(powers)) powers[kind] = 0;
       resetControls();
+    }
+  }
+
+  function routePilotHit(target, shotId, sender) {
+    const flight = flightShots.get(shotId);
+    if (!rules.friendlyFire || !flight || flight.owner !== sender || flight.kind !== 'destroy'
+      || flight.expires < performance.now() || target === sender || !network.playerIds.includes(target)) return;
+    flightShots.delete(shotId);
+    const packet = { type: 'pilot-damage', page: currentUrl, target, shotId };
+    network.send(packet);
+    if (target === network.playerId) resolvePilotHit(packet);
+  }
+
+  function resolvePilotHit(message) {
+    const before = hull;
+    takeDamage(20);
+    const impact = { type: 'impact', page: currentUrl, shotId: message.shotId, x: ship.x / width, y: ship.y / height, damage: before - hull };
+    showImpact(impact, network.playerId);
+    network.send(impact);
+  }
+
+  function showImpact(message, pilot) {
+    if (!Number.isFinite(message.x) || !Number.isFinite(message.y) || message.x < 0 || message.x > 1 || message.y < 0 || message.y > 1
+      || !Number.isInteger(message.damage) || message.damage < 0 || message.damage > 20 || typeof message.shotId !== 'string') return;
+    for (let i = shots.length - 1; i >= 0; i--) if (shots[i].id === message.shotId) shots.splice(i, 1);
+    const x = message.x * width;
+    const y = message.y * height;
+    impacts.push({ x, y, life: 0.45, blocked: message.damage === 0 });
+    if (impacts.length > 24) impacts.shift();
+    if (ghosts.has(pilot)) ghosts.get(pilot).flashUntil = performance.now() + 250;
+    if (pilot !== network.playerId || message.damage === 0) {
+      labels.push({ x, y: y - 25, text: message.damage ? `TRÄFF −${message.damage}` : 'SKYDD', life: 0.8 });
+      sound.damage();
     }
   }
 
@@ -899,7 +1019,7 @@ export function openGame(onClose, invitedPeerId = null) {
     const fresh = revision > effect.revision;
     effect.revision = revision;
     effect.until = performance.now() + seconds * 1000;
-    if (seconds > 0 && fresh) sound.gravity();
+    if (seconds > 0 && fresh) { sound.roomEffect(kind); effect.announced = true; }
   }
 
   function activateRoomEffect(kind, id) {
@@ -939,7 +1059,7 @@ export function openGame(onClose, invitedPeerId = null) {
 
   function broadcastState() {
     if (!network?.connected || !network.isHost) return;
-    network.send({ type: 'state', rules: { ...rules }, effects: Object.fromEntries(Object.entries(roomEffects).map(([kind, effect]) => [kind, { seconds: effectTime(kind), revision: effect.revision }])), scrollPaused, page: currentUrl, targetCount: targets.length, signature: targetSignature(), destroyed: [...destroyed.keys()].map(node => targets.indexOf(node)), score, scroll: scrollY / Math.max(1, document.documentElement.scrollHeight - height) });
+    network.send({ type: 'state', rules: { ...rules }, effects: Object.fromEntries(Object.entries(roomEffects).map(([kind, effect]) => [kind, { seconds: effectTime(kind), revision: effect.revision }])), scrollPaused, page: currentUrl, targetCount: targets.length, signature: targetSignature(), destroyed: [...destroyed.keys()].map(node => targets.indexOf(node)), score, scroll: arenaWindow.scrollY / Math.max(1, arenaDocument.documentElement.scrollHeight - height) });
   }
 
   function validPoint(message) {
@@ -974,14 +1094,21 @@ export function openGame(onClose, invitedPeerId = null) {
       }
       scrollPaused = message.scrollPaused === true;
       remoteScroll = message.scroll;
-      scrollPosition = message.scroll * Math.max(0, document.documentElement.scrollHeight - height);
+      scrollPosition = message.scroll * Math.max(0, arenaDocument.documentElement.scrollHeight - height);
       score = message.score;
       scoreOutput.textContent = String(score).padStart(5, '0');
-      window.scrollTo({ top: message.scroll * Math.max(0, document.documentElement.scrollHeight - height), behavior: 'instant' });
+      arenaWindow.scrollTo({ top: message.scroll * Math.max(0, arenaDocument.documentElement.scrollHeight - height), behavior: 'instant' });
       targetsDirty = true;
       return;
     }
     if (message.page !== currentUrl || loadingPage) return;
+    if (message.type === 'pilot-hit' && network.isHost) { routePilotHit(message.target, message.shotId, sender); return; }
+    if (message.type === 'pilot-damage' && !network.isHost) {
+      for (let i = shots.length - 1; i >= 0; i--) if (shots[i].id === message.shotId) shots.splice(i, 1);
+      if (message.target === network.playerId) resolvePilotHit(message);
+      return;
+    }
+    if (message.type === 'impact') { showImpact(message, sender); return; }
     if (message.type === 'scroll' && !network.isHost && Number.isFinite(message.scroll) && message.scroll >= 0 && message.scroll <= 1) {
       remoteScroll = message.scroll;
       scrollPaused = message.paused === true;
@@ -999,9 +1126,13 @@ export function openGame(onClose, invitedPeerId = null) {
       const node = targets[message.id];
       const rect = node.getBoundingClientRect();
       destroy({ node, rect }, rect.left + rect.width / 2, rect.top + rect.height / 2, message);
-    } else if (message.type === 'shot' && validPoint(message) && ['destroy', 'navigate'].includes(message.kind)) {
-      for (const offset of message.triple && message.kind === 'destroy' ? [-0.17, 0, 0.17] : [0]) {
-        shots.push({ remote: true, color: playerColor(sender), kind: message.kind, x: message.x * width, y: message.y * height, vx: Math.cos(message.angle + offset) * 750, vy: Math.sin(message.angle + offset) * 750, life: 1.3 });
+    } else if (message.type === 'shot' && validPoint(message) && Number.isSafeInteger(message.id) && message.id > 0 && ['destroy', 'navigate'].includes(message.kind)) {
+      const offsets = message.triple && message.kind === 'destroy' ? [-0.17, 0, 0.17] : [0];
+      for (const [index, offset] of offsets.entries()) {
+        const id = `${sender}:${message.id}:${index}`;
+        flightShots.set(id, { owner: sender, expires: performance.now() + 2000, kind: message.kind });
+        if (shots.length >= 200) shots.shift();
+        shots.push({ id, remote: true, color: playerColor(sender), kind: message.kind, x: message.x * width, y: message.y * height, vx: Math.cos(message.angle + offset) * 750, vy: Math.sin(message.angle + offset) * 750, life: 1.3 });
       }
     } else if (message.type === 'navigate' && network.isHost) {
       const destination = internalDestination(message.url, currentUrl);
@@ -1011,9 +1142,11 @@ export function openGame(onClose, invitedPeerId = null) {
 
   function makeNetwork() {
     network?.close();
-    for (const effect of Object.values(roomEffects)) { effect.until = 0; effect.revision = 0; }
+    for (const effect of Object.values(roomEffects)) { effect.until = 0; effect.revision = 0; effect.announced = false; }
     effectClaims.clear();
     ghosts.clear();
+    shots.length = 0;
+    flightShots.clear();
     network = createMultiplayer({
       onMessage(message, sender) {
         if (message.type === 'position') {
@@ -1105,6 +1238,7 @@ export function openGame(onClose, invitedPeerId = null) {
     }
   }
   listen(find('.host-game'), 'click', () => connectionAction(async () => {
+    sound.init();
     const id = await makeNetwork().host(find('.pilot-name').value);
     if (closed) return;
     find('.outgoing-link').value = invitationLink(id, currentUrl);
@@ -1114,6 +1248,7 @@ export function openGame(onClose, invitedPeerId = null) {
     find('.lobby-status').textContent = 'Skicka länken till kompisen och låt spelet vara öppet. Ni kopplas ihop när kompisen väljer Anslut.';
   }));
   listen(find('.join-game'), 'click', () => {
+    sound.init();
     const id = invitationPeer(find('.incoming-link').value, currentUrl);
     if (!id) { find('.lobby-status').textContent = 'Klistra in en giltig inbjudningslänk från den här sajten.'; return; }
     connectionAction(() => makeNetwork().join(id, find('.pilot-name').value));
@@ -1140,6 +1275,5 @@ export function openGame(onClose, invitedPeerId = null) {
   });
   resize();
   launchButton.focus({ preventScroll: true });
-  window.scrollTo({ left: initialScroll.x, top: initialScroll.y, behavior: 'instant' });
   if (invitedPeerId) showLobby(invitedPeerId);
 }

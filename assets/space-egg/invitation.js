@@ -6,7 +6,7 @@ export function isPeerId(value) {
 
 export function invitationLink(peerId, pageUrl) {
   if (!isPeerId(peerId)) throw new Error('Ogiltig spelinbjudan.');
-  const url = new URL(pageUrl);
+  const url = new URL('/', pageUrl);
   url.hash = new URLSearchParams({ space: peerId }).toString();
   return url.href;
 }

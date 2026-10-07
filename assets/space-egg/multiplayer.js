@@ -1,4 +1,4 @@
-import { isPeerId } from './invitation.js?v=4';
+import { isPeerId } from './invitation.js?v=7';
 
 let libraryPromise;
 
@@ -34,7 +34,7 @@ export function pilotName(value) {
   if (typeof value !== 'string') return '';
   return Array.from(value.replace(/[\u0000-\u001f\u007f\u202a-\u202e\u2066-\u2069]/g, '').replace(/\s+/g, ' ').trim()).slice(0, 20).join('');
 }
-const protocol = 4;
+const protocol = 5;
 
 // Star topology: the host owns scoring and relays guests' visual updates.
 export function createMultiplayer({ onMessage, onConnected, onStatus, onPlayers = () => {}, loadPeer = loadPeerLibrary }) {
@@ -131,6 +131,7 @@ export function createMultiplayer({ onMessage, onConnected, onStatus, onPlayers 
       let packet;
       try { packet = JSON.parse(value); } catch { return; }
       if (!packet || typeof packet !== 'object') return;
+      if (!host && packet.control === 'incompatible') { fail('Ni har olika spelversioner. Ladda om båda sidorna och skapa en ny inbjudan.'); return; }
       if (!host && packet.control === 'full') { fail(`Spelet är fullt (${MAX_PLAYERS} spelare). Be om en ny inbjudan.`); return; }
       if (!host && packet.control === 'welcome' && packet.protocol === protocol && validRoster(packet.players)) {
         ready = true;
@@ -146,7 +147,7 @@ export function createMultiplayer({ onMessage, onConnected, onStatus, onPlayers 
       const sender = host ? connection.peer : packet.sender;
       if (!roster.includes(sender) || sender === peer.id) return;
       onMessage(message, sender);
-      if (host && ['position', 'shot'].includes(message.type)) broadcast({ sender, message }, sender);
+      if (host && ['position', 'shot', 'impact'].includes(message.type)) broadcast({ sender, message }, sender);
     });
     connection.on('close', () => {
       if (closed || connections.get(connection.peer) !== connection) return;
@@ -191,10 +192,11 @@ export function createMultiplayer({ onMessage, onConnected, onStatus, onPlayers 
         if (!closed) onStatus(ready ? 'Spelet fortsätter, men nya inbjudningar är tillfälligt otillgängliga.' : 'Kontakten med inbjudningstjänsten bröts. Skapa en ny anslutning.');
       });
       peer.on('connection', connection => {
-        if (closed || !host || connection.metadata?.app !== 'athega-space' || connection.metadata?.protocol !== protocol) { connection.close(); return; }
-        if (connections.size >= MAX_PLAYERS - 1 || connections.has(connection.peer)) {
+        if (closed || !host || connection.metadata?.app !== 'athega-space') { connection.close(); return; }
+        const incompatible = connection.metadata?.protocol !== protocol;
+        if (incompatible || connections.size >= MAX_PLAYERS - 1 || connections.has(connection.peer)) {
           rejectedConnections.add(connection);
-          connection.on('open', () => write(connection, { control: 'full' }));
+          connection.on('open', () => write(connection, { control: incompatible ? 'incompatible' : 'full' }));
           connection.on('close', () => rejectedConnections.delete(connection));
           connection.on('error', () => { rejectedConnections.delete(connection); connection.close(); });
           return;
