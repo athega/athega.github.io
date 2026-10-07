@@ -10,7 +10,7 @@ async function reveal(invitedPeerId = null) {
   entered = [];
   clicks = [];
   try {
-    const { openGame } = await import('./game.js?v=4');
+    const { openGame } = await import('./game.js?v=5');
     openGame(() => { active = false; }, invitedPeerId);
   } catch (error) {
     active = false;

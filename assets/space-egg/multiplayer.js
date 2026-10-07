@@ -34,7 +34,7 @@ export function pilotName(value) {
   if (typeof value !== 'string') return '';
   return Array.from(value.replace(/[\u0000-\u001f\u007f\u202a-\u202e\u2066-\u2069]/g, '').replace(/\s+/g, ' ').trim()).slice(0, 20).join('');
 }
-const protocol = 3;
+const protocol = 4;
 
 // Star topology: the host owns scoring and relays guests' visual updates.
 export function createMultiplayer({ onMessage, onConnected, onStatus, onPlayers = () => {}, loadPeer = loadPeerLibrary }) {
@@ -181,7 +181,7 @@ export function createMultiplayer({ onMessage, onConnected, onStatus, onPlayers 
         secure: true,
         config: { iceServers: [{ urls: 'stun:stun.cloudflare.com:3478' }] },
       });
-      peer.on('open', id => { if (!closed) { roster = [id]; names.set(id, name || 'Pilot 1'); settle(null, id); } });
+      peer.on('open', id => { if (!closed) { roster = [id]; names.set(id, name || 'Pilot 1'); if (host) updateRoster([id]); settle(null, id); } });
       peer.on('error', error => {
         if (error.type === 'peer-unavailable') fail('Inbjudan har gått ut eller värden har lämnat. Be om en ny länk.');
         else if (!ready) fail('Kunde inte nå multiplayer. Kontrollera anslutningen och prova igen.');

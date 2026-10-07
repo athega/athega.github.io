@@ -1,7 +1,8 @@
+import { POWERUPS, damageHull, expandedRect, effectSeconds, advanceScroll } from './combat.js?v=5';
 import { hitsRect } from './physics.js?v=3';
-import { createSound } from './sound.js?v=3';
+import { createSound } from './sound.js?v=5';
 import { internalDestination } from './navigation.js?v=3';
-import { createMultiplayer, MAX_PLAYERS } from './multiplayer.js?v=4';
+import { createMultiplayer, MAX_PLAYERS } from './multiplayer.js?v=5';
 import { invitationLink, invitationPeer } from './invitation.js?v=4';
 import { hitReward, sectorReward } from './scoring.js?v=3';
 
@@ -28,16 +29,16 @@ export function openGame(onClose, invitedPeerId = null) {
   host.style.cssText = 'position:fixed;inset:0;z-index:2147483647';
   const shadow = host.attachShadow({ mode: 'open' });
   shadow.innerHTML = `
-    <link rel="stylesheet" href="${new URL('./game.css?v=4', import.meta.url).href}">
+    <link rel="stylesheet" href="${new URL('./game.css?v=5', import.meta.url).href}">
     <div role="dialog" aria-modal="true" aria-label="Athega Space – hemligt arkadspel">
       <canvas aria-hidden="true"></canvas>
       <div class="hud">
-        <div class="scoreboard"><span class="kicker">Athega / Space</span><output class="score" aria-label="Poäng">00000</output><span class="pace">×1 · 0.0 s</span><span class="connection-status" aria-live="polite">Soloflygning</span><ul class="pilot-list" aria-label="Piloter"></ul><span class="power-status" aria-live="polite">Sektor 01</span></div>
+        <div class="scoreboard"><span class="kicker">Athega / Space</span><output class="score" aria-label="Poäng">00000</output><span class="pace">×1 · 0.0 s</span><span class="connection-status" aria-live="polite">Soloflygning</span><ul class="pilot-list" aria-label="Piloter"></ul><span class="hull-status" aria-live="polite">Skrov 100</span><span class="gravity-status" role="status" hidden></span><span class="power-status" aria-live="polite">Redo</span></div>
         <div class="actions"><button class="multiplayer">Spela tillsammans</button><button class="menu-toggle" hidden aria-expanded="false">Meny</button><button class="theme" aria-pressed="true" aria-label="Mörkt spelläge">Mörkt</button><button class="sound" aria-pressed="true" aria-label="Ljud på">Ljud på</button><button class="exit">Avsluta ×</button></div>
       </div>
       <div class="play-ui" hidden>
         <p class="hint">← → / A D: rotera · ↑ / W: gas · Mellanslag: skjut · N: navigera · Esc: avsluta</p>
-        <div class="bottom"><button class="sector">Nästa sektor ↓</button><button class="missions-open">Byt uppdrag</button></div>
+        <div class="bottom"><button class="scroll-toggle" aria-pressed="false">Pausa scroll</button><button class="missions-open">Byt uppdrag</button></div>
         <div class="touch stick" role="group" aria-label="Dra för att styra skeppet"><span>STYR</span></div>
         <button class="touch navigate" aria-label="Håll för navigationsskott">NAV</button>
         <button class="touch fire" aria-label="Håll för att skjuta">ELD</button>
@@ -46,23 +47,32 @@ export function openGame(onClose, invitedPeerId = null) {
         <span class="kicker">Hemligt uppdrag / 001</span>
         <h1>Vi gillar att<br>bryta ny mark.</h1>
         <p>Men du får börja med den här sidan. Ta kontroll över skeppet och skjut layouten i småbitar.</p>
-        <p class="instructions">Dator: piltangenter eller W A S D + mellanslag.<br>N: navigationsskott – träffa en intern länk.<br>Mobil: styrspak, ELD och NAV.<br>Plocka upp 3X och RF för trippelskott och snabbeld.<br>Täta träffar ger upp till ×5. Rensa snabbt för tidsbonus.<br>Esc eller Avsluta återställer allt.</p>
+        <p class="instructions">Dator: piltangenter eller W A S D + mellanslag.<br>N: navigationsskott – träffa en intern länk.<br>Mobil: styrspak, ELD och NAV.<br>Powerups: 3X trippelskott · RF snabbeld · SK sköld · + reparation · T turbo · G↓ gravitation · S↕ snabbscroll för alla.<br>Täta träffar ger upp till ×5. Rensa sidan snabbt för tidsbonus.<br>Esc eller Avsluta återställer allt.</p>
         <button class="primary launch">Starta motorerna</button>
       </div></div>
       <div class="lobby" hidden><div class="panel">
-        <span class="kicker">Upp till fyra piloter / ett uppdrag</span><h2>Flyg tillsammans</h2>
-        <p>Skapa ett spel och skicka samma länk till upp till tre kompisar. Var och en öppnar länken och väljer Anslut.</p>
-        <label>Ditt pilotnamn (valfritt)<input class="pilot-name" maxlength="20" autocomplete="off" placeholder="Till exempel Chrille"></label>
-        <div class="lobby-actions"><button class="host-game">Skapa spel</button></div>
+        <span class="kicker">Besättning / upp till fyra</span><h2>Flyg tillsammans</h2>
+        <p class="lobby-intro">Skapa ett rum och bjud in med en länk.</p>
+        <label class="name-label">Pilotnamn <span>(valfritt)</span><input class="pilot-name" maxlength="20" autocomplete="off" placeholder="Ditt anropsnamn"></label>
+        <section class="crew" hidden aria-label="Besättning"><h3>Besättning <span class="crew-count"></span></h3><ul class="crew-list" aria-live="polite"></ul></section>
+        <details class="rules"><summary>Spelregler <span>Värden bestämmer</span></summary>
+          <label class="rule"><input class="friendly-fire" type="checkbox"><span>Friendly fire<small>Kompisarnas skott ger skada.</small></span></label>
+          <label class="rule"><input class="collisions" type="checkbox"><span>Kollisionsskador<small>Sidans text och bilder blir hinder.</small></span></label>
+          <p>100 skrov. Nytt skepp efter 3 sekunder. G↓ och S↕ påverkar hela rummet i 8 sekunder.</p>
+        </details>
+        <button class="primary host-game">Skapa rum</button>
+        <button class="primary join-game" hidden>Anslut till rummet</button>
         <div class="invitation" hidden>
-          <label>Din inbjudningslänk<input class="outgoing-link" readonly aria-label="Din inbjudningslänk"></label>
-          <button class="copy-link">Kopiera inbjudningslänk</button>
-          <p class="local-invite" hidden>Det här är en lokal testadress. Länken fungerar i en annan webbläsare på samma dator; för en kompis behöver spelet vara publicerat.</p>
+          <input class="outgoing-link" readonly aria-label="Din inbjudningslänk">
+          <button class="primary copy-link">Kopiera inbjudningslänk</button>
+          <p class="local-invite" hidden>Lokal testadress: länken fungerar bara på den här datorn.</p>
         </div>
-        <label>Har du fått en inbjudan?<input class="incoming-link" type="url" spellcheck="false" autocomplete="off" placeholder="Klistra in inbjudningslänken"></label>
-        <button class="join-game">Anslut</button>
-        <p class="lobby-status" role="status">Ingen svarskod behövs. Värden behöver ha spelet öppet.</p>
-        <div class="lobby-actions"><button class="disconnect">Koppla från / börja om</button><button class="lobby-close">Till spelet</button></div>
+        <details class="join-manually"><summary>Har du redan en länk?</summary>
+          <label>Inbjudningslänk<input class="incoming-link" type="url" spellcheck="false" autocomplete="off" placeholder="Klistra in länken"></label>
+          <button class="use-invitation">Öppna inbjudan</button>
+        </details>
+        <p class="lobby-status" role="status"></p>
+        <div class="lobby-actions"><button class="lobby-close">Till spelet</button><button class="disconnect" hidden>Lämna rummet</button></div>
       </div></div>
       <div class="missions" hidden><div class="panel">
         <span class="kicker">Nästa destination</span><h2>Välj ett nytt uppdrag</h2>
@@ -86,6 +96,10 @@ export function openGame(onClose, invitedPeerId = null) {
   inertStates.forEach(([node]) => { node.inert = true; });
   document.body.append(host);
   const find = selector => shadow.querySelector(selector);
+  function setText(selector, text) {
+    const node = find(selector);
+    if (node.textContent !== text) node.textContent = text;
+  }
   const canvas = find('canvas');
   const context = canvas.getContext('2d');
   const launchButton = find('.launch');
@@ -107,11 +121,23 @@ export function openGame(onClose, invitedPeerId = null) {
   const stars = Array.from({ length: reducedMotion ? 60 : 130 }, () => ({ x: Math.random(), y: Math.random(), depth: 0.3 + Math.random() * 0.7, phase: Math.random() * Math.PI * 2 }));
   const pickups = [];
   const animations = new Set();
-  const powers = { triple: 0, rapid: 0 };
-  let sectorTargets = new Set();
-  let sectorDirty = true;
-  let sectorClearTime = 0;
-  let sectorElapsed = 0;
+  const powers = { triple: 0, rapid: 0, shield: 0, turbo: 0 };
+  const rules = { friendlyFire: false, collisions: false };
+  let lobbyMode = invitedPeerId ? 'invited' : 'idle';
+  let hull = 100;
+  let invulnerable = 3;
+  let respawn = 0;
+  const roomEffects = { gravity: { until: 0, revision: 0 }, scroll: { until: 0, revision: 0 } };
+  const effectClaims = new Set();
+  let scrollPaused = false;
+  let scrollDirection = 1;
+  let scrollPosition = scrollY;
+  let lastWrittenScroll = scrollY;
+  let remoteScroll = null;
+  let scrollNetworkTime = 0;
+  let pageCleared = false;
+  let checkMissionClear = true;
+  let missionElapsed = 0;
   let gameTime = 0;
   let lastHitTime = -Infinity;
   let combo = 1;
@@ -134,7 +160,6 @@ export function openGame(onClose, invitedPeerId = null) {
   let linkRects = [];
   let targetRects = [];
   let targetsDirty = true;
-  let sector = 1;
 
   // Keep the page geometry intact: hide only hit elements, never remove DOM nodes.
   const targetSelector = 'h1, h2, h3, h4, p, li, img, a, summary';
@@ -167,7 +192,6 @@ export function openGame(onClose, invitedPeerId = null) {
     ship.x = Math.min(ship.x, width - 20);
     ship.y = Math.min(ship.y, height - 20);
     targetsDirty = true;
-    sectorDirty = true;
   }
 
   function updateTargets() {
@@ -187,12 +211,6 @@ export function openGame(onClose, invitedPeerId = null) {
         return [...node.getClientRects()].filter(rect => rect.width > 0 && rect.height > 0 && rect.bottom > 0 && rect.top < height)
           .map(rect => ({ node, rect, destination }));
       });
-    if (sectorDirty) {
-      sectorTargets = new Set(targetRects.filter(({ node }) => !node.closest('.site-header')).map(({ node }) => node));
-      sectorClearTime = 0;
-      sectorElapsed = 0;
-      sectorDirty = false;
-    }
     targetsDirty = false;
   }
 
@@ -247,6 +265,7 @@ export function openGame(onClose, invitedPeerId = null) {
     }
     pendingHits.delete(node);
     rememberTarget(node);
+    checkMissionClear = true;
     const animation = node.animate(reducedMotion ? [
       { opacity: getComputedStyle(node).opacity }, { opacity: 0 },
     ] : [
@@ -271,8 +290,9 @@ export function openGame(onClose, invitedPeerId = null) {
     targetsDirty = true;
     if (network?.connected && network.isHost) network.send({ type: 'destroy', page: currentUrl, id: targets.indexOf(node), score, points: reward.points, combo });
     if (destroyed.size % 3 === 0) {
-      const kind = destroyed.size % 6 === 0 ? 'rapid' : 'triple';
-      pickups.push({ x: Math.max(24, Math.min(width - 24, x)), y: Math.max(100, Math.min(height - 100, y)), kind, life: 14 });
+      const kinds = Object.keys(POWERUPS);
+      const kind = kinds[(destroyed.size / 3 - 1) % kinds.length];
+      pickups.push({ x: Math.max(24, Math.min(width - 24, x)), y: Math.max(100, Math.min(height - 100, y)), kind, id: targets.indexOf(node), life: 18 });
       if (pickups.length > 6) pickups.shift();
     }
   }
@@ -289,7 +309,7 @@ export function openGame(onClose, invitedPeerId = null) {
       try { anchor = document.getElementById(decodeURIComponent(destination.hash.slice(1))); } catch { /* Ignore invalid fragments. */ }
       if (anchor) anchor.scrollIntoView({ behavior: 'instant', block: 'start' });
       else if (!destination.hash) window.scrollTo({ top: 0, behavior: 'instant' });
-      targetsDirty = sectorDirty = true;
+      targetsDirty = true;
       return;
     }
     loadingPage = true;
@@ -325,10 +345,17 @@ export function openGame(onClose, invitedPeerId = null) {
       targets = collectTargets();
       window.scrollTo({ top: 0, behavior: 'instant' });
       resize();
-      sector++;
+      pageCleared = false;
+      checkMissionClear = true;
+      missionElapsed = 0;
+      scrollDirection = 1;
+      scrollPosition = lastWrittenScroll = scrollY;
+      remoteScroll = null;
       ship.x = Math.min(width - 24, width / 2 + (network?.connected ? 48 * network.playerIds.indexOf(network.playerId) : 0));
       ship.y = height * 0.62;
       ship.vx = ship.vy = 0;
+      invulnerable = 3;
+      effectClaims.clear();
       hint.textContent = 'Nytt uppdrag! Fortsätt röja tillsammans.';
       if (!fromPeer) broadcastState();
     } catch (error) {
@@ -339,6 +366,7 @@ export function openGame(onClose, invitedPeerId = null) {
   }
 
   function fire(kind = 'destroy') {
+    if (respawn > 0) return;
     const dx = Math.cos(ship.angle);
     const dy = Math.sin(ship.angle);
     const angles = kind === 'destroy' && powers.triple > 0 ? [-0.17, 0, 0.17] : [0];
@@ -368,26 +396,45 @@ export function openGame(onClose, invitedPeerId = null) {
     lastTime = now;
     if (document.hidden || loadingPage || !find('.lobby').hidden || !find('.missions').hidden) return;
     gameTime += dt;
-    sectorElapsed += dt;
+    missionElapsed += dt;
+    updateScroll(dt);
     if (gameTime - lastHitTime > 2) combo = 1;
-    find('.pace').textContent = `×${combo} · ${sectorElapsed.toFixed(1)} s`;
+    find('.pace').textContent = `×${combo} · ${missionElapsed.toFixed(1)} s`;
     if (targetsDirty) updateTargets();
-    powers.triple = Math.max(0, powers.triple - dt);
-    powers.rapid = Math.max(0, powers.rapid - dt);
-    const powerLabel = [powers.triple > 0 ? `3X ${Math.ceil(powers.triple)}s` : '', powers.rapid > 0 ? `RF ${Math.ceil(powers.rapid)}s` : ''].filter(Boolean).join(' · ') || `Sektor ${String(sector).padStart(2, '0')}`;
+    for (const kind of Object.keys(powers)) powers[kind] = Math.max(0, powers[kind] - dt);
+    invulnerable = Math.max(0, invulnerable - dt);
+    if (respawn > 0) {
+      respawn = Math.max(0, respawn - dt);
+      if (!respawn) {
+        hull = 100;
+        invulnerable = 3;
+        ship.x = width / 2;
+        ship.y = height * 0.62;
+        sound.launch();
+      }
+    }
+    setText('.hull-status', respawn > 0 ? `Nytt skepp om ${Math.ceil(respawn)}s` : `Skrov ${hull}${powers.shield > 0 ? ' · skyddat' : ''}`);
+    const gravity = effectTime('gravity');
+    find('.gravity-status').hidden = gravity <= 0;
+    setText('.gravity-status', `↓ GRAVITATION ${Math.ceil(gravity)}s`);
+    const powerLabel = Object.entries(powers).filter(([, time]) => time > 0).map(([kind, time]) => `${POWERUPS[kind].label} ${Math.ceil(time)}s`).join(' · ') || 'Flyg och plocka powerups';
     if (powerLabel !== lastPowerLabel) {
       find('.power-status').textContent = powerLabel;
       lastPowerLabel = powerLabel;
     }
-    if (sectorTargets.size > 0 && [...sectorTargets].every(node => destroyed.has(node))) {
-      sectorClearTime += dt;
-      hint.textContent = 'Sektor rensad! Gör klart för nästa…';
-      if (sectorClearTime > 1.4 && (!network?.connected || network.isHost)) {
-        const bonus = sectorReward(sectorTargets.size, Math.max(0, sectorElapsed - sectorClearTime));
+    if (checkMissionClear && !pageCleared && (!network?.connected || network.isHost)) {
+      checkMissionClear = false;
+      const remaining = targets.filter(node => !node.closest('.site-header') && !isDestroyed(node)
+        && node.checkVisibility({ visibilityProperty: true, opacityProperty: true }));
+      if (!remaining.length && destroyed.size > 0) {
+        pageCleared = true;
+        const bonus = sectorReward(destroyed.size, missionElapsed);
         score += bonus;
         scoreOutput.textContent = String(score).padStart(5, '0');
-        labels.push({ x: width / 2, y: height / 2, text: `SEKTOR KLAR +${bonus}`, life: 2 });
-        nextSector(true);
+        hint.textContent = `SIDAN RENSAD +${bonus} · Välj nästa uppdrag!`;
+        sound.launch();
+        broadcastState();
+        showMissions();
       }
     }
     let thrust = keys.has('ArrowUp') || keys.has('KeyW');
@@ -399,9 +446,11 @@ export function openGame(onClose, invitedPeerId = null) {
       const turn = Number(keys.has('ArrowRight') || keys.has('KeyD')) - Number(keys.has('ArrowLeft') || keys.has('KeyA'));
       ship.angle += turn * 4.2 * dt;
     }
+    if (respawn > 0) thrust = false;
     if (thrust) {
-      ship.vx += Math.cos(ship.angle) * 380 * dt;
-      ship.vy += Math.sin(ship.angle) * 380 * dt;
+      const acceleration = powers.turbo > 0 ? 650 : 380;
+      ship.vx += Math.cos(ship.angle) * acceleration * dt;
+      ship.vy += Math.sin(ship.angle) * acceleration * dt;
       if (!reducedMotion) particles.push({ x: ship.x - Math.cos(ship.angle) * 12, y: ship.y - Math.sin(ship.angle) * 12, vx: -Math.cos(ship.angle) * 90 + (Math.random() - 0.5) * 40, vy: -Math.sin(ship.angle) * 90 + (Math.random() - 0.5) * 40, life: 0.23, max: 0.23, size: 3, color: '#ff6600' });
     }
     sound.thrust(thrust);
@@ -409,12 +458,29 @@ export function openGame(onClose, invitedPeerId = null) {
     const friction = Math.exp(-(brake ? 5 : 0.7) * dt);
     ship.vx *= friction;
     ship.vy *= friction;
+    if (gravity > 0 && respawn <= 0) ship.vy += 260 * dt;
     const speed = Math.hypot(ship.vx, ship.vy);
-    if (speed > 360) { ship.vx *= 360 / speed; ship.vy *= 360 / speed; }
+    const maxSpeed = powers.turbo > 0 ? 550 : 360;
+    if (speed > maxSpeed) { ship.vx *= maxSpeed / speed; ship.vy *= maxSpeed / speed; }
+    const oldX = ship.x;
+    const oldY = ship.y;
     ship.x = (ship.x + ship.vx * dt + width) % width;
     ship.y = (ship.y + ship.vy * dt + height) % height;
+    if (rules.collisions && respawn <= 0 && invulnerable <= 0) {
+      const wrapped = Math.abs(ship.x - oldX) > width / 2 || Math.abs(ship.y - oldY) > height / 2;
+      const obstacle = targetRects.find(({ node, rect }) => !isDestroyed(node)
+        && hitsRect(wrapped ? ship.x : oldX, wrapped ? ship.y : oldY, ship.x, ship.y, expandedRect(rect, 10)));
+      if (obstacle) {
+        takeDamage(25);
+        ship.x = oldX;
+        ship.y = oldY;
+        ship.vx *= -0.65;
+        ship.vy *= -0.65;
+        invulnerable = Math.max(invulnerable, 0.8);
+      }
+    }
     cooldown -= dt;
-    if (cooldown <= 0) {
+    if (cooldown <= 0 && respawn <= 0) {
       if (keys.has('KeyN') || holdingNavigation) fire('navigate');
       else if (keys.has('Space') || holdingFire) fire();
     }
@@ -435,10 +501,17 @@ export function openGame(onClose, invitedPeerId = null) {
       const shot = shots[i];
       const x = shot.x + shot.vx * dt;
       const y = shot.y + shot.vy * dt;
-      const candidates = shot.remote ? [] : shot.kind === 'navigate' ? linkRects : targetRects;
+      const candidates = shot.kind === 'navigate' ? (shot.remote ? [] : linkRects) : targetRects;
+      if (shot.remote && shot.kind === 'destroy' && rules.friendlyFire && respawn <= 0
+        && hitsRect(shot.x, shot.y, x, y, { left: ship.x - 13, right: ship.x + 13, top: ship.y - 13, bottom: ship.y + 13 })) {
+        takeDamage(20);
+        shots.splice(i, 1);
+        continue;
+      }
       const hit = candidates.find(target => !isDestroyed(target.node) && hitsRect(shot.x, shot.y, x, y, target.rect));
       shot.life -= dt;
       if (hit) {
+        if (shot.remote) { shots.splice(i, 1); continue; }
         if (shot.kind === 'navigate') {
           shots.splice(i, 1);
           navigateTo(hit);
@@ -498,11 +571,9 @@ export function openGame(onClose, invitedPeerId = null) {
       const dx = ship.x - pickup.x;
       const dy = ship.y - pickup.y;
       const distance = Math.hypot(dx, dy);
-      if (distance < 130) { pickup.x += dx * dt * 2.8; pickup.y += dy * dt * 2.8; }
-      if (distance < 28) {
-        powers[pickup.kind] = 12;
-        sound.powerup();
-        hint.textContent = pickup.kind === 'triple' ? 'TRIPPELSKOTT · Tre skott åt gången i 12 sekunder!' : 'SNABBELD · Dubbelt eldhastighet i 12 sekunder!';
+      if (respawn <= 0 && distance < 130) { pickup.x += dx * dt * 2.8; pickup.y += dy * dt * 2.8; }
+      if (respawn <= 0 && distance < 28) {
+        collectPowerup(pickup);
         pickups.splice(i, 1);
         continue;
       }
@@ -521,7 +592,7 @@ export function openGame(onClose, invitedPeerId = null) {
       context.fillStyle = '#fff';
       context.font = 'bold 12px monospace';
       context.textAlign = 'center';
-      context.fillText(pickup.kind === 'triple' ? '3X' : 'RF', pickup.x, pickup.y + 4);
+      context.fillText(POWERUPS[pickup.kind].label, pickup.x, pickup.y + 4);
     }
     for (let i = labels.length - 1; i >= 0; i--) {
       const label = labels[i];
@@ -541,16 +612,17 @@ export function openGame(onClose, invitedPeerId = null) {
     networkTime += dt;
     if (networkTime >= 0.05 && network?.connected) {
       networkTime = 0;
-      network.send({ type: 'position', page: currentUrl, x: ship.x / width, y: ship.y / height, angle: ship.angle, thrust });
+      network.send({ type: 'position', page: currentUrl, x: ship.x / width, y: ship.y / height, angle: ship.angle, thrust, hull, shield: powers.shield > 0 || invulnerable > 0 });
     }
     for (const [id, ghost] of ghosts) {
       ghost.x += (ghost.targetX - ghost.x) * Math.min(1, dt * 14);
       ghost.y += (ghost.targetY - ghost.y) * Math.min(1, dt * 14);
+      if (ghost.hull === 0) continue;
       drawShip(ghost.thrust, now, ghost, playerColor(id));
       drawPilotName(network.playerName(id), ghost, playerColor(id));
     }
-    drawShip(thrust, now, ship, playerColor());
-    if (network?.connected) drawPilotName(network.playerName(network.playerId), ship, playerColor());
+    if (respawn <= 0) drawShip(thrust, now, { ...ship, shield: powers.shield > 0 || invulnerable > 0 }, playerColor());
+    if (network?.connected && respawn <= 0) drawPilotName(network.playerName(network.playerId), ship, playerColor());
   }
 
   function drawPilotName(name, craft, color) {
@@ -568,6 +640,13 @@ export function openGame(onClose, invitedPeerId = null) {
   function drawShip(thrust, now, craft = ship, color = '#ff6600') {
     context.save();
     context.translate(craft.x, craft.y);
+    if (craft.shield) {
+      context.beginPath();
+      context.arc(0, 0, 26, 0, Math.PI * 2);
+      context.strokeStyle = '#64e9ce';
+      context.lineWidth = 2;
+      context.stroke();
+    }
     context.rotate(craft.angle);
     context.shadowColor = color;
     context.shadowBlur = reducedMotion ? 0 : 12;
@@ -641,34 +720,49 @@ export function openGame(onClose, invitedPeerId = null) {
     event.currentTarget.setAttribute('aria-expanded', String(mobileMenu.open));
     targetsDirty = true;
   });
-  function nextSector(automatic = false) {
-    if (network?.connected && !network.isHost) { network.send({ type: 'sector', page: currentUrl }); return; }
-    const headerHeight = document.querySelector('.site-header')?.getBoundingClientRect().height ?? 0;
-    const remaining = targets.filter(node => !isDestroyed(node) && !node.closest('.site-header')
-      && node.checkVisibility({ visibilityProperty: true, opacityProperty: true }));
-    if (!remaining.length && automatic) {
-      sectorTargets.clear();
-      hint.textContent = 'Sidan är rensad! Navigationsskjut en menylänk för nästa uppdrag.';
-      sound.launch();
-      showMissions();
+  function updateScrollButton() {
+    const button = find('.scroll-toggle');
+    const guest = network?.connected && !network.isHost;
+    button.disabled = guest;
+    button.setAttribute('aria-pressed', String(scrollPaused));
+    let label = scrollPaused ? 'Fortsätt scroll' : 'Pausa scroll';
+    if (guest) label = scrollPaused ? 'Scroll pausad' : 'Värden styr scroll';
+    if (effectTime('scroll') > 0) label += ` · S↕ ${Math.ceil(effectTime('scroll'))}s`;
+    setText('.scroll-toggle', label);
+  }
+
+  function updateScroll(dt) {
+    updateScrollButton();
+    const maximum = Math.max(0, document.documentElement.scrollHeight - height);
+    if (network?.connected && !network.isHost) {
+      if (remoteScroll !== null) {
+        scrollPosition += (remoteScroll * maximum - scrollPosition) * Math.min(1, dt * 18);
+        window.scrollTo({ top: scrollPosition, behavior: 'instant' });
+        targetsDirty = true;
+      }
       return;
     }
-    const forward = remaining.find(node => node.getBoundingClientRect().top > headerHeight + 80);
-    const next = forward || remaining[0];
-    const top = next ? scrollY + next.getBoundingClientRect().top - headerHeight - 90 : 0;
-    window.scrollTo({ top: Math.max(0, top), behavior: 'instant' });
-    sector++;
-    sectorClearTime = 0;
-    sectorDirty = true;
-    targetsDirty = true;
-    shots.length = 0;
-    pickups.length = 0;
-    ship.vx = ship.vy = 0;
-    hint.textContent = `Sektor ${String(sector).padStart(2, '0')} · Fortsätt röja!`;
-    if (automatic) sound.launch();
-    broadcastState();
+    if (Math.abs(scrollY - lastWrittenScroll) > 1) scrollPosition = scrollY;
+    if (!scrollPaused) {
+      const next = advanceScroll(scrollPosition, scrollDirection, dt * (effectTime('scroll') > 0 ? 72 : 18), maximum);
+      scrollPosition = next.position;
+      scrollDirection = next.direction;
+      window.scrollTo({ top: scrollPosition, behavior: 'instant' });
+      lastWrittenScroll = scrollY;
+      targetsDirty = true;
+    }
+    scrollNetworkTime += dt;
+    if (scrollNetworkTime >= 0.1 && network?.connected) {
+      scrollNetworkTime = 0;
+      network.send({ type: 'scroll', page: currentUrl, scroll: maximum ? scrollY / maximum : 0, paused: scrollPaused });
+    }
   }
-  listen(find('.sector'), 'click', () => nextSector());
+  listen(find('.scroll-toggle'), 'click', () => {
+    if (network?.connected && !network.isHost) return;
+    scrollPaused = !scrollPaused;
+    updateScrollButton();
+    broadcastState();
+  });
   const movementKeys = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'KeyW', 'KeyA', 'KeyS', 'KeyD', 'Space', 'KeyN'];
   listen(window, 'keydown', event => {
     if (event.code === 'Escape') { event.preventDefault(); close(); return; }
@@ -684,7 +778,7 @@ export function openGame(onClose, invitedPeerId = null) {
   listen(shadow, 'keydown', event => {
     if (event.key !== 'Tab') return;
     keyboardFocus = true;
-    const buttons = [...shadow.querySelectorAll('button, input, select')].filter(button => button.getClientRects().length);
+    const buttons = [...shadow.querySelectorAll('button, input, select, summary')].filter(button => !button.disabled && button.checkVisibility());
     const index = buttons.indexOf(shadow.activeElement);
     const next = event.shiftKey ? (index - 1 + buttons.length) % buttons.length : (index + 1) % buttons.length;
     event.preventDefault();
@@ -696,7 +790,7 @@ export function openGame(onClose, invitedPeerId = null) {
   listen(window, 'pagehide', () => close(false));
   listen(window, 'popstate', () => { close(false); location.reload(); });
   listen(window, 'resize', resize);
-  listen(window, 'scroll', () => { targetsDirty = true; sectorDirty = true; }, { passive: true });
+  listen(window, 'scroll', () => { targetsDirty = true; }, { passive: true });
   listen(document, 'load', () => { targetsDirty = true; }, { capture: true });
   listen(stick, 'pointerdown', event => {
     sound.init();
@@ -777,9 +871,75 @@ export function openGame(onClose, invitedPeerId = null) {
     return hash >>> 0;
   }
 
+  function takeDamage(amount) {
+    const next = damageHull(hull, amount, invulnerable > 0 || powers.shield > 0 || respawn > 0);
+    if (next === hull) return;
+    hull = next;
+    invulnerable = 0.9;
+    sound.damage();
+    labels.push({ x: ship.x, y: ship.y - 24, text: `−${amount} SKROV`, life: 1 });
+    if (hull === 0) {
+      burst(ship.x, ship.y, { left: ship.x - 15, top: ship.y - 15, width: 30, height: 30 });
+      sound.explode();
+      respawn = 3;
+      ship.vx = ship.vy = 0;
+      for (const kind of Object.keys(powers)) powers[kind] = 0;
+      resetControls();
+    }
+  }
+
+  function effectTime(kind) {
+    return effectSeconds(roomEffects[kind].until, performance.now());
+  }
+
+  function setRoomEffect(kind, seconds, revision) {
+    if (!Object.hasOwn(roomEffects, kind) || !Number.isFinite(seconds) || seconds < 0 || seconds > 8 || !Number.isSafeInteger(revision)) return;
+    const effect = roomEffects[kind];
+    if (revision < effect.revision) return;
+    const fresh = revision > effect.revision;
+    effect.revision = revision;
+    effect.until = performance.now() + seconds * 1000;
+    if (seconds > 0 && fresh) sound.gravity();
+  }
+
+  function activateRoomEffect(kind, id) {
+    if (!Object.hasOwn(roomEffects, kind) || !Number.isInteger(id) || !targets[id] || !destroyed.has(targets[id])) return;
+    const claim = `${kind}:${id}`;
+    if (effectClaims.has(claim)) return;
+    effectClaims.add(claim);
+    setRoomEffect(kind, POWERUPS[kind].duration, roomEffects[kind].revision + 1);
+    network?.send({ type: 'effect', kind, page: currentUrl, seconds: POWERUPS[kind].duration, revision: roomEffects[kind].revision });
+  }
+
+  function collectPowerup(pickup) {
+    const power = POWERUPS[pickup.kind];
+    if (pickup.kind === 'repair') hull = Math.min(100, hull + 40);
+    else if (Object.hasOwn(roomEffects, pickup.kind)) {
+      if (network?.connected && !network.isHost) network.send({ type: 'effect-request', kind: pickup.kind, page: currentUrl, id: pickup.id });
+      else activateRoomEffect(pickup.kind, pickup.id);
+    } else powers[pickup.kind] = power.duration;
+    sound.powerup();
+    hint.textContent = `${power.name.toUpperCase()}${power.duration ? ` · ${power.duration} sekunder` : ''}`;
+  }
+
+  function updateRules() {
+    find('.friendly-fire').checked = rules.friendlyFire;
+    find('.collisions').checked = rules.collisions;
+    const guest = lobbyMode === 'guest' || lobbyMode === 'invited';
+    find('.friendly-fire').disabled = find('.collisions').disabled = guest;
+  }
+  for (const [selector, key] of [['.friendly-fire', 'friendlyFire'], ['.collisions', 'collisions']]) {
+    listen(find(selector), 'change', event => {
+      if (network?.connected && !network.isHost) { updateRules(); return; }
+      rules[key] = event.target.checked;
+      invulnerable = 3;
+      broadcastState();
+    });
+  }
+
   function broadcastState() {
     if (!network?.connected || !network.isHost) return;
-    network.send({ type: 'state', page: currentUrl, targetCount: targets.length, signature: targetSignature(), destroyed: [...destroyed.keys()].map(node => targets.indexOf(node)), score, sector, scroll: scrollY / Math.max(1, document.documentElement.scrollHeight - height) });
+    network.send({ type: 'state', rules: { ...rules }, effects: Object.fromEntries(Object.entries(roomEffects).map(([kind, effect]) => [kind, { seconds: effectTime(kind), revision: effect.revision }])), scrollPaused, page: currentUrl, targetCount: targets.length, signature: targetSignature(), destroyed: [...destroyed.keys()].map(node => targets.indexOf(node)), score, scroll: scrollY / Math.max(1, document.documentElement.scrollHeight - height) });
   }
 
   function validPoint(message) {
@@ -793,7 +953,7 @@ export function openGame(onClose, invitedPeerId = null) {
     if (message.type === 'state' && !network.isHost) {
       const destination = internalDestination(message.page, currentUrl);
       if (!destination || !Array.isArray(message.destroyed) || message.destroyed.length > 5000
-        || !Number.isSafeInteger(message.score) || message.score < 0 || !Number.isSafeInteger(message.sector)
+        || !Number.isSafeInteger(message.score) || message.score < 0
         || !Number.isFinite(message.scroll) || message.scroll < 0 || message.scroll > 1) return;
       if (destination.href !== currentUrl) await navigateTo({ destination }, true);
       if (closed) return;
@@ -803,14 +963,32 @@ export function openGame(onClose, invitedPeerId = null) {
         rememberTarget(targets[id]);
         targets[id].style.setProperty('visibility', 'hidden', 'important');
       }
+      if (typeof message.rules?.friendlyFire === 'boolean' && typeof message.rules?.collisions === 'boolean') {
+        if (rules.collisions !== message.rules.collisions) invulnerable = 3;
+        Object.assign(rules, { friendlyFire: message.rules.friendlyFire, collisions: message.rules.collisions });
+        updateRules();
+      }
+      for (const kind of Object.keys(roomEffects)) {
+        const effect = message.effects?.[kind];
+        if (effect) setRoomEffect(kind, effect.seconds, effect.revision);
+      }
+      scrollPaused = message.scrollPaused === true;
+      remoteScroll = message.scroll;
+      scrollPosition = message.scroll * Math.max(0, document.documentElement.scrollHeight - height);
       score = message.score;
-      sector = message.sector;
       scoreOutput.textContent = String(score).padStart(5, '0');
       window.scrollTo({ top: message.scroll * Math.max(0, document.documentElement.scrollHeight - height), behavior: 'instant' });
-      targetsDirty = sectorDirty = true;
+      targetsDirty = true;
       return;
     }
     if (message.page !== currentUrl || loadingPage) return;
+    if (message.type === 'scroll' && !network.isHost && Number.isFinite(message.scroll) && message.scroll >= 0 && message.scroll <= 1) {
+      remoteScroll = message.scroll;
+      scrollPaused = message.paused === true;
+      return;
+    }
+    if (message.type === 'effect-request' && network.isHost) { activateRoomEffect(message.kind, message.id); return; }
+    if (message.type === 'effect' && !network.isHost) { setRoomEffect(message.kind, message.seconds, message.revision); return; }
     if (message.type === 'hit' && network.isHost && Number.isInteger(message.id) && targets[message.id]) {
       const node = targets[message.id];
       const rect = node.getBoundingClientRect();
@@ -828,38 +1006,48 @@ export function openGame(onClose, invitedPeerId = null) {
     } else if (message.type === 'navigate' && network.isHost) {
       const destination = internalDestination(message.url, currentUrl);
       if (destination) await navigateTo({ destination });
-    } else if (message.type === 'sector' && network.isHost) nextSector();
+    }
   }
 
   function makeNetwork() {
     network?.close();
+    for (const effect of Object.values(roomEffects)) { effect.until = 0; effect.revision = 0; }
+    effectClaims.clear();
+    ghosts.clear();
     network = createMultiplayer({
       onMessage(message, sender) {
         if (message.type === 'position') {
           if (message.page !== currentUrl || !validPoint(message)) return;
           let ghost = ghosts.get(sender);
           if (!ghost) { ghost = { x: message.x * width, y: message.y * height }; ghosts.set(sender, ghost); }
-          Object.assign(ghost, { targetX: message.x * width, targetY: message.y * height, angle: message.angle, thrust: Boolean(message.thrust) });
+          Object.assign(ghost, { targetX: message.x * width, targetY: message.y * height, angle: message.angle, thrust: Boolean(message.thrust), hull: Number.isFinite(message.hull) ? message.hull : 100, shield: Boolean(message.shield) });
           return;
         }
         messageQueue = messageQueue.then(() => receive(message, sender)).catch(() => { hint.textContent = 'Ett spelmeddelande kunde inte läsas.'; });
       },
       onConnected() {
         if (!network.isHost) ship.x = Math.min(width - 24, width / 2 + 48 * network.playerIds.indexOf(network.playerId));
-        find('.lobby').hidden = true;
+        lobbyMode = network.isHost ? 'hosting' : 'guest';
+        updateLobby();
+        if (!network.isHost) find('.lobby').hidden = true;
+        invulnerable = 3;
         start();
         broadcastState();
       },
       onPlayers(players) {
         for (const id of ghosts.keys()) if (!players.includes(id)) ghosts.delete(id);
-        const list = find('.pilot-list');
-        list.replaceChildren();
-        for (const id of players) {
-          const item = document.createElement('li');
-          item.style.color = playerColor(id);
-          item.textContent = network.playerName(id) + (id === network.playerId ? ' (du)' : '');
-          list.append(item);
+        for (const selector of ['.pilot-list', '.crew-list']) {
+          const list = find(selector);
+          list.replaceChildren();
+          for (const [index, id] of players.entries()) {
+            const item = document.createElement('li');
+            item.style.color = playerColor(id);
+            item.textContent = network.playerName(id) + (id === network.playerId ? ' (du)' : '') + (index === 0 && selector === '.crew-list' && (network.connected || network.isHost) ? ' · värd' : '');
+            list.append(item);
+          }
         }
+        find('.crew').hidden = false;
+        find('.crew-count').textContent = `${players.length} / ${MAX_PLAYERS}`;
       },
       onStatus(status) {
         if (closed) return;
@@ -871,15 +1059,35 @@ export function openGame(onClose, invitedPeerId = null) {
     return network;
   }
 
+  function updateLobby() {
+    const invited = lobbyMode === 'invited';
+    const connected = lobbyMode === 'hosting' || lobbyMode === 'guest';
+    find('.host-game').hidden = lobbyMode !== 'idle';
+    find('.join-game').hidden = !invited;
+    find('.join-manually').hidden = lobbyMode !== 'idle';
+    find('.invitation').hidden = lobbyMode !== 'hosting';
+    find('.disconnect').hidden = lobbyMode === 'idle';
+    find('.disconnect').textContent = invited ? 'Avbryt inbjudan' : 'Lämna rummet';
+    find('.pilot-name').disabled = connected;
+    find('.lobby-intro').textContent = invited ? 'Du är inbjuden. Välj namn och anslut.' : connected ? 'Rummet är öppet. Flyg tillsammans!' : 'Skapa ett rum och bjud in med en länk.';
+    updateRules();
+  }
   function showLobby(peerId = null) {
     resetControls();
     find('.lobby').hidden = false;
-    if (peerId) {
+    if (peerId && !network?.connected) {
+      lobbyMode = 'invited';
       find('.incoming-link').value = invitationLink(peerId, currentUrl);
-      find('.lobby-status').textContent = 'Du är inbjuden! Välj Anslut för att flyga tillsammans.';
-      find('.join-game').focus({ preventScroll: true });
-    } else find('.host-game').focus({ preventScroll: true });
+      find('.lobby-status').textContent = '';
+    }
+    updateLobby();
+    (find('.pilot-name').disabled ? find('.lobby-close') : find('.pilot-name')).focus({ preventScroll: true });
   }
+  listen(find('.use-invitation'), 'click', () => {
+    const id = invitationPeer(find('.incoming-link').value, currentUrl);
+    if (id) showLobby(id);
+    else find('.lobby-status').textContent = 'Klistra in en giltig inbjudningslänk.';
+  });
   listen(find('.multiplayer'), 'click', () => showLobby());
   listen(window, 'athega-space-invite', event => showLobby(event.detail));
   listen(find('.lobby-close'), 'click', () => { find('.lobby').hidden = true; });
@@ -900,7 +1108,8 @@ export function openGame(onClose, invitedPeerId = null) {
     const id = await makeNetwork().host(find('.pilot-name').value);
     if (closed) return;
     find('.outgoing-link').value = invitationLink(id, currentUrl);
-    find('.invitation').hidden = false;
+    lobbyMode = 'hosting';
+    updateLobby();
     find('.local-invite').hidden = !['localhost', '127.0.0.1', '[::1]'].includes(location.hostname);
     find('.lobby-status').textContent = 'Skicka länken till kompisen och låt spelet vara öppet. Ni kopplas ihop när kompisen väljer Anslut.';
   }));
@@ -921,10 +1130,13 @@ export function openGame(onClose, invitedPeerId = null) {
     pendingHits.clear();
     find('.incoming-link').value = find('.outgoing-link').value = '';
     find('.host-game').disabled = find('.join-game').disabled = false;
-    find('.invitation').hidden = true;
+    lobbyMode = 'idle';
+    updateLobby();
     find('.lobby-status').textContent = 'Skapa ett nytt spel eller anslut med en inbjudningslänk.';
     find('.connection-status').textContent = 'Soloflygning';
     find('.pilot-list').replaceChildren();
+    find('.crew-list').replaceChildren();
+    find('.crew').hidden = true;
   });
   resize();
   launchButton.focus({ preventScroll: true });

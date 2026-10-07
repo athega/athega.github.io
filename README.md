@@ -488,7 +488,7 @@ Om utvecklingsservern får en annan port än 8080 används adressen den skriver 
 Fem snabba klick (inom 2,2 sekunder) på startsidans logga, eller Konamikoden
 `↑ ↑ ↓ ↓ ← → ← → B A` på valfri sida, öppnar Athega Space. Bara den lilla
 triggern laddas normalt; spel, ljud och CSS laddas vid aktivering. PeerJS laddas först
-när spelaren väljer Skapa spel eller Anslut.
+när spelaren väljer Skapa rum eller Anslut.
 
 ### Kontroller och poäng
 
@@ -497,11 +497,19 @@ när spelaren väljer Skapa spel eller Anslut.
 - Vanlig eld förstör även menyn. Navigationsskott följer interna sidlänkar;
   externa länkar, e-post, nedladdningar och bloggdemon navigeras inte.
 - Byt uppdrag finns alltid kvar, även om alla sidans länkar är förstörda.
-  En rensad sektor byts automatiskt; en helt rensad sida öppnar uppdragsväljaren.
+  Sidan scrollar långsamt ned och upp (18 px/s) och vänder vid kanterna.
+  Värden kan pausa scrollen. En helt rensad sida öppnar uppdragsväljaren.
 - Täta träffar inom två sekunder bygger upp till ×5 kombopoäng. Snabbare
-  sektorrensning ger större tidsbonus (75 per mål minus 15 per sekund, minst 0).
-- Var tredje träff släpper 3X/trippelskott eller RF/snabbeld. Flyg nära för att
-  plocka upp dem; effekten varar 12 sekunder. Powerups gäller den egna piloten.
+  sidrensning ger större tidsbonus (75 per mål minus 15 per sekund, minst 0).
+- Var tredje förstört objekt släpper en powerup. Flyg nära för att plocka upp den:
+  3X/trippelskott och RF/snabbeld (12 s), SK/sköld och T/turbo (10 s),
+  +/reparation (+40 skrov), G↓/gravitation och S↕/snabbscroll (8 s).
+  Gravitation och snabbscroll påverkar hela rummet; snabbscroll ökar till 72 px/s.
+  Övriga powerups gäller den egna piloten.
+- Under **Spelregler** kan värden slå på friendly fire och kollisionsskador.
+  Båda är av från början och kan ändras under spelet. Skeppet har 100 skrov;
+  skott ger 20 skada och sidobjekt 25. Kort skydd efter träff förhindrar skada
+  varje bildruta. Vid noll skrov återkommer skeppet efter 3 s med 3 s skydd.
 - Mörkt/Ljust växlar tillfälligt spelläge. Mörkt läge har stjärnor och nebulosa.
   Ljud kan stängas av. Reducerad rörelse ger stilla stjärnor, enklare toning och
   färre partiklar utan explosionsringar.
@@ -511,10 +519,11 @@ när spelaren väljer Skapa spel eller Anslut.
 ### Upp till fyra spelare med en inbjudningslänk
 
 1. Aktivera spelet och välj **Spela tillsammans**. Skriv ett valfritt pilotnamn.
-2. Välj **Skapa spel**, sedan **Kopiera inbjudningslänk**. Skicka samma länk till
+2. Välj **Skapa rum**, sedan **Kopiera inbjudningslänk**. Skicka samma länk till
    upp till tre kompisar och håll spelet öppet.
 3. Kompisarna öppnar länken, skriver sina pilotnamn och väljer **Anslut**.
-   Ingen svarskod behövs. Namnen visas vid skeppen och i spelarlistan.
+   Ingen svarskod behövs. Lobbyn visar besättningen, värden och lediga platser.
+   Namnen visas också vid skeppen och i spelarlistan.
 
 Alla behöver samma version av sajten på samma origin (protokoll, värd och port).
 Lokalt kan flera fönster använda samma localhost-adress; den adressen fungerar
@@ -522,7 +531,7 @@ inte på kompisens dator. För spel mellan datorer behöver sajten vara publicer
 
 PeerJS 1.5.5 serveras från sajten och använder kostnadsfria PeerJS Cloud för att
 koppla ihop spelarna. Inbjudan öppnar spellobbyn, men varken PeerJS eller
-anslutningstjänsten kontaktas förrän spelaren väljer Skapa spel eller Anslut.
+anslutningstjänsten kontaktas förrän spelaren väljer Skapa rum eller Anslut.
 STUN (`stun.cloudflare.com:3478`) hjälper webbläsarna hitta en nätverksväg.
 WebRTC DataChannel skickar speldata mellan webbläsarna; värden vidarebefordrar
 kompisarnas positioner och skott. Ingen kamera eller mikrofon används.
@@ -535,11 +544,15 @@ platsen; om värden lämnar fortsätter övriga i sololäge.
 
 Värden avgör gemensamma träffar och poäng och synkroniserar förstörda objekt med
 stabila index plus en innehållssignatur. Skeppens visuella positioner normaliseras
-mellan skärmstorlekar; varje spelares träffar följer den egna responsiva layouten.
+mellan skärmstorlekar; varje spelares träffar och skada följer ännu den egna
+responsiva layouten. **Känd begränsning:** olika skärmbredder kan ge olika hinder
+på samma normaliserade position. En gemensam virtuell spelplan planeras; val av
+överblick eller följande kamera är ännu inte implementerat. Värden styr scroll,
+spelregler och gemensamma powerup-effekter.
 Sidbyten hämtar statiskt sidinnehåll utan att starta om spelet eller WebRTC.
 Detta är en lekfull co-op-prototyp, inte ett tävlingsläge med skydd mot fusk.
 
 Koden finns i `assets/space-egg/`: `trigger.js`, `game.js`, `game.css`,
-`physics.js`, `scoring.js`, `sound.js`, `navigation.js`, `invitation.js` och `multiplayer.js`.
+`physics.js`, `combat.js`, `scoring.js`, `sound.js`, `navigation.js`, `invitation.js` och `multiplayer.js`.
 Den äldre `assets/site.js` används inte. Vid ändring av redan publicerade
 spelmoduler behöver versionsparametrarna på deras import-/resurslänkar uppdateras.

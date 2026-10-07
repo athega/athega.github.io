@@ -75,3 +75,22 @@ button:disabled { opacity: .45; cursor: default; }
 .local-invite { border-left: 2px solid #ff6600; padding-left: 10px; }
 
 .pilot-list { list-style: none; margin: 6px 0 0; padding: 0; font-size: 10px; max-width: 140px; overflow-wrap: anywhere; }
+
+.hull-status { display: block; color: #e5f3ff; font-size: 11px; margin-top: 6px; }
+.gravity-status { display: block; color: #ffd16c; font-size: 11px; margin-top: 6px; }
+.rules, .join-manually { border-top: 1px solid #36414c; margin-top: 16px; padding-top: 12px; }
+summary { cursor: pointer; font-size: 12px; padding: 5px 0; }
+summary span, .name-label > span { color: #a6b6c5; font-size: 10px; }
+.rule { display: flex; align-items: center; gap: 12px; cursor: pointer; }
+.rule input { width: 20px; height: 20px; margin: 0; accent-color: #ff6600; }
+.rule small { display: block; color: #a6b6c5; font-size: 11px; }
+.rules p { font-size: 11px; }
+.lobby-status:empty { display: none; }
+.lobby-actions { justify-content: space-between; }
+.disconnect { border-color: transparent; color: #a6b6c5; }
+input:focus-visible, summary:focus-visible { outline: 2px solid #ff8c40; outline-offset: 3px; }
+.crew { margin: 18px 0; padding: 12px 14px; border: 1px solid #36414c; border-radius: 8px; background: #08121d; }
+.crew h3 { display: flex; justify-content: space-between; margin: 0 0 8px; font: 12px ui-monospace, monospace; color: #c5d4e1; }
+.crew-list { list-style: none; margin: 0; padding: 0; font-size: 13px; overflow-wrap: anywhere; }
+.crew-list li { padding: 4px 0; }
+.crew-list li::before { content: '●'; margin-right: 10px; }

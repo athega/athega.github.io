@@ -57,6 +57,8 @@ export function createSound() {
       [220, 330, 440, 660].forEach((note, i) => tone(note, note * 1.01, 0.22, 'triangle', i * 0.09));
     },
     powerup() { [440, 660, 880].forEach((note, i) => tone(note, note * 1.1, 0.18, 'sine', i * 0.07)); },
+    damage() { tone(160, 55, 0.18, 'sawtooth'); },
+    gravity() { tone(420, 45, 0.7, 'sine'); },
     shoot() { tone(950, 140, 0.12, 'triangle'); },
     explode() {
       if (!context || !enabled) return;
