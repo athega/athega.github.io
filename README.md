@@ -284,7 +284,8 @@ databas eller extra tjänst. JSON-filerna används vid bygget, inte via klientko
 `index.html` inkluderar `_includes/home.html`, som sätter ihop sektionerna.
 Deras texter finns i `_data/home/content.json`:
 
-- `intro` – huvudrubrik (`heading`), orange text (`emphasis`) och ingress (`lead`).
+- `intro` – huvudrubrik (`heading`), orange text (`emphasis`), ingress (`lead`) och
+  herobilden (`image`, en sökväg under `assets/img/`). Ta bort `image` för att dölja bilden.
 - `about` – Athega i korthet.
 - `services` – rubrik och tjänstekort i listan `items`.
 - `blog` – rubrik och länktext; de tre senaste inläggen hämtas automatiskt.
@@ -298,6 +299,22 @@ kommatecken. Lägg till eller ta bort ett helt objekt för att ändra en lista.
 
 Ett tjänstekort har `title`, `description` och `href`. Kortens ordning följer
 listan. Lägg inte till en separat HTML-kopia för varje nytt kort.
+
+#### Herobilden på startsidan
+
+Bilden ligger förankrad i högerkanten och tonas ut mot sidans vita bakgrund åt vänster,
+under rubriken och ingressen, så att texten alltid är läsbar. Den är dekorativ
+(`alt=""` och `aria-hidden`), ligger överst på sidan (`fetchpriority="high"`, ingen lat
+inläsning) och `width`/`height` läggs till av bygget. På mobil (under 760 px) ligger bilden
+överst i full bredd och tonas nedåt i stället.
+
+Byt bild genom att ersätta filen eller ändra `intro.image` i `content.json`. Bilden bör vara
+bred, ungefär 21:9 till 3:1, med motivet i högra halvan, och helst under 200 KB. Utseendet
+justeras med variablerna överst i `_includes/styles/home.scss`: `--home-hero-min-height`
+(heroens höjd, 400–520 px och växer med bredden), `--home-hero-pad-top` och
+`--home-hero-pad-bottom`, `--home-hero-focus` (`object-position`, vilken del av bilden som
+behålls när den beskärs) samt `--home-hero-text-max` och `--home-hero-lead-max`
+(textens bredd). Toningen använder `--paper`, så ingen ny färg behövs.
 
 ### Redigera tjänste- och företagssidor
 

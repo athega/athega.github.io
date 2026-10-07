@@ -1,4 +1,9 @@
 <section class="page-hero home-page-hero">
+  {% if home.content.intro.image %}
+  <div class="home-hero-media">
+    <img src="{{ home.content.intro.image | escape }}" alt="" aria-hidden="true" fetchpriority="high">
+  </div>
+  {% endif %}
   <div class="shell">
     <h1>{{ home.content.intro.heading | escape }} <span>{{ home.content.intro.emphasis | escape }}</span></h1>
     <p class="page-lead">{{ home.content.intro.lead | escape }}</p>
