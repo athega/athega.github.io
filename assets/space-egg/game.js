@@ -1,11 +1,12 @@
+import { createOrdnance, ORDNANCE, blastTouches } from './ordnance.js?v=11';
 import { targetStrength, damageEdge } from './targets.js?v=10';
 import { ROUND_SECONDS, roundWinners, clockLabel } from './round.js?v=9';
 import { createArena, cameraFor, WORLD_WIDTH, WORLD_HEIGHT } from './arena.js?v=7';
-import { POWERUPS, damageHull, expandedRect, effectSeconds, advanceScroll, shipContact } from './combat.js?v=8';
+import { POWERUPS, damageHull, expandedRect, effectSeconds, advanceScroll, shipContact } from './combat.js?v=11';
 import { hitsRect } from './physics.js?v=3';
-import { createSound } from './sound.js?v=10';
+import { createSound } from './sound.js?v=11';
 import { internalDestination } from './navigation.js?v=3';
-import { createMultiplayer, MAX_PLAYERS, pilotName } from './multiplayer.js?v=10';
+import { createMultiplayer, MAX_PLAYERS, pilotName } from './multiplayer.js?v=11';
 import { invitationLink, invitationPeer } from './invitation.js?v=7';
 import { hitReward, sectorReward } from './scoring.js?v=3';
 
@@ -36,7 +37,7 @@ export async function openGame(onClose, invitedPeerId = null) {
   host.style.cssText = 'position:fixed;inset:0;overflow:hidden;z-index:2147483647';
   const shadow = host.attachShadow({ mode: 'open' });
   shadow.innerHTML = `
-    <link rel="stylesheet" href="${new URL('./game.css?v=10', import.meta.url).href}">
+    <link rel="stylesheet" href="${new URL('./game.css?v=11', import.meta.url).href}">
     <div role="dialog" aria-modal="true" aria-label="Athega Space – hemligt arkadspel">
       <canvas class="world-canvas" aria-hidden="true"></canvas><div class="offscreen-pilots" aria-hidden="true"></div><div class="radar" hidden><canvas width="128" height="80" aria-label="Radar över piloterna"></canvas><span>RADAR</span></div>
       <div class="hud">
@@ -46,6 +47,7 @@ export async function openGame(onClose, invitedPeerId = null) {
       <div class="play-ui" hidden>
         <p class="hint">← → / A D: rotera · ↑ / W: gas · Mellanslag: skjut · N: navigera · Esc: avsluta</p>
         <div class="bottom"><button class="scroll-toggle" aria-pressed="false">Pausa scroll</button><button class="missions-open">Byt uppdrag</button></div>
+        <div class="ordnance"><button class="lay-mine" title="M: placera mina">Mina · 0</button><button class="drop-bomb" title="B: släpp bomb">Bomb · 0</button></div>
         <div class="touch stick" role="group" aria-label="Dra för att styra skeppet"><span>STYR</span></div>
         <button class="touch navigate" aria-label="Håll för navigationsskott">NAV</button>
         <button class="touch fire" aria-label="Håll för att skjuta">ELD</button>
@@ -54,7 +56,7 @@ export async function openGame(onClose, invitedPeerId = null) {
         <span class="kicker">Hemligt uppdrag / 001</span>
         <h1>Vi gillar att<br>bryta ny mark.</h1>
         <p>Men du får börja med den här sidan. Ta kontroll över skeppet och skjut layouten i småbitar.</p>
-        <p class="instructions">Dator: piltangenter eller W A S D + mellanslag.<br>N: navigationsskott – träffa en intern länk.<br>Mobil: styrspak, ELD och NAV.<br>Powerups: 3X trippelskott · RF snabbeld · SK sköld · + reparation · T turbo · G↓ gravitation · S↕ snabbscroll för alla.<br>Täta träffar ger upp till ×5. Rensa sidan snabbt för tidsbonus.<br>Esc eller Avsluta återställer allt.</p>
+        <p class="instructions">Dator: piltangenter eller W A S D + mellanslag.<br>N: navigationsskott – träffa en intern länk.<br>Mobil: styrspak, ELD och NAV.<br>Plocka upp MIN/BOM. M: lägg mina · B: släpp bomb (1 sekund).<br>Din mina skadar aldrig dig. Din bomb kan göra det.<br>Powerups: 3X trippelskott · RF snabbeld · SK sköld · + reparation · T turbo · G↓ gravitation · S↕ snabbscroll för alla.<br>Täta träffar ger upp till ×5. Rensa sidan snabbt för tidsbonus.<br>Esc eller Avsluta återställer allt.</p>
         <button class="primary launch">Starta motorerna</button>
       </div></div>
       <div class="lobby" hidden><div class="panel">
@@ -63,7 +65,7 @@ export async function openGame(onClose, invitedPeerId = null) {
         <label class="name-label">Pilotnamn <span>(valfritt)</span><input class="pilot-name" maxlength="20" autocomplete="off" placeholder="Ditt anropsnamn"></label>
         <section class="crew" hidden aria-label="Besättning"><h3>Besättning <span class="crew-count"></span></h3><ul class="crew-list" aria-live="polite"></ul></section>
         <details class="rules"><summary>Spelregler <span>Värden bestämmer</span></summary>
-          <label class="rule"><input class="friendly-fire" type="checkbox"><span>Friendly fire<small>Kompisarnas skott ger skada.</small></span></label>
+          <label class="rule"><input class="friendly-fire" type="checkbox"><span>Friendly fire<small>Kompisarnas skott, minor och bomber ger skada.</small></span></label>
           <label class="rule"><input class="collisions" type="checkbox"><span>Kollisionsskador<small>Krockar med sidan och andra skepp ger skada.</small></span></label>
           <p>100 skrov. Nytt skepp efter 3 sekunder. G↓ och S↕ påverkar hela rummet i 8 sekunder.</p>
         </details>
@@ -148,6 +150,7 @@ export async function openGame(onClose, invitedPeerId = null) {
   let shotSequence = 0;
   const flightShots = new Map();
   const impacts = [];
+  const blasts = [];
   let hitFlash = 0;
   const particles = [];
   const rings = [];
@@ -188,6 +191,16 @@ export async function openGame(onClose, invitedPeerId = null) {
   let lastPowerLabel = '';
   const joystick = { active: false, x: 0, y: 0 };
   const ship = { x: WORLD_WIDTH / 2, y: WORLD_HEIGHT * 0.62, vx: 0, vy: 0, angle: -Math.PI / 2 };
+  const ordnance = createOrdnance({
+    ownId: ownPilotId,
+    authoritative: () => !network?.connected || network.isHost,
+    send: message => network?.send({ ...message, page: currentUrl, round: roundSerial }),
+    onBlast: explodeOrdnance,
+    onChange: ammo => {
+      setText('.lay-mine', `Mina · ${ammo.mine}`);
+      setText('.drop-bomb', `Bomb · ${ammo.bomb}`);
+    },
+  });
   const width = WORLD_WIDTH;
   const height = WORLD_HEIGHT;
   let running = false;
@@ -375,6 +388,7 @@ export async function openGame(onClose, invitedPeerId = null) {
     if (destroyed.size % 3 === 0) {
       const kinds = Object.keys(POWERUPS);
       const kind = kinds[(destroyed.size / 3 - 1) % kinds.length];
+      ordnance.recordDrop(targets.indexOf(node), kind);
       pickups.push({ x: Math.max(24, Math.min(width - 24, x)), y: Math.max(100, Math.min(height - 100, y)), kind, id: targets.indexOf(node), life: 18 });
       if (pickups.length > 6) pickups.shift();
     }
@@ -420,6 +434,8 @@ export async function openGame(onClose, invitedPeerId = null) {
       flightShots.clear();
       targetHealth.clear();
       damageStyles.clear();
+      ordnance.clearField();
+      blasts.length = 0;
       impacts.length = 0;
       destroyed.clear();
       pendingHits.clear();
@@ -684,6 +700,7 @@ export async function openGame(onClose, invitedPeerId = null) {
       context.fillRect(particle.x, particle.y, particle.size, particle.size);
     }
     context.globalAlpha = 1;
+    drawOrdnance(now, dt);
     for (let i = rings.length - 1; i >= 0; i--) {
       const ring = rings[i];
       ring.life -= dt;
@@ -948,6 +965,11 @@ export async function openGame(onClose, invitedPeerId = null) {
     if (event.code === 'Escape') { event.preventDefault(); close(); return; }
     if (roundEnded || !find('.lobby').hidden || !find('.missions').hidden) return;
     if (!running || event.ctrlKey || event.metaKey || event.altKey) return;
+    if (['KeyM', 'KeyB'].includes(event.code)) {
+      event.preventDefault();
+      if (!event.repeat) placeOrdnance(event.code === 'KeyM' ? 'mine' : 'bomb');
+      return;
+    }
     // Space still activates a focused control when navigating the HUD with Tab.
     if (event.code === 'Space' && keyboardFocus) return;
     if (movementKeys.includes(event.code) && event.code !== 'Space') keyboardFocus = false;
@@ -1123,6 +1145,8 @@ export async function openGame(onClose, invitedPeerId = null) {
     roundStats.clear();
     pendingDamage.clear();
     collisionTimes.clear();
+    ordnance.reset();
+    blasts.length = 0;
     animations.forEach(animation => animation.cancel());
     animations.clear();
     for (const [node, original] of destroyed) {
@@ -1200,6 +1224,10 @@ export async function openGame(onClose, invitedPeerId = null) {
       renderRound();
       if (!network?.connected || network.isHost) publishRound();
     }
+    if (!roundEnded && roundRemaining > 0) {
+      const pilots = [{ id: ownPilotId(), x: ship.x, y: ship.y, alive: hull > 0 }, ...[...ghosts].map(([id, ghost]) => ({ id, x: ghost.targetX, y: ghost.targetY, alive: ghost.hull !== 0 }))];
+      ordnance.tick(pilots, rules.friendlyFire);
+    }
     for (const [id, damage] of pendingDamage) if (damage.expires < performance.now()) pendingDamage.delete(id);
   }
   const roundTimer = setInterval(updateRound, 100);
@@ -1209,6 +1237,7 @@ export async function openGame(onClose, invitedPeerId = null) {
     const entry = ensurePilot(pilot);
     if (message.sequence !== entry.deaths + 1) return;
     entry.deaths++;
+    ordnance.clearAmmo(pilot);
     renderRound();
     publishRound();
   }
@@ -1217,7 +1246,7 @@ export async function openGame(onClose, invitedPeerId = null) {
     const damage = pendingDamage.get(message.shotId);
     if (!damage || damage.victim !== victim || damage.expires < performance.now()) return;
     pendingDamage.delete(message.shotId);
-    if (roundEnded || message.round !== roundSerial || message.killed !== true || message.damage <= 0) return;
+    if (roundEnded || message.round !== roundSerial || message.killed !== true || message.damage <= 0 || damage.shooter === victim) return;
     ensurePilot(damage.shooter).kills++;
     renderRound();
     publishRound();
@@ -1258,23 +1287,23 @@ export async function openGame(onClose, invitedPeerId = null) {
 
   function resolvePilotHit(message) {
     const before = hull;
-    takeDamage(20);
+    takeDamage(message.amount || 20);
     const impact = { type: 'impact', page: currentUrl, shotId: message.shotId, x: ship.x / width, y: ship.y / height, damage: before - hull, killed: before > 0 && hull === 0, round: roundSerial };
-    if (network.isHost) recordKill(impact, network.playerId);
-    showImpact(impact, network.playerId);
-    network.send(impact);
+    if (!network?.connected || network.isHost) recordKill(impact, ownPilotId());
+    showImpact(impact, ownPilotId());
+    network?.send(impact);
   }
 
   function showImpact(message, pilot) {
     if (!Number.isFinite(message.x) || !Number.isFinite(message.y) || message.x < 0 || message.x > 1 || message.y < 0 || message.y > 1
-      || !Number.isInteger(message.damage) || message.damage < 0 || message.damage > 20 || typeof message.shotId !== 'string') return;
+      || !Number.isInteger(message.damage) || message.damage < 0 || message.damage > 80 || typeof message.shotId !== 'string') return;
     for (let i = shots.length - 1; i >= 0; i--) if (shots[i].id === message.shotId) shots.splice(i, 1);
     const x = message.x * width;
     const y = message.y * height;
     impacts.push({ x, y, life: 0.45, blocked: message.damage === 0 });
     if (impacts.length > 24) impacts.shift();
     if (ghosts.has(pilot)) ghosts.get(pilot).flashUntil = performance.now() + 250;
-    if (pilot !== network.playerId || message.damage === 0) {
+    if (pilot !== ownPilotId() || message.damage === 0) {
       labels.push({ x, y: y - 25, text: message.damage ? `TRÄFF −${message.damage}` : 'SKYDD', life: 0.8 });
       sound.damage();
     }
@@ -1303,9 +1332,76 @@ export async function openGame(onClose, invitedPeerId = null) {
     network?.send({ type: 'effect', kind, page: currentUrl, seconds: POWERUPS[kind].duration, revision: roomEffects[kind].revision });
   }
 
+  function placeOrdnance(kind) {
+    if (!running || roundEnded || respawn > 0 || !find('.lobby').hidden || !find('.missions').hidden || (roundDeadline && performance.now() >= roundDeadline)) return;
+    if (ordnance.ammo[kind] <= 0) { hint.textContent = 'Plocka upp MIN eller BOM först.'; return; }
+    sound.init();
+    sound.deploy(kind);
+    ordnance.deploy(kind, ship.x, ship.y);
+  }
+  listen(find('.lay-mine'), 'click', () => placeOrdnance('mine'));
+  listen(find('.drop-bomb'), 'click', () => placeOrdnance('bomb'));
+
+  function explodeOrdnance(hazard, victims, authoritative) {
+    const definition = ORDNANCE[hazard.kind];
+    blasts.push({ ...hazard, radius: definition.radius, life: 0.65 });
+    sound.crash();
+    burst(hazard.x, hazard.y, { left: hazard.x - 20, top: hazard.y - 20, width: 40, height: 40 });
+    if (authoritative) {
+      for (const victim of victims) pendingDamage.set(`${hazard.id}:${victim.id}`, { shooter: hazard.owner, victim: victim.id, expires: performance.now() + 3000 });
+      if (targetsDirty) updateTargets();
+      const hitNodes = new Set();
+      for (const target of targetRects) {
+        if (hitNodes.has(target.node) || isDestroyed(target.node) || !blastTouches(target.rect, hazard)) continue;
+        hitNodes.add(target.node);
+        for (let hit = 0; hit < definition.objectHits && !isDestroyed(target.node); hit++) destroy(target, hazard.x, hazard.y);
+      }
+    }
+    const victim = victims.find(pilot => pilot.id === ownPilotId());
+    if (victim) resolvePilotHit({ shotId: `${hazard.id}:${victim.id}`, amount: victim.damage });
+  }
+
+  function drawOrdnance(now, dt) {
+    for (const hazard of ordnance.hazards) {
+      context.save();
+      context.translate(hazard.x, hazard.y);
+      const friendly = hazard.kind === 'mine' && hazard.owner === ownPilotId();
+      context.strokeStyle = friendly ? '#64e9ce' : '#ffb24d';
+      context.fillStyle = '#142332';
+      context.lineWidth = 2;
+      context.beginPath();
+      context.arc(0, 0, hazard.kind === 'mine' ? 12 : 15, 0, Math.PI * 2);
+      context.fill(); context.stroke();
+      if (hazard.kind === 'mine') {
+        for (let ray = 0; ray < 8; ray++) {
+          const angle = ray * Math.PI / 4;
+          context.beginPath(); context.moveTo(Math.cos(angle) * 12, Math.sin(angle) * 12); context.lineTo(Math.cos(angle) * 18, Math.sin(angle) * 18); context.stroke();
+        }
+        context.fillStyle = friendly ? '#64e9ce' : '#ff6600';
+        context.globalAlpha = reducedMotion ? 1 : 0.5 + Math.sin(now / 140) * 0.4;
+        context.fillRect(-3, -3, 6, 6);
+      } else {
+        context.fillStyle = '#ffd18e'; context.font = 'bold 12px monospace'; context.textAlign = 'center';
+        context.fillText(Math.max(0, (hazard.detonatesAt - now) / 1000).toFixed(1), 0, 4);
+      }
+      context.restore();
+    }
+    for (let i = blasts.length - 1; i >= 0; i--) {
+      const blast = blasts[i];
+      blast.life -= dt;
+      if (blast.life <= 0) { blasts.splice(i, 1); continue; }
+      context.save();
+      context.globalAlpha = blast.life / 0.65;
+      context.fillStyle = '#ff8a2433'; context.strokeStyle = '#ffc273'; context.lineWidth = 4;
+      context.beginPath(); context.arc(blast.x, blast.y, reducedMotion ? blast.radius : blast.radius * Math.min(1, (0.65 - blast.life) * 5), 0, Math.PI * 2);
+      context.fill(); context.stroke(); context.restore();
+    }
+  }
+
   function collectPowerup(pickup) {
     const power = POWERUPS[pickup.kind];
-    if (pickup.kind === 'repair') hull = Math.min(100, hull + 40);
+    if (Object.hasOwn(ORDNANCE, pickup.kind)) ordnance.collect(pickup.kind, pickup.id);
+    else if (pickup.kind === 'repair') hull = Math.min(100, hull + 40);
     else if (Object.hasOwn(roomEffects, pickup.kind)) {
       if (network?.connected && !network.isHost) network.send({ type: 'effect-request', kind: pickup.kind, page: currentUrl, id: pickup.id });
       else activateRoomEffect(pickup.kind, pickup.id);
@@ -1331,7 +1427,7 @@ export async function openGame(onClose, invitedPeerId = null) {
 
   function broadcastState() {
     if (!network?.connected || !network.isHost) return;
-    network.send({ type: 'state', damage: [...targetHealth].filter(([node]) => !destroyed.has(node)).map(([node, remaining]) => [targets.indexOf(node), remaining]), round: roundSnapshot(), roomStarted, rules: { ...rules }, effects: Object.fromEntries(Object.entries(roomEffects).map(([kind, effect]) => [kind, { seconds: effectTime(kind), revision: effect.revision }])), scrollPaused, page: currentUrl, targetCount: targets.length, signature: targetSignature(), destroyed: [...destroyed.keys()].map(node => targets.indexOf(node)), score, scroll: arenaWindow.scrollY / Math.max(1, arenaDocument.documentElement.scrollHeight - height) });
+    network.send({ type: 'state', ordnance: ordnance.snapshot(), damage: [...targetHealth].filter(([node]) => !destroyed.has(node)).map(([node, remaining]) => [targets.indexOf(node), remaining]), round: roundSnapshot(), roomStarted, rules: { ...rules }, effects: Object.fromEntries(Object.entries(roomEffects).map(([kind, effect]) => [kind, { seconds: effectTime(kind), revision: effect.revision }])), scrollPaused, page: currentUrl, targetCount: targets.length, signature: targetSignature(), destroyed: [...destroyed.keys()].map(node => targets.indexOf(node)), score, scroll: arenaWindow.scrollY / Math.max(1, arenaDocument.documentElement.scrollHeight - height) });
   }
 
   function validPoint(message) {
@@ -1383,6 +1479,7 @@ export async function openGame(onClose, invitedPeerId = null) {
       const wasStarted = roomStarted;
       roomStarted = message.roomStarted === true;
       if (message.round) receiveRound(message.round);
+      if (message.ordnance) ordnance.restore(message.ordnance);
       updateLobby();
       if (roomStarted && !wasStarted && !roundEnded) {
         find('.lobby').hidden = true;
@@ -1393,6 +1490,7 @@ export async function openGame(onClose, invitedPeerId = null) {
     }
     if (roundEnded || (roundDeadline && performance.now() >= roundDeadline) || (network?.connected && !roomStarted)) return;
     if (message.page !== currentUrl || loadingPage) return;
+    if (message.type.startsWith('ordnance-') && message.round === roundSerial) { ordnance.handle(message, sender); return; }
     if (message.type === 'target-damage' && !network.isHost && Number.isInteger(message.id) && targets[message.id] && !destroyed.has(targets[message.id])) {
       const node = targets[message.id];
       const rect = node.getBoundingClientRect();

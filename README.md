@@ -524,6 +524,27 @@ när spelaren väljer Skapa rum eller Anslut.
   destinationen om till den vanliga sajten, med rätt metadata och normala skript.
 
 
+### Minor och bomber
+
+Plocka upp **MIN** eller **BOM** från förstörda objekt. **M** placerar en mina,
+**B** släpper en bomb; samma knappar finns på skärmen för touch.
+Du kan bära tre av varje och ha högst tre av varje utplacerade samtidigt.
+
+- Minan aktiveras efter 0,6 sekunder och exploderar när ett annat levande skepp
+  kommer nära. Ägaren kan varken utlösa minan eller skadas av den.
+- Bomben exploderar efter en sekund och kan skada även den som släppte den.
+- Friendly fire styr skadan på andra piloter. Sköld och respawnskydd gäller.
+- Minor ger 60 skada inom 95 pixlar och bomber 80 inom 150 pixlar.
+  Sidobjekt i explosionen tar två respektive tre träffar.
+- Värden bestämmer ammunition, utplacering, utlösning och träffade piloter.
+  Alla ser explosionerna. Självsprängning ger ingen kill.
+- Ammunitionen försvinner vid krasch. Utplacerade vapen försvinner vid sidbyte,
+  och en ny rond nollställer både ammunition och utplacerade vapen.
+
+Vanliga besökare laddar bara den lilla `trigger.js`, som också skriver en diskret
+ledtråd i konsolen. Spelkod, spelstilar och ljud skapas först vid aktivering.
+PeerJS laddas först när man skapar eller ansluter till ett rum.
+
 ### Ronder och vinnare
 
 En rond varar **120 sekunder** från start, även över sidbyten och öppna menyer.
@@ -581,6 +602,6 @@ Sidbyten hämtar statiskt sidinnehåll utan att starta om spelet eller WebRTC.
 Detta är en lekfull co-op-prototyp, inte ett tävlingsläge med skydd mot fusk.
 
 Koden finns i `assets/space-egg/`: `trigger.js`, `game.js`, `game.css`,
-`arena.js`, `physics.js`, `combat.js`, `scoring.js`, `sound.js`, `navigation.js`, `invitation.js` och `multiplayer.js`.
+`arena.js`, `physics.js`, `combat.js`, `ordnance.js`, `round.js`, `targets.js`, `scoring.js`, `sound.js`, `navigation.js`, `invitation.js` och `multiplayer.js`.
 Den äldre `assets/site.js` används inte. Vid ändring av redan publicerade
 spelmoduler behöver versionsparametrarna på deras import-/resurslänkar uppdateras.

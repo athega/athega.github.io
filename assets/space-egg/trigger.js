@@ -1,3 +1,5 @@
+console.info('Psst … rymden väntar. Fem snabba klick på loggan på startsidan, eller ↑ ↑ ↓ ↓ ← → ← → B A.');
+
 const sequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
 let entered = [];
 let lastKeyTime = 0;
@@ -10,7 +12,7 @@ async function reveal(invitedPeerId = null) {
   entered = [];
   clicks = [];
   try {
-    const { openGame } = await import('./game.js?v=10');
+    const { openGame } = await import('./game.js?v=11');
     await openGame(() => { active = false; }, invitedPeerId);
   } catch (error) {
     active = false;

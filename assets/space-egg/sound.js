@@ -57,6 +57,7 @@ export function createSound() {
       [220, 330, 440, 660].forEach((note, i) => tone(note, note * 1.01, 0.22, 'triangle', i * 0.09));
     },
     powerup() { [440, 660, 880].forEach((note, i) => tone(note, note * 1.1, 0.18, 'sine', i * 0.07)); },
+    deploy(kind) { tone(kind === 'mine' ? 600 : 180, kind === 'mine' ? 300 : 600, 0.15, 'triangle'); },
     chip() { tone(260, 90, 0.08, 'triangle'); },
     damage() { tone(160, 55, 0.18, 'sawtooth'); },
     roomEffect(kind) {

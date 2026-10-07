@@ -1,6 +1,8 @@
 export const POWERUPS = {
   triple: { label: '3X', name: 'Trippelskott', duration: 12 },
+  mine: { label: 'MIN', name: 'Mina · placera med M', duration: 0 },
   shield: { label: 'SK', name: 'Sköld', duration: 10 },
+  bomb: { label: 'BOM', name: 'Bomb · släpp med B', duration: 0 },
   rapid: { label: 'RF', name: 'Snabbeld', duration: 12 },
   repair: { label: '+', name: 'Reparation +40', duration: 0 },
   turbo: { label: 'T', name: 'Turbo', duration: 10 },

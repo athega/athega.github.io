@@ -112,3 +112,10 @@ input:focus-visible, summary:focus-visible { outline: 2px solid #ff8c40; outline
 .result-list li { padding: 12px 0; border-bottom: 1px solid #36414c; }
 .result-list .winner { color: #ffb26f; }
 .result-exit { margin-top: 12px; }
+
+.ordnance { position: absolute; right: 16px; bottom: 20px; display: flex; gap: 8px; }
+.ordnance button { min-width: 80px; border-color: #ba853f; }
+@media (pointer: coarse), (max-width: 900px) {
+  .ordnance { left: 16px; right: auto; bottom: 196px; }
+  .hint { display: none; }
+}
