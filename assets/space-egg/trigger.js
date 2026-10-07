@@ -1,3 +1,4 @@
+console.info('We’re hiring. Nyfiken på vad som finns under huven? Det gillar vi. https://athega.se/jobba/');
 console.info('Psst … rymden väntar. Fem snabba klick på loggan på startsidan, eller ↑ ↑ ↓ ↓ ← → ← → B A.');
 
 const sequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
