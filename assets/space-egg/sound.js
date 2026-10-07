@@ -1,3 +1,5 @@
+import { createMusic } from './music.js?v=15';
+
 export function createSound() {
   let context;
   let master;
@@ -5,10 +7,60 @@ export function createSound() {
   let engineGain;
   let noise;
   let enabled = true;
+  let music;
+  let musicWanted = true;
+  let background = false;
+  let closed = false;
+  let recoveryTimer;
 
-  function init() {
+  function syncMusic() {
+    if (!closed && context?.state === 'running' && musicWanted && enabled && !background) music?.start();
+    else music?.stop();
+  }
+
+  function disposeContext() {
+    clearTimeout(recoveryTimer);
+    recoveryTimer = null;
+    music?.close();
+    music = null;
     if (context) {
-      context.resume().catch(() => {});
+      context.onstatechange = null;
+      engine?.stop();
+      context.close().catch(() => {});
+      context = null;
+    }
+  }
+
+  function resume(reset = false) {
+    if (closed || background || !context) return;
+    const current = context;
+    if (reset) {
+      // Safari can report running while its audio clock is frozen. Force a
+      // suspend/resume cycle rather than trusting the reported state.
+      current.suspend().then(() => {
+        if (!closed && !background && context === current) return current.resume();
+      }).then(syncMusic).catch(() => {});
+    } else if (current.state !== 'running') {
+      current.resume().then(syncMusic).catch(() => {});
+    } else syncMusic();
+
+    if (recoveryTimer) return;
+    const time = current.currentTime;
+    recoveryTimer = setTimeout(() => {
+      recoveryTimer = null;
+      if (closed || background || context !== current) return;
+      if (current.state === 'running' && current.currentTime > time) return;
+      // Some Safari interruptions never settle resume(). Replace that context
+      // once, without waiting for its promises. A later gesture can unlock it.
+      disposeContext();
+      init(false);
+    }, 600);
+  }
+
+  function init(checkRecovery = true) {
+    if (closed) return;
+    if (context) {
+      resume();
       return;
     }
     try {
@@ -26,16 +78,18 @@ export function createSound() {
       noise = context.createBuffer(1, context.sampleRate * 0.3, context.sampleRate);
       const samples = noise.getChannelData(0);
       for (let i = 0; i < samples.length; i++) samples[i] = Math.random() * 2 - 1;
-      context.resume().catch(() => {});
+      music = createMusic(context, master, noise);
+      context.onstatechange = syncMusic;
+      if (checkRecovery) resume();
+      else context.resume().then(syncMusic).catch(() => {});
     } catch {
       // The game remains playable when audio is unavailable.
-      context?.close().catch(() => {});
-      context = null;
+      disposeContext();
     }
   }
 
   function tone(from, to, duration, type = 'sine', delay = 0) {
-    if (!context || !enabled) return;
+    if (!context || !enabled || background || context.state !== 'running') return;
     const time = context.currentTime + delay;
     const osc = context.createOscillator();
     const gain = context.createGain();
@@ -53,6 +107,7 @@ export function createSound() {
 
   return {
     init,
+    resume,
     launch() {
       [220, 330, 440, 660].forEach((note, i) => tone(note, note * 1.01, 0.22, 'triangle', i * 0.09));
     },
@@ -74,7 +129,7 @@ export function createSound() {
     effectEnded() { tone(440, 330, 0.18, 'sine'); tone(330, 220, 0.18, 'sine', 0.16); },
     shoot() { tone(950, 140, 0.12, 'triangle'); },
     explode() {
-      if (!context || !enabled) return;
+      if (!context || !enabled || background || context.state !== 'running') return;
       const source = context.createBufferSource();
       const filter = context.createBiquadFilter();
       const gain = context.createGain();
@@ -93,11 +148,32 @@ export function createSound() {
     thrust(value) {
       if (context) engineGain.gain.setTargetAtTime(value ? 0.13 : 0, context.currentTime, 0.05);
     },
+    toggleMusic() {
+      init();
+      if (!context) return false;
+      musicWanted = !musicWanted;
+      syncMusic();
+      return musicWanted;
+    },
+    setBackground(value) {
+      const wasBackground = background;
+      background = value;
+      if (background) {
+        clearTimeout(recoveryTimer);
+        recoveryTimer = null;
+        syncMusic();
+        context?.suspend().catch(() => {});
+      } else resume(wasBackground);
+    },
     toggle() {
       enabled = !enabled;
       if (context) master.gain.setTargetAtTime(enabled ? 0.22 : 0, context.currentTime, 0.02);
+      syncMusic();
       return enabled;
     },
-    close() { if (context) { engine?.stop(); context.close().catch(() => {}); } },
+    close() {
+      closed = true;
+      disposeContext();
+    },
   };
 }

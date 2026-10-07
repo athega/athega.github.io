@@ -1,5 +1,5 @@
 import { createRenderer } from './rendering.js?v=14';
-import { gameMarkup, gameTheme, waitForStyles } from './view.js?v=14';
+import { gameMarkup, gameTheme, waitForStyles, adaptControls } from './view.js?v=15';
 import { matchesWorld } from './protocol.js?v=14';
 import { createOrdnance, ORDNANCE, blastTouches } from './ordnance.js?v=14';
 import { targetStrength, damageEdge } from './targets.js?v=14';
@@ -7,10 +7,10 @@ import { ROUND_SECONDS, roundWinners, clockLabel, validRoundSnapshot } from './r
 import { createArena, cameraFor, WORLD_WIDTH, WORLD_HEIGHT } from './arena.js?v=14';
 import { POWERUPS, damageHull, expandedRect, effectSeconds, advanceScroll, shipContact } from './combat.js?v=14';
 import { hitsRect, firstHit } from './physics.js?v=14';
-import { createSound } from './sound.js?v=14';
+import { createSound } from './sound.js?v=17';
 import { internalDestination } from './navigation.js?v=14';
-import { createMultiplayer, MAX_PLAYERS, pilotName } from './multiplayer.js?v=14';
-import { invitationLink, invitationPeer } from './invitation.js?v=14';
+import { createMultiplayer, MAX_PLAYERS, pilotName } from './multiplayer.js?v=15';
+import { invitationLink, invitationPeer } from './invitation.js?v=15';
 import { hitReward, pageReward } from './scoring.js?v=14';
 
 export async function openGame(onClose, invitedPeerId = null, signal) {
@@ -70,6 +70,32 @@ export async function openGame(onClose, invitedPeerId = null, signal) {
       const node = find(selector);
       if (node.textContent !== text) node.textContent = text;
     }
+    const compactControls = matchMedia('(pointer: coarse), (max-width: 900px)');
+    cleanup.push(adaptControls(shadow, compactControls));
+    function hideTools() {
+      find('.tools').hidden = true;
+      find('.tools-toggle').setAttribute('aria-expanded', 'false');
+    }
+    function setBriefing(visible) {
+      find('.briefing').hidden = !visible;
+      find('.hud').hidden = visible;
+      hideTools();
+    }
+    listen(find('.tools-toggle'), 'click', () => {
+      resetControls();
+      find('.tools').hidden = false;
+      find('.tools-toggle').setAttribute('aria-expanded', 'true');
+      find('.tools-close').focus({ preventScroll: true });
+    });
+    listen(find('.tools-close'), 'click', () => {
+      hideTools();
+      find('.tools-toggle').focus({ preventScroll: true });
+    });
+    listen(find('.briefing-multiplayer'), 'click', () => showLobby());
+    listen(find('.briefing-exit'), 'click', () => close());
+    listen(shadow, 'contextmenu', event => {
+      if (event.target.closest('button, .stick')) event.preventDefault();
+    });
     const nameInput = find('.pilot-name');
     const nameStorageKey = 'athega-space-pilot-name';
     try { nameInput.value = pilotName(localStorage.getItem(nameStorageKey)); } catch { /* Storage may be disabled. */ }
@@ -156,6 +182,8 @@ export async function openGame(onClose, invitedPeerId = null, signal) {
       onChange: ammo => {
         setText('.lay-mine', `Mina · ${ammo.mine}`);
         setText('.drop-bomb', `Bomb · ${ammo.bomb}`);
+        find('.lay-mine').disabled = ammo.mine === 0;
+        find('.drop-bomb').disabled = ammo.bomb === 0;
       },
     });
     const width = WORLD_WIDTH;
@@ -419,7 +447,7 @@ export async function openGame(onClose, invitedPeerId = null, signal) {
     }
 
     function fire(kind = 'destroy') {
-      if (respawn > 0 || roundEnded || !roomStarted || loadingPage || !find('.lobby').hidden || !find('.missions').hidden) return;
+      if (respawn > 0 || roundEnded || !roomStarted || loadingPage || !find('.lobby').hidden || !find('.missions').hidden || !find('.tools').hidden) return;
       const dx = Math.cos(ship.angle);
       const dy = Math.sin(ship.angle);
       const salvo = ++shotSequence;
@@ -472,6 +500,7 @@ export async function openGame(onClose, invitedPeerId = null, signal) {
       const powerLabel = Object.entries(powers).filter(([, time]) => time > 0).map(([kind, time]) => `${POWERUPS[kind].label} ${Math.ceil(time)}s`).join(' · ') || 'Powerups —';
       if (powerLabel !== lastPowerLabel) {
         find('.power-status').textContent = powerLabel;
+        find('.power-status').dataset.active = String(Object.values(powers).some(time => time > 0));
         lastPowerLabel = powerLabel;
       }
       if (checkMissionClear && !pageCleared && (!network?.connected || network.isHost)) {
@@ -730,7 +759,7 @@ export async function openGame(onClose, invitedPeerId = null, signal) {
       canvas.style.height = `${height * camera.scale}px`;
       canvas.style.left = `${camera.left}px`;
       canvas.style.top = `${camera.top}px`;
-      find('.radar').hidden = !running;
+      find('.radar').hidden = !running || (compactControls.matches && !network?.connected);
       radarContext.clearRect(0, 0, 128, 80);
       radarContext.strokeStyle = '#6e879b';
       radarContext.strokeRect(camera.x / 10, camera.y / 10, camera.visibleWidth / 10, camera.visibleHeight / 10);
@@ -766,12 +795,12 @@ export async function openGame(onClose, invitedPeerId = null, signal) {
 
     function start() {
       if (running) return;
-      find('.briefing').hidden = true;
+      setBriefing(false);
       find('.play-ui').hidden = false;
       if (matchMedia('(pointer: coarse)').matches || innerWidth <= 640) hint.textContent = 'ELD: förstör · NAV: träffa en länk för att resa';
       running = true;
       lastTime = performance.now();
-      find('.exit').focus({ preventScroll: true });
+      find(compactControls.matches ? '.tools-toggle' : '.exit').focus({ preventScroll: true });
       frame = requestAnimationFrame(tick);
     }
     listen(launchButton, 'click', () => {
@@ -788,6 +817,11 @@ export async function openGame(onClose, invitedPeerId = null, signal) {
       button.setAttribute('aria-label', button.textContent);
     }
     updateSoundButton();
+    listen(find('.music'), 'click', () => {
+      const enabled = sound.toggleMusic();
+      find('.music').textContent = enabled ? 'Chipmusik på' : 'Chipmusik av';
+      find('.music').setAttribute('aria-pressed', String(enabled));
+    });
     listen(find('.sound'), 'click', () => {
       sound.init();
       soundEnabled = sound.toggle();
@@ -854,7 +888,7 @@ export async function openGame(onClose, invitedPeerId = null, signal) {
     const movementKeys = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'KeyW', 'KeyA', 'KeyS', 'KeyD', 'Space', 'KeyN'];
     listen(window, 'keydown', event => {
       if (event.code === 'Escape') { event.preventDefault(); close(); return; }
-      if (roundEnded || !find('.lobby').hidden || !find('.missions').hidden) return;
+      if (roundEnded || !find('.lobby').hidden || !find('.missions').hidden || !find('.tools').hidden) return;
       if (!running || event.ctrlKey || event.metaKey || event.altKey) return;
       if (['KeyM', 'KeyB'].includes(event.code)) {
         event.preventDefault();
@@ -871,7 +905,7 @@ export async function openGame(onClose, invitedPeerId = null, signal) {
     listen(shadow, 'keydown', event => {
       if (event.key !== 'Tab') return;
       keyboardFocus = true;
-      const scope = find('.results:not([hidden])') || find('.lobby:not([hidden])') || find('.missions:not([hidden])') || shadow;
+      const scope = find('.results:not([hidden])') || find('.lobby:not([hidden])') || find('.missions:not([hidden])') || find('.tools:not([hidden])') || find('.briefing:not([hidden])') || shadow;
       const buttons = [...scope.querySelectorAll('button, input, select, summary')].filter(button => !button.disabled && button.checkVisibility());
       const index = buttons.indexOf(shadow.activeElement);
       const next = event.shiftKey ? (index - 1 + buttons.length) % buttons.length : (index + 1) % buttons.length;
@@ -880,13 +914,17 @@ export async function openGame(onClose, invitedPeerId = null, signal) {
     });
     listen(canvas, 'pointerdown', () => { keyboardFocus = false; });
     listen(window, 'blur', resetControls);
-    listen(document, 'visibilitychange', resetControls);
+    listen(window, 'focus', () => sound.setBackground(document.hidden));
+    listen(shadow, 'pointerdown', () => sound.resume());
+    listen(shadow, 'keydown', () => sound.resume());
+    listen(document, 'visibilitychange', () => { resetControls(); sound.setBackground(document.hidden); });
     listen(window, 'pagehide', () => close(false));
     listen(window, 'popstate', () => { close(false); location.reload(); });
     listen(window, 'resize', resize);
     listen(arenaWindow, 'scroll', () => { targetsDirty = true; }, { passive: true });
     listen(arenaDocument, 'load', () => { targetsDirty = true; }, { capture: true });
     listen(stick, 'pointerdown', event => {
+      event.preventDefault();
       sound.init();
       joystick.active = true;
       stick.setPointerCapture(event.pointerId);
@@ -934,6 +972,7 @@ export async function openGame(onClose, invitedPeerId = null, signal) {
       if (url) missionLinks.set(url.pathname, link.querySelector('h2')?.textContent.trim() || link.textContent.trim());
     }
     function showMissions() {
+      hideTools();
       resetControls();
       const select = find('.mission-select');
       select.replaceChildren();
@@ -1042,6 +1081,7 @@ export async function openGame(onClose, invitedPeerId = null, signal) {
         list.append(item);
       }
       find('.lobby').hidden = find('.missions').hidden = true;
+      hideTools();
       find('.results').hidden = false;
       const guest = network?.connected && !network.isHost;
       find('.rematch').hidden = Boolean(guest);
@@ -1200,7 +1240,7 @@ export async function openGame(onClose, invitedPeerId = null, signal) {
       roomStarted = false;
       showLobby();
       broadcastState();
-      if (!network) { find('.lobby').hidden = true; find('.briefing').hidden = false; running = false; cancelAnimationFrame(frame); }
+      if (!network) { find('.lobby').hidden = true; setBriefing(true); running = false; cancelAnimationFrame(frame); }
     });
 
     function routePilotHit(target, shotId, sender) {
@@ -1262,7 +1302,7 @@ export async function openGame(onClose, invitedPeerId = null, signal) {
     }
 
     function placeOrdnance(kind) {
-      if (!running || roundEnded || respawn > 0 || !find('.lobby').hidden || !find('.missions').hidden || (roundDeadline && performance.now() >= roundDeadline)) return;
+      if (!running || roundEnded || respawn > 0 || !find('.lobby').hidden || !find('.missions').hidden || !find('.tools').hidden || (roundDeadline && performance.now() >= roundDeadline)) return;
       if (ordnance.ammo[kind] <= 0) { hint.textContent = 'Plocka upp MIN eller BOM först.'; return; }
       sound.init();
       sound.deploy(kind);
@@ -1505,7 +1545,7 @@ export async function openGame(onClose, invitedPeerId = null, signal) {
             if (lobbyMode === 'guest') {
               lobbyMode = 'idle';
               updateLobby();
-              if (!roomStarted) { find('.briefing').hidden = false; running = false; cancelAnimationFrame(frame); }
+              if (!roomStarted) { setBriefing(true); running = false; cancelAnimationFrame(frame); }
               if (roundEnded) renderRound();
             }
           }
@@ -1536,6 +1576,7 @@ export async function openGame(onClose, invitedPeerId = null, signal) {
       updateRules();
     }
     function showLobby(peerId = null) {
+      hideTools();
       resetControls();
       find('.lobby').hidden = false;
       if (peerId && !network?.connected) {
@@ -1616,7 +1657,7 @@ export async function openGame(onClose, invitedPeerId = null, signal) {
       resetRound();
       running = false;
       cancelAnimationFrame(frame);
-      find('.briefing').hidden = false;
+      setBriefing(true);
       updateLobby();
       find('.lobby-status').textContent = 'Skapa ett nytt spel eller anslut med en inbjudningslänk.';
       find('.connection-status').textContent = 'Soloflygning';

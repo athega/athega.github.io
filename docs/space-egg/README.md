@@ -8,7 +8,9 @@ när spelaren väljer Skapa rum eller Anslut.
 ## Kontroller och poäng
 
 - Pilar/WASD styr skeppet, mellanslag skjuter och N skjuter blå navigationsskott.
-- Mobilen har styrspak, ELD och NAV. Meny-knappen i spelet öppnar mobilmenyn.
+- Mobilen har en kompakt rad med tid/skrov samt styrspak, ELD och NAV.
+  Spelmenyn samlar statistik, samspel, ljud och sidbyte. Minor/bomber visas först
+  när man har ammunition. Kontrollerna blockerar textmarkering och långtrycksmenyer.
 - Vanlig eld förstör även menyn. Navigationsskott följer interna sidlänkar;
   externa länkar, e-post, nedladdningar och bloggdemon navigeras inte.
 - Byt uppdrag finns alltid kvar, även om alla sidans länkar är förstörda.
@@ -38,6 +40,16 @@ när spelaren väljer Skapa rum eller Anslut.
 - Esc/Avsluta återställer sidan. Efter virtuella sidbyten laddas den aktuella
   destinationen om till den vanliga sajten, med rätt metadata och normala skript.
 
+
+## Chipmusik
+
+En egen SID-inspirerad chiptune med pulsvågor, arpeggion, bas och brustrummor
+spelas som standard när spelets ljud startas genom en knapptryckning.
+**Chipmusik på/av** styr musiken separat; **Ljud av** tystar även musiken.
+Den pausar när fliken döljs och stängs tillsammans med spelet. Allt syntetiseras
+lokalt i Web Audio: inga musikfiler, externa tjänster eller emulatorbibliotek.
+Efter appbyte återupptas ljudmotorn. Om ljudklockan fastnat ersätts ljudmotorn;
+ljud- och musikvalen behålls. Återställningen avbryts när spelet stängs.
 
 ## Minor och bomber
 
@@ -128,7 +140,7 @@ Misslyckad uppstart städar upp det som skapats och lämnar sidan användbar.
 | `trigger.js` | Aktivering, inbjudningsfragment och dynamisk import |
 | `arena.js` | Separat sandboxad iframe och gemensam spelgeometri |
 | `view.js`, `game.css` | Shadow DOM-gränssnitt och speltema |
-| `rendering.js`, `sound.js` | Ritfunktioner och syntetiserat ljud |
+| `rendering.js`, `sound.js`, `music.js` | Ritfunktioner och syntetiserat ljud |
 | `game.js` | Spelloop, lokal pilot, sidobjekt och samordning av livscykeln |
 | `multiplayer.js` | PeerJS, anslutningar, besättning och vidarebefordran |
 | `protocol.js` | Tillåtna meddelanderiktningar och matchning av rond/sidrevision |
@@ -174,3 +186,7 @@ och kräver tillgång till PeerJS Cloud. Det kontrollerar väntelobby, gamla
 rond-/sidmeddelanden, navigering, kills, vinnare och omstart. Testkrokar injiceras
 endast i webbläsarens testsvar; de ingår inte i publicerad spelkod.
 `PLAYWRIGHT_CHROMIUM_EXECUTABLE` kan ange en befintlig Chromium-installation.
+
+Mobilkontroller och ljudåterställning kan verifieras med
+`scripts/space-browser-mobile.py` respektive `scripts/space-browser-audio.py`,
+med samma Playwright-miljö och serveradress som övriga webbläsartester.

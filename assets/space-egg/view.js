@@ -1,16 +1,17 @@
 export function gameMarkup() {
   return `
-    <link rel="stylesheet" href="${new URL('./game.css?v=14', import.meta.url).href}">
+    <link rel="stylesheet" href="${new URL('./game.css?v=15', import.meta.url).href}">
     <div role="dialog" aria-modal="true" aria-label="Athega Space – hemligt arkadspel">
       <canvas class="world-canvas" aria-hidden="true"></canvas><div class="offscreen-pilots" aria-hidden="true"></div><div class="radar" hidden><canvas width="128" height="80" aria-label="Radar över piloterna"></canvas><span>RADAR</span></div>
-      <div class="hud">
+      <div class="hud" hidden>
         <div class="scoreboard"><span class="kicker">Athega / Space</span><output class="score" aria-label="Poäng">00000</output><span class="round-clock">2:00</span><span class="kill-count">0 kills · 0 dödsfall</span><span class="pace">×1 · 0.0 s</span><span class="connection-status" aria-live="polite">Soloflygning</span><ul class="pilot-list" aria-label="Piloter"></ul><span class="hull-status" aria-live="polite">Skrov 100</span><span class="gravity-status" role="status" hidden></span><span class="power-status" aria-live="polite">Redo</span></div>
-        <div class="actions"><button class="multiplayer">Spela tillsammans</button><button class="menu-toggle" hidden aria-expanded="false">Meny</button><button class="theme" aria-pressed="true" aria-label="Mörkt spelläge">Mörkt</button><button class="sound" aria-pressed="true" aria-label="Ljud på">Ljud på</button><button class="exit">Avsluta ×</button></div>
+        <div class="actions"><button class="multiplayer">Spela tillsammans</button><button class="menu-toggle" hidden aria-expanded="false">Meny</button><button class="theme" aria-pressed="true" aria-label="Mörkt spelläge">Mörkt</button><button class="sound" aria-pressed="true" aria-label="Ljud på">Ljud på</button><button class="music" aria-pressed="true">Chipmusik på</button><button class="exit">Avsluta ×</button></div>
+        <button class="tools-toggle" aria-controls="space-tools" aria-expanded="false">Meny</button>
       </div>
       <div class="play-ui" hidden>
         <p class="hint">← → / A D: rotera · ↑ / W: gas · Mellanslag: skjut · N: navigera · Esc: avsluta</p>
         <div class="bottom"><button class="scroll-toggle" aria-pressed="false">Pausa scroll</button><button class="missions-open">Byt uppdrag</button></div>
-        <div class="ordnance"><button class="lay-mine" title="M: placera mina">Mina · 0</button><button class="drop-bomb" title="B: släpp bomb">Bomb · 0</button></div>
+        <div class="ordnance"><button class="lay-mine" disabled title="M: placera mina">Mina · 0</button><button class="drop-bomb" disabled title="B: släpp bomb">Bomb · 0</button></div>
         <div class="touch stick" role="group" aria-label="Dra för att styra skeppet"><span>STYR</span></div>
         <button class="touch navigate" aria-label="Håll för navigationsskott">NAV</button>
         <button class="touch fire" aria-label="Håll för att skjuta">ELD</button>
@@ -19,8 +20,13 @@ export function gameMarkup() {
         <span class="kicker">Hemligt uppdrag / 001</span>
         <h1>Vi gillar att<br>bryta ny mark.</h1>
         <p>Men du får börja med den här sidan. Ta kontroll över skeppet och skjut layouten i småbitar.</p>
-        <p class="instructions">Dator: piltangenter eller W A S D + mellanslag.<br>N: navigationsskott – träffa en intern länk.<br>Mobil: styrspak, ELD och NAV.<br>Plocka upp MIN/BOM. M: lägg mina · B: släpp bomb (1 sekund).<br>Din mina skadar aldrig dig. Din bomb kan göra det.<br>Powerups: 3X trippelskott · RF snabbeld · SK sköld · + reparation · T turbo · G↓ gravitation · S↕ snabbscroll för alla.<br>Täta träffar ger upp till ×5. Rensa sidan snabbt för tidsbonus.<br>Esc eller Avsluta återställer allt.</p>
-        <button class="primary launch">Starta motorerna</button>
+        <p class="quick-instructions">Styr skeppet, skjut sidan i bitar och plocka upp powerups. Du har två minuter.</p><details class="instructions"><summary>Kontroller &amp; powerups</summary><p>Dator: piltangenter eller W A S D + mellanslag.<br>N: navigationsskott – träffa en intern länk.<br>Mobil: styrspak, ELD och NAV.<br>Plocka upp MIN/BOM. M: lägg mina · B: släpp bomb (1 sekund).<br>Din mina skadar aldrig dig. Din bomb kan göra det.<br>Powerups: 3X trippelskott · RF snabbeld · SK sköld · + reparation · T turbo · G↓ gravitation · S↕ snabbscroll för alla.<br>Täta träffar ger upp till ×5. Rensa sidan snabbt för tidsbonus.<br>Esc eller Avsluta återställer allt.</p></details>
+        <button class="primary launch">Starta motorerna</button><button class="briefing-multiplayer">Spela tillsammans</button><button class="briefing-exit">Tillbaka till sajten</button>
+      </div></div>
+      <div class="tools" id="space-tools" hidden><div class="panel">
+        <div class="tools-heading"><h2>Spelmeny</h2><button class="tools-close" aria-label="Stäng spelmenyn">Stäng ×</button></div>
+        <p class="tools-note">Matchen fortsätter medan menyn är öppen.</p>
+        <div class="tools-controls"></div><div class="tools-stats"></div>
       </div></div>
       <div class="lobby" hidden><div class="panel">
         <span class="kicker">Besättning / upp till fyra</span><h2>Flyg tillsammans</h2>
@@ -87,4 +93,31 @@ export function waitForStyles(link, signal) {
     if (signal?.aborted) abort();
     else if (link.sheet) finish();
   });
+}
+
+// Move the existing controls: one set of handlers/state on every screen size.
+export function adaptControls(shadow, media) {
+  const moves = [
+    ...['.actions', '.bottom'].map(selector => [selector, '.tools-controls']),
+    ...['.scoreboard .kicker', '.score', '.kill-count', '.pace', '.connection-status', '.pilot-list']
+      .map(selector => [selector, '.tools-stats']),
+  ].map(([selector, destination]) => {
+    const node = shadow.querySelector(selector);
+    const anchor = document.createComment('control home');
+    node.before(anchor);
+    return { node, anchor, destination: shadow.querySelector(destination) };
+  });
+  function update() {
+    for (const { node, anchor, destination } of moves) {
+      if (media.matches) destination.append(node);
+      else anchor.after(node);
+    }
+    if (!media.matches) {
+      shadow.querySelector('.tools').hidden = true;
+      shadow.querySelector('.tools-toggle').setAttribute('aria-expanded', 'false');
+    }
+  }
+  media.addEventListener('change', update);
+  update();
+  return () => media.removeEventListener('change', update);
 }

@@ -32,7 +32,7 @@ with sync_playwright() as playwright:
         for _ in range(2):
             activate(page)
             page.locator('.launch').click()
-            page.locator('.lay-mine').wait_for()
+            page.locator('.hud').wait_for()
             assert not any('peerjs' in url.lower() for url in requests)
             page.keyboard.press('Escape')
             page.locator('#athega-space-game').wait_for(state='detached')

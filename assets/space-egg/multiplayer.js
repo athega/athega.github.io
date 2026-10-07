@@ -1,5 +1,5 @@
 import { acceptsMessage, relayMessage, replaceableMessage } from './protocol.js?v=14';
-import { isPeerId } from './invitation.js?v=14';
+import { createPeerId, isPeerId } from './invitation.js?v=15';
 
 let libraryPromise;
 
@@ -188,7 +188,7 @@ export function createMultiplayer({ onMessage, onConnected, onStatus, onPlayers 
       pendingResolve = resolve;
       pendingReject = reject;
       timer = setTimeout(() => fail('Anslutningstjänsten svarar inte. Du kan fortsätta spela själv och prova igen senare.'), 15000);
-      peer = new Peer(`athega-space-${crypto.randomUUID()}`, {
+      peer = new Peer(createPeerId(), {
         secure: true,
         config: { iceServers: [{ urls: 'stun:stun.cloudflare.com:3478' }] },
       });

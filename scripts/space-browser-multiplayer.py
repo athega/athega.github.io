@@ -23,7 +23,7 @@ with sync_playwright() as p:
     h.goto(BASE)
     for k in ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a']:
         h.keyboard.press(k)
-    h.locator('.multiplayer').click()
+    h.locator('.briefing-multiplayer').click()
     h.locator('.pilot-name').fill('Chrille')
     h.locator('.rules summary').click()
     h.locator('.friendly-fire').check()
@@ -35,7 +35,7 @@ with sync_playwright() as p:
     g.locator('.pilot-name').fill('Mats')
     g.locator('.join-game').click()
     try:
-        g.locator('.connection-status').filter(has_text='2 / 4').wait_for(timeout=35000)
+        g.locator('.connection-status').filter(has_text='2 / 4').wait_for(state='attached', timeout=35000)
     except Exception:
         print('HOST:', h.locator('.lobby-status').inner_text(), flush=True)
         print('GUEST:', g.locator('.lobby-status').inner_text(), flush=True)
