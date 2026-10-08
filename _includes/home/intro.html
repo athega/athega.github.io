@@ -1,14 +1,10 @@
 <section class="page-hero home-page-hero{% if home.content.intro.image %} hero-image{% endif %}">
   {% if home.content.intro.image %}
-  <div class="hero-zone">
-    <div class="hero-media">
-      <img src="{{ home.content.intro.image | escape }}" alt="" aria-hidden="true" fetchpriority="high">
-    </div>
-    <div class="shell">
-      <h1>{{ home.content.intro.heading | escape }} <span>{{ home.content.intro.emphasis | escape }}</span></h1>
-      <p class="page-lead">{{ home.content.intro.lead | escape }}</p>
-    </div>
-  </div>
+  {% capture intro_text %}
+    <h1>{{ home.content.intro.heading | escape }} <span>{{ home.content.intro.emphasis | escape }}</span></h1>
+    <p class="page-lead">{{ home.content.intro.lead | escape }}</p>
+  {% endcapture %}
+  {% include "components/hero-zone.html", image: home.content.intro.image, text: intro_text %}
   {% else %}
   <div class="shell">
     <h1>{{ home.content.intro.heading | escape }} <span>{{ home.content.intro.emphasis | escape }}</span></h1>

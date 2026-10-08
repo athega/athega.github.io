@@ -24,7 +24,8 @@ uppdatera dokumentationen när du inför eller ändrar ett gemensamt mönster.
 - Bloggposter: `_posts/*.md`; standardlayout och URL-mönster i `_posts/_posts.json`.
 - Bloggens årsarkiv: `blogg/year.html`, grupperat från publicerade artiklar via
   `scripts/blog-archives.mjs`. Årsarkiv med innehåll ersätter gamla omdirigeringar
-  automatiskt. Gemensam layout och årsnavigering finns i `_includes/blog/`.
+  automatiskt. Gemensam layout och årsnavigering finns i `_includes/blog/`; herobilden
+  anges överst i `_includes/blog/archive.html`.
 - Tjänste- och företagssidor: vanligt Markdown-innehåll i respektive
   `index.md` under `teknikgranskning/`, `systemutveckling/`, `ai-labbet/`,
   `ai-labbet/industri/`, `jobba/`, `konsultnatverk/` och `om-oss/`.
@@ -77,7 +78,8 @@ uppdatera dokumentationen när du inför eller ändrar ett gemensamt mönster.
   och sektionsmallarnas HTML-fält ska däremot inte escapas en gång till.
 - En hero (`{% section "hero" %}`) får en dekorativ herobild genom ett stycke med bara en
   Markdown-bild, `![](/assets/img/...)`. Bilden tonas ut åt vänster under etikett, rubrik och ingress; sammanfattning och länkar ligger under bilden. Startsidans
-  bild anges i stället som `intro.image` i `_data/home/content.json`. Se README.
+  bild anges i stället som `intro.image` i `_data/home/content.json` och bloggens i
+  `_includes/blog/archive.html`. Se README.
 - Länkar till e-post ska visa mottagaradressen i den synliga texten. Komponenten
   `text-link.html` (även i callouts) gör detta från fältet `email`.
   Kontaktuppgifter finns i sidfoten och sidornas kontaktsektioner; huvudmenyn

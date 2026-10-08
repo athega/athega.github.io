@@ -300,7 +300,7 @@ kommatecken. Lägg till eller ta bort ett helt objekt för att ändra en lista.
 Ett tjänstekort har `title`, `description` och `href`. Kortens ordning följer
 listan. Lägg inte till en separat HTML-kopia för varje nytt kort.
 
-#### Herobild (startsidan och tjänstesidorna)
+#### Herobild (startsidan, tjänstesidorna och bloggen)
 
 En hero kan ha en bild som ligger förankrad i högerkanten och tonas ut mot sidans vita
 bakgrund åt vänster. Toningen är kort och mjuk så att bilden syns bakom texten, och en mjuk
@@ -319,6 +319,11 @@ inläsning) och `width`/`height` läggs till av bygget.
   heroblocket, till exempel `![](/assets/img/ai-labbet/hero.webp)`. Stycket kan stå var som
   helst i blocket men läggs naturligast sist. Bildtexten används inte. Ta bort raden för att
   dölja bilden.
+- **Bloggen** (`/blogg/` och alla årsarkiv): bilden anges på raden `hero_image` överst i
+  `_includes/blog/archive.html`. Ta bort raden för att dölja bilden.
+
+Bildens markup finns på ett ställe, `_includes/components/hero-zone.html`, och används av
+alla tre mallarna.
 
 Bilden bör vara bred, ungefär 21:9 till 3:1, med motivet i högra halvan, och helst under
 200 KB. Eftersom bilden syns bakom texten ska bildens vänstra halva vara blek och mjuk i
