@@ -10,9 +10,11 @@ Teknikgranskning · Mjukvarukvalitet
 
 # Känn till teknikens verkliga kvalitet *innan den förändrar affären.*
 
-Athega granskar mjukvara, arkitektur och tekniska arbetssätt på djupet och omvandlar resultatet till ett tydligt affärsunderlag om risk, investeringsbehov och värdeskapande.
+Vi granskar kod, arkitektur, skalbarhet och kvalitet och skapar tydliga rapporter.
 
 [Diskutera en granskning – reception@athega.se](mailto:reception@athega.se?subject=Teknikgranskning)
+
+![](/assets/img/teknikgranskning/hero.webp)
 
 {% endsection %}
 

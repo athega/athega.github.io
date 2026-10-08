@@ -12,6 +12,8 @@ Jobba med oss
 
 Konsult med ett erfaret lag bakom dig.
 
+![](/assets/img/jobba/hero.webp)
+
 {% endsection %}
 
 {% section "work-intro" %}
