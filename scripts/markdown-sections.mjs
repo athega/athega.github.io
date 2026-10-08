@@ -37,6 +37,13 @@ function isLink(block) {
     && tokens.filter(token => token.type === 'link_open').length === 1;
 }
 
+function isImage(block) {
+  if (block?.[0].type !== 'paragraph_open') return false;
+  const tokens = inlineTokens(block);
+  // A paragraph holding nothing but one image.
+  return tokens.length === 1 && tokens[0].type === 'image';
+}
+
 const variants = {
   hero: ['default', 'ai', 'industry', 'technical-review'],
   focus: ['default', 'stacked'], steps: ['default', 'stacked', 'soft'],
@@ -106,6 +113,9 @@ export function createSectionRenderer(md, renderTemplate) {
     switch (kind) {
       case 'hero': {
         template = 'hero';
+        // The picture is decorative: its alt text is not used, and it is not part of the text.
+        const imageAt = blocks.findIndex(isImage);
+        if (imageAt !== -1) data.image = inlineTokens(blocks.splice(imageAt, 1)[0])[0].attrGet('src');
         Object.assign(data, header(blocks, 'h1'));
         if (!data.heading) throw new Error('A hero needs a # heading.');
         data.links = links(blocks);

@@ -11,17 +11,20 @@
 
 .section-page .section-heading { margin-bottom: var(--content-gap); }
 
-/* The container owns spacing; its children must not add their own margins. */
-.section-page > .page-hero > .shell {
-  display: grid;
-  justify-items: start;
-  gap: 0;
+/* The container owns spacing; its children must not add their own margins. A hero with a picture keeps its
+   label, heading and lead in a .hero-zone and the rest in .hero-details; both follow the same rules. */
+.section-page > .page-hero {
+  > .shell, > .hero-zone > .shell {
+    display: grid;
+    justify-items: start;
+    gap: 0;
+    > * { margin-block: 0; }
+    > * + * { margin-top: var(--section-flow-gap); }
+    > .eyebrow + h1 { margin-top: var(--heading-gap); }
+    > h1 + .page-lead { margin-top: var(--heading-gap); }
+    > .hero-actions { margin-top: 16px; }
+  }
 }
-.section-page > .page-hero > .shell > * { margin-block: 0; }
-.section-page > .page-hero > .shell > * + * { margin-top: var(--section-flow-gap); }
-.section-page > .page-hero > .shell > .eyebrow + h1 { margin-top: var(--heading-gap); }
-.section-page > .page-hero > .shell > h1 + .page-lead { margin-top: var(--heading-gap); }
-.section-page > .page-hero > .shell > .hero-actions { margin-top: 16px; }
 .section-page .section-heading > :first-child,
 .section-page .large-prose > :first-child { margin-top: 0; }
 .section-page .section-heading > :last-child,

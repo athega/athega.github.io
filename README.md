@@ -300,21 +300,49 @@ kommatecken. Lägg till eller ta bort ett helt objekt för att ändra en lista.
 Ett tjänstekort har `title`, `description` och `href`. Kortens ordning följer
 listan. Lägg inte till en separat HTML-kopia för varje nytt kort.
 
-#### Herobilden på startsidan
+#### Herobild (startsidan och tjänstesidorna)
 
-Bilden ligger förankrad i högerkanten och tonas ut mot sidans vita bakgrund åt vänster,
-under rubriken och ingressen, så att texten alltid är läsbar. Den är dekorativ
+En hero kan ha en bild som ligger förankrad i högerkanten och tonas ut mot sidans vita
+bakgrund åt vänster. Toningen är kort och mjuk så att bilden syns bakom texten, och en mjuk
+vit glöd runt bokstäverna håller texten tydlig framför den. Bilden täcker etikett,
+rubrik och ingress (`.hero-zone`). En eventuell sammanfattning och länkar (`.hero-details`)
+ligger under bilden på vit bakgrund, på samma sätt som första textavsnittet under startsidans
+hero. Upplägget är detsamma på alla skärmstorlekar: texten till vänster och bilden till höger. På små skärmar
+(under 760 px) behöver texten det mesta av bredden, så bilden ligger till stor del bakom
+texten och heroens höjd följer texten. Bilden är dekorativ
 (`alt=""` och `aria-hidden`), ligger överst på sidan (`fetchpriority="high"`, ingen lat
-inläsning) och `width`/`height` läggs till av bygget. På mobil (under 760 px) ligger bilden
-överst i full bredd och tonas nedåt i stället.
+inläsning) och `width`/`height` läggs till av bygget.
 
-Byt bild genom att ersätta filen eller ändra `intro.image` i `content.json`. Bilden bör vara
-bred, ungefär 21:9 till 3:1, med motivet i högra halvan, och helst under 200 KB. Utseendet
-justeras med variablerna överst i `_includes/styles/home.scss`: `--home-hero-min-height`
-(heroens höjd, 400–520 px och växer med bredden), `--home-hero-pad-top` och
-`--home-hero-pad-bottom`, `--home-hero-focus` (`object-position`, vilken del av bilden som
-behålls när den beskärs) samt `--home-hero-text-max` och `--home-hero-lead-max`
-(textens bredd). Toningen använder `--paper`, så ingen ny färg behövs.
+- **Startsidan:** sätt `intro.image` i `_data/home/content.json` till en sökväg under
+  `assets/img/`. Ta bort fältet för att dölja bilden.
+- **Tjänstesidorna** (`layout: sections`): lägg ett stycke med bara en Markdown-bild i
+  heroblocket, till exempel `![](/assets/img/ai-labbet/hero.webp)`. Stycket kan stå var som
+  helst i blocket men läggs naturligast sist. Bildtexten används inte. Ta bort raden för att
+  dölja bilden.
+
+Bilden bör vara bred, ungefär 21:9 till 3:1, med motivet i högra halvan, och helst under
+200 KB. Eftersom bilden syns bakom texten ska bildens vänstra halva vara blek och mjuk i
+kontrasten, utan mörka ytor eller konturer och utan text i bilden, så ligger texten tydligt
+framför den. Mörka ytor under texten ger sämre kontrast och orange rubriktext försvinner
+lätt mot mellantoner. Bilden visas högst 760 px bred, alltså klart under
+hälften av en 1916 px bred källa, så att den är skarp på en 2x-skärm (retina) och tar liten
+plats. Därför är heron bara så hög som bilden (cirka 330 px på dator) eller texten om den
+är högre. Håll hero-texten kort: en lång ingress gör heron högre än bilden, och då beskärs
+och förstoras bilden. Vill du ha en större bild utan att den blir mjuk, leverera den med
+dubbel upplösning och höj gränsen i `--hero-media-width`. Utseendet justeras med
+variablerna överst i `_includes/styles/hero.scss`: `--hero-media-width` (bildens bredd),
+`--hero-min-height` (heroens lägsta höjd, bildens egen höjd vid den bredden),
+`--hero-pad-top` och `--hero-pad-bottom`, `--hero-focus` (`object-position`, vilken del av
+bilden som behålls när den beskärs), `--hero-text-columns` (hur stor del av bredden texten
+får), `--hero-text-max` och `--hero-lead-max` (textens bredd), `--hero-fade-length` (hur
+långt in i bilden toningen når, räknat från bildens vänsterkant), `--hero-fade` (toningens
+form) och `--hero-text-halo` (glöden runt bokstäverna, `none` stänger av den). Toningen är
+längst på smala skärmar, där texten ligger över bilden (430 px), och kortare från 1180 px
+(240 px) och 1440 px (160 px), där bilden börjar längre åt höger än texten. På telefon anges
+längden som andel av bilden. Varje variabel kan ha ett eget värde för små skärmar i mediafrågan
+längst ned i blocket, och en enskild sida kan få egna värden på herons variantklass (till
+exempel `.page-hero.ai-hero.hero-image`) efter grundblocket. Toningen använder `--paper`, så
+ingen ny färg behövs.
 
 ### Redigera tjänste- och företagssidor
 
