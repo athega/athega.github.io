@@ -464,7 +464,9 @@ sektionsrubrik/intro till kortgrupper och text används det mindre måttet
 lägga in extra blankrader eller avstånd i Markdown. I sidintroduktionen styr
 gemensamma regler avstånden mellan omslagets direkta barn. Egna vertikala
 marginaler nollställs innan avståndet läggs på en gång. Kontaktlänkar samlas i
-`hero-actions` och får ett tätare avstånd på 16 px till föregående text.
+`hero-actions`. En länk som följer på ett stycke, i hero, callout eller som sista
+rad i en textsektion, ligger `--link-gap` (24 px) under texten. Ändra det måttet i
+`base.scss` om länkarna ska sitta närmare eller längre ifrån texten.
 Orange etiketter, huvudrubrik–ingress och sektionsrubrik–intro använder samma
 `--heading-gap` (24 px) på alla sidor och skärmstorlekar. Sektionsrubriker som
 ligger ovanför sin introtext får avståndet via den gemensamma `.section-heading`-

@@ -10,5 +10,5 @@
 .dark-section .eyebrow, .unified-callout .eyebrow { color: var(--orange); }
 .dark-section .eyebrow::before, .unified-callout .eyebrow::before { display: none; }
 .unified-callout .join-grid > div p { color: var(--on-dark-muted); }
-.unified-callout .join-grid > div p:last-of-type { margin-bottom: 24px; }
+.join-grid > div > p:has(+ :is(.text-link, .callout-links)) { margin-bottom: var(--link-gap); }
 .callout-links { display: flex; flex-wrap: wrap; gap: 18px 28px; }
