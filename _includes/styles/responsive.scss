@@ -1,5 +1,7 @@
-// Give the service headings more room before the navigation needs to collapse.
-@media (max-width: 1280px) {
+// Give the service headings more room before the navigation needs to collapse. The page is at its full width from
+// 1322px: --shell stops growing there (1216px is 92% of 1322px), so this is also where the larger logo and the
+// four-column grid start, and above it the page is only centred, never wider.
+@media (max-width: 1321px) {
   .brand img { width: 168px; }
   .home-service-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
 }

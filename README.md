@@ -343,8 +343,12 @@ får), `--hero-text-max` och `--hero-lead-max` (textens bredd), `--hero-fade-len
 långt in i bilden toningen når, räknat från bildens vänsterkant), `--hero-fade` (toningens
 form) och `--hero-text-halo` (glöden runt bokstäverna, `none` stänger av den). Toningen är
 längst på smala skärmar, där texten ligger över bilden (430 px), och kortare från 1180 px
-(240 px) och 1440 px (160 px), där bilden börjar längre åt höger än texten. På telefon anges
-längden som andel av bilden. Varje variabel kan ha ett eget värde för små skärmar i mediafrågan
+(240 px) och 1322 px (160 px), där bilden börjar längre åt höger än texten. På telefon anges
+längden som andel av bilden. Från 1322 px har sidan nått sin fulla bredd (`--shell` slutar
+växa där) och förblir lika bred, bara centrerad. Bildens högerkant ligger då 40 px till höger
+om sista menyvalet (`--hero-media-right`) i stället för vid skärmkanten. Samma bredd,
+1322 px, är där den större logotypen och rutnätet med fyra tjänstekort börjar
+(`responsive.scss`). Varje variabel kan ha ett eget värde för små skärmar i mediafrågan
 längst ned i blocket, och en enskild sida kan få egna värden på herons variantklass (till
 exempel `.page-hero.ai-hero.hero-image`) efter grundblocket. Toningen använder `--paper`, så
 ingen ny färg behövs.

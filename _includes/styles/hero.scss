@@ -21,6 +21,7 @@
    room; the hero is then only as tall as the picture (or the text, if that is taller). */
 .page-hero.hero-image {
   --hero-media-width: min(88%, 760px); /* the picture's width: the larger the cap, the larger and softer the picture */
+  --hero-media-right: max(0px, calc((100% - var(--shell)) / 2 - 40px)); /* the picture's right edge: 40px right of the page's content (the last menu item) on wide screens, otherwise the screen's edge */
   --hero-min-height: calc(min(88vw, 760px) * .43); /* the picture's own height at that width (the source is about 2.33:1) */
   --hero-pad-top: 44px;
   --hero-pad-bottom: 40px;
@@ -42,6 +43,16 @@
   --hero-text-halo: 0 0 .04em var(--paper), 0 0 .1em var(--paper), 0 0 .22em var(--paper),
     0 0 .45em color-mix(in srgb, var(--paper) 90%, transparent), 0 0 .9em color-mix(in srgb, var(--paper) 75%, transparent);
 }
+/* Browsers without color-mix() (from before 2023) get the same fade drawn with plain white; they get no text glow. */
+@supports not (color: color-mix(in srgb, red, blue)) {
+  .page-hero.hero-image {
+    --hero-fade: linear-gradient(90deg,
+      #fff,
+      rgba(255,255,255,.82) calc(var(--hero-fade-length) * .35),
+      rgba(255,255,255,.46) calc(var(--hero-fade-length) * .7),
+      rgba(255,255,255,0) var(--hero-fade-length));
+  }
+}
 .section-page > .page-hero.hero-image { padding-top: 0; padding-bottom: 0; } /* the zone and the details own the spacing */
 .page-hero.hero-image > .hero-zone {
   position: relative; overflow: hidden;
@@ -54,14 +65,22 @@
 .page-hero.hero-image > .hero-zone > .shell > .page-lead { max-width: var(--hero-lead-max); }
 .page-hero.hero-image > .hero-details { margin-top: calc(var(--section-flow-gap) / 2); padding-bottom: calc(var(--section-flow-gap) / 2); }
 .section-page > .page-hero.hero-image > .hero-details > :first-child { margin-top: 0; } /* a lone link row sits as close as a summary would */
-.hero-media { position: absolute; z-index: 0; top: 0; right: 0; bottom: 0; width: var(--hero-media-width); pointer-events: none; }
+.hero-media { position: absolute; z-index: 0; top: 0; right: var(--hero-media-right); bottom: 0; width: var(--hero-media-width); pointer-events: none; }
 .hero-media img { display: block; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: var(--hero-focus); }
 .hero-media::after { content: ""; position: absolute; inset: 0; background: var(--hero-fade); }
 /* The picture is at most 760px wide, so from about 1180px it starts further and further to the right of the text and the
-   fade can be shorter, which shows more of the picture. From 1440px it no longer reaches in under the text at all, and
-   the fade only softens the picture's edge. */
+   fade can be shorter, which shows more of the picture. From 1322px, where the page reaches its full width and stays
+   put, the picture's position is fixed too; it no longer reaches in under the text and the fade only softens its edge. */
 @media (min-width: 1180px) { .page-hero.hero-image { --hero-fade-length: 240px; } }
-@media (min-width: 1440px) { .page-hero.hero-image { --hero-fade-length: 160px; } }
+@media (min-width: 1322px) { .page-hero.hero-image { --hero-fade-length: 160px; } }
+/* The picture is left out when printed and in forced-colours modes such as Windows high contrast: backgrounds, and so the
+   fade, are not drawn there, which would leave the picture unfaded behind the text (and a printed fade can paint over
+   the text). The text then keeps the page's plain background. */
+@media print, (forced-colors: active) {
+  .page-hero.hero-image { --hero-min-height: 0px; }
+  .page-hero.hero-image .hero-media { display: none; }
+  .page-hero.hero-image > .hero-zone > .shell { text-shadow: none; }
+}
 @media (max-width: 760px) {
   .page-hero.hero-image {
     --hero-min-height: 0px; /* the height follows the text */
