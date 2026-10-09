@@ -493,6 +493,61 @@ sajtens gemensamma vikt 300. Radavståndet är 1,5 i kodblock och 1,15 i rubrike
 Den nya sidans typsnitt, omslag och komponentutseende behålls. Justera artikelns
 variabler i stället för de globala rubrikstorlekarna eller artikelns Markdown.
 
+### Typsnitt och typsnittsprov
+
+Sajten använder systemtypsnitt: Helvetica Neue på Mac, Segoe UI på Windows och Roboto
+på Android. Inga typsnittsfiler laddas. Stacken heter `--font-system` i
+`_includes/styles/base.scss`. Sidans brödtypsnitt är `--font-body` och rubrikernas
+(h1–h6) är `--font-heading`.
+
+För att prova andra typsnitt finns `_data/fonts.json`. Två fält väljer vilka alternativ som
+gäller, ett för rubrikerna och ett för all övrig text (brödtext, ingresser, meny,
+etiketter och sifferrutor):
+
+```json
+"headings": "system",
+"body": "system"
+```
+
+Sätt båda till samma alternativ för ett typsnitt överallt, eller blanda dem, till exempel
+`"headings": "corben"` och `"body": "dm-sans"`. Alternativen under `options` är `system`,
+`henny-penny`, `love-ya-like-a-sister`, `risque`, `karla`, `ranchers`, `corben` och `dm-sans`.
+Spara, så bygger utvecklingsservern om och laddar om sidan. Varje alternativ har:
+
+- `family` – typsnittets namn i CSS, och `google` – namnet i adressen på Google Fonts.
+- `singleWeight` – `true` för typsnitt med bara en vikt: då stängs påhittad fetstil och kursiv av.
+- `weight` – vikten: för rubriker alla rubriker (h1–h6), för brödtext hela sidans brödtext
+  (sajtens egen är 300, som saknas i de flesta typsnitt).
+- `leading` – radavståndet i rubriker och kort när typsnittet används för rubriker, relativt
+  bokstäverna (sajtens standard är 1,16 och 1,2).
+- `scale` och `xHeight` – gör rubrikernas bokstäver mindre eller större utan att ändra
+  rubrikens ruta eller avstånden runt den. `xHeight` är typsnittets x-höjd i förhållande till
+  teckenstorleken (mät den i webbläsaren) och `scale` hur stor del av den storlek rubrikerna är
+  gjorda för (0,75 är 75 %). Det görs med `font-size-adjust`, och mallen räknar om `leading` så att
+  radavståndet följer bokstäverna. Ett bredare och tyngre typsnitt än Helvetica Neue Light
+  behöver oftast en `scale` under 1.
+- `tracking` och `wordSpacing` – teckenavstånd och ordavstånd i rubrikerna. Sajten trycker
+  ihop rubrikernas bokstäver (negativt teckenavstånd, anpassat för Helvetica Neue), vilket
+  blir för tätt för vissa visningstypsnitt; `tracking` ersätter då det.
+- `headingCss` och `bodyCss` – extra CSS som läggs till för rubrikerna respektive sidan, till
+  exempel avstavning av långa ord eller menyns vikt.
+- `notes`, `designer`, `license`, `size`, `weights`, `specimen` och `tested` – vad som hittades
+  när typsnittet provades, så att det går att jämföra utan att pröva om.
+
+Alternativet `system` saknar `family` och ändrar ingenting: när både `headings` och `body`
+är `system` är bygget byte för byte detsamma som utan funktionen. Lägg till ett prov genom
+att kopiera ett alternativ och byta namnen. Adressen och namnet finns på typsnittets sida på
+fonts.google.com. Ett typsnitt med flera vikter anges med axeln i `google`, till exempel
+`Karla:ital,wght@0,200..800;1,200..800`.
+
+**Innan något publiceras:** ett Google-typsnitt hämtas från Googles servrar, så varje
+besökares webbläsare kontaktar Google. Det valde vi bort när vi tog bort Google Fonts
+(commit `8b30074`), av integritetsskäl och för att sajten inte ska bero på tredje part.
+Sätt `headings` och `body` till `system` innan en gren slås ihop, eller lägg typsnittsfilerna
+på sajten själv (`@font-face` med filerna under `assets/`) i stället för att länka till Google.
+Typsnitten ovan har SIL Open Font License, som tillåter det. `npm run check` varnar inte
+om en Google-länk finns kvar.
+
 ### Ändra designen
 
 CSS-klasserna och HTML-omslagen är kopplade till varandra. Följ befintliga

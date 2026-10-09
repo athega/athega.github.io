@@ -8,6 +8,9 @@
   --neutral: #efefef;
   --orange: #ff6600;
   --shell: min(1216px, 92vw);
+  --font-system: "Helvetica Neue", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-body: var(--font-system); // a font trial (_data/fonts.json) puts its own font first
+  --font-heading: var(--font-system); // the same for headings (h1-h6), which can have a font of their own
   --text-xs: 12px;
   --text-sm: 14px;
   --text-base: 16px;
@@ -41,11 +44,12 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { margin: 0; background: var(--paper); color: var(--ink); font-family: "Helvetica Neue", "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: var(--text-base); font-weight: 300; -webkit-font-smoothing: antialiased; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: var(--text-base); font-weight: 300; -webkit-font-smoothing: antialiased; }
 a { color: inherit; text-decoration: none; }
 img { display: block; max-width: 100%; height: auto; }
 h1, h2, h3, p { margin-top: 0; }
 h1, h2, h3 { text-wrap: balance; }
+h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); }
 a:focus-visible { outline: 3px solid var(--ink); outline-offset: 4px; box-shadow: 0 0 0 4px var(--paper); border-radius: 4px; }
 .shell { width: var(--shell); margin: 0 auto; }
 .skip-link { position: absolute; z-index: 40; top: 8px; left: 8px; padding: 12px 20px; background: var(--ink); color: #fff; border-radius: 999px; transform: translateY(-200%); }

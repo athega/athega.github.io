@@ -20,6 +20,10 @@ uppdatera dokumentationen när du inför eller ändrar ett gemensamt mönster.
 - Startsidesinnehåll: `_data/home/content.json`.
 - Startsidesmetadata: `index.html`.
 - Huvudnavigation: `_data/navigation.json`, gemensam för dator och mobil.
+- Typsnittsprov: `_data/fonts.json` väljer typsnitt för rubriker (`headings`) och brödtext
+  (`body`). Standard, och det som ska committas och publiceras, är `system`: ett
+  Google-typsnitt får varje besökares webbläsare att kontakta Google, vilket sajten
+  undvek med flit (commit `8b30074`). Se README.
 - Personal: `_employees/*.md`; standardlayout finns i `_employees/_employees.json`.
 - Bloggposter: `_posts/*.md`; standardlayout och URL-mönster i `_posts/_posts.json`.
 - Bloggens årsarkiv: `blogg/year.html`, grupperat från publicerade artiklar via
@@ -160,7 +164,8 @@ Rena text- och innehållsändringar kräver normalt ingen extern sökning.
 ## Git och publicering
 
 Kontrollera aktuell branch och lokala ändringar före Git-operationer. Bevara
-andras arbete. Ange målbranch uttryckligen när användaren ber om en push till en
+andras arbete. Kontrollera också att `headings` och `body` i `_data/fonts.json` är
+`system` före commit och push. Ange målbranch uttryckligen när användaren ber om en push till en
 viss branch. Det incheckade arbetsflödet bygger och publicerar vid push till main
 samt kan startas manuellt. För den här layoutversionen arbetar vi i NewLayout;
 ändra inte main utan en uttrycklig uppgift som gäller main.
