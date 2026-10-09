@@ -510,8 +510,9 @@ etiketter och sifferrutor):
 ```
 
 Sätt båda till samma alternativ för ett typsnitt överallt, eller blanda dem, till exempel
-`"headings": "corben"` och `"body": "dm-sans"`. Alternativen under `options` är `system`,
-`henny-penny`, `love-ya-like-a-sister`, `risque`, `karla`, `ranchers`, `corben` och `dm-sans`.
+`"headings": "grandstander"` och `"body": "dm-sans"`. Alternativen under `options` är
+`system`, `henny-penny`, `love-ya-like-a-sister`, `risque`, `karla`, `ranchers`, `corben`,
+`corben-regular`, `dm-sans` och `grandstander`.
 Spara, så bygger utvecklingsservern om och laddar om sidan. Varje alternativ har:
 
 - `family` – typsnittets namn i CSS, och `google` – namnet i adressen på Google Fonts.
