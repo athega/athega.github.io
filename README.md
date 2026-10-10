@@ -397,7 +397,7 @@ renderar Markdown inne i blocken; allt innehåll på sådana sidor ska ligga ino
 | Sektion | Så skriver du innehållet |
 | --- | --- |
 | `hero` | Överrubrik, sedan `#`-rubrik och ingress. `*Markerad text*` i huvudrubriken får Athega-orange textfärg. Eventuell sammanfattning och kontaktlänk följer efter ingressen. |
-| `focus`, `steps`, `cases`, `values`, `community` | Eventuell överrubrik, `##`-rubrik och introduktion. Varje `###`-rubrik börjar ett kort. Endast `steps` får automatiska nummer. |
+| `focus`, `steps`, `cases`, `values`, `community` | Eventuell överrubrik, `##`-rubrik och introduktion. Varje `###`-rubrik börjar ett kort. Endast `steps` får automatiska nummer och blir en numrerad lista; övriga blir tabeller (se Kort och tabeller). |
 | `audiences` | Sektionsintroduktion följd av `---` före varje målgruppskort. Kortet innehåller överrubrik, `###`-rubrik, valfri brödtext, vanlig punktlista och eventuell länk. |
 | `callout` | Överrubrik, `##`-rubrik, stycken och kontaktlänkar. Varianten `network` avslutas med en Markdown-bild och ett `>`-citat; citatets första stycke är överrubrik. |
 | `work-intro` | Vanliga stycken och en avslutande kontaktlänk. |
@@ -481,17 +481,53 @@ bygget och att berörda sidor behåller rätt HTML-struktur och utseende.
 Äldre bloggposter och enstaka andra innehållsfiler kan fortfarande innehålla HTML,
 till exempel för bilder och inbäddningar. Bedöm den utifrån det specifika innehållet.
 
-### Bloggens typografi
+### Kort och tabeller
 
-Bloggartiklar använder en egen skala i `_includes/styles/article.scss`, baserad
-på den tidigare publicerade bloggens faktor 1,2 och dess storleksgränser.
-Brödtext, ingress och citat följer sajtens brödtextstorlek `--text-lg` (18 px)
-och radavstånd `--leading-copy`, så att bloggen och övriga sidor är enhetliga.
-Då blir h3 cirka 26 px, h2 cirka 31 px och h1 cirka 37 px. Kodblock är 16 px.
-H1 och h2 har vikt 300, h3–h6 har vikt 400 och kod 500. Brödtexten ärver
-sajtens gemensamma vikt 300. Radavståndet är 1,5 i kodblock och 1,15 i rubriker.
-Den nya sidans typsnitt, omslag och komponentutseende behålls. Justera artikelns
-variabler i stället för de globala rubrikstorlekarna eller artikelns Markdown.
+Alla listor av rubrik + text delar samma komponent: `<div class="card-list">` med ett
+`.card` per kort (`<a class="card">` när hela kortet är en länk). Stilen finns i
+`_includes/styles/cards.scss` och används av `_includes/components/service-card.html`
+(startsidans tjänster) och `_includes/sections/cards.html` (sektionerna `focus`, `steps`,
+`cases`, `values` och `community`). Det finns två varianter, och bara två:
+
+- **Tabellen** (standard): hårfina linjer mellan cellerna, som tjänsterna under "Våra
+  fokusområden" på startsidan. Används av `focus`, `cases`, `values` och `community`.
+- **Den numrerade listan** (`card-list numbered`): samma rutnät och samma inre avstånd
+  men utan linjer och fyllning, med ett nummer före rubriken. Används av `steps`.
+
+Kolumnerna följer antalet kort: tre kolumner, men exakt fyra kort delar en rad. Under
+1100 px blir fyra kort två kolumner, under 981 px två kolumner (en kolumn om det är tre
+kort) och under 641 px en kolumn, där tabellen blir rader utan sidolinjer. På en grå
+sektion (`soft-section`) har tabellens celler vit bakgrund och en mörkare linje.
+
+Kortet äger avstånden mellan nummer, rubrik och text. Rubrikens och textens storlek kommer
+från rollistan i `base.scss`, så ett kort ska inte få egna storlekar. Behövs en tredje
+variant ska den först vara ett verkligt, annorlunda behov; annars väljs en av de två.
+
+### Typografi
+
+All typografi bestäms på ett ställe: `:root` och avsnittet "Type roles" i
+`_includes/styles/base.scss`. Komponenternas stilfiler anger varken `font-family`,
+`font-size`, `font-weight`, `letter-spacing` eller radavstånd för text; de ger bara
+layout. En sida har därför högst fem textstorlekar, tre typsnitt och fyra vikter:
+
+| Variabel | Används till | Storlek |
+| --- | --- | --- |
+| `--text-page` | sidans huvudrubrik (`h1`) | 34–44 px (32 px på mobil) |
+| `--text-section` | sektionsrubriker (`h2`), faktasiffror | 28–36 px (28 px på mobil) |
+| `--text-card` | kortrubriker (`h3`, kortens `h2`) och ingressen | 24–28 px (24 px på mobil) |
+| `--text-body` | all löpande text, listor, citat och `h4`–`h6` | 18 px |
+| `--text-small` | menyn, knappar, etiketter, datum, sidfot och kodblock | 14 px |
+
+Typsnitten är `--font-heading` (h1–h6, ingressen och de stora siffrorna), `--font-body`
+(allt annat) och `--font-mono` (kod). Vikterna är `--weight-text` (löpande text),
+`--weight-heading`, `--weight-ui` (meny, knappar och länkar) och `--weight-strong`
+(etiketter och betonad text). Etiketterna (`.eyebrow`, kortens nummer och sidfotens
+rubriker) behåller brödtypsnittet även när de är rubrikelement.
+
+Ska ett nytt element ha en storlek eller vikt: lägg till det i rollistan i `base.scss`
+i stället för att skriva ett eget värde i komponentens fil. Det som inte står i en
+lista är löpande text. Bloggartiklar använder samma storlekar som övriga sidor; bara
+kodblock och kod har egna regler (`article.scss`, `prism.scss`).
 
 ### Typsnitt och typsnittsprov
 
@@ -558,8 +594,8 @@ i `assets/site.scss` är avsiktlig; responsiva regler kommer sist.
 Använd variablerna i `_includes/styles/base.scss` i stället för egna pixelvärden:
 avståndsskalan `--space-1..7`, `--grid-gap`, `--card-padding`, hörnradierna
 `--radius-sm`, `--radius` och `--radius-lg`, samt `--line-strong` och
-`--on-dark-muted`. Cirkelpilen på kort är `.card-arrow` (`.card-arrow-sm` för
-den mindre varianten) och kortrubriker delar en gemensam regel i `controls.scss`.
+`--on-dark-muted`. Textstorlekar, typsnitt och vikter finns bara i `base.scss`
+(se Typografi ovan). Kort och kortlistor beskrivs under Kort och tabeller.
 På sidor med `layout: sections` tar sektioner med egen bakgrund (`soft-section`,
 `join-section`, `unified-callout`, `dark-section`) och sektionerna som gränsar
 till dem hela `--section-flow-gap`; övriga sektioner tar halva.

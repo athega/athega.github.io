@@ -16,8 +16,8 @@ test('cards can be added with Markdown headings without losing rich content', as
   const original = '## Rubrik\n\n### Första\n\nEn **viktig** text med [en länk](/om-oss/).\n\nEtt andra stycke.\n\n- En punkt\n- En till';
   const before = await render(original, 'focus');
   const after = await render(original + '\n\n### Nästa kort\n\nNy text.', 'focus');
-  assert.equal((before.match(/<article>/g) || []).length, 1);
-  assert.equal((after.match(/<article>/g) || []).length, 2);
+  assert.equal((before.match(/<article class="card">/g) || []).length, 1);
+  assert.equal((after.match(/<article class="card">/g) || []).length, 2);
   assert.match(after, /<strong>viktig<\/strong>/);
   assert.match(after, /<a href="\/om-oss\/">en länk<\/a>/);
   assert.match(after, /<p>Ett andra stycke\.<\/p>/);
@@ -27,7 +27,7 @@ test('cards can be added with Markdown headings without losing rich content', as
 
 test('code examples retain blank lines and headings inside fences do not create cards', async () => {
   const html = await render('## Kod\n\n### Exempel\n\n```text\nförsta raden\n\n### Ingen kortrubrik\n<script>\n```', 'focus');
-  assert.equal((html.match(/<article>/g) || []).length, 1);
+  assert.equal((html.match(/<article class="card">/g) || []).length, 1);
   assert.match(html, /första raden\n\n### Ingen kortrubrik\n&lt;script&gt;/);
 });
 

@@ -24,6 +24,13 @@ uppdatera dokumentationen när du inför eller ändrar ett gemensamt mönster.
   (`body`). Standard, och det som ska committas och publiceras, är `system`: ett
   Google-typsnitt får varje besökares webbläsare att kontakta Google, vilket sajten
   undvek med flit (commit `8b30074`). Se README.
+- Typografi: `_includes/styles/base.scss` (`--text-*`, `--weight-*`, `--font-*` och
+  rollistan "Type roles"). Komponenternas stilfiler anger inga textstorlekar, typsnitt
+  eller vikter; nya element läggs i rollistan. Högst fem storlekar och två typsnitt
+  (plus monospace för kod) på en sida.
+- Kort och tabeller: `_includes/styles/cards.scss`, `components/service-card.html` och
+  `sections/cards.html`. Bara två varianter finns: tabellen (standard) och den numrerade
+  listan (`numbered`). Återanvänd dem i stället för att skapa nya kortklasser.
 - Personal: `_employees/*.md`; standardlayout finns i `_employees/_employees.json`.
 - Bloggposter: `_posts/*.md`; standardlayout och URL-mönster i `_posts/_posts.json`.
 - Bloggens årsarkiv: `blogg/year.html`, grupperat från publicerade artiklar via
