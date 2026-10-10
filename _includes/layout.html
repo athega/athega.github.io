@@ -42,6 +42,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ google_families }}&amp;display=swap">
     {%- endif %}
+    {%- comment -%}Fonts we host ourselves (assets/fonts/, declared in _includes/styles/fonts.scss): the main files are fetched at once instead of after the stylesheet has been read.{%- endcomment -%}
+    {%- for file in heading_font.preload %}
+    <link rel="preload" href="{{ file | escape }}" as="font" type="font/woff2" crossorigin>
+    {%- endfor %}
+    {%- for file in body_font.preload %}
+    <link rel="preload" href="{{ file | escape }}" as="font" type="font/woff2" crossorigin>
+    {%- endfor %}
     <link rel="stylesheet" href="/assets/site.css">
     {%- comment -%}Font trial, see _data/fonts.json: extra CSS that a font needs beyond the variables (word spacing, hyphenation). Labels (.eyebrow) are left alone also when they are headings.{%- endcomment -%}
     {%- capture heading_css -%}

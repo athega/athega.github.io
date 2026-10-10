@@ -20,10 +20,13 @@ uppdatera dokumentationen när du inför eller ändrar ett gemensamt mönster.
 - Startsidesinnehåll: `_data/home/content.json`.
 - Startsidesmetadata: `index.html`.
 - Huvudnavigation: `_data/navigation.json`, gemensam för dator och mobil.
-- Typsnittsprov: `_data/fonts.json` väljer typsnitt för rubriker (`headings`) och brödtext
-  (`body`). Standard, och det som ska committas och publiceras, är `system`: ett
-  Google-typsnitt får varje besökares webbläsare att kontakta Google, vilket sajten
-  undvek med flit (commit `8b30074`). Se README.
+- Typsnitt: `_data/fonts.json` väljer typsnitt för rubriker (`headings`) och brödtext
+  (`body`). Sajtens typsnitt är Grandstander (rubriker) och DM Sans (brödtext), hostade
+  av oss i `assets/fonts/` med `@font-face` i `_includes/styles/fonts.scss`. Ett alternativ
+  med `google`-fält är bara ett prov: det får varje besökares webbläsare att kontakta
+  Google, vilket sajten undvek med flit (commit `8b30074`), och får aldrig vara valt i
+  något som committas (`npm run check` misslyckas om en sida länkar till Google).
+  Se README.
 - Typografi: `_includes/styles/base.scss` (`--text-*`, `--weight-*`, `--font-*` och
   rollistan "Type roles"). Komponenternas stilfiler anger inga textstorlekar, typsnitt
   eller vikter; nya element läggs i rollistan. Högst fem storlekar och två typsnitt
@@ -171,8 +174,9 @@ Rena text- och innehållsändringar kräver normalt ingen extern sökning.
 ## Git och publicering
 
 Kontrollera aktuell branch och lokala ändringar före Git-operationer. Bevara
-andras arbete. Kontrollera också att `headings` och `body` i `_data/fonts.json` är
-`system` före commit och push. Ange målbranch uttryckligen när användaren ber om en push till en
+andras arbete. Kontrollera också att `headings` och `body` i `_data/fonts.json` är de
+hostade typsnitten (`grandstander` och `dm-sans`) och aldrig ett alternativ med
+`google`-fält före commit och push. Ange målbranch uttryckligen när användaren ber om en push till en
 viss branch. Det incheckade arbetsflödet bygger och publicerar vid push till main
 samt kan startas manuellt. För den här layoutversionen arbetar vi i NewLayout;
 ändra inte main utan en uttrycklig uppgift som gäller main.

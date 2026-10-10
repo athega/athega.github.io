@@ -131,6 +131,13 @@ export function checkSite(root, siteUrl) {
     const html = read(file);
     const isRedirect = redirects.has(path.resolve(file));
     if (isRedirect) followRedirect(path.resolve(file), base.pathname);
+    // The typefaces are hosted by us (assets/fonts/): a font link to Google would make every visitor's browser contact it.
+    for (const [tag] of html.matchAll(/<link\b[^>]*>/gi)) {
+      const href = attributes(tag).href;
+      if (href && /^(?:https?:)?\/\/fonts\.(?:googleapis|gstatic)\.com(?:[/?#]|$)/i.test(href)) {
+        problems.push(`${base.pathname}: typsnittet hämtas från Google (${href.slice(0, 60)}); hosta det själv i assets/fonts/`);
+      }
+    }
     const body = html.match(/<body\b[^>]*>([\s\S]*?)<\/body>/i)?.[1] ?? "";
     for (const [tag] of body.matchAll(/<[a-z][^>]*>/gi)) {
       const attrs = attributes(tag);

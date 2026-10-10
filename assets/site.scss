@@ -1,4 +1,5 @@
 // Keep module order: responsive rules override the component styles.
+@use "styles/fonts";
 @use "styles/base";
 @use "styles/header";
 @use "styles/controls";

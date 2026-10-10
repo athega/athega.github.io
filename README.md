@@ -226,7 +226,7 @@ git push
 ├── _posts/           # Blogginlägg
 ├── sidor/            # Enkla Markdown-sidor utan krav på front matter
 ├── _site/            # Genererad sajt (ignoreras av Git)
-├── assets/           # Bilder, CSS, JavaScript
+├── assets/           # Bilder, typsnitt (assets/fonts), CSS, JavaScript
 ├── eleventy.config.js # Eleventy-konfiguration
 └── package.json      # Node.js-beroenden
 ```
@@ -531,59 +531,68 @@ kodblock och kod har egna regler (`article.scss`, `prism.scss`).
 
 ### Typsnitt och typsnittsprov
 
-Sajten använder systemtypsnitt: Helvetica Neue på Mac, Segoe UI på Windows och Roboto
-på Android. Inga typsnittsfiler laddas. Stacken heter `--font-system` i
-`_includes/styles/base.scss`. Sidans brödtypsnitt är `--font-body` och rubrikernas
-(h1–h6) är `--font-heading`.
+Rubrikerna (h1–h6, ingressen och de stora siffrorna) har typsnittet Grandstander och all
+övrig text DM Sans. Kod har sajtens monospace-stack. Båda typsnitten har SIL Open Font
+License och **hostas av oss**: filerna ligger i `assets/fonts/` tillsammans med
+licenstexterna (`OFL-*.txt`), och `@font-face` finns i `_includes/styles/fonts.scss`.
+Bara latin-delen finns med (svenska bokstäver och vanliga skiljetecken); andra tecken ritas
+av systemtypsnittet. Ingen besökare kontaktar Google eller någon annan tredje part, vilket
+var skälet till att vi tog bort Google Fonts (commit `8b30074`). Systemstacken
+(Helvetica Neue, Segoe UI, Roboto) heter `--font-system` i `_includes/styles/base.scss` och är
+reservtypsnitt medan filerna hämtas och för tecken som saknas.
 
-För att prova andra typsnitt finns `_data/fonts.json`. Två fält väljer vilka alternativ som
-gäller, ett för rubrikerna och ett för all övrig text (brödtext, ingresser, meny,
-etiketter och sifferrutor):
+Vilka typsnitt som gäller väljs i `_data/fonts.json`. Två fält väljer alternativ, ett för
+rubrikerna och ett för all övrig text (brödtext, ingresser, meny, etiketter och sifferrutor):
 
 ```json
-"headings": "system",
-"body": "system"
+"headings": "grandstander",
+"body": "dm-sans"
 ```
 
-Sätt båda till samma alternativ för ett typsnitt överallt, eller blanda dem, till exempel
-`"headings": "grandstander"` och `"body": "dm-sans"`. Alternativen under `options` är
-`system`, `henny-penny`, `love-ya-like-a-sister`, `risque`, `karla`, `ranchers`, `corben`,
-`corben-regular`, `dm-sans` och `grandstander`.
-Spara, så bygger utvecklingsservern om och laddar om sidan. Varje alternativ har:
+Sätt båda till samma alternativ för ett typsnitt överallt, eller blanda dem. Alternativen under
+`options` är `system` (inga filer, bara systemstacken), de hostade `grandstander` och
+`dm-sans` samt provade kandidater: `henny-penny`, `love-ya-like-a-sister`, `risque`, `karla`,
+`ranchers`, `corben` och `corben-regular`. Spara, så bygger utvecklingsservern om och laddar om
+sidan. Filen sätter bara variabler på `<html>` (`--font-body`, `--font-heading`, vikt,
+radavstånd och teckenavstånd); `base.scss` läser dem. Varje alternativ har:
 
-- `family` – typsnittets namn i CSS, och `google` – namnet i adressen på Google Fonts.
+- `family` – typsnittets namn i CSS.
+- `preload` – de filer som ska hämtas direkt (en `<link rel="preload">` per fil) för typsnitt
+  som hostas av oss.
+- `google` – bara för provade kandidater: namnet i adressen på Google Fonts, som mallen gör
+  en länk av. Hostade typsnitt har inget `google`-fält.
 - `singleWeight` – `true` för typsnitt med bara en vikt: då stängs påhittad fetstil och kursiv av.
-- `weight` – vikten: för rubriker alla rubriker (h1–h6), för brödtext hela sidans brödtext
+- `weight` – vikten: för rubriker alla rubriker (h1–h6), för brödtext all löpande text
   (sajtens egen är 300, som saknas i de flesta typsnitt).
-- `leading` – radavståndet i rubriker och kort när typsnittet används för rubriker, relativt
-  bokstäverna (sajtens standard är 1,16 och 1,2).
+- `leading` – radavståndet i rubriker, relativt bokstäverna (sajtens standard är 1,16).
 - `scale` och `xHeight` – gör rubrikernas bokstäver mindre eller större utan att ändra
   rubrikens ruta eller avstånden runt den. `xHeight` är typsnittets x-höjd i förhållande till
   teckenstorleken (mät den i webbläsaren) och `scale` hur stor del av den storlek rubrikerna är
-  gjorda för (0,75 är 75 %). Det görs med `font-size-adjust`, och mallen räknar om `leading` så att
+  gjorda för (0,9 är 90 %). Det görs med `font-size-adjust`, och mallen räknar om `leading` så att
   radavståndet följer bokstäverna. Ett bredare och tyngre typsnitt än Helvetica Neue Light
   behöver oftast en `scale` under 1.
 - `tracking` och `wordSpacing` – teckenavstånd och ordavstånd i rubrikerna. Sajten trycker
   ihop rubrikernas bokstäver (negativt teckenavstånd, anpassat för Helvetica Neue), vilket
   blir för tätt för vissa visningstypsnitt; `tracking` ersätter då det.
 - `headingCss` och `bodyCss` – extra CSS som läggs till för rubrikerna respektive sidan, till
-  exempel avstavning av långa ord eller menyns vikt.
+  exempel avstavning av långa ord. Etiketter (`.eyebrow`) lämnas utanför.
 - `notes`, `designer`, `license`, `size`, `weights`, `specimen` och `tested` – vad som hittades
   när typsnittet provades, så att det går att jämföra utan att pröva om.
 
 Alternativet `system` saknar `family` och ändrar ingenting: när både `headings` och `body`
-är `system` är bygget byte för byte detsamma som utan funktionen. Lägg till ett prov genom
-att kopiera ett alternativ och byta namnen. Adressen och namnet finns på typsnittets sida på
-fonts.google.com. Ett typsnitt med flera vikter anges med axeln i `google`, till exempel
-`Karla:ital,wght@0,200..800;1,200..800`.
+är `system` är bygget byte för byte detsamma som utan funktionen.
 
-**Innan något publiceras:** ett Google-typsnitt hämtas från Googles servrar, så varje
-besökares webbläsare kontaktar Google. Det valde vi bort när vi tog bort Google Fonts
-(commit `8b30074`), av integritetsskäl och för att sajten inte ska bero på tredje part.
-Sätt `headings` och `body` till `system` innan en gren slås ihop, eller lägg typsnittsfilerna
-på sajten själv (`@font-face` med filerna under `assets/`) i stället för att länka till Google.
-Typsnitten ovan har SIL Open Font License, som tillåter det. `npm run check` varnar inte
-om en Google-länk finns kvar.
+**Prova ett nytt typsnitt:** kopiera ett alternativ, byt namnen och ange `google` med namnet
+från fonts.google.com (ett typsnitt med flera vikter anges med axeln, till exempel
+`Karla:ital,wght@0,200..800;1,200..800`). Då hämtar varje besökares webbläsare typsnittet
+från Google, så det är bara för att titta: `npm run check` misslyckas så länge en sida
+länkar till `fonts.googleapis.com` eller `fonts.gstatic.com`, och ett sådant alternativ ska
+inte vara valt i något som checkas in.
+
+**Göra ett typsnitt permanent:** hämta woff2-filerna (och licenstexten) till `assets/fonts/`,
+lägg till `@font-face` i `_includes/styles/fonts.scss`, ta bort `google` från alternativet och
+ange `preload` för de filer varje sida använder. Fråga alltid före nedladdning av filer och
+kontrollera licensen.
 
 ### Ändra designen
 
