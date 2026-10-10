@@ -1,10 +1,16 @@
-// Give the service headings more room before the navigation needs to collapse.
-@media (max-width: 1280px) {
+// The page is at its full width from 1322px: --shell stops growing there (1216px is 92% of 1322px), so this is also
+// where the larger logo starts, and above it the page is only centred, never wider.
+@media (max-width: 1321px) {
   .brand img { width: 168px; }
-  .home-service-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+
+@media (max-width: 1099px) {
+  :where(.card-list:has(> :nth-child(4):last-child)) { --columns: 2; }
 }
 
 @media (max-width: 980px) {
+  :where(.card-list) { --columns: 2; }
+  :where(.card-list:has(> :nth-child(3):last-child)) { --columns: 1; }
   .nav { display: none; }
   .mobile-menu { display: block; }
   .page-hero { background: #fff; }
@@ -12,9 +18,7 @@
   .join-grid { grid-template-areas: "label" "heading" "copy"; gap: 0; }
   .join-grid > .eyebrow { margin-bottom: var(--heading-gap); }
   .join-grid h2 { margin-bottom: 22px; }
-  .focus-grid { grid-template-columns: 1fr 1fr; }
-  .step-grid { grid-template-columns: 1fr 1fr; }
-  .case-grid, .audience-grid { grid-template-columns: 1fr; }
+  .audience-grid { grid-template-columns: 1fr; }
   .team-grid { grid-template-columns: repeat(2,1fr); }
   .home-latest-grid { grid-template-columns: 1fr; }
   .home-latest-card { min-height: 132px; grid-template-columns: 180px minmax(0,1fr); }
@@ -27,7 +31,7 @@
 }
 
 @media (max-width: 640px) {
-  :root { --shell: calc(100% - 40px); --text-page: 32px; --text-section: 28px; --text-card: 24px; --text-lead: 21px; --section-flow-gap: 40px; --content-gap: var(--space-2); }
+ :root { --shell: calc(100% - 40px); --text-page: 32px; --text-section: 28px; --text-card: 24px; --section-flow-gap: 40px; --content-gap: var(--space-2); }
   .nav-wrap { min-height: 72px; }
   .brand img { width: 146px; }
   .page-hero { padding: 58px 0 30px; }
@@ -35,12 +39,10 @@
   .page-hero.compact { padding: 50px 0 28px; }
   .section { padding: 78px 0; }
   .section.unified-callout, .section.join-section { padding-block: 58px; }
-  .focus-intro { font-size: var(--text-base); }
-  .home-service-grid { grid-template-columns: 1fr; border-left: 0; }
-  .home-service-grid .service-card { padding: 22px 0; border-right: 0; }
-  .service-card { grid-template-columns: 1fr; padding: 22px 0; }
+  :where(.card-list) { --columns: 1; }
+  .card-list { border-left: 0; }
+  .card-list > .card { padding: 22px 0; background: none; border-right: 0; }
   .home-latest-heading { align-items: flex-start; }
-  .home-latest-heading .text-link { font-size: var(--text-xs); }
   .home-latest-card { min-height: 120px; grid-template-columns: 116px minmax(0,1fr); }
   .home-latest-card img { min-height: 120px; }
   .home-latest-card > div { padding: 14px 13px; }
@@ -48,11 +50,10 @@
   .news-feature > img, .news-feature > .news-image-placeholder { min-height: 0; aspect-ratio: 3 / 1; }
   .news-feature-copy { padding: 20px 22px; }
   .news-feature-copy h2 { margin-bottom: 16px; }
-  .news-feature-copy > p:not(.eyebrow) { margin-bottom: 24px; font-size: var(--text-base); }
+ .news-feature-copy > p:not(.eyebrow) { margin-bottom: 24px; }
   .news-grid { grid-template-columns: 1fr; gap: var(--space-5); }
-  .facts-grid, .focus-grid, .step-grid { grid-template-columns: 1fr; }
+  .facts-grid { grid-template-columns: 1fr; }
   .team-grid { gap: 22px 12px; }
-  .team-card figcaption { font-size: var(--text-base); }
   .network-quote { grid-template-columns: 1fr; gap: 20px; margin-top: 36px; padding: 20px; }
   .network-quote img { width: 96px; height: 96px; }
   .archive-item { grid-template-columns: 1fr; gap: 8px; }

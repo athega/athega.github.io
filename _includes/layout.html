@@ -1,5 +1,12 @@
+{%- assign heading_font = fonts.options[fonts.headings] -%}
+{%- assign body_font = fonts.options[fonts.body] -%}
+{%- comment -%}Font trial, see _data/fonts.json. The trial only sets variables on <html>; base.scss reads them. With scale and xHeight the heading letters are made smaller through font-size-adjust, which scales the letters only (boxes and spacing stay as designed).{%- endcomment -%}
+{%- assign heading_adjust = "" -%}
+{%- if heading_font.scale and heading_font.xHeight -%}
+  {%- assign heading_adjust = heading_font.xHeight | times: heading_font.scale | round: 4 -%}
+{%- endif -%}
 <!DOCTYPE html>
-<html lang="sv">
+<html lang="sv"{% if heading_font.family or body_font.family %} style="--font-body: {% if body_font.family %}'{{ body_font.family | escape }}', {% endif %}var(--font-system); --font-heading: {% if heading_font.family %}'{{ heading_font.family | escape }}', {% endif %}var(--font-system);{% if body_font.weight %} --weight-text: {{ body_font.weight | escape }};{% endif %}{% if heading_font.weight %} --weight-heading: {{ heading_font.weight | escape }};{% endif %}{% if heading_font.tracking %} --tracking-heading: {{ heading_font.tracking | escape }};{% endif %}{% if heading_font.leading %} --leading-title: {{ heading_font.leading | escape }};{% endif %}{% if heading_adjust != "" %} --heading-size-adjust: {{ heading_adjust }}; --heading-scale: {{ heading_font.scale | escape }};{% endif %}{% if heading_font.singleWeight or body_font.singleWeight %} font-synthesis: none;{% endif %}"{% endif %}>
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -23,7 +30,39 @@
     <link rel="icon" sizes="192x192" type="image/png" href="/assets/img/icon.png">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="icon" type="image/svg+xml" href="/assets/img/icon.svg">
+    {%- comment -%}Font trial, see _data/fonts.json. A Google font sends every visitor's request to Google, so it is only for trying fonts: self-host a font before it goes live.{%- endcomment -%}
+    {%- capture google_families -%}
+      {%- if heading_font.google -%}{{ heading_font.google | escape }}{%- endif -%}
+      {%- if body_font.google and body_font.google != heading_font.google -%}
+        {%- if heading_font.google -%}&amp;family={%- endif -%}{{ body_font.google | escape }}
+      {%- endif -%}
+    {%- endcapture -%}
+    {%- if google_families != "" %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ google_families }}&amp;display=swap">
+    {%- endif %}
+    {%- comment -%}Fonts we host ourselves (assets/fonts/, declared in _includes/styles/fonts.scss): the main files are fetched at once instead of after the stylesheet has been read.{%- endcomment -%}
+    {%- for file in heading_font.preload %}
+    <link rel="preload" href="{{ file | escape }}" as="font" type="font/woff2" crossorigin>
+    {%- endfor %}
+    {%- for file in body_font.preload %}
+    <link rel="preload" href="{{ file | escape }}" as="font" type="font/woff2" crossorigin>
+    {%- endfor %}
     <link rel="stylesheet" href="/assets/site.css">
+    {%- comment -%}Font trial, see _data/fonts.json: extra CSS that a font needs beyond the variables (word spacing, hyphenation). Labels (.eyebrow) are left alone also when they are headings.{%- endcomment -%}
+    {%- capture heading_css -%}
+      {%- if heading_font.wordSpacing -%}word-spacing: {{ heading_font.wordSpacing | escape }}; {% endif -%}
+      {%- if heading_font.headingCss -%}{{ heading_font.headingCss }} {% endif -%}
+    {%- endcapture -%}
+    {%- assign heading_css = heading_css | strip -%}
+    {%- capture font_css -%}
+      {%- if heading_css != "" -%}:is(h1, h2, h3, h4, h5, h6):not(.eyebrow) { {{ heading_css }} }{%- endif -%}
+      {%- if body_font.bodyCss %} {{ body_font.bodyCss }}{% endif -%}
+    {%- endcapture -%}
+    {%- if font_css != "" %}
+    <style>{{ font_css | strip }}</style>
+    {%- endif %}
   </head>
   <body>
     <a class="skip-link" href="#main">Hoppa till innehållet</a>

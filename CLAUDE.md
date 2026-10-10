@@ -20,11 +20,26 @@ uppdatera dokumentationen när du inför eller ändrar ett gemensamt mönster.
 - Startsidesinnehåll: `_data/home/content.json`.
 - Startsidesmetadata: `index.html`.
 - Huvudnavigation: `_data/navigation.json`, gemensam för dator och mobil.
+- Typsnitt: `_data/fonts.json` väljer typsnitt för rubriker (`headings`) och brödtext
+  (`body`). Sajtens typsnitt är Grandstander (rubriker) och DM Sans (brödtext), hostade
+  av oss i `assets/fonts/` med `@font-face` i `_includes/styles/fonts.scss`. Ett alternativ
+  med `google`-fält är bara ett prov: det får varje besökares webbläsare att kontakta
+  Google, vilket sajten undvek med flit (commit `8b30074`), och får aldrig vara valt i
+  något som committas (`npm run check` misslyckas om en sida länkar till Google).
+  Se README.
+- Typografi: `_includes/styles/base.scss` (`--text-*`, `--weight-*`, `--font-*` och
+  rollistan "Type roles"). Komponenternas stilfiler anger inga textstorlekar, typsnitt
+  eller vikter; nya element läggs i rollistan. Högst fem storlekar och två typsnitt
+  (plus monospace för kod) på en sida.
+- Kort och tabeller: `_includes/styles/cards.scss`, `components/service-card.html` och
+  `sections/cards.html`. Bara två varianter finns: tabellen (standard) och den numrerade
+  listan (`numbered`). Återanvänd dem i stället för att skapa nya kortklasser.
 - Personal: `_employees/*.md`; standardlayout finns i `_employees/_employees.json`.
 - Bloggposter: `_posts/*.md`; standardlayout och URL-mönster i `_posts/_posts.json`.
 - Bloggens årsarkiv: `blogg/year.html`, grupperat från publicerade artiklar via
   `scripts/blog-archives.mjs`. Årsarkiv med innehåll ersätter gamla omdirigeringar
-  automatiskt. Gemensam layout och årsnavigering finns i `_includes/blog/`.
+  automatiskt. Gemensam layout och årsnavigering finns i `_includes/blog/`; herobilden
+  anges överst i `_includes/blog/archive.html`.
 - Tjänste- och företagssidor: vanligt Markdown-innehåll i respektive
   `index.md` under `teknikgranskning/`, `systemutveckling/`, `ai-labbet/`,
   `ai-labbet/industri/`, `jobba/`, `konsultnatverk/` och `om-oss/`.
@@ -75,6 +90,10 @@ uppdatera dokumentationen när du inför eller ändrar ett gemensamt mönster.
 - Navigation och startsidans befintliga strukturerade data ligger fortsatt i
   `_data/`. Escapa sådana textvärden med `escape`. Renderad Markdown i `content`
   och sektionsmallarnas HTML-fält ska däremot inte escapas en gång till.
+- En hero (`{% section "hero" %}`) får en dekorativ herobild genom ett stycke med bara en
+  Markdown-bild, `![](/assets/img/...)`. Bilden tonas ut åt vänster under etikett, rubrik och ingress; sammanfattning och länkar ligger under bilden. Startsidans
+  bild anges i stället som `intro.image` i `_data/home/content.json` och bloggens i
+  `_includes/blog/archive.html`. Se README.
 - Länkar till e-post ska visa mottagaradressen i den synliga texten. Komponenten
   `text-link.html` (även i callouts) gör detta från fältet `email`.
   Kontaktuppgifter finns i sidfoten och sidornas kontaktsektioner; huvudmenyn
@@ -155,7 +174,9 @@ Rena text- och innehållsändringar kräver normalt ingen extern sökning.
 ## Git och publicering
 
 Kontrollera aktuell branch och lokala ändringar före Git-operationer. Bevara
-andras arbete. Ange målbranch uttryckligen när användaren ber om en push till en
+andras arbete. Kontrollera också att `headings` och `body` i `_data/fonts.json` är de
+hostade typsnitten (`grandstander` och `dm-sans`) och aldrig ett alternativ med
+`google`-fält före commit och push. Ange målbranch uttryckligen när användaren ber om en push till en
 viss branch. Det incheckade arbetsflödet bygger och publicerar vid push till main
 samt kan startas manuellt. För den här layoutversionen arbetar vi i NewLayout;
 ändra inte main utan en uttrycklig uppgift som gäller main.

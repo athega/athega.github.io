@@ -16,8 +16,8 @@ test('cards can be added with Markdown headings without losing rich content', as
   const original = '## Rubrik\n\n### Första\n\nEn **viktig** text med [en länk](/om-oss/).\n\nEtt andra stycke.\n\n- En punkt\n- En till';
   const before = await render(original, 'focus');
   const after = await render(original + '\n\n### Nästa kort\n\nNy text.', 'focus');
-  assert.equal((before.match(/<article>/g) || []).length, 1);
-  assert.equal((after.match(/<article>/g) || []).length, 2);
+  assert.equal((before.match(/<article class="card">/g) || []).length, 1);
+  assert.equal((after.match(/<article class="card">/g) || []).length, 2);
   assert.match(after, /<strong>viktig<\/strong>/);
   assert.match(after, /<a href="\/om-oss\/">en länk<\/a>/);
   assert.match(after, /<p>Ett andra stycke\.<\/p>/);
@@ -27,7 +27,7 @@ test('cards can be added with Markdown headings without losing rich content', as
 
 test('code examples retain blank lines and headings inside fences do not create cards', async () => {
   const html = await render('## Kod\n\n### Exempel\n\n```text\nförsta raden\n\n### Ingen kortrubrik\n<script>\n```', 'focus');
-  assert.equal((html.match(/<article>/g) || []).length, 1);
+  assert.equal((html.match(/<article class="card">/g) || []).length, 1);
   assert.match(html, /första raden\n\n### Ingen kortrubrik\n&lt;script&gt;/);
 });
 
@@ -51,6 +51,24 @@ test('hero emphasis is styled without changing emphasis in other sections', asyn
   const card = await render('## Sektion\n\n### Ett *kort*\n\nText.', 'focus');
   assert.match(hero, /<h1>En <span>rubrik<\/span><\/h1>/);
   assert.match(card, /<h3>Ett <em>kort<\/em><\/h3>/);
+});
+
+test('a line with only an image in a hero becomes its decorative picture', async () => {
+  const withPicture = await render('Etikett\n\n# En *rubrik*\n\nIngress.\n\nEn sammanfattning.\n\n[Mejla – reception@athega.se](mailto:reception@athega.se)\n\n![Bildtext som inte används](/assets/img/hero.webp)', 'hero', 'ai');
+  assert.match(withPicture, /class="page-hero ai-hero hero-image"/);
+  assert.match(withPicture, /<img src="\/assets\/img\/hero\.webp" alt="" aria-hidden="true" fetchpriority="high">/);
+  assert.doesNotMatch(withPicture, /Bildtext/);
+  assert.match(withPicture, /<h1>En <span>rubrik<\/span><\/h1>/);
+  assert.match(withPicture, /<p class="page-lead">Ingress\.<\/p>/);
+  assert.match(withPicture, /<div class="hero-actions">\s*<a href="mailto:reception@athega\.se" class="text-link">/);
+  // The picture covers the label, heading and lead; the summary and links come below it.
+  const detailsAt = withPicture.indexOf('hero-details');
+  assert.ok(detailsAt > withPicture.indexOf('page-lead'), 'the lead is in the pictured zone');
+  assert.ok(withPicture.indexOf('hero-summary') > detailsAt && withPicture.indexOf('hero-actions') > detailsAt, 'summary and links are below the picture');
+  const onlyIntro = await render('Etikett\n\n# En *rubrik*\n\nIngress.\n\n![](/assets/img/hero.webp)', 'hero');
+  assert.doesNotMatch(onlyIntro, /hero-details/);
+  const without = await render('Etikett\n\n# En *rubrik*\n\nIngress.', 'hero');
+  assert.doesNotMatch(without, /hero-image|hero-media|hero-zone|<img/);
 });
 
 test('incorrect block names and variants give clear errors', async () => {

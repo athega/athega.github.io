@@ -16,6 +16,8 @@ Vi kombinerar klassisk maskininlärning, statistiska modeller och den senaste ut
 
 [Prata AI med oss – reception@athega.se](mailto:reception@athega.se?subject=AI%20och%20maskininl%C3%A4rning)
 
+![](/assets/img/ai-labbet/hero.webp)
+
 {% endsection %}
 
 {% section "audiences" %}

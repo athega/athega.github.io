@@ -1,12 +1,20 @@
 {% assign posts = archive.posts | default: collections.posts %}
 {% assign featured = posts | first %}
-<main id="main" class="blog-archive section-page">
-  <section class="page-hero blog-hero">
-    <div class="shell">
+{% assign hero_image = "/assets/img/blogg/hero.webp" %}
+{% capture hero_text %}
       <p class="eyebrow">Tankar från Athega</p>
       <h1>Blogg{% if archive %} {{ archive.year }}{% endif %}<span>.</span></h1>
       <p class="page-lead">{% if archive %}Artiklar från {{ archive.year }} om mjukvaruutveckling, AI, data och teknik.{% else %}Idéer, experiment, erfarenheter och sådant vi lärt oss på vägen.{% endif %}</p>
+{% endcapture %}
+<main id="main" class="blog-archive section-page">
+  <section class="page-hero blog-hero{% if hero_image %} hero-image{% endif %}">
+    {% if hero_image %}
+    {% include "components/hero-zone.html", image: hero_image, text: hero_text %}
+    {% else %}
+    <div class="shell">
+      {{ hero_text }}
     </div>
+    {% endif %}
   </section>
   <section class="section news-section">
     <div class="shell">

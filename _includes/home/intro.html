@@ -1,6 +1,14 @@
-<section class="page-hero home-page-hero">
+<section class="page-hero home-page-hero{% if home.content.intro.image %} hero-image{% endif %}">
+  {% if home.content.intro.image %}
+  {% capture intro_text %}
+    <h1>{{ home.content.intro.heading | escape }} <span>{{ home.content.intro.emphasis | escape }}</span></h1>
+    <p class="page-lead">{{ home.content.intro.lead | escape }}</p>
+  {% endcapture %}
+  {% include "components/hero-zone.html", image: home.content.intro.image, text: intro_text %}
+  {% else %}
   <div class="shell">
     <h1>{{ home.content.intro.heading | escape }} <span>{{ home.content.intro.emphasis | escape }}</span></h1>
     <p class="page-lead">{{ home.content.intro.lead | escape }}</p>
   </div>
+  {% endif %}
 </section>

@@ -18,6 +18,8 @@ Athegas konsulter går in som en del av laget. Vi kombinerar lång erfarenhet me
 
 [Prata systemutveckling med oss – reception@athega.se](mailto:reception@athega.se?subject=Systemutveckling)
 
+![](/assets/img/systemutveckling/hero.webp)
+
 {% endsection %}
 
 {% section "focus", "stacked" %}

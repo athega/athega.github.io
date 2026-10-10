@@ -1,0 +1,8 @@
+/* The site's own copies of the typefaces (SIL Open Font License 1.1; the licence texts are in assets/fonts/). They are
+   served from here, never from Google, so a visit sends no request to a third party. Only the latin subset is kept: the
+   letters of Swedish and the usual punctuation; a character outside it is drawn by the next font in the stack. A page
+   fetches a file only when its text uses it, so the italic is loaded on the pages that have italic text.
+   Which font a part of the page uses is chosen in _data/fonts.json and base.scss. */
+@font-face { font-family: "Grandstander"; font-style: normal; font-weight: 100 900; font-display: swap; src: url("/assets/fonts/grandstander-latin.woff2") format("woff2"); }
+@font-face { font-family: "DM Sans"; font-style: normal; font-weight: 400 700; font-display: swap; src: url("/assets/fonts/dm-sans-latin.woff2") format("woff2"); }
+@font-face { font-family: "DM Sans"; font-style: italic; font-weight: 400 700; font-display: swap; src: url("/assets/fonts/dm-sans-latin-italic.woff2") format("woff2"); }

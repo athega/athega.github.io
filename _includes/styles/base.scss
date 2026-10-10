@@ -8,21 +8,31 @@
   --neutral: #efefef;
   --orange: #ff6600;
   --shell: min(1216px, 92vw);
-  --text-xs: 12px;
-  --text-sm: 14px;
-  --text-base: 16px;
-  --text-lg: 18px;
-  --text-card: clamp(24px, 2.2vw, 28px);
-  --text-lead: clamp(21px, 2.4vw, 28px);
-  --text-section: clamp(28px, 2.9vw, 36px);
+  // Typography is defined here and in the element rules below, and nowhere else: three fonts, five sizes and a few weights.
+  // Fonts: heading (h1-h6, the lead, the big figures), body (everything else) and mono (code). A font trial
+  // (_data/fonts.json) sets --font-body, --font-heading and the weight and spacing variables on <html>.
+  --font-system: "Helvetica Neue", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-body: var(--font-system);
+  --font-heading: var(--font-system);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  // Sizes: page title (h1), section heading (h2), card heading and lead (h3, the lead), running text, small text.
   --text-page: clamp(34px, 3.4vw, 44px);
-  --text-stat: clamp(52px, 7vw, 80px);
+  --text-section: clamp(28px, 2.9vw, 36px);
+  --text-card: clamp(24px, 2.2vw, 28px);
+  --text-body: 18px;
+  --text-small: 14px;
+  // Weights: running text, headings, interface (menu, links, buttons) and labels.
+  --weight-text: 300;
+  --weight-heading: 300;
+  --weight-ui: 500;
+  --weight-strong: 600;
+  --leading-title: 1.16;
+  --leading-lead: 1.4;
+  --leading-copy: 1.55;
+  --tracking-heading: -.015em;
+  --tracking-label: .14em;
   --heading-gap: 24px;
   --section-flow-gap: 64px;
-  --leading-title: 1.16;
-  --leading-card: 1.2;
-  --leading-copy: 1.55;
-  --tracking-card: -.02em;
   // Spacing scale, grid gap and card padding: use these instead of loose pixel values.
   --space-1: 8px;
   --space-2: 16px;
@@ -41,11 +51,31 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { margin: 0; background: var(--paper); color: var(--ink); font-family: "Helvetica Neue", "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: var(--text-base); font-weight: 300; -webkit-font-smoothing: antialiased; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-body); font-weight: var(--weight-text); -webkit-font-smoothing: antialiased; }
 a { color: inherit; text-decoration: none; }
 img { display: block; max-width: 100%; height: auto; }
 h1, h2, h3, p { margin-top: 0; }
 h1, h2, h3 { text-wrap: balance; }
+// Type roles: the five sizes and the weights are given to the parts of the page here and nowhere else; what is not
+// listed is running text. A trial font larger than Helvetica Neue is made smaller by --heading-size-adjust, which scales
+// the letters only (--heading-scale is the same factor, so that the line spacing follows the letters).
+p, li, blockquote, figcaption { line-height: var(--leading-copy); }
+// Display type: headings, the lead and the big figures share the heading font, weight and spacing.
+h1, h2, h3, h4, h5, h6, .page-lead, .facts-grid span { font-family: var(--font-heading); font-size-adjust: var(--heading-size-adjust, none); }
+h1, h2, h3, h4, h5, h6, .facts-grid span { font-weight: var(--weight-heading); letter-spacing: var(--tracking-heading); }
+h1, h2, h3, h4, h5, h6 { line-height: calc(var(--leading-title) * var(--heading-scale, 1)); }
+// Labels: small, strong and spaced. They keep the body font and no size adjustment also when the label is a heading (h2.eyebrow).
+.eyebrow, .card > span, .footer-links > span { font-family: var(--font-body); font-size-adjust: none; font-weight: var(--weight-strong); line-height: var(--leading-title); letter-spacing: var(--tracking-label); }
+// Sizes
+h1 { font-size: var(--text-page); }
+h2, .audience-grid h3, .facts-grid span { font-size: var(--text-section); }
+h3, .card h2, .news-card h2, .archive-item h2, .news-feature-copy h2, .join-grid h2, .page-lead, .news-image-placeholder { font-size: var(--text-card); }
+body, h4, h5, h6, .home-latest-card h3 { font-size: var(--text-body); }
+.eyebrow, .card > span, .footer-links > span, .nav, .button, .footer-links, .footer-bottom, .back-link, .blog-years a, .news-card :is(time, p), .archive-item time, .home-latest-heading .text-link, .home-latest-card p, .article-body pre { font-size: var(--text-small); }
+// Weights: the interface (menu, buttons, links, bold text in running text) and the labels; running text and headings follow the variables.
+h4, h5, h6, .nav, .mobile-nav, .mobile-menu summary, .button, .text-link, .large-prose strong, .article-body code { font-weight: var(--weight-ui); }
+.feature-list li span, .news-image-placeholder { font-weight: var(--weight-strong); }
+.page-lead { font-weight: var(--weight-text); }
 a:focus-visible { outline: 3px solid var(--ink); outline-offset: 4px; box-shadow: 0 0 0 4px var(--paper); border-radius: 4px; }
 .shell { width: var(--shell); margin: 0 auto; }
 .skip-link { position: absolute; z-index: 40; top: 8px; left: 8px; padding: 12px 20px; background: var(--ink); color: #fff; border-radius: 999px; transform: translateY(-200%); }

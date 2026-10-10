@@ -1,0 +1,18 @@
+/* Cards. A card is a heading with text, and sometimes a number first; a linked card is <a class="card">. A card list
+   lays its cards out in columns and comes in two kinds only: the table (the default; the services on the home page, the
+   focus areas, the values and the cases) and the numbered list (.numbered; the work steps), which is the same grid with
+   the same padding but without the lines and the fill. The breakpoints are in responsive.scss. */
+:where(.card-list) { --columns: 3; }
+:where(.card-list:has(> :nth-child(4):last-child)) { --columns: 4; } /* exactly four cards share one row */
+.card-list { display: grid; grid-template-columns: repeat(var(--columns), minmax(0, 1fr)); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.card-list > .card { display: block; min-width: 0; padding: var(--space-4) var(--space-3); background: var(--paper); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.soft-section .card-list, .soft-section .card-list > .card { border-color: var(--line-strong); }
+.card-list.numbered, .card-list.numbered > .card { background: none; border: 0; }
+/* The card owns the spacing: the number, the heading and the text follow each other with one gap. */
+.card > * { margin-block: 0; }
+.card > * + * { margin-top: var(--space-2); }
+.card > span + * { margin-top: var(--heading-gap); }
+.card > span { color: var(--ink); }
+.card p { max-width: 670px; color: var(--muted); }
+/* A linked card, and the blog cards and archive rows, underline their heading on hover and keyboard focus. */
+a.card:is(:hover, :focus-visible) :is(h2, h3), .news-card:is(:hover, :focus-visible) h2, .archive-item:is(:hover, :focus-visible) h2 { text-decoration: underline; text-decoration-color: var(--orange); text-decoration-thickness: 2px; text-underline-offset: .2em; }
