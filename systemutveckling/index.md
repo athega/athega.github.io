@@ -1,5 +1,6 @@
 ---
 layout: sections
+presentation: magazine
 title: Systemutveckling
 description: >-
   Seniora systemutvecklare som hjälper er att utveckla, modernisera och förvalta verksamhetskritiska
@@ -15,6 +16,8 @@ Systemutveckling
 Vi hjälper er att utveckla, modernisera och förvalta system som är viktiga för verksamheten.
 
 Athegas konsulter går in som en del av laget. Vi kombinerar lång erfarenhet med nyfikenhet på bättre verktyg och arbetssätt, men väljer alltid teknik utifrån problemet, människorna och vad som ska fungera över tid.
+
+![](/assets/img/systemutveckling/hero.webp)
 
 [Prata systemutveckling med oss – reception@athega.se](mailto:reception@athega.se?subject=Systemutveckling)
 

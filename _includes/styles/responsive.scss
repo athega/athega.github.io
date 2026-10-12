@@ -63,3 +63,49 @@
   .footer-top { grid-template-columns: 1fr; }
   .footer-bottom { gap: 20px; }
 }
+
+/* Editorial pilot: keep image crops and text readable before four columns fit. */
+@media (max-width: 1100px) {
+  .magazine-page .home-service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .magazine-page .service-card-picture img { aspect-ratio: 3 / 2; }
+  .magazine-page .home-latest-grid { grid-template-columns: 1fr; }
+  .magazine-page .home-latest-card { grid-template-columns: 150px minmax(0, 1fr); }
+  .magazine-page .focus-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 640px) {
+  .magazine-page { --magazine-gap: 24px; }
+  .magazine-page > .page-hero { padding-top: 36px; }
+  .magazine-page .page-hero h1 { font-size: clamp(36px, 9.7vw, 52px); }
+  .magazine-page .page-hero .page-lead { font-size: 20px; }
+  .magazine-page > .page-hero > .shell > .magazine-picture { margin-top: 24px; }
+  .magazine-picture img { aspect-ratio: 3 / 2; object-position: 70% center; }
+  .magazine-page .focus-section > .shell > .section-heading { grid-template-columns: 1fr; gap: 0; margin-bottom: 32px; }
+  .magazine-page .home-service-grid { grid-template-columns: 1fr; }
+  .magazine-page .home-service-grid .service-card {
+    display: grid;
+    grid-template-columns: 112px minmax(0, 1fr);
+    column-gap: 18px;
+    align-items: start;
+  }
+  .magazine-page .service-card-picture { grid-column: 1; grid-row: 1 / 4; margin-bottom: 0; }
+  .magazine-page .service-card-picture img { aspect-ratio: 1 / 1; }
+  .magazine-page .service-card-number, .magazine-page .service-card-heading, .magazine-page .service-card p { grid-column: 2; }
+  .magazine-page .service-card h2 { font-size: 23px; overflow-wrap: anywhere; }
+  .magazine-page .service-card p { font-size: var(--text-sm); margin-top: 12px; }
+  .magazine-page .home-latest { margin-top: 40px; }
+  .magazine-page .home-latest-card { grid-template-columns: 100px minmax(0, 1fr); gap: 16px; }
+  .magazine-page .home-latest-card img { height: 132px; }
+  .magazine-page .home-latest-card h3 { font-size: 21px; }
+  .magazine-page .focus-grid { grid-template-columns: 1fr; }
+  .magazine-page .focus-grid h3, .magazine-page .step-grid h3 { font-size: 25px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .magazine-page .service-card img { transition: none; }
+  .magazine-page .service-card:is(:hover, :focus-visible) img { transform: none; }
+}
+
+@media print {
+  .magazine-picture, .magazine-page .service-card-picture { display: none; }
+}

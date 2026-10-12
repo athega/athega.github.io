@@ -108,6 +108,13 @@ export function createSectionRenderer(md, renderTemplate) {
         template = 'hero';
         Object.assign(data, header(blocks, 'h1'));
         if (!data.heading) throw new Error('A hero needs a # heading.');
+        const imageIndex = blocks.findIndex(block => {
+          const tokens = inlineTokens(block);
+          return block[0].type === 'paragraph_open' && tokens.length === 1 && tokens[0].type === 'image';
+        });
+        if (imageIndex !== -1) {
+          data.image = inlineTokens(blocks.splice(imageIndex, 1)[0])[0].attrGet('src');
+        }
         data.links = links(blocks);
         data.lead = paragraph(blocks.shift(), 'page-lead');
         data.summary = variant === 'ai' ? render(blocks) : blocks.map(block => paragraph(block, 'hero-summary')).join('');

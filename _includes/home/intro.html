@@ -1,6 +1,7 @@
 <section class="page-hero home-page-hero">
   <div class="shell">
-    <h1>{{ home.content.intro.heading | escape }} <span>{{ home.content.intro.emphasis | escape }}</span></h1>
-    <p class="page-lead">{{ home.content.intro.lead | escape }}</p>
+    <h1>{{ home.content.intro.lead | escape }}</h1>
+    <p class="page-lead">{{ home.content.intro.heading | escape }} {{ home.content.intro.emphasis | escape }}</p>
+    {% include "components/magazine-picture.html", image: home.content.intro.image %}
   </div>
 </section>
