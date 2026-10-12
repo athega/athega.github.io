@@ -61,9 +61,10 @@ test('a line with only an image in a hero becomes its decorative picture', async
   assert.match(withPicture, /<h1>En <span>rubrik<\/span><\/h1>/);
   assert.match(withPicture, /<p class="page-lead">Ingress\.<\/p>/);
   assert.match(withPicture, /<div class="hero-actions">\s*<a href="mailto:reception@athega\.se" class="text-link">/);
-  // The picture covers the label, heading and lead; the summary and links come below it.
+  // The label, heading and lead come first, then the picture; the summary and links come below the picture.
   const detailsAt = withPicture.indexOf('hero-details');
-  assert.ok(detailsAt > withPicture.indexOf('page-lead'), 'the lead is in the pictured zone');
+  const pictureAt = withPicture.indexOf('hero-media');
+  assert.ok(withPicture.indexOf('page-lead') < pictureAt && pictureAt < detailsAt, 'the picture sits between the lead and the details');
   assert.ok(withPicture.indexOf('hero-summary') > detailsAt && withPicture.indexOf('hero-actions') > detailsAt, 'summary and links are below the picture');
   const onlyIntro = await render('Etikett\n\n# En *rubrik*\n\nIngress.\n\n![](/assets/img/hero.webp)', 'hero');
   assert.doesNotMatch(onlyIntro, /hero-details/);

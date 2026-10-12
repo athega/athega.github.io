@@ -1,12 +1,26 @@
 {%- assign heading_font = fonts.options[fonts.headings] -%}
 {%- assign body_font = fonts.options[fonts.body] -%}
-{%- comment -%}Font trial, see _data/fonts.json. The trial only sets variables on <html>; base.scss reads them. With scale and xHeight the heading letters are made smaller through font-size-adjust, which scales the letters only (boxes and spacing stay as designed).{%- endcomment -%}
+{%- comment -%}Font trial, see _data/fonts.json. The trial only sets variables on <html>; base.scss reads them. With scale and xHeight the heading letters are made smaller through font-size-adjust, which scales the letters only (boxes and spacing stay as designed). The headline of a hero is larger and can be spaced tighter (displayTracking, displayLeading).{%- endcomment -%}
 {%- assign heading_adjust = "" -%}
 {%- if heading_font.scale and heading_font.xHeight -%}
   {%- assign heading_adjust = heading_font.xHeight | times: heading_font.scale | round: 4 -%}
 {%- endif -%}
+{%- capture font_vars -%}
+  {%- if heading_font.family or body_font.family -%}
+    --font-body: {% if body_font.family %}'{{ body_font.family | escape }}', {% endif %}var(--font-system); --font-heading: {% if heading_font.family %}'{{ heading_font.family | escape }}', {% endif %}var(--font-system);
+  {%- endif -%}
+  {%- if body_font.weight %} --weight-text: {{ body_font.weight | escape }};{% endif -%}
+  {%- if heading_font.weight %} --weight-heading: {{ heading_font.weight | escape }};{% endif -%}
+  {%- if heading_font.tracking %} --tracking-heading: {{ heading_font.tracking | escape }};{% endif -%}
+  {%- if heading_font.displayTracking %} --tracking-display: {{ heading_font.displayTracking | escape }};{% endif -%}
+  {%- if heading_font.leading %} --leading-title: {{ heading_font.leading | escape }};{% endif -%}
+  {%- if heading_font.displayLeading %} --leading-display: {{ heading_font.displayLeading | escape }};{% endif -%}
+  {%- if heading_adjust != "" %} --heading-size-adjust: {{ heading_adjust }}; --heading-scale: {{ heading_font.scale | escape }};{% endif -%}
+  {%- if heading_font.singleWeight or body_font.singleWeight %} font-synthesis: none;{% endif -%}
+{%- endcapture -%}
+{%- assign font_vars = font_vars | strip -%}
 <!DOCTYPE html>
-<html lang="sv"{% if heading_font.family or body_font.family %} style="--font-body: {% if body_font.family %}'{{ body_font.family | escape }}', {% endif %}var(--font-system); --font-heading: {% if heading_font.family %}'{{ heading_font.family | escape }}', {% endif %}var(--font-system);{% if body_font.weight %} --weight-text: {{ body_font.weight | escape }};{% endif %}{% if heading_font.weight %} --weight-heading: {{ heading_font.weight | escape }};{% endif %}{% if heading_font.tracking %} --tracking-heading: {{ heading_font.tracking | escape }};{% endif %}{% if heading_font.leading %} --leading-title: {{ heading_font.leading | escape }};{% endif %}{% if heading_adjust != "" %} --heading-size-adjust: {{ heading_adjust }}; --heading-scale: {{ heading_font.scale | escape }};{% endif %}{% if heading_font.singleWeight or body_font.singleWeight %} font-synthesis: none;{% endif %}"{% endif %}>
+<html lang="sv"{% if font_vars != "" %} style="{{ font_vars }}"{% endif %}>
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">

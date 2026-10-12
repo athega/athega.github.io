@@ -284,8 +284,10 @@ databas eller extra tjänst. JSON-filerna används vid bygget, inte via klientko
 `index.html` inkluderar `_includes/home.html`, som sätter ihop sektionerna.
 Deras texter finns i `_data/home/content.json`:
 
-- `intro` – huvudrubrik (`heading`), orange text (`emphasis`), ingress (`lead`) och
-  herobilden (`image`, en sökväg under `assets/img/`). Ta bort `image` för att dölja bilden.
+- `intro` – huvudrubrik (`heading`), orange text sist i rubriken (`emphasis`; börjar den med
+  skiljetecken, som det orange slutpunkten, sätts den ihop med rubriken utan mellanslag),
+  ingress (`lead`) och herobilden (`image`, en sökväg under `assets/img/`). Ta bort `image`
+  för att dölja bilden.
 - `about` – Athega i korthet.
 - `services` – rubrik och tjänstekort i listan `items`.
 - `blog` – rubrik och länktext; de tre senaste inläggen hämtas automatiskt.
@@ -306,16 +308,17 @@ en separat HTML-kopia för varje nytt kort.
 
 #### Herobild (startsidan, tjänstesidorna och bloggen)
 
-En hero kan ha en bild som ligger förankrad i högerkanten och tonas ut mot sidans vita
-bakgrund åt vänster. Toningen är kort och mjuk så att bilden syns bakom texten, och en mjuk
-vit glöd runt bokstäverna håller texten tydlig framför den. Bilden täcker etikett,
-rubrik och ingress (`.hero-zone`). En eventuell sammanfattning och länkar (`.hero-details`)
-ligger under bilden på vit bakgrund, på samma sätt som första textavsnittet under startsidans
-hero. Upplägget är detsamma på alla skärmstorlekar: texten till vänster och bilden till höger. På små skärmar
-(under 760 px) behöver texten det mesta av bredden, så bilden ligger till stor del bakom
-texten och heroens höjd följer texten. Bilden är dekorativ
-(`alt=""` och `aria-hidden`), ligger överst på sidan (`fetchpriority="high"`, ingen lat
-inläsning) och `width`/`height` läggs till av bygget.
+En hero består av etikett, rubrik och ingress (`.hero-text`), och under dem en bild i sidans
+hela bredd (`.hero-media`): en panoramabild utan toning, med rundade hörn och en tunn orange
+linje under. En eventuell sammanfattning och länkar (`.hero-details`) ligger under linjen,
+på samma sätt som första textavsnittet under startsidans hero. Upplägget är detsamma på alla
+skärmstorlekar; bara bildens form ändras (2,9:1 på dator, 2,4:1 under 981 px och 16:9 under
+641 px). Rubriken är sidans rubriktypsnitt i stor storlek (`--text-display`, se Typografi),
+ingressen står i brödtypsnittet och bilden ligger under texten, så att bilden aldrig ligger
+bakom den. Bilden
+är dekorativ (`alt=""` och `aria-hidden`), ligger överst på sidan (`fetchpriority="high"`,
+ingen lat inläsning) och `width`/`height` läggs till av bygget. Bilden lämnas bort vid
+utskrift.
 
 - **Startsidan:** sätt `intro.image` i `_data/home/content.json` till en sökväg under
   `assets/img/`. Ta bort fältet för att dölja bilden.
@@ -329,33 +332,16 @@ inläsning) och `width`/`height` läggs till av bygget.
 Bildens markup finns på ett ställe, `_includes/components/hero-zone.html`, och används av
 alla tre mallarna.
 
-Bilden bör vara bred, ungefär 21:9 till 3:1, med motivet i högra halvan, och helst under
-200 KB. Eftersom bilden syns bakom texten ska bildens vänstra halva vara blek och mjuk i
-kontrasten, utan mörka ytor eller konturer och utan text i bilden, så ligger texten tydligt
-framför den. Mörka ytor under texten ger sämre kontrast och orange rubriktext försvinner
-lätt mot mellantoner. Bilden visas högst 760 px bred, alltså klart under
-hälften av en 1916 px bred källa, så att den är skarp på en 2x-skärm (retina) och tar liten
-plats. Därför är heron bara så hög som bilden (cirka 330 px på dator) eller texten om den
-är högre. Håll hero-texten kort: en lång ingress gör heron högre än bilden, och då beskärs
-och förstoras bilden. Vill du ha en större bild utan att den blir mjuk, leverera den med
-dubbel upplösning och höj gränsen i `--hero-media-width`. Utseendet justeras med
-variablerna överst i `_includes/styles/hero.scss`: `--hero-media-width` (bildens bredd),
-`--hero-min-height` (heroens lägsta höjd, bildens egen höjd vid den bredden),
-`--hero-pad-top` och `--hero-pad-bottom`, `--hero-focus` (`object-position`, vilken del av
-bilden som behålls när den beskärs), `--hero-text-columns` (hur stor del av bredden texten
-får), `--hero-text-max` och `--hero-lead-max` (textens bredd), `--hero-fade-length` (hur
-långt in i bilden toningen når, räknat från bildens vänsterkant), `--hero-fade` (toningens
-form) och `--hero-text-halo` (glöden runt bokstäverna, `none` stänger av den). Toningen är
-längst på smala skärmar, där texten ligger över bilden (430 px), och kortare från 1180 px
-(240 px) och 1322 px (160 px), där bilden börjar längre åt höger än texten. På telefon anges
-längden som andel av bilden. Från 1322 px har sidan nått sin fulla bredd (`--shell` slutar
-växa där) och förblir lika bred, bara centrerad. Bildens högerkant ligger då 40 px till höger
-om sista menyvalet (`--hero-media-right`) i stället för vid skärmkanten. Samma bredd,
-1322 px, är där den större logotypen och rutnätet med fyra tjänstekort börjar
-(`responsive.scss`). Varje variabel kan ha ett eget värde för små skärmar i mediafrågan
-längst ned i blocket, och en enskild sida kan få egna värden på herons variantklass (till
-exempel `.page-hero.ai-hero.hero-image`) efter grundblocket. Toningen använder `--paper`, så
-ingen ny färg behövs.
+Bilden bör vara bred, ungefär 21:9 till 2,3:1, och helst under 200 KB. Den visas i sidans
+hela bredd (högst 1216 px) och beskärs uppe och nere till panoramaformen, så håll motivet
+i mitten av höjden och undvik text i bilden. En källa på cirka 1916 px är skarp även på en
+2x-skärm (retina). Utseendet justeras med variablerna överst i
+`_includes/styles/hero.scss`: `--hero-ratio` (bildens form) och `--hero-focus`
+(`object-position`, vilken del av bilden som behålls när den beskärs, till exempel på telefon).
+Värdena för små skärmar finns i `responsive.scss`. Ge inte en enskild sida egen
+hero-CSS: alla sidor delar samma klasser (`.page-hero`, `.hero-text`, `.hero-media`,
+`.hero-details`), och en ändring görs för alla på en gång. En hero utan bild (till exempel
+AI för industri och Konsultnätverket) har bara texten.
 
 ### Redigera tjänste- och företagssidor
 
@@ -513,31 +499,30 @@ variant ska den först vara ett verkligt, annorlunda behov; annars väljs en av 
 All typografi bestäms på ett ställe: `:root` och avsnittet "Type roles" i
 `_includes/styles/base.scss`. Komponenternas stilfiler anger varken `font-family`,
 `font-size`, `font-weight`, `letter-spacing` eller radavstånd för text; de ger bara
-layout. En sida har därför högst fem textstorlekar, tre typsnitt och fyra vikter:
+layout. En sida har därför högst fem textstorlekar, två typsnitt (utöver kod) och fyra vikter:
 
 | Variabel | Används till | Storlek |
 | --- | --- | --- |
-| `--text-page` | sidans huvudrubrik (`h1`) | 34–44 px (32 px på mobil) |
+| `--text-display` | herons rubrik (`.page-hero h1`) | 40–76 px (38 px på mobil) |
+| `--text-page` | huvudrubriken (`h1`) på sidor utan hero | 34–44 px (32 px på mobil) |
 | `--text-section` | sektionsrubriker (`h2`), faktasiffror | 28–36 px (28 px på mobil) |
 | `--text-card` | kortrubriker (`h3`, kortens `h2`) och ingressen | 24–28 px (24 px på mobil) |
 | `--text-body` | all löpande text, listor, citat och `h4`–`h6` | 18 px |
 | `--text-small` | menyn, knappar, etiketter, datum, sidfot och kodblock | 14 px |
 
-Typsnitten är `--font-heading` (h1–h6, ingressen och de stora siffrorna), `--font-body`
-(allt annat) och `--font-mono` (kod). Vikterna är `--weight-text` (löpande text),
-`--weight-heading`, `--weight-ui` (meny, knappar och länkar) och `--weight-strong`
-(etiketter och betonad text). Etiketterna (`.eyebrow`, kortens nummer och sidfotens
-rubriker) behåller brödtypsnittet även när de är rubrikelement.
-
-Ska ett nytt element ha en storlek eller vikt: lägg till det i rollistan i `base.scss`
-i stället för att skriva ett eget värde i komponentens fil. Det som inte står i en
-lista är löpande text. Bloggartiklar använder samma storlekar som övriga sidor; bara
-kodblock och kod har egna regler (`article.scss`, `prism.scss`).
+Typsnitten är `--font-heading` (alla rubriker, h1–h6, och de stora siffrorna), `--font-body`
+(allt annat, även ingressen) och `--font-mono` (kod). Vikterna är `--weight-text` (löpande
+text), `--weight-heading`, `--weight-ui` (meny, knappar och länkar) och `--weight-strong`
+(etiketter och betonad text). Herorubriken är större och kan sättas tätare än övriga
+rubriker: `--tracking-display` och `--leading-display` (annars gäller rubrikernas
+`--tracking-heading` och `--leading-title`). Etiketterna (`.eyebrow`, kortens nummer och
+sidfotens rubriker) behåller brödtypsnittet även när de är rubrikelement. En sida visar
+högst fem textstorlekar: en sida med hero använder display i stället för page.
 
 ### Typsnitt och typsnittsprov
 
-Rubrikerna (h1–h6, ingressen och de stora siffrorna) har typsnittet Grandstander och all
-övrig text DM Sans. Kod har sajtens monospace-stack. Båda typsnitten har SIL Open Font
+Rubrikerna (h1–h6 och de stora siffrorna) har typsnittet Grandstander och all övrig
+text, även ingressen, DM Sans. Kod har sajtens monospace-stack. Båda typsnitten har SIL Open Font
 License och **hostas av oss**: filerna ligger i `assets/fonts/` tillsammans med
 licenstexterna (`OFL-*.txt`), och `@font-face` finns i `_includes/styles/fonts.scss`.
 Bara latin-delen finns med (svenska bokstäver och vanliga skiljetecken); andra tecken ritas

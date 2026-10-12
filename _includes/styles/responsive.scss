@@ -9,6 +9,7 @@
 }
 
 @media (max-width: 980px) {
+  .page-hero.hero-image { --hero-ratio: 2.4 / 1; }
   :where(.card-list) { --columns: 2; }
   :where(.card-list:has(> :nth-child(3):last-child)) { --columns: 1; }
   .nav { display: none; }
@@ -31,7 +32,7 @@
 }
 
 @media (max-width: 640px) {
- :root { --shell: calc(100% - 40px); --text-page: 32px; --text-section: 28px; --text-card: 24px; --section-flow-gap: 40px; --content-gap: var(--space-2); }
+ :root { --shell: calc(100% - 40px); --text-display: 38px; --text-page: 32px; --text-section: 28px; --text-card: 24px; --section-flow-gap: 40px; --content-gap: var(--space-2); }
   .nav-wrap { min-height: 72px; }
   .brand img { width: 146px; }
   .page-hero { padding: 58px 0 30px; }
@@ -43,6 +44,8 @@
   .card-list { border-left: 0; }
   .card-list > .card { padding: 22px 0; background: none; border-right: 0; }
   .card > img { aspect-ratio: 16 / 10; }
+  .page-hero.hero-image { --hero-ratio: 16 / 9; }
+  .hero-media { margin-top: var(--space-4); }
   .home-latest-heading { align-items: flex-start; }
   .home-latest-card { min-height: 120px; grid-template-columns: 116px minmax(0,1fr); }
   .home-latest-card img { min-height: 120px; }

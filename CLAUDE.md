@@ -29,8 +29,9 @@ uppdatera dokumentationen när du inför eller ändrar ett gemensamt mönster.
   Se README.
 - Typografi: `_includes/styles/base.scss` (`--text-*`, `--weight-*`, `--font-*` och
   rollistan "Type roles"). Komponenternas stilfiler anger inga textstorlekar, typsnitt
-  eller vikter; nya element läggs i rollistan. Högst fem storlekar och två typsnitt
-  (plus monospace för kod) på en sida.
+  eller vikter; nya element läggs i rollistan. Högst fem storlekar på en sida och två
+  typsnitt (rubrik och brödtext; plus monospace för kod). Inga sidspecifika klasser eller
+  egen CSS för en enskild sida: alla sidor delar samma klasser.
 - Kort och tabeller: `_includes/styles/cards.scss`, `components/service-card.html` och
   `sections/cards.html`. Bara två varianter finns: tabellen (standard) och den numrerade
   listan (`numbered`). Återanvänd dem i stället för att skapa nya kortklasser.
@@ -91,7 +92,7 @@ uppdatera dokumentationen när du inför eller ändrar ett gemensamt mönster.
   `_data/`. Escapa sådana textvärden med `escape`. Renderad Markdown i `content`
   och sektionsmallarnas HTML-fält ska däremot inte escapas en gång till.
 - En hero (`{% section "hero" %}`) får en dekorativ herobild genom ett stycke med bara en
-  Markdown-bild, `![](/assets/img/...)`. Bilden tonas ut åt vänster under etikett, rubrik och ingress; sammanfattning och länkar ligger under bilden. Startsidans
+  Markdown-bild, `![](/assets/img/...)`. Bilden visas under etikett, rubrik och ingress i sidans bredd, utan toning och med en tunn orange linje under; sammanfattning och länkar ligger under linjen. Startsidans
   bild anges i stället som `intro.image` i `_data/home/content.json` och bloggens i
   `_includes/blog/archive.html`. Se README.
 - Länkar till e-post ska visa mottagaradressen i den synliga texten. Komponenten
