@@ -1,4 +1,5 @@
 <a class="card" href="{{ service.href | escape }}">
+  {% if service.image %}<img src="{{ service.image | escape }}" alt="">{% endif %}
   <h2>{{ service.title | escape }}</h2>
   <p>{{ service.description | escape }}</p>
 </a>

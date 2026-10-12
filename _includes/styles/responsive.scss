@@ -42,6 +42,7 @@
   :where(.card-list) { --columns: 1; }
   .card-list { border-left: 0; }
   .card-list > .card { padding: 22px 0; background: none; border-right: 0; }
+  .card > img { aspect-ratio: 16 / 10; }
   .home-latest-heading { align-items: flex-start; }
   .home-latest-card { min-height: 120px; grid-template-columns: 116px minmax(0,1fr); }
   .home-latest-card img { min-height: 120px; }

@@ -297,8 +297,12 @@ Skriv vanlig text i JSON-fälten, utan HTML eller HTML-entiteter. Skriv exempelv
 citattecken skrivas som `\"`. Behåll giltig JSON: inga kommentarer eller avslutande
 kommatecken. Lägg till eller ta bort ett helt objekt för att ändra en lista.
 
-Ett tjänstekort har `title`, `description` och `href`. Kortens ordning följer
-listan. Lägg inte till en separat HTML-kopia för varje nytt kort.
+Ett tjänstekort har `title`, `description`, `href` och en valfri `image`: en bild i
+formatet 4:3 som visas överst i kortet (bildtexten är tom, eftersom rubriken säger
+samma sak). Bilderna ligger i `assets/img/home/` och är beskurna ur sidornas egna
+herobilder, cirka 800 × 600 px i WebP (50–60 KB). Ersätt en fil med en egen bild i samma
+format och med samma namn så byts den ut. Kortens ordning följer listan. Lägg inte till
+en separat HTML-kopia för varje nytt kort.
 
 #### Herobild (startsidan, tjänstesidorna och bloggen)
 
@@ -499,7 +503,8 @@ Kolumnerna följer antalet kort: tre kolumner, men exakt fyra kort delar en rad.
 kort) och under 641 px en kolumn, där tabellen blir rader utan sidolinjer. På en grå
 sektion (`soft-section`) har tabellens celler vit bakgrund och en mörkare linje.
 
-Kortet äger avstånden mellan nummer, rubrik och text. Rubrikens och textens storlek kommer
+Ett kort kan börja med en bild (`<img>` som första barn, 4:3; 16:10 på mobil).
+Kortet äger avstånden mellan bild, nummer, rubrik och text. Rubrikens och textens storlek kommer
 från rollistan i `base.scss`, så ett kort ska inte få egna storlekar. Behövs en tredje
 variant ska den först vara ett verkligt, annorlunda behov; annars väljs en av de två.
 

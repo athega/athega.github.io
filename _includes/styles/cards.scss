@@ -13,6 +13,9 @@
 .card > * + * { margin-top: var(--space-2); }
 .card > span + * { margin-top: var(--heading-gap); }
 .card > span { color: var(--ink); }
+/* A card can start with a picture (4:3, decorative: the heading says the same). */
+.card > img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius-sm); }
+.card > img + * { margin-top: var(--space-3); }
 .card p { max-width: 670px; color: var(--muted); }
 /* A linked card, and the blog cards and archive rows, underline their heading on hover and keyboard focus. */
 a.card:is(:hover, :focus-visible) :is(h2, h3), .news-card:is(:hover, :focus-visible) h2, .archive-item:is(:hover, :focus-visible) h2 { text-decoration: underline; text-decoration-color: var(--orange); text-decoration-thickness: 2px; text-underline-offset: .2em; }
