@@ -2,23 +2,17 @@
 permalink: /chrille/
 
 name: Christian Lizell
-title: Fullstackutvecklare (JavaScript, Java)
+title: Teknisk produktutvecklare med AI i fokus
 image: /assets/img/employees/chrille.jpg
 thumb: /assets/img/employees/chrille-thumb.jpg
 ---
 
-Jag är en programmeringsgeek som älskar att dela med mig av allt
-från vackra bash-one-liners till sköna Javascriptsgrepp.
+Mitt teknikintresse började med en Commodore 64 och har egentligen aldrig gått över. Jag har alltid gillat att förstå hur saker fungerar, programmera och hitta smartare sätt att lösa problem.
 
-Jag trivs väldigt bra när jag får sitta djupt försjunken i en IDE
-eller Emacs med ett system som används av många. Därför ligger
-utveckling av system för webben mig varmt om hjärtat.
+Med åren har jag blivit minst lika intresserad av varför vi bygger det vi bygger och hur vi kan bli bättre på att göra det. Jag har lång erfarenhet av utveckling, tekniskt ledarskap och produktutveckling och trivs bäst där de möts, från att förstå problemet och forma en idé till att faktiskt bygga och testa lösningen.
 
-Som senior utvecklare och/eller techlead, har jag coachat flera
-utvecklingsprojekt. Jag tycker det är en härlig känsla att få
-team att prestera bättre.
+AI har på väldigt kort tid förändrat mitt sätt att arbeta med mjukvaruutveckling i grunden. För mig handlar det inte om att skriva kod lite snabbare, utan om ett helt annat sätt att ta sig från idé till fungerande produkt.
 
-Vägen till idag kan sammanfattas;
-_Commodore 64 -> Amiga -> Solaris -> Windows -> Linux -> Mac OS X_
-eller
-_BASIC -> C -> Perl -> Java -> Go -> Javascript_.
+Jag arbetar AI-first, där agenter står för implementationen och min roll allt mer handlar om att förstå problemet, sätta riktningen, experimentera, utvärdera och avgöra vad som faktiskt är bra.
+
+Det är den största förändringen av hur jag arbetar sedan jag började programmera på min C64. Och förmodligen den roligaste.
