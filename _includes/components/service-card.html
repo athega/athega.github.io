@@ -1,4 +1,8 @@
 <a class="service-card" href="{{ service.href | escape }}">
+  {% if service.image %}
+    <div class="service-card-picture"><img src="{{ service.image | escape }}" alt="" loading="lazy"></div>
+    <span class="service-card-number" aria-hidden="true">{% if number < 10 %}0{% endif %}{{ number }}</span>
+  {% endif %}
   <div class="service-card-heading">
     <h2>{{ service.title | escape }}</h2>
   </div>

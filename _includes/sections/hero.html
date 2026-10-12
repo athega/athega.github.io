@@ -2,7 +2,8 @@
   <div class="shell">
     {{ eyebrow }}
     {{ heading }}
-    {{ lead }}
+    {{ lead }}{% if image %}
+    {% include "components/magazine-picture.html", image: image %}{% endif %}
     {% if summary != empty %}
       {% if variant == 'ai' %}<div class="hero-summary">{{ summary }}</div>{% else %}{{ summary }}{% endif %}
     {% endif %}

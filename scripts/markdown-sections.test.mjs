@@ -58,3 +58,25 @@ test('incorrect block names and variants give clear errors', async () => {
   await assert.rejects(render('Text', 'focus', 'stakced'), /Unknown focus variant: stakced/);
   await assert.rejects(render('Ingen rubrik', 'hero'), /hero needs a # heading/);
 });
+
+test('a standalone hero image keeps the summary and trailing contact links intact', async () => {
+  for (const imageFirst of [true, false]) {
+    const image = '![](/assets/img/systemutveckling/hero.webp)';
+    const link = '[reception@athega.se](mailto:reception@athega.se)';
+    const tail = imageFirst ? `${image}\n\n${link}` : `${link}\n\n${image}`;
+    const html = await render(`Systemutveckling\n\n# En *rubrik*\n\nIngress.\n\nSammanfattning med **betoning**.\n\n${tail}`, 'hero');
+    assert.equal((html.match(/<img /g) || []).length, 1);
+    assert.match(html, /class="magazine-picture" aria-hidden="true"/);
+    assert.match(html, /alt="" fetchpriority="high"/);
+    assert.match(html, /class="hero-summary">Sammanfattning med <strong>betoning<\/strong>/);
+    assert.match(html, /class="hero-actions"/);
+    assert.match(html, /href="mailto:reception@athega.se" class="text-link"/);
+    assert.ok(html.indexOf('class="magazine-picture"') < html.indexOf('class="hero-summary"'));
+  }
+});
+
+test('an inline hero image remains part of its paragraph', async () => {
+  const html = await render('# Rubrik\n\nIngress.\n\nSe ![diagram](/diagram.png) i sammanhang.', 'hero');
+  assert.doesNotMatch(html, /magazine-picture/);
+  assert.match(html, /class="hero-summary">Se <img src="\/diagram.png" alt="diagram"> i sammanhang/);
+});

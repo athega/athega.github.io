@@ -1,0 +1,178 @@
+/* Verkstadsmagasinet: scoped to the homepage and opted-in section pages.
+   Existing content, navigation and other page families keep their own styles. */
+.magazine-page {
+  --magazine-serif: Georgia, "Times New Roman", serif;
+  --magazine-gap: 28px;
+  font-weight: 400;
+
+  :is(h1, h2, h3):not(.eyebrow) {
+    font-family: var(--magazine-serif);
+    font-weight: 700;
+    letter-spacing: -.035em;
+    text-wrap: pretty;
+  }
+
+  > .page-hero {
+    padding-top: 56px;
+    padding-bottom: 0;
+  }
+
+  > .page-hero > .shell {
+    display: block;
+  }
+
+  .page-hero h1 {
+    max-width: 1150px;
+    font-size: clamp(44px, 5.5vw, 76px);
+    line-height: 1.08;
+    letter-spacing: -.045em;
+  }
+
+  .page-hero h1 span { color: inherit; }
+
+  .page-hero .page-lead {
+    max-width: 930px;
+    padding-left: 0;
+    border: 0;
+    color: var(--ink);
+    font-size: clamp(20px, 2.1vw, 28px);
+    line-height: 1.4;
+  }
+
+  > .page-hero > .shell > .magazine-picture {
+    margin-top: 32px;
+  }
+
+  > .page-hero > .shell > .hero-summary {
+    max-width: 820px;
+    margin-top: 28px;
+  }
+
+  > .page-hero > .shell > .hero-actions {
+    margin-top: 24px;
+    margin-bottom: 24px;
+  }
+
+  .home-service-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--magazine-gap);
+    border: 0;
+  }
+
+  .home-service-grid .service-card {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 0 0 24px;
+    border: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .service-card-picture {
+    overflow: hidden;
+    margin-bottom: 22px;
+    background: var(--neutral);
+  }
+
+  .service-card-picture img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: 55% center;
+    transition: transform .35s ease;
+  }
+
+  .service-card:is(:hover, :focus-visible) img { transform: scale(1.035); }
+
+  .service-card-number {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 12px;
+    color: var(--muted);
+    font-size: var(--text-sm);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .service-card-number::after {
+    content: "";
+    width: 28px;
+    height: 2px;
+    background: var(--orange);
+  }
+
+  .service-card h2 { font-size: clamp(23px, 2vw, 28px); line-height: 1.15; }
+  .service-card p { margin-top: 16px; font-size: var(--text-base); }
+
+  .focus-section > .shell > .section-heading {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 40px;
+    margin: 0 0 44px;
+    padding-top: 4px;
+  }
+
+  .focus-section .focus-intro { font-size: var(--text-base); }
+  .focus-label { margin-bottom: 24px; }
+
+  .home-latest { margin-top: 56px; }
+  .home-latest-grid { gap: var(--magazine-gap); }
+  .home-latest-card {
+    grid-template-columns: 110px minmax(0, 1fr);
+    gap: 18px;
+    min-height: 0;
+    border: 0;
+    border-radius: 0;
+    overflow: visible;
+    transition: none;
+  }
+  .home-latest-card:hover { transform: none; }
+  .home-latest-card img { height: 150px; min-height: 0; }
+  .home-latest-card > div { padding: 0; }
+  .home-latest-card h3 { font-size: 21px; line-height: 1.2; hyphens: none; overflow-wrap: anywhere; }
+  .home-latest-card:is(:hover, :focus-visible) h3 {
+    text-decoration: underline;
+    text-decoration-color: var(--orange);
+    text-underline-offset: .2em;
+  }
+  .home-latest-card p { font-size: var(--text-sm); line-height: 1.5; }
+
+  .section-heading h2 { font-size: clamp(30px, 3.4vw, 44px); }
+  .join-grid h2 { font-size: clamp(28px, 3vw, 38px); }
+
+  .focus-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 32px var(--magazine-gap);
+    border: 0;
+  }
+  .focus-grid article {
+    min-height: 0;
+    padding: 24px 0 0;
+    border: 0;
+    border-top: 1px solid var(--line);
+  }
+  .focus-grid h3, .step-grid h3 { font-size: 26px; }
+  .focus-grid p { font-size: var(--text-base); }
+  .step-grid { gap: var(--magazine-gap); }
+  .step-grid article {
+    border-radius: 0;
+    padding: 24px 0 0;
+    border-top: 2px solid var(--orange);
+    background: transparent;
+  }
+  .soft-section, .join-section { background: #f5f4f1; }
+}
+
+.magazine-picture {
+  width: 100%;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--orange);
+}
+.magazine-picture img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1916 / 700;
+  object-fit: cover;
+  object-position: center 60%;
+}

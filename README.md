@@ -485,3 +485,28 @@ Om utvecklingsservern får en annan port än 8080 används adressen den skriver 
 ## Hemligt rymdspel
 
 Kontroller, multiplayer, arkitektur och tester finns i [spelets README](docs/space-egg/README.md).
+
+### Designpilot: Verkstadsmagasinet
+
+Startsidan och `/systemutveckling/` provar en redaktionell form med serifrubriker,
+panoramabilder och återkommande bildutsnitt. Det är en avgränsad designpilot;
+övriga sidfamiljer behåller sin befintliga form. Den gemensamma mobilfootern
+är kompaktare på samtliga sidor, med två kolumner och minst 44 px höga länkar. CSS ligger i
+`_includes/styles/magazine.scss` med brytpunkter sist i `responsive.scss`.
+Georgia används från besökarens system; inga externa fonter eller nya paket laddas.
+
+Startsidan får formen via `magazine-page` i `home.html`. På en Markdown-sida med
+`layout: sections` väljs den med `presentation: magazine` i front matter.
+Innehållet ligger fortsatt i Markdown och befintlig startsidesdata.
+
+En ensam Markdown-bild inne i en hero, `![](/assets/img/...)`, blir en dekorativ
+panoramabild mellan ingress och sammanfattning. Kontaktlänkarna ligger efter
+sammanfattningen. Utan bild behåller hero-sektionen sin tidigare struktur.
+Startsidan anger bilden via `intro.image` i `_data/home/content.json` och
+respektive tjänsteutsnitt via `services.items[].image`. Bilderna återanvänds
+från bildförslaget i PR #59; inga av dess font- eller komponentändringar ingår.
+Mobilen beskär panoramat åt höger och visar tjänsterna som en lista med små
+bildutsnitt. Bildrörelse vid hovring stängs av vid minskad rörelse.
+
+Startsidan lyfter den befintliga ingressen till huvudrubrik och använder den
+befintliga huvudrubriken som ingress. Det här är ett medvetet designförslag.
