@@ -14,6 +14,8 @@ Om Athega
 
 I snart tre decennier har vi hjälpt svenska företag med avancerad mjukvaruutveckling.
 
+![](/assets/img/om-oss/hero.webp)
+
 {% endsection %}
 
 {% section "history" %}

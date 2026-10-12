@@ -1,8 +1,9 @@
 {
   "intro": {
-    "heading": "Vi är experter på den senaste mjukvarutekniken",
-    "emphasis": "och erbjuder den till våra kunder.",
-    "lead": "Nyfikna på att utforska nytt, med erfarenhet av vad som håller."
+    "heading": "Nyfikna på att utforska nytt, med erfarenhet av vad som håller",
+    "emphasis": ".",
+    "lead": "Vi är experter på den senaste mjukvarutekniken och erbjuder den till våra kunder.",
+    "image": "/assets/img/home-hero.webp"
   },
   "about": {
     "eyebrow": "Athega i korthet",
@@ -14,21 +15,25 @@
       {
         "title": "Systemutveckling",
         "description": "Seniora utvecklingskonsulter som hjälper er att utveckla, modernisera och förvalta system oavsett teknik, plattform eller var i livscykeln ni befinner er.",
+        "image": "/assets/img/home/systemutveckling.webp",
         "href": "/systemutveckling/"
       },
       {
         "title": "AI & maskininlärning",
         "description": "Vi tar AI från idé till fungerande lösning, med erfarenhet av allt från analys och automation till generativa modeller.",
+        "image": "/assets/img/home/ai-maskininlarning.webp",
         "href": "/ai-labbet/"
       },
       {
         "title": "AI för industri",
         "description": "Hårdvara, mjukvara och stöd i en helhet för produktionsnära AI, optimering, kvalitet och prediktivt underhåll.",
+        "image": "/assets/img/home/ai-industri.webp",
         "href": "/ai-labbet/industri/"
       },
       {
         "title": "Teknikgranskning",
         "description": "En djup teknisk genomlysning som ger köpare, investerare och bolag ett tydligt beslutsunderlag.",
+        "image": "/assets/img/home/teknikgranskning.webp",
         "href": "/teknikgranskning/"
       }
     ]

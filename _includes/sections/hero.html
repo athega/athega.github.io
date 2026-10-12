@@ -1,15 +1,30 @@
-<section class="page-hero{% if variant == 'ai' %} ai-hero{% elsif variant == 'industry' %} industry-hero{% elsif variant == 'technical-review' %} dd-hero{% endif %}">
+{%- capture hero_summary -%}
+{% if summary != empty %}{% if variant == 'ai' %}<div class="hero-summary">{{ summary }}</div>{% else %}{{ summary }}{% endif %}{% endif %}
+{%- endcapture -%}
+{%- capture hero_actions -%}
+{% if links.size > 0 %}<div class="hero-actions">{% for link in links %}{{ link }}{% endfor %}</div>{% endif %}
+{%- endcapture -%}
+<section class="page-hero{% if variant == 'ai' %} ai-hero{% elsif variant == 'industry' %} industry-hero{% elsif variant == 'technical-review' %} dd-hero{% endif %}{% if image %} hero-image{% endif %}">
+  {% if image %}
+  {% capture hero_text %}
+    {{ eyebrow }}
+    {{ heading }}
+    {{ lead }}
+  {% endcapture %}
+  {% include "components/hero-zone.html", image: image, text: hero_text %}
+  {% if hero_summary != empty or hero_actions != empty %}
+  <div class="shell hero-details">
+    {{ hero_summary }}
+    {{ hero_actions }}
+  </div>
+  {% endif %}
+  {% else %}
   <div class="shell">
     {{ eyebrow }}
     {{ heading }}
     {{ lead }}
-    {% if summary != empty %}
-      {% if variant == 'ai' %}<div class="hero-summary">{{ summary }}</div>{% else %}{{ summary }}{% endif %}
-    {% endif %}
-    {% if links.size > 0 %}
-      <div class="hero-actions">
-      {% for link in links %}{{ link }}{% endfor %}
-      </div>
-    {% endif %}
+    {{ hero_summary }}
+    {{ hero_actions }}
   </div>
+  {% endif %}
 </section>

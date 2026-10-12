@@ -69,3 +69,10 @@ test("redirect target fragments and fallback links are checked", (t) => {
 test("external refresh targets cannot silently leave the static site", (t) => {
   assert.match(check(t, { "old/index.html": redirect("https://example.com/new/") }).join("\n"), /lokalt mål/);
 });
+
+test("a font fetched from Google is reported, since the site hosts its typefaces itself", (t) => {
+  const head = `<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin><link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=DM+Sans&amp;display=swap'><link rel='preload' href='/font.woff2' as='font' crossorigin>`;
+  const errors = check(t, { "index.html": `<html><head>${head}</head><body><h1>Page</h1></body></html>`, "font.woff2": "font" });
+  assert.equal(errors.length, 2);
+  assert.match(errors.join("\n"), /hämtas från Google/);
+});

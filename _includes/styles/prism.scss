@@ -2,7 +2,7 @@
    Colours are chosen for the dark code blocks in article.scss. */
 code[class*="language-"],
 pre[class*="language-"] {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-family: var(--font-mono);
   text-align: left;
   white-space: pre;
   word-spacing: normal;

@@ -226,7 +226,7 @@ git push
 ├── _posts/           # Blogginlägg
 ├── sidor/            # Enkla Markdown-sidor utan krav på front matter
 ├── _site/            # Genererad sajt (ignoreras av Git)
-├── assets/           # Bilder, CSS, JavaScript
+├── assets/           # Bilder, typsnitt (assets/fonts), CSS, JavaScript
 ├── eleventy.config.js # Eleventy-konfiguration
 └── package.json      # Node.js-beroenden
 ```
@@ -284,7 +284,10 @@ databas eller extra tjänst. JSON-filerna används vid bygget, inte via klientko
 `index.html` inkluderar `_includes/home.html`, som sätter ihop sektionerna.
 Deras texter finns i `_data/home/content.json`:
 
-- `intro` – huvudrubrik (`heading`), orange text (`emphasis`) och ingress (`lead`).
+- `intro` – huvudrubrik (`heading`), orange text sist i rubriken (`emphasis`; börjar den med
+  skiljetecken, som det orange slutpunkten, sätts den ihop med rubriken utan mellanslag),
+  ingress (`lead`) och herobilden (`image`, en sökväg under `assets/img/`). Ta bort `image`
+  för att dölja bilden.
 - `about` – Athega i korthet.
 - `services` – rubrik och tjänstekort i listan `items`.
 - `blog` – rubrik och länktext; de tre senaste inläggen hämtas automatiskt.
@@ -296,8 +299,49 @@ Skriv vanlig text i JSON-fälten, utan HTML eller HTML-entiteter. Skriv exempelv
 citattecken skrivas som `\"`. Behåll giltig JSON: inga kommentarer eller avslutande
 kommatecken. Lägg till eller ta bort ett helt objekt för att ändra en lista.
 
-Ett tjänstekort har `title`, `description` och `href`. Kortens ordning följer
-listan. Lägg inte till en separat HTML-kopia för varje nytt kort.
+Ett tjänstekort har `title`, `description`, `href` och en valfri `image`: en bild i
+formatet 4:3 som visas överst i kortet (bildtexten är tom, eftersom rubriken säger
+samma sak). Bilderna ligger i `assets/img/home/` och är beskurna ur sidornas egna
+herobilder, cirka 800 × 600 px i WebP (50–60 KB). Ersätt en fil med en egen bild i samma
+format och med samma namn så byts den ut. Kortens ordning följer listan. Lägg inte till
+en separat HTML-kopia för varje nytt kort.
+
+#### Herobild (startsidan, tjänstesidorna och bloggen)
+
+En hero består av etikett, rubrik och ingress (`.hero-text`), och under dem en bild i sidans
+hela bredd (`.hero-media`): en panoramabild utan toning, med rundade hörn och en tunn orange
+linje under. En eventuell sammanfattning och länkar (`.hero-details`) ligger under linjen,
+på samma sätt som första textavsnittet under startsidans hero. Upplägget är detsamma på alla
+skärmstorlekar; bara bildens form ändras (2,9:1 på dator, 2,4:1 under 981 px och 16:9 under
+641 px). Rubriken är sidans rubriktypsnitt i stor storlek (`--text-display`, se Typografi),
+ingressen står i brödtypsnittet och bilden ligger under texten, så att bilden aldrig ligger
+bakom den. Bilden
+är dekorativ (`alt=""` och `aria-hidden`), ligger överst på sidan (`fetchpriority="high"`,
+ingen lat inläsning) och `width`/`height` läggs till av bygget. Bilden lämnas bort vid
+utskrift.
+
+- **Startsidan:** sätt `intro.image` i `_data/home/content.json` till en sökväg under
+  `assets/img/`. Ta bort fältet för att dölja bilden.
+- **Tjänstesidorna** (`layout: sections`): lägg ett stycke med bara en Markdown-bild i
+  heroblocket, till exempel `![](/assets/img/ai-labbet/hero.webp)`. Stycket kan stå var som
+  helst i blocket men läggs naturligast sist. Bildtexten används inte. Ta bort raden för att
+  dölja bilden.
+- **Bloggen** (`/blogg/` och alla årsarkiv): bilden anges på raden `hero_image` överst i
+  `_includes/blog/archive.html`. Ta bort raden för att dölja bilden.
+
+Bildens markup finns på ett ställe, `_includes/components/hero-zone.html`, och används av
+alla tre mallarna.
+
+Bilden bör vara bred, ungefär 21:9 till 2,3:1, och helst under 200 KB. Den visas i sidans
+hela bredd (högst 1216 px) och beskärs uppe och nere till panoramaformen, så håll motivet
+i mitten av höjden och undvik text i bilden. En källa på cirka 1916 px är skarp även på en
+2x-skärm (retina). Utseendet justeras med variablerna överst i
+`_includes/styles/hero.scss`: `--hero-ratio` (bildens form) och `--hero-focus`
+(`object-position`, vilken del av bilden som behålls när den beskärs, till exempel på telefon).
+Värdena för små skärmar finns i `responsive.scss`. Ge inte en enskild sida egen
+hero-CSS: alla sidor delar samma klasser (`.page-hero`, `.hero-text`, `.hero-media`,
+`.hero-details`), och en ändring görs för alla på en gång. En hero utan bild (till exempel
+AI för industri och Konsultnätverket) har bara texten.
 
 ### Redigera tjänste- och företagssidor
 
@@ -343,7 +387,7 @@ renderar Markdown inne i blocken; allt innehåll på sådana sidor ska ligga ino
 | Sektion | Så skriver du innehållet |
 | --- | --- |
 | `hero` | Överrubrik, sedan `#`-rubrik och ingress. `*Markerad text*` i huvudrubriken får Athega-orange textfärg. Eventuell sammanfattning och kontaktlänk följer efter ingressen. |
-| `focus`, `steps`, `cases`, `values`, `community` | Eventuell överrubrik, `##`-rubrik och introduktion. Varje `###`-rubrik börjar ett kort. Endast `steps` får automatiska nummer. |
+| `focus`, `steps`, `cases`, `values`, `community` | Eventuell överrubrik, `##`-rubrik och introduktion. Varje `###`-rubrik börjar ett kort. Endast `steps` får automatiska nummer och blir en numrerad lista; övriga blir tabeller (se Kort och tabeller). |
 | `audiences` | Sektionsintroduktion följd av `---` före varje målgruppskort. Kortet innehåller överrubrik, `###`-rubrik, valfri brödtext, vanlig punktlista och eventuell länk. |
 | `callout` | Överrubrik, `##`-rubrik, stycken och kontaktlänkar. Varianten `network` avslutas med en Markdown-bild och ett `>`-citat; citatets första stycke är överrubrik. |
 | `work-intro` | Vanliga stycken och en avslutande kontaktlänk. |
@@ -427,17 +471,124 @@ bygget och att berörda sidor behåller rätt HTML-struktur och utseende.
 Äldre bloggposter och enstaka andra innehållsfiler kan fortfarande innehålla HTML,
 till exempel för bilder och inbäddningar. Bedöm den utifrån det specifika innehållet.
 
-### Bloggens typografi
+### Kort och tabeller
 
-Bloggartiklar använder en egen skala i `_includes/styles/article.scss`, baserad
-på den tidigare publicerade bloggens faktor 1,2 och dess storleksgränser.
-Brödtext, ingress och citat följer sajtens brödtextstorlek `--text-lg` (18 px)
-och radavstånd `--leading-copy`, så att bloggen och övriga sidor är enhetliga.
-Då blir h3 cirka 26 px, h2 cirka 31 px och h1 cirka 37 px. Kodblock är 16 px.
-H1 och h2 har vikt 300, h3–h6 har vikt 400 och kod 500. Brödtexten ärver
-sajtens gemensamma vikt 300. Radavståndet är 1,5 i kodblock och 1,15 i rubriker.
-Den nya sidans typsnitt, omslag och komponentutseende behålls. Justera artikelns
-variabler i stället för de globala rubrikstorlekarna eller artikelns Markdown.
+Alla listor av rubrik + text delar samma komponent: `<div class="card-list">` med ett
+`.card` per kort (`<a class="card">` när hela kortet är en länk). Stilen finns i
+`_includes/styles/cards.scss` och används av `_includes/components/service-card.html`
+(startsidans tjänster) och `_includes/sections/cards.html` (sektionerna `focus`, `steps`,
+`cases`, `values` och `community`). Det finns två varianter, och bara två:
+
+- **Tabellen** (standard): hårfina linjer mellan cellerna, som tjänsterna under "Våra
+  fokusområden" på startsidan. Används av `focus`, `cases`, `values` och `community`.
+- **Den numrerade listan** (`card-list numbered`): samma rutnät och samma inre avstånd
+  men utan linjer och fyllning, med ett nummer före rubriken. Används av `steps`.
+
+Kolumnerna följer antalet kort: tre kolumner, men exakt fyra kort delar en rad. Under
+1100 px blir fyra kort två kolumner, under 981 px två kolumner (en kolumn om det är tre
+kort) och under 641 px en kolumn, där tabellen blir rader utan sidolinjer. På en grå
+sektion (`soft-section`) har tabellens celler vit bakgrund och en mörkare linje.
+
+Ett kort kan börja med en bild (`<img>` som första barn, 4:3; 16:10 på mobil).
+Kortet äger avstånden mellan bild, nummer, rubrik och text. Rubrikens och textens storlek kommer
+från rollistan i `base.scss`, så ett kort ska inte få egna storlekar. Behövs en tredje
+variant ska den först vara ett verkligt, annorlunda behov; annars väljs en av de två.
+
+### Typografi
+
+All typografi bestäms på ett ställe: `:root` och avsnittet "Type roles" i
+`_includes/styles/base.scss`. Komponenternas stilfiler anger varken `font-family`,
+`font-size`, `font-weight`, `letter-spacing` eller radavstånd för text; de ger bara
+layout. En sida har därför högst fem textstorlekar, två typsnitt (utöver kod) och fyra vikter:
+
+| Variabel | Används till | Storlek |
+| --- | --- | --- |
+| `--text-display` | herons rubrik (`.page-hero h1`) | 40–76 px (38 px på mobil) |
+| `--text-page` | huvudrubriken (`h1`) på sidor utan hero | 34–44 px (32 px på mobil) |
+| `--text-section` | sektionsrubriker (`h2`), faktasiffror | 28–36 px (28 px på mobil) |
+| `--text-card` | kortrubriker (`h3`, kortens `h2`) och ingressen | 24–28 px (24 px på mobil) |
+| `--text-body` | all löpande text, listor, citat och `h4`–`h6` | 18 px |
+| `--text-small` | menyn, knappar, etiketter, datum, sidfot och kodblock | 14 px |
+
+Typsnitten är `--font-heading` (alla rubriker, h1–h6, och de stora siffrorna), `--font-body`
+(allt annat, även ingressen) och `--font-mono` (kod). Vikterna är `--weight-text` (löpande
+text), `--weight-heading`, `--weight-ui` (meny, knappar och länkar) och `--weight-strong`
+(etiketter och betonad text). Herorubriken är större och kan sättas tätare än övriga
+rubriker: `--tracking-display` och `--leading-display` (annars gäller rubrikernas
+`--tracking-heading` och `--leading-title`). Etiketterna (`.eyebrow`, kortens nummer och
+sidfotens rubriker) behåller brödtypsnittet även när de är rubrikelement. En sida visar
+högst fem textstorlekar: en sida med hero använder display i stället för page.
+
+### Typsnitt och typsnittsprov
+
+Alla rubriker (h1–h6 och de stora siffrorna) har serifen Newsreader (vikt 700) och all övrig
+text, även ingressen, har DM Sans. Kod har sajtens monospace-stack. Båda typsnitten har SIL
+Open Font License och **hostas av oss**: filerna ligger i `assets/fonts/` tillsammans med
+licenstexterna (`OFL-*.txt`), och `@font-face` finns i `_includes/styles/fonts.scss`.
+Newsreader är en statisk instans (vikt 700 och optisk storlek 72, 24 KB) i stället för hela
+det variabla typsnittet (129 KB). Bara latin-delen finns med (svenska bokstäver och vanliga
+skiljetecken); andra tecken ritas av systemtypsnittet. Ingen besökare kontaktar Google eller
+någon annan tredje part, vilket var skälet till att vi tog bort Google Fonts (commit
+`8b30074`). Systemstacken (Helvetica Neue, Segoe UI, Roboto) heter `--font-system` i
+`_includes/styles/base.scss` och är reservtypsnitt medan filerna hämtas och för tecken som
+saknas.
+
+Vilka typsnitt som gäller väljs i `_data/fonts.json`. Två fält väljer alternativ, ett för
+rubrikerna (h1–h6) och ett för all övrig text (brödtext, ingresser, meny, etiketter och
+sifferrutor):
+
+```json
+"headings": "newsreader",
+"body": "dm-sans"
+```
+
+Sätt båda till samma alternativ för ett typsnitt överallt, eller blanda dem. Alternativen under
+`options` är `system` (inga filer, bara systemstacken), de hostade `newsreader`, `dm-sans` och
+`grandstander` (den tidigare rubrikfonten, kvar som alternativ) samt provade kandidater:
+`henny-penny`, `love-ya-like-a-sister`, `risque`, `karla`, `ranchers`, `corben` och
+`corben-regular`. Spara, så bygger utvecklingsservern om och laddar om sidan. Filen sätter bara
+variabler på `<html>` (`--font-body`, `--font-heading`, vikt, radavstånd och teckenavstånd);
+`base.scss` läser dem. Varje alternativ har:
+
+- `family` – typsnittets namn i CSS.
+- `preload` – de filer som ska hämtas direkt (en `<link rel="preload">` per fil) för typsnitt
+  som hostas av oss.
+- `google` – bara för provade kandidater: namnet i adressen på Google Fonts, som mallen gör
+  en länk av. Hostade typsnitt har inget `google`-fält.
+- `singleWeight` – `true` för typsnitt med bara en vikt: då stängs påhittad fetstil och kursiv av.
+- `weight` – vikten: för rubriker alla rubriker (h1–h6), för brödtext all löpande text
+  (sajtens egen är 300, som saknas i de flesta typsnitt).
+- `leading` – radavståndet i rubriker, relativt bokstäverna (sajtens standard är 1,16).
+- `scale` och `xHeight` – gör rubrikernas bokstäver mindre eller större utan att ändra
+  rubrikens ruta eller avstånden runt den. `xHeight` är typsnittets x-höjd i förhållande till
+  teckenstorleken (mät den i webbläsaren) och `scale` hur stor del av den storlek rubrikerna är
+  gjorda för (0,9 är 90 %). Det görs med `font-size-adjust`, och mallen räknar om `leading` så att
+  radavståndet följer bokstäverna. Ett bredare och tyngre typsnitt än Helvetica Neue Light
+  behöver oftast en `scale` under 1.
+- `displayTracking` och `displayLeading` – teckenavstånd och radavstånd i herorubriken, som är
+  större och kan sättas tätare än övriga rubriker (annars används `tracking` och `leading`).
+- `tracking` och `wordSpacing` – teckenavstånd och ordavstånd i rubrikerna. Sajten trycker
+  ihop rubrikernas bokstäver (negativt teckenavstånd, anpassat för Helvetica Neue), vilket
+  blir för tätt för vissa visningstypsnitt; `tracking` ersätter då det.
+- `headingCss` och `bodyCss` – extra CSS som läggs till för rubrikerna respektive sidan, till
+  exempel avstavning av långa ord. Etiketter (`.eyebrow`) lämnas utanför.
+- `notes`, `designer`, `license`, `size`, `weights`, `specimen` och `tested` – vad som hittades
+  när typsnittet provades, så att det går att jämföra utan att pröva om.
+
+Alternativet `system` saknar `family` och ändrar ingenting: när både `headings` och `body`
+är `system` är bygget byte för byte detsamma som utan funktionen.
+
+**Prova ett nytt typsnitt:** kopiera ett alternativ, byt namnen och ange `google` med namnet
+från fonts.google.com (ett typsnitt med flera vikter anges med axeln, till exempel
+`Karla:ital,wght@0,200..800;1,200..800`). Då hämtar varje besökares webbläsare typsnittet
+från Google, så det är bara för att titta: `npm run check` misslyckas så länge en sida
+länkar till `fonts.googleapis.com` eller `fonts.gstatic.com`, och ett sådant alternativ ska
+inte vara valt i något som checkas in.
+
+**Göra ett typsnitt permanent:** hämta woff2-filerna (och licenstexten) till `assets/fonts/`,
+lägg till `@font-face` i `_includes/styles/fonts.scss`, ta bort `google` från alternativet och
+ange `preload` för de filer varje sida använder. Fråga alltid före nedladdning av filer och
+kontrollera licensen.
 
 ### Ändra designen
 
@@ -448,8 +599,8 @@ i `assets/site.scss` är avsiktlig; responsiva regler kommer sist.
 Använd variablerna i `_includes/styles/base.scss` i stället för egna pixelvärden:
 avståndsskalan `--space-1..7`, `--grid-gap`, `--card-padding`, hörnradierna
 `--radius-sm`, `--radius` och `--radius-lg`, samt `--line-strong` och
-`--on-dark-muted`. Cirkelpilen på kort är `.card-arrow` (`.card-arrow-sm` för
-den mindre varianten) och kortrubriker delar en gemensam regel i `controls.scss`.
+`--on-dark-muted`. Textstorlekar, typsnitt och vikter finns bara i `base.scss`
+(se Typografi ovan). Kort och kortlistor beskrivs under Kort och tabeller.
 På sidor med `layout: sections` tar sektioner med egen bakgrund (`soft-section`,
 `join-section`, `unified-callout`, `dark-section`) och sektionerna som gränsar
 till dem hela `--section-flow-gap`; övriga sektioner tar halva.
