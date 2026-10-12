@@ -490,7 +490,8 @@ Kontroller, multiplayer, arkitektur och tester finns i [spelets README](docs/spa
 
 Startsidan och `/systemutveckling/` provar en redaktionell form med serifrubriker,
 panoramabilder och återkommande bildutsnitt. Det är en avgränsad designpilot;
-övriga sidfamiljer behåller sin befintliga form. CSS ligger i
+övriga sidfamiljer behåller sin befintliga form. Den gemensamma mobilfootern
+är kompaktare på samtliga sidor, med två kolumner och minst 44 px höga länkar. CSS ligger i
 `_includes/styles/magazine.scss` med brytpunkter sist i `responsive.scss`.
 Georgia används från besökarens system; inga externa fonter eller nya paket laddas.
 

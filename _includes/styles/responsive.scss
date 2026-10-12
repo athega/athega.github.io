@@ -60,8 +60,18 @@
   .article-shell { padding-top: 45px; }
   .back-link { margin-bottom: 45px; }
   .article-body iframe { min-height: 260px; }
-  .footer-top { grid-template-columns: 1fr; }
-  .footer-bottom { gap: 20px; }
+  .site-footer { padding: 32px 0 20px; }
+  .footer-top { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 20px; }
+  .footer-top > div:first-child { grid-column: 1 / -1; }
+  .footer-top img { width: 120px; margin-bottom: 0; }
+  .footer-links { min-width: 0; gap: 0; }
+  .footer-links > span { margin-bottom: 8px; }
+  .footer-links a { display: flex; align-items: center; min-height: 44px; overflow-wrap: anywhere; }
+  .footer-links p { margin: 8px 0 0; }
+  .footer-social { grid-column: 1 / -1; width: auto; flex-direction: row; flex-wrap: wrap; gap: 0 24px; }
+  .footer-social > span { flex-basis: 100%; }
+  .footer-social a { justify-content: flex-start; }
+  .footer-bottom { flex-wrap: wrap; gap: 8px 20px; margin-top: 24px; padding-top: 16px; }
 }
 
 /* Editorial pilot: keep image crops and text readable before four columns fit. */
