@@ -521,30 +521,34 @@ högst fem textstorlekar: en sida med hero använder display i stället för pag
 
 ### Typsnitt och typsnittsprov
 
-Rubrikerna (h1–h6 och de stora siffrorna) har typsnittet Grandstander och all övrig
-text, även ingressen, DM Sans. Kod har sajtens monospace-stack. Båda typsnitten har SIL Open Font
-License och **hostas av oss**: filerna ligger i `assets/fonts/` tillsammans med
+Alla rubriker (h1–h6 och de stora siffrorna) har serifen Newsreader (vikt 700) och all övrig
+text, även ingressen, har DM Sans. Kod har sajtens monospace-stack. Båda typsnitten har SIL
+Open Font License och **hostas av oss**: filerna ligger i `assets/fonts/` tillsammans med
 licenstexterna (`OFL-*.txt`), och `@font-face` finns i `_includes/styles/fonts.scss`.
-Bara latin-delen finns med (svenska bokstäver och vanliga skiljetecken); andra tecken ritas
-av systemtypsnittet. Ingen besökare kontaktar Google eller någon annan tredje part, vilket
-var skälet till att vi tog bort Google Fonts (commit `8b30074`). Systemstacken
-(Helvetica Neue, Segoe UI, Roboto) heter `--font-system` i `_includes/styles/base.scss` och är
-reservtypsnitt medan filerna hämtas och för tecken som saknas.
+Newsreader är en statisk instans (vikt 700 och optisk storlek 72, 24 KB) i stället för hela
+det variabla typsnittet (129 KB). Bara latin-delen finns med (svenska bokstäver och vanliga
+skiljetecken); andra tecken ritas av systemtypsnittet. Ingen besökare kontaktar Google eller
+någon annan tredje part, vilket var skälet till att vi tog bort Google Fonts (commit
+`8b30074`). Systemstacken (Helvetica Neue, Segoe UI, Roboto) heter `--font-system` i
+`_includes/styles/base.scss` och är reservtypsnitt medan filerna hämtas och för tecken som
+saknas.
 
 Vilka typsnitt som gäller väljs i `_data/fonts.json`. Två fält väljer alternativ, ett för
-rubrikerna och ett för all övrig text (brödtext, ingresser, meny, etiketter och sifferrutor):
+rubrikerna (h1–h6) och ett för all övrig text (brödtext, ingresser, meny, etiketter och
+sifferrutor):
 
 ```json
-"headings": "grandstander",
+"headings": "newsreader",
 "body": "dm-sans"
 ```
 
 Sätt båda till samma alternativ för ett typsnitt överallt, eller blanda dem. Alternativen under
-`options` är `system` (inga filer, bara systemstacken), de hostade `grandstander` och
-`dm-sans` samt provade kandidater: `henny-penny`, `love-ya-like-a-sister`, `risque`, `karla`,
-`ranchers`, `corben` och `corben-regular`. Spara, så bygger utvecklingsservern om och laddar om
-sidan. Filen sätter bara variabler på `<html>` (`--font-body`, `--font-heading`, vikt,
-radavstånd och teckenavstånd); `base.scss` läser dem. Varje alternativ har:
+`options` är `system` (inga filer, bara systemstacken), de hostade `newsreader`, `dm-sans` och
+`grandstander` (den tidigare rubrikfonten, kvar som alternativ) samt provade kandidater:
+`henny-penny`, `love-ya-like-a-sister`, `risque`, `karla`, `ranchers`, `corben` och
+`corben-regular`. Spara, så bygger utvecklingsservern om och laddar om sidan. Filen sätter bara
+variabler på `<html>` (`--font-body`, `--font-heading`, vikt, radavstånd och teckenavstånd);
+`base.scss` läser dem. Varje alternativ har:
 
 - `family` – typsnittets namn i CSS.
 - `preload` – de filer som ska hämtas direkt (en `<link rel="preload">` per fil) för typsnitt
@@ -561,6 +565,8 @@ radavstånd och teckenavstånd); `base.scss` läser dem. Varje alternativ har:
   gjorda för (0,9 är 90 %). Det görs med `font-size-adjust`, och mallen räknar om `leading` så att
   radavståndet följer bokstäverna. Ett bredare och tyngre typsnitt än Helvetica Neue Light
   behöver oftast en `scale` under 1.
+- `displayTracking` och `displayLeading` – teckenavstånd och radavstånd i herorubriken, som är
+  större och kan sättas tätare än övriga rubriker (annars används `tracking` och `leading`).
 - `tracking` och `wordSpacing` – teckenavstånd och ordavstånd i rubrikerna. Sajten trycker
   ihop rubrikernas bokstäver (negativt teckenavstånd, anpassat för Helvetica Neue), vilket
   blir för tätt för vissa visningstypsnitt; `tracking` ersätter då det.
