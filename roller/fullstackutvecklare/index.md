@@ -1,4 +1,5 @@
 ---
+layout: page
 title: Fullstackutvecklare
 tagline: Fullstackutvecklare
 sub_tagline: Fullstack betyder kunskap om hela "stacken" men vad innebär det?

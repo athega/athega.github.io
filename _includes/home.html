@@ -1,14 +1,21 @@
-<main id="main" class="section-page">
+<main id="main" class="manual-home-content" tabindex="-1">
   {% include "home/intro.html" %}
 
-  <section class="section focus-section" id="tjanster">
+  <section class="manual-about shell">
+    {% include "home/about.html" %}
+  </section>
+
+  <section class="manual-services" id="tjanster" aria-label="{{ home.content.services.heading | escape }}">
     <div class="shell">
-      {% include "home/about.html" %}
       {% include "home/services.html" %}
-      {% include "home/blog.html" %}
     </div>
   </section>
 
   {% include "home/consult.html" %}
+
+  <section id="bloggen" class="manual-journal shell" aria-label="{{ home.content.blog.heading | escape }}">
+    {% include "home/blog.html" %}
+  </section>
+
   {% include "home/searching.html" %}
 </main>

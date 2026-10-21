@@ -1,4 +1,5 @@
 ---
+layout: page
 title: Frontendutvecklare
 tagline: Frontendutvecklare
 sub_tagline: Systemutveckling av webbgränssnitt

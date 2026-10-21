@@ -1,4 +1,5 @@
 ---
+layout: page
 title: Fullstackutvecklare med erfarenhet av Javascript och Java
 ---
 

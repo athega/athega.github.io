@@ -1,5 +1,6 @@
 ---
 layout: sections
+body_class: manual-design manual-subpage
 title: Om oss
 description: >-
   Möt människorna på Athega och läs om vårt teknikintresse, vår historia och hur bolaget arbetar i
@@ -7,6 +8,8 @@ description: >-
 ---
 
 {% section "hero" %}
+
+![](/assets/img/manual-about.webp)
 
 Om Athega
 

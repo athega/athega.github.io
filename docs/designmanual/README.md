@@ -42,7 +42,7 @@ Bilderna här är **AI-genererade konceptskisser**. De visar riktningen men beh�
 | Rubriker       | Georgia, fet                                |
 | Brödtext       | Helvetica Neue, Segoe UI, Arial, sans-serif |
 
-Mörk text på ljusa ytor och orange knappar. Orange används som accent och som text på mörka ytor. Det innebär ett föreslaget avsteg från sajtens nuvarande orange rubrikbetoning på vitt. Logotypens färg och form ändras inte.
+Mörk text på ljusa ytor. Fristående uppmaningar använder vita ramknappar med orange kant. Orange används som accent och som text på mörka ytor. Det innebär ett föreslaget avsteg från sajtens nuvarande orange rubrikbetoning på vitt. Logotypens färg och form ändras inte.
 
 Rubriktypsnittet är ett förslag, inte ett beslut. HTML-manualens provsida låter er jämföra serif och sans-serif utan att ändra innehållet.
 
@@ -76,4 +76,15 @@ Ingen installation eller server behövs. På avsnittet **Layout** går det att v
 - [Sammanfattade genereringsinstruktioner](genereringsprompter.txt)
 - [Färger och grundvärden i CSS](tokens.css)
 
-Nästa steg är att välja slutliga figurer, typografi och bildmängd, och sedan prova riktningen på en startsida och en tjänstesida. Materialet ligger separat från sajtens mallar och är undantaget från Eleventy-bygget. Den här PR:en ändrar inte sajtens utseende.
+Riktningen provas nu på startsidan, tjänste- och företagssidorna, personalsidorna och bloggöversikten i samma PR. Bloggposternas innehåll och mallar är oförändrade. Kör `npm ci` och `npm start` från repots rot för att prova sajten. Själva manualen ligger separat och är undantagen från Eleventy-bygget.
+
+## Fastställd knappstil i det lokala förslaget
+
+Alla fristående uppmaningar använder samma ramknapp: vit bakgrund, mörk text
+(`#111315`, 16 px, vikt 600, 24 px radavstånd) och 2 px Athega-orange ram
+med 4 px hörnradie. Minst 48 px höjd och 10 × 20 px inre luft.
+Vid hover används `#fff4eb`; tangentbordsfokus har en separat mörk kontur.
+
+Relaterade knappar placeras tillsammans med 16 px mellanrum. Den viktigaste
+kommer först. Länkar i löptext är understrukna. Navigation och klickbara kort
+behåller sina egna beteenden. Tidigare fyllda knappvarianter ersätts i förslaget.

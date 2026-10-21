@@ -492,3 +492,39 @@ Kontroller, multiplayer, arkitektur och tester finns i [spelets README](docs/spa
 till bildspråk, typografi och layout. Den kan läsas direkt i GitHub eller som PDF.
 HTML-versionen öppnas lokalt utan server. Materialet är undantaget från
 sajtbygget; efter bygget tas även bilder som fångats av bildkopieringens glob bort.
+
+### Lokalt designprov
+
+Designförslaget i PR #61 provar manualens bildvärld och typografi på
+startsidan och de övriga sidorna, med undantag för bloggposterna. Kör `npm run build` och `npm start` enligt instruktionerna ovan.
+Startsidesinnehållet ligger kvar i `_data/home/content.json`. Klassen
+`manual-design` i startsidans metadata avgränsar stilen i
+`_includes/styles/home-manual.scss`; Systemutveckling, AI & maskininlärning och Om oss använder dessutom
+`manual-subpage` och `_includes/styles/manual-subpages.scss`. Kompletterande sidtyper beskrivs nedan.
+
+En fristående Markdown-bild inne i hero-sektionen väljer en dekorativ illustration
+bredvid rubrik och ingress. Sammanfattning och kontaktlänkar följer under bilden.
+Bilderna i provet är AI-genererade koncept med manualens karaktärsblad som referens.
+
+Tjänstesidorna använder `manual-service` för parvis presentation av
+arbetssätt, sammanlänkade processteg och en ljus kontaktsektion. Även kortsektioner
+kan ha en fristående dekorativ Markdown-bild före sektionsrubriken; bilden visas
+bredvid introduktionen och påverkar inte kortens innehåll.
+
+AI-labbet använder dessutom `manual-ai` för två separata fokusområdesrader med
+introduktion och kontakt till vänster och konkreta tillämpningar till höger.
+
+### Gemensam form och uppmaningar i designprovet
+
+Alla tjänste-, företags-, personal- och enkla innehållssidor samt bloggöversikten
+använder `manual-design`. Bloggposter och deras layout omfattas inte av provet.
+`manual-actions.scss` definierar den gemensamma ramknappen för fristående
+`a.text-link` och startsidans `a.manual-primary`. Länkar i löptext, navigation och
+klickbara kort får inte denna stil. Relaterade uppmaningar samlas i `hero-actions`
+eller `callout-links`. Sidtypernas kompletterande regler finns i
+`manual-remaining.scss`; texter och permalänkar är bevarade.
+
+Bloggöversikten varierar fyra kompakta inlägg med ett större kort över hela
+bredden. Större kort växlar bildsida på dator, men följer vanlig läsordning på
+mobil. Inläggens kronologiska ordning ändras inte; kort utan bild får en
+textbaserad variant. Bloggposternas mallar påverkas inte.

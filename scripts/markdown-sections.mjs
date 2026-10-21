@@ -29,6 +29,15 @@ function inlineTokens(block) {
   return block?.find(token => token.type === 'inline')?.children || [];
 }
 
+function takeImage(blocks) {
+  const imageAt = blocks.findIndex(block => {
+    const tokens = inlineTokens(block);
+    return block[0].type === 'paragraph_open' && tokens.length === 1 && tokens[0].type === 'image';
+  });
+  if (imageAt === -1) return undefined;
+  return inlineTokens(blocks.splice(imageAt, 1)[0])[0].attrGet('src');
+}
+
 function isLink(block) {
   if (block?.[0].type !== 'paragraph_open') return false;
   const tokens = inlineTokens(block);
@@ -106,6 +115,7 @@ export function createSectionRenderer(md, renderTemplate) {
     switch (kind) {
       case 'hero': {
         template = 'hero';
+        data.image = takeImage(blocks);
         Object.assign(data, header(blocks, 'h1'));
         if (!data.heading) throw new Error('A hero needs a # heading.');
         data.links = links(blocks);
@@ -116,6 +126,7 @@ export function createSectionRenderer(md, renderTemplate) {
       case 'focus': case 'steps': case 'cases': case 'values': case 'community': {
         template = 'cards';
         const parts = cards(blocks);
+        data.image = takeImage(parts.intro);
         Object.assign(data, header(parts.intro));
         data.intro = parts.intro.map(block => paragraph(block, 'heading-note')).join('');
         data.cards = parts.cards;

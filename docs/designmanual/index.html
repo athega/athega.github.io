@@ -345,12 +345,9 @@
           <div class="note">
             <h3>Läsbarhet före färgeffekt</h3>
             <p>
-              Mörk text på orange ger cirka <strong>6,34:1</strong> i kontrast.
-              Orange på vitt ger bara <strong>2,94:1</strong>. Använd därför
-              mörk text i orange knappar och mörk text med orange understrykning
-              för länkar på ljusa ytor. Föreslagen skärpning av dagens design:
-              även betonade huvudrubriker får mörk text på vitt; orange används
-              som detalj. Orange text på mörk yta fungerar bättre.
+              Fristående uppmaningar använder vit bakgrund, mörk text och 2 px Athega-orange ram.
+              Länkar i löptext har mörk text med orange understrykning. Orange används som accent,
+              inte som text på vitt. Vit text på Athega-orange används inte för vanlig knapptext.
             </p>
             <p class="small">
               Beräknat från de angivna färgvärdena. Detta är inte en
@@ -526,7 +523,7 @@
             <div class="motion-demo" aria-hidden="true"></div>
           </div>
           <p class="caption">
-            Exempel: mörk text på orange, understruken textlänk och en liten
+            Vald knappstil: mörk text på vitt med 2 px orange ram, samma stil för båda uppmaningarna och en liten
             rörelse vid pekare eller tangentbordsfokus.
           </p>
           <div class="split">
@@ -534,6 +531,10 @@
               <h3>Knappar och länkar</h3>
               <ul>
                 <li>En tydlig primär handling per avsnitt.</li>
+                <li>Alla fristående uppmaningar använder samma ramknapp: vit bakgrund, mörk text (#111315), 2 px orange ram (#ff6600), 16 px text i vikt 600, 24 px radavstånd och 4 px hörnradie. Minst 48 px höjd och 10 × 20 px inre luft.</li>
+                <li>Vid hover används #fff4eb. Tangentbordsfokus har separat mörk kontur och ljus separation.</li>
+                <li>Uppmaningar som hör ihop placeras tillsammans med 16 px mellanrum och samma utseende. Den viktigaste kommer först. Längre text får radbrytas på mobil.</li>
+                <li>Länkar inne i löptext är understrukna. Navigation och klickbara kort behåller sina egna beteenden; de får inte knappramar.</li>
                 <li>
                   Minst 44 × 44 px som designmål för kontroller och menylänkar.
                 </li>

@@ -1,10 +1,13 @@
 ---
 layout: sections
+body_class: manual-design manual-subpage manual-service manual-careers
 title: Jobba med oss
 description: Läs om konsultrollen, teknikintresset, gemenskapen och vardagen på Athega.
 ---
 
 {% section "hero" %}
+
+![](/assets/img/manual-community.webp)
 
 Jobba med oss
 
@@ -102,7 +105,7 @@ Driver du eget men saknar kollegor och ett sammanhang? I Athegas konsultnätverk
 
 {% endsection %}
 
-{% section "callout", "dark" %}
+{% section "callout", "light" %}
 
 Nästa steg
 
