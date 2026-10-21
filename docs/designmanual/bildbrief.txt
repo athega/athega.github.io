@@ -1,7 +1,7 @@
 Syfte: Illustration till [sida/avsnitt] på Athegas webbplats.
 Budskap: [vad besökaren ska förstå].
 Handling: [en konkret handling, exempelvis testa en koppling].
-Figurer: [ingen / en / två / hela trion]. Bifoga fastställt karaktärsblad.
+Figurer: [Athegamannen / Ada, uppfinnaren / Byte, hunden / valfri kombination]. Bifoga fastställt karaktärsblad.
 Miljö: [enkel, meningsfull miljö med tillräckligt tomrum].
 Stil: ren europeisk serieteckning, tydliga bläckkonturer, begränsade plana färger och lätt skuggning.
 Palett: Athega-orange #ff6600, mörkt bläck, varmvit och dämpad blå.

@@ -73,6 +73,16 @@ Vi söker erfarna systemutvecklare som vill fortsätta vara nyfikna och göra ve
 
 {% section "company" %}
 
+## Några andra bekanta ansikten.
+
+Athegamannen har hängt med sedan 1997. Nu har han fått sällskap av uppfinnaren Ada och hunden Byte. Tillsammans ger de vårt teknikintresse en tecknad form.
+
+[Möt Athegamannen, Ada och Byte](/vara-figurer/)
+
+{% endsection %}
+
+{% section "company" %}
+
 ## Bolagsinformation.
 
 **Athega AB**\

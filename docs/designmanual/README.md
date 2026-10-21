@@ -4,7 +4,7 @@
 
 [Öppna hela manualen som PDF](athega-designmanual-0.1.pdf). GitHub visar PDF-filen direkt; om förhandsvisningen inte laddas går den att ladda ned därifrån.
 
-![Scen med Athegamannen, uppfinnaren och hunden](assets/samarbete.png)
+![Scen med Athegamannen, Ada och Byte](assets/samarbete.png)
 
 ## Riktningen
 
@@ -14,13 +14,17 @@ Athega-orange **#ff6600**, företagets logotyp och sajtens texter behålls. Typo
 
 ## Tre karaktärer
 
+Trion heter **Athegamannen, Ada och Byte**. Athegamannen följer med från [sajten från 1997](https://1997.athega.se/athega.html). Ada är uppfinnaren och Byte är hunden. Namnen är fastställda. Ada har en blinkning till Ada Lovelace; Byte förenar datorvärlden med hundens nyfikenhet.
+
+[Läs deras berättelse på sajten](../../vara-figurer/index.md).
+
 ![Karaktärsblad med tre figurer och handlingsposer](assets/karaktarer.png)
 
 - **Athegamannen:** originalets svarta framåtsvepta frisyr, mörka glasögon, vita dräkt och orange handskar. Bred bröstkorg, breda axlar och kraftiga armar och lår ger honom en kompakt silhuett. Proportionerna har korrigerats i både bladet och scenen efter återkoppling på det första, för smala förslaget.
-- **Uppfinnaren (arbetsnamn):** kopparröd hårknut, runda glasögon, vit arbetsjacka och orange scarf. Utgår från skissen Tobbe delade. Tar lika mycket initiativ som Athegamannen; båda får tänka, bygga och testa.
-- **Hunden (arbetsnamn):** rufsig, ljus päls med mörka fält, asymmetriska öron och orange halsband. Upptäcker det andra missar genom naturligt hundbeteende.
+- **Ada:** kopparröd hårknut, runda glasögon, vit arbetsjacka och orange scarf. Utgår från skissen Tobbe delade. Tar lika mycket initiativ som Athegamannen; båda får tänka, bygga och testa.
+- **Byte:** rufsig, ljus päls med mörka fält, asymmetriska öron och orange halsband. Upptäcker det andra missar genom naturligt hundbeteende.
 
-Alla tre behöver inte vara med i varje bild. Ansikten, hundens exakta teckning, namn och standardposer återstår att låsa. Dräkternas triangelsymboler ersätter inte företagets logotyp.
+Alla tre behöver inte vara med i varje bild. Ansikten, hundens exakta teckning och standardposer återstår att låsa. Dräkternas triangelsymboler ersätter inte företagets logotyp.
 
 [Se den ursprungliga Athegamannen](assets/athegamannen-original.jpg).
 
