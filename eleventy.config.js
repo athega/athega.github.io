@@ -100,6 +100,8 @@ export default function(eleventyConfig) {
   // Ta bort .liquid-filer från output efter build (de processas separat)
   eleventyConfig.on('eleventy.after', async () => {
     const fs = await import('fs/promises');
+    // Bildkopiering med glob följer inte template-undantagen nedan.
+    await fs.rm('_site/docs/designmanual', { recursive: true, force: true });
     try {
       await fs.unlink('_site/assets/site.js.liquid');
     } catch (e) {
@@ -113,6 +115,7 @@ export default function(eleventyConfig) {
 
   // Ignorera dokumentationsfiler (ska inte generera sidor)
   eleventyConfig.ignores.add("README.md");
+  eleventyConfig.ignores.add("docs/designmanual/**");
   eleventyConfig.ignores.add("docs/space-egg/README.md");
   eleventyConfig.ignores.add("CLAUDE.md");
   eleventyConfig.ignores.add("AGENTS.md");

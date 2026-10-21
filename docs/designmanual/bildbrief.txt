@@ -1,0 +1,12 @@
+Syfte: Illustration till [sida/avsnitt] på Athegas webbplats.
+Budskap: [vad besökaren ska förstå].
+Handling: [en konkret handling, exempelvis testa en koppling].
+Figurer: [ingen / en / två / hela trion]. Bifoga fastställt karaktärsblad.
+Miljö: [enkel, meningsfull miljö med tillräckligt tomrum].
+Stil: ren europeisk serieteckning, tydliga bläckkonturer, begränsade plana färger och lätt skuggning.
+Palett: Athega-orange #ff6600, mörkt bläck, varmvit och dämpad blå.
+Format: [16:9 / 2:1 / 4:3], samt plan för mobil.
+Athegamannen: breda axlar, kraftig bröstkorg, tydliga armar och lår samt kompakt silhuett enligt originalet. Undvik en smal, utdragen kropp.
+Bevara: figurernas silhuetter, ansikten, kläder och hundens teckning.
+Undvik: inbakad text, slumpmässiga symboler, extra figurer, barnsliga proportioner, kontorsstockmotiv och onödig rekvisita.
+Kontroll: fungerar handlingen och igenkänningen även i publicerad storlek?

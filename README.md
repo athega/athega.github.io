@@ -485,3 +485,10 @@ Om utvecklingsservern får en annan port än 8080 används adressen den skriver 
 ## Hemligt rymdspel
 
 Kontroller, multiplayer, arkitektur och tester finns i [spelets README](docs/space-egg/README.md).
+
+## Designförslag
+
+[Designmanualen](docs/designmanual/README.md) samlar karaktärsskisser och förslag
+till bildspråk, typografi och layout. Den kan läsas direkt i GitHub eller som PDF.
+HTML-versionen öppnas lokalt utan server. Materialet är undantaget från
+sajtbygget; efter bygget tas även bilder som fångats av bildkopieringens glob bort.

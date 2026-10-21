@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Athega · Provsida</title>
+    <link rel="stylesheet" href="preview.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Hoppa till innehållet</a>
+    <header>
+      <div class="shell">
+        <a href="#main"
+          ><img src="assets/athega.svg" alt="Athega" width="145" height="41"
+        /></a>
+        <nav class="desktop-nav" aria-label="Navigation">
+          <a href="https://athega.se/om-oss/" target="_blank">Om oss</a
+          ><a href="#tjanster">Våra fokusområden</a
+          ><a href="https://athega.se/blogg/" target="_blank">Blogg</a>
+        </nav>
+        <details class="mobile-nav">
+          <summary>Meny</summary>
+          <nav aria-label="Mobilnavigation">
+            <a href="https://athega.se/om-oss/" target="_blank">Om oss</a
+            ><a href="#tjanster">Våra fokusområden</a
+            ><a href="https://athega.se/blogg/" target="_blank">Blogg</a>
+          </nav>
+        </details>
+      </div>
+    </header>
+    <main id="main" tabindex="-1">
+      <section class="hero shell">
+        <h1>Nyfikna på att utforska nytt, med erfarenhet av vad som håller.</h1>
+        <p class="lead">
+          Vi är experter på den senaste mjukvarutekniken och erbjuder den till
+          våra kunder.
+        </p>
+        <a class="button" href="#tjanster">Våra fokusområden</a
+        ><img src="assets/samarbete.png" alt="" width="1536" height="1024" />
+      </section>
+      <section class="services" id="tjanster">
+        <div class="shell">
+          <h2>Våra fokusområden</h2>
+          <div class="grid">
+            <a
+              class="card"
+              href="https://athega.se/systemutveckling/"
+              target="_blank"
+              ><h3>Systemutveckling</h3>
+              <p>
+                Seniora utvecklingskonsulter som hjälper er att utveckla,
+                modernisera och förvalta system oavsett teknik, plattform eller
+                var i livscykeln ni befinner er.
+              </p></a
+            ><a class="card" href="https://athega.se/ai-labbet/" target="_blank"
+              ><h3>AI &amp; maskininlärning</h3>
+              <p>
+                Vi tar AI från idé till fungerande lösning, med erfarenhet av
+                allt från analys och automation till generativa modeller.
+              </p></a
+            ><a
+              class="card"
+              href="https://athega.se/ai-labbet/industri/"
+              target="_blank"
+              ><h3>AI för industri</h3>
+              <p>
+                Hårdvara, mjukvara och stöd i en helhet för produktionsnära AI,
+                optimering, kvalitet och prediktivt underhåll.
+              </p></a
+            ><a
+              class="card"
+              href="https://athega.se/teknikgranskning/"
+              target="_blank"
+              ><h3>Teknikgranskning</h3>
+              <p>
+                En djup teknisk genomlysning som ger köpare, investerare och
+                bolag ett tydligt beslutsunderlag.
+              </p></a
+            >
+          </div>
+        </div>
+      </section>
+      <section class="contact">
+        <div class="shell">
+          <p class="eyebrow">Erfarenhet på riktigt</p>
+          <h2>Det är ofta våra lösningar du möter, inte vårt namn.</h2>
+          <p>
+            Vi har arbetat med digitala medier, tillverkning, finans och
+            samhällstjänster sedan webben var ung. Våra konsulter går in där
+            tekniken är viktig och kraven är höga.
+          </p>
+          <a href="mailto:reception@athega.se"
+            >Behöver du hjälp? – reception@athega.se</a
+          >
+        </div>
+      </section>
+    </main>
+    <footer class="shell notice">
+      Lokalt designprov. Länkar till undersidor öppnar athega.se.
+    </footer>
+    <script>
+      if (new URLSearchParams(location.search).get("type") === "sans")
+        document.body.classList.add("sans");
+    </script>
+  </body>
+</html>
