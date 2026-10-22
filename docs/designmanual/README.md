@@ -92,3 +92,14 @@ Vid hover används `#fff4eb`; tangentbordsfokus har en separat mörk kontur.
 Relaterade knappar placeras tillsammans med 16 px mellanrum. Den viktigaste
 kommer först. Länkar i löptext är understrukna. Navigation och klickbara kort
 behåller sina egna beteenden. Tidigare fyllda knappvarianter ersätts i förslaget.
+
+## Maskinen på startsidan
+
+Det valda motivet använder en modern maskin med vita höljen, dämpat blå moduler
+och Athega-orange förbindelser. Ada matar in instruktioner, Athegamannen tar emot
+produkten direkt ur maskinen och Byte hittar en orange pusselbit som saknas i
+produktens gränssnitt. Sambandet mellan instruktion, resultat och granskning ska
+vara synligt. Behåll den rena seriestilen och undvik mässing och alkemiska effekter.
+
+[Vald startsidesbild](../../assets/img/manual-home-maskinen-futuristisk.webp) ·
+[Bildprompt](maskinen-futuristisk-prompt.txt)

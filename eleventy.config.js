@@ -117,7 +117,6 @@ export default function(eleventyConfig) {
   eleventyConfig.ignores.add("README.md");
   eleventyConfig.ignores.add("docs/designmanual/**");
   eleventyConfig.ignores.add("docs/space-egg/README.md");
-  eleventyConfig.ignores.add("CLAUDE.md");
   eleventyConfig.ignores.add("AGENTS.md");
 
   // Ignorera SCSS-filer (kompileras separat)
