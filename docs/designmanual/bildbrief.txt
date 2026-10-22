@@ -1,12 +1,47 @@
-Syfte: Illustration till [sida/avsnitt] på Athegas webbplats.
-Budskap: [vad besökaren ska förstå].
-Handling: [en konkret handling, exempelvis testa en koppling].
-Figurer: [Athegamannen / Ada, uppfinnaren / Byte, hunden / valfri kombination]. Bifoga fastställt karaktärsblad.
-Miljö: [enkel, meningsfull miljö med tillräckligt tomrum].
-Stil: ren europeisk serieteckning, tydliga bläckkonturer, begränsade plana färger och lätt skuggning.
-Palett: Athega-orange #ff6600, mörkt bläck, varmvit och dämpad blå.
-Format: [16:9 / 2:1 / 4:3], samt plan för mobil.
-Athegamannen: breda axlar, kraftig bröstkorg, tydliga armar och lår samt kompakt silhuett enligt originalet. Undvik en smal, utdragen kropp.
-Bevara: figurernas silhuetter, ansikten, kläder och hundens teckning.
-Undvik: inbakad text, slumpmässiga symboler, extra figurer, barnsliga proportioner, kontorsstockmotiv och onödig rekvisita.
-Kontroll: fungerar handlingen och igenkänningen även i publicerad storlek?
+BILDBRIEF FÖR ATHEGA
+
+GRUND OCH BERÄTTELSE
+Athega är ett konsultbolag inom mjukvaruutveckling, AI och teknisk granskning.
+Athega gör nya tekniska möjligheter användbara. Vi är nyfikna nog att prova och erfarna nog att bedöma resultatet. Tekniken hjälper oss att bygga; människorna ger riktning, granskar och förbättrar. Bra lösningar växer fram genom samarbete, experiment och uppmärksamhet på detaljer.
+Bilden ska visa en begriplig handling som stöder sidans budskap. Tekniken är ett verktyg som människor använder med omdöme. Visa gärna nyfikenhet och diskret humor.
+
+FYLL I FÖR DEN HÄR BILDEN
+Sida och avsnitt: [namn och relevant text från sidan]
+Budskap: [en mening om vad besökaren ska förstå]
+Handling: [vem gör vad med vilket föremål?]
+Resultat: [vilken nytta, upptäckt eller förbättring blir synlig?]
+Figurer och roller: [välj de figurer som behövs; beskriv varje handling]
+Komposition: [huvudmotiv, läsriktning, samband mellan föremålen]
+Placering: [bredvid text / över hela bredden / mindre sektionsbild]
+Format och storlek: [bildförhållande och faktisk visningsbredd på dator och mobil]
+Bakgrund: [vit för vit sidyta / transparent om bilden måste fungera på flera ytor]
+
+BILDVÄRLD OCH UTFÖRANDE
+Ren europeisk serieteckning med tydliga bläckkonturer, begränsade färgfält och lätt skuggning. Vuxna, uttrycksfulla figurer. Modern, genomtänkt teknik: släta vita eller elfenbensfärgade höljen, dämpat blå moduler, glas och orange förbindelser. Apparater och miljöer får vara fantasifulla men deras funktion och samband ska gå att läsa.
+Athega-orange #ff6600 är signaturfärgen. Använd mörkt bläck, vitt/elfenben och dämpat blått som stöd. Orange kan markera en koppling, en viktig del eller en upptäckt. Ingen mässingsestetik, åldrade ångmaskiner, neonmiljö eller magiska effekter.
+En tydlig huvudhandling, enkel miljö och luft runt motivet. Ingen inbakad text, bildtext eller UI-knapp för sajten. En avbildad produkt får ha enkla gränssnittsformer utan läsbar text. Ingen extra logotyp eller påhittade märken.
+
+KARAKTÄRER
+Athegamannen: erfaren, trygg, handlingskraftig och lätt självironisk. Stor svart framåtsvept frisyr, mörka glasögon, vit dräkt och orange handskar. Breda axlar, kraftig bröstkorg, armar och lår; kompakt silhuett. Kan formulera, bygga, testa, granska och ompröva. Undvik poserande superhjälte och en smal, utdragen kropp.
+Ada: nyfiken, uppmärksam och experimenterande. Kopparröd hårknut med penna, runda glasögon, vit arbetsjacka, orange scarf, mörka byxor och platta skor. Hon och Athegamannen är jämbördiga och får växla mellan idé, bygge och granskning.
+Byte: liten rufsig hund med ljus päls, mörka fält, asymmetriska öron och orange halsband. Upptäcker det andra missar genom att nosa, titta och följa spår. Hans fynd ska höra ihop med scenens problem eller resultat. Ingen talande hund eller hund som använder verktyg.
+Alla tre behöver inte vara med. Bevara identitet och kläder från referensbladet; variera poser och situationer.
+
+REFERENSER ATT BIFOGA
+Sökvägarna nedan utgår från repots rot. Öppna och bifoga själva bilderna, inte bara deras filnamn:
+1. docs/designmanual/assets/karaktarer.png — identitet, proportioner, kläder och teckningsstil.
+2. assets/img/manual-home-maskinen-futuristisk.webp — material, palett, detaljnivå och visuell tydlighet. Detta är stilreferens, inte ett krav på maskin eller samma komposition i varje bild.
+Ange referensernas roller i bildprompten. Saknas filerna: hämta dem innan nya bilder skapas; återskapa inte figurerna ur minnet.
+
+MOTIV OCH SAMBAND
+Välj motiv från sidans innehåll: exempelvis bygga en sammanhängande lösning, jämföra ett experiment med en skiss, följa en förbindelse eller upptäcka en svag del. Återanvänd bildvärlden, inte samma maskin på varje sida.
+Om en maskin används: visa hur instruktionen matas in och hur produkten fysiskt kommer ut. Visa människans arbete med resultatet. Ett fynd ska kunna kopplas till resultatet genom exempelvis samma form, färg och en motsvarande saknad del.
+
+KONTROLL FÖRE ANVÄNDNING
+- Förstår man huvudhandlingen utan förklarande bildtext?
+- Hänger indata, handling och resultat ihop visuellt?
+- Är figurerna igenkännbara, proportionerna rätt och anatomin rimlig? Inga extra händer, saknade ben eller sammanväxta föremål.
+- Fungerar bilden vid sidans faktiska visningsstorlek på dator och mobil? Viktig information får inte bero på en pytteliten detalj.
+- Finns luft runt figurer, fötter, svansar och viktiga föremål? Planera beskärning och eventuell kanttoning utan att handlingen försvinner.
+- Stämmer färger, material och detaljnivå med referenserna?
+Rätta fel före publicering. Spara den färdiga bildprompten tillsammans med manualens produktionsunderlag.

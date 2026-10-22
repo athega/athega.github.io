@@ -11,7 +11,7 @@
 
 - Följ [designmanualen](docs/designmanual/README.md) vid bild-, komponent- och layoutarbete. Läs relevanta avsnitt i [HTML-manualen](docs/designmanual/index.html). Uppdatera manualen när designbeslut ändras.
 - Behåll Athega-orange `#ff6600`, mörk text på ljusa ytor och manualens gemensamma typografi, knappar och layoutprinciper.
-- Använd karaktärsbladet och bildbriefen vid bildgenerering. Låt figurernas egenskaper styra handlingen och bildens samspel med sidans budskap:
+- Utgå från manualens [gemensamma berättelse](docs/designmanual/README.md#gemensam-berättelse-för-bilderna) och fyll i [bildbriefen](docs/designmanual/bildbrief.txt). Bifoga de referensbilder som briefen anger. Låt figurernas egenskaper styra handlingen och bildens samspel med sidans budskap:
   - **Athegamannen:** erfaren, trygg och handlingskraftig. Bygger, granskar och omprövar. Bevara den breda, kraftiga och kompakta silhuetten.
   - **Ada:** nyfiken, uppmärksam och experimenterande. Formulerar idéer, skissar och testar. Hon och Athegamannen är jämbördiga och får växla roller.
   - **Byte:** upptäcker det andra missar genom att nosa och följa spår. Hans fynd ska tydligt höra ihop med scenens problem eller resultat.

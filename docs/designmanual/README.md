@@ -28,6 +28,49 @@ Alla tre behöver inte vara med i varje bild. Ansikten, hundens exakta teckning 
 
 [Se den ursprungliga Athegamannen](assets/athegamannen-original.jpg).
 
+## Gemensam berättelse för bilderna
+
+Athega gör nya tekniska möjligheter användbara. Vi är nyfikna nog att prova och erfarna nog att bedöma resultatet. Tekniken hjälper oss att bygga; människorna ger riktning, granskar och förbättrar. Bra lösningar växer fram genom samarbete, experiment och uppmärksamhet på detaljer.
+
+Detta är grunden för alla illustrationer, oavsett sida eller motiv. Figuren,
+handlingen och resultatet ska tillsammans bära sidans budskap. Berättelsen är
+ett arbetsunderlag för bildproduktion, inte extra förklarande text på sajten.
+
+### Så gör du en ny bild utan tidigare kontext
+
+1. Läs sidans text och formulera ett enda budskap som bilden ska stödja.
+2. Fyll i [bildbriefen](bildbrief.txt): handling, synligt resultat, figurer, komposition, placering och visningsstorlek.
+3. Bifoga [karaktärsbladet](assets/karaktarer.png) för identitet och [bildreferensen](../../assets/img/manual-home-maskinen-futuristisk.webp) för material, färger och detaljnivå. Öppna bilderna; filnamn räcker inte som referenser.
+4. Generera med hela briefen och referenserna. Kontrollera berättelse, anatomi och läsbarhet i dator- och mobilvyn. Rätta fel och spara slutlig prompt.
+
+### Bildvärlden
+
+Ren europeisk serieteckning med tydliga konturer, begränsade färgfält och lätt
+skuggning. Tekniken har släta vita eller elfenbensfärgade höljen, dämpat blå
+moduler, glas och Athega-orange förbindelser. Den får vara fantasifull, men
+funktion och samband ska vara begripliga. Håll miljön enkel och lämna luft runt
+motivet. Använd vit bakgrund mot vitt, eller verklig transparens när bilden ska
+fungera på olika ytor. Undvik mässingsestetik, magiska effekter och inbakad text.
+
+Athegamannen bidrar med erfarenhet och handlingskraft, Ada med nyfikenhet och
+experimentlust och Byte med uppmärksamhet på det andra missar. De två människorna
+är jämbördiga och kan växla roller. Välj vilka figurer som behövs för berättelsen.
+
+### Samma grund, olika motiv
+
+| Sidans budskap | Möjlig handling | Vad bilden ska göra synligt |
+| --- | --- | --- |
+| Från idé till fungerande produkt | En instruktion matas in, en produkt kommer ut och granskas | Teknikens möjligheter och människans omdöme |
+| Systemutveckling | Ada och Athegamannen fogar samman moduler efter en gemensam skiss | Delarna bildar en fungerande helhet |
+| AI och experiment | En figur provar, den andra jämför resultatet med utgångspunkten | Lärande genom försök och utvärdering |
+| Teknikgranskning | En förbindelse följs och en svag del undersöks | Problem upptäcks och blir möjliga att åtgärda |
+| Samarbete | Figurer löser varsin del av ett gemensamt problem | Kompletterande perspektiv och gemensamt ansvar |
+
+Exemplen är utgångspunkter, inte fasta scener. Varje bild ska ha en egen anledning
+att finnas. Maskinen är ett motiv bland flera; den ska inte bli standardbild för
+varje tjänst. Små fynd kan belöna den som tittar närmare, men huvudbudskapet ska
+fungera även när bilden visas litet.
+
 ## Bildspråk
 
 Ren europeisk serieteckning med tydliga bläckkonturer, begränsade plana färger och lätt skuggning. En tydlig handling per bild, luft runt motivet och få men meningsfulla detaljer. Undvik generiska kontorsmotiv, överlastade maskiner och inbakad text.
