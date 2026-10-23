@@ -35,25 +35,27 @@ function fakePeerLibrary() {
 }
 const flush = () => new Promise(resolve => setImmediate(resolve));
 
-test('host admits four pilots, relays authenticated senders and rejects guest authority', async t => {
+test('host admits eight pilots, relays authenticated senders and rejects guest authority', async t => {
   const Peer = fakePeerLibrary();
-  const received = [[], [], [], [], []];
+  const received = Array.from({ length: 9 }, () => []);
   const clients = received.map(messages => createMultiplayer({ loadPeer: async () => Peer,
     onMessage: (message, sender) => messages.push({ message, sender }), onConnected() {}, onStatus() {} }));
   t.after(() => clients.forEach(client => client.close()));
   const id = await clients[0].host('Host');
-  for (let i = 1; i < 4; i++) await clients[i].join(id, `Guest ${i}`);
+  for (let i = 1; i < 8; i++) await clients[i].join(id, `Guest ${i}`);
   await flush();
-  for (let i = 0; i < 4; i++) assert.equal(clients[i].playerIds.length, 4);
+  for (let i = 0; i < 8; i++) assert.equal(clients[i].playerIds.length, 8);
   clients[1].send({ type: 'position', x: 0.5 });
   clients[1].send({ type: 'state', score: 100000 });
   await flush();
   assert.equal(received[0].length, 1);
-  assert.equal(received[2].length, 1);
-  assert.equal(received[2][0].sender, clients[1].playerId);
-  await assert.rejects(clients[4].join(id), /fullt/);
-  clients[3].close(); await flush();
-  assert.equal(clients[0].playerIds.length, 3);
+  for (let i = 2; i < 8; i++) {
+    assert.equal(received[i].length, 1);
+    assert.equal(received[i][0].sender, clients[1].playerId);
+  }
+  await assert.rejects(clients[8].join(id), /fullt/);
+  clients[7].close(); await flush();
+  assert.equal(clients[0].playerIds.length, 7);
 });
 
 test('critical updates survive congestion; excessive backlog disconnects cleanly', async t => {

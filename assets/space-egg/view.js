@@ -29,7 +29,7 @@ export function gameMarkup() {
         <div class="tools-controls"></div><div class="tools-stats"></div>
       </div></div>
       <div class="lobby" hidden><div class="panel">
-        <span class="kicker">Besättning / upp till fyra</span><h2>Flyg tillsammans</h2>
+        <span class="kicker">Besättning / upp till åtta</span><h2>Flyg tillsammans</h2>
         <p class="lobby-intro">Skapa ett rum och bjud in med en länk.</p>
         <label class="name-label">Pilotnamn <span>(valfritt)</span><input class="pilot-name" maxlength="20" autocomplete="off" placeholder="Ditt anropsnamn"></label>
         <section class="crew" hidden aria-label="Besättning"><h3>Besättning <span class="crew-count"></span></h3><ul class="crew-list" aria-live="polite"></ul></section>

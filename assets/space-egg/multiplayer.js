@@ -29,13 +29,13 @@ function loadPeerLibrary() {
   return libraryPromise;
 }
 
-export const MAX_PLAYERS = 4;
+export const MAX_PLAYERS = 8;
 
 export function pilotName(value) {
   if (typeof value !== 'string') return '';
   return Array.from(value.replace(/[\u0000-\u001f\u007f\u202a-\u202e\u2066-\u2069]/g, '').replace(/\s+/g, ' ').trim()).slice(0, 20).join('');
 }
-const protocol = 9;
+const protocol = 10;
 
 // Star topology: the host owns scoring and relays guests' visual updates.
 export function createMultiplayer({ onMessage, onConnected, onStatus, onPlayers = () => {}, loadPeer = loadPeerLibrary }) {
