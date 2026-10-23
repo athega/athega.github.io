@@ -1,0 +1,107 @@
+// Shared article presentation; content and original images stay in each post.
+.manual-article {
+  .article-shell {
+    width: var(--shell);
+    padding-block: 48px 80px;
+    --article-text: 19px;
+  }
+  .back-link {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 40px;
+    font-size: 14px;
+    text-decoration: underline;
+    text-decoration-color: var(--orange);
+    text-underline-offset: 0.25em;
+  }
+  .article-shell header {
+    max-width: 960px;
+    margin-inline: auto;
+    text-align: center;
+    margin-bottom: 48px;
+    padding-bottom: 40px;
+    border-bottom: 2px solid var(--orange);
+  }
+  .article-shell h1 {
+    max-width: 22ch;
+    margin-inline: auto;
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+    overflow-wrap: anywhere;
+    hyphens: auto;
+  }
+  .article-lead {
+    max-width: 62ch;
+    margin-inline: auto;
+    margin-bottom: 0;
+    font-size: 23px;
+    line-height: 1.5;
+  }
+  .article-body {
+    max-width: 720px;
+    margin-inline: auto;
+    line-height: 1.75;
+  }
+  .article-body h2 {
+    margin-top: 56px;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+    text-wrap: pretty;
+  }
+  .article-body h3 {
+    font-size: 26px;
+    font-weight: 700;
+  }
+  .article-body p {
+    margin-bottom: 24px;
+  }
+  .article-body img {
+    width: auto;
+    margin-block: 32px;
+    border-radius: 4px;
+  }
+  .article-body blockquote {
+    margin-block: 40px;
+    padding: 24px 32px;
+    background: var(--neutral);
+    border-left: 3px solid var(--orange);
+    font-style: normal;
+    font-size: 21px;
+    line-height: 1.6;
+  }
+  @media (max-width: 980px) {
+    .article-shell {
+      padding-block: 24px 48px;
+      --article-text: 18px;
+    }
+    .back-link {
+      margin-bottom: 24px;
+    }
+    .article-shell header {
+      padding-bottom: 24px;
+      margin-bottom: 32px;
+    }
+    .article-shell h1 {
+      font-size: 36px;
+    }
+    .article-lead {
+      font-size: 20px;
+    }
+    .article-body h2 {
+      font-size: 28px;
+      margin-top: 40px;
+    }
+    .article-body h3 {
+      font-size: 24px;
+    }
+    .article-body blockquote {
+      padding: 20px;
+      font-size: 19px;
+    }
+  }
+}

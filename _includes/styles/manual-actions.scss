@@ -1,7 +1,6 @@
 // One treatment for standalone actions, regardless of page or importance.
 .manual-design {
-  a.text-link,
-  a.manual-primary {
+  a.text-link {
     display: inline-flex;
     align-items: center;
     justify-content: center;

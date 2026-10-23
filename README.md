@@ -496,7 +496,7 @@ sajtbygget; efter bygget tas även bilder som fångats av bildkopieringens glob 
 ### Lokalt designprov
 
 Designförslaget i PR #61 provar manualens bildvärld och typografi på
-startsidan och de övriga sidorna, med undantag för bloggposterna. Kör `npm run build` och `npm start` enligt instruktionerna ovan.
+startsidan och de övriga sidorna, inklusive bloggposterna. Kör `npm run build` och `npm start` enligt instruktionerna ovan.
 Startsidesinnehållet ligger kvar i `_data/home/content.json`. Klassen
 `manual-design` i startsidans metadata avgränsar stilen i
 `_includes/styles/home-manual.scss`; Systemutveckling, AI & maskininlärning och Om oss använder dessutom
@@ -517,9 +517,9 @@ introduktion och kontakt till vänster och konkreta tillämpningar till höger.
 ### Gemensam form och uppmaningar i designprovet
 
 Alla tjänste-, företags-, personal- och enkla innehållssidor samt bloggöversikten
-använder `manual-design`. Bloggposter och deras layout omfattas inte av provet.
+använder `manual-design`. Bloggposter ärver `manual-design manual-article` från `_posts/_posts.json`. `manual-article.scss` ger centrerad rubrik och ingress samt vänsterjusterad brödtext med begränsad läsbredd. Inläggens texter och originalbilder behålls.
 `manual-actions.scss` definierar den gemensamma ramknappen för fristående
-`a.text-link` och startsidans `a.manual-primary`. Länkar i löptext, navigation och
+`a.text-link`. Länkar i löptext, navigation och
 klickbara kort får inte denna stil. Relaterade uppmaningar samlas i `hero-actions`
 eller `callout-links`. Sidtypernas kompletterande regler finns i
 `manual-remaining.scss`; texter och permalänkar är bevarade.
@@ -527,4 +527,9 @@ eller `callout-links`. Sidtypernas kompletterande regler finns i
 Bloggöversikten varierar fyra kompakta inlägg med ett större kort över hela
 bredden. Större kort växlar bildsida på dator, men följer vanlig läsordning på
 mobil. Inläggens kronologiska ordning ändras inte; kort utan bild får en
-textbaserad variant. Bloggposternas mallar påverkas inte.
+textbaserad variant. Bloggposternas gemensamma HTML-mall är oförändrad.
+
+Designförslaget har två responsiva lägen: bred layout över 980 px och staplad
+layout vid 980 px och mindre. Sidornas `manual-*`-moduler använder samma
+brytpunkt; undvik ett separat mellanläge med blandade kolumnlayouter.
+Äldre sidor utan `manual-design` behåller sina befintliga brytpunkter.

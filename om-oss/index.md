@@ -21,6 +21,14 @@ I snart tre decennier har vi hjälpt svenska företag med avancerad mjukvaruutve
 
 {% section "history" %}
 
+Athega i korthet
+
+Sedan 1997 har vi legat nära den senaste tekniska utvecklingen, alltid med långsiktighet och verklig nytta som krav. Vi kombinerar beprövad systemutveckling med nya arbetssätt där AI används som förstahandsmetod när det ger bättre kvalitet och snabbare utveckling.
+
+{% endsection %}
+
+{% section "history" %}
+
 Nyfikna från början
 
 Athega grundades 1996 under namnet III Information Integration Innovation HB och blev Athega AB den 1 november 1997. Drivkraften var ett genuint intresse för det som då kallades internetteknik.

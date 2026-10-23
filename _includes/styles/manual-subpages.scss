@@ -218,8 +218,7 @@
       grid-template-columns: 1fr 2fr;
       gap: 32px;
     }
-  }
-  @media (max-width: 640px) {
+
     --section-flow-gap: 48px;
     .section-page > .page-hero {
       padding-block: 32px;
@@ -374,8 +373,7 @@
     .join-section .join-grid {
       gap: 24px 32px;
     }
-  }
-  @media (max-width: 640px) {
+
     .focus-grid {
       grid-template-columns: 1fr;
       gap: 24px;
@@ -482,8 +480,7 @@
     .audience-grid article.inverse {
       gap: 16px 32px;
     }
-  }
-  @media (max-width: 640px) {
+
     .audience-grid {
       gap: 32px;
     }
