@@ -29,6 +29,8 @@ export default function(eleventyConfig) {
 
   // Default layout (ersätter Jekyll's defaults i _config.yml)
   eleventyConfig.addGlobalData("layout", "default");
+  // A new CSS URL per build prevents mixing new HTML with cached old styles.
+  eleventyConfig.addGlobalData("assetVersion", Date.now().toString());
 
   // Posts collection med next/previous
   eleventyConfig.addCollection("posts", function(collection) {
