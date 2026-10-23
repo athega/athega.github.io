@@ -1,5 +1,5 @@
 import { createRenderer } from './rendering.js?v=14';
-import { gameMarkup, gameTheme, waitForStyles, adaptControls } from './view.js?v=15';
+import { gameMarkup, gameTheme, waitForStyles, adaptControls } from './view.js?v=18';
 import { matchesWorld } from './protocol.js?v=14';
 import { createOrdnance, ORDNANCE, blastTouches } from './ordnance.js?v=14';
 import { targetStrength, damageEdge } from './targets.js?v=14';
@@ -9,7 +9,7 @@ import { POWERUPS, damageHull, expandedRect, effectSeconds, advanceScroll, shipC
 import { hitsRect, firstHit } from './physics.js?v=14';
 import { createSound } from './sound.js?v=17';
 import { internalDestination } from './navigation.js?v=14';
-import { createMultiplayer, MAX_PLAYERS, pilotName } from './multiplayer.js?v=15';
+import { createMultiplayer, MAX_PLAYERS, pilotName } from './multiplayer.js?v=18';
 import { invitationLink, invitationPeer } from './invitation.js?v=15';
 import { hitReward, pageReward } from './scoring.js?v=14';
 
@@ -115,7 +115,7 @@ export async function openGame(onClose, invitedPeerId = null, signal) {
     const { drawShip, drawPilotName, drawOrdnance } = createRenderer(context, reducedMotion);
     const launchButton = find('.launch');
     const scoreOutput = find('.score');
-    const colors = ['#ff6600', '#56dfff', '#ee91ff', '#b2ef5e'];
+    const colors = ['#ff6600', '#56dfff', '#ee91ff', '#b2ef5e', '#ffd65a', '#ff718d', '#a7a0ff', '#72f0cf'];
     function playerColor(id = network?.playerId) {
       const index = network?.playerIds.indexOf(id) ?? -1;
       return colors[Math.max(0, index) % colors.length];
