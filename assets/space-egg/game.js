@@ -7,7 +7,7 @@ import { ROUND_SECONDS, roundWinners, clockLabel, validRoundSnapshot } from './r
 import { createArena, cameraFor, WORLD_WIDTH, WORLD_HEIGHT } from './arena.js?v=14';
 import { POWERUPS, damageHull, expandedRect, effectSeconds, advanceScroll, shipContact } from './combat.js?v=14';
 import { hitsRect, firstHit } from './physics.js?v=14';
-import { createSound } from './sound.js?v=17';
+import { createSound } from './sound.js?v=19';
 import { internalDestination } from './navigation.js?v=14';
 import { createMultiplayer, MAX_PLAYERS, pilotName } from './multiplayer.js?v=18';
 import { invitationLink, invitationPeer } from './invitation.js?v=15';

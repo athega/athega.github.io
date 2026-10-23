@@ -16,7 +16,7 @@ async function reveal(invitedPeerId = null) {
   const cancel = event => { if (event.key === 'Escape') controller.abort(); };
   window.addEventListener('keydown', cancel);
   try {
-    const { openGame } = await import('./game.js?v=18');
+    const { openGame } = await import('./game.js?v=19');
     controller.signal.throwIfAborted();
     await openGame(() => { active = false; }, invitedPeerId, controller.signal);
   } catch (error) {

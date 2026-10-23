@@ -22,7 +22,7 @@ with sync_playwright() as p:
         suspend() { return this.frozen ? new Promise(() => {}) : super.suspend(); }
         resume() { return this.frozen ? new Promise(() => {}) : super.resume(); }
       };
-      const {createSound} = await import('/assets/space-egg/sound.js?v=17');
+      const {createSound} = await import('/assets/space-egg/sound.js?v=19');
       const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
       const check = (ok, message) => { if (!ok) throw Error(message); };
       const sound = createSound();
