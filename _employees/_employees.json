@@ -1,3 +1,4 @@
 {
-  "layout": "employee"
+  "layout": "employee",
+  "body_class": "manual-design manual-person"
 }

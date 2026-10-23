@@ -1,5 +1,6 @@
 ---
 layout: sections
+body_class: manual-design manual-subpage
 title: Om oss
 description: >-
   Möt människorna på Athega och läs om vårt teknikintresse, vår historia och hur bolaget arbetar i
@@ -8,11 +9,21 @@ description: >-
 
 {% section "hero" %}
 
+![](/assets/img/manual-about.webp)
+
 Om Athega
 
 # Teknikintresse som *aldrig har gått över.*
 
 I snart tre decennier har vi hjälpt svenska företag med avancerad mjukvaruutveckling.
+
+{% endsection %}
+
+{% section "history" %}
+
+Athega i korthet
+
+Sedan 1997 har vi legat nära den senaste tekniska utvecklingen, alltid med långsiktighet och verklig nytta som krav. Vi kombinerar beprövad systemutveckling med nya arbetssätt där AI används som förstahandsmetod när det ger bättre kvalitet och snabbare utveckling.
 
 {% endsection %}
 
@@ -65,6 +76,16 @@ Nästa kollega
 Vi söker erfarna systemutvecklare som vill fortsätta vara nyfikna och göra verklig skillnad hos våra kunder.
 
 [Läs om att jobba på Athega](/jobba/)
+
+{% endsection %}
+
+{% section "company" %}
+
+## Några andra bekanta ansikten.
+
+Athegamannen har hängt med sedan 1997. Nu har han fått sällskap av uppfinnaren Ada och hunden Byte. Tillsammans ger de vårt teknikintresse en tecknad form.
+
+[Möt Athegamannen, Ada och Byte](/vara-figurer/)
 
 {% endsection %}
 

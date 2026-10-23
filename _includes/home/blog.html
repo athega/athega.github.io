@@ -10,6 +10,7 @@
           <img src="{{ post.data.image_url }}" alt="">
         {% endif %}
         <div>
+          <time class="home-latest-date" datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | swedishDate }}</time>
           <h3>{{ post.data.title }}</h3>
           <p>{{ post.data.excerpt }}</p>
         </div>

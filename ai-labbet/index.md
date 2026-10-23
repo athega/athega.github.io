@@ -1,10 +1,13 @@
 ---
 layout: sections
+body_class: manual-design manual-subpage manual-service manual-ai
 title: AI & maskininlärning
 description: Praktiska AI- och maskininlärningslösningar för verksamheter, digitala tjänster och industri.
 ---
 
 {% section "hero", "ai" %}
+
+![](/assets/img/manual-ai.webp)
 
 AI & maskininlärning
 
@@ -60,6 +63,8 @@ Vi utvecklar produktionsnära lösningar där data, modeller, sensorer, hårdvar
 
 {% section "steps", "soft" %}
 
+![](/assets/img/manual-ai-process.webp)
+
 Så arbetar vi
 
 ## Från ett tydligt problem till en hållbar lösning.
@@ -84,7 +89,7 @@ Vi följer resultatet och utvecklar modeller och arbetssätt när behoven förä
 
 {% endsection %}
 
-{% section "callout", "dark" %}
+{% section "callout", "light" %}
 
 Erfarenhet på riktigt
 

@@ -1,0 +1,39 @@
+// One treatment for standalone actions, regardless of page or importance.
+.manual-design {
+  a.text-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    max-width: 100%;
+    min-height: 48px;
+    padding: 10px 20px;
+    border: 2px solid var(--orange);
+    border-radius: 4px;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    text-align: center;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+    transition: background-color 180ms ease;
+    &:is(:hover, :focus-visible) {
+      background: #fff4eb;
+    }
+    &:focus-visible {
+      outline: 3px solid var(--ink);
+      outline-offset: 4px;
+      box-shadow: 0 0 0 4px var(--paper);
+    }
+  }
+  .hero-actions,
+  .callout-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    gap: 16px;
+  }
+}

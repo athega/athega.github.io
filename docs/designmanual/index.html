@@ -1,0 +1,776 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Athega · Designmanual 0.1</title>
+    <link rel="stylesheet" href="manual.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Hoppa till innehållet</a>
+    <header class="top">
+      <a href="#riktning" aria-label="Till manualens början"
+        ><img src="assets/athega.svg" alt="Athega" width="160" height="45" /></a
+      ><span class="stamp">Designmanual · 0.1 · 23 oktober 2026</span>
+    </header>
+    <div class="shell">
+      <aside class="side">
+        <p>Bildvärld & webbdesign</p>
+        <nav aria-label="Manualens avsnitt">
+          <a href="#riktning"><span>01</span> Uttryck</a
+          ><a href="#karaktarer"><span>02</span> Tre karaktärer</a
+          ><a href="#bildsprak"><span>03</span> Bildspråk</a
+          ><a href="#farg"><span>04</span> Färg & logotyp</a
+          ><a href="#typografi"><span>05</span> Typografi</a
+          ><a href="#layout"><span>06</span> Layout & provsida</a
+          ><a href="#komponenter"><span>07</span> Komponenter & rörelse</a
+          ><a href="#produktion"><span>08</span> Produktion</a
+          ><a href="#beslut"><span>09</span> Formspråk</a>
+        </nav>
+        <a class="download" href="tokens.css" download>Hämta CSS-värden</a
+        ><a class="download" href="bildbrief.txt" download>Hämta bildbrief</a>
+      </aside>
+      <main id="main" tabindex="-1">
+        <section class="section" id="riktning">
+          <p class="eyebrow">01 / Ett sammanhängande uttryck</p>
+          <h1>Nyfikenhet med en egen karaktär.</h1>
+          <p class="lead">
+            En fantasifull bildvärld med tre återkommande figurer. En lugn,
+            modern webbplats som gör erbjudandet lätt att förstå.
+          </p>
+          <p>
+            Manualen beskriver Athegas bildvärld och webbdesign.
+            Illustrationerna får stå för berättelsen och humorn. Typografi,
+            navigation och layout hjälper besökaren att hitta rätt.
+          </p>
+          <div class="cover-image">
+            <a href="assets/samarbete.png" target="_blank"
+              ><img
+                src="assets/samarbete.png"
+                alt="Athegamannen testar en koppling, Ada bygger en bro och Byte undersöker den orange förbindelsen."
+                width="1536"
+                height="1024"
+            /></a>
+          </div>
+          <p class="caption">
+            Scen med hela trion. AI-genererad illustration. Klicka på bilderna för full
+            storlek.
+          </p>
+          <div class="split">
+            <div class="note">
+              <span class="tag">Grundprinciper</span>
+              <h3>Det som håller ihop uttrycket</h3>
+              <ul>
+                <li>Athega-orange och befintlig logotyp.</li>
+                <li>Illustrationer i serietidningsstil.</li>
+                <li>
+                  Athegamannen, Ada och Byte som återkommande trio.
+                </li>
+                <li>Lugn layout där bilderna bär personligheten.</li>
+                <li>Innehållet styr bildval och layout.</li>
+              </ul>
+            </div>
+            <div class="note">
+              <span class="tag">Formspråk</span>
+              <h3>Sajtens uttryck</h3>
+              <p>
+                Karaktärerna, Georgia med enkel sans, vitt med varm neutral
+                som stödfärg präglar sajten. Bilderna visar konkreta handlingar som
+                hör ihop med innehållet.
+              </p>
+            </div>
+          </div>
+        </section>
+        <section class="section" id="karaktarer">
+          <p class="eyebrow">02 / Igenkänning över tid</p>
+          <h2>Tre figurer. Ett gemensamt universum.</h2>
+          <p>
+            Karaktärerna ska vara lätta att känna igen även i små utsnitt. De
+            får lösa problem tillsammans, upptäcka något eller testa en idé.
+            Alla tre behöver inte synas i varje bild.
+          </p>
+          <figure class="character-sheet">
+            <a href="assets/karaktarer.png" target="_blank"
+              ><img
+                src="assets/karaktarer.png"
+                alt="Karaktärsblad med Athegamannen, uppfinnaren Ada och den rufsiga hunden Byte, var och en i två poser."
+                width="1536"
+                height="1024"
+            /></a>
+          </figure>
+          <p>Trion heter <strong>Athegamannen, Ada och Byte</strong>. Namnen är fastställda. Ada har en blinkning till Ada Lovelace; Byte förenar datorvärlden med hundens nyfikenhet.</p>
+          <div class="triplet">
+            <div class="rule">
+              <h3>Athegamannen</h3>
+              <p>
+                <strong>Igenkänning:</strong> stor svart framåtsvept frisyr,
+                mörka solglasögon, vit dräkt och orange handskar.
+              </p>
+              <p>
+                <strong>Personlighet:</strong> trygg, handlingskraftig och lätt
+                självironisk. Får fundera, pröva och ändra sig.
+              </p>
+              <p>
+                <strong>Behåll:</strong> originalets breda axlar, kraftiga
+                bröstkorg, armar och lår samt kompakta silhuett och färger. Låt
+                honom arbeta i scenen, utan stora hjälteposer.
+              </p>
+            </div>
+            <div class="rule">
+              <h3>Ada</h3>
+              <p>
+                <strong>Igenkänning:</strong> kopparröd hårknut med penna, runda
+                glasögon, vit arbetsjacka, mörka byxor och orange scarf.
+              </p>
+              <p>
+                <strong>Personlighet:</strong> nyfiken, uppmärksam och
+                experimenterande. Tar lika mycket initiativ som Athegamannen.
+              </p>
+              <p>
+                <strong>Behåll:</strong> en egen silhuett. Växla vem som tänker,
+                bygger och testar så att rollerna inte blir låsta.
+              </p>
+            </div>
+            <div class="rule">
+              <h3>Byte</h3>
+              <p>
+                <strong>Igenkänning:</strong> liten och rufsig, ljus päls med
+                mörka fält, asymmetriska öron och orange halsband.
+              </p>
+              <p>
+                <strong>Personlighet:</strong> hittar det andra missar. Nosar,
+                tittar och följer spår.
+              </p>
+              <p>
+                <strong>Behåll:</strong> naturligt hundbeteende. Humorn ligger i
+                situationen; hunden behöver varken prata eller använda verktyg.
+              </p>
+            </div>
+          </div>
+          <div class="original">
+            <img
+              src="assets/athegamannen-original.jpg"
+              alt="Den ursprungliga Athegamannen"
+              width="303"
+              height="400"
+            />
+            <p>
+              <strong>Förankring i Athega.</strong> Athegamannen kommer från
+              <a href="https://1997.athega.se/athega.html">sajten från 1997</a>. Ada är uppfinnaren och Byte är hunden.
+              Dräkternas triangelsymboler hör till karaktärerna och ersätter
+              inte företagets logotyp.
+            </p>
+          </div>
+          <p class="caption">
+            Karaktärsbladet är referens för figurernas utseende och proportioner.
+            Nya vinklar och poser ska bevara deras igenkänning.
+          </p>
+        </section>
+        <section class="section" id="bildsprak">
+          <p><strong>Startsidans motiv:</strong> en modern maskin med vita höljen, dämpat blå moduler och orange förbindelser. Ada matar in instruktioner, Athegamannen tar emot produkten direkt ur maskinen och Byte hittar en orange pusselbit som saknas i gränssnittet. Sambandet mellan instruktion, resultat och granskning ska vara synligt. Behåll den rena seriestilen och undvik mässing och alkemiska effekter.</p>
+          <p class="eyebrow">03 / Bilden ska berätta något</p>
+          <h2>En ren seriestil med små berättelser.</h2>
+          <div class="note">
+            <h3>Den gemensamma berättelsen</h3>
+            <p>Athega gör nya tekniska möjligheter användbara. Vi är nyfikna nog att prova och erfarna nog att bedöma resultatet. Tekniken hjälper oss att bygga; människorna ger riktning, granskar och förbättrar. Bra lösningar växer fram genom samarbete, experiment och uppmärksamhet på detaljer.</p>
+            <p>Alla illustrationer utgår från detta. Välj en konkret handling utifrån sidans budskap: bygga en helhet, prova en idé, granska en förbindelse eller upptäcka en svag del. Maskinen är ett motiv bland flera. Berättelsen styr bildproduktionen och kräver ingen extra förklarande text på sajten.</p>
+            <h3>Från sidinnehåll till bild</h3>
+            <ol>
+              <li>Läs sidans text och formulera ett budskap. Fyll i bildbriefens handling, synliga resultat, figurer, placering och visningsstorlek.</li>
+              <li>Bifoga <a href="assets/karaktarer.png">karaktärsbladet</a> för identitet och <a href="../../assets/img/manual-home-maskinen-futuristisk.webp">bildreferensen</a> för material, palett och detaljnivå. Referensens maskin och komposition behöver inte återanvändas.</li>
+              <li>Visa genomtänkt teknik med vita höljen, dämpat blå moduler, glas och orange förbindelser. Enkel miljö, ren serieteckning och luft. Ingen mässingsestetik eller magiska effekter.</li>
+              <li>Låt figurernas egenskaper styra deras handlingar. Ada och Athegamannen kan växla roller; Bytes upptäckt ska höra ihop med resultatet.</li>
+              <li>Kontrollera anatomi, visuella samband och läsbarhet i faktisk dator- och mobilstorlek. Spara slutlig prompt. Hela produktionsunderlaget finns i den återanvändbara bildbriefen.</li>
+            </ol>
+          </div>
+
+          <div class="split">
+            <div>
+              <h3>Visuella regler</h3>
+              <ul>
+                <li>
+                  Handritad, tydlig konturlinje. Något kraftigare ytterkontur
+                  och lättare detaljer.
+                </li>
+                <li>
+                  Begränsad färgskala, huvudsakligen plana färger och diskret
+                  skuggning.
+                </li>
+                <li>Varmvit bakgrund med luft runt motivet.</li>
+                <li>
+                  Orange framhäver en viktig del eller förbindelse. Färgen
+                  behöver inte täcka hela bilden.
+                </li>
+                <li>
+                  Vuxna, stiliserade figurer med uttrycksfulla poser. Samma
+                  detaljnivå på figurer och miljö.
+                </li>
+                <li>
+                  Text och knappar ligger i HTML, aldrig inbakade i
+                  illustrationen.
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3>Berättelseregler</h3>
+              <ul>
+                <li>
+                  En tydlig handling per bild: undersöka, bygga, testa eller
+                  förbättra.
+                </li>
+                <li>
+                  Figurerna samspelar med motivet. Undvik poserande framför en
+                  kamera.
+                </li>
+                <li>Låt funktion och humor gå att upptäcka utan förklaring.</li>
+                <li>
+                  Variera miljö och situation. Alla tjänster ska inte
+                  illustreras med samma byggklossar.
+                </li>
+                <li>
+                  Undvik nostalgiskt kontorspynt, slumpmässiga kugghjul,
+                  neonhjärnor och robotmaskotar.
+                </li>
+                <li>
+                  Illustrationer är metaforer. Kundcase och
+                  medarbetarpresentationer använder verkliga uppgifter och
+                  porträtt.
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Sammanhang</th>
+                  <th>Motividé att utveckla</th>
+                  <th>Bildens uppgift</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Startsida</td>
+                  <td>Trion löser ett problem tillsammans.</td>
+                  <td>Förmedla nyfikenhet, erfarenhet och personlighet.</td>
+                </tr>
+                <tr>
+                  <td>Systemutveckling</td>
+                  <td>En fungerande konstruktion byggs ut utan att stanna.</td>
+                  <td>Visa vidareutveckling och ansvar för helheten.</td>
+                </tr>
+                <tr>
+                  <td>AI & maskininlärning</td>
+                  <td>Flera försök jämförs, ett resultat undersöks.</td>
+                  <td>Betona experiment, utvärdering och omdöme.</td>
+                </tr>
+                <tr>
+                  <td>Teknikgranskning</td>
+                  <td>Figurerna följer en koppling in under ytan.</td>
+                  <td>Gestalta att förstå hur något faktiskt fungerar.</td>
+                </tr>
+                <tr>
+                  <td>Små detaljbilder</td>
+                  <td>
+                    En blick, en tass eller ett verktyg från en större scen.
+                  </td>
+                  <td>Skapa igenkänning utan ännu en stor illustration.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="caption">
+            Detta är motivbriefar, inte nya påståenden eller kundcase. Nya
+            illustrationer ska granskas i den storlek där de ska användas.
+          </p>
+        </section>
+        <section class="section" id="farg">
+          <p class="eyebrow">04 / Befintlig avsändare, lugnare inramning</p>
+          <h2>Orange visar vägen.</h2>
+          <p>
+            Behåll den orange logotypen. Använd originalfilen utan omritning,
+            filter eller genererad ersättning. Ge den fri yta motsvarande minst
+            halva dess höjd. Illustrationerna får en kompletterande, dämpad blå
+            ton.
+          </p>
+          <div class="swatches">
+            <div class="swatch">
+              <div class="paint" style="background: #ff6600"></div>
+              <div>
+                <h3>Athega-orange</h3>
+                <code>#ff6600 · --orange</code>
+                <p>
+                  Logotyp, accenter, länkunderstrykningar och handlingsknappar.
+                </p>
+              </div>
+            </div>
+            <div class="swatch">
+              <div class="paint" style="background: #111315"></div>
+              <div>
+                <h3>Bläck</h3>
+                <code>#111315 · --ink</code>
+                <p>Rubriker, text, fokusmarkering och enstaka mörka ytor.</p>
+              </div>
+            </div>
+            <div class="swatch">
+              <div class="paint" style="background: #ffffff"></div>
+              <div>
+                <h3>Vitt</h3>
+                <code>#ffffff · --paper</code>
+                <p>Huvudyta och innehåll som behöver tydlig läsro.</p>
+              </div>
+            </div>
+            <div class="swatch">
+              <div class="paint" style="background: #f4f2ed"></div>
+              <div>
+                <h3>Varm neutral</h3>
+                <code>#f4f2ed · --neutral</code>
+                <p>
+                  Stödyta. Ingen pappersstruktur eller gulnad effekt.
+                </p>
+              </div>
+            </div>
+            <div class="swatch">
+              <div class="paint" style="background: #6b7f8a"></div>
+              <div>
+                <h3>Illustrationsblå</h3>
+                <code>#6b7f8a</code>
+                <p>
+                  Främst i bilderna. Ska inte konkurrera med orange i
+                  gränssnittet.
+                </p>
+              </div>
+            </div>
+            <div class="swatch">
+              <div class="paint" style="background: #dedfdb"></div>
+              <div>
+                <h3>Linje</h3>
+                <code>#dedfdb · --line</code>
+                <p>
+                  Diskreta avdelare. Inte ensam markering av viktiga kontroller.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="note">
+            <h3>Läsbarhet före färgeffekt</h3>
+            <p>
+              Fristående uppmaningar använder vit bakgrund, mörk text och 2 px Athega-orange ram.
+              Länkar i löptext har mörk text med orange understrykning. Orange används som accent,
+              inte som text på vitt. Vit text på Athega-orange används inte för vanlig knapptext.
+            </p>
+            <p class="small">
+              Beräknat från de angivna färgvärdena. Detta är inte en
+              tillgänglighetsgranskning av hela sajten. Logotypen är en separat
+              varumärkestillämpning.
+            </p>
+          </div>
+        </section>
+        <section class="section" id="typografi">
+          <p class="eyebrow">05 / Redaktionell karaktär i lagom dos</p>
+          <h2>Ett rubriktypsnitt. En enkel lästext.</h2>
+          <p>
+            <span class="tag">Typografipar</span
+            ><br /><strong>Georgia</strong> till huvud- och sektionsrubriker.
+            <strong>Helvetica Neue</strong> med Segoe UI och Arial som reserv
+            till brödtext och navigation. Inga externa fontanrop behövs. Det
+            exakta utseendet varierar mellan operativsystem.
+          </p>
+          <div class="type-sample">
+            <p class="sample-title">
+              Nyfikna på att utforska nytt, med erfarenhet av vad som håller.
+            </p>
+            <p>
+              Vi är experter på den senaste mjukvarutekniken och erbjuder den
+              till våra kunder.
+            </p>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Nivå</th>
+                  <th>Dator / mobil</th>
+                  <th>Vikt & radavstånd</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>H1</td>
+                  <td>52 / 36 px</td>
+                  <td>Georgia 700 · 1,12</td>
+                </tr>
+                <tr>
+                  <td>H2</td>
+                  <td>36 / 28 px</td>
+                  <td>Georgia 700 · 1,2</td>
+                </tr>
+                <tr>
+                  <td>H3 / kortrubrik</td>
+                  <td>24 / 22 px</td>
+                  <td>Georgia 700 · 1,25</td>
+                </tr>
+                <tr>
+                  <td>Ingress</td>
+                  <td>22 / 20 px</td>
+                  <td>Sans 400 · 1,5</td>
+                </tr>
+                <tr>
+                  <td>Brödtext</td>
+                  <td>18 / 18 px</td>
+                  <td>Sans 400 · 1,65</td>
+                </tr>
+                <tr>
+                  <td>Navigation</td>
+                  <td>16 / 16 px</td>
+                  <td>Sans 500 · 1,4</td>
+                </tr>
+                <tr>
+                  <td>Etikett / bildtext</td>
+                  <td>13–14 / 13–14 px</td>
+                  <td>Sans 500 · 1,5</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            Löptext får högst cirka 65 tecken per rad. Undvik tunna vikter,
+            långa versalrubriker, dekorativa kursiver och stora citat som bryter
+            sönder startsidan. En H1 per sida. Bryt långa svenska ord vid behov,
+            utan fasta radbrytningar som bara fungerar på en skärmstorlek.
+          </p>
+        </section>
+        <section class="section" id="layout">
+          <p>Bloggartiklar har centrerad rubrik och ingress samt vänsterjusterad brödtext med högst 720 px läsbredd. Behåll varje artikels originalbilder och text; små bilder förstoras inte för att fylla spalten.</p>
+          <p>På sajten används bred layout över 980 px och staplad layout vid 980 px och mindre. Navigationen växlar samtidigt. Undvik ett separat mellanläge med blandade kolumner.</p>
+          <p class="eyebrow">06 / Samma system, olika uppgifter</p>
+          <h2>Erbjudandet ska gå att hitta direkt.</h2>
+          <p>
+            En gemensam innehållsbredd på högst 1216 px, 24 px sidmarginal på
+            dator och 20 px på mobil. Använd avståndsskalan 8, 16, 24, 32, 48,
+            64 och 96 px. Varje nytt avsnitt behöver inte en egen bakgrundsfärg,
+            ram eller etikett.
+          </p>
+          <div class="wireframes">
+            <div class="wire">
+              <h3>Startsida</h3>
+              <div>Logotyp + tydlig navigation</div>
+              <div>Budskap + kort förklaring + väg till tjänster</div>
+              <div class="image">En gemensam scen med trion</div>
+              <div>Fyra erbjudanden med korta beskrivningar</div>
+              <div>Erfarenhet och vägen till kontakt</div>
+              <div>Utvalda blogginlägg</div>
+              <div>Jobba med oss + kompakt sidfot</div>
+            </div>
+            <div class="wire">
+              <h3>Tjänstesida</h3>
+              <div>Samma navigation och typografiska skala</div>
+              <div>Vad vi hjälper till med + kontaktlänk</div>
+              <div class="image">En mindre scen som förklarar tjänsten</div>
+              <div>Arbetssätt i läsbara avsnitt</div>
+              <div>Process, exempel eller fördjupning</div>
+              <div>Tydlig kontakt + gemensam sidfot</div>
+            </div>
+          </div>
+          <p>
+            <strong>Bildformat:</strong> planera stora scener för 16:9 eller
+            2:1, mindre motiv för 4:3. Generera eller komponera för formatet;
+            skär inte bort ansikten och handling för att fylla en ruta. Bilderna här är 3:2 och visas därför utan beskärning. På
+            mobil kan en förenklad komposition behövas.
+          </p>
+        <p>Sidfoten är kompakt i det smala läget: mindre logotyp, länkar i rad
+          som bryts vid behov, kontaktuppgifter bredvid varandra och inga
+          grupprubriker. Alla länkar och kontaktuppgifter finns kvar.</p>
+          <h3>Provsida: pröva inramningen</h3>
+          <p class="small">
+            Startsidesutsnitt med befintliga texter. Provet visar rubrik,
+            ingress, illustration, tjänster och kontakt. Det är inte en komplett
+            implementation av sajten. Växla typsnitt för att bedöma hur mycket
+            redaktionell känsla ni vill ha.
+          </p>
+          <div class="demo-toolbar">
+            <div
+              class="demo-buttons"
+              role="group"
+              aria-label="Provsidans bredd"
+            >
+              <button type="button" data-width="desktop" aria-pressed="true">
+                Dator</button
+              ><button type="button" data-width="mobile" aria-pressed="false">
+                Mobil
+              </button>
+            </div>
+            <div class="demo-buttons" role="group" aria-label="Rubriktypsnitt">
+              <button type="button" data-font="serif" aria-pressed="true">
+                Georgia + sans</button
+              ><button type="button" data-font="sans" aria-pressed="false">
+                Enbart sans
+              </button>
+            </div>
+          </div>
+          <div class="preview-stage">
+            <div class="preview-box" id="preview-box">
+              <iframe
+                id="preview"
+                src="preview.html"
+                title="Athega startsidesutsnitt"
+              ></iframe>
+            </div>
+          </div>
+          <p class="caption">
+            <a href="preview.html" target="_blank"
+              >Öppna provsidan i ett eget fönster</a
+            >. Datorläget använder tillgänglig bredd i manualen; i eget fönster
+            kan du se den vid full skärmbredd. Kontrollerna kräver JavaScript,
+            själva innehållet gör det inte.
+          </p>
+        </section>
+        <section class="section" id="komponenter">
+          <p class="eyebrow">07 / Återkommande beteenden</p>
+          <h2>Små, begripliga komponenter.</h2>
+          <div class="component-row">
+            <a class="primary" href="preview.html#tjanster" target="_blank"
+              >Våra fokusområden</a
+            ><a class="text-link" href="mailto:reception@athega.se"
+              >reception@athega.se</a
+            >
+            <div class="motion-demo" aria-hidden="true"></div>
+          </div>
+          <p class="caption">
+            Vald knappstil: mörk text på vitt med 2 px orange ram, samma stil för båda uppmaningarna och en liten
+            rörelse vid pekare eller tangentbordsfokus.
+          </p>
+          <div class="split">
+            <div>
+              <h3>Knappar och länkar</h3>
+              <ul>
+                <li>En tydlig primär handling per avsnitt.</li>
+                <li>Alla fristående uppmaningar använder samma ramknapp: vit bakgrund, mörk text (#111315), 2 px orange ram (#ff6600), 16 px text i vikt 600, 24 px radavstånd och 4 px hörnradie. Minst 48 px höjd och 10 × 20 px inre luft.</li>
+                <li>Vid hover används #fff4eb. Tangentbordsfokus har separat mörk kontur och ljus separation.</li>
+                <li>Uppmaningar som hör ihop placeras tillsammans med 16 px mellanrum och samma utseende. Den viktigaste kommer först. Längre text får radbrytas på mobil.</li>
+                <li>Länkar inne i löptext är understrukna. Navigation och klickbara kort behåller sina egna beteenden; de får inte knappramar.</li>
+                <li>
+                  Minst 44 × 44 px som designmål för kontroller och menylänkar.
+                </li>
+                <li>
+                  Synlig fokusmarkering med mörk kontur och ljus separation.
+                </li>
+                <li>
+                  Länkar går att förstå utan enbart färg. E-postlänkar visar
+                  adressen.
+                </li>
+                <li>
+                  Högst 4 px hörnradie. Undvik många olika
+                  kortformer.
+                </li>
+              </ul>
+              <h3>Kort och navigation</h3>
+              <ul>
+                <li>Tjänste- och bloggkort har inga dekorativa pilikoner.</li>
+                <li>Rubriken får orange understrykning vid hover och fokus.</li>
+                <li>Hela kortet kan vara en länk om det bara har ett mål.</li>
+                <li>
+                  Mobilmenyn ska fungera med tangentbord och utan JavaScript.
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3>Rörelse</h3>
+              <ul>
+                <li>150–250 ms för enkel återkoppling på kontroller.</li>
+                <li>
+                  En hund som tittar eller en koppling som reagerar kan prövas
+                  som enstaka detalj.
+                </li>
+                <li>Ingen ständig animation vid text som ska läsas.</li>
+                <li>
+                  Ingen scrollkapning eller innehåll som först måste animeras
+                  fram.
+                </li>
+                <li>
+                  Respektera <code>prefers-reduced-motion</code>. Automatiskt
+                  återkommande rörelse behöver kunna pausas.
+                </li>
+              </ul>
+              <h3>Mobil och läsbarhet</h3>
+              <ul>
+                <li>
+                  Stapla innehåll efter läsordning, inte efter skrivbordets
+                  kolumnplacering.
+                </li>
+                <li>Kontrollera 320, 390, 768 och 1440 px samt 200 % zoom.</li>
+                <li>
+                  Sidfoten ska vara kompakt och behålla tydliga tryckytor.
+                </li>
+              </ul>
+            </div>
+          </div>
+          <a class="demo-card" href="https://athega.se/systemutveckling/"
+            ><h3>Systemutveckling</h3>
+            <p>
+              Seniora utvecklingskonsulter som hjälper er att utveckla,
+              modernisera och förvalta system oavsett teknik, plattform eller
+              var i livscykeln ni befinner er.
+            </p></a
+          >
+        </section>
+        <section class="section" id="produktion">
+          <p class="eyebrow">08 / Så håller vi ihop det över tid</p>
+          <h2>En gemensam källa för form och innehåll.</h2>
+          <div class="split">
+            <div>
+              <h3>I Eleventy-sajten</h3>
+              <ul>
+                <li>
+                  Innehåll ligger i befintlig Markdown och startsidans
+                  datafil.
+                </li>
+                <li>
+                  Gemensamma färger, avstånd och typografi samlas i aktiva
+                  Sass-variabler.
+                </li>
+                <li>
+                  Mallar väljer bildplacering och komponentvariant.
+                  Innehållsfiler får inte bli sidbyggare.
+                </li>
+                <li>
+                  Sajten är statisk och använder inga externa fonttjänster.
+                </li>
+                <li>
+                  Kontrollera startsida, tjänstesida, Om oss och blogg vid
+                  ändringar av gemensamma komponenter.
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3>Bildproduktion</h3>
+              <ol>
+                <li>Använd manualens karaktärsblad och stilreferens.</li>
+                <li>
+                  Skriv en kort bildbrief med handling, format och användning.
+                </li>
+                <li>
+                  Bifoga samma karaktärsblad och en godkänd stilbild till varje
+                  ny generering.
+                </li>
+                <li>
+                  Granska poser, anatomi, ansikten, proportioner och
+                  kontinuitet.
+                </li>
+                <li>
+                  Exportera webbversioner med rimliga dimensioner. Behåll
+                  original och prompt separat.
+                </li>
+                <li>
+                  Sätt bredd och höjd på bilder. Ladda bilder under första vyn
+                  senare. Dekorativa bilder får tom alt-text; informativa bilder
+                  får en kort beskrivning.
+                </li>
+              </ol>
+            </div>
+          </div>
+          <div class="note">
+            <h3>Filstruktur vid en framtida implementation</h3>
+            <p>
+              <code>assets/img/brand/characters/</code> för fastställda
+              referenser och <code>assets/img/illustrations/</code> för
+              publicerade illustrationer. Manualen och arbetsmaterial ska
+              uttryckligen undantas från Eleventy eller lagras utanför sajtens
+              input. Dessa mappar har inte skapats i repot.
+            </p>
+          </div>
+          <details>
+            <summary>Återanvändbar bildbrief</summary>
+            <pre id="brief">BILDBRIEF FÖR ATHEGA
+
+GRUND OCH BERÄTTELSE
+Athega är ett konsultbolag inom mjukvaruutveckling, AI och teknisk granskning.
+Athega gör nya tekniska möjligheter användbara. Vi är nyfikna nog att prova och erfarna nog att bedöma resultatet. Tekniken hjälper oss att bygga; människorna ger riktning, granskar och förbättrar. Bra lösningar växer fram genom samarbete, experiment och uppmärksamhet på detaljer.
+Bilden ska visa en begriplig handling som stöder sidans budskap. Tekniken är ett verktyg som människor använder med omdöme. Visa gärna nyfikenhet och diskret humor.
+
+FYLL I FÖR DEN HÄR BILDEN
+Sida och avsnitt: [namn och relevant text från sidan]
+Budskap: [en mening om vad besökaren ska förstå]
+Handling: [vem gör vad med vilket föremål?]
+Resultat: [vilken nytta, upptäckt eller förbättring blir synlig?]
+Figurer och roller: [välj de figurer som behövs; beskriv varje handling]
+Komposition: [huvudmotiv, läsriktning, samband mellan föremålen]
+Placering: [bredvid text / över hela bredden / mindre sektionsbild]
+Format och storlek: [bildförhållande och faktisk visningsbredd på dator och mobil]
+Bakgrund: [vit för vit sidyta / transparent om bilden måste fungera på flera ytor]
+
+BILDVÄRLD OCH UTFÖRANDE
+Ren europeisk serieteckning med tydliga bläckkonturer, begränsade färgfält och lätt skuggning. Vuxna, uttrycksfulla figurer. Modern, genomtänkt teknik: släta vita eller elfenbensfärgade höljen, dämpat blå moduler, glas och orange förbindelser. Apparater och miljöer får vara fantasifulla men deras funktion och samband ska gå att läsa.
+Athega-orange #ff6600 är signaturfärgen. Använd mörkt bläck, vitt/elfenben och dämpat blått som stöd. Orange kan markera en koppling, en viktig del eller en upptäckt. Ingen mässingsestetik, åldrade ångmaskiner, neonmiljö eller magiska effekter.
+En tydlig huvudhandling, enkel miljö och luft runt motivet. Ingen inbakad text, bildtext eller UI-knapp för sajten. En avbildad produkt får ha enkla gränssnittsformer utan läsbar text. Ingen extra logotyp eller påhittade märken.
+
+KARAKTÄRER
+Athegamannen: erfaren, trygg, handlingskraftig och lätt självironisk. Stor svart framåtsvept frisyr, mörka glasögon, vit dräkt och orange handskar. Breda axlar, kraftig bröstkorg, armar och lår; kompakt silhuett. Kan formulera, bygga, testa, granska och ompröva. Undvik poserande superhjälte och en smal, utdragen kropp.
+Ada: nyfiken, uppmärksam och experimenterande. Kopparröd hårknut med penna, runda glasögon, vit arbetsjacka, orange scarf, mörka byxor och platta skor. Hon och Athegamannen är jämbördiga och får växla mellan idé, bygge och granskning.
+Byte: liten rufsig hund med ljus päls, mörka fält, asymmetriska öron och orange halsband. Upptäcker det andra missar genom att nosa, titta och följa spår. Hans fynd ska höra ihop med scenens problem eller resultat. Ingen talande hund eller hund som använder verktyg.
+Alla tre behöver inte vara med. Bevara identitet och kläder från referensbladet; variera poser och situationer.
+
+REFERENSER ATT BIFOGA
+Sökvägarna nedan utgår från repots rot. Öppna och bifoga själva bilderna, inte bara deras filnamn:
+1. docs/designmanual/assets/karaktarer.png — identitet, proportioner, kläder och teckningsstil.
+2. assets/img/manual-home-maskinen-futuristisk.webp — material, palett, detaljnivå och visuell tydlighet. Detta är stilreferens, inte ett krav på maskin eller samma komposition i varje bild.
+Ange referensernas roller i bildprompten. Saknas filerna: hämta dem innan nya bilder skapas; återskapa inte figurerna ur minnet.
+
+MOTIV OCH SAMBAND
+Välj motiv från sidans innehåll: exempelvis bygga en sammanhängande lösning, jämföra ett experiment med en skiss, följa en förbindelse eller upptäcka en svag del. Återanvänd bildvärlden, inte samma maskin på varje sida.
+Om en maskin används: visa hur instruktionen matas in och hur produkten fysiskt kommer ut. Visa människans arbete med resultatet. Ett fynd ska kunna kopplas till resultatet genom exempelvis samma form, färg och en motsvarande saknad del.
+
+KONTROLL FÖRE ANVÄNDNING
+- Förstår man huvudhandlingen utan förklarande bildtext?
+- Hänger indata, handling och resultat ihop visuellt?
+- Är figurerna igenkännbara, proportionerna rätt och anatomin rimlig? Inga extra händer, saknade ben eller sammanväxta föremål.
+- Fungerar bilden vid sidans faktiska visningsstorlek på dator och mobil? Viktig information får inte bero på en pytteliten detalj.
+- Finns luft runt figurer, fötter, svansar och viktiga föremål? Planera beskärning och eventuell kanttoning utan att handlingen försvinner.
+- Stämmer färger, material och detaljnivå med referenserna?
+Rätta fel före publicering. Spara den färdiga bildprompten tillsammans med manualens produktionsunderlag.</pre>
+          </details>
+          <div class="asset-links">
+            <a href="assets/karaktarer.png" download>Karaktärsblad</a
+            ><a href="assets/samarbete.png" download>Scenprov</a
+            ><a href="tokens.css" download>CSS-värden</a
+            ><a href="bildbrief.txt" download>Bildbrief som text</a>
+          </div>
+          <p class="caption">
+            Illustrationerna är skapade med det inbyggda imagegen-verktyget.
+            Karaktärsbladet bygger på originalfiguren, den tidigare kvinnliga
+            figuren och det valda seriestilsprovet. Scenen använder
+            karaktärsbladet som referens. Sammanfattade bildbriefar för
+            illustrationerna finns i
+            <a href="genereringsprompter.txt">genereringsprompter.txt</a>.
+          </p>
+        </section>
+        <section class="section" id="beslut">
+          <p class="eyebrow">09 / Formspråket i korthet</p>
+          <h2>Så hänger uttrycket ihop.</h2>
+          <ul class="checks">
+            <li><strong>Karaktärerna:</strong> Athegamannen, Ada och Byte.
+              Använd karaktärsbladet och deras egenskaper som grund.</li>
+            <li><strong>Typografin:</strong> Georgia i rubriker, enkel sans
+              i brödtext och gränssnitt.</li>
+            <li><strong>Bakgrunden:</strong> vitt som huvudyta, varm neutral
+              som stödfärg.</li>
+            <li><strong>Bildmängden:</strong> en större startsidesscen och
+              en mindre bild per tjänstesida är riktmärket. Varje bild ska
+              bidra till sidans berättelse.</li>
+          </ul>
+          <p class="decision">
+            Figurer, typografi, färger och bilder bildar ett gemensamt
+            uttryck på hela sajten.
+          </p>
+          <button class="print-button" type="button" id="print">
+            Skriv ut / spara som PDF
+          </button>
+        </section>
+        <footer class="footer">
+          Athega · designmanual 0.1 · uppdaterad 23 oktober 2026.
+        </footer>
+      </main>
+    </div>
+    <script src="manual.js"></script>
+  </body>
+</html>

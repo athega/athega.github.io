@@ -1,5 +1,6 @@
 ---
 layout: sections
+body_class: manual-design manual-subpage manual-service
 title: Systemutveckling
 description: >-
   Seniora systemutvecklare som hjälper er att utveckla, modernisera och förvalta verksamhetskritiska
@@ -7,6 +8,8 @@ description: >-
 ---
 
 {% section "hero" %}
+
+![](/assets/img/manual-system.webp)
 
 Systemutveckling
 
@@ -56,6 +59,8 @@ Vi använder moderna AI-stödda arbetssätt när de ger högre kvalitet och kort
 
 {% section "steps", "soft" %}
 
+![](/assets/img/manual-system-process.webp)
+
 Från behov till förvaltning
 
 ## Vi tar ansvar där ni behöver det.
@@ -78,7 +83,7 @@ Vi skapar system och kunskap som kan leva vidare, skalas och förändras över t
 
 {% endsection %}
 
-{% section "callout", "dark" %}
+{% section "callout", "light" %}
 
 Behöver ni förstärkning?
 

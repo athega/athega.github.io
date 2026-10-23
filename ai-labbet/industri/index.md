@@ -1,10 +1,13 @@
 ---
 layout: sections
+body_class: manual-design manual-subpage manual-service manual-industry
 title: AI för industri
 description: Produktionsnära AI för optimering, kvalitetskontroll och prediktivt underhåll.
 ---
 
 {% section "hero", "industry" %}
+
+![](/assets/img/manual-ai.webp)
 
 AI för industri
 

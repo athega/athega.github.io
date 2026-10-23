@@ -1,10 +1,13 @@
 ---
 layout: sections
+body_class: manual-design manual-subpage manual-service manual-review
 title: Teknikgranskning
 description: Teknikgranskning av mjukvara, arkitektur och arbetssätt för investerare, köpare och teknikbolag.
 ---
 
 {% section "hero", "technical-review" %}
+
+![](/assets/img/manual-review.webp)
 
 Teknikgranskning · Mjukvarukvalitet
 
@@ -78,7 +81,7 @@ Teknisk beredskap för GDPR och relevanta EU-krav, medan juridisk tolkning lämn
 
 {% endsection %}
 
-{% section "callout", "dark" %}
+{% section "callout", "light" %}
 
 Resultatet
 

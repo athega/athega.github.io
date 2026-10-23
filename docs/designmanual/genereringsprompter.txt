@@ -1,0 +1,20 @@
+ATHEGA · BILDBRIEFAR FÖR KONCEPTSKISSER, 21 OKTOBER 2026
+Sammanfattning av instruktionerna till det inbyggda imagegen-verktyget.
+
+KARAKTÄRSBLAD
+Referenser: sajtens ursprungliga Athegaman; Tobbes tidigare skiss med rödhårig kvinnlig uppfinnare; valt seriestilsprov med Athegamannen bland sammanlänkade moduler.
+Skapa ett karaktärsblad i liggande 3:2 med tre tydligt separerade helfigurer och en mindre handlingspose per figur. Ren varmvit bakgrund, vuxen europeisk seriestil, uttrycksfull bläckkontur, begränsade plana färger och lätt skuggning. Ingen text.
+Athegamannen: bevara ikonisk svart framåtsvept frisyr, mörka glasögon, vit dräkt, orange handskar och triangelsymbol.
+Kvinnlig uppfinnare: kopparröd hårknut med penna, runda glasögon, vit kort arbetsjacka, mörka byxor, platta skor, orange scarf och liten triangelsymbol. Egen silhuett, lika kompetent och framträdande.
+Hund: liten rufsig blandrashund, ljus päls med mörka fält, asymmetriska öron, orange halsband och triangelformad bricka. Naturligt hundbeteende.
+Handlingsposer: mannen undersöker en koppling, kvinnan skissar, hunden nosar på en kabel utan att bita.
+
+GEMENSAM SCEN
+Referenser: det genererade karaktärsbladet och valt seriestilsprov.
+Bevara alla tre figurernas identitet, kläder och proportioner. En scen utan paneler eller text, liggande 3:2. Konstruktionen är huvudmotiv, människorna cirka en fjärdedel av bildens höjd. Kvinnan passar in en brygga och jämför med ritningen; mannen testar en orange koppling; hunden undersöker var förbindelsen försvinner in i en båge. Likvärdiga mänskliga roller. Elfenbensvit grund, dämpad blå, bläck och Athega-orange #ff6600. Luft, rena konturer, lätt skuggning. Ingen extra figur, logotyp, pratbubbla eller dekorativ text.
+
+STATUS
+Bilderna är utforskande AI-genererade skisser. Ansikten, anatomi, proportioner, pälsmarkeringar och uttryck behöver granskas och låsas innan en slutlig karaktärsmanual tas fram.
+
+PROPORTIONSKORRIGERING
+Athegamannen har breddats i både karaktärsbladet och scenen med originalfiguren som referens: bredare axlar och bröstkorg, kraftigare armar och lår, kompaktare silhuett. Identitet, kläder och handling bevaras. Övriga figurer och komposition ska behållas.

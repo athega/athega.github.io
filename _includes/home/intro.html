@@ -1,6 +1,7 @@
-<section class="page-hero home-page-hero">
-  <div class="shell">
-    <h1>{{ home.content.intro.heading | escape }} <span>{{ home.content.intro.emphasis | escape }}</span></h1>
-    <p class="page-lead">{{ home.content.intro.lead | escape }}</p>
+<section class="manual-hero shell">
+  <div class="manual-hero-copy">
+    <h1>{{ home.content.intro.lead | escape }}</h1>
+    <p class="page-lead">{{ home.content.intro.heading | escape }} {{ home.content.intro.emphasis | escape }}</p>
   </div>
+  <img class="manual-hero-image" src="{{ home.content.intro.image | escape }}" alt="" width="1536" height="1024" fetchpriority="high">
 </section>

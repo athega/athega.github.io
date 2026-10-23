@@ -1,0 +1,32 @@
+/* Athega designmanual 0.1. Förslag, inte sajtens aktuella produktionsvärden. */
+:root {
+  --orange: #ff6600;
+  --ink: #111315;
+  --muted: #363a3c;
+  --paper: #ffffff;
+  --neutral: #f4f2ed;
+  --line: #dedfdb;
+  --illustration-blue: #6b7f8a;
+  --font-heading: Georgia, "Times New Roman", serif;
+  --font-body: "Helvetica Neue", "Segoe UI", Arial, sans-serif;
+  --text-page: clamp(36px, 4vw, 52px);
+  --text-section: clamp(28px, 3vw, 36px);
+  --text-card: 24px;
+  --text-base: 18px;
+  --leading-title: 1.12;
+  --leading-copy: 1.65;
+  --shell: min(1216px, calc(100% - 48px));
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 48px;
+  --space-6: 64px;
+  --space-7: 96px;
+  --radius: 4px;
+}
+@media (max-width: 640px) {
+  :root {
+    --shell: calc(100% - 40px);
+  }
+}

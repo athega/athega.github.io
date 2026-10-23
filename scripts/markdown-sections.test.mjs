@@ -58,3 +58,23 @@ test('incorrect block names and variants give clear errors', async () => {
   await assert.rejects(render('Text', 'focus', 'stakced'), /Unknown focus variant: stakced/);
   await assert.rejects(render('Ingen rubrik', 'hero'), /hero needs a # heading/);
 });
+
+test('hero illustration is separated from prose while preserving links and summary', async () => {
+  for (const variant of ['default', 'ai']) {
+    const html = await render('![](/assets/img/example.webp)\n\nTjänst\n\n# En *rubrik*\n\nIngress.\n\nSammanfattning med **betoning**.\n\n[Kontakt](mailto:reception@athega.se)', 'hero', variant);
+    assert.equal((html.match(/<img /g) || []).length, 1);
+    assert.match(html, /src="\/assets\/img\/example.webp" alt=""/);
+    assert.match(html, /<p class="page-lead">Ingress\.<\/p>/);
+    assert.match(html, /Sammanfattning med <strong>betoning<\/strong>/);
+    assert.match(html, /href="mailto:reception@athega.se"/);
+  }
+});
+
+test('steps support a decorative illustration without consuming heading or cards', async () => {
+  const html = await render('![](/assets/img/process.webp)\n\nArbetssätt\n\n## Från idé till lösning\n\nEn introduktion.\n\n### Förstå\n\nFörsta steget.\n\n### Bygga\n\nNästa steg.', 'steps', 'soft');
+  assert.equal((html.match(/<img /g) || []).length, 1);
+  assert.match(html, /<h2>Från idé till lösning<\/h2>/);
+  assert.match(html, /En introduktion\./);
+  assert.equal((html.match(/<article>/g) || []).length, 2);
+  assert.match(html, /<h3>Bygga<\/h3>/);
+});

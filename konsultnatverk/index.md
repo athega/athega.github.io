@@ -1,10 +1,13 @@
 ---
 layout: sections
+body_class: manual-design manual-subpage manual-service manual-network
 title: Konsultnätverket
 description: Athegas nätverk för skickliga systemutvecklare som driver eget.
 ---
 
 {% section "hero" %}
+
+![](/assets/img/manual-community.webp)
 
 Athegas konsultnätverk
 
@@ -32,7 +35,7 @@ Du behåller friheten i ditt eget bolag och får samtidigt kollegor, affärsstö
 
 {% endsection %}
 
-{% section "callout", "dark" %}
+{% section "callout", "light" %}
 
 Konsultnätverket
 

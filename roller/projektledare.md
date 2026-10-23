@@ -1,4 +1,5 @@
 ---
+layout: page
 title: Agilcoach och projektledare
 ---
 
