@@ -1,0 +1,18 @@
+Blogg: Vad i teamet finns bara i ditt huvud? (2026-10-31)
+Budskap: Kunskap blir användbar för teamet när någon gör den synlig.
+Handling: En person skjuter fram en öppen anteckningsbok med en skiss till en kollega.
+Resultat: Båda kan se och diskutera samma underlag.
+Figurer: Två anonyma vuxna, endast händer synliga. Fotografiskt uttryck enligt användarens önskemål; inga tecknade varumärkesfigurer.
+Komposition: Anteckningsboken centralt och tydlig även i litet format.
+Placering: Bloggkort/teaser. 3:2, 1536 x 1024. WebP.
+Bakgrund: Vardagligt slitet björkbord, enkelt dagsljus.
+
+Generation prompt:
+Create an editorial documentary photograph for a personal Swedish software teamwork blog, landscape 3:2. Quiet candid close shot from slightly above table height of a worn open squared-paper notebook being slid into the middle of an ordinary scratched pale birch meeting table by one adult's hand in a dark navy cotton sleeve. Across the table another adult's hand rests nearby holding a plain pencil, attending to the same notebook. Only TWO hands total, anatomically natural. Notebook has a modest uneven hand-drawn flow sketch: a few rough boxes, connecting arrows, crossed out alternative, small illegible pencil notes, no readable text. A single used ceramic coffee mug partly cropped at the far right, corner of a closed charcoal laptop barely visible far back. The concrete story is private knowledge becoming visible to a colleague. Notebook central and large, visible in small teaser crop. Unposed phone-photo feeling, flat overcast Nordic window daylight, slightly imperfect exposure and framing, restrained ordinary colors, believable paper texture. No beautiful styled flat lay, no warm cinematic grading, no dramatic light, no bokeh obsession, no stock-photo smiles or high fives, no glossy desk, no futuristic effects, no robots, no logos, no floating UI, no orange teal look. Keep the scene spare and mundane; not a product advertisement.
+
+Workshopbilden är återanvänd från chrillo-reveals/slides/assets/images/xcc-2026/workshop-candid.png. Båda bilderna är AI-genererade illustrationer och avbildar inte ett verkligt projektteam.
+
+Ny vald huvudbild och teaser: huvud-team-agenter.webp
+Budskap: Idéer i någons huvud blir gemensam kunskap för människor och agenter.
+Uttryck: Fotograferat handgjort papperscollage, 3:2. Användarens önskemål om huvud, team och agenter ersätter anteckningsboken som motiv. Samma bild används överst i artikeln och i bloggkortet.
+Prompt: Editorial concept image for a Swedish personal blog titled 'What in the team exists only in your head?' Photograph of a real handmade paper collage on warm off-white matte paper, wide landscape 3:2. On the left a large charcoal paper silhouette of a human head in profile looking right, with small paper sketch cards within it. One card is halfway out toward a shared paper work surface on the right, surrounded by three human bust silhouettes and two muted blue terminal tiles marked >_. People and agents are equal participants around shared cards. Graphite arrows communicate bidirectional sharing. Sparse composition, clear at thumbnail size, rough physical paper edges, soft daylight and subtle contact shadows. Charcoal, warm white, muted blue and one burnt orange accent. No readable words, robots, glowing brains, neon, glossy 3D, holograms or stock-office aesthetic.
