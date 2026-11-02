@@ -1,6 +1,6 @@
 # Athega · Designmanual
 
-**Version 0.1 · uppdaterad 23 oktober 2026.** Figurer, illustrationer, färg, typografi och layout på Athegas webbplats.
+**Version 0.1 · uppdaterad 2 november 2026.** Figurer, illustrationer, färg, typografi och layout på Athegas webbplats.
 
 [Öppna hela manualen som PDF](athega-designmanual-0.1.pdf). GitHub visar PDF-filen direkt; om förhandsvisningen inte laddas går den att ladda ned därifrån.
 
@@ -72,6 +72,16 @@ varje tjänst. Små fynd kan belöna den som tittar närmare, men huvudbudskapet
 fungera även när bilden visas litet.
 
 ## Bildspråk
+
+### Anatomi och proportioner
+
+Alla figurer ska ha rimlig anatomi och bevara sina karakteristiska proportioner. Seriestilen får förenkla former, men kroppens delar, poser och överlappningar ska hänga ihop.
+
+Granska varje figur i närbild och i faktisk visningsstorlek. Kontrollera även referensbilder och rätta anatomiska fel eller tvetydiga konturer före användning.
+
+[Granskning och korrigeringsprompter, 2 november 2026](byte-anatomi-prompt.txt).
+
+### Stil
 
 Ren europeisk serieteckning med tydliga bläckkonturer, begränsade plana färger och lätt skuggning. En tydlig handling per bild, luft runt motivet och få men meningsfulla detaljer. Undvik generiska kontorsmotiv, överlastade maskiner och inbakad text.
 
