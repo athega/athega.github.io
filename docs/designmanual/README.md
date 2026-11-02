@@ -73,16 +73,11 @@ fungera även när bilden visas litet.
 
 ## Bildspråk
 
-### Djurens anatomi
+### Anatomi och proportioner
 
-Byte har exakt två öron, ett på vardera sidan av huvudet, fyra ben och en svans. Öronen får stå, vikas eller hänga asymmetriskt; asymmetrin ändrar aldrig antalet. Pälslockar får inte se ut som extra öron eller ben. Dolda kroppsdelar ska kunna förklaras av pose och perspektiv, med rimliga fästen och leder.
+Alla figurer ska ha rimlig anatomi och bevara sina karakteristiska proportioner. Seriestilen får förenkla former, men kroppens delar, poser och överlappningar ska hänga ihop.
 
-Seriestilen får förenkla former, men djuren ska vara anatomiskt möjliga. Granska
-varje djur separat i närbild och i sidans faktiska dator- och mobilstorlek.
-Räkna öron, ben, tassar och svansar; följ deras fästen och kontrollera leder,
-överlappningar och markkontakt. Ett dolt ben behöver inte ritas fram, men posen
-ska förklara var det finns. Rätta även tvetydiga pälsformer som kan läsas som
-extra kroppsdelar. En referensbild är inte ett undantag från kontrollen.
+Granska varje figur i närbild och i faktisk visningsstorlek. Kontrollera även referensbilder och rätta anatomiska fel eller tvetydiga konturer före användning.
 
 [Granskning och korrigeringsprompter, 2 november 2026](byte-anatomi-prompt.txt).
 
