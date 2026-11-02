@@ -1,0 +1,22 @@
+BYTE · ANATOMIGRANSKNING OCH KORRIGERING, 2 NOVEMBER 2026
+Verktyg: inbyggda image_gen. Bilderna konverterade till WebP med cwebp -q 90.
+
+GRANSKNING
+Granskade alla tio manual-*.webp i assets/img samt manualens karaktarer.png och samarbete.png.
+Tre öron hittades i manual-review.webp och manual-about.webp. Övriga bilder med Byte hade två öron. manual-system.webp och manual-system-process.webp saknar Byte.
+
+BILDBRIEF FÖR KORRIGERINGARNA
+Sidor: Teknikgranskning respektive Om oss, introduktionsbilder.
+Budskap och handling: bevara befintlig granskning av kopplingar respektive teknikintresset vid datorn.
+Resultat: anatomiskt möjlig Byte med samma roll, uttryck och pose.
+Figurer och komposition: bevara originalets figurer och alla föremål; endast ett överflödigt öra tas bort per bild.
+Placering: bredvid introduktionstext på dator; staplat på mobil.
+Format: 1536 × 1024, 3:2, cirka 584 px bildbredd i maximal datorlayout och 350 px vid 390 px mobilbredd.
+Bakgrund: bevara vit bakgrund.
+Referenser: bild 1 är respektive original som redigeras; bild 2 docs/designmanual/assets/karaktarer.png för identitet; bild 3 assets/img/manual-home-maskinen-futuristisk.webp för material och palett. Alla öppnades och bifogades.
+
+SLUTLIG PROMPT · TEKNIKGRANSKNING
+Use case: precise-object-edit. Image 1 is the sole edit target: Athega technical review illustration. Images 2 and 3 are identity and palette references only. Preserve the entire target scene, composition, dimensions 1536x1024, characters, faces, furniture, white background and ink drawing exactly. Correct ONLY the dog's ear anatomy at lower right. It currently has THREE ears: one upright top ear and two floppy side ears. Keep the upright ear on viewer right and the floppy ear on viewer left. REMOVE the redundant floppy ear on viewer right (behind the right cheek, below the upright ear), replacing it with the natural short shaggy contour of the dog's head/neck and white background. Exactly TWO ears total, each attached plausibly to opposite sides of skull. No other changes. Dog keeps same expression, pose, four legs, single tail, fur markings, orange collar. Output the complete edited original scene, not a reference sheet.
+
+SLUTLIG PROMPT · OM OSS
+Use case: precise-object-edit. Image 1 is the sole edit target: Athega about-us illustration of a man at an old computer and dog. Images 2 and 3 are identity and palette references only. Preserve the entire target scene, composition, dimensions 1536x1024, man, face, computer, furniture, cable, white background and ink drawing. Correct ONLY the dog's ear anatomy at lower right. It currently has THREE ears: one upright top ear, a floppy ear on viewer right, and an extra small dark floppy ear protruding to viewer left above its left eye near the orange cable. REMOVE that extra small viewer-left ear, replacing it with a natural short shaggy cream forehead contour and white background. KEEP the upright top ear and the large floppy ear on viewer right. Exactly TWO ears total attached plausibly to opposite sides of skull. No other changes. Keep same expression, pose, four legs, one tail, markings and orange collar. Output complete original scene with this local correction, not a reference sheet.
