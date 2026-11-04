@@ -13,7 +13,7 @@
       {% include "blog/year-navigation.html", years: collections.blogYears, currentUrl: page.url %}
       <a class="news-feature" href="{{ featured.url }}">
         {% if featured.data.image_url %}
-        <img src="{{ featured.data.image_url }}" alt="">
+        {% include "components/blog-image.html", variants: blogImages, src: featured.data.image_url, sizes: "(max-width: 980px) calc(100vw - 40px), (max-width: 1264px) calc((100vw - 96px) * .524), 612px", lazy: false %}
         {% else %}
         <div class="news-image-placeholder" aria-hidden="true">athega</div>
         {% endif %}
@@ -32,7 +32,12 @@
         {% for post in posts offset:1 %}
         <a class="news-card" href="{{ post.url }}">
           {% if post.data.image_url %}
-          <img src="{{ post.data.image_url }}" alt="" loading="lazy">
+          {% assign cardRemainder = forloop.index | modulo: 5 %}
+          {% if cardRemainder == 0 %}
+            {% include "components/blog-image.html", variants: blogImages, src: post.data.image_url, sizes: "(max-width: 980px) calc(100vw - 80px), (max-width: 1264px) calc((100vw - 160px) * .524), 578px", lazy: true %}
+          {% else %}
+            {% include "components/blog-image.html", variants: blogImages, src: post.data.image_url, sizes: "(max-width: 980px) 96px, 144px", lazy: true %}
+          {% endif %}
           {% else %}
           <div class="news-image-placeholder" aria-hidden="true">athega</div>
           {% endif %}

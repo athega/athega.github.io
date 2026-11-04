@@ -7,7 +7,11 @@
     {% for post in collections.posts limit:3 %}
       <a class="home-latest-card" href="{{ post.url }}">
         {% if post.data.image_url %}
-          <img src="{{ post.data.image_url }}" alt="">
+          {% if forloop.first %}
+            {% include "components/blog-image.html", variants: blogImages, src: post.data.image_url, sizes: "(max-width: 980px) calc(100vw - 40px), (max-width: 1264px) calc((100vw - 96px) * .524), 612px", lazy: true %}
+          {% else %}
+            {% include "components/blog-image.html", variants: blogImages, src: post.data.image_url, sizes: "(max-width: 980px) 96px, 144px", lazy: true %}
+          {% endif %}
         {% endif %}
         <div>
           <time class="home-latest-date" datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | swedishDate }}</time>

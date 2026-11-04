@@ -111,6 +111,7 @@ Sidfoten är kompakt i det smala läget: mindre logotyp, länkar i rad som bryts
 - Innehållsbredd upp till 1 216 px, sidmarginaler 24 px på större skärmar och 20 px på mobil.
 - Avståndsskala: 8, 16, 24, 32, 48, 64 och 96 px.
 - Tydlig introduktion, relevant illustration och snabb väg vidare till tjänsterna. Ingen tidningsliknande sidindelning.
+- Aktuell sida i huvudmenyn har beständig orange understrykning och `aria-current="page"`. Mobilmenyn stängs när fokus eller klick lämnar den; Escape stänger och återför fokus till menyknappen. Grundfunktionen fungerar utan JavaScript.
 - Kort får orange understrykning vid hovring och tangentbordsfokus, utan pilikoner.
 - Diskreta övergångar på 150–250 ms, synligt tangentbordsfokus och stöd för minskad rörelse. Ingen styrning av besökarens scrollning.
 - Nya bilder planeras för sin placering och mobilversion. De befintliga 3:2-bilderna visas utan att figurer kapas.

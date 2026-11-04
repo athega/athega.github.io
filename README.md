@@ -117,6 +117,23 @@ Bildernas `width`, `height` och `loading="lazy"` läggs
 till automatiskt vid bygget av `scripts/image-attributes.mjs`; skriv dem inte för
 hand i innehållet. `sitemap.xml`, `robots.txt` och bloggflödet `/blogg/feed.xml`
 genereras från `sitemap.xml.liquid`, `robots.txt.liquid` och `blogg/feed.xml.liquid`.
+Bloggkort på startsidan och i arkiven använder `components/blog-image.html` med
+uttryckliga `variants`, `src`, `sizes` och `lazy`. `_data/blogImages.json` kopplar originalen
+till mindre WebP-varianter i `assets/img/blog-cards/`. Artikelbilderna behåller
+originalen. Saknas varianter används originalbilden även i kortet.
+
+Skapa eller uppdatera varianter manuellt med `cwebp` installerat:
+`node scripts/blog-image-variants.mjs assets/blog/din-bild.webp`.
+Skriptet skapar bredderna 192, 384 och 768 px utan uppskalning eller beskärning;
+animerad WebP hoppas över. Committa manifestet och bildfilerna. Det vanliga
+bygget behöver ingen bildkonverterare eller nya paket.
+
+Huvudnavigationen får `links` och `currentUrl` uttryckligen. Den exakta aktuella
+sidan markeras med `aria-current="page"` och orange understrykning.
+`assets/navigation.js` stänger mobilmenyn när fokus eller klick lämnar den,
+vid Escape (med fokus tillbaka på menyknappen), och vid byte till datorlayout.
+Utan JavaScript fungerar den fortfarande som en vanlig `details`-meny.
+
 Standardbilden vid delning (`og:image`) för sidor utan egen bild anges i
 `_data/site.json`. `npm test` kör testerna i `scripts/*.test.mjs`.
 
