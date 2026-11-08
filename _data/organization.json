@@ -1,0 +1,22 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://athega.se/#organization",
+  "name": "Athega",
+  "legalName": "Athega AB",
+  "url": "https://athega.se/",
+  "email": "reception@athega.se",
+  "taxID": "556547-6693",
+  "vatID": "SE556547669301",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Lunkentusvägen 7",
+    "postalCode": "167 63",
+    "addressLocality": "Bromma",
+    "addressCountry": "SE"
+  },
+  "sameAs": [
+    "https://www.linkedin.com/company/athega-ab",
+    "https://github.com/athega/"
+  ]
+}

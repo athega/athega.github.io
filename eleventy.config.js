@@ -2,6 +2,7 @@ import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 import markdownSections from "./scripts/markdown-sections.mjs";
 import imageAttributes from "./scripts/image-attributes.mjs";
 import postDefaults from "./scripts/post-defaults.mjs";
+import { jsonLd } from "./scripts/json-ld.mjs";
 import { groupPostsByYear, archiveRedirects } from "./scripts/blog-archives.mjs";
 import { readFileSync } from "node:fs";
 
@@ -9,6 +10,7 @@ export default function(eleventyConfig) {
   eleventyConfig.addPlugin(markdownSections);
   eleventyConfig.addPlugin(imageAttributes);
   eleventyConfig.addPlugin(postDefaults);
+  eleventyConfig.addFilter("jsonLd", jsonLd);
   // Drafts: exkludera helt vid build, visa vid serve/watch
   eleventyConfig.addPreprocessor("drafts", "*", (data) => {
     if (data.draft && process.env.ELEVENTY_RUN_MODE === "build") {

@@ -117,6 +117,21 @@ Bildernas `width`, `height` och `loading="lazy"` läggs
 till automatiskt vid bygget av `scripts/image-attributes.mjs`; skriv dem inte för
 hand i innehållet. `sitemap.xml`, `robots.txt` och bloggflödet `/blogg/feed.xml`
 genereras från `sitemap.xml.liquid`, `robots.txt.liquid` och `blogg/feed.xml.liquid`.
+Genererade resurser som `assets/site.js.liquid` har
+`eleventyExcludeFromCollections: true` så att de inte hamnar i sitemap.
+
+Startsidan och Om oss har JSON-LD av typen `Organization`, med samma stabila
+`@id`, från `_data/organization.json`. Håll uppgifterna i takt med de synliga
+bolagsuppgifterna och kontakten i sidfoten. Lägg bara till verifierade uppgifter.
+Filtret `jsonLd` serialiserar data till JSON och skyddar mot avslutande HTML-taggar
+inne i script-elementet; använd inte HTML-escaping på JSON-resultatet.
+Artikel- och författardata ingår inte ännu: `last_updated_by` anger inte
+nödvändigtvis artikelns författare.
+
+GitHub Pages ska ha **Enforce HTTPS** aktiverat under repots Settings → Pages.
+Det omdirigerar HTTP till HTTPS även för undersidor; detta är en hostinginställning
+och styrs inte av Eleventy.
+
 Bloggkort på startsidan och i arkiven använder `components/blog-image.html` med
 uttryckliga `variants`, `src`, `sizes` och `lazy`. `_data/blogImages.json` kopplar originalen
 till mindre WebP-varianter i `assets/img/blog-cards/`. Artikelbilderna behåller

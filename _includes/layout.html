@@ -18,6 +18,9 @@
     <meta property="og:locale" content="sv_SE">
     <meta property="og:image" content="{% if image_url contains '://' %}{{ image_url }}{% else %}{{ site.url }}{{ image_url | default: site.image }}{% endif %}">
     <meta name="twitter:card" content="summary_large_image">
+    {% if page.url == '/' or page.url == '/om-oss/' %}
+    <script type="application/ld+json">{{ organization | jsonLd }}</script>
+    {% endif %}
     <link rel="alternate" type="application/atom+xml" title="Athega – Blogg" href="/blogg/feed.xml">
     <link rel="apple-touch-icon" sizes="192x192" type="image/png" href="/assets/img/icon.png">
     <link rel="icon" sizes="192x192" type="image/png" href="/assets/img/icon.png">
