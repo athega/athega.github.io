@@ -47,7 +47,7 @@ function isLink(block) {
 }
 
 const variants = {
-  hero: ['default', 'ai', 'industry', 'technical-review'],
+  hero: ['default', 'compact', 'ai', 'industry', 'technical-review'],
   focus: ['default', 'stacked'], steps: ['default', 'stacked', 'soft'],
   cases: ['default', 'facts'], callout: ['default', 'light', 'dark', 'network'],
   values: ['default'], community: ['default'], audiences: ['default'],

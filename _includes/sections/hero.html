@@ -1,17 +1,20 @@
+{% capture actions %}{% if links.size > 0 %}<div class="hero-actions">{% for link in links %}{{ link }}{% endfor %}</div>{% endif %}{% endcapture %}
 <section class="page-hero{% if variant == 'ai' %} ai-hero{% elsif variant == 'industry' %} industry-hero{% elsif variant == 'technical-review' %} dd-hero{% endif %}">
   {% if image %}
   <div class="shell manual-page-intro">
-    <div class="manual-page-copy">{{ eyebrow }}{{ heading }}{{ lead }}</div>
+    <div class="manual-page-copy">{{ eyebrow }}{{ heading }}{{ lead }}{% if variant == 'compact' %}{{ summary }}{{ actions }}{% endif %}</div>
     <img src="{{ image | escape }}" alt="" fetchpriority="high">
   </div>
+  {% unless variant == 'compact' %}
   {% if summary != empty or links.size > 0 %}
   <div class="shell manual-page-details">
     {% if summary != empty %}
       {% if variant == 'ai' %}<div class="hero-summary">{{ summary }}</div>{% else %}{{ summary }}{% endif %}
     {% endif %}
-    {% if links.size > 0 %}<div class="hero-actions">{% for link in links %}{{ link }}{% endfor %}</div>{% endif %}
+    {{ actions }}
   </div>
   {% endif %}
+  {% endunless %}
   {% else %}
   <div class="shell">
     {{ eyebrow }}
@@ -20,11 +23,7 @@
     {% if summary != empty %}
       {% if variant == 'ai' %}<div class="hero-summary">{{ summary }}</div>{% else %}{{ summary }}{% endif %}
     {% endif %}
-    {% if links.size > 0 %}
-      <div class="hero-actions">
-      {% for link in links %}{{ link }}{% endfor %}
-      </div>
-    {% endif %}
+    {{ actions }}
   </div>
   {% endif %}
 </section>

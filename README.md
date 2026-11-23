@@ -445,11 +445,14 @@ vanliga metadatafält och sin Markdown-brödtext.
   använder fortfarande sina dataobjekt. De är inte innehållsmodellen för nya
   Markdown-sidor. Flytta inte tillbaka löptext till front matter eller JSON.
 
-Varianter väljs i sektionsanropen: `hero` har `default`, `ai`, `industry` och
+Varianter väljs i sektionsanropen: `hero` har `default`, `compact`, `ai`, `industry` och
 `technical-review`; `focus` har `default` och `stacked`; `steps` har `default`,
 `stacked` och `soft`; `cases` har `default` och `facts`; `callout` har `default`,
 `light`, `dark` och `network`. Övriga använder `default`. Ett valfritt tredje
 argument anger ankaret, till exempel `{% section "focus", "default", "omfattning" %}`.
+
+För en kort bildsatt introduktion samlar `hero` med varianten `compact` text och
+knapp bredvid bilden. På mobil kommer knappen före bilden, som på 404-sidan.
 
 Återanvänd befintliga sektioner. Håll eventuella nya varianter konkreta och knutna
 till ett verkligt layoutbehov. För ändringar i Markdown-tolkningen finns relevanta
