@@ -21,11 +21,14 @@
 .section-page > .page-hero > .shell > * + * { margin-top: var(--section-flow-gap); }
 .section-page > .page-hero > .shell > .eyebrow + h1 { margin-top: var(--heading-gap); }
 .section-page > .page-hero > .shell > h1 + .page-lead { margin-top: var(--heading-gap); }
-.section-page > .page-hero > .shell > .hero-actions { margin-top: 16px; }
+.section-page > .page-hero > .shell > .hero-actions { margin-top: var(--link-gap); }
 .section-page .section-heading > :first-child,
 .section-page .large-prose > :first-child { margin-top: 0; }
 .section-page .section-heading > :last-child,
 .section-page .large-prose > :last-child { margin-bottom: 0; }
+
+/* A link that closes a text section sits one --link-gap below the text. */
+.section-page .large-prose + .text-link { margin-top: var(--link-gap); }
 
 /* Sections with their own background have no neighbour that supplies the other half of the gap, so they and the sections touching them take the full gap. */
 $band: ":is(.soft-section, .join-section, .unified-callout, .dark-section, .facts-section:not(.about-facts))";
