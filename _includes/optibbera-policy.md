@@ -2,11 +2,11 @@
 
 Senast uppdaterad den 23 november 2026.
 
-Optibbera hjälper dig att planera din elanvändning. Du kan prova appen med en demonyckel eller ansluta ditt eget Tibber-konto för att se priser och förbrukning för ditt hem. Appen innehåller ingen reklam.
+Du använder Optibbera utan konto hos Athega. Du kan prova appen med en demonyckel eller ansluta ditt eget Tibber-konto för att se priser och förbrukning för ditt hem. Appen innehåller ingen reklam.
 
 ## När du ansluter till Tibber
 
-När du anger din personliga API-nyckel sparar Optibbera den på din enhet. Appen skickar nyckeln direkt till Tibber för att hämta dina hem, elpriser och förbrukningshistorik. Om du använder Tibber Pulse kan appen också visa mätvärden i realtid. Med demonyckeln visas Tibbers exempeldata.
+När du anger din personliga API-nyckel sparar Optibbera den på din enhet. Appen skickar nyckeln direkt till Tibber för att hämta dina hem, elpriser och förbrukningshistorik. Athega sparar varken nyckeln eller hushållets förbrukningsdata på sina servrar. Om du använder Tibber Pulse kan appen också visa mätvärden i realtid. Med demonyckeln visas Tibbers exempeldata.
 
 Tibber ansvarar för uppgifterna i ditt Tibber-konto. [Läs Tibbers integritetspolicy](https://tibber.com/se/integritet).
 
@@ -18,7 +18,7 @@ Du kan koppla bort ditt hem genom att tömma fältet för Tibber-nyckeln i Optib
 
 ## Uppdateringar och feldiagnostik
 
-När appen söker efter en uppdatering kontaktar den vår leverantör Expo. Expo tar emot enhetens IP-adress, ett slumpmässigt ID för den här installationen samt uppgifter om plattform och programversion. Uppgifterna används för att leverera rätt uppdatering och se hur många installationer som har fått den.
+När appen söker efter en uppdatering sparar vår leverantör Expo enhetens IP-adress och ett slumpmässigt ID för installationen. Expo tar också emot uppgifter om plattform och programversion. Uppgifterna används för att leverera rätt uppdatering och se hur många installationer som har fått den.
 
 Om en uppdatering inte startar kan Expo också få uppgifter om vilken uppdatering som misslyckades och en kort feltext. Expo raderar råloggar som innehåller feltext efter tre dagar. För installations-ID och IP-adresser anger Expo ingen fast lagringstid i dokumentationen för tjänsten. [Så hanterar Expo uppdateringsdata](https://docs.expo.dev/eas-update/store-privacy-declarations/).
 
@@ -26,6 +26,6 @@ Expo kan behandla uppgifterna i USA. Företaget uppger att det omfattas av datas
 
 ## Kontakt och dina rättigheter
 
-Athega AB (organisationsnummer 556547-6693) ansvarar för behandlingen av personuppgifter i Optibbera. Om du mejlar oss använder vi din e-postadress och uppgifterna i meddelandet för att besvara din fråga. Behåll din Tibber-nyckel för dig själv när du kontaktar oss.
+Athega AB ansvarar för de uppgifter som Expo behandlar åt oss vid uppdateringar. Skriv till [optibbera@athega.se](mailto:optibbera@athega.se) för att begära tillgång till dina personuppgifter, rättelse eller radering.
 
-Du kan begära tillgång till dina personuppgifter, be om rättelse eller radering och i vissa fall begära att behandlingen begränsas, invända mot den eller få ut uppgifter i ett flyttbart format. Kontakta oss på [optibbera@athega.se](mailto:optibbera@athega.se). Du kan också [lämna ett klagomål till Integritetsskyddsmyndigheten](https://www.imy.se/privatperson/utfora-arenden/lamna-ett-klagomal/).
+I vissa fall kan du också invända mot behandlingen, begära att den begränsas eller få ut dina uppgifter i ett flyttbart format. Du kan [lämna klagomål till Integritetsskyddsmyndigheten](https://www.imy.se/privatperson/utfora-arenden/lamna-ett-klagomal/).
