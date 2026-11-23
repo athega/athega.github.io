@@ -1,5 +1,7 @@
 {
   "layout": "page",
+  "title": "Integritetspolicy för Optibbera",
+  "description": "Så hanterar Optibbera din Tibber-nyckel, hushållets eldata och tekniska uppgifter när appen söker efter uppdateringar.",
   "policyUrlSuffixes": ["/", ".html"],
   "pagination": {
     "data": "policyUrlSuffixes",
