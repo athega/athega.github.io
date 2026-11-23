@@ -1,3 +1,10 @@
 {
-  "layout": "page"
+  "layout": "page",
+  "policyUrlSuffixes": ["/", ".html"],
+  "pagination": {
+    "data": "policyUrlSuffixes",
+    "size": 1,
+    "alias": "policyUrlSuffix"
+  },
+  "permalink": "{{ page.filePathStem }}{{ policyUrlSuffix }}"
 }
